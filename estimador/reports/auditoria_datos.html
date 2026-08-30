@@ -1,0 +1,1224 @@
+<title>Auditoría de Datos Agix</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap">
+
+<style>
+  :root{
+    --bg:#eef1f4;
+    --surface:#ffffff;
+    --surface-2:#f5f8fa;
+    --ink:#111820;
+    --ink-2:#3d4a58;
+    --muted:#6b7a8a;
+    --rule:#d5dde4;
+    --rule-strong:#b9c5ce;
+    --accent:#12645d;
+    --accent-soft:#dcebe9;
+    --accent-ink:#0c4a45;
+    --warn:#a4442a;
+    --warn-soft:#f4e2dc;
+    --warn-ink:#8a3721;
+    --amber:#7d5a17;
+    --amber-soft:#f2e9d5;
+    --shadow:0 1px 2px rgba(17,24,32,.06), 0 8px 24px -12px rgba(17,24,32,.18);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0d1216;
+      --surface:#151d24;
+      --surface-2:#1a232b;
+      --ink:#e4ebf1;
+      --ink-2:#b3c0cc;
+      --muted:#8393a2;
+      --rule:#2a353f;
+      --rule-strong:#3b4954;
+      --accent:#54b7ac;
+      --accent-soft:#123330;
+      --accent-ink:#7fd0c6;
+      --warn:#e28a6b;
+      --warn-soft:#3a201a;
+      --warn-ink:#f0a98e;
+      --amber:#d7a851;
+      --amber-soft:#33290f;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.7);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0d1216;
+    --surface:#151d24;
+    --surface-2:#1a232b;
+    --ink:#e4ebf1;
+    --ink-2:#b3c0cc;
+    --muted:#8393a2;
+    --rule:#2a353f;
+    --rule-strong:#3b4954;
+    --accent:#54b7ac;
+    --accent-soft:#123330;
+    --accent-ink:#7fd0c6;
+    --warn:#e28a6b;
+    --warn-soft:#3a201a;
+    --warn-ink:#f0a98e;
+    --amber:#d7a851;
+    --amber-soft:#33290f;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.7);
+  }
+
+  *{box-sizing:border-box;}
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size:16.5px;
+    line-height:1.65;
+    margin:0;
+    padding:0 1.25rem 6rem;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .wrap{max-width:53rem;margin:0 auto;}
+
+  /* ---------- masthead ---------- */
+  header.masthead{
+    padding:4.5rem 0 2.5rem;
+    border-bottom:2px solid var(--ink);
+    margin-bottom:3rem;
+  }
+  .eyebrow{
+    font-family:"IBM Plex Mono", ui-monospace, monospace;
+    font-size:.72rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin:0 0 1.1rem;
+  }
+  h1{
+    font-family:"IBM Plex Serif", Georgia, serif;
+    font-weight:600;
+    font-size:clamp(2.1rem,5.2vw,3.1rem);
+    line-height:1.12;
+    letter-spacing:-.02em;
+    text-wrap:balance;
+    margin:0 0 1rem;
+  }
+  .standfirst{
+    font-size:1.12rem;
+    color:var(--ink-2);
+    max-width:44rem;
+    margin:0 0 2rem;
+  }
+  .meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.5rem 2rem;
+    font-family:"IBM Plex Mono", ui-monospace, monospace;
+    font-size:.78rem;
+    color:var(--muted);
+  }
+  .meta b{color:var(--ink-2);font-weight:500;}
+
+  /* ---------- sections ---------- */
+  section{margin:0 0 3.5rem;}
+  .sec-head{
+    display:flex;
+    align-items:baseline;
+    gap:.9rem;
+    margin:0 0 1.25rem;
+    padding-top:.75rem;
+    border-top:1px solid var(--rule-strong);
+  }
+  .sec-num{
+    font-family:"IBM Plex Mono", ui-monospace, monospace;
+    font-size:.8rem;
+    font-weight:500;
+    color:var(--accent);
+    flex:none;
+    padding-top:.35rem;
+  }
+  h2{
+    font-family:"IBM Plex Serif", Georgia, serif;
+    font-weight:600;
+    font-size:clamp(1.35rem,3vw,1.72rem);
+    line-height:1.25;
+    letter-spacing:-.012em;
+    text-wrap:balance;
+    margin:0;
+  }
+  h3{
+    font-family:"IBM Plex Sans", sans-serif;
+    font-weight:600;
+    font-size:1rem;
+    letter-spacing:.005em;
+    margin:2rem 0 .6rem;
+    color:var(--ink);
+  }
+  p{margin:0 0 1rem;max-width:44rem;}
+  a{color:var(--accent);text-underline-offset:2px;}
+  a:focus-visible, summary:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:3px;
+    border-radius:2px;
+  }
+  strong{font-weight:600;}
+  code{
+    font-family:"IBM Plex Mono", ui-monospace, monospace;
+    font-size:.86em;
+    background:var(--surface-2);
+    border:1px solid var(--rule);
+    border-radius:3px;
+    padding:.08em .34em;
+  }
+
+  ul{margin:0 0 1rem;padding-left:1.15rem;max-width:44rem;}
+  li{margin-bottom:.45rem;}
+  li::marker{color:var(--muted);}
+
+  /* ---------- verdict chips ---------- */
+  .chip{
+    display:inline-block;
+    font-family:"IBM Plex Mono", ui-monospace, monospace;
+    font-size:.68rem;
+    font-weight:500;
+    letter-spacing:.07em;
+    text-transform:uppercase;
+    padding:.2em .55em;
+    border-radius:3px;
+    white-space:nowrap;
+  }
+  .chip.yes{background:var(--accent-soft);color:var(--accent-ink);border:1px solid color-mix(in srgb, var(--accent) 35%, transparent);}
+  .chip.no{background:var(--warn-soft);color:var(--warn-ink);border:1px solid color-mix(in srgb, var(--warn) 35%, transparent);}
+  .chip.partial{background:var(--amber-soft);color:var(--amber);border:1px solid color-mix(in srgb, var(--amber) 35%, transparent);}
+
+  /* ---------- tables ---------- */
+  .scroller{
+    overflow-x:auto;
+    margin:1.25rem 0 1.5rem;
+    border:1px solid var(--rule);
+    border-radius:5px;
+    background:var(--surface);
+    box-shadow:var(--shadow);
+  }
+  table{
+    border-collapse:collapse;
+    width:100%;
+    font-size:.87rem;
+    font-variant-numeric:tabular-nums;
+  }
+  caption{
+    caption-side:top;
+    text-align:left;
+    font-family:"IBM Plex Mono", ui-monospace, monospace;
+    font-size:.72rem;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--muted);
+    padding:.85rem 1rem .55rem;
+  }
+  th, td{
+    padding:.5rem .85rem;
+    text-align:left;
+    border-bottom:1px solid var(--rule);
+    vertical-align:top;
+  }
+  thead th{
+    font-family:"IBM Plex Mono", ui-monospace, monospace;
+    font-size:.72rem;
+    font-weight:500;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    color:var(--muted);
+    background:var(--surface-2);
+    border-bottom:1px solid var(--rule-strong);
+    white-space:nowrap;
+  }
+  tbody tr:last-child td{border-bottom:none;}
+  td.num, th.num{text-align:right;font-family:"IBM Plex Mono", ui-monospace, monospace;}
+  td.mono{font-family:"IBM Plex Mono", ui-monospace, monospace;font-size:.82rem;}
+  tr.flag td{background:var(--warn-soft);}
+  tr.good td{background:var(--accent-soft);}
+
+  /* ---------- callouts ---------- */
+  .verdict{
+    background:var(--surface);
+    border:1px solid var(--rule);
+    border-left:3px solid var(--accent);
+    border-radius:0 5px 5px 0;
+    padding:1.15rem 1.35rem;
+    margin:1.5rem 0;
+    box-shadow:var(--shadow);
+  }
+  .verdict.reject{border-left-color:var(--warn);}
+  .verdict .label{
+    font-family:"IBM Plex Mono", ui-monospace, monospace;
+    font-size:.7rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--accent);
+    display:block;
+    margin-bottom:.45rem;
+  }
+  .verdict.reject .label{color:var(--warn);}
+  .verdict p{margin:0;max-width:none;}
+  .verdict p + p{margin-top:.7rem;}
+
+  /* ---------- stat row ---------- */
+  .stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(9.5rem, 1fr));
+    gap:1px;
+    background:var(--rule);
+    border:1px solid var(--rule);
+    border-radius:5px;
+    overflow:hidden;
+    margin:1.5rem 0 1.75rem;
+    box-shadow:var(--shadow);
+  }
+  .stat{background:var(--surface);padding:1rem 1.1rem;}
+  .stat .v{
+    font-family:"IBM Plex Mono", ui-monospace, monospace;
+    font-size:1.5rem;
+    font-weight:500;
+    letter-spacing:-.02em;
+    color:var(--ink);
+    display:block;
+    line-height:1.15;
+  }
+  .stat .v.hi{color:var(--accent);}
+  .stat .v.lo{color:var(--warn);}
+  .stat .k{
+    font-size:.75rem;
+    color:var(--muted);
+    display:block;
+    margin-top:.3rem;
+    line-height:1.35;
+  }
+
+  /* ---------- evidence list ---------- */
+  ol.evidence{
+    counter-reset:ev;
+    list-style:none;
+    padding:0;
+    margin:1.25rem 0 1.5rem;
+    max-width:44rem;
+  }
+  ol.evidence li{
+    counter-increment:ev;
+    position:relative;
+    padding-left:2.2rem;
+    margin-bottom:.85rem;
+  }
+  ol.evidence li::before{
+    content:counter(ev);
+    position:absolute;
+    left:0;
+    top:.15rem;
+    font-family:"IBM Plex Mono", ui-monospace, monospace;
+    font-size:.7rem;
+    color:var(--accent);
+    border:1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+    background:var(--accent-soft);
+    border-radius:50%;
+    width:1.45rem;
+    height:1.45rem;
+    display:grid;
+    place-items:center;
+  }
+
+  footer{
+    border-top:2px solid var(--ink);
+    padding-top:1.5rem;
+    margin-top:3.5rem;
+    font-size:.85rem;
+    color:var(--muted);
+  }
+  footer p{max-width:44rem;}
+</style>
+
+<div class="wrap">
+
+<header class="masthead">
+  <p class="eyebrow">Agix · Tesis · Preparación del conjunto de datos</p>
+  <h1>Auditoría de datos para la predicción de horas reales de tarea</h1>
+  <p class="standfirst">
+    Registro de la búsqueda, validación y depuración de los conjuntos de datos públicos
+    candidatos para entrenar el estimador de esfuerzo de Agix. Incluye la prueba empírica
+    de la unidad de <code>Timespent</code> en TAWOS y la evidencia que obligó a descartar
+    el cruce de puntos de historia a horas.
+  </p>
+  <div class="meta">
+    <span><b>Fecha</b> 23 de agosto de 2026</span>
+    <span><b>Fuentes evaluadas</b> 20</span>
+    <span><b>Fuentes utilizables</b> 2</span>
+    <span><b>Tareas con horas reales</b> 18 721</span>
+  </div>
+</header>
+
+<section>
+  <div class="sec-head"><span class="sec-num">01</span><h2>Qué se buscaba y qué se encontró</h2></div>
+
+  <p>
+    El estimador de Agix necesita aprender de tareas de desarrollo con <strong>texto libre</strong>
+    (nombre y descripción) y <strong>horas realmente registradas</strong>. La revisión de la
+    literatura de la tesis apunta casi siempre a conjuntos con <em>puntos de historia</em>, no con
+    horas; el objetivo de esta auditoría fue determinar qué datos públicos cumplen realmente
+    ambas condiciones.
+  </p>
+
+  <p>
+    De veinte fuentes revisadas, solo dos contienen simultáneamente texto de tarea y esfuerzo
+    cronometrado a nivel de tarea individual.
+  </p>
+
+  <div class="stats">
+    <div class="stat"><span class="v">20</span><span class="k">fuentes evaluadas</span></div>
+    <div class="stat"><span class="v hi">2</span><span class="k">con texto y horas reales</span></div>
+    <div class="stat"><span class="v">18 721</span><span class="k">tareas de software utilizables</span></div>
+    <div class="stat"><span class="v lo">0</span><span class="k">filas con horas estimadas por conversión</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">02</span><h2>Fuentes evaluadas y veredicto</h2></div>
+
+  <p>
+    El criterio de admisión es estricto: la fuente debe tener granularidad de <em>tarea</em>
+    (no de proyecto), texto libre en lenguaje natural, y esfuerzo medido en horas o minutos
+    efectivamente registrados por quien hizo el trabajo.
+  </p>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 1 · Fuentes revisadas frente a los tres requisitos del modelo</caption>
+      <thead>
+        <tr>
+          <th>Fuente</th>
+          <th class="num">Filas</th>
+          <th>Granularidad</th>
+          <th>Texto</th>
+          <th>Esfuerzo</th>
+          <th>Veredicto</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="good">
+          <td><strong>TAWOS</strong></td>
+          <td class="num">458 232</td>
+          <td>tarea (issue Jira)</td>
+          <td>título + descripción</td>
+          <td>minutos registrados</td>
+          <td><span class="chip yes">Se usa</span></td>
+        </tr>
+        <tr class="good">
+          <td><strong>SiP</strong></td>
+          <td class="num">10 266</td>
+          <td>tarea</td>
+          <td>resumen + categoría</td>
+          <td>horas registradas</td>
+          <td><span class="chip yes">Se usa</span></td>
+        </tr>
+        <tr>
+          <td>Project-22</td>
+          <td class="num">630</td>
+          <td>historia</td>
+          <td>no publicado</td>
+          <td>horas + puntos</td>
+          <td><span class="chip partial">Solo calibración</span></td>
+        </tr>
+        <tr>
+          <td>CESAW</td>
+          <td class="num">203 621</td>
+          <td>tarea</td>
+          <td>ninguno (claves numéricas)</td>
+          <td>minutos registrados</td>
+          <td><span class="chip partial">Solo distribución</span></td>
+        </tr>
+        <tr>
+          <td>renzo-pomodoro</td>
+          <td class="num">17 764</td>
+          <td>tarea</td>
+          <td>anonimizado a identificadores</td>
+          <td>pomodoros</td>
+          <td><span class="chip no">Descartada</span></td>
+        </tr>
+        <tr>
+          <td>Deep-SE (Choetkiertikul)</td>
+          <td class="num">23 313</td>
+          <td>tarea</td>
+          <td>título + descripción</td>
+          <td>solo puntos de historia</td>
+          <td><span class="chip no">Descartada</span></td>
+        </tr>
+        <tr>
+          <td>China</td>
+          <td class="num">499</td>
+          <td>proyecto</td>
+          <td>ninguno</td>
+          <td>horas-persona</td>
+          <td><span class="chip no">Descartada</span></td>
+        </tr>
+        <tr>
+          <td>Huijgens</td>
+          <td class="num">492</td>
+          <td>proyecto</td>
+          <td>ninguno</td>
+          <td>euros / horas-persona</td>
+          <td><span class="chip no">Descartada</span></td>
+        </tr>
+        <tr>
+          <td>Kitchenham</td>
+          <td class="num">145</td>
+          <td>proyecto</td>
+          <td>ninguno</td>
+          <td>horas-persona</td>
+          <td><span class="chip no">Descartada</span></td>
+        </tr>
+        <tr>
+          <td>NASA93</td>
+          <td class="num">93</td>
+          <td>proyecto</td>
+          <td>ninguno</td>
+          <td>meses-persona</td>
+          <td><span class="chip no">Descartada</span></td>
+        </tr>
+        <tr>
+          <td>Desharnais</td>
+          <td class="num">80</td>
+          <td>proyecto</td>
+          <td>ninguno</td>
+          <td>horas-persona</td>
+          <td><span class="chip no">Descartada</span></td>
+        </tr>
+        <tr>
+          <td>Subbiah</td>
+          <td class="num">72</td>
+          <td>proyecto</td>
+          <td>ninguno</td>
+          <td>puntos función</td>
+          <td><span class="chip no">Descartada</span></td>
+        </tr>
+        <tr>
+          <td>UCP</td>
+          <td class="num">71</td>
+          <td>proyecto</td>
+          <td>ninguno</td>
+          <td>horas-persona</td>
+          <td><span class="chip no">Descartada</span></td>
+        </tr>
+        <tr>
+          <td>COCOMO-81</td>
+          <td class="num">63</td>
+          <td>proyecto</td>
+          <td>ninguno</td>
+          <td>meses-persona</td>
+          <td><span class="chip no">Descartada</span></td>
+        </tr>
+        <tr>
+          <td>Maxwell</td>
+          <td class="num">62</td>
+          <td>proyecto</td>
+          <td>ninguno</td>
+          <td>horas-persona</td>
+          <td><span class="chip no">Descartada</span></td>
+        </tr>
+        <tr>
+          <td>Valdés-Souto</td>
+          <td class="num">57</td>
+          <td>proyecto</td>
+          <td>ninguno</td>
+          <td>horas-persona</td>
+          <td><span class="chip no">Descartada</span></td>
+        </tr>
+        <tr>
+          <td>Miyazaki94</td>
+          <td class="num">48</td>
+          <td>proyecto</td>
+          <td>ninguno</td>
+          <td>meses-hombre</td>
+          <td><span class="chip no">Descartada</span></td>
+        </tr>
+        <tr>
+          <td>Finnish</td>
+          <td class="num">38</td>
+          <td>proyecto</td>
+          <td>ninguno</td>
+          <td>meses-persona</td>
+          <td><span class="chip no">Descartada</span></td>
+        </tr>
+        <tr>
+          <td>Albrecht</td>
+          <td class="num">24</td>
+          <td>proyecto</td>
+          <td>ninguno</td>
+          <td>miles de horas-persona</td>
+          <td><span class="chip no">Descartada</span></td>
+        </tr>
+        <tr>
+          <td>ISBSG</td>
+          <td class="num">—</td>
+          <td>proyecto</td>
+          <td>ninguno</td>
+          <td>horas-persona</td>
+          <td><span class="chip no">Comercial</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Los conjuntos clásicos del repositorio PROMISE quedan fuera por una razón estructural,
+    no por tamaño: describen <em>proyectos completos</em> mediante métricas agregadas
+    (puntos función, líneas de código) y no contienen una sola línea de texto de tarea.
+    Son incompatibles con un modelo que vectoriza el nombre y la descripción.
+  </p>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">03</span><h2>Adquisición y procesamiento de TAWOS</h2></div>
+
+  <p>
+    TAWOS se distribuye como un volcado de MySQL 8.0 comprimido
+    (<code>TAWOS.sql.zip</code>, 637,6 MB; 4,31 GB descomprimido; licencia Apache 2.0),
+    descargado desde el repositorio institucional de University College London
+    bajo el DOI <code>10.5522/04/21308124</code>.
+  </p>
+
+  <p>
+    No se instaló ningún servidor de base de datos. El volcado se procesa
+    <strong>en flujo</strong> directamente desde el archivo comprimido: se aprovecha que
+    <code>mysqldump</code> escapa los saltos de línea dentro de las cadenas, por lo que cada
+    sentencia <code>INSERT</code> ocupa exactamente una línea física, y se tokenizan las
+    tuplas con un analizador propio. El archivo de 4,31 GB nunca se escribe en disco.
+  </p>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 2 · Tablas extraídas del volcado a formato Parquet</caption>
+      <thead>
+        <tr><th>Tabla</th><th class="num">Filas</th><th>Uso en el proyecto</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="mono">Issue</td><td class="num">458 232</td><td>tabla base: texto, tipo, prioridad, puntos, tiempo</td></tr>
+        <tr><td class="mono">User</td><td class="num">206 162</td><td>identificación de asignado y reportante</td></tr>
+        <tr><td class="mono">Sprint</td><td class="num">4 594</td><td>contexto temporal de la tarea</td></tr>
+        <tr><td class="mono">Project</td><td class="num">39</td><td>clave de proyecto para partición y calibración</td></tr>
+        <tr><td class="mono">Repository</td><td class="num">12</td><td>organización de origen</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="verdict">
+    <span class="label">Discrepancia con la publicación original</span>
+    <p>
+      El artículo de Tawosi et al. (MSR 2022) describe <strong>508 963 issues en 44 proyectos</strong>.
+      La base publicada se llama <code>tawos_cleaned</code> y contiene
+      <strong>458 232 issues en 39 proyectos</strong>. La cifra que debe citarse en la tesis es la
+      de la base efectivamente utilizada, indicando que corresponde a la versión depurada.
+    </p>
+  </div>
+
+  <h3>Artefactos de codificación detectados y corregidos</h3>
+  <ul>
+    <li>
+      El <strong>100 % de los títulos</strong> está envuelto en comillas dobles literales
+      (<code>"texto"</code>) y el <strong>93,6 % de las descripciones</strong> en comillas
+      triples (<code>"""texto"""</code>). Es un artefacto de la carga original de TAWOS, no
+      contenido real; se elimina en la limpieza.
+    </li>
+    <li>
+      El 0,05 % de las descripciones contiene el carácter de reemplazo <code>U+FFFD</code>
+      por bytes no válidos en UTF-8 dentro del volcado. En el subconjunto final afecta a
+      <strong>una sola fila</strong>; se declara como limitación y no se corrige.
+    </li>
+  </ul>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">04</span><h2>Prueba de la unidad de <code>Timespent</code></h2></div>
+
+  <p>
+    Toda la variable objetivo depende de esta pregunta. La API REST de Jira reporta
+    <code>timespent</code> en <strong>segundos</strong>, pero TAWOS es un conjunto derivado
+    y su artículo describe el campo como «horas de trabajo registradas». La documentación no
+    lo resuelve, de modo que la unidad se determinó por evidencia interna.
+  </p>
+
+  <ol class="evidence">
+    <li>
+      <strong>Los valores exactos más frecuentes son minutos redondos.</strong> Los diez
+      valores más repetidos son 60, 120, 30, 240, 180, 10, 90, 480, 20 y 15 — es decir
+      1 h, 2 h, 30 min, 4 h, 3 h, 10 min, 1,5 h, <strong>una jornada completa</strong>,
+      20 min y 15 min. El pico en 480 y su armónico en 960 (dos jornadas) son la firma
+      inconfundible de registros escritos como «1d» y «2d» en Jira.
+    </li>
+    <li>
+      <strong>Solo el 39,6 % de los valores es divisible por 60.</strong> Un campo en
+      segundos procedente de una interfaz con granularidad de minuto sería divisible por 60
+      en prácticamente el 100 % de los casos.
+    </li>
+    <li>
+      <strong>La magnitud resultante es plausible únicamente en minutos.</strong> Leído como
+      minutos, el esfuerzo mediano por tarea es de 2,00 h; leído como segundos, sería de
+      2 minutos por issue.
+    </li>
+    <li>
+      <strong>La restricción de calendario se respeta.</strong> El esfuerzo registrado no
+      puede superar el tiempo que la tarea estuvo abierta. Como minutos, esto se viola en el
+      4,49 % de los casos (explicable por registro posterior al cierre y por varios
+      desarrolladores en paralelo); como horas, en el 33,35 %.
+    </li>
+  </ol>
+
+  <div class="verdict">
+    <span class="label">Conclusión</span>
+    <p>
+      <code>Timespent</code> está expresado en <strong>minutos</strong>. La variable objetivo
+      del modelo se define como <code>effort_hours = Timespent / 60</code>.
+    </p>
+  </div>
+
+  <div class="verdict reject">
+    <span class="label">Advertencia · No confundir campos</span>
+    <p>
+      <code>Total_Effort_Minutes</code>, <code>In_Progress_Minutes</code> y
+      <code>Resolution_Time_Minutes</code> <strong>no</strong> son esfuerzo registrado: son
+      spans de calendario derivados de los cambios de estado. Su mediana es de 2 969 minutos
+      (≈ 49 h) frente a los 120 minutos de <code>Timespent</code> en las mismas tareas. Usarlos
+      como objetivo mediría tiempo de espera, no trabajo. Se conservan como variables
+      predictoras, nunca como etiqueta.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">05</span><h2>Cuántos datos hay realmente</h2></div>
+
+  <p>
+    La disponibilidad del registro de tiempo es mucho menor de lo que sugiere el tamaño total
+    del conjunto. Este es el hecho que condiciona todo el diseño experimental.
+  </p>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 3 · Disponibilidad de campos sobre 458 232 issues de TAWOS</caption>
+      <thead>
+        <tr><th>Condición</th><th class="num">Issues</th><th class="num">Porcentaje</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Título y descripción presentes</td><td class="num">427 971</td><td class="num">93,40 %</td></tr>
+        <tr><td>Puntos de historia &gt; 0</td><td class="num">63 011</td><td class="num">13,75 %</td></tr>
+        <tr class="flag"><td>Tiempo registrado &gt; 0</td><td class="num">10 226</td><td class="num">2,23 %</td></tr>
+        <tr class="flag"><td>Tiempo registrado + texto</td><td class="num">8 496</td><td class="num">1,85 %</td></tr>
+        <tr class="flag"><td>Puntos + tiempo registrado</td><td class="num">900</td><td class="num">0,20 %</td></tr>
+        <tr class="flag"><td>Puntos + tiempo + texto</td><td class="num">810</td><td class="num">0,18 %</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Solo <strong>2,23 %</strong> de los issues tiene horas registradas. La intersección con
+    puntos de historia — la base sobre la que tendría que apoyarse cualquier conversión — se
+    reduce a <strong>900 tareas</strong> repartidas en 19 proyectos, de los cuales solo seis
+    superan las 50 observaciones.
+  </p>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">06</span><h2>Validación del puente puntos → horas con Project-22</h2></div>
+
+  <p>
+    Project-22 es el único conjunto público que empareja puntos de historia con horas
+    cronometradas en las mismas filas. Se utilizó para verificar que la tubería de análisis
+    propia reproduce un resultado publicado antes de confiar en ella.
+  </p>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 4 · Reproducción del ajuste publicado por Jones (2023)</caption>
+      <thead>
+        <tr><th>Estadístico</th><th class="num">Obtenido</th><th class="num">Publicado</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Coeficiente <em>a</em></td><td class="num">1,00</td><td class="num">1,01</td></tr>
+        <tr><td>Exponente <em>b</em></td><td class="num">1,11</td><td class="num">1,09</td></tr>
+        <tr><td>Varianza explicada</td><td class="num">0,48</td><td class="num">0,46</td></tr>
+        <tr><td>Factor a 1 desviación estándar</td><td class="num">1,9</td><td class="num">1,9</td></tr>
+        <tr><td>Factor al 95 %</td><td class="num">3,7</td><td class="num">3,4</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    La reproducción es prácticamente exacta sobre 321 historias, lo que valida el
+    procedimiento. La mediana obtenida es de <strong>1,20 horas por punto de historia</strong>.
+  </p>
+
+  <div class="verdict reject">
+    <span class="label">Por qué esta cifra no es generalizable</span>
+    <p>
+      La documentación de Project-22 declara explícitamente que su definición de punto de
+      historia «se aproxima a lo que otros autores llaman una hora-ingeniero idealizada».
+      El valor de 1,20 h/punto describe <strong>la convención de escala de ese equipo</strong>,
+      no una constante del desarrollo ágil. Sirve como ancla de verosimilitud, no como factor
+      de conversión.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">07</span><h2>La evidencia que descarta el cruce</h2></div>
+
+  <p>
+    El plan inicial contemplaba ampliar la cobertura convirtiendo a horas los issues con
+    puntos de historia pero sin tiempo registrado. Antes de aplicarlo se midió la calidad
+    de esa conversión <em>dentro de cada proyecto</em>, usando como referencia las horas
+    realmente registradas en ese mismo proyecto.
+  </p>
+
+  <p>
+    Primer resultado: las horas por punto de historia varían <strong>35 veces</strong> entre
+    proyectos (de 0,13 en CLOV a 8,00 en IS), y <strong>12 veces</strong> incluso entre los
+    seis proyectos con calibración suficiente. Un factor global es, por tanto, imposible.
+  </p>
+
+  <p>
+    Segundo resultado, decisivo: la conversión calibrada por proyecto tampoco funciona.
+    La tabla compara el convertidor basado en puntos con una línea base trivial que
+    <em>ignora los puntos</em> y siempre predice la mediana de horas del proyecto. Ambos
+    modelos se ajustan y se evalúan sobre las mismas filas, de modo que las cifras son un
+    límite superior optimista.
+  </p>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 5 · Calidad de la conversión puntos → horas, por proyecto</caption>
+      <thead>
+        <tr>
+          <th>Proyecto</th>
+          <th class="num">n</th>
+          <th class="num">h/punto</th>
+          <th class="num">R²</th>
+          <th class="num">MdMRE con puntos</th>
+          <th class="num">MdMRE sin puntos</th>
+          <th class="num">PRED(25) con puntos</th>
+          <th class="num">PRED(25) sin puntos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>MDL</td><td class="num">296</td><td class="num">3,67</td><td class="num">0,002</td><td class="num">0,79</td><td class="num">0,83</td><td class="num">0,12</td><td class="num">0,16</td></tr>
+        <tr><td>DM</td><td class="num">184</td><td class="num">4,65</td><td class="num">0,060</td><td class="num">0,49</td><td class="num">0,50</td><td class="num">0,27</td><td class="num">0,28</td></tr>
+        <tr><td>TIDOC</td><td class="num">117</td><td class="num">0,50</td><td class="num">0,368</td><td class="num">0,75</td><td class="num">0,88</td><td class="num">0,18</td><td class="num">0,13</td></tr>
+        <tr><td>MXNET</td><td class="num">73</td><td class="num">0,83</td><td class="num">0,251</td><td class="num">0,69</td><td class="num">0,72</td><td class="num">0,25</td><td class="num">0,15</td></tr>
+        <tr><td>BAM</td><td class="num">72</td><td class="num">2,00</td><td class="num">0,129</td><td class="num">0,46</td><td class="num">0,60</td><td class="num">0,26</td><td class="num">0,19</td></tr>
+        <tr><td>FE</td><td class="num">63</td><td class="num">0,38</td><td class="num">0,000</td><td class="num">0,65</td><td class="num">0,69</td><td class="num">0,16</td><td class="num">0,17</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    El convertidor apenas se distingue de una constante. En MDL y FE la varianza explicada es
+    nula; en cuatro de los seis proyectos la línea base sin puntos alcanza un PRED(25) igual o
+    superior. El ajuste conjunto sobre los seis proyectos da <strong>R² = 0,058</strong>.
+  </p>
+
+  <div class="verdict reject">
+    <span class="label">Decisión metodológica</span>
+    <p>
+      Se <strong>descarta</strong> la conversión de puntos de historia a horas. Aplicarla a los
+      23 313 issues de Deep-SE habría producido unas 23 000 filas de ruido esencialmente
+      sintético presentadas como datos reales, contaminando el entrenamiento y debilitando la
+      defensa del trabajo.
+    </p>
+    <p>
+      Esta conclusión es consistente con el hallazgo de Tawosi, Moussa y Sarro sobre la débil
+      relación entre puntos de historia y esfuerzo de desarrollo, y refuerza —en lugar de
+      contradecir— la premisa de la tesis: la estimación por juicio experto expresada en
+      puntos no captura el tiempo real.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">08</span><h2>Conjunto final</h2></div>
+
+  <p>
+    El conjunto de entrenamiento se construye exclusivamente con tareas cuyo esfuerzo fue
+    cronometrado por quien realizó el trabajo. Ninguna etiqueta procede de una conversión.
+  </p>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 6 · Composición del conjunto con horas reales</caption>
+      <thead>
+        <tr>
+          <th>Fuente</th>
+          <th class="num">Tareas</th>
+          <th>Texto disponible</th>
+          <th>Variable objetivo</th>
+          <th class="num">Mediana</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>TAWOS</strong><br><span style="color:var(--muted);font-size:.85em">Jira de código abierto, 26 proyectos</span></td>
+          <td class="num">10 226<br><span style="color:var(--muted);font-size:.85em">8 496 con descripción</span></td>
+          <td>título + descripción</td>
+          <td class="mono">Timespent / 60</td>
+          <td class="num">2,00 h</td>
+        </tr>
+        <tr>
+          <td><strong>SiP</strong><br><span style="color:var(--muted);font-size:.85em">empresa comercial británica</span></td>
+          <td class="num">8 495<br><span style="color:var(--muted);font-size:.85em">de 10 266 tareas únicas</span></td>
+          <td>resumen + categoría</td>
+          <td class="mono">HoursActual</td>
+          <td class="num">2,25 h</td>
+        </tr>
+        <tr class="good">
+          <td><strong>Total de tareas de software</strong></td>
+          <td class="num">18 721</td>
+          <td>—</td>
+          <td>horas cronometradas</td>
+          <td class="num">—</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    De las 10 266 tareas únicas de SiP se descartan 244 por estado no terminal
+    (<code>CANCELLED</code>, <code>ESTIMATED</code>, <code>TEMPLATE</code>,
+    <code>AUTHORISE</code>) y se marcan 1 527 como trabajo no informático —marketing,
+    selección de personal, reuniones de directorio— que se conservan en el archivo con el
+    indicador <code>is_software_task = 0</code> pero quedan fuera de las particiones. La
+    decisión es reversible: ninguna fila se elimina del conjunto publicado.
+  </p>
+
+  <div class="verdict">
+    <span class="label">Señal de validez externa</span>
+    <p>
+      Las dos fuentes son completamente independientes —proyectos de código abierto
+      gestionados en Jira frente a una empresa comercial con registro horario interno— y sin
+      embargo coinciden estrechamente en la escala del esfuerzo por tarea:
+      <strong>2,00 h</strong> y <strong>2,25 h</strong> de mediana. Esta convergencia respalda
+      que la magnitud aprendida no es un artefacto de una única organización.
+    </p>
+  </div>
+
+  <p>
+    El tamaño resultante es comparable al del conjunto Deep-SE (23 313 issues) que domina la
+    literatura de estimación ágil, con la diferencia sustancial de que la etiqueta es tiempo
+    real y no una puntuación subjetiva. Dado que Agix entrena sobre el historial privado de
+    cada equipo, este conjunto público cumple la función de <strong>prior de arranque en
+    frío</strong>: proporciona al modelo una noción general de duración antes de que el equipo
+    acumule historial propio.
+  </p>
+
+  <h3>Taxonomía armonizada de tareas</h3>
+
+  <p>
+    Los tipos nativos de TAWOS (<code>Type</code>) y de SiP (<code>SubCategory</code>) se
+    mapean a una taxonomía común que alimenta la etapa de categorización del modelo. La
+    etiqueta original se conserva en <code>raw_kind</code>.
+  </p>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 7 · Categorías armonizadas y su perfil de esfuerzo</caption>
+      <thead>
+        <tr>
+          <th>Categoría</th>
+          <th class="num">TAWOS</th>
+          <th class="num">SiP</th>
+          <th class="num">Total</th>
+          <th class="num">Mediana (h)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>bug</td><td class="num">4 921</td><td class="num">2 032</td><td class="num">6 953</td><td class="num">1,50</td></tr>
+        <tr><td>feature</td><td class="num">856</td><td class="num">2 480</td><td class="num">3 336</td><td class="num">4,40</td></tr>
+        <tr><td>improvement</td><td class="num">3 011</td><td class="num">0</td><td class="num">3 011</td><td class="num">2,50</td></tr>
+        <tr><td>support</td><td class="num">4</td><td class="num">2 777</td><td class="num">2 781</td><td class="num">1,50</td></tr>
+        <tr><td>task</td><td class="num">1 398</td><td class="num">0</td><td class="num">1 398</td><td class="num">3,00</td></tr>
+        <tr><td>release</td><td class="num">0</td><td class="num">452</td><td class="num">452</td><td class="num">2,94</td></tr>
+        <tr><td>training</td><td class="num">0</td><td class="num">213</td><td class="num">213</td><td class="num">4,00</td></tr>
+        <tr><td>test</td><td class="num">12</td><td class="num">200</td><td class="num">212</td><td class="num">4,38</td></tr>
+        <tr><td>spec</td><td class="num">0</td><td class="num">145</td><td class="num">145</td><td class="num">2,50</td></tr>
+        <tr><td>conversion</td><td class="num">0</td><td class="num">75</td><td class="num">75</td><td class="num">9,32</td></tr>
+        <tr><td>docs</td><td class="num">4</td><td class="num">68</td><td class="num">72</td><td class="num">3,00</td></tr>
+        <tr><td>research</td><td class="num">0</td><td class="num">35</td><td class="num">35</td><td class="num">10,50</td></tr>
+        <tr><td>epic</td><td class="num">20</td><td class="num">0</td><td class="num">20</td><td class="num">11,67</td></tr>
+        <tr><td>other</td><td class="num">0</td><td class="num">18</td><td class="num">18</td><td class="num">7,32</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Las categorías separan el esfuerzo con nitidez —de 1,50 h en corrección de defectos a
+    10,50 h en investigación— lo que confirma que la etapa de categorización aporta señal
+    real al estimador. Cuatro categorías son casi exclusivas de una fuente
+    (<code>improvement</code> y <code>task</code> solo existen en TAWOS;
+    <code>support</code> y <code>release</code> casi solo en SiP), de modo que la categoría
+    está parcialmente confundida con el dominio de origen.
+  </p>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">09</span><h2>Particiones y control de fuga</h2></div>
+
+  <p>
+    El 4,4 % de las filas comparte texto exacto con otra. Una partición aleatoria ingenua
+    colocaría textos idénticos a ambos lados y produciría métricas infladas. El conjunto
+    incluye por ello dos particiones ya calculadas y verificadas.
+  </p>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 8 · Particiones incluidas en el conjunto</caption>
+      <thead>
+        <tr><th>Columna</th><th>Criterio</th><th class="num">Train</th><th class="num">Val</th><th class="num">Test</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="mono">split</td>
+          <td>70/15/15 agrupado por texto normalizado</td>
+          <td class="num">13 103</td><td class="num">2 811</td><td class="num">2 807</td>
+        </tr>
+        <tr>
+          <td class="mono">split_project</td>
+          <td>13 proyectos completos retenidos</td>
+          <td class="num">15 443</td><td class="num">—</td><td class="num">3 278</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ul>
+    <li>
+      <strong><code>split</code></strong> agrupa por hash del texto normalizado antes de
+      repartir, de modo que dos tareas con el mismo enunciado caen siempre en el mismo lado.
+      La verificación automática confirma <strong>0 grupos de texto repartidos entre
+      particiones</strong>.
+    </li>
+    <li>
+      <strong><code>split_project</code></strong> retiene proyectos enteros (17,5 % de las
+      filas) para medir la generalización a una organización nunca vista. Es el escenario que
+      corresponde al arranque en frío de Agix: un equipo nuevo cuyo vocabulario y convenciones
+      el modelo desconoce. Se espera un rendimiento sensiblemente peor que con
+      <code>split</code>, y esa diferencia es en sí misma un resultado que reportar.
+    </li>
+    <li>
+      Ningún grupo de texto abarca las dos fuentes, por lo que no hay contaminación cruzada
+      entre TAWOS y SiP.
+    </li>
+  </ul>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">10</span><h2>El sesgo de selección, cuantificado</h2></div>
+
+  <p>
+    Solo el 2,23 % de los issues de TAWOS lleva registro de tiempo. Las tareas cuyo tiempo
+    alguien se molestó en cronometrar <strong>no son una muestra aleatoria</strong>. En lugar
+    de declarar el sesgo de forma vaga, se midió en todas las dimensiones observables.
+  </p>
+
+  <h3>Concentración por proyecto</h3>
+  <p>
+    Aportan registro 26 de los 39 proyectos, pero de forma muy desigual: <strong>MDL solo
+    concentra el 35,9 %</strong> del conjunto, los tres primeros el 61,1 % y los cinco
+    primeros el 74,7 %. Proyectos enormes no aportan nada: SERVER (48 663 issues), TIMOB
+    (22 059) y EVG (10 299) tienen cero registros. El hábito de cronometrar es una propiedad
+    de la organización, no de la tarea.
+  </p>
+
+  <h3>Selección por tipo de trabajo</h3>
+  <div class="scroller">
+    <table>
+      <caption>Tabla 9 · Tasa de registro de tiempo según el tipo de issue</caption>
+      <thead>
+        <tr><th>Tipo</th><th class="num">Issues</th><th class="num">Con registro</th><th class="num">Tasa</th></tr>
+      </thead>
+      <tbody>
+        <tr class="good"><td>Sub-task</td><td class="num">14 396</td><td class="num">1 098</td><td class="num">7,63 %</td></tr>
+        <tr><td>Improvement</td><td class="num">42 691</td><td class="num">1 528</td><td class="num">3,58 %</td></tr>
+        <tr><td>New Feature</td><td class="num">14 239</td><td class="num">449</td><td class="num">3,15 %</td></tr>
+        <tr><td>Bug</td><td class="num">215 570</td><td class="num">4 921</td><td class="num">2,28 %</td></tr>
+        <tr><td>Suggestion</td><td class="num">96 370</td><td class="num">1 466</td><td class="num">1,52 %</td></tr>
+        <tr><td>Story</td><td class="num">31 394</td><td class="num">407</td><td class="num">1,30 %</td></tr>
+        <tr><td>Task</td><td class="num">28 338</td><td class="num">292</td><td class="num">1,03 %</td></tr>
+        <tr class="flag"><td>Epic</td><td class="num">4 157</td><td class="num">20</td><td class="num">0,48 %</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    Las subtareas se registran <strong>siete veces más</strong> que las tareas ordinarias y
+    quince veces más que las épicas. El conjunto está sesgado hacia unidades de trabajo
+    pequeñas y ya descompuestas.
+  </p>
+
+  <h3>Selección por desenlace</h3>
+  <p>
+    La tasa de registro es del 5,15 % en issues resueltos como <em>Fixed</em>, frente al
+    0,33 % en <em>Won't Fix</em> y el 0,24 % en <em>Duplicate</em>. El conjunto describe
+    trabajo <strong>efectivamente completado</strong> —lo cual es deseable para el objetivo—
+    pero excluye casi por completo el trabajo abandonado.
+  </p>
+
+  <h3>Las tareas registradas son más pequeñas y peor documentadas</h3>
+  <div class="scroller">
+    <table>
+      <caption>Tabla 10 · Mediana de cada grupo, issues con y sin registro de tiempo</caption>
+      <thead>
+        <tr><th>Atributo</th><th class="num">Sin registro</th><th class="num">Con registro</th><th class="num">Razón</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Longitud del título (caracteres)</td><td class="num">57</td><td class="num">57</td><td class="num">1,00</td></tr>
+        <tr class="flag"><td>Longitud de la descripción</td><td class="num">382</td><td class="num">255</td><td class="num">0,67</td></tr>
+        <tr class="flag"><td>Tiempo de calendario (horas)</td><td class="num">864</td><td class="num">422</td><td class="num">0,49</td></tr>
+        <tr class="flag"><td>Puntos de historia</td><td class="num">3</td><td class="num">2</td><td class="num">0,67</td></tr>
+        <tr class="flag"><td>Tiene descripción</td><td class="num">93,9 %</td><td class="num">83,3 %</td><td class="num">0,89</td></tr>
+        <tr class="good"><td>Tiene responsable asignado</td><td class="num">56,7 %</td><td class="num">76,8 %</td><td class="num">1,35</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    Este es el hallazgo más incómodo para el modelo: las tareas con horas reales tienen
+    descripciones <strong>un tercio más cortas</strong> y con mayor frecuencia carecen de
+    descripción. Es decir, precisamente las filas que aportan la etiqueta son las que menos
+    texto ofrecen para vectorizar. En cambio tienen responsable asignado con mucha más
+    frecuencia, coherente con que el registro horario acompaña al trabajo formalmente
+    adjudicado.
+  </p>
+
+  <h3>El registro horario fue una etapa, no una práctica constante</h3>
+  <p>
+    La tasa de registro por año de creación revela una fuerte concentración temporal: 8,15 %
+    en 2008 y <strong>13,94 % en 2009</strong>, desplome a menos del 1 % entre 2011 y 2017, y
+    repunte al 3,6-4,7 % entre 2018 y 2020. El año 2009 aporta por sí solo cerca de una cuarta
+    parte del conjunto. El corpus mezcla, por tanto, prácticas de ingeniería y herramientas
+    separadas por más de una década.
+  </p>
+
+  <div class="verdict reject">
+    <span class="label">Cómo declarar esto en la tesis</span>
+    <p>
+      El conjunto no representa «tareas de software» en general, sino
+      <strong>tareas pequeñas, formalmente asignadas, efectivamente completadas y
+      pertenecientes a equipos con cultura de registro horario</strong>, con fuerte peso de
+      un único proyecto y de dos ventanas temporales. Como <em>prior</em> de arranque en frío
+      es adecuado; como estimación de la población general de tareas de software, no lo es.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">11</span><h2>Otras limitaciones que deben declararse</h2></div>
+
+  <ul>
+    <li>
+      <strong>Esfuerzo superior al calendario.</strong> En el 4,02 % de las tareas el tiempo
+      registrado excede el intervalo entre creación y resolución. Es compatible con trabajo
+      paralelo de varios desarrolladores y con registros añadidos tras el cierre. Las filas se
+      marcan con un indicador y se conservan.
+    </li>
+    <li>
+      <strong>Texto duplicado.</strong> El 4,4 % de las filas del conjunto combinado comparte
+      texto exacto con otra fila. Ya está neutralizado mediante la agrupación por hash en la
+      partición (sección 09), pero cualquier partición nueva debe repetir ese control.
+    </li>
+    <li>
+      <strong>Categoría confundida con el dominio.</strong> Cuatro categorías armonizadas
+      proceden casi exclusivamente de una sola fuente. Un modelo que aprenda a distinguir
+      <code>support</code> de <code>improvement</code> podría estar aprendiendo a distinguir
+      SiP de TAWOS. Debe verificarse con la partición por proyecto.
+    </li>
+    <li>
+      <strong>Asimetría fuerte de la variable objetivo.</strong> La distribución del esfuerzo
+      es log-normal (TAWOS: mediana 2,00 h, media 5,39 h, máximo 410 h). El modelo debe
+      entrenarse sobre el logaritmo del esfuerzo o con una función de pérdida robusta.
+    </li>
+    <li>
+      <strong>Dos dominios distintos.</strong> TAWOS recoge desarrollo de código abierto y SiP
+      trabajo comercial por contrato, con vocabularios y mezclas de tarea diferentes. Conviene
+      reportar métricas por dominio además del agregado.
+    </li>
+    <li>
+      <strong>Versión del conjunto.</strong> Las cifras corresponden a <code>tawos_cleaned</code>
+      (458 232 issues, 39 proyectos), no a las publicadas en el artículo original.
+    </li>
+  </ul>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">12</span><h2>Reproducibilidad</h2></div>
+
+  <p>
+    Cada cifra de este documento procede de un script versionado que puede volver a ejecutarse
+    sobre los archivos originales descargados de sus fuentes oficiales.
+  </p>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 11 · Scripts de la tubería de datos</caption>
+      <thead>
+        <tr><th>Script</th><th>Función</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="mono">tawos_sql.py</td><td>lector en flujo del volcado MySQL comprimido</td></tr>
+        <tr><td class="mono">01_scan_schema.py</td><td>extracción del esquema y dimensionamiento de tablas</td></tr>
+        <tr><td class="mono">02_extract_tables.py</td><td>volcado de las tablas necesarias a Parquet</td></tr>
+        <tr><td class="mono">03_p22_bridge.py</td><td>calibración y reproducción del ajuste de Project-22</td></tr>
+        <tr><td class="mono">04_profile_issues.py</td><td>auditoría de disponibilidad de campos</td></tr>
+        <tr><td class="mono">05_timespent_units.py</td><td>prueba empírica de la unidad de <code>Timespent</code></td></tr>
+        <tr><td class="mono">06_build_gold.py</td><td>construcción del conjunto con horas reales</td></tr>
+        <tr><td class="mono">07_sp_conversion_quality.py</td><td>evaluación que descarta la conversión</td></tr>
+        <tr><td class="mono">08_worklog_bias.py</td><td>cuantificación del sesgo de selección del registro horario</td></tr>
+        <tr><td class="mono">09_build_unified.py</td><td>armonización TAWOS + SiP y particiones sin fuga</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Archivo resultante</h3>
+  <p>
+    El conjunto se publica como <code>agix_effort_dataset.parquet</code> y su equivalente CSV,
+    con 20 248 filas y 22 columnas: identificador, fuente, dominio, proyecto, título,
+    descripción, texto concatenado, hash de texto, categoría original y armonizada, prioridad,
+    <code>effort_hours</code>, <code>log_effort</code>, puntos de historia cuando existen,
+    fecha de creación, indicadores de calidad y las dos columnas de partición.
+  </p>
+
+  <h3>Fuentes y licencias</h3>
+  <ul>
+    <li>
+      <strong>TAWOS</strong> — Tawosi, V., Al-Subaihin, A., Moussa, R. y Sarro, F. (2022).
+      <em>A Versatile Dataset of Agile Open Source Software Projects</em>. MSR 2022.
+      <a href="https://doi.org/10.1145/3524842.3528029">10.1145/3524842.3528029</a>.
+      Datos: <a href="https://doi.org/10.5522/04/21308124">10.5522/04/21308124</a>, licencia Apache 2.0.
+    </li>
+    <li>
+      <strong>SiP</strong> — Jones, D. M. y Cullum, S. (2019).
+      <em>A conversation around the analysis of the SiP effort estimation dataset</em>.
+      <a href="https://arxiv.org/abs/1901.01621">arXiv:1901.01621</a>.
+    </li>
+    <li>
+      <strong>Project-22</strong> — Jones, D. M. (2023).
+      <em>Small team estimating in story points; a project dataset</em>.
+    </li>
+    <li>
+      <strong>CESAW</strong> — Jones, D. M. y Nichols, W. R. (2021).
+      <em>The CESAW dataset: a conversation</em>.
+      <a href="https://arxiv.org/abs/2106.03679">arXiv:2106.03679</a>.
+    </li>
+  </ul>
+</section>
+
+<footer>
+  <p>
+    Documento generado como registro de la preparación de datos del componente predictivo de
+    Agix. Las decisiones aquí documentadas —unidad de <code>Timespent</code>, rechazo de la
+    conversión de puntos a horas y composición del conjunto final— condicionan el diseño
+    experimental posterior y deben citarse en la sección de metodología.
+  </p>
+</footer>
+
+</div>

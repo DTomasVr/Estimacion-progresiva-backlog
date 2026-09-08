@@ -4218,5 +4218,297 @@
       "segundos": 579.6246
     },
     "notes": ""
+  },
+  {
+    "arm": "humano",
+    "variant": "humano",
+    "split": "split",
+    "data_sha256": "929fdd49ee10946e",
+    "timestamp": "2026-09-08T18:04:15",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MdMRE": 0.2727,
+      "PRED25": 0.4904,
+      "PRED50": 0.6814,
+      "RMSE_log": 0.7612,
+      "compresion": 1.0,
+      "spearman": 0.856
+    },
+    "notes": ""
+  },
+  {
+    "arm": "humano",
+    "variant": "recalibrado",
+    "split": "split",
+    "data_sha256": "929fdd49ee10946e",
+    "timestamp": "2026-09-08T18:04:15",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MdMRE": 0.2871,
+      "PRED25": 0.452,
+      "PRED50": 0.6847,
+      "RMSE_log": 0.7127,
+      "compresion": 0.828,
+      "spearman": 0.856
+    },
+    "notes": ""
+  },
+  {
+    "arm": "humano",
+    "variant": "recalibrado_nolineal",
+    "split": "split",
+    "data_sha256": "929fdd49ee10946e",
+    "timestamp": "2026-09-08T18:04:15",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MdMRE": 0.2635,
+      "PRED25": 0.4737,
+      "PRED50": 0.6889,
+      "RMSE_log": 0.7021,
+      "compresion": 0.848,
+      "spearman": 0.855
+    },
+    "notes": ""
+  },
+  {
+    "arm": "humano",
+    "variant": "texto",
+    "split": "split",
+    "data_sha256": "929fdd49ee10946e",
+    "timestamp": "2026-09-08T18:04:15",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MdMRE": 0.655,
+      "PRED25": 0.2002,
+      "PRED50": 0.3837,
+      "RMSE_log": 1.1367,
+      "compresion": 0.555,
+      "spearman": 0.495
+    },
+    "notes": ""
+  },
+  {
+    "arm": "humano",
+    "variant": "hibrido_ridge",
+    "split": "split",
+    "data_sha256": "929fdd49ee10946e",
+    "timestamp": "2026-09-08T18:04:15",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MdMRE": 0.329,
+      "PRED25": 0.4028,
+      "PRED50": 0.6589,
+      "RMSE_log": 0.7177,
+      "compresion": 0.84,
+      "spearman": 0.85
+    },
+    "notes": ""
+  },
+  {
+    "arm": "humano",
+    "variant": "hibrido_hgb",
+    "split": "split",
+    "data_sha256": "929fdd49ee10946e",
+    "timestamp": "2026-09-08T18:04:15",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MdMRE": 0.3023,
+      "PRED25": 0.4379,
+      "PRED50": 0.6647,
+      "RMSE_log": 0.6898,
+      "compresion": 0.86,
+      "spearman": 0.857
+    },
+    "notes": ""
+  },
+  {
+    "arm": "humano",
+    "variant": "humano",
+    "split": "split_project",
+    "data_sha256": "929fdd49ee10946e",
+    "timestamp": "2026-09-08T18:04:23",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MdMRE": 0.4286,
+      "PRED25": 0.3798,
+      "PRED50": 0.5452,
+      "RMSE_log": 0.9515,
+      "compresion": 0.953,
+      "spearman": 0.799
+    },
+    "notes": ""
+  },
+  {
+    "arm": "humano",
+    "variant": "recalibrado",
+    "split": "split_project",
+    "data_sha256": "929fdd49ee10946e",
+    "timestamp": "2026-09-08T18:04:23",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MdMRE": 0.4126,
+      "PRED25": 0.363,
+      "PRED50": 0.5672,
+      "RMSE_log": 0.8755,
+      "compresion": 0.801,
+      "spearman": 0.799
+    },
+    "notes": ""
+  },
+  {
+    "arm": "humano",
+    "variant": "recalibrado_nolineal",
+    "split": "split_project",
+    "data_sha256": "929fdd49ee10946e",
+    "timestamp": "2026-09-08T18:04:23",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MdMRE": 0.4155,
+      "PRED25": 0.3605,
+      "PRED50": 0.5749,
+      "RMSE_log": 0.875,
+      "compresion": 0.771,
+      "spearman": 0.792
+    },
+    "notes": ""
+  },
+  {
+    "arm": "humano",
+    "variant": "texto",
+    "split": "split_project",
+    "data_sha256": "929fdd49ee10946e",
+    "timestamp": "2026-09-08T18:04:23",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MdMRE": 0.7694,
+      "PRED25": 0.1447,
+      "PRED50": 0.3062,
+      "RMSE_log": 1.3418,
+      "compresion": 0.454,
+      "spearman": 0.346
+    },
+    "notes": ""
+  },
+  {
+    "arm": "humano",
+    "variant": "hibrido_ridge",
+    "split": "split_project",
+    "data_sha256": "929fdd49ee10946e",
+    "timestamp": "2026-09-08T18:04:23",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MdMRE": 0.4399,
+      "PRED25": 0.3114,
+      "PRED50": 0.553,
+      "RMSE_log": 0.8907,
+      "compresion": 0.791,
+      "spearman": 0.787
+    },
+    "notes": ""
+  },
+  {
+    "arm": "humano",
+    "variant": "hibrido_hgb",
+    "split": "split_project",
+    "data_sha256": "929fdd49ee10946e",
+    "timestamp": "2026-09-08T18:04:23",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MdMRE": 0.421,
+      "PRED25": 0.354,
+      "PRED50": 0.5594,
+      "RMSE_log": 0.8808,
+      "compresion": 0.791,
+      "spearman": 0.791
+    },
+    "notes": ""
+  },
+  {
+    "arm": "calibracion",
+    "variant": "humano_crudo",
+    "split": "split",
+    "data_sha256": "929fdd49ee10946e",
+    "timestamp": "2026-09-08T18:04:59",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MAE_h": 4.1499,
+      "MdAE_h": 0.5,
+      "MdMRE": 0.2727,
+      "PRED25": 0.4904,
+      "PRED50": 0.6814,
+      "RMSE_log": 0.7612,
+      "compresion": 1.0
+    },
+    "notes": ""
+  },
+  {
+    "arm": "calibracion",
+    "variant": "mapeo_de_cuantiles",
+    "split": "split",
+    "data_sha256": "929fdd49ee10946e",
+    "timestamp": "2026-09-08T18:04:59",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MAE_h": 3.8322,
+      "MdAE_h": 0.75,
+      "MdMRE": 0.3563,
+      "PRED25": 0.2969,
+      "PRED50": 0.6831,
+      "RMSE_log": 0.8143,
+      "compresion": 1.074
+    },
+    "notes": ""
+  },
+  {
+    "arm": "calibracion",
+    "variant": "humano_crudo",
+    "split": "split_project",
+    "data_sha256": "929fdd49ee10946e",
+    "timestamp": "2026-09-08T18:04:59",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MAE_h": 7.7385,
+      "MdAE_h": 1.725,
+      "MdMRE": 0.4286,
+      "PRED25": 0.3798,
+      "PRED50": 0.5452,
+      "RMSE_log": 0.9515,
+      "compresion": 0.953
+    },
+    "notes": ""
+  },
+  {
+    "arm": "calibracion",
+    "variant": "mapeo_de_cuantiles",
+    "split": "split_project",
+    "data_sha256": "929fdd49ee10946e",
+    "timestamp": "2026-09-08T18:04:59",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MAE_h": 6.9954,
+      "MdAE_h": 1.52,
+      "MdMRE": 0.4435,
+      "PRED25": 0.2881,
+      "PRED50": 0.6059,
+      "RMSE_log": 0.9376,
+      "compresion": 1.023
+    },
+    "notes": ""
   }
 ]

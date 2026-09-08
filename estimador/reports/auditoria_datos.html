@@ -350,7 +350,7 @@
     <span><b>Fecha</b> 23 de agosto de 2026</span>
     <span><b>Fuentes evaluadas</b> 20</span>
     <span><b>Fuentes utilizables</b> 2</span>
-    <span><b>Tareas con horas reales</b> 18 721</span>
+    <span><b>Tareas tras limpieza</b> 17 457</span>
   </div>
 </header>
 
@@ -373,7 +373,7 @@
   <div class="stats">
     <div class="stat"><span class="v">20</span><span class="k">fuentes evaluadas</span></div>
     <div class="stat"><span class="v hi">2</span><span class="k">con texto y horas reales</span></div>
-    <div class="stat"><span class="v">18 721</span><span class="k">tareas de software utilizables</span></div>
+    <div class="stat"><span class="v">17 457</span><span class="k">tareas tras la limpieza</span></div>
     <div class="stat"><span class="v lo">0</span><span class="k">filas con horas estimadas por conversión</span></div>
   </div>
 </section>
@@ -848,7 +848,7 @@
 
   <div class="scroller">
     <table>
-      <caption>Tabla 6 · Composición del conjunto con horas reales</caption>
+      <caption>Tabla 6 · Composición del conjunto con horas reales, antes de la limpieza</caption>
       <thead>
         <tr>
           <th>Fuente</th>
@@ -878,6 +878,13 @@
           <td class="num">18 721</td>
           <td>—</td>
           <td>horas cronometradas</td>
+          <td class="num">—</td>
+        </tr>
+        <tr>
+          <td><em>Tras la limpieza (sección 12)</em></td>
+          <td class="num"><strong>17 457</strong></td>
+          <td>—</td>
+          <td>—</td>
           <td class="num">—</td>
         </tr>
       </tbody>
@@ -981,12 +988,12 @@
         <tr>
           <td class="mono">split</td>
           <td>70/15/15 agrupado por texto normalizado</td>
-          <td class="num">13 103</td><td class="num">2 811</td><td class="num">2 807</td>
+          <td class="num">12 210</td><td class="num">2 628</td><td class="num">2 619</td>
         </tr>
         <tr>
           <td class="mono">split_project</td>
           <td>13 proyectos completos retenidos</td>
-          <td class="num">15 443</td><td class="num">—</td><td class="num">3 278</td>
+          <td class="num">14 823</td><td class="num">—</td><td class="num">2 634</td>
         </tr>
       </tbody>
     </table>
@@ -1000,7 +1007,7 @@
       particiones</strong>.
     </li>
     <li>
-      <strong><code>split_project</code></strong> retiene proyectos enteros (17,5 % de las
+      <strong><code>split_project</code></strong> retiene proyectos enteros (15,1 % de las
       filas) para medir la generalización a una organización nunca vista. Es el escenario que
       corresponde al arranque en frío de Agix: un equipo nuevo cuyo vocabulario y convenciones
       el modelo desconoce. Se espera un rendimiento sensiblemente peor que con
@@ -1150,7 +1157,165 @@
 </section>
 
 <section>
-  <div class="sec-head"><span class="sec-num">12</span><h2>Reproducibilidad</h2></div>
+  <div class="sec-head"><span class="sec-num">12</span><h2>Limpieza aplicada</h2></div>
+
+  <p>
+    Cada decisión de limpieza se aplicó de forma explícita y ordenada, con registro del coste
+    en filas. El texto se normaliza <em>antes</em> de detectar duplicados, para que dos
+    incidencias que solo difieren en una traza de pila se reconozcan como el mismo texto. Los
+    valores originales se conservan en <code>text_raw</code> y <code>effort_hours_raw</code>.
+  </p>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 11 · Pasos de limpieza y su coste en filas</caption>
+      <thead>
+        <tr><th>Paso</th><th>Acción</th><th class="num">Filas</th><th class="num">Delta</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="mono">D9</td><td>Recuperación de fechas de SiP desde <code>est-act-dates.csv</code></td><td class="num">20 248</td><td class="num">0</td></tr>
+        <tr><td class="mono">D8</td><td>Normalización de texto: URL, correo, hash, trazas de pila</td><td class="num">20 248</td><td class="num">0</td></tr>
+        <tr><td class="mono">D6</td><td>Descarte de texto con menos de 3 palabras</td><td class="num">19 783</td><td class="num">-465</td></tr>
+        <tr><td class="mono">D5</td><td>Descarte de esfuerzo menor a 0,1 h</td><td class="num">19 381</td><td class="num">-402</td></tr>
+        <tr><td class="mono">D4</td><td>Descarte de tareas paraguas de SiP mayores a 200 h</td><td class="num">19 341</td><td class="num">-40</td></tr>
+        <tr><td class="mono">D1a</td><td>Descarte de 24 grupos de texto con dispersión mayor a 10x</td><td class="num">19 126</td><td class="num">-215</td></tr>
+        <tr><td class="mono">D2</td><td>Colapso de duplicados exactos a la mediana del grupo</td><td class="num">18 593</td><td class="num">-533</td></tr>
+        <tr><td class="mono">D7</td><td>Fusión de categorías con menos de 50 filas en <code>other</code></td><td class="num">18 593</td><td class="num">0</td></tr>
+        <tr><td class="mono">D3a</td><td>Agrupación de casi-duplicados (coseno &#8805; 0,95) como clave de partición</td><td class="num">18 593</td><td class="num">0</td></tr>
+        <tr class="good"><td><strong>Final</strong></td><td>tareas de software</td><td class="num"><strong>17 457</strong></td><td class="num">-1 264</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    El conjunto pierde un 6,8 % de sus filas. Tras la limpieza no queda ningún texto
+    duplicado, ningún grupo de texto repartido entre particiones y ninguna fila sin partición
+    asignada. La normalización modificó el texto de 7 680 filas, y la unión con
+    <code>est-act-dates.csv</code> recuperó fechas para las 10 022 tareas de SiP, que antes
+    carecían por completo de información temporal.
+  </p>
+
+  <div class="verdict">
+    <span class="label">Trazabilidad</span>
+    <p>
+      Ninguna eliminación es silenciosa: el archivo limpio conserva <code>text_raw</code>,
+      <code>effort_hours_raw</code> y <code>n_merged</code> —número de filas fusionadas en
+      cada registro— de modo que cualquier decisión puede revisarse o revertirse sin volver a
+      procesar el volcado original.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">13</span><h2>Modelo de referencia y techo empírico</h2></div>
+
+  <p>
+    Antes de invertir en arquitecturas complejas se midió qué rendimiento permite este
+    conjunto, y si su tamaño es realmente el factor limitante.
+  </p>
+
+  <h3>El tamaño del conjunto no es la restricción</h3>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 12 · Curva de aprendizaje sobre el conjunto de prueba (MdMRE, menor es mejor)</caption>
+      <thead>
+        <tr><th class="num">Filas de entrenamiento</th><th class="num">Mediana (línea base)</th><th class="num">KNN con TF-IDF</th><th class="num">Ridge</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="num">500</td><td class="num">0,800</td><td class="num">0,751</td><td class="num">0,752</td></tr>
+        <tr><td class="num">1 000</td><td class="num">0,800</td><td class="num">0,736</td><td class="num">0,737</td></tr>
+        <tr><td class="num">2 000</td><td class="num">0,800</td><td class="num">0,747</td><td class="num">0,726</td></tr>
+        <tr><td class="num">4 000</td><td class="num">0,800</td><td class="num">0,731</td><td class="num">0,726</td></tr>
+        <tr><td class="num">8 000</td><td class="num">0,792</td><td class="num">0,720</td><td class="num">0,706</td></tr>
+        <tr class="good"><td class="num">12 210</td><td class="num">0,800</td><td class="num">0,712</td><td class="num"><strong>0,702</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Multiplicar por 24 los datos de entrenamiento mejora el MdMRE en apenas un 7 % relativo, y
+    el último salto —de 8 000 a 12 210 filas— lo mueve 0,003. <strong>La curva está
+    plana</strong>: añadir un tercer conjunto de datos no aportaría nada. Lo que limita el
+    rendimiento es la señal, no el volumen.
+  </p>
+
+  <div class="verdict reject">
+    <span class="label">Resultado incómodo pero honesto</span>
+    <p>
+      El mejor modelo puntual supera en solo un <strong>12 %</strong> a una línea base que
+      ignora por completo el texto y siempre predice la mediana de entrenamiento. El PRED(25)
+      es de 0,184: menos de una de cada cinco predicciones cae dentro del 25 % del valor real.
+    </p>
+    <p>
+      La limpieza <strong>no mejoró</strong> estas cifras en términos absolutos. Al eliminar
+      duplicados exactos y tareas triviales, el conjunto de prueba se volvió más difícil: el
+      MdMRE pasó de 0,684 a 0,702 mientras la línea base empeoraba de 0,778 a 0,800. La
+      magnitud comparable entre ambos escenarios es la mejora relativa sobre la línea base,
+      que permanece estable en el 12 %. La limpieza mejoró la integridad del conjunto, no la
+      exactitud alcanzable.
+    </p>
+  </div>
+
+  <h3>La predicción por intervalos sí funciona</h3>
+
+  <p>
+    Con este nivel de ruido irreducible, un valor puntual induce a error. Un intervalo
+    conforme, calibrado sobre la partición de validación y verificado sobre la de prueba,
+    ofrece una cobertura garantizada.
+  </p>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 13 · Cobertura empírica del intervalo conforme</caption>
+      <thead>
+        <tr>
+          <th class="num">Nivel nominal</th>
+          <th class="num">Cobertura real</th>
+          <th class="num">Factor del modelo</th>
+          <th class="num">Factor sin usar el texto</th>
+          <th class="num">Banda más estrecha</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="num">50 %</td><td class="num">49,2 %</td><td class="num">2,29x</td><td class="num">2,67x</td><td class="num">9 %</td></tr>
+        <tr class="good"><td class="num">80 %</td><td class="num">78,6 %</td><td class="num">4,62x</td><td class="num">6,00x</td><td class="num">15 %</td></tr>
+        <tr><td class="num">90 %</td><td class="num">89,4 %</td><td class="num">7,35x</td><td class="num">9,77x</td><td class="num">16 %</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    La cobertura empírica reproduce el nivel nominal con un error inferior a un punto
+    porcentual en los tres niveles, lo que convierte al intervalo en una garantía verificada y
+    no en una promesa. Y el texto sí aporta: al 80 % de cobertura la banda del modelo es un
+    <strong>15 % más estrecha</strong> que la de una banda fija que ignora el enunciado de la
+    tarea. Es la misma información, medida de una forma en la que resulta utilizable.
+  </p>
+
+  <div class="verdict">
+    <span class="label">Generaliza a organizaciones no vistas</span>
+    <p>
+      Evaluado con <code>split_project</code> —proyectos completos nunca vistos en
+      entrenamiento— el modelo obtiene MdMRE 0,678 y cobertura del 79,3 % al nivel del 80 %.
+      No se degrada respecto a la partición aleatoria; incluso mejora ligeramente. El modelo
+      aprende vocabulario transferible sobre el trabajo de software y no las idiosincrasias de
+      un proyecto concreto, que es exactamente la propiedad que necesita un <em>prior</em> de
+      arranque en frío.
+    </p>
+  </div>
+
+  <p>
+    Para la tesis esto sugiere reorientar la contribución del componente predictivo: no hacia
+    un valor puntual más exacto —el techo está cerca, y la literatura revisada lo confirma—
+    sino hacia un rango calibrado que el equipo pueda usar para planificar, y hacia el
+    entrenamiento con el historial propio de cada equipo, donde la consistencia interna es muy
+    superior a la de este corpus heterogéneo.
+  </p>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">14</span><h2>Reproducibilidad</h2></div>
 
   <p>
     Cada cifra de este documento procede de un script versionado que puede volver a ejecutarse
@@ -1159,7 +1324,7 @@
 
   <div class="scroller">
     <table>
-      <caption>Tabla 11 · Scripts de la tubería de datos</caption>
+      <caption>Tabla 14 · Scripts de la tubería de datos</caption>
       <thead>
         <tr><th>Script</th><th>Función</th></tr>
       </thead>
@@ -1174,14 +1339,18 @@
         <tr><td class="mono">07_sp_conversion_quality.py</td><td>evaluación que descarta la conversión</td></tr>
         <tr><td class="mono">08_worklog_bias.py</td><td>cuantificación del sesgo de selección del registro horario</td></tr>
         <tr><td class="mono">09_build_unified.py</td><td>armonización TAWOS + SiP y particiones sin fuga</td></tr>
+        <tr><td class="mono">10_data_quality_report.py</td><td>diagnóstico de calidad, solo lectura</td></tr>
+        <tr><td class="mono">11_learning_curve.py</td><td>curva de aprendizaje y suficiencia de datos</td></tr>
+        <tr><td class="mono">12_clean_dataset.py</td><td>aplicación de las decisiones de limpieza</td></tr>
+        <tr><td class="mono">13_interval_baseline.py</td><td>intervalo conforme y cobertura empírica</td></tr>
       </tbody>
     </table>
   </div>
 
   <h3>Archivo resultante</h3>
   <p>
-    El conjunto se publica como <code>agix_effort_dataset.parquet</code> y su equivalente CSV,
-    con 20 248 filas y 22 columnas: identificador, fuente, dominio, proyecto, título,
+    El conjunto se publica como <code>agix_effort_clean.parquet</code> y su equivalente CSV,
+    con 18 593 filas y 28 columnas: identificador, fuente, dominio, proyecto, título,
     descripción, texto concatenado, hash de texto, categoría original y armonizada, prioridad,
     <code>effort_hours</code>, <code>log_effort</code>, puntos de historia cuando existen,
     fecha de creación, indicadores de calidad y las dos columnas de partición.

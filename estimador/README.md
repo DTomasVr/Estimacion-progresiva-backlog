@@ -6,17 +6,29 @@ descripción.
 
 ## Resultado
 
-`data/processed/agix_effort_dataset.parquet` — 20 248 tareas (18 721 de
-software) con texto libre y **horas efectivamente cronometradas**. Ninguna
+`data/processed/agix_effort_clean.parquet` — 18 593 filas, **17 457 tareas de
+software** con texto libre y **horas efectivamente cronometradas**. Ninguna
 etiqueta procede de una conversión de puntos de historia.
 
 | Fuente | Tareas | Texto | Objetivo | Mediana |
 |---|---|---|---|---|
-| TAWOS | 10 226 | título + descripción | `Timespent / 60` | 2,00 h |
-| SiP | 8 495 | resumen + categoría | `HoursActual` | 2,25 h |
+| TAWOS | 9 631 | título + descripción | `Timespent / 60` | 2,00 h |
+| SiP | 7 826 | resumen + categoría | `HoursActual` | 2,20 h |
 
-Particiones incluidas y verificadas: `split` (70/15/15 agrupado por texto, 0
-grupos con fuga) y `split_project` (13 proyectos retenidos, 17,5 %).
+Particiones incluidas y verificadas: `split` (70/15/15 agrupado por texto y
+casi-duplicados, 0 grupos con fuga) y `split_project` (proyectos completos
+retenidos, 15,1 %).
+
+## Línea base
+
+Ridge sobre TF-IDF, objetivo logarítmico: MdMRE 0,702 y PRED(25) 0,184, un 12 %
+mejor que predecir siempre la mediana. La curva de aprendizaje está plana desde
+las 8 000 filas: el volumen no es la restricción, lo es el ruido de etiqueta.
+
+El intervalo conforme sí resulta utilizable: cobertura empírica de 49,2 / 78,6 /
+89,4 % frente a niveles nominales de 50 / 80 / 90 %, con bandas un 15 % más
+estrechas que ignorando el texto. En proyectos nunca vistos el rendimiento no se
+degrada (MdMRE 0,678), lo que respalda su uso como *prior* de arranque en frío.
 
 ## Hallazgos que condicionan la metodología
 
@@ -44,7 +56,7 @@ Descargar a `data/raw/`:
 - `TAWOS.sql.zip` — https://doi.org/10.5522/04/21308124 (Apache 2.0, 638 MB)
 - Conjuntos de Derek Jones — https://github.com/Derek-Jones/Software-estimation-datasets
 
-Luego ejecutar `src/01` … `src/09` en orden. El volcado de 4,31 GB se procesa
+Luego ejecutar `src/01` … `src/13` en orden. El volcado de 4,31 GB se procesa
 en flujo desde el zip; no requiere servidor MySQL ni espacio en disco.
 
 ## Fuentes

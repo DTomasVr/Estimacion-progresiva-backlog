@@ -5320,5 +5320,34 @@
       "compresion": 0.802
     },
     "notes": ""
+  },
+  {
+    "arm": "por_proyecto",
+    "variant": "ridge",
+    "split": "cronologico",
+    "data_sha256": "929fdd49ee10946e",
+    "timestamp": "2026-09-08T18:54:18",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MdMRE": 0.7685,
+      "PRED25": 0.1634,
+      "n_proyectos": 19
+    },
+    "notes": ""
+  },
+  {
+    "arm": "por_proyecto",
+    "variant": "baseline",
+    "split": "cronologico",
+    "data_sha256": "929fdd49ee10946e",
+    "timestamp": "2026-09-08T18:54:18",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MdMRE": 0.8788,
+      "n_proyectos": 19
+    },
+    "notes": ""
   }
 ]

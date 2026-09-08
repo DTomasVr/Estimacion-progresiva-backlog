@@ -8,3 +8,4 @@ __pycache__/
 .ipynb_checkpoints/
 reports/data_quality.txt
 data/processed/embeddings/
+catboost_info/

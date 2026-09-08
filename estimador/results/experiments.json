@@ -1,0 +1,192 @@
+[
+  {
+    "arm": "baseline",
+    "variant": "median",
+    "split": "split",
+    "data_sha256": "b6cf35368aba7d65",
+    "timestamp": "2026-09-08T13:57:23",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MAE_h": 5.4436,
+      "MdAE_h": 1.5,
+      "MdMRE": 0.8,
+      "PRED25": 0.1313,
+      "PRED50": 0.3039,
+      "RMSE_log": 1.3969,
+      "cov50": 0.5204,
+      "factor50": 2.6667,
+      "width50_h": 4.5833,
+      "cov80": 0.7866,
+      "factor80": 6.0,
+      "width80_h": 11.6667,
+      "cov90": 0.8984,
+      "factor90": 9.77,
+      "width90_h": 19.3352
+    },
+    "notes": "predice siempre la mediana de entrenamiento"
+  },
+  {
+    "arm": "tfidf",
+    "variant": "ridge",
+    "split": "split",
+    "data_sha256": "b6cf35368aba7d65",
+    "timestamp": "2026-09-08T13:57:23",
+    "python": "3.12.6",
+    "config": {
+      "max_features": 50000,
+      "ngram": "1-2",
+      "meta_features": [
+        "task_kind",
+        "source"
+      ]
+    },
+    "metrics": {
+      "MAE_h": 5.0517,
+      "MdAE_h": 1.6503,
+      "MdMRE": 0.6826,
+      "PRED25": 0.1871,
+      "PRED50": 0.3551,
+      "RMSE_log": 1.2336,
+      "cov50": 0.4922,
+      "factor50": 2.2923,
+      "width50_h": 4.1652,
+      "cov80": 0.7858,
+      "factor80": 4.6225,
+      "width80_h": 9.8879,
+      "cov90": 0.8939,
+      "factor90": 7.3526,
+      "width90_h": 16.1948
+    },
+    "notes": ""
+  },
+  {
+    "arm": "tfidf",
+    "variant": "knn",
+    "split": "split",
+    "data_sha256": "b6cf35368aba7d65",
+    "timestamp": "2026-09-08T13:57:24",
+    "python": "3.12.6",
+    "config": {
+      "max_features": 50000,
+      "ngram": "1-2",
+      "meta_features": [
+        "task_kind",
+        "source"
+      ]
+    },
+    "metrics": {
+      "MAE_h": 5.0358,
+      "MdAE_h": 1.6517,
+      "MdMRE": 0.6934,
+      "PRED25": 0.1737,
+      "PRED50": 0.3463,
+      "RMSE_log": 1.2267,
+      "cov50": 0.5178,
+      "factor50": 2.3268,
+      "width50_h": 4.3797,
+      "cov80": 0.8018,
+      "factor80": 4.9313,
+      "width80_h": 10.9167,
+      "cov90": 0.9072,
+      "factor90": 7.9581,
+      "width90_h": 18.0828
+    },
+    "notes": ""
+  },
+  {
+    "arm": "baseline",
+    "variant": "median",
+    "split": "split_project",
+    "data_sha256": "b6cf35368aba7d65",
+    "timestamp": "2026-09-08T13:57:25",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MAE_h": 5.6149,
+      "MdAE_h": 1.5,
+      "MdMRE": 0.75,
+      "PRED25": 0.1446,
+      "PRED50": 0.3523,
+      "RMSE_log": 1.3273,
+      "cov50": 0.5197,
+      "factor50": 2.5,
+      "width50_h": 4.2,
+      "cov80": 0.8303,
+      "factor80": 6.0,
+      "width80_h": 11.6667,
+      "cov90": 0.9229,
+      "factor90": 10.275,
+      "width90_h": 20.3553
+    },
+    "notes": "predice siempre la mediana de entrenamiento"
+  },
+  {
+    "arm": "tfidf",
+    "variant": "ridge",
+    "split": "split_project",
+    "data_sha256": "b6cf35368aba7d65",
+    "timestamp": "2026-09-08T13:57:25",
+    "python": "3.12.6",
+    "config": {
+      "max_features": 50000,
+      "ngram": "1-2",
+      "meta_features": [
+        "task_kind",
+        "source"
+      ]
+    },
+    "metrics": {
+      "MAE_h": 5.4441,
+      "MdAE_h": 1.7094,
+      "MdMRE": 0.6777,
+      "PRED25": 0.161,
+      "PRED50": 0.3424,
+      "RMSE_log": 1.247,
+      "cov50": 0.4837,
+      "factor50": 2.2542,
+      "width50_h": 3.663,
+      "cov80": 0.7935,
+      "factor80": 4.6556,
+      "width80_h": 8.9841,
+      "cov90": 0.8983,
+      "factor90": 7.4415,
+      "width90_h": 14.7828
+    },
+    "notes": ""
+  },
+  {
+    "arm": "tfidf",
+    "variant": "knn",
+    "split": "split_project",
+    "data_sha256": "b6cf35368aba7d65",
+    "timestamp": "2026-09-08T13:57:26",
+    "python": "3.12.6",
+    "config": {
+      "max_features": 50000,
+      "ngram": "1-2",
+      "meta_features": [
+        "task_kind",
+        "source"
+      ]
+    },
+    "metrics": {
+      "MAE_h": 5.5147,
+      "MdAE_h": 1.8346,
+      "MdMRE": 0.6955,
+      "PRED25": 0.1553,
+      "PRED50": 0.3333,
+      "RMSE_log": 1.2586,
+      "cov50": 0.4571,
+      "factor50": 2.2072,
+      "width50_h": 3.7418,
+      "cov80": 0.7889,
+      "factor80": 4.7775,
+      "width80_h": 9.7448,
+      "cov90": 0.9021,
+      "factor90": 7.6571,
+      "width90_h": 16.0553
+    },
+    "notes": ""
+  }
+]

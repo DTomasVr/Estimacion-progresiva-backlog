@@ -22,7 +22,10 @@ REGISTRY = "results/experiments.json"
 LEVELS = [0.50, 0.80, 0.90]
 
 
-def data_fingerprint(path=DATA):
+def data_fingerprint(path=None):
+    # resolve at call time: scripts override the module-level DATA, and a
+    # default argument would freeze the original value
+    path = path or DATA
     h = hashlib.sha256()
     with open(path, "rb") as fh:
         for chunk in iter(lambda: fh.read(1 << 20), b""):

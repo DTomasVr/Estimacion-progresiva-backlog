@@ -5150,5 +5150,175 @@
       "spearman": 0.133
     },
     "notes": ""
+  },
+  {
+    "arm": "calibrador",
+    "variant": "humano_crudo",
+    "split": "split",
+    "data_sha256": "929fdd49ee10946e",
+    "timestamp": "2026-09-08T18:21:40",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MdMRE": 0.2727,
+      "PRED25": 0.4904,
+      "PRED50": 0.6814,
+      "RMSE_log": 0.7612,
+      "compresion": 1.0
+    },
+    "notes": ""
+  },
+  {
+    "arm": "calibrador",
+    "variant": "correccion_global",
+    "split": "split",
+    "data_sha256": "929fdd49ee10946e",
+    "timestamp": "2026-09-08T18:21:40",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MdMRE": 0.2727,
+      "PRED25": 0.4912,
+      "PRED50": 0.6739,
+      "RMSE_log": 0.7612,
+      "compresion": 1.0
+    },
+    "notes": ""
+  },
+  {
+    "arm": "calibrador",
+    "variant": "por_desarrollador_(k=500)",
+    "split": "split",
+    "data_sha256": "929fdd49ee10946e",
+    "timestamp": "2026-09-08T18:21:41",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MdMRE": 0.25,
+      "PRED25": 0.5021,
+      "PRED50": 0.6747,
+      "RMSE_log": 0.7547,
+      "compresion": 0.997
+    },
+    "notes": ""
+  },
+  {
+    "arm": "calibrador",
+    "variant": "por_desarrollador_sin_encoger",
+    "split": "split",
+    "data_sha256": "929fdd49ee10946e",
+    "timestamp": "2026-09-08T18:21:41",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MdMRE": 0.25,
+      "PRED25": 0.4987,
+      "PRED50": 0.6781,
+      "RMSE_log": 0.7469,
+      "compresion": 0.993
+    },
+    "notes": ""
+  },
+  {
+    "arm": "calibrador",
+    "variant": "por_desarrollador_+_pendiente",
+    "split": "split",
+    "data_sha256": "929fdd49ee10946e",
+    "timestamp": "2026-09-08T18:21:41",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MdMRE": 0.2716,
+      "PRED25": 0.4687,
+      "PRED50": 0.6797,
+      "RMSE_log": 0.7133,
+      "compresion": 0.84
+    },
+    "notes": ""
+  },
+  {
+    "arm": "calibrador",
+    "variant": "humano_crudo",
+    "split": "split_project",
+    "data_sha256": "929fdd49ee10946e",
+    "timestamp": "2026-09-08T18:21:41",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MdMRE": 0.4286,
+      "PRED25": 0.3798,
+      "PRED50": 0.5452,
+      "RMSE_log": 0.9515,
+      "compresion": 0.953
+    },
+    "notes": ""
+  },
+  {
+    "arm": "calibrador",
+    "variant": "correccion_global",
+    "split": "split_project",
+    "data_sha256": "929fdd49ee10946e",
+    "timestamp": "2026-09-08T18:21:41",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MdMRE": 0.4286,
+      "PRED25": 0.3786,
+      "PRED50": 0.5323,
+      "RMSE_log": 0.9515,
+      "compresion": 0.953
+    },
+    "notes": ""
+  },
+  {
+    "arm": "calibrador",
+    "variant": "por_desarrollador_(k=500)",
+    "split": "split_project",
+    "data_sha256": "929fdd49ee10946e",
+    "timestamp": "2026-09-08T18:21:41",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MdMRE": 0.4286,
+      "PRED25": 0.3824,
+      "PRED50": 0.5413,
+      "RMSE_log": 0.9457,
+      "compresion": 0.954
+    },
+    "notes": ""
+  },
+  {
+    "arm": "calibrador",
+    "variant": "por_desarrollador_sin_encoger",
+    "split": "split_project",
+    "data_sha256": "929fdd49ee10946e",
+    "timestamp": "2026-09-08T18:21:41",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MdMRE": 0.4228,
+      "PRED25": 0.3837,
+      "PRED50": 0.5439,
+      "RMSE_log": 0.942,
+      "compresion": 0.955
+    },
+    "notes": ""
+  },
+  {
+    "arm": "calibrador",
+    "variant": "por_desarrollador_+_pendiente",
+    "split": "split_project",
+    "data_sha256": "929fdd49ee10946e",
+    "timestamp": "2026-09-08T18:21:41",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MdMRE": 0.4135,
+      "PRED25": 0.3695,
+      "PRED50": 0.5607,
+      "RMSE_log": 0.8764,
+      "compresion": 0.802
+    },
+    "notes": ""
   }
 ]

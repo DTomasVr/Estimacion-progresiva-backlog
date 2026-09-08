@@ -1426,7 +1426,101 @@
 </section>
 
 <section>
-  <div class="sec-head"><span class="sec-num">16</span><h2>Barrido de algoritmos</h2></div>
+  <div class="sec-head"><span class="sec-num">16</span><h2>La etapa de categorización no aporta al estimador</h2></div>
+
+  <p>
+    La arquitectura prevista es vectorizar el texto, clasificar la tarea y pasar el
+    vector junto con la categoría al modelo de esfuerzo. Todos los resultados anteriores
+    daban al regresor la categoría <em>real</em>, que en producción no existe: allí la
+    aporta un clasificador, con sus errores. Este experimento mide qué cuesta eso, y de
+    paso si la categoría aporta algo.
+  </p>
+
+  <h3>Primero, el clasificador</h3>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 17 · Clasificador de categoría sobre el embedding del texto</caption>
+      <thead>
+        <tr><th>Partición</th><th class="num">Exactitud</th><th class="num">Clase mayoritaria</th><th class="num">F1 macro</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>aleatoria</td><td class="num">0,685</td><td class="num">0,373</td><td class="num">0,494</td></tr>
+        <tr><td>proyectos no vistos</td><td class="num">0,645</td><td class="num">0,426</td><td class="num">0,337</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Funciona razonablemente en las clases frecuentes —recall de 0,860 en
+    <code>bug</code> y 0,769 en <code>support</code>— y se derrumba en las escasas:
+    0,115 en <code>spec</code>, 0,286 en <code>docs</code> y 0,000 en
+    <code>other</code>. El F1 macro de 0,337 en proyectos no vistos indica que la
+    taxonomía no transfiere bien entre organizaciones.
+  </p>
+
+  <h3>Y ahora lo que importa: ¿cambia algo en la predicción de horas?</h3>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 18 · Efecto de la categoría sobre el modelo de esfuerzo</caption>
+      <thead>
+        <tr>
+          <th>Categoría que recibe el regresor</th>
+          <th class="num">MdMRE aleatoria</th>
+          <th class="num">MdMRE proyectos no vistos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>ninguna</td><td class="num">0,6841</td><td class="num">0,6783</td></tr>
+        <tr class="good"><td>la real, conocida de antemano</td><td class="num">0,6826</td><td class="num">0,6752</td></tr>
+        <tr><td>la que predice el clasificador</td><td class="num">0,6883</td><td class="num">0,6756</td></tr>
+        <tr><td>el vector de probabilidades</td><td class="num">0,6961</td><td class="num">0,6797</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="verdict reject">
+    <span class="label">Diferencia entre saberlo todo y no saber nada: 0,003</span>
+    <p>
+      Entre darle al regresor la categoría <strong>real</strong> y no darle
+      <strong>ninguna</strong> hay 0,0015 de MdMRE en la partición aleatoria y 0,0031 en
+      proyectos no vistos. El embedding del texto ya codifica lo que la categoría diría;
+      añadirla explícitamente es redundante.
+    </p>
+    <p>
+      Pasar de la categoría real a la predicha cuesta 0,006 y 0,000 respectivamente, de
+      modo que el error del clasificador tampoco importa: no puede degradar una señal
+      que no estaba aportando nada.
+    </p>
+  </div>
+
+  <p>
+    Hay una consecuencia tranquilizadora. Todos los demás experimentos de este informe
+    usan la categoría real como característica, lo que supone un clasificador perfecto y
+    en principio sería optimista. Como la categoría aporta 0,003, ese optimismo es
+    despreciable y las cifras del resto del documento se sostienen.
+  </p>
+
+  <div class="verdict">
+    <span class="label">Qué hacer con la etapa de clasificación</span>
+    <p>
+      No se justifica como característica del estimador, y conviene decirlo en lugar de
+      afirmar lo contrario. Sí se justifica <strong>por la interfaz</strong>: agrupar el
+      backlog, filtrar por tipo de trabajo, mostrar al equipo la composición de un sprint
+      y alimentar el tablero de desempeño. Son funciones reales del producto, y para eso
+      un 68,5 % de exactitud sobre doce clases es suficiente.
+    </p>
+    <p>
+      La taxonomía sí separa el esfuerzo por sí misma —de 1,50 h en corrección de
+      defectos a 10,50 h en investigación, según la tabla 7— pero esa información ya
+      viaja dentro del vector del texto.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">17</span><h2>Barrido de algoritmos</h2></div>
 
   <p>
     Dieciséis modelos con las mismas características, particiones y objetivo, cubriendo
@@ -1436,7 +1530,7 @@
 
   <div class="scroller">
     <table>
-      <caption>Tabla 17 · Mejores modelos por partición</caption>
+      <caption>Tabla 19 · Mejores modelos por partición</caption>
       <thead>
         <tr><th>Modelo</th><th class="num">MdMRE aleatoria</th><th class="num">MdMRE no vistos</th><th class="num">Spearman</th><th class="num">Compresión</th></tr>
       </thead>
@@ -1490,7 +1584,7 @@
 </section>
 
 <section>
-  <div class="sec-head"><span class="sec-num">17</span><h2>La compresión: el modelo no predice tareas grandes</h2></div>
+  <div class="sec-head"><span class="sec-num">18</span><h2>La compresión: el modelo no predice tareas grandes</h2></div>
 
   <p>
     El MdMRE agregado ocultaba un fallo mucho más grave. Comparando la predicción con
@@ -1500,7 +1594,7 @@
 
   <div class="scroller">
     <table>
-      <caption>Tabla 18 · Predicción frente a realidad según el tamaño real</caption>
+      <caption>Tabla 20 · Predicción frente a realidad según el tamaño real</caption>
       <thead>
         <tr><th>Tamaño real</th><th class="num">n</th><th class="num">Mediana real</th><th class="num">Mediana predicha</th><th class="num">Sesgo</th><th class="num">Cobertura de la banda al 80 %</th></tr>
       </thead>
@@ -1549,7 +1643,7 @@
 </section>
 
 <section>
-  <div class="sec-head"><span class="sec-num">18</span><h2>Tres correcciones ensayadas</h2></div>
+  <div class="sec-head"><span class="sec-num">19</span><h2>Tres correcciones ensayadas</h2></div>
 
   <h3>Bandas condicionadas al tamaño</h3>
   <p>
@@ -1563,7 +1657,7 @@
   <h3>Descompresión</h3>
   <div class="scroller">
     <table>
-      <caption>Tabla 19 · Coste de restaurar la dispersión</caption>
+      <caption>Tabla 21 · Coste de restaurar la dispersión</caption>
       <thead>
         <tr><th class="num">Factor k</th><th class="num">MdMRE</th><th class="num">Compresión</th><th class="num">Tareas grandes detectadas</th><th class="num">Falsas alarmas</th></tr>
       </thead>
@@ -1582,7 +1676,7 @@
   <h3>Marcado de riesgo: la corrección que sí funciona</h3>
   <div class="scroller">
     <table>
-      <caption>Tabla 20 · Probabilidad de superar un umbral (proyectos no vistos)</caption>
+      <caption>Tabla 22 · Probabilidad de superar un umbral (proyectos no vistos)</caption>
       <thead>
         <tr><th>Umbral</th><th class="num">Tasa base</th><th class="num">AUC</th><th class="num">Mejora sobre la tasa base</th><th class="num">Precisión con recall 0,60</th></tr>
       </thead>
@@ -1603,7 +1697,7 @@
 </section>
 
 <section>
-  <div class="sec-head"><span class="sec-num">19</span><h2>La estimación humana supera a todos los modelos</h2></div>
+  <div class="sec-head"><span class="sec-num">20</span><h2>La estimación humana supera a todos los modelos</h2></div>
 
   <p>
     SiP publica la estimación del propio desarrollador para las 7 791 tareas del
@@ -1625,7 +1719,7 @@
 
   <div class="scroller">
     <table>
-      <caption>Tabla 21 · El sesgo del experto por tamaño real</caption>
+      <caption>Tabla 23 · El sesgo del experto por tamaño real</caption>
       <thead>
         <tr><th>Tamaño real</th><th class="num">Mediana real</th><th class="num">Su estimación</th><th class="num">Sesgo</th></tr>
       </thead>
@@ -1664,7 +1758,7 @@
 </section>
 
 <section>
-  <div class="sec-head"><span class="sec-num">20</span><h2>Calibración por desarrollador: el enfoque adoptado</h2></div>
+  <div class="sec-head"><span class="sec-num">21</span><h2>Calibración por desarrollador: el enfoque adoptado</h2></div>
 
   <p>
     El sesgo de estimación es una propiedad de la persona. La corrección adoptada es un
@@ -1686,7 +1780,7 @@
 
   <div class="scroller">
     <table>
-      <caption>Tabla 22 · Calibración frente a la estimación cruda</caption>
+      <caption>Tabla 24 · Calibración frente a la estimación cruda</caption>
       <thead>
         <tr><th>Modelo</th><th class="num">MdMRE</th><th class="num">PRED25</th><th class="num">Compresión</th><th class="num">Tareas grandes</th></tr>
       </thead>
@@ -1722,7 +1816,7 @@
 
   <div class="scroller">
     <table>
-      <caption>Tabla 23 · Intervalo sobre la estimación calibrada</caption>
+      <caption>Tabla 25 · Intervalo sobre la estimación calibrada</caption>
       <thead>
         <tr><th class="num">Nivel</th><th class="num">Cobertura real</th><th class="num">Factor</th><th class="num">Ancho mediano</th><th class="num">Factor del modelo de texto</th></tr>
       </thead>
@@ -1770,7 +1864,7 @@
 </section>
 
 <section>
-  <div class="sec-head"><span class="sec-num">21</span><h2>Reproducibilidad</h2></div>
+  <div class="sec-head"><span class="sec-num">22</span><h2>Reproducibilidad</h2></div>
 
   <p>
     Cada cifra de este documento procede de un script versionado que puede volver a ejecutarse
@@ -1779,7 +1873,7 @@
 
   <div class="scroller">
     <table>
-      <caption>Tabla 24 · Scripts de la tubería de datos</caption>
+      <caption>Tabla 26 · Scripts de la tubería de datos</caption>
       <thead>
         <tr><th>Script</th><th>Función</th></tr>
       </thead>

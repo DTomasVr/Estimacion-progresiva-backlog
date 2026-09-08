@@ -112,8 +112,9 @@ def show(entry):
           f"PRED50 {m['PRED50']:.3f}  MdAE {m['MdAE_h']:.2f}h  "
           f"RMSElog {m['RMSE_log']:.3f}")
     if "cov80" in m:
-        print(f"    cobertura 50/80/90: {m['cov50']:.3f} / {m['cov80']:.3f} / "
-              f"{m['cov90']:.3f}   factor80 {m['factor80']:.2f}x")
+        cov90 = f"{m['cov90']:.3f}" if "cov90" in m else "--"
+        print(f"    cobertura 50/80/90: {m.get('cov50', float('nan')):.3f} / "
+              f"{m['cov80']:.3f} / {cov90}   factor80 {m['factor80']:.2f}x")
 
 
 def table():

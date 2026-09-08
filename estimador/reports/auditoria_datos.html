@@ -1,4 +1,4 @@
-<title>Auditoría de Datos Agix</title>
+<title>Estimación de Esfuerzo en Agix</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap">
@@ -339,18 +339,18 @@
 
 <header class="masthead">
   <p class="eyebrow">Agix · Tesis · Preparación del conjunto de datos</p>
-  <h1>Auditoría de datos para la predicción de horas reales de tarea</h1>
+  <h1>Qué predice realmente el esfuerzo de una tarea de software</h1>
   <p class="standfirst">
-    Registro de la búsqueda, validación y depuración de los conjuntos de datos públicos
-    candidatos para entrenar el estimador de esfuerzo de Agix. Incluye la prueba empírica
-    de la unidad de <code>Timespent</code> en TAWOS y la evidencia que obligó a descartar
-    el cruce de puntos de historia a horas.
+    Registro completo de la preparación de datos y de los 152 experimentos de modelado
+    del estimador de esfuerzo de Agix. Documenta por qué el texto de una tarea no basta
+    para predecir sus horas, y por qué la evidencia apunta a corregir la estimación del
+    propio desarrollador en lugar de sustituirla.
   </p>
   <div class="meta">
-    <span><b>Fecha</b> 23 de agosto de 2026</span>
+    <span><b>Fecha</b> 8 de septiembre de 2026</span>
     <span><b>Fuentes evaluadas</b> 20</span>
-    <span><b>Fuentes utilizables</b> 2</span>
-    <span><b>Tareas tras limpieza</b> 17 457</span>
+    <span><b>Tareas con horas reales</b> 17 350</span>
+    <span><b>Corridas registradas</b> 152</span>
   </div>
 </header>
 
@@ -371,10 +371,10 @@
   </p>
 
   <div class="stats">
-    <div class="stat"><span class="v">20</span><span class="k">fuentes evaluadas</span></div>
-    <div class="stat"><span class="v hi">2</span><span class="k">con texto y horas reales</span></div>
-    <div class="stat"><span class="v">17 457</span><span class="k">tareas tras la limpieza</span></div>
-    <div class="stat"><span class="v lo">0</span><span class="k">filas con horas estimadas por conversión</span></div>
+    <div class="stat"><span class="v">17 350</span><span class="k">tareas con horas reales</span></div>
+    <div class="stat"><span class="v">152</span><span class="k">modelos entrenados</span></div>
+    <div class="stat"><span class="v lo">0,657</span><span class="k">mejor MdMRE solo con texto</span></div>
+    <div class="stat"><span class="v hi">0,250</span><span class="k">MdMRE corrigiendo al experto</span></div>
   </div>
 </section>
 
@@ -1315,7 +1315,462 @@
 </section>
 
 <section>
-  <div class="sec-head"><span class="sec-num">14</span><h2>Reproducibilidad</h2></div>
+  <div class="sec-head"><span class="sec-num">14</span><h2>Limpieza v2: un desarrollador, una tarea</h2></div>
+
+  <p>
+    El cronómetro de Agix mide el tiempo de <em>una</em> persona sobre <em>una</em>
+    tarea. Cualquier fila que signifique otra cosa enseña al modelo una magnitud que
+    nunca se le pedirá. Una segunda revisión encontró que buena parte del extremo
+    superior no eran tareas individuales.
+  </p>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 14 · Agregación por varios desarrolladores en SiP</caption>
+      <thead>
+        <tr><th>Banda de esfuerzo</th><th class="num">Filas</th><th class="num">Con más de un desarrollador</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>&lt; 4 h</td><td class="num">5 217</td><td class="num">5,8 %</td></tr>
+        <tr><td>4-16 h</td><td class="num">1 815</td><td class="num">21,2 %</td></tr>
+        <tr><td>16-40 h</td><td class="num">509</td><td class="num">33,0 %</td></tr>
+        <tr class="flag"><td>&gt; 40 h</td><td class="num">285</td><td class="num">46,7 %</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Casi la mitad de las tareas de más de 40 h eran la suma del tiempo de varias
+    personas, con un factor de inflación mediano de 1,47x frente al contribuidor
+    principal. Se reexpresaron 1 179 filas de SiP como horas del desarrollador
+    principal, y se descartaron 15 épicas de TAWOS y 109 filas con lenguaje de
+    contenedor por encima de 16 h. El conjunto queda en <strong>17 350 tareas</strong>.
+  </p>
+
+  <div class="verdict reject">
+    <span class="label">El objetivo está muy cuantizado</span>
+    <p>
+      El 41 % de los valores de TAWOS son horas enteras y el 83 % de los de SiP son
+      cuartos de hora. Los valores más frecuentes son 1,0 h, 2,0 h, 0,5 h y 4,0 h.
+      No son medidas: son cifras redondas tecleadas a mano después del hecho. Es un
+      suelo de ruido que ningún modelo puede atravesar, y a la vez el argumento más
+      directo a favor de Agix: <strong>su cronómetro producirá etiquetas mejores que
+      las de cualquiera de las dos fuentes públicas</strong>.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">15</span><h2>Representación semántica y transferencia entre idiomas</h2></div>
+
+  <p>
+    El corpus está en inglés y los usuarios de Agix escriben en español. Un codificador
+    específico del español sería la elección equivocada: no comparte espacio vectorial
+    con el corpus de entrenamiento. Se usó
+    <code>paraphrase-multilingual-mpnet-base-v2</code>, destilado con alineación
+    cross-lingual explícita, y se tradujo el corpus completo con MarianMT en GPU
+    (18 593 textos en 404 s).
+  </p>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 15 · SBERT frente a TF-IDF, mismo banco de evaluación</caption>
+      <thead>
+        <tr><th>Representación</th><th class="num">MdMRE aleatoria</th><th class="num">MdMRE proyectos no vistos</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>TF-IDF + ridge</td><td class="num">0,683</td><td class="num">0,678</td></tr>
+        <tr class="good"><td>SBERT + ridge</td><td class="num">0,680</td><td class="num"><strong>0,660</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    En la partición aleatoria empatan: la representación semántica no aporta exactitud
+    sobre este corpus. En proyectos no vistos SBERT sí gana, y las tres cabezas SBERT
+    superan a las dos de TF-IDF. Las características semánticas transfieren entre
+    organizaciones mejor que las léxicas, que es justo la propiedad que necesita un
+    <em>prior</em> de arranque en frío.
+  </p>
+
+  <h3>La deriva entre idiomas es menor de lo estimado al principio</h3>
+
+  <p>
+    Una primera sonda de 24 traducciones hechas a mano sugería una deriva del
+    +23,5 %. Medida sobre las 2 619 filas del conjunto de prueba traducidas
+    automáticamente, la deriva mediana con entrenamiento solo en inglés es de
+    <strong>1,086</strong> para ridge y <strong>1,000</strong> para KNN. La sonda
+    manual era más verbosa que los originales y, con n=24, sobreestimaba el problema.
+  </p>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 16 · Efecto del entrenamiento bilingüe (proyectos no vistos)</caption>
+      <thead>
+        <tr><th>Entrenamiento</th><th class="num">MdMRE inglés</th><th class="num">MdMRE español</th><th class="num">Deriva mediana</th><th class="num">Dentro de ±10 %</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>solo inglés</td><td class="num">0,660</td><td class="num">0,687</td><td class="num">1,052</td><td class="num">34,1 %</td></tr>
+        <tr class="good"><td>inglés + español</td><td class="num">0,664</td><td class="num">0,674</td><td class="num"><strong>1,012</strong></td><td class="num">37,1 %</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    El espacio vectorial está genuinamente alineado: el coseno entre una tarea y su
+    traducción es de 0,882 frente a 0,191 entre dos tareas sin relación. El sesgo
+    sistemático desaparece con entrenamiento bilingüe, pero la dispersión por tarea no:
+    la desviación absoluta mediana sigue en 1,15x y solo el 37 % de las predicciones se
+    mueve menos de un 10 % al cambiar de idioma.
+  </p>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">16</span><h2>Barrido de algoritmos</h2></div>
+
+  <p>
+    Dieciséis modelos con las mismas características, particiones y objetivo, cubriendo
+    las familias de la revisión de literatura, más un brazo con los algoritmos que
+    pueden usar la GPU y el ajuste fino del codificador de extremo a extremo.
+  </p>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 17 · Mejores modelos por partición</caption>
+      <thead>
+        <tr><th>Modelo</th><th class="num">MdMRE aleatoria</th><th class="num">MdMRE no vistos</th><th class="num">Spearman</th><th class="num">Compresión</th></tr>
+      </thead>
+      <tbody>
+        <tr class="good"><td>apilamiento</td><td class="num"><strong>0,6573</strong></td><td class="num">0,6733</td><td class="num">0,450</td><td class="num">0,490</td></tr>
+        <tr><td>SVR radial sobre PCA</td><td class="num">0,6586</td><td class="num">0,6911</td><td class="num">0,434</td><td class="num">0,557</td></tr>
+        <tr><td>perceptrón en PyTorch</td><td class="num">0,6590</td><td class="num">0,6830</td><td class="num">0,419</td><td class="num">0,608</td></tr>
+        <tr><td>ajuste fino de mpnet</td><td class="num">0,6598</td><td class="num">0,6727</td><td class="num"><strong>0,469</strong></td><td class="num">0,584</td></tr>
+        <tr><td>XGBoost en GPU</td><td class="num">0,6667</td><td class="num">0,6748</td><td class="num">0,425</td><td class="num">0,475</td></tr>
+        <tr class="good"><td>ridge</td><td class="num">0,6728</td><td class="num"><strong>0,6694</strong></td><td class="num">0,406</td><td class="num">0,451</td></tr>
+        <tr class="flag"><td>Random Forest</td><td class="num">0,6871</td><td class="num">0,6956</td><td class="num">0,400</td><td class="num">0,298</td></tr>
+        <tr class="flag"><td>árbol de decisión</td><td class="num">0,7535</td><td class="num">0,7450</td><td class="num">0,259</td><td class="num">0,716</td></tr>
+        <tr><td>línea base (mediana)</td><td class="num">0,8000</td><td class="num">0,7500</td><td class="num">—</td><td class="num">0,000</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ul>
+    <li>
+      <strong>El apilamiento gana, pero solo en la partición fácil.</strong> En
+      proyectos no vistos cae al tercer puesto, por detrás de un ridge simple. Cuanto
+      más se ajusta un modelo a este corpus concreto, menos transfiere.
+    </li>
+    <li>
+      <strong>Random Forest pierde frente a ridge</strong> y tiene la peor compresión de
+      todos los modelos competitivos, 0,298. El promediado de árboles elimina justo las
+      predicciones extremas que hacen falta. Conviene reportarlo, porque es la opción
+      por defecto en buena parte de esta literatura.
+    </li>
+    <li>
+      <strong>El ajuste fino no rompe el techo.</strong> La mejor época es la segunda de
+      cuatro: la pérdida de entrenamiento cae de 0,61 a 0,27 mientras el error de
+      validación sube. Sí consigue la mejor correlación de rangos del trabajo, 0,469.
+    </li>
+    <li>
+      <strong>La GPU acelera, no mejora.</strong> XGBoost pasa de 25,7 s a 6,8 s con
+      resultado equivalente. El problema no está limitado por cómputo.
+    </li>
+  </ul>
+
+  <div class="verdict reject">
+    <span class="label">El techo no se mueve</span>
+    <p>
+      Entre las 152 corridas registradas, todos los modelos competitivos caen en
+      <strong>MdMRE 0,657 a 0,700</strong>. Dieciséis familias de algoritmos, cuatro
+      conjuntos de características, tres esquemas de ensamblado, boosting en GPU y el
+      ajuste fino de un codificador de 278 millones de parámetros chocan contra la
+      misma pared.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">17</span><h2>La compresión: el modelo no predice tareas grandes</h2></div>
+
+  <p>
+    El MdMRE agregado ocultaba un fallo mucho más grave. Comparando la predicción con
+    la realidad por tamaño de tarea aparece un sesgo sistemático que hace al modelo
+    inservible justo donde más falta hace.
+  </p>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 18 · Predicción frente a realidad según el tamaño real</caption>
+      <thead>
+        <tr><th>Tamaño real</th><th class="num">n</th><th class="num">Mediana real</th><th class="num">Mediana predicha</th><th class="num">Sesgo</th><th class="num">Cobertura de la banda al 80 %</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>&lt; 1 h</td><td class="num">774</td><td class="num">0,75 h</td><td class="num">1,61 h</td><td class="num">2,14x</td><td class="num">0,774</td></tr>
+        <tr><td>1-2 h</td><td class="num">446</td><td class="num">2,00 h</td><td class="num">1,74 h</td><td class="num">0,87x</td><td class="num">0,991</td></tr>
+        <tr><td>2-4 h</td><td class="num">512</td><td class="num">3,00 h</td><td class="num">2,05 h</td><td class="num">0,68x</td><td class="num">0,984</td></tr>
+        <tr><td>4-8 h</td><td class="num">403</td><td class="num">6,00 h</td><td class="num">2,25 h</td><td class="num">0,37x</td><td class="num">0,851</td></tr>
+        <tr class="flag"><td>8-16 h</td><td class="num">287</td><td class="num">11,50 h</td><td class="num">2,97 h</td><td class="num">0,26x</td><td class="num">0,610</td></tr>
+        <tr class="flag"><td>16-40 h</td><td class="num">149</td><td class="num">24,00 h</td><td class="num">3,67 h</td><td class="num">0,15x</td><td class="num">0,289</td></tr>
+        <tr class="flag"><td>&gt; 40 h</td><td class="num">63</td><td class="num">68,00 h</td><td class="num">4,97 h</td><td class="num"><strong>0,07x</strong></td><td class="num"><strong>0,048</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    De <strong>212 tareas que realmente superaron las 16 horas, el modelo sitúa por
+    encima de 16 h exactamente una</strong>. La desviación típica logarítmica de las
+    predicciones es de 0,614 frente a 1,288 de los datos reales: el modelo usa el 48 %
+    de la dispersión disponible. Y el intervalo del 80 % solo lo es en promedio: para
+    las tareas de más de 40 h su cobertura real es del 4,8 %.
+  </p>
+
+  <div class="verdict">
+    <span class="label">Dos hipótesis descartadas por medición</span>
+    <p>
+      <strong>No son filas agregadas.</strong> Entrenar sin las filas con lenguaje de
+      contenedor deja la compresión en 0,489 frente a 0,483, y la detección de tareas
+      grandes pasa de 1 a 3 de 184. El 78 % de las tareas de más de 40 h no tiene
+      ninguna marca de contenedor.
+    </p>
+    <p>
+      <strong>No es falta de datos ni de modelo.</strong> La curva de aprendizaje está
+      plana desde las 8 000 filas y las dieciséis familias de algoritmos comparten la
+      misma compresión. Es la función de pérdida: con objetivo logarítmico y error
+      cuadrático, encoger hacia la media <em>es</em> lo óptimo. La pérdida no coincide
+      con lo que la planificación necesita.
+    </p>
+  </div>
+
+  <p>
+    La señal de ordenamiento, en cambio, sí está: la correlación de Spearman entre
+    predicción y realidad es de 0,37 a 0,47. El modelo sabe qué tareas son grandes;
+    se niega a decirlo en horas.
+  </p>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">18</span><h2>Tres correcciones ensayadas</h2></div>
+
+  <h3>Bandas condicionadas al tamaño</h3>
+  <p>
+    Condicionar el cuantil conforme por cubo de predicción o por dificultad estimada
+    sube la cobertura de la peor banda del 2,4 % al 11,9 %. Insuficiente, y por un
+    motivo instructivo: <strong>no se puede condicionar sobre una señal que el modelo no
+    tiene</strong>. Como las tareas grandes se predicen en el mismo rango estrecho que
+    las pequeñas, el tamaño predicho no las distingue.
+  </p>
+
+  <h3>Descompresión</h3>
+  <div class="scroller">
+    <table>
+      <caption>Tabla 19 · Coste de restaurar la dispersión</caption>
+      <thead>
+        <tr><th class="num">Factor k</th><th class="num">MdMRE</th><th class="num">Compresión</th><th class="num">Tareas grandes detectadas</th><th class="num">Falsas alarmas</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="num">1,00</td><td class="num">0,6694</td><td class="num">0,451</td><td class="num">0/204</td><td class="num">2</td></tr>
+        <tr><td class="num">1,60</td><td class="num">0,6988</td><td class="num">0,722</td><td class="num">21/204</td><td class="num">50</td></tr>
+        <tr class="flag"><td class="num">2,22</td><td class="num">0,7394</td><td class="num">1,002</td><td class="num">46/204</td><td class="num">153</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    Restaurar toda la varianza cuesta un 10 % de MdMRE y aun así captura solo el 22 %
+    de las tareas grandes, con 153 falsas alarmas. Mal cambio.
+  </p>
+
+  <h3>Marcado de riesgo: la corrección que sí funciona</h3>
+  <div class="scroller">
+    <table>
+      <caption>Tabla 20 · Probabilidad de superar un umbral (proyectos no vistos)</caption>
+      <thead>
+        <tr><th>Umbral</th><th class="num">Tasa base</th><th class="num">AUC</th><th class="num">Mejora sobre la tasa base</th><th class="num">Precisión con recall 0,60</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>&gt; 4 h</td><td class="num">0,340</td><td class="num">0,702</td><td class="num">1,58x</td><td class="num">0,513</td></tr>
+        <tr><td>&gt; 8 h</td><td class="num">0,179</td><td class="num">0,738</td><td class="num">2,02x</td><td class="num">0,347</td></tr>
+        <tr class="good"><td>&gt; 16 h</td><td class="num">0,075</td><td class="num">0,782</td><td class="num">2,70x</td><td class="num">0,190</td></tr>
+        <tr class="good"><td>&gt; 40 h</td><td class="num">0,023</td><td class="num"><strong>0,824</strong></td><td class="num">3,81x</td><td class="num">0,069</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    <strong>La AUC crece con el umbral</strong>: el modelo distingue mejor las tareas
+    grandes que estima sus horas. Preguntado como probabilidad responde bien; preguntado
+    como magnitud, no. Es la confirmación de que la información de ordenamiento existe y
+    que la pérdida cuadrática la suprime.
+  </p>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">19</span><h2>La estimación humana supera a todos los modelos</h2></div>
+
+  <p>
+    SiP publica la estimación del propio desarrollador para las 7 791 tareas del
+    conjunto. No se había usado. Sobre esas mismas tareas:
+  </p>
+
+  <div class="stats">
+    <div class="stat"><span class="v hi">0,273</span><span class="k">MdMRE del juicio experto</span></div>
+    <div class="stat"><span class="v lo">0,655</span><span class="k">MdMRE del mejor modelo de texto</span></div>
+    <div class="stat"><span class="v hi">0,826</span><span class="k">Spearman del experto</span></div>
+    <div class="stat"><span class="v hi">1,000</span><span class="k">dispersión del experto</span></div>
+  </div>
+
+  <p>
+    El experto es <strong>2,4 veces más exacto</strong> que el mejor modelo construido y
+    no sufre compresión alguna: detecta 55 de 97 tareas grandes donde el modelo de texto
+    detecta cero. Su error es sistemático y medible.
+  </p>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 21 · El sesgo del experto por tamaño real</caption>
+      <thead>
+        <tr><th>Tamaño real</th><th class="num">Mediana real</th><th class="num">Su estimación</th><th class="num">Sesgo</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>&lt; 1 h</td><td class="num">0,50 h</td><td class="num">1,0 h</td><td class="num">2,00x</td></tr>
+        <tr><td>1-4 h</td><td class="num">2,25 h</td><td class="num">2,5 h</td><td class="num">1,11x</td></tr>
+        <tr><td>4-16 h</td><td class="num">7,00 h</td><td class="num">7,0 h</td><td class="num">1,00x</td></tr>
+        <tr><td>16-40 h</td><td class="num">24,00 h</td><td class="num">21,0 h</td><td class="num">0,88x</td></tr>
+        <tr><td>&gt; 40 h</td><td class="num">70,00 h</td><td class="num">35,0 h</td><td class="num">0,50x</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Es la falacia de la planificación, cuantificada: infla las tareas pequeñas al doble
+    y reduce a la mitad las grandes. Aun así, para una tarea de 70 h dice 35 h, donde el
+    modelo dice 5 h.
+  </p>
+
+  <div class="verdict reject">
+    <span class="label">Ninguna corrección basada en texto lo mejora</span>
+    <p>
+      Añadir el embedding del texto a la estimación la <strong>empeora</strong>, de
+      0,2727 a 0,3023. La recalibración lineal y la no lineal ganan milésimas de MdMRE a
+      costa de la detección de tareas grandes, que cae de 55 a 42 y a 28 de 97. El mapeo
+      de cuantiles corrige el sesgo por banda y restaura la dispersión, pero degrada el
+      MdMRE a 0,3563.
+    </p>
+    <p>
+      La lectura es directa: la información que falta no está en el texto de la tarea,
+      sino en la cabeza de quien la va a hacer. Dos tareas con enunciados idénticos
+      tardan 3 h y 200 h porque una toca un módulo que el desarrollador conoce y la otra
+      no. Ningún codificador puede recuperar lo que nunca se escribió.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">20</span><h2>Calibración por desarrollador: el enfoque adoptado</h2></div>
+
+  <p>
+    El sesgo de estimación es una propiedad de la persona. La corrección adoptada es un
+    desplazamiento por desarrollador en escala logarítmica, encogido hacia la corrección
+    global en proporción a su historial:
+  </p>
+
+  <div class="verdict">
+    <span class="label">La fórmula</span>
+    <p style="font-family:'IBM Plex Mono',monospace;font-size:.95rem">
+      corrección<sub>d</sub> = (n<sub>d</sub> · sesgo<sub>d</sub> + k · sesgo<sub>global</sub>) / (n<sub>d</sub> + k)
+    </p>
+    <p>
+      Con n<sub>d</sub> = 0 colapsa sola en la corrección global, de modo que un
+      desarrollador nuevo queda resuelto por la misma fórmula, sin caso especial. El
+      pseudo-conteo k se ajusta en validación.
+    </p>
+  </div>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 22 · Calibración frente a la estimación cruda</caption>
+      <thead>
+        <tr><th>Modelo</th><th class="num">MdMRE</th><th class="num">PRED25</th><th class="num">Compresión</th><th class="num">Tareas grandes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>humano crudo</td><td class="num">0,2727</td><td class="num">0,4904</td><td class="num">1,000</td><td class="num">55/97</td></tr>
+        <tr><td>corrección global</td><td class="num">0,2727</td><td class="num">0,4912</td><td class="num">1,000</td><td class="num">55/97</td></tr>
+        <tr class="good"><td><strong>por desarrollador</strong></td><td class="num"><strong>0,2500</strong></td><td class="num"><strong>0,5021</strong></td><td class="num">0,997</td><td class="num">55/97</td></tr>
+        <tr class="flag"><td>por desarrollador + pendiente</td><td class="num">0,2716</td><td class="num">0,4687</td><td class="num">0,840</td><td class="num">39/97</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Un <strong>8,3 % de mejora sobre el experto</strong>, y la primera corrección que lo
+    consigue sin destruir lo que lo hacía bueno: la dispersión queda en 0,997 y las 55
+    tareas grandes detectadas se conservan intactas.
+  </p>
+
+  <div class="verdict reject">
+    <span class="label">Lo que la evidencia no sostiene</span>
+    <p>
+      En proyectos no vistos la ganancia casi desaparece: 0,4286 frente a 0,4228 sin
+      encoger. El desglose por historial explica por qué: la mejora se concentra en los
+      desarrolladores con más de 400 tareas registradas, un 3,7 %, y es de décimas en el
+      resto. Y tras el encogimiento, la mayoría de los 18 desarrolladores recibe un
+      factor de 1,000x: solo dos tienen un sesgo propio apreciable, de 0,924x y 0,867x.
+      El rango de 0,14x a 1,95x que aparecía sin encoger era en su mayor parte ruido de
+      quienes tenían pocas observaciones.
+    </p>
+  </div>
+
+  <h3>El resultado realmente útil es la banda, no el punto</h3>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 23 · Intervalo sobre la estimación calibrada</caption>
+      <thead>
+        <tr><th class="num">Nivel</th><th class="num">Cobertura real</th><th class="num">Factor</th><th class="num">Ancho mediano</th><th class="num">Factor del modelo de texto</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="num">50 %</td><td class="num">0,485</td><td class="num">1,25x</td><td class="num">1,12 h</td><td class="num">2,29x</td></tr>
+        <tr class="good"><td class="num">80 %</td><td class="num">0,776</td><td class="num"><strong>2,00x</strong></td><td class="num">3,75 h</td><td class="num">4,62x</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    La estimación calibrada da <em>«entre 2 y 8 horas»</em>; el modelo de texto da
+    <em>«entre 0,5 y 11 horas»</em>. Es la diferencia entre una banda utilizable para
+    planificar un sprint y una que no dice nada.
+  </p>
+
+  <h3>Enlaces y componentes</h3>
+  <p>
+    Se extrajeron <code>Issue_Link</code> (246 587 filas) y <code>Issue_Component</code>
+    (366 922), que nunca se habían sacado del volcado. Los enlaces correlacionan
+    débilmente con el esfuerzo, Spearman +0,163, con una mediana de 2,00 h sin enlaces
+    frente a 4,00 h con enlaces estructurales; los componentes no aportan nada, con
+    -0,010. Añadidos al modelo de texto mejoran el MdMRE de 0,6433 a 0,6311, pero la
+    compresión sigue en 0,43 y la detección de tareas grandes sigue en 0 de 80. Además,
+    <code>Issue_Link</code> no tiene marca temporal: no se puede saber si un enlace
+    existía al estimar o se añadió durante el trabajo, y el subconjunto defendible
+    —solo enlaces estructurales— no mejora nada.
+  </p>
+
+  <div class="verdict">
+    <span class="label">La arquitectura que sostiene la evidencia</span>
+    <p>
+      El desarrollador aporta su estimación, que es la señal fuerte. Se corrige con su
+      propio sesgo medido, encogido según su historial. El modelo de texto queda para el
+      arranque en frío, cuando no hay historial, y para el marcado de riesgo. Y el
+      cronómetro es la contribución real del producto: es lo que hace posibles los dos
+      primeros pasos, y hoy ningún equipo tiene ese dato.
+    </p>
+    <p>
+      Validado sobre una sola empresa y 18 desarrolladores. Si el sesgo por persona es
+      más marcado en equipos peor calibrados que el de SiP es una pregunta abierta, y es
+      exactamente la que Agix respondería con sus propios datos.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">21</span><h2>Reproducibilidad</h2></div>
 
   <p>
     Cada cifra de este documento procede de un script versionado que puede volver a ejecutarse
@@ -1324,7 +1779,7 @@
 
   <div class="scroller">
     <table>
-      <caption>Tabla 14 · Scripts de la tubería de datos</caption>
+      <caption>Tabla 24 · Scripts de la tubería de datos</caption>
       <thead>
         <tr><th>Script</th><th>Función</th></tr>
       </thead>
@@ -1339,6 +1794,12 @@
         <tr><td class="mono">07_sp_conversion_quality.py</td><td>evaluación que descarta la conversión</td></tr>
         <tr><td class="mono">08_worklog_bias.py</td><td>cuantificación del sesgo de selección del registro horario</td></tr>
         <tr><td class="mono">09_build_unified.py</td><td>armonización TAWOS + SiP y particiones sin fuga</td></tr>
+        <tr><td class="mono">15-17</td><td>codificación SBERT, sonda cross-lingual y traducción del corpus</td></tr>
+        <tr><td class="mono">21-24</td><td>dos etapas, cuantiles, ablación de características y rangos</td></tr>
+        <tr><td class="mono">25-26</td><td>revisión del objetivo y limpieza v2 por desarrollador</td></tr>
+        <tr><td class="mono">27, 31, 32</td><td>barrido de algoritmos, brazo GPU y ajuste fino de mpnet</td></tr>
+        <tr><td class="mono">28-30</td><td>conformal condicional, descompresión y marcado de riesgo</td></tr>
+        <tr><td class="mono">34-37</td><td>estimación humana, variables omitidas, enlaces y calibrador</td></tr>
         <tr><td class="mono">10_data_quality_report.py</td><td>diagnóstico de calidad, solo lectura</td></tr>
         <tr><td class="mono">11_learning_curve.py</td><td>curva de aprendizaje y suficiencia de datos</td></tr>
         <tr><td class="mono">12_clean_dataset.py</td><td>aplicación de las decisiones de limpieza</td></tr>

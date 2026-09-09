@@ -1,0 +1,13 @@
+{
+  "codificador": "congelado",
+  "bloque": "B4_todo",
+  "algoritmo": "ridge",
+  "config": "alpha=1.0",
+  "MdMRE_val": 0.6056,
+  "ridge_alpha": 1.0,
+  "hgb": {
+    "max_iter": 200,
+    "max_depth": 4,
+    "learning_rate": 0.06
+  }
+}

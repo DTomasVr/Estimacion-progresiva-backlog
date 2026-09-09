@@ -1,0 +1,11 @@
+codificador,bloque,algoritmo,MdMRE_val,PRED25_val,proyectos
+congelado,B0_emb,ridge,0.6345,0.195,24
+congelado,B1_emb_tipo,ridge,0.6228,0.2037,24
+congelado,B2_emb_tipo_dev,ridge,0.617,0.2128,24
+congelado,B3_emb_tipo_num,ridge,0.6157,0.2025,24
+congelado,B4_todo,ridge,0.6056,0.2097,24
+ajustado,B0_emb,ridge,0.6248,0.212,24
+ajustado,B1_emb_tipo,ridge,0.6256,0.2156,24
+ajustado,B2_emb_tipo_dev,ridge,0.6234,0.2041,24
+ajustado,B3_emb_tipo_num,ridge,0.6171,0.2128,24
+ajustado,B4_todo,ridge,0.6166,0.2081,24

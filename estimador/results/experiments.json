@@ -5433,5 +5433,117 @@
       "RMSE_log": 0.8316
     },
     "notes": ""
+  },
+  {
+    "arm": "final",
+    "variant": "arranque_frio",
+    "split": "split_t3",
+    "data_sha256": "b6cf35368aba7d65",
+    "timestamp": "2026-09-08T19:24:23",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MdMRE": 0.7442,
+      "MdMRE_mediano": 0.7108,
+      "PRED25": 0.1768,
+      "cov80": 0.7439,
+      "gana_base": 14,
+      "n_proyectos": 24
+    },
+    "notes": ""
+  },
+  {
+    "arm": "final",
+    "variant": "riesgo_4h",
+    "split": "split_t3",
+    "data_sha256": "b6cf35368aba7d65",
+    "timestamp": "2026-09-08T19:24:28",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "AUC": 0.7074,
+      "tasa_base": 0.3141
+    },
+    "notes": ""
+  },
+  {
+    "arm": "final",
+    "variant": "riesgo_8h",
+    "split": "split_t3",
+    "data_sha256": "b6cf35368aba7d65",
+    "timestamp": "2026-09-08T19:24:33",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "AUC": 0.747,
+      "tasa_base": 0.1617
+    },
+    "notes": ""
+  },
+  {
+    "arm": "final",
+    "variant": "riesgo_16h",
+    "split": "split_t3",
+    "data_sha256": "b6cf35368aba7d65",
+    "timestamp": "2026-09-08T19:24:36",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "AUC": 0.7832,
+      "tasa_base": 0.075
+    },
+    "notes": ""
+  },
+  {
+    "arm": "final",
+    "variant": "riesgo_40h",
+    "split": "split_t3",
+    "data_sha256": "b6cf35368aba7d65",
+    "timestamp": "2026-09-08T19:24:38",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "AUC": 0.8043,
+      "tasa_base": 0.0251
+    },
+    "notes": ""
+  },
+  {
+    "arm": "final",
+    "variant": "humano_crudo",
+    "split": "split_t3",
+    "data_sha256": "b6cf35368aba7d65",
+    "timestamp": "2026-09-08T19:24:38",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MAE_h": 5.4484,
+      "MdAE_h": 0.5,
+      "MdMRE": 0.25,
+      "PRED25": 0.5008,
+      "PRED50": 0.6801,
+      "RMSE_log": 0.838
+    },
+    "notes": ""
+  },
+  {
+    "arm": "final",
+    "variant": "humano_calibrado",
+    "split": "split_t3",
+    "data_sha256": "b6cf35368aba7d65",
+    "timestamp": "2026-09-08T19:24:38",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MAE_h": 5.3298,
+      "MdAE_h": 0.5,
+      "MdMRE": 0.25,
+      "PRED25": 0.5034,
+      "PRED50": 0.6769,
+      "RMSE_log": 0.8304,
+      "cov80": 0.7851,
+      "factor80": 2.0
+    },
+    "notes": ""
   }
 ]

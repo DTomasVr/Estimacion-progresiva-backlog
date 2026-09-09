@@ -1864,7 +1864,265 @@
 </section>
 
 <section>
-  <div class="sec-head"><span class="sec-num">22</span><h2>Reproducibilidad</h2></div>
+  <div class="sec-head"><span class="sec-num">22</span><h2>Comparación con los métodos publicados</h2></div>
+
+  <p>
+    Afirmar que se supera el estado del arte exige ejecutar los métodos publicados
+    sobre los mismos datos. Se reimplementaron los dos de referencia y se evaluaron
+    con la partición temporal, el mismo objetivo y las mismas características de
+    texto.
+  </p>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 26 · Deep-SE y GPT2SP sobre nuestros datos y particiones</caption>
+      <thead>
+        <tr>
+          <th>Método</th><th class="num">MdMRE</th><th class="num">PRED25</th>
+          <th class="num">RMSE log</th><th class="num">Spearman</th>
+          <th class="num">Gana a la base</th><th class="num">Entrenamiento</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>línea base (mediana por proyecto)</td><td class="num">0,7273</td><td class="num">0,1636</td><td class="num">1,3857</td><td class="num">0,089</td><td class="num">0/24</td><td class="num">—</td></tr>
+        <tr><td>Deep-SE (LSTM)</td><td class="num">0,7133</td><td class="num">0,1683</td><td class="num">1,3386</td><td class="num">0,265</td><td class="num">14/24</td><td class="num">31 s</td></tr>
+        <tr><td>nuestro: ridge sobre embeddings congelados</td><td class="num">0,6993</td><td class="num">0,1657</td><td class="num">1,2718</td><td class="num">0,340</td><td class="num">15/24</td><td class="num">&lt; 1 s</td></tr>
+        <tr class="good"><td><strong>GPT2SP (GPT-2 ajustado)</strong></td><td class="num"><strong>0,6804</strong></td><td class="num">0,1692</td><td class="num">1,2596</td><td class="num">0,357</td><td class="num"><strong>18/24</strong></td><td class="num">316 s</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="verdict reject">
+    <span class="label">No superamos el estado del arte</span>
+    <p>
+      Con las mismas características de texto, GPT2SP rinde mejor que nuestro modelo:
+      0,6804 frente a 0,6993, y gana a la línea base en 18 de 24 proyectos frente a
+      15. La afirmación de mejora sobre el estado del arte no se sostiene y se retira.
+    </p>
+    <p>
+      Con el conjunto completo de características de v3 varios de nuestros modelos sí
+      quedan por delante —gradient boosting en 0,6586, bosque profundo en 0,6587,
+      votación en 0,6601— pero eso compara sistemas, no algoritmos: GPT2SP solo usa
+      texto. La lectura honesta es que <strong>con metadatos disponibles, un modelo de
+      árboles sobre embeddings congelados iguala o supera a un transformador ajustado
+      de extremo a extremo, a una cincuentava parte del coste de entrenamiento</strong>.
+    </p>
+  </div>
+
+  <p>
+    Lo que la comparación sí establece con firmeza es el techo. Cuatro enfoques
+    metodológicamente distintos —una constante, una LSTM sobre embeddings aprendidos,
+    una cabeza lineal sobre embeddings congelados y un transformador de 124 millones
+    de parámetros ajustado— caen entre <strong>0,680 y 0,727</strong> de MdMRE. Un 6,5 %
+    de diferencia entre todo el rango metodológico, sobre datos idénticos. Sumando el
+    barrido completo de v3, veintiuna configuraciones quedan dentro de una banda del
+    9 %.
+  </p>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">23</span><h2>El ancho de la banda y qué lo determina</h2></div>
+
+  <p>
+    Un intervalo solo sirve si se puede planificar con él. Conviene medir su anchura
+    de extremo a extremo, que es <code>exp(2q)</code> y no el multiplicador en cada
+    dirección.
+  </p>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 27 · Anchura de la banda según el nivel y la información disponible</caption>
+      <thead>
+        <tr>
+          <th class="num">Nivel</th>
+          <th class="num">Arranque en frío</th><th class="num">Cobertura real</th>
+          <th class="num">Con estimación humana</th><th class="num">Cobertura real</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="num">50 %</td><td class="num">4,29x</td><td class="num">0,464</td><td class="num"><strong>1,31x</strong></td><td class="num">0,423</td></tr>
+        <tr><td class="num">68 %</td><td class="num">8,77x</td><td class="num">0,625</td><td class="num">2,30x</td><td class="num">0,636</td></tr>
+        <tr class="flag"><td class="num">80 %</td><td class="num"><strong>16,81x</strong></td><td class="num">0,742</td><td class="num"><strong>4,00x</strong></td><td class="num">0,790</td></tr>
+        <tr><td class="num">90 %</td><td class="num">35,89x</td><td class="num">0,855</td><td class="num">12,13x</td><td class="num">0,893</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    La diferencia es de producto, no de matiz. Una banda del 80 % sobre una predicción
+    de cuatro horas va de <strong>1,0 h a 16,4 h</strong> en arranque en frío, y de
+    <strong>2 h a 8 h</strong> cuando existe una estimación del desarrollador. La
+    primera no sirve para planificar un sprint; la segunda sí.
+  </p>
+
+  <h3>La banda depende del tipo de tarea</h3>
+  <div class="scroller">
+    <table>
+      <caption>Tabla 28 · Banda al 80 % condicionada por tipo (global: 16,81x)</caption>
+      <thead><tr><th>Tipo</th><th class="num">n</th><th class="num">Banda propia</th></tr></thead>
+      <tbody>
+        <tr class="good"><td>support</td><td class="num">862</td><td class="num">11,50x</td></tr>
+        <tr class="good"><td>task</td><td class="num">228</td><td class="num">13,37x</td></tr>
+        <tr><td>bug</td><td class="num">1 641</td><td class="num">15,92x</td></tr>
+        <tr><td>release</td><td class="num">52</td><td class="num">18,72x</td></tr>
+        <tr><td>improvement</td><td class="num">670</td><td class="num">19,31x</td></tr>
+        <tr class="flag"><td>feature</td><td class="num">587</td><td class="num">25,62x</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    El trabajo de soporte es sustancialmente más predecible que el desarrollo de
+    funcionalidad nueva. Decírselo al usuario —«las funcionalidades tienen mucha más
+    incertidumbre que el soporte»— es cierto y accionable.
+  </p>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">24</span><h2>Estimación por LLM: buen orden, mal nivel</h2></div>
+
+  <p>
+    Como Agix genera las tareas con un LLM, cabe preguntarse si ese mismo LLM puede
+    estimar las horas. Se le mostró el texto de 100 tareas del bloque de prueba sin
+    las horas registradas y se anotaron sus estimaciones antes de leer ninguna
+    etiqueta, con el diseño de los experimentos controlados de Pavlič y de
+    Villarrubia. La muestra excluye las tareas cuyas horas ya se habían visto durante
+    el trabajo.
+  </p>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 29 · Estimación del LLM sobre 100 tareas, en crudo</caption>
+      <thead><tr><th>Método</th><th class="num">MdMRE</th><th class="num">PRED25</th><th class="num">Spearman</th></tr></thead>
+      <tbody>
+        <tr><td>línea base</td><td class="num">1,0000</td><td class="num">0,12</td><td class="num">—</td></tr>
+        <tr class="good"><td>modelo de texto</td><td class="num"><strong>0,6014</strong></td><td class="num">0,22</td><td class="num">0,462</td></tr>
+        <tr class="flag"><td>estimación del LLM</td><td class="num">1,0000</td><td class="num">0,14</td><td class="num"><strong>0,561</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    En crudo el LLM es tan malo como una constante, pero <strong>ordena mejor que
+    nadie</strong>. El fallo es de nivel, no de juicio:
+  </p>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 30 · Sesgo del LLM por tamaño real de la tarea</caption>
+      <thead><tr><th>Tamaño real</th><th class="num">n</th><th class="num">Mediana real</th><th class="num">Estimación</th><th class="num">Sesgo</th></tr></thead>
+      <tbody>
+        <tr class="flag"><td>&lt; 1 h</td><td class="num">51</td><td class="num">0,53 h</td><td class="num">2,0 h</td><td class="num"><strong>3,75x</strong></td></tr>
+        <tr><td>1-4 h</td><td class="num">27</td><td class="num">2,00 h</td><td class="num">3,0 h</td><td class="num">1,50x</td></tr>
+        <tr class="good"><td>4-16 h</td><td class="num">18</td><td class="num">7,25 h</td><td class="num">8,0 h</td><td class="num">1,10x</td></tr>
+        <tr class="flag"><td>&gt; 16 h</td><td class="num">4</td><td class="num">38,50 h</td><td class="num">6,0 h</td><td class="num">0,16x</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    El LLM infla las tareas menores de una hora por un factor de 3,75 porque estima en
+    unidades de trabajo plausible, no en lo que el cronómetro de ese equipo registra.
+    La mitad de la muestra son tareas de menos de media hora: cambiar un tóner,
+    resolver una consulta de usuario. Eso es un error de escala, y la escala se
+    corrige.
+  </p>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 31 · Calibración y combinación, 50 tareas de medida</caption>
+      <thead>
+        <tr><th>Método</th><th class="num">MdMRE</th><th class="num">PRED50</th><th class="num">MdAE</th><th class="num">Banda 80 %</th><th class="num">Spearman</th></tr>
+      </thead>
+      <tbody>
+        <tr class="flag"><td>LLM crudo</td><td class="num">1,4000</td><td class="num">0,30</td><td class="num">1,95 h</td><td class="num">26,21x</td><td class="num">0,519</td></tr>
+        <tr class="good"><td>LLM calibrado (x0,667)</td><td class="num"><strong>0,7778</strong></td><td class="num">0,40</td><td class="num">1,02 h</td><td class="num">16,00x</td><td class="num">0,519</td></tr>
+        <tr><td>modelo de texto</td><td class="num">0,8222</td><td class="num">0,38</td><td class="num">0,84 h</td><td class="num">26,21x</td><td class="num">0,369</td></tr>
+        <tr class="good"><td><strong>LLM calibrado + modelo</strong></td><td class="num"><strong>0,5746</strong></td><td class="num">0,46</td><td class="num">0,83 h</td><td class="num">16,00x</td><td class="num">0,484</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Una sola corrección multiplicativa, aprendida sobre 50 tareas, reduce el error del
+    LLM un <strong>44 %</strong>. Calibrado, supera al modelo de texto sin haber
+    necesitado datos de entrenamiento para arrancar. Y la media geométrica de ambos
+    mejora a los dos por separado: cometen errores distintos, el LLM ordena mejor y el
+    modelo acierta mejor el nivel.
+  </p>
+
+  <div class="verdict reject">
+    <span class="label">Lo que el LLM no resuelve</span>
+    <p>
+      La banda del LLM calibrado es de 16,00x al 80 %, prácticamente la misma que la
+      del modelo de texto. La de un desarrollador humano es de 4,00x.
+      <strong>Un LLM no sustituye a quien conoce el código.</strong> Sirve como
+      estimador de arranque en frío, no como vía para una banda utilizable.
+    </p>
+    <p>
+      Advertencias sobre este experimento: 50 tareas de medida, un solo LLM, solo
+      texto y sin contexto de proyecto, y una muestra sesgada hacia tareas pequeñas.
+      El resultado es direccionalmente claro pero estadísticamente débil.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">25</span><h2>La arquitectura que sostiene la evidencia</h2></div>
+
+  <p>
+    Cada flecha del diseño tiene una medición detrás.
+  </p>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 32 · Los dos regímenes del componente</caption>
+      <thead>
+        <tr><th>Situación</th><th>Qué se muestra</th><th class="num">MdMRE</th><th class="num">Banda 80 %</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Arranque en frío</strong><br><span style="color:var(--muted);font-size:.85em">proyecto nuevo, sin historial</span></td>
+          <td>banda del 50 % y marca de riesgo, nunca un número aislado</td>
+          <td class="num">0,67</td><td class="num">16,81x</td>
+        </tr>
+        <tr class="good">
+          <td><strong>Régimen estable</strong><br><span style="color:var(--muted);font-size:.85em">el desarrollador aporta su estimación</span></td>
+          <td>estimación corregida con su propio sesgo, más banda</td>
+          <td class="num"><strong>0,25</strong></td><td class="num"><strong>4,00x</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ul>
+    <li>
+      <strong>El cronómetro es la contribución real.</strong> Es lo que permite
+      calibrar, y hoy ningún equipo tiene ese dato. Las etiquetas públicas están
+      cuantizadas —41 % de horas enteras en TAWOS, 83 % de cuartos de hora en SiP— y
+      un cronómetro automático produce medidas mejores que cualquiera de las dos
+      fuentes.
+    </li>
+    <li>
+      <strong>La calibración se aprende sola.</strong> La fórmula con encogimiento
+      colapsa en la corrección global cuando no hay historial, de modo que un
+      desarrollador nuevo, o un LLM recién integrado, quedan resueltos sin caso
+      especial.
+    </li>
+    <li>
+      <strong>Lo que mejora con el uso es la banda.</strong> Es la demostración
+      visible del sistema: ejecutarlo en frío, cargar un proyecto terminado y ver
+      estrecharse el intervalo.
+    </li>
+    <li>
+      <strong>Lo que no se debe prometer</strong> es un porcentaje de exactitud ni un
+      valor puntual presentado como preciso. Con PRED(25) de 0,18 en frío, un «4,2 h»
+      seco sería falso el 82 % de las veces.
+    </li>
+  </ul>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">26</span><h2>Reproducibilidad</h2></div>
 
   <p>
     Cada cifra de este documento procede de un script versionado que puede volver a ejecutarse
@@ -1873,7 +2131,7 @@
 
   <div class="scroller">
     <table>
-      <caption>Tabla 26 · Scripts de la tubería de datos</caption>
+      <caption>Tabla 33 · Scripts de la tubería de datos</caption>
       <thead>
         <tr><th>Script</th><th>Función</th></tr>
       </thead>
@@ -1894,6 +2152,10 @@
         <tr><td class="mono">27, 31, 32</td><td>barrido de algoritmos, brazo GPU y ajuste fino de mpnet</td></tr>
         <tr><td class="mono">28-30</td><td>conformal condicional, descompresión y marcado de riesgo</td></tr>
         <tr><td class="mono">34-37</td><td>estimación humana, variables omitidas, enlaces y calibrador</td></tr>
+        <tr><td class="mono">39-41</td><td>conjunto v3 y partición cronológica en tres bloques</td></tr>
+        <tr><td class="mono">42-44</td><td>ajuste fino sin fuga, selección en validación y lectura única de prueba</td></tr>
+        <tr><td class="mono">45-47</td><td>panel de métricas, reimplementación de Deep-SE y GPT2SP, barrido sobre v3</td></tr>
+        <tr><td class="mono">48</td><td>estimación por LLM a ciegas, calibración y combinación</td></tr>
         <tr><td class="mono">10_data_quality_report.py</td><td>diagnóstico de calidad, solo lectura</td></tr>
         <tr><td class="mono">11_learning_curve.py</td><td>curva de aprendizaje y suficiencia de datos</td></tr>
         <tr><td class="mono">12_clean_dataset.py</td><td>aplicación de las decisiones de limpieza</td></tr>

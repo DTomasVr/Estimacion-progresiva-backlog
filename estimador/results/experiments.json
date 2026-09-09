@@ -5349,5 +5349,89 @@
       "n_proyectos": 19
     },
     "notes": ""
+  },
+  {
+    "arm": "v3_temporal",
+    "variant": "solo_texto",
+    "split": "split_temporal",
+    "data_sha256": "b6cf35368aba7d65",
+    "timestamp": "2026-09-08T19:01:06",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MdMRE": 0.6778,
+      "PRED25": 0.1748,
+      "gana_base": 16,
+      "n_proyectos": 24
+    },
+    "notes": ""
+  },
+  {
+    "arm": "v3_temporal",
+    "variant": "texto_+_nuevas",
+    "split": "split_temporal",
+    "data_sha256": "b6cf35368aba7d65",
+    "timestamp": "2026-09-08T19:01:06",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MdMRE": 0.6769,
+      "PRED25": 0.1815,
+      "gana_base": 16,
+      "n_proyectos": 24
+    },
+    "notes": ""
+  },
+  {
+    "arm": "v3_temporal",
+    "variant": "texto_+_nuevas_+_desarrollador",
+    "split": "split_temporal",
+    "data_sha256": "b6cf35368aba7d65",
+    "timestamp": "2026-09-08T19:01:06",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MdMRE": 0.6655,
+      "PRED25": 0.1781,
+      "gana_base": 17,
+      "n_proyectos": 24
+    },
+    "notes": ""
+  },
+  {
+    "arm": "v3_temporal",
+    "variant": "humano_crudo",
+    "split": "split_temporal",
+    "data_sha256": "b6cf35368aba7d65",
+    "timestamp": "2026-09-08T19:01:06",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MAE_h": 5.4489,
+      "MdAE_h": 0.5,
+      "MdMRE": 0.25,
+      "PRED25": 0.5024,
+      "PRED50": 0.6811,
+      "RMSE_log": 0.8388
+    },
+    "notes": ""
+  },
+  {
+    "arm": "v3_temporal",
+    "variant": "humano_calibrado",
+    "split": "split_temporal",
+    "data_sha256": "b6cf35368aba7d65",
+    "timestamp": "2026-09-08T19:01:06",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MAE_h": 5.3665,
+      "MdAE_h": 0.5,
+      "MdMRE": 0.25,
+      "PRED25": 0.5035,
+      "PRED50": 0.6768,
+      "RMSE_log": 0.8316
+    },
+    "notes": ""
   }
 ]

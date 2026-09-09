@@ -5545,5 +5545,73 @@
       "factor80": 2.0
     },
     "notes": ""
+  },
+  {
+    "arm": "literatura",
+    "variant": "linea_base",
+    "split": "split_t3",
+    "data_sha256": "b6cf35368aba7d65",
+    "timestamp": "2026-09-08T20:27:46",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MdMRE": 0.7273,
+      "PRED25": 0.1636,
+      "MAE_h": 5.26,
+      "RMSE_log": 1.3857,
+      "spearman": 0.0886
+    },
+    "notes": ""
+  },
+  {
+    "arm": "literatura",
+    "variant": "nuestro:_ridge_sobre_SBERT_congelado",
+    "split": "split_t3",
+    "data_sha256": "b6cf35368aba7d65",
+    "timestamp": "2026-09-08T20:27:46",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MdMRE": 0.6993,
+      "PRED25": 0.1657,
+      "MAE_h": 5.07,
+      "RMSE_log": 1.2718,
+      "spearman": 0.34
+    },
+    "notes": ""
+  },
+  {
+    "arm": "literatura",
+    "variant": "Deep-SE",
+    "split": "split_t3",
+    "data_sha256": "b6cf35368aba7d65",
+    "timestamp": "2026-09-08T20:27:46",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MdMRE": 0.7133,
+      "PRED25": 0.1683,
+      "MAE_h": 5.19,
+      "RMSE_log": 1.3386,
+      "spearman": 0.2652
+    },
+    "notes": ""
+  },
+  {
+    "arm": "literatura",
+    "variant": "GPT2SP",
+    "split": "split_t3",
+    "data_sha256": "b6cf35368aba7d65",
+    "timestamp": "2026-09-08T20:27:46",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MdMRE": 0.6804,
+      "PRED25": 0.1692,
+      "MAE_h": 5.05,
+      "RMSE_log": 1.2596,
+      "spearman": 0.3568
+    },
+    "notes": ""
   }
 ]

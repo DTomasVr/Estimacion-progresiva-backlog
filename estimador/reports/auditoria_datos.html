@@ -341,16 +341,17 @@
   <p class="eyebrow">Agix · Tesis · Preparación del conjunto de datos</p>
   <h1>Qué predice realmente el esfuerzo de una tarea de software</h1>
   <p class="standfirst">
-    Registro completo de la preparación de datos y de los 152 experimentos de modelado
-    del estimador de esfuerzo de Agix. Documenta por qué el texto de una tarea no basta
-    para predecir sus horas, y por qué la evidencia apunta a corregir la estimación del
-    propio desarrollador en lugar de sustituirla.
+    Registro completo de la preparación de datos y de los 279 experimentos de modelado
+    del estimador de esfuerzo de Agix, sobre 89 851 tareas de doce organizaciones.
+    Documenta por qué el texto de una tarea no basta para predecir sus horas —ni con
+    seis veces más datos ni ajustando el codificador entero—, y por qué lo que sí
+    funciona es predecir cuánto se aparta la tarea de lo normal en su proyecto.
   </p>
   <div class="meta">
-    <span><b>Fecha</b> 8 de septiembre de 2026</span>
-    <span><b>Fuentes evaluadas</b> 20</span>
-    <span><b>Tareas con horas reales</b> 17 350</span>
-    <span><b>Corridas registradas</b> 152</span>
+    <span><b>Fecha</b> 10 de septiembre de 2026</span>
+    <span><b>Fuentes evaluadas</b> 21</span>
+    <span><b>Tareas con horas reales</b> 89 851</span>
+    <span><b>Corridas registradas</b> 279</span>
   </div>
 </header>
 
@@ -2067,7 +2068,338 @@
 </section>
 
 <section>
-  <div class="sec-head"><span class="sec-num">25</span><h2>La arquitectura que sostiene la evidencia</h2></div>
+  <div class="sec-head"><span class="sec-num">25</span><h2>El corpus público de Jira: 2,7 millones de issues</h2></div>
+
+  <p>
+    Todo lo anterior descansa sobre 17.350 tareas de dos organizaciones. Para saber si
+    el techo de 0,68 era nuestro o del problema hacía falta un corpus mucho mayor y de
+    procedencia distinta. <em>The Public Jira Dataset</em> (Montgomery, Lüders y Maalej,
+    MSR 2022) contiene 2.686.282 issues de dieciséis Jiras públicos, y a diferencia de
+    TAWOS conserva <code>timeoriginalestimate</code> junto a <code>timespent</code>.
+  </p>
+
+  <p>
+    Se distribuye como un volcado de MongoDB de 5,87 GB, que según sus autores ocupa
+    unos 60 GB una vez restaurado. No se restauró: el archivo es un único flujo gzip
+    que envuelve el formato de <code>mongodump</code>, así que se lee en directo desde
+    dentro del zip y cada issue se recorre a nivel de bytes, saltando por su propio
+    prefijo de longitud los ~300 campos personalizados vacíos, el <em>changelog</em> y
+    los comentarios. Los 2,69 millones de issues se procesan en <strong>383 s</strong>
+    sin instalar nada y sin escribir 60 GB en disco.
+  </p>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 34 · Cuánto tiempo real registra cada Jira público</caption>
+      <thead>
+        <tr><th>Organización</th><th class="num">Issues</th><th class="num">Con tiempo registrado</th><th class="num">%</th><th class="num">Con estimación <em>y</em> tiempo</th></tr>
+      </thead>
+      <tbody>
+        <tr class="good"><td>Apache</td><td class="num">1.014.926</td><td class="num"><strong>66.253</strong></td><td class="num">6,53</td><td class="num">1.781</td></tr>
+        <tr><td>Jira (Atlassian)</td><td class="num">274.545</td><td class="num">5.052</td><td class="num">1,84</td><td class="num"><strong>2.926</strong></td></tr>
+        <tr><td>Spring</td><td class="num">69.156</td><td class="num">1.859</td><td class="num">2,69</td><td class="num">1.050</td></tr>
+        <tr><td>RedHat</td><td class="num">353.000</td><td class="num">1.846</td><td class="num">0,52</td><td class="num">976</td></tr>
+        <tr><td>Sonatype</td><td class="num">87.284</td><td class="num">1.659</td><td class="num">1,90</td><td class="num">687</td></tr>
+        <tr><td>Sakai</td><td class="num">50.550</td><td class="num">575</td><td class="num">1,14</td><td class="num">73</td></tr>
+        <tr><td>JiraEcosystem</td><td class="num">41.866</td><td class="num">558</td><td class="num">1,33</td><td class="num">304</td></tr>
+        <tr><td>SecondLife</td><td class="num">1.867</td><td class="num">522</td><td class="num">27,96</td><td class="num">173</td></tr>
+        <tr><td>Qt</td><td class="num">148.579</td><td class="num">159</td><td class="num">0,11</td><td class="num">106</td></tr>
+        <tr><td>Hyperledger</td><td class="num">28.146</td><td class="num">151</td><td class="num">0,54</td><td class="num">78</td></tr>
+        <tr class="flag"><td>Mojang, MongoDB, MariaDB, JFrog, IntelDAOS, Mindville</td><td class="num">616.363</td><td class="num">0</td><td class="num">0,00</td><td class="num">0</td></tr>
+        <tr><td><strong>Total</strong></td><td class="num"><strong>2.686.282</strong></td><td class="num"><strong>78.634</strong></td><td class="num">2,93</td><td class="num"><strong>8.154</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Seis de los dieciséis Jiras no registran ni una sola hora: el registro de trabajo es
+    una función opcional de Jira y la mayoría de los proyectos abiertos no la usan. El
+    2,93 % que sí la usa basta, porque el denominador es enorme. De los seis vacíos,
+    Mojang y MongoDB aportan por sí solos 558.000 issues sin ninguna hora.
+  </p>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 35 · Depuración del bloque entrante</caption>
+      <thead><tr><th>Criterio</th><th class="num">Descartadas</th><th class="num">Quedan</th></tr></thead>
+      <tbody>
+        <tr><td>Punto de partida: issues con <code>timespent &gt; 0</code></td><td class="num">—</td><td class="num">78.634</td></tr>
+        <tr><td>D1 · esfuerzo fuera de [0,05 h , 200 h]</td><td class="num">311</td><td class="num">78.323</td></tr>
+        <tr><td>D2 · tipo contenedor (Epic, New Project…)</td><td class="num">125</td><td class="num">78.198</td></tr>
+        <tr><td>D3 · agregación de subtareas: el tiempo es de los hijos</td><td class="num">652</td><td class="num">77.546</td></tr>
+        <tr><td>D4 · sin texto utilizable</td><td class="num">0</td><td class="num">77.546</td></tr>
+        <tr class="flag"><td>D5 · issue ya presente a través de TAWOS</td><td class="num"><strong>5.045</strong></td><td class="num">72.501</td></tr>
+        <tr><td>D6 · texto ya presente en validación o prueba de v3</td><td class="num">0</td><td class="num">72.501</td></tr>
+        <tr class="good"><td><strong>Sobreviven</strong></td><td class="num">—</td><td class="num"><strong>72.501</strong> (92,2 %)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    D5 no es una precaución teórica: TAWOS y este corpus minan los mismos Jiras de
+    Apache, Atlassian, Sonatype, Hyperledger y Spring, y 5.045 issues aparecían
+    literalmente dos veces. Sin esa desduplicación, una parte del «corpus nuevo» habría
+    sido el corpus viejo contado otra vez.
+  </p>
+
+  <div class="verdict">
+    <span class="label">Cómo se ensambló v4</span>
+    <p>
+      El bloque de prueba de v3 se conserva <strong>byte a byte</strong>: las 4.225
+      tareas son exactamente las mismas y en el mismo orden. Lo nuevo solo puede entrar
+      en entrenamiento, en validación, o en un bloque <em>externo</em> de 150 proyectos
+      retenidos enteros. Así la pregunta «¿ayudan más datos?» es un A/B sobre una prueba
+      fija, y no una comparación entre dos pruebas distintas —que mediría la dificultad
+      de los exámenes, no la calidad de los modelos. El entrenamiento pasa de
+      <strong>10.597 a 63.926 filas</strong>.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">26</span><h2>Seis veces más datos no mueven la aguja</h2></div>
+
+  <p>
+    El bloque añadido no procede de la misma distribución que el objetivo: la mediana de
+    esfuerzo del Jira público es de <strong>0,83 h</strong> frente a las 2,00 h de TAWOS
+    y SiP. Por eso los brazos no se limitan a juntar las filas; varían en <em>cómo</em>
+    se usan los datos extra. Todos se seleccionan sobre la misma validación de v3 y se
+    leen sobre la misma prueba de v3.
+  </p>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 36 · A/B sobre la prueba fija de v3 (4.225 tareas), ordenado por validación</caption>
+      <thead>
+        <tr><th>Brazo</th><th class="num">n entrenamiento</th><th class="num">MdMRE validación</th><th class="num">MdMRE prueba</th><th class="num">PRED25</th><th class="num">Spearman</th><th class="num">Gana a la base</th></tr>
+      </thead>
+      <tbody>
+        <tr class="good"><td><strong>A · solo v3 (control)</strong></td><td class="num">10.597</td><td class="num"><strong>0,6086</strong></td><td class="num">0,6869</td><td class="num">0,171</td><td class="num">0,380</td><td class="num">14/24</td></tr>
+        <tr><td>E · agrupado, v3 con peso ×3</td><td class="num">63.926</td><td class="num">0,6090</td><td class="num">0,6850</td><td class="num">0,173</td><td class="num">0,389</td><td class="num">16/24</td></tr>
+        <tr><td>E · agrupado, v3 con peso ×12</td><td class="num">63.926</td><td class="num">0,6140</td><td class="num">0,6812</td><td class="num">0,167</td><td class="num">0,383</td><td class="num">15/24</td></tr>
+        <tr><td>B · agrupado sin ajuste</td><td class="num">63.926</td><td class="num">0,6146</td><td class="num">0,6854</td><td class="num">0,167</td><td class="num">0,392</td><td class="num">15/24</td></tr>
+        <tr><td>D · agrupado + recalibrado de mediana</td><td class="num">63.926</td><td class="num">0,6146</td><td class="num">0,6865</td><td class="num">0,167</td><td class="num">0,392</td><td class="num">15/24</td></tr>
+        <tr><td>E · agrupado, v3 con peso ×6</td><td class="num">63.926</td><td class="num">0,6151</td><td class="num">0,6817</td><td class="num">0,166</td><td class="num">0,383</td><td class="num"><strong>18/24</strong></td></tr>
+        <tr><td>G · público recortado al rango de v3</td><td class="num">59.512</td><td class="num">0,6153</td><td class="num"><strong>0,6815</strong></td><td class="num">0,165</td><td class="num">0,376</td><td class="num">16/24</td></tr>
+        <tr><td>F · transferencia como rasgo extra</td><td class="num">10.597 + 53.329</td><td class="num">0,6167</td><td class="num">0,6887</td><td class="num">0,175</td><td class="num">0,379</td><td class="num">15/24</td></tr>
+        <tr class="flag"><td>línea base (mediana del proyecto)</td><td class="num">—</td><td class="num">0,7500</td><td class="num">0,7273</td><td class="num">0,164</td><td class="num">0,089</td><td class="num">0/24</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    La selección honesta —la que solo mira validación— elige el <strong>control</strong>.
+    Los veintidós brazos caben en la franja 0,681-0,705, un rango más estrecho que la
+    diferencia entre dos semillas. Multiplicar por seis los datos de entrenamiento y
+    añadir diez organizaciones nuevas cambia el error en la tercera cifra decimal.
+  </p>
+
+  <p>
+    Queda una explicación pendiente: hasta aquí el codificador estaba congelado, de modo
+    que la representación nunca tuvo ocasión de cambiar. Ajustarlo de extremo a extremo
+    sobre 10.597 filas no era una prueba justa —278 millones de parámetros memorizan ese
+    volumen. Sobre 63.926 sí lo es, y es la última palanca que la falta de datos podía
+    estar bloqueando.
+  </p>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 37 · Ajuste fino de extremo a extremo sobre 63.926 filas</caption>
+      <thead><tr><th>Bloque de evaluación</th><th class="num">MdMRE</th><th class="num">PRED25</th><th class="num">MAE</th><th class="num">Spearman</th><th class="num">Compresión</th></tr></thead>
+      <tbody>
+        <tr><td>prueba fija de v3</td><td class="num">0,6860</td><td class="num">0,166</td><td class="num">5,02 h</td><td class="num">0,369</td><td class="num">0,585</td></tr>
+        <tr class="flag"><td>externo · 150 proyectos nuevos</td><td class="num">0,7141</td><td class="num">0,153</td><td class="num">2,42 h</td><td class="num"><strong>−0,014</strong></td><td class="num">0,477</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="verdict reject">
+    <span class="label">El techo no es de muestra, ni de algoritmo, ni de representación</span>
+    <p>
+      0,6860 sobre la misma prueba en la que el codificador congelado da 0,6854. Y en
+      organizaciones que no vio nunca, el modelo ajustado pierde <em>todo</em> el orden:
+      Spearman −0,014, indistinguible del azar. Lo que el ajuste fino aprendió fue el
+      vocabulario de los proyectos de entrenamiento, no una noción transferible de
+      tamaño. Sumado a las 21 configuraciones previas, a las 16 familias de algoritmos y
+      a la curva de aprendizaje plana, la conclusión se cierra: <strong>el texto de una
+      tarea, por sí solo, no contiene la información necesaria</strong> para fijar sus
+      horas.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">27</span><h2>La escala del proyecto pesa más que el texto</h2></div>
+
+  <p>
+    Evaluando dentro del propio corpus público aparece un resultado incómodo: la mediana
+    del proyecto, una constante por proyecto sin ninguna lectura del texto, obtiene
+    <strong>MdMRE 0,5455</strong>, mientras que el modelo de texto se queda en 0,6765.
+    Si la escala del proyecto lleva más señal que el texto, pedirle al texto que prediga
+    el número absoluto desperdicia su capacidad reaprendiendo esa escala.
+  </p>
+
+  <p>
+    De ahí el cambio de objetivo: en lugar de <code>log(horas)</code>, predecir
+    <code>log(horas) − log(mediana del proyecto)</code>, y multiplicar la mediana al
+    final. Al texto solo se le pide decir «más grande o más pequeña de lo habitual
+    aquí», que es la pregunta que sí sabe responder.
+  </p>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 38 · Objetivo absoluto frente a objetivo en razón</caption>
+      <thead>
+        <tr><th>Bloque</th><th>Método</th><th class="num">MdMRE</th><th class="num">PRED25</th><th class="num">Spearman</th><th class="num">Compresión</th></tr>
+      </thead>
+      <tbody>
+        <tr><td rowspan="3">corpus público<br><span class="mono">5.917 tareas</span></td><td>línea base: mediana del proyecto</td><td class="num">0,5455</td><td class="num">0,265</td><td class="num">0,508</td><td class="num">0,586</td></tr>
+        <tr><td>hgb absoluto</td><td class="num">0,6765</td><td class="num">0,176</td><td class="num">0,367</td><td class="num">0,337</td></tr>
+        <tr class="good"><td><strong>hgb sobre la razón × mediana</strong></td><td class="num"><strong>0,5488</strong></td><td class="num">0,247</td><td class="num"><strong>0,571</strong></td><td class="num">0,615</td></tr>
+        <tr><td rowspan="3">prueba fija de v3<br><span class="mono">4.225 tareas</span></td><td>línea base: mediana del proyecto</td><td class="num">0,7273</td><td class="num">0,164</td><td class="num">0,089</td><td class="num">0,348</td></tr>
+        <tr class="good"><td><strong>hgb absoluto</strong></td><td class="num"><strong>0,6854</strong></td><td class="num">0,167</td><td class="num">0,392</td><td class="num">0,396</td></tr>
+        <tr><td>hgb sobre la razón × mediana</td><td class="num">0,6947</td><td class="num">0,161</td><td class="num">0,310</td><td class="num">0,465</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Dentro del corpus público el cambio de objetivo mejora el error un <strong>18,9 %</strong>
+    y sube la correlación de orden de 0,367 a 0,571 —por encima incluso de la mediana
+    del proyecto, que era el rival a batir. Sobre la prueba de v3 el mismo cambio
+    empeora ligeramente, y por una razón identificable: esa partición es cronológica
+    dentro de cada proyecto, y allí la mediana del proyecto apenas ordena nada
+    (Spearman 0,089). La razón solo ayuda donde la mediana es informativa.
+  </p>
+
+  <div class="verdict">
+    <span class="label">Qué significa para Agix</span>
+    <p>
+      El modelo no debe predecir horas en el vacío. Debe predecir <em>cuánto se aparta
+      esta tarea de lo normal en este proyecto</em>, y la aplicación aporta el «lo normal»
+      con las tareas que ya se cerraron. Eso convierte el rastreador de tiempo —que ya
+      estaba previsto en el producto— de accesorio en insumo del predictor.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">28</span><h2>La curva de despliegue</h2></div>
+
+  <p>
+    El bloque externo son 150 proyectos que ningún modelo vio jamás y 13.255 tareas: es
+    exactamente la posición de Agix cuando un cliente crea su primer proyecto. Las
+    tareas se puntúan en orden, y cada una usa <strong>solo las que terminaron antes en
+    su propio proyecto</strong> —nunca la mediana completa, que sería leer el futuro.
+  </p>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 39 · Precisión en función de cuántas tareas lleva cerradas el proyecto</caption>
+      <thead>
+        <tr><th>Tareas ya terminadas</th><th class="num">n</th><th class="num">MdMRE</th><th class="num">PRED25</th><th class="num">PRED50</th><th class="num">MAE</th><th class="num">Banda 80 %</th></tr>
+      </thead>
+      <tbody>
+        <tr class="flag"><td>0 · la primera tarea del cliente</td><td class="num">150</td><td class="num">0,8598</td><td class="num">0,120</td><td class="num">0,240</td><td class="num">9,87 h</td><td class="num">×91</td></tr>
+        <tr class="flag"><td>1-4</td><td class="num">414</td><td class="num">0,8653</td><td class="num">0,133</td><td class="num">0,271</td><td class="num">4,33 h</td><td class="num">×49</td></tr>
+        <tr><td>5-9</td><td class="num">357</td><td class="num">0,7136</td><td class="num">0,216</td><td class="num">0,350</td><td class="num">4,19 h</td><td class="num">×28</td></tr>
+        <tr><td>10-19</td><td class="num">470</td><td class="num">0,7231</td><td class="num">0,209</td><td class="num">0,368</td><td class="num">4,40 h</td><td class="num">×27</td></tr>
+        <tr><td>20-49</td><td class="num">979</td><td class="num">0,6402</td><td class="num">0,248</td><td class="num">0,407</td><td class="num">2,27 h</td><td class="num">×15</td></tr>
+        <tr class="good"><td><strong>50 o más</strong></td><td class="num">10.885</td><td class="num"><strong>0,5664</strong></td><td class="num">0,239</td><td class="num">0,446</td><td class="num">1,82 h</td><td class="num"><strong>×11</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    El error baja un <strong>34 %</strong> y la banda se estrecha de ×91 a ×11 a medida
+    que el proyecto acumula historia. Ninguno de esos tramos alcanza los criterios de
+    Conte —PRED25 ≥ 0,75 sigue lejísimos—, pero la curva describe el producto con
+    honestidad: la primera estimación de un cliente nuevo es poco más que una
+    conjetura ordenada, y hacia la quincuagésima tarea el sistema ya ha aprendido esa
+    organización.
+  </p>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 40 · Detección de tareas grandes sobre el bloque externo</caption>
+      <thead><tr><th>Umbral</th><th class="num">Positivos</th><th class="num">AUC</th></tr></thead>
+      <tbody>
+        <tr class="good"><td>&gt; 8 h</td><td class="num">872</td><td class="num"><strong>0,816</strong></td></tr>
+        <tr class="good"><td>&gt; 16 h</td><td class="num">322</td><td class="num"><strong>0,827</strong></td></tr>
+        <tr><td>&gt; 40 h</td><td class="num">70</td><td class="num">0,779</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    El aviso de riesgo sí resiste el cambio de corpus: en organizaciones nunca vistas, el
+    modelo sigue separando las tareas grandes de las pequeñas con AUC 0,82. Es la única
+    función que funciona bien en arranque en frío, y coincide con la que ya se había
+    medido sobre v3.
+  </p>
+
+  <h3>Dos lecturas anteriores que estos datos corrigen</h3>
+
+  <p>
+    <strong>La igualdad entre estimación y tiempo registrado no es un defecto del corpus
+    público.</strong> El 29,4 % de las filas con estimación tienen
+    <code>timespent</code> exactamente igual a la estimación, lo que hacía sospechar del
+    relleno automático de Jira. El control lo desmiente: SiP, que mide con reloj
+    automático y no a mano, tiene esa igualdad en el <strong>35,5 %</strong> de sus
+    filas. Es un rasgo de cómo se registra el trabajo en general —o de que la gente
+    trabaja hasta agotar lo estimado— y no procede descartar esas filas en un corpus y
+    conservarlas en el otro.
+  </p>
+
+  <p>
+    <strong>La estimación humana no es universalmente superior al modelo.</strong> La
+    conclusión de que el experto supera al modelo por 2,4× se midió sobre SiP y solo
+    sobre SiP. Con diez organizaciones a la vista, SiP resulta ser la excepción.
+  </p>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 41 · Calidad de la estimación humana por organización</caption>
+      <thead><tr><th>Organización</th><th class="num">n</th><th class="num">MdMRE</th><th class="num">PRED25</th><th class="num">Spearman</th></tr></thead>
+      <tbody>
+        <tr class="good"><td><strong>SiP</strong> (referencia previa)</td><td class="num">7.791</td><td class="num"><strong>0,2500</strong></td><td class="num">0,509</td><td class="num">0,854</td></tr>
+        <tr><td>Jira (Atlassian)</td><td class="num">885</td><td class="num">0,5472</td><td class="num">0,238</td><td class="num">0,700</td></tr>
+        <tr><td>RedHat</td><td class="num">634</td><td class="num">0,5556</td><td class="num">0,148</td><td class="num">0,701</td></tr>
+        <tr><td>Qt</td><td class="num">47</td><td class="num">0,5556</td><td class="num">0,192</td><td class="num">0,578</td></tr>
+        <tr><td>JiraEcosystem</td><td class="num">206</td><td class="num">0,6000</td><td class="num">0,160</td><td class="num">0,648</td></tr>
+        <tr><td>SecondLife</td><td class="num">112</td><td class="num">0,6000</td><td class="num">0,223</td><td class="num">0,640</td></tr>
+        <tr><td>Spring</td><td class="num">523</td><td class="num">0,6667</td><td class="num">0,128</td><td class="num">0,710</td></tr>
+        <tr class="flag"><td>Apache</td><td class="num">1.349</td><td class="num">1,0000</td><td class="num">0,100</td><td class="num">0,261</td></tr>
+        <tr class="flag"><td>Sakai</td><td class="num">45</td><td class="num">1,0000</td><td class="num">0,133</td><td class="num">0,658</td></tr>
+        <tr class="flag"><td>Sonatype</td><td class="num">68</td><td class="num">1,0000</td><td class="num">0,132</td><td class="num">0,669</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    Sobre esas mismas 3.875 filas el modelo obtiene MdMRE 0,7191 frente al 0,7500 de la
+    estimación humana: <strong>el modelo la iguala o la supera</strong> fuera de SiP. Y
+    como ya ocurría con el LLM, combinarlos gana a ambos —la media geométrica de modelo
+    y estimación da 0,6207, y una sola corrección multiplicativa (×0,667, el mismo
+    factor que corregía al LLM) lleva la estimación humana a 0,6000.
+  </p>
+
+  <div class="verdict">
+    <span class="label">Lo que cambia en el argumento de la tesis</span>
+    <p>
+      El componente predictivo deja de ser «peor que preguntarle a un desarrollador».
+      En nueve de diez organizaciones medidas, la estimación humana no llega a los
+      criterios de aceptación y el modelo tampoco; ninguno de los dos resuelve el
+      problema, y el mejor resultado disponible siempre es la combinación. Eso reencuadra
+      la aportación: no un estimador que sustituye al juicio experto, sino un sistema que
+      arranca sin datos, avisa de las tareas grandes con AUC 0,82, y mejora de forma
+      medible con cada tarea que el equipo cierra.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">29</span><h2>La arquitectura que sostiene la evidencia</h2></div>
 
   <p>
     Cada flecha del diseño tiene una medición detrás.
@@ -2122,7 +2454,7 @@
 </section>
 
 <section>
-  <div class="sec-head"><span class="sec-num">26</span><h2>Reproducibilidad</h2></div>
+  <div class="sec-head"><span class="sec-num">30</span><h2>Reproducibilidad</h2></div>
 
   <p>
     Cada cifra de este documento procede de un script versionado que puede volver a ejecutarse
@@ -2156,6 +2488,11 @@
         <tr><td class="mono">42-44</td><td>ajuste fino sin fuga, selección en validación y lectura única de prueba</td></tr>
         <tr><td class="mono">45-47</td><td>panel de métricas, reimplementación de Deep-SE y GPT2SP, barrido sobre v3</td></tr>
         <tr><td class="mono">48</td><td>estimación por LLM a ciegas, calibración y combinación</td></tr>
+        <tr><td class="mono">jira_archive.py</td><td>lector en flujo del volcado mongodump, sin instalar MongoDB</td></tr>
+        <tr><td class="mono">50-51</td><td>extracción y perfilado de The Public Jira Dataset</td></tr>
+        <tr><td class="mono">52-53</td><td>construcción de v4 y codificación reutilizando la caché de v3</td></tr>
+        <tr><td class="mono">54-55</td><td>A/B sobre prueba fija, arranque en frío y estimación humana por organización</td></tr>
+        <tr><td class="mono">56-58</td><td>objetivo en razón, ajuste fino sobre 63 926 filas y curva de despliegue</td></tr>
         <tr><td class="mono">10_data_quality_report.py</td><td>diagnóstico de calidad, solo lectura</td></tr>
         <tr><td class="mono">11_learning_curve.py</td><td>curva de aprendizaje y suficiencia de datos</td></tr>
         <tr><td class="mono">12_clean_dataset.py</td><td>aplicación de las decisiones de limpieza</td></tr>
@@ -2185,6 +2522,12 @@
       <strong>SiP</strong> — Jones, D. M. y Cullum, S. (2019).
       <em>A conversation around the analysis of the SiP effort estimation dataset</em>.
       <a href="https://arxiv.org/abs/1901.01621">arXiv:1901.01621</a>.
+    </li>
+    <li>
+      <strong>The Public Jira Dataset</strong> — Montgomery, L., Lüders, C. y Maalej, W. (2022).
+      <em>An Alternative Issue Tracking Dataset of Public Jira Repositories</em>. MSR 2022,
+      pp. 73-77. Datos bajo CC BY 4.0, código bajo MIT.
+      <a href="https://doi.org/10.5281/zenodo.15719919">Zenodo 15719919</a>.
     </li>
     <li>
       <strong>Project-22</strong> — Jones, D. M. (2023).

@@ -6491,5 +6491,41 @@
       "MdMRE_val": 0.75
     },
     "notes": ""
+  },
+  {
+    "arm": "v4_ajuste_fino",
+    "variant": "mpnet_e2e_prueba fija ",
+    "split": "split_t3_v4",
+    "data_sha256": "b6cf35368aba7d65",
+    "timestamp": "2026-09-10T14:00:31",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MAE_h": 5.0187,
+      "MdAE_h": 1.4447,
+      "MdMRE": 0.686,
+      "PRED25": 0.1657,
+      "PRED50": 0.342,
+      "RMSE_log": 1.2908
+    },
+    "notes": ""
+  },
+  {
+    "arm": "v4_ajuste_fino",
+    "variant": "mpnet_e2e_externo (150",
+    "split": "split_t3_v4",
+    "data_sha256": "b6cf35368aba7d65",
+    "timestamp": "2026-09-10T14:00:45",
+    "python": "3.12.6",
+    "config": {},
+    "metrics": {
+      "MAE_h": 2.4201,
+      "MdAE_h": 0.6517,
+      "MdMRE": 0.7141,
+      "PRED25": 0.1531,
+      "PRED50": 0.3216,
+      "RMSE_log": 1.4153
+    },
+    "notes": ""
   }
 ]

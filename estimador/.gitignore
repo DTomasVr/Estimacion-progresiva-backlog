@@ -9,3 +9,11 @@ __pycache__/
 reports/data_quality.txt
 data/processed/embeddings/
 catboost_info/
+
+# entrega: los datos y las copias de scripts se regeneran con src/60_entrega.py;
+# se versionan solo los entregables legibles (cuadernos, figuras, tablas)
+entrega/*
+!entrega/LEEME.md
+!entrega/notebooks/
+!entrega/figuras/
+!entrega/tablas/

@@ -1,0 +1,10 @@
+entrenamiento,bloque,n,MdMRE,PRED25,rasgos,MdMRE_val,MdMRE_test,PRED25_test
+A · todo el entrenamiento (lo actual),prueba completa,4225.0,0.6869,0.1709,,,,
+A · todo el entrenamiento (lo actual),prueba · solo una persona,3982.0,0.6866,0.172,,,,
+A · todo el entrenamiento (lo actual),prueba · solo varias personas,243.0,0.6979,0.1523,,,,
+B · sin las filas de varias personas,prueba completa,4225.0,0.6802,0.1707,,,,
+B · sin las filas de varias personas,prueba · solo una persona,3982.0,0.6798,0.1715,,,,
+B · sin las filas de varias personas,prueba · solo varias personas,243.0,0.6991,0.1564,,,,
+,,,,,sin ellas (lo actual),0.6086,0.6869,0.1709
+,,,,,añadiendo n_dev,0.6138,0.6847,0.1671
+,,,,,añadiendo n_dev y effort_task_total,0.0044,0.006,0.9794

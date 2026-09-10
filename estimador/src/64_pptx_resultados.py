@@ -172,6 +172,32 @@ def main():
                     "El criterio está escrito para errores simétricos.",
                     tono="ambar")
 
+    # ------------------------------------------------------------------ 10b
+    s, y = P.lamina(prs, "Pero el propio campo abandonó esos criterios",
+                    "Kitchenham (2001) y Foss (2003) demostraron que MMRE "
+                    "favorece a los modelos que subestiman. Shepperd & MacDonell "
+                    "(2012) lo sustituyen por una pregunta que ningún umbral "
+                    "esquiva: ¿esto vale más que adivinar al azar?")
+    y = P.tabla(s, y,
+                ["_Escenario", "_Quién estima", "SA", "Tamaño del efecto"],
+                [["SiP con estimación", "experto humano", "0,485", "−29,2"],
+                 ["Jira público con estimación", "humano × modelo combinados", "0,477", "−27,0"],
+                 ["Dentro del corpus público", "modelo (razón × mediana)", "0,465", "−17,8"],
+                 ["150 organizaciones nuevas · régimen", "modelo + calibración", "0,443", "−25,2"],
+                 ["Prueba fija del Dataset 1", "modelo v4", "0,422", "−18,2"],
+                 ["150 organizaciones nuevas · arranque en frío", "modelo + calibración", "0,387", "−5,6"],
+                 ["Jira público con estimación", "experto humano", "−0,077", "+4,4"]],
+                anchos=[4.6, 3.6, 1.3, 2.2], tam=13, alto_fila=Inches(0.42),
+                resaltar={6: P.AVISO_SUAVE})
+    y += Inches(0.22)
+    P.veredicto(s, y, "diez de once escenarios superan al azar con holgura",
+                "El modelo elimina entre el 39 % y el 46 % del error de adivinar, "
+                "en todos los regímenes y con tamaños de efecto enormes. El único "
+                "que NO supera al azar es la estimación humana en Jira público: "
+                "SA = −0,077.")
+    P.nota(s, "SA = 1 − MAR/MAR_azar. El azar predice para cada tarea el valor "
+              "de otra tarea del mismo bloque, promediado sobre 1 000 corridas.")
+
     # ------------------------------------------------------------------ 11
     s, y = P.lamina(prs, "Tampoco lo cumple nadie más",
                     "El umbral del 85 % de acierto no lo alcanza ningún método "

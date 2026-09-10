@@ -1,0 +1,12 @@
+escenario,quien,n,MAR,MAR_azar,SA,delta,MdMRE,PRED25
+prueba fija (Dataset 1),modelo v4 agrupado,4225,5.001,8.65,0.4219,-18.2,0.6854,0.1666
+prueba fija (Dataset 1),linea base mediana proyecto,4225,5.256,8.65,0.3924,-16.9,0.7273,0.1636
+dentro del corpus publico,modelo en razon x mediana,5917,1.644,3.073,0.4649,-17.8,0.5488,0.2469
+dentro del corpus publico,linea base mediana proyecto,5917,1.684,3.073,0.452,-17.3,0.5455,0.265
+150 organizaciones nuevas,modelo + calibracion en linea,13255,2.181,3.877,0.4373,-25.4,0.5906,0.2333
+150 organizaciones nuevas,arranque en frio (0-4),564,5.804,9.466,0.3868,-5.6,0.8638,0.1294
+150 organizaciones nuevas,regimen (50+),10885,1.824,3.274,0.4429,-25.2,0.5664,0.239
+SiP con estimacion,experto humano,7791,4.756,9.228,0.4846,-29.2,0.25,0.5093
+Jira publico con estimacion,experto humano,5492,11.367,10.552,-0.0772,4.4,0.4036,0.4019
+Jira publico con estimacion,modelo v4,5492,6.427,10.552,0.391,-22.1,0.7032,0.1378
+Jira publico con estimacion,media geometrica humano x modelo,5492,5.515,10.552,0.4774,-27.0,0.5408,0.2156

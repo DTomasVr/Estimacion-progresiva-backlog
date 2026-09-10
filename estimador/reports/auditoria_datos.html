@@ -2480,6 +2480,74 @@
     mueve el error del 114 % al 59 %, no del 114 % al 15 %.
   </p>
 
+  <h3>La medida que el campo usa hoy en lugar de estos criterios</h3>
+
+  <p>
+    Los criterios de Conte no son neutrales. Kitchenham et al. (2001) y Foss et
+    al. (2003) demostraron que MMRE premia sistemáticamente a los modelos que
+    <em>subestiman</em>: se puede ganar en MMRE siendo tímido en lugar de
+    acertado. Shepperd y MacDonell (2012) propusieron reemplazarlo por la
+    <strong>Standardised Accuracy</strong>, que hace una pregunta que ningún
+    umbral esquiva: ¿esto vale más que adivinar al azar?
+  </p>
+
+  <p class="mono" style="margin-left:1.2rem">
+    SA = 1 − MAR / MAR<sub>azar</sub>
+  </p>
+
+  <p>
+    donde MAR es el error absoluto medio y MAR<sub>azar</sub> el de predecir,
+    para cada tarea, el valor real de otra tarea del mismo bloque, promediado
+    sobre 1 000 corridas. El tamaño del efecto es la delta de Glass contra la
+    dispersión de esas corridas, para que un SA pequeño sobre una muestra grande
+    no se confunda con un efecto real.
+  </p>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 44 · Standardised Accuracy sobre los mismos regímenes</caption>
+      <thead>
+        <tr><th>Régimen</th><th>Quién estima</th><th class="num">n</th><th class="num">MAR</th><th class="num">MAR azar</th><th class="num">SA</th><th class="num">Efecto</th></tr>
+      </thead>
+      <tbody>
+        <tr class="good"><td>SiP con estimación</td><td><strong>experto humano</strong></td><td class="num">7.791</td><td class="num">4,76 h</td><td class="num">9,23 h</td><td class="num"><strong>0,485</strong></td><td class="num">−29,2</td></tr>
+        <tr class="good"><td>Jira público con estimación</td><td>humano × modelo combinados</td><td class="num">5.492</td><td class="num">5,52 h</td><td class="num">10,55 h</td><td class="num"><strong>0,477</strong></td><td class="num">−27,0</td></tr>
+        <tr class="good"><td>dentro del corpus público</td><td>modelo · razón × mediana</td><td class="num">5.917</td><td class="num">1,64 h</td><td class="num">3,07 h</td><td class="num"><strong>0,465</strong></td><td class="num">−17,8</td></tr>
+        <tr><td>dentro del corpus público</td><td>línea base: mediana del proyecto</td><td class="num">5.917</td><td class="num">1,68 h</td><td class="num">3,07 h</td><td class="num">0,452</td><td class="num">−17,3</td></tr>
+        <tr class="good"><td>150 organizaciones nuevas · régimen 50+</td><td>modelo + calibración en línea</td><td class="num">10.885</td><td class="num">1,82 h</td><td class="num">3,27 h</td><td class="num"><strong>0,443</strong></td><td class="num">−25,2</td></tr>
+        <tr><td>150 organizaciones nuevas · bloque completo</td><td>modelo + calibración en línea</td><td class="num">13.255</td><td class="num">2,18 h</td><td class="num">3,88 h</td><td class="num">0,437</td><td class="num">−25,4</td></tr>
+        <tr><td>prueba fija de v3</td><td>modelo v4 agrupado</td><td class="num">4.225</td><td class="num">5,00 h</td><td class="num">8,65 h</td><td class="num">0,422</td><td class="num">−18,2</td></tr>
+        <tr><td>prueba fija de v3</td><td>línea base: mediana del proyecto</td><td class="num">4.225</td><td class="num">5,26 h</td><td class="num">8,65 h</td><td class="num">0,392</td><td class="num">−16,9</td></tr>
+        <tr><td>Jira público con estimación</td><td>modelo v4</td><td class="num">5.492</td><td class="num">6,43 h</td><td class="num">10,55 h</td><td class="num">0,391</td><td class="num">−22,1</td></tr>
+        <tr><td>150 organizaciones nuevas · arranque en frío</td><td>modelo + calibración en línea</td><td class="num">564</td><td class="num">5,80 h</td><td class="num">9,47 h</td><td class="num">0,387</td><td class="num">−5,6</td></tr>
+        <tr class="flag"><td>Jira público con estimación</td><td>experto humano</td><td class="num">5.492</td><td class="num">11,37 h</td><td class="num">10,55 h</td><td class="num"><strong>−0,077</strong></td><td class="num">+4,4</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    <strong>Diez de once regímenes superan al azar con holgura.</strong> El
+    modelo elimina entre el <strong>39 % y el 46 %</strong> del error de
+    adivinar, en todos los regímenes —incluido el arranque en frío— y con
+    tamaños de efecto de entre −5,6 y −25,4 desviaciones típicas. El único que
+    <em>no</em> supera al azar es la estimación humana en Jira público, con
+    SA = −0,077: fuera de SiP, preguntarle a un desarrollador es literalmente
+    peor que sortear una tarea al azar y copiar sus horas.
+  </p>
+
+  <div class="verdict">
+    <span class="label">Las dos lecturas conviven, y hay que dar las dos</span>
+    <p>
+      Bajo los criterios de Conte el componente falla, y también falla el experto
+      humano. Bajo la medida que el campo usa desde 2012, el componente elimina
+      cerca de la mitad del error de adivinar en todos los regímenes probados, y
+      la mejor combinación disponible —estimación humana corregida por el
+      modelo— alcanza SA 0,477 donde la estimación humana sola queda en −0,077.
+      Ninguna de las dos lecturas anula a la otra: la primera dice que esto no
+      sustituye a un planificador, la segunda dice que no es ruido.
+    </p>
+  </div>
+
   <div class="verdict reject">
     <span class="label">El criterio 2 no es alcanzable en este problema</span>
     <p>
@@ -2605,6 +2673,7 @@
         <tr><td class="mono">54-55</td><td>A/B sobre prueba fija, arranque en frío y estimación humana por organización</td></tr>
         <tr><td class="mono">56-58</td><td>objetivo en razón, ajuste fino sobre 63 926 filas y curva de despliegue</td></tr>
         <tr><td class="mono">59_criterios_v4.py</td><td>los cuatro criterios de aceptación sobre todos los regímenes</td></tr>
+        <tr><td class="mono">61, 65</td><td>validez del diseño y Standardised Accuracy de Shepperd y MacDonell</td></tr>
         <tr><td class="mono">10_data_quality_report.py</td><td>diagnóstico de calidad, solo lectura</td></tr>
         <tr><td class="mono">11_learning_curve.py</td><td>curva de aprendizaje y suficiencia de datos</td></tr>
         <tr><td class="mono">12_clean_dataset.py</td><td>aplicación de las decisiones de limpieza</td></tr>
@@ -2640,6 +2709,16 @@
       <em>An Alternative Issue Tracking Dataset of Public Jira Repositories</em>. MSR 2022,
       pp. 73-77. Datos bajo CC BY 4.0, código bajo MIT.
       <a href="https://doi.org/10.5281/zenodo.15719919">Zenodo 15719919</a>.
+    </li>
+    <li>
+      <strong>Criterios de evaluación</strong> — Conte, S. D., Dunsmore, H. E. y
+      Shen, V. Y. (1986). <em>Software Engineering Metrics and Models</em>
+      (MMRE ≤ 0,25 y PRED(25) ≥ 0,75). Su crítica: Kitchenham, B. et al. (2001),
+      <em>What accuracy statistics really measure</em>; Foss, T. et al. (2003),
+      <em>A simulation study of the model evaluation criterion MMRE</em>. La
+      alternativa usada aquí: Shepperd, M. y MacDonell, S. (2012),
+      <em>Evaluating prediction systems in software project estimation</em>,
+      Information and Software Technology.
     </li>
     <li>
       <strong>Project-22</strong> — Jones, D. M. (2023).

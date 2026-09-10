@@ -2399,7 +2399,118 @@
 </section>
 
 <section>
-  <div class="sec-head"><span class="sec-num">29</span><h2>La arquitectura que sostiene la evidencia</h2></div>
+  <div class="sec-head"><span class="sec-num">29</span><h2>¿Se cumplen los criterios de aceptación?</h2></div>
+
+  <p>
+    La pregunta que decide si el componente es defendible. Los cuatro criterios se
+    evalúan sobre <em>todos</em> los regímenes que v4 permite, y con el mismo rasero
+    para el modelo, para la línea base y para el experto humano —porque «¿llega el
+    modelo?» solo se interpreta junto a «¿llega alguien?».
+  </p>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 42 · Los cuatro criterios sobre cada régimen de v4</caption>
+      <thead>
+        <tr>
+          <th>Régimen</th><th>Quién estima</th><th class="num">n</th>
+          <th class="num">MAE / media</th><th class="num">RMSE / MAE</th>
+          <th class="num">MdAPE</th><th class="num">PRED25</th><th class="num">Cumple</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td rowspan="2">prueba fija de v3</td><td>modelo v4 agrupado</td><td class="num">4.225</td><td class="num">80,3 %</td><td class="num">2,90</td><td class="num">68,5 %</td><td class="num">0,167</td><td class="num">0/4</td></tr>
+        <tr><td>línea base: mediana del proyecto</td><td class="num">4.225</td><td class="num">84,4 %</td><td class="num">2,85</td><td class="num">72,7 %</td><td class="num">0,164</td><td class="num">0/4</td></tr>
+        <tr><td rowspan="2">dentro del corpus público</td><td>modelo en razón × mediana</td><td class="num">5.917</td><td class="num">72,6 %</td><td class="num">3,68</td><td class="num">54,9 %</td><td class="num">0,247</td><td class="num">0/4</td></tr>
+        <tr><td>línea base: mediana del proyecto</td><td class="num">5.917</td><td class="num">74,4 %</td><td class="num">3,69</td><td class="num">54,5 %</td><td class="num">0,265</td><td class="num">0/4</td></tr>
+        <tr class="flag"><td rowspan="4">150 proyectos nuevos<br><span class="mono">calibración en línea</span></td><td>arranque en frío · 0-4 tareas</td><td class="num">564</td><td class="num">97,6 %</td><td class="num">2,99</td><td class="num">86,4 %</td><td class="num">0,129</td><td class="num">0/4</td></tr>
+        <tr><td>rodaje · 5-19 tareas</td><td class="num">827</td><td class="num">90,0 %</td><td class="num">3,09</td><td class="num">71,8 %</td><td class="num">0,212</td><td class="num">0/4</td></tr>
+        <tr><td>en marcha · 20-49 tareas</td><td class="num">979</td><td class="num">84,0 %</td><td class="num">3,14</td><td class="num">64,0 %</td><td class="num">0,248</td><td class="num">0/4</td></tr>
+        <tr class="good"><td><strong>régimen · 50+ tareas</strong></td><td class="num">10.885</td><td class="num">72,4 %</td><td class="num">3,38</td><td class="num"><strong>56,6 %</strong></td><td class="num">0,239</td><td class="num">0/4</td></tr>
+        <tr class="good"><td>SiP con estimación humana</td><td><strong>experto humano</strong></td><td class="num">7.791</td><td class="num">72,8 %</td><td class="num">3,78</td><td class="num"><strong>25,0 %</strong></td><td class="num"><strong>0,509</strong></td><td class="num">0/4</td></tr>
+        <tr class="flag"><td rowspan="3">Jira público con estimación</td><td>experto humano</td><td class="num">5.492</td><td class="num">147,5 %</td><td class="num">5,18</td><td class="num">40,4 %</td><td class="num">0,402</td><td class="num">0/4</td></tr>
+        <tr><td>modelo v4</td><td class="num">5.492</td><td class="num">83,4 %</td><td class="num">2,48</td><td class="num">70,3 %</td><td class="num">0,138</td><td class="num">0/4</td></tr>
+        <tr><td>media geométrica humano × modelo</td><td class="num">5.492</td><td class="num">71,6 %</td><td class="num">2,51</td><td class="num">54,1 %</td><td class="num">0,216</td><td class="num">0/4</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    <strong>Cero de doce.</strong> Ningún régimen cumple ningún criterio, y eso incluye
+    al experto humano de SiP, que es el mejor estimador que aparece en toda esta
+    investigación. El umbral del 85 % de acierto no lo alcanza nadie: la mejor cifra de
+    PRED(25) de un modelo es <strong>0,248</strong>, y la del experto humano
+    <strong>0,509</strong>.
+  </p>
+
+  <h3>Qué mejoró de todas formas</h3>
+
+  <p>
+    La comparación tiene que hacerse sobre el mismo examen. Sobre la prueba fija de v3
+    no hubo mejora (Tabla 36), pero esa prueba son proyectos que el modelo ya conocía.
+    Sobre el bloque externo —150 organizaciones nuevas, las 13.255 tareas completas— sí
+    la hay, y es grande:
+  </p>
+
+  <div class="scroller">
+    <table>
+      <caption>Tabla 43 · Las mismas 13.255 tareas de 150 proyectos nuevos, tres configuraciones</caption>
+      <thead>
+        <tr><th>Configuración</th><th class="num">MdMRE</th><th class="num">PRED25</th><th class="num">PRED50</th><th class="num">MAE</th><th class="num">Spearman</th></tr>
+      </thead>
+      <tbody>
+        <tr class="flag"><td>A · entrenado solo con v3, valor absoluto</td><td class="num">1,1407</td><td class="num">0,125</td><td class="num">0,258</td><td class="num">2,69 h</td><td class="num">0,220</td></tr>
+        <tr><td>B · + corpus público, valor absoluto</td><td class="num">0,7032</td><td class="num">0,159</td><td class="num">0,330</td><td class="num">2,33 h</td><td class="num">0,167</td></tr>
+        <tr class="good"><td><strong>C · + objetivo en razón y calibración en línea</strong></td><td class="num"><strong>0,5906</strong></td><td class="num"><strong>0,233</strong></td><td class="num"><strong>0,430</strong></td><td class="num"><strong>2,18 h</strong></td><td class="num"><strong>0,564</strong></td></tr>
+        <tr><td>C · restringido al régimen de 50+ tareas <span class="mono">(n = 10.885)</span></td><td class="num">0,5664</td><td class="num">0,239</td><td class="num">0,446</td><td class="num">1,82 h</td><td class="num">0,581</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>
+    De A a C el error mediano cae un <strong>48 %</strong>, PRED(25) sube un
+    <strong>87 %</strong> y la correlación de orden pasa de 0,220 a 0,564. Ese es el
+    escenario de Agix —un cliente nuevo, un proyecto nuevo— y ahí el corpus público sí
+    aporta, porque un modelo entrenado solo con TAWOS y SiP directamente no transfiere:
+    MdMRE 1,1407 es peor que responder siempre la mediana global.
+  </p>
+
+  <p>
+    Aun así, 0,5906 sigue sin acercarse a ninguno de los cuatro criterios. La mejora
+    mueve el error del 114 % al 59 %, no del 114 % al 15 %.
+  </p>
+
+  <div class="verdict reject">
+    <span class="label">El criterio 2 no es alcanzable en este problema</span>
+    <p>
+      «RMSE no más del doble del MAE» falla en las doce filas, con razones entre 2,48 y
+      5,18, y falla igual para el experto humano y para una constante. No es un
+      diagnóstico del modelo: el esfuerzo es log-normal, y en una distribución de cola
+      pesada el RMSE queda dominado por unas pocas tareas grandes por mucho que la
+      mediana esté bien. El criterio está escrito para errores aproximadamente
+      simétricos y no describe este dato. Los criterios 1, 3 y 4, en cambio, sí son
+      exigencias legítimas —simplemente no las cumple nadie, y ese es el resultado.
+    </p>
+  </div>
+
+  <div class="verdict">
+    <span class="label">Cómo se defiende esto</span>
+    <p>
+      La tesis no puede prometer un estimador que acierte al 85 %. Lo que sí sostiene,
+      con 89 851 tareas y 279 corridas, es evidencia de que <em>ese objetivo no es
+      alcanzable con la información disponible</em> —ni con seis veces más datos, ni
+      ajustando el codificador entero, ni con el juicio de un desarrollador experto. Lo
+      que el componente entrega es otra cosa: un orden útil (Spearman 0,571), un aviso
+      de tareas grandes con AUC 0,82 en organizaciones nuevas, un intervalo con
+      cobertura declarada, y una curva de mejora medible con cada tarea que el equipo
+      cierra. Eso es un artefacto que funciona; no es un artefacto que cumpla los
+      criterios de Conte.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">30</span><h2>La arquitectura que sostiene la evidencia</h2></div>
 
   <p>
     Cada flecha del diseño tiene una medición detrás.
@@ -2454,7 +2565,7 @@
 </section>
 
 <section>
-  <div class="sec-head"><span class="sec-num">30</span><h2>Reproducibilidad</h2></div>
+  <div class="sec-head"><span class="sec-num">31</span><h2>Reproducibilidad</h2></div>
 
   <p>
     Cada cifra de este documento procede de un script versionado que puede volver a ejecutarse
@@ -2493,6 +2604,7 @@
         <tr><td class="mono">52-53</td><td>construcción de v4 y codificación reutilizando la caché de v3</td></tr>
         <tr><td class="mono">54-55</td><td>A/B sobre prueba fija, arranque en frío y estimación humana por organización</td></tr>
         <tr><td class="mono">56-58</td><td>objetivo en razón, ajuste fino sobre 63 926 filas y curva de despliegue</td></tr>
+        <tr><td class="mono">59_criterios_v4.py</td><td>los cuatro criterios de aceptación sobre todos los regímenes</td></tr>
         <tr><td class="mono">10_data_quality_report.py</td><td>diagnóstico de calidad, solo lectura</td></tr>
         <tr><td class="mono">11_learning_curve.py</td><td>curva de aprendizaje y suficiencia de datos</td></tr>
         <tr><td class="mono">12_clean_dataset.py</td><td>aplicación de las decisiones de limpieza</td></tr>

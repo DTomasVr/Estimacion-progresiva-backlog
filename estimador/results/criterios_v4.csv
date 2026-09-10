@@ -1,0 +1,13 @@
+escenario,quien,n,media_real,MAE_h,pct_MAE,RMSE_h,razon_RMSE_MAE,MAPE,MdAPE,PRED25,PRED50,C1,C2,C3,C4,cumple
+prueba fija de v3,modelo v4 (agrupado),4225,6.23,5.0,80.3,14.49,2.9,135.6,68.5,0.1666,0.352,False,False,False,False,0
+prueba fija de v3,linea base mediana proyecto,4225,6.23,5.26,84.4,14.97,2.85,166.3,72.7,0.1636,0.3489,False,False,False,False,0
+dentro del corpus publico,modelo en razon x mediana,5917,2.26,1.64,72.6,6.06,3.68,102.9,54.9,0.2469,0.46,False,False,False,False,0
+dentro del corpus publico,linea base mediana proyecto,5917,2.26,1.68,74.4,6.22,3.69,94.5,54.5,0.265,0.4619,False,False,False,False,0
+proyectos nuevos -- arranque en frio (0-4 tareas),modelo v4 + calibracion en linea,564,5.95,5.8,97.6,17.38,2.99,315.1,86.4,0.1294,0.2624,False,False,False,False,0
+proyectos nuevos -- rodaje (5-19 tareas),modelo v4 + calibracion en linea,827,4.79,4.31,90.0,13.3,3.09,249.6,71.8,0.2116,0.3603,False,False,False,False,0
+proyectos nuevos -- en marcha (20-49 tareas),modelo v4 + calibracion en linea,979,2.7,2.27,84.0,7.14,3.14,229.0,64.0,0.2482,0.4065,False,False,False,False,0
+proyectos nuevos -- regimen (50+ tareas),modelo v4 + calibracion en linea,10885,2.52,1.82,72.4,6.17,3.38,98.0,56.6,0.239,0.4458,False,False,False,False,0
+SiP con estimacion humana,experto humano,7791,6.53,4.76,72.8,17.97,3.78,127.8,25.0,0.5093,0.6821,False,False,False,False,0
+jira publico con estimacion humana,experto humano,5492,7.71,11.37,147.5,58.9,5.18,1254.5,40.4,0.4019,0.571,False,False,False,False,0
+jira publico con estimacion humana,modelo v4,5492,7.71,6.43,83.4,15.96,2.48,89.1,70.3,0.1378,0.2973,False,False,False,False,0
+jira publico con estimacion humana,media geometrica humano x modelo,5492,7.71,5.51,71.6,13.84,2.51,171.0,54.1,0.2156,0.4514,False,False,False,False,0

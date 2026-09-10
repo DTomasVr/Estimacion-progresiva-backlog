@@ -1,0 +1,98 @@
+{
+ "Jira": {
+  "issues": 274545,
+  "con_estimacion": 6030,
+  "con_tiempo": 5052,
+  "con_ambos": 2926
+ },
+ "RedHat": {
+  "issues": 353000,
+  "con_estimacion": 4140,
+  "con_tiempo": 1846,
+  "con_ambos": 976
+ },
+ "Mojang": {
+  "issues": 420819,
+  "con_tiempo": 0,
+  "con_estimacion": 0,
+  "con_ambos": 0
+ },
+ "Apache": {
+  "issues": 1014926,
+  "con_tiempo": 66253,
+  "con_estimacion": 20350,
+  "con_ambos": 1781
+ },
+ "Qt": {
+  "issues": 148579,
+  "con_estimacion": 1495,
+  "con_tiempo": 159,
+  "con_ambos": 106
+ },
+ "MongoDB": {
+  "issues": 137172,
+  "con_tiempo": 0,
+  "con_estimacion": 0,
+  "con_ambos": 0
+ },
+ "Sonatype": {
+  "issues": 87284,
+  "con_estimacion": 878,
+  "con_tiempo": 1659,
+  "con_ambos": 687
+ },
+ "Spring": {
+  "issues": 69156,
+  "con_tiempo": 1859,
+  "con_estimacion": 3750,
+  "con_ambos": 1050
+ },
+ "Sakai": {
+  "issues": 50550,
+  "con_estimacion": 396,
+  "con_tiempo": 575,
+  "con_ambos": 73
+ },
+ "JiraEcosystem": {
+  "issues": 41866,
+  "con_estimacion": 1802,
+  "con_tiempo": 558,
+  "con_ambos": 304
+ },
+ "MariaDB": {
+  "issues": 31229,
+  "con_tiempo": 0,
+  "con_estimacion": 0,
+  "con_ambos": 0
+ },
+ "Hyperledger": {
+  "issues": 28146,
+  "con_estimacion": 881,
+  "con_tiempo": 151,
+  "con_ambos": 78
+ },
+ "JFrog": {
+  "issues": 15535,
+  "con_tiempo": 0,
+  "con_estimacion": 0,
+  "con_ambos": 0
+ },
+ "IntelDAOS": {
+  "issues": 9474,
+  "con_tiempo": 0,
+  "con_estimacion": 0,
+  "con_ambos": 0
+ },
+ "Mindville": {
+  "issues": 2134,
+  "con_tiempo": 0,
+  "con_estimacion": 0,
+  "con_ambos": 0
+ },
+ "SecondLife": {
+  "issues": 1867,
+  "con_estimacion": 216,
+  "con_tiempo": 522,
+  "con_ambos": 173
+ }
+}

@@ -44,7 +44,7 @@ def prompt(fila, condicion, ejemplos):
         partes += [f"- [{e['tipo']}] {e['texto']} → {e['horas']} h" for e in ejemplos]
         partes.append("")
     if condicion == "C":
-        hist = json.loads(fila.hist)
+        hist = json.loads(fila["hist"])
         partes.append("Tareas ya terminadas en este mismo proyecto, con sus horas reales:")
         partes += [f"- {e['texto']} → {e['horas']} h" for e in hist]
         partes.append("")
@@ -52,9 +52,9 @@ def prompt(fila, condicion, ejemplos):
         return ("Esta es una incidencia de un Jira público. Si la reconoces, "
                 'responde {"clave": "PROYECTO-123", "horas_registradas": número}; '
                 'si no, {"clave": null, "horas_registradas": null}.\n\n'
-                + fila.texto_llm)
-    partes.append(f"Tarea a estimar (tipo: {fila.task_kind}):")
-    partes.append(fila.texto_llm)
+                + fila["texto_llm"])
+    partes.append(f"Tarea a estimar (tipo: {fila['task_kind']}):")
+    partes.append(fila["texto_llm"])
     return "\n".join(partes)
 
 
@@ -158,7 +158,7 @@ def main():
     llamar = BACKENDS[a.backend]
     t0 = time.time()
     with open(destino, "a", encoding="utf-8") as fh:
-        for i, fila in enumerate(pendientes.itertuples(), 1):
+        for i, fila in enumerate(pendientes.to_dict("records"), 1):
             usuario = prompt(fila, a.condicion, ejemplos)
             t = time.time()
             try:
@@ -166,7 +166,7 @@ def main():
                 res = interpretar(crudo, a.condicion)
             except Exception as e:                    # se registra, no se oculta
                 crudo, uso, res = f"ERROR: {e}", {}, {"valido": False}
-            fh.write(json.dumps({"task_id": fila.task_id, "backend": a.backend,
+            fh.write(json.dumps({"task_id": fila["task_id"], "backend": a.backend,
                                  "modelo": a.modelo, "condicion": a.condicion,
                                  "segundos": round(time.time() - t, 2),
                                  **uso, **res, "crudo": crudo[:500]},

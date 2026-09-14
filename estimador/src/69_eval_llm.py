@@ -152,11 +152,16 @@ def main():
             err_nos = np.abs(np.log(y) - np.log(nuestro))
             w = wilcoxon(err_llm, err_nos)
             lo, hi = bootstrap_dif(y, p, nuestro)
+            # el p-valor solo dice que hay diferencia; la direccion y el veredicto
+            # dicen quien gana. Veredicto sobre el intervalo del MdMRE, la metrica titular
+            veredicto = ("LLM mejor" if hi < 0 else "nuestro mejor" if lo > 0 else "empate")
             resumen.append(dict(**comun, version=version,
                                 factor=k if version != "crudo" else np.nan,
                                 **metricas(y, p),
                                 p_wilcoxon=w.pvalue,
-                                dif_MdMRE_IC95=f"[{lo:+.3f}, {hi:+.3f}]"))
+                                dif_logerr_mediana=float(np.median(err_llm - err_nos)),
+                                dif_MdMRE_IC95=f"[{lo:+.3f}, {hi:+.3f}]",
+                                veredicto=veredicto))
         if ok.sum() >= 30:
             resumen.append(dict(**comun, version="solo válidas",
                                 **metricas(y[ok], crudo[ok])))
@@ -189,8 +194,8 @@ def main():
     pd.DataFrame(sesgos).to_csv(out / "sesgo_por_tamano.csv", index=False)
 
     cols = ["condicion", "modelo", "version", "n", "validas", "MdMRE", "PRED25",
-            "MAE_h", "spearman", "SA", "factor", "p_wilcoxon", "dif_MdMRE_IC95",
-            "seg_tarea"]
+            "MAE_h", "spearman", "SA", "factor", "p_wilcoxon", "dif_logerr_mediana",
+            "dif_MdMRE_IC95", "veredicto", "seg_tarea"]
     vista = r[r.version.isin(["referencia", "crudo", "calibrado", "combinado"])]
     vista = vista[[c for c in cols if c in vista.columns]]
     for cond in ("A", "B", "C"):

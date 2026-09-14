@@ -1,0 +1,5 @@
+backend,modelo,n,afirma_reconocer,clave_exacta
+ollama,gemma2:9b,450,0.0,0.0
+ollama,llama3.1:8b,450,0.4044,0.0
+ollama,mistral:7b,450,0.0622,0.0
+ollama,qwen2.5:7b,450,0.0022,0.0

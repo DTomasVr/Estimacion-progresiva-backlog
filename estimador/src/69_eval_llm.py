@@ -83,7 +83,10 @@ def cargar_corridas():
     for p in glob.glob(str(RAW / "*.jsonl")):
         conjunto = Path(p).name.split("__")[0]
         for l in open(p, encoding="utf-8"):
-            r = json.loads(l)
+            try:
+                r = json.loads(l)
+            except json.JSONDecodeError:   # linea a medio escribir durante la corrida
+                continue
             r["conjunto"] = conjunto
             filas.append(r)
     return pd.DataFrame(filas)
@@ -135,6 +138,11 @@ def main():
         combinado = np.sqrt(np.clip(calibrado, .01, None) * nuestro)
 
         etiqueta = f"{modelo} ({backend})"
+        # referencia sobre EXACTAMENTE las mismas tareas: con una corrida a medias
+        # las cifras sobre la muestra completa no son comparables
+        resumen.append(dict(condicion=cond, version="referencia", n=len(d),
+                            modelo=f"nuestro modelo · mismas {len(d)} tareas que {modelo}",
+                            validas=1.0, **metricas(y, nuestro)))
         comun = dict(condicion=cond, modelo=etiqueta, n=len(d), validas=ok.mean(),
                      seg_tarea=float(d.segundos.median()),
                      tokens_entrada=float(d.entrada.median()))

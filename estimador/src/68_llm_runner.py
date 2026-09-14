@@ -150,7 +150,9 @@ def main():
     hechas = set()
     if destino.exists():
         hechas = {json.loads(l)["task_id"] for l in open(destino, encoding="utf-8")}
-    pendientes = d[~d.task_id.isin(hechas)]
+    # orden barajado y fijo: un corte a medias sigue siendo una muestra
+    # representativa, y todos los modelos recorren las tareas en el mismo orden
+    pendientes = d[~d.task_id.isin(hechas)].sample(frac=1, random_state=20260914)
     if a.limite:
         pendientes = pendientes.head(a.limite)
     print(f"{destino.name}: {len(hechas)} hechas, {len(pendientes)} pendientes")

@@ -62,7 +62,7 @@ def prompt(fila, condicion, ejemplos):
 def llamar_ollama(modelo, sistema, usuario):
     r = requests.post("http://localhost:11434/api/chat", timeout=600, json={
         "model": modelo, "stream": False, "format": "json",
-        "options": {"temperature": 0, "num_ctx": 8192, "seed": 0},
+        "options": {"temperature": 0, "num_ctx": 4096, "seed": 0},
         "messages": [{"role": "system", "content": sistema},
                      {"role": "user", "content": usuario}]})
     r.raise_for_status()

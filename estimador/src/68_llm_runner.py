@@ -26,6 +26,10 @@ import requests
 
 BENCH = Path("data/processed/llm_bench")
 RAW = Path("results/llm_bench/raw")
+# 127.0.0.1 y no localhost: en Windows localhost resuelve primero a IPv6 (::1),
+# Ollama solo escucha en IPv4, y cada conexion nueva perdia ~2,1 s en el
+# fallback -- medido: 2,09 s frente a 0,02 s. La sesion reutiliza la conexion.
+SESION = requests.Session()
 
 SISTEMA = (
     "Eres un desarrollador de software senior que estima esfuerzo. "
@@ -60,7 +64,7 @@ def prompt(fila, condicion, ejemplos):
 
 # ----------------------------------------------------------------- backends
 def llamar_ollama(modelo, sistema, usuario):
-    r = requests.post("http://localhost:11434/api/chat", timeout=600, json={
+    r = SESION.post("http://127.0.0.1:11434/api/chat", timeout=600, json={
         "model": modelo, "stream": False, "format": "json",
         "options": {"temperature": 0, "num_ctx": 4096, "seed": 0},
         "messages": [{"role": "system", "content": sistema},
@@ -76,7 +80,7 @@ def llamar_groq(modelo, sistema, usuario):
     if not clave:
         raise SystemExit("falta GROQ_API_KEY en el entorno")
     for intento in range(8):
-        r = requests.post(
+        r = SESION.post(
             "https://api.groq.com/openai/v1/chat/completions", timeout=120,
             headers={"Authorization": f"Bearer {clave}"},
             json={"model": modelo, "temperature": 0, "seed": 0,

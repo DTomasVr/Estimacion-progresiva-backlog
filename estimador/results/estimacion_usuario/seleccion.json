@@ -1,0 +1,17 @@
+{
+ "k_global": 1.0,
+ "contraccion_dev": 100,
+ "val_MdMRE": {
+  "R0 · modelo en frío (sin estimación)": 0.6793813075698139,
+  "H0 · estimación del usuario, tal cual": 0.2233560090702948,
+  "H1 · estimación × factor global": 0.2233560090702948,
+  "H2 · estimación × factor por desarrollador": 0.2566030944948654,
+  "M1 · modelo con estimación, sin texto": 0.253891551900714,
+  "M2 · modelo con texto + estimación": 0.2992670069738802,
+  "M3 · corrector: texto + estimación": 0.2968015086085267,
+  "G1 · media geométrica estimación × frío": 0.4760357589958013
+ },
+ "ganador_val": "M1 · modelo con estimación, sin texto",
+ "n_train": 8679,
+ "n_val": 1556
+}

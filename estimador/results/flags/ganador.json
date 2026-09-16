@@ -1,0 +1,56 @@
+{
+ "val_MdMRE": {
+  "familia": "F1 · grupos k-means",
+  "algoritmo": "SVR lineal",
+  "n_flags": 64,
+  "prueba_d1": {
+   "MdMRE": 0.7284636436746458,
+   "PRED25": 0.12662721893491125,
+   "MdAElog": 1.056925571567243,
+   "sesgo": 0.5004525097861421,
+   "compresion": 0.2970460530899489,
+   "spearman": 0.09146135948432145,
+   "SA": 0.3731875324507986,
+   "vs_vector": "MdMRE: flags peor [+0.021, +0.048] · errlog: flags peor [+0.090, +0.183]",
+   "vs_modelo_actual": "MdMRE: flags peor [+0.026, +0.061] · errlog: flags peor [+0.175, +0.278]"
+  },
+  "externo": {
+   "MdMRE": 0.7144719366129959,
+   "PRED25": 0.15631837042625424,
+   "MdAElog": 0.8095901578621156,
+   "sesgo": 0.8329159943924437,
+   "compresion": 0.225611943839912,
+   "spearman": 0.07372940871485449,
+   "SA": 0.39227574151170663,
+   "vs_vector": "MdMRE: empate [-0.008, +0.011] · errlog: flags mejor [-0.058, -0.012]",
+   "vs_modelo_actual": "MdMRE: flags peor [+0.006, +0.024] · errlog: empate [-0.043, +0.001]"
+  }
+ },
+ "val_MdAElog": {
+  "familia": "F1 · grupos k-means",
+  "algoritmo": "SVR lineal",
+  "n_flags": 64,
+  "prueba_d1": {
+   "MdMRE": 0.7284636436746458,
+   "PRED25": 0.12662721893491125,
+   "MdAElog": 1.056925571567243,
+   "sesgo": 0.5004525097861421,
+   "compresion": 0.2970460530899489,
+   "spearman": 0.09146135948432145,
+   "SA": 0.3731875324507986,
+   "vs_vector": "MdMRE: flags peor [+0.021, +0.048] · errlog: flags peor [+0.090, +0.183]",
+   "vs_modelo_actual": "MdMRE: flags peor [+0.026, +0.061] · errlog: flags peor [+0.175, +0.278]"
+  },
+  "externo": {
+   "MdMRE": 0.7144719366129959,
+   "PRED25": 0.15631837042625424,
+   "MdAElog": 0.8095901578621156,
+   "sesgo": 0.8329159943924437,
+   "compresion": 0.225611943839912,
+   "spearman": 0.07372940871485449,
+   "SA": 0.39227574151170663,
+   "vs_vector": "MdMRE: empate [-0.008, +0.011] · errlog: flags mejor [-0.058, -0.012]",
+   "vs_modelo_actual": "MdMRE: flags peor [+0.006, +0.024] · errlog: empate [-0.043, +0.001]"
+  }
+ }
+}

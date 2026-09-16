@@ -1,0 +1,6 @@
+{
+ "F1 · grupos k-means | SVR lineal · prueba_d1": "MdMRE: empate [-0.001, +0.026] · errlog: flags peor [+0.052, +0.142]",
+ "F1 · grupos k-means | SVR lineal · externo": "MdMRE: flags peor [+0.003, +0.023] · errlog: flags mejor [-0.072, -0.025]",
+ "F1+F2+F3 · todo lo derivado del vector | SVR lineal · prueba_d1": "MdMRE: flags peor [+0.011, +0.032] · errlog: flags peor [+0.056, +0.114]",
+ "F1+F2+F3 · todo lo derivado del vector | SVR lineal · externo": "MdMRE: flags peor [+0.005, +0.020] · errlog: flags mejor [-0.060, -0.031]"
+}

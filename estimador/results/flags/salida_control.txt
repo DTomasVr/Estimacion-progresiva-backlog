@@ -1,0 +1,54 @@
+ajustado referencia | vector 768 · SVR lineal
+ajustado referencia | modelo actual · SVR lineal
+
+==================================================================================================================================
+val
+==================================================================================================================================
+                                                  modelo  MdMRE  MdAElog  sesgo  compresion  spearman     SA
+                 referencia | modelo actual · SVR lineal 0.6435   0.7144 0.9748      0.4877    0.4699 0.4412
+referencia | modelo actual (vector+cat+fuente+num) · HGB 0.6603   0.7289 1.0614      0.4395    0.4992 0.4493
+                    referencia | vector 768 · SVR lineal 0.6739   0.7598 0.9123      0.3866    0.3864 0.4188
+                        F1 · grupos k-means | SVR lineal 0.7143   0.7620 0.9335      0.2827    0.2556 0.4060
+                           referencia | vector 768 · HGB 0.6948   0.7769 1.0212      0.3524    0.4022 0.4238
+     F1+F2+F3 · todo lo derivado del vector | SVR lineal 0.7208   0.7842 0.9061      0.3083    0.2754 0.4076
+
+==================================================================================================================================
+prueba_d1
+==================================================================================================================================
+                                                  modelo  MdMRE  MdAElog  sesgo  compresion  spearman     SA
+referencia | modelo actual (vector+cat+fuente+num) · HGB 0.6854   0.8279 0.8700      0.3964    0.3924 0.4218
+                 referencia | modelo actual · SVR lineal 0.6979   0.8424 0.9012      0.3751    0.3367 0.4145
+                           referencia | vector 768 · HGB 0.6950   0.9238 0.6501      0.3533    0.2903 0.3957
+                    referencia | vector 768 · SVR lineal 0.7182   0.9607 0.5870      0.3476    0.2498 0.3867
+     F1+F2+F3 · todo lo derivado del vector | SVR lineal 0.7382   1.0458 0.5465      0.3460    0.1265 0.3761
+                        F1 · grupos k-means | SVR lineal 0.7285   1.0569 0.5005      0.2970    0.0915 0.3732
+
+==================================================================================================================================
+externo
+==================================================================================================================================
+                                                  modelo  MdMRE  MdAElog  sesgo  compresion  spearman     SA
+     F1+F2+F3 · todo lo derivado del vector | SVR lineal 0.7169   0.7993 0.8280      0.2411    0.0922 0.3924
+                        F1 · grupos k-means | SVR lineal 0.7145   0.8096 0.8329      0.2256    0.0737 0.3923
+referencia | modelo actual (vector+cat+fuente+num) · HGB 0.7032   0.8170 0.8608      0.2657    0.1674 0.3986
+                           referencia | vector 768 · HGB 0.7162   0.8306 0.9375      0.2876    0.1363 0.3964
+                 referencia | modelo actual · SVR lineal 0.6963   0.8422 0.7214      0.3359    0.1251 0.3898
+                    referencia | vector 768 · SVR lineal 0.7054   0.8449 0.7903      0.3436    0.0952 0.3894
+
+==================================================================================================================================
+MISMO ALGORITMO: flags (SVR) frente a vector (SVR)
+==================================================================================================================================
+  F1 · grupos k-means | SVR lineal                        prueba_d1  MdMRE: empate [-0.001, +0.026] · errlog: flags peor [+0.052, +0.142]
+  F1 · grupos k-means | SVR lineal                        externo    MdMRE: flags peor [+0.003, +0.023] · errlog: flags mejor [-0.072, -0.025]
+  F1+F2+F3 · todo lo derivado del vector | SVR lineal     prueba_d1  MdMRE: flags peor [+0.011, +0.032] · errlog: flags peor [+0.056, +0.114]
+  F1+F2+F3 · todo lo derivado del vector | SVR lineal     externo    MdMRE: flags peor [+0.005, +0.020] · errlog: flags mejor [-0.060, -0.031]
+
+==================================================================================================================================
+SESGO (mediana pred/real) POR FUENTE en la prueba fija
+==================================================================================================================================
+                                                  modelo  sesgo_TAWOS  sesgo_SiP
+                        F1 · grupos k-means | SVR lineal        0.444      0.667
+                    referencia | vector 768 · SVR lineal        0.504      0.763
+                           referencia | vector 768 · HGB        0.538      0.836
+referencia | modelo actual (vector+cat+fuente+num) · HGB        0.818      0.974
+
+escrito results\flags/control_mismo_algoritmo.csv, sesgo_por_fuente.csv, control_veredictos.json

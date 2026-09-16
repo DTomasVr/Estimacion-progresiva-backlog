@@ -1,0 +1,5 @@
+modelo,sesgo_TAWOS,sesgo_SiP
+F1 · grupos k-means | SVR lineal,0.4440161522407915,0.6670907627358983
+referencia | vector 768 · SVR lineal,0.5044019009551874,0.7626951850164178
+referencia | vector 768 · HGB,0.5378090328932812,0.8364894923690145
+referencia | modelo actual (vector+cat+fuente+num) · HGB,0.8176578403093537,0.9742385212768053

@@ -1,0 +1,14 @@
+{
+ "peso_codificador_MB": 1126.4,
+ "peso_regresor_MB": 1.3,
+ "segundos_entrenamiento_regresor": 19.9,
+ "determinismo_codificador_max_dif": 0.0,
+ "determinismo_regresor_max_dif": 0.0,
+ "gpu": "NVIDIA GeForce RTX 5060",
+ "pesos_ollama": {
+  "mistral:7b": "4.4 GB",
+  "gemma2:9b": "5.4 GB",
+  "llama3.1:8b": "4.9 GB",
+  "qwen2.5:7b": "4.7 GB"
+ }
+}

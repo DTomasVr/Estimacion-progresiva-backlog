@@ -1,0 +1,5 @@
+modelo,peso_en_disco,seg_tarea_min,seg_tarea_max,tokens_entrada_mediana
+gemma2:9b (ollama),5.4 GB,0.84,1.34,706.0
+llama3.1:8b (ollama),4.9 GB,0.63,2.45,708.0
+mistral:7b (ollama),4.4 GB,0.32,0.62,796.0
+qwen2.5:7b (ollama),4.7 GB,0.31,0.59,732.0

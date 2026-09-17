@@ -1,0 +1,28 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 3200.72it/s]
+  codificador cuda: 9 ms una tarea / 2.0 ms por tarea en lote de 64 / pico 1261 MB
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 8047.62it/s]
+  codificador cpu: 26 ms una tarea / 42.9 ms por tarea en lote de 64 / pico nan MB
+  regresor: entrenado en 20 s / prediccion 2.35 ms
+
+==============================================================================================================
+nuestro canal
+==============================================================================================================
+              componente  seg_una_tarea  seg_por_tarea_en_lote  memoria_pico_MB
+codificador SBERT (cuda)        0.00887                0.00203       1260.82355
+ codificador SBERT (cpu)        0.02555                0.04289              NaN
+    regresor (una tarea)        0.00235                0.00001              NaN
+
+==============================================================================================================
+LLMs locales (medido en el banco)
+==============================================================================================================
+              modelo peso_en_disco  seg_tarea_min  seg_tarea_max  tokens_entrada_mediana
+  gemma2:9b (ollama)        5.4 GB           0.84           1.34                   706.0
+llama3.1:8b (ollama)        4.9 GB           0.63           2.45                   708.0
+ mistral:7b (ollama)        4.4 GB           0.32           0.62                   796.0
+ qwen2.5:7b (ollama)        4.7 GB           0.31           0.59                   732.0
+
+codificador en disco 1,126 MB / regresor 1.30 MB
+determinismo: maxima diferencia entre dos corridas identicas 0.00e+00 (codificador) y 0.00e+00 (regresor)
+
+escrito results\costo/latencia_nuestra.csv, latencia_llms.csv, resumen.json y models/frio_v4.joblib

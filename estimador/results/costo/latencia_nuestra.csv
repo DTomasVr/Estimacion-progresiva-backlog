@@ -1,0 +1,4 @@
+componente,seg_una_tarea,seg_por_tarea_en_lote,memoria_pico_MB
+codificador SBERT (cuda),0.008872149999660905,0.002026426562508732,1260.823552
+codificador SBERT (cpu),0.025548650000018824,0.0428945984374991,
+regresor (una tarea),0.0023462000003746653,8.727649999855202e-06,

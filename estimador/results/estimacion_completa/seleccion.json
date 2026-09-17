@@ -1,0 +1,82 @@
+{
+ "w_geometrico": 0.6,
+ "contraccion_dev": 1,
+ "k_global": 1.0,
+ "conversion_puntos": {
+  "factor": 4.4030564496101805,
+  "exponente": 0.307660815058673,
+  "n_train": 341
+ },
+ "val_SA": {
+  "R0 - modelo en frio (sin estimacion)": 0.4263714256065523,
+  "H0 - estimacion del usuario, tal cual": 0.17255289639943083,
+  "H2 - estimacion x factor por desarrollador": 0.25313845168017446,
+  "C1 - correccion con el modelo (texto + estimacion + frio)": 0.5666933605109257,
+  "C2 - correccion sin texto (estimacion + frio + categoria)": 0.5600084327211168,
+  "C3 - modelo absoluto con estimacion y frio": 0.5603855163143969,
+  "C4 - mezcla geometrica ponderada": 0.5133974129032983
+ },
+ "val_MdAElog": {
+  "R0 - modelo en frio (sin estimacion)": 0.8099123882110206,
+  "H0 - estimacion del usuario, tal cual": 0.28768207245178085,
+  "H2 - estimacion x factor por desarrollador": 0.30959746360187124,
+  "C1 - correccion con el modelo (texto + estimacion + frio)": 0.33570760691157653,
+  "C2 - correccion sin texto (estimacion + frio + categoria)": 0.2991330335648644,
+  "C3 - modelo absoluto con estimacion y frio": 0.3439628011615108,
+  "C4 - mezcla geometrica ponderada": 0.447301227158029
+ },
+ "val_MdMRE": {
+  "R0 - modelo en frio (sin estimacion)": 0.6756314278909068,
+  "H0 - estimacion del usuario, tal cual": 0.2727272727272727,
+  "H2 - estimacion x factor por desarrollador": 0.3089029339553513,
+  "C1 - correccion con el modelo (texto + estimacion + frio)": 0.31384691796224296,
+  "C2 - correccion sin texto (estimacion + frio + categoria)": 0.2891890718985397,
+  "C3 - modelo absoluto con estimacion y frio": 0.32959305134319755,
+  "C4 - mezcla geometrica ponderada": 0.4427405998496997
+ },
+ "pesos_val_SA": {
+  "0.0": 0.4263714256065523,
+  "0.05": 0.43455589684475926,
+  "0.1": 0.44301050036302136,
+  "0.15": 0.4517759857936261,
+  "0.2": 0.46054896664056333,
+  "0.25": 0.46963176337114176,
+  "0.3": 0.47811937010861694,
+  "0.35": 0.48627666460430585,
+  "0.4": 0.4943584574268921,
+  "0.45": 0.5020077266208673,
+  "0.5": 0.5088731171482974,
+  "0.55": 0.5133674837803972,
+  "0.6": 0.5133974129032983,
+  "0.65": 0.5103800828208342,
+  "0.7": 0.5031241083950003,
+  "0.75": 0.4888947536069955,
+  "0.8": 0.46554834172417836,
+  "0.85": 0.4292033279199684,
+  "0.9": 0.3741375466095528,
+  "0.95": 0.28908570253167,
+  "1.0": 0.17255289639943083
+ },
+ "ganador_val": "C1 - correccion con el modelo (texto + estimacion + frio)",
+ "ganador_val_si_se_usara_MdMRE": "C2 - correccion sin texto (estimacion + frio + categoria)",
+ "ganador_val_si_se_usara_MdAElog": "C2 - correccion sin texto (estimacion + frio + categoria)",
+ "bandas_val": {
+  "R0 - modelo en frio (sin estimacion)": {
+   "factor80": 5.073404938514614,
+   "factor50": 2.2477110520633206
+  },
+  "C1 - correccion con el modelo (texto + estimacion + frio)": {
+   "factor80": 2.4347058267186745,
+   "factor50": 1.398929927563233
+  },
+  "H0 - estimacion del usuario, tal cual": {
+   "factor80": 2.5,
+   "factor50": 1.3333333333333333
+  }
+ },
+ "frio_oof_MdMRE": 0.6929264281714368,
+ "frio_dentro_MdMRE": 0.6230469614656415,
+ "n_pool": 63926,
+ "n_train_est": 9020,
+ "n_val_est": 1670
+}

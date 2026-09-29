@@ -1,0 +1,72 @@
+rejilla 44 · clases 44 · 8 s
+  A ajustado · 85 s
+  B ajustado · 208 s
+validación: temperatura 0.5 · tope ×2.0 (PRED25 val 0.2366)
+
+==========================================================================================================================
+prueba fija
+==========================================================================================================================
+                            brazo  PRED25  PRED50  factor2  MdMRE  MdAElog      R2
+           0 · el modelo tal cual  0.1669  0.3531   0.4464 0.6702   0.7832  0.1988
+     A · Bayes con vectores (E27)  0.1981  0.3484   0.3993 0.7083   0.8505 -0.0868
+B · Bayes + predicción del modelo  0.2000  0.3574   0.4130 0.7046   0.8514  0.0084
+        C · B con temperatura 0.5  0.1986  0.3557   0.4085 0.7083   0.8575 -0.0120
+              D · C con tope ×2.0  0.1929  0.3605   0.4199 0.6889   0.8473  0.0807
+ B2 · Bayes factor 2 + predicción  0.1688  0.3576   0.4824 0.7000   0.7747  0.0888
+       control · constante 1.25 h  0.1768  0.3359   0.3721 0.7093   0.9163 -0.1963
+       control · constante 2.00 h  0.1524  0.3245   0.4514 0.7500   0.8927 -0.0092
+                            brazo          pred25_vs_cte           factor2_vs_cte
+           0 · el modelo tal cual    peor (p=0.211, -42)      peor (p=0.556, -21)
+     A · Bayes con vectores (E27) mejor (p=0.00436, +90)  peor (p=2.49e-11, -220)
+B · Bayes + predicción del modelo mejor (p=0.00455, +98)   peor (p=9.5e-05, -162)
+        C · B con temperatura 0.5 mejor (p=0.00619, +92)  peor (p=1.31e-05, -181)
+              D · C con tope ×2.0  mejor (p=0.0357, +68)  peor (p=0.000875, -133)
+ B2 · Bayes factor 2 + predicción     peor (p=0.33, -34) mejor (p=0.000922, +131)
+       control · constante 1.25 h       empate (p=1, +0)  peor (p=7.42e-34, -335)
+       control · constante 2.00 h peor (p=0.00593, -103)         empate (p=1, +0)
+
+==========================================================================================================================
+prueba SiP
+==========================================================================================================================
+                            brazo  PRED25  PRED50  factor2  MdMRE  MdAElog      R2
+           0 · el modelo tal cual  0.1629  0.3501   0.4546 0.6752   0.7731  0.3009
+     A · Bayes con vectores (E27)  0.1979  0.3332   0.3798 0.7083   0.8755 -0.0856
+B · Bayes + predicción del modelo  0.2265  0.3735   0.4371 0.6786   0.8473  0.1586
+        C · B con temperatura 0.5  0.2196  0.3676   0.4286 0.6786   0.8473  0.1436
+              D · C con tope ×2.0  0.2085  0.3629   0.4340 0.6786   0.8473  0.2238
+ B2 · Bayes factor 2 + predicción  0.1735  0.3592   0.5040 0.6732   0.6931  0.2405
+       control · constante 1.25 h  0.1878  0.3268   0.3703 0.7500   0.9163 -0.2072
+       control · constante 2.00 h  0.1347  0.2918   0.4228 0.8000   0.9808 -0.0138
+                            brazo           pred25_vs_cte           factor2_vs_cte
+           0 · el modelo tal cual     peor (p=0.039, -47)    mejor (p=0.0111, +60)
+     A · Bayes con vectores (E27)    mejor (p=0.388, +19)   peor (p=0.000544, -81)
+B · Bayes + predicción del modelo   mejor (p=0.0023, +73)     mejor (p=0.356, +27)
+        C · B con temperatura 0.5   mejor (p=0.0108, +60)     mejor (p=0.723, +11)
+              D · C con tope ×2.0   mejor (p=0.0824, +39)     mejor (p=0.458, +21)
+ B2 · Bayes factor 2 + predicción     peor (p=0.254, -27) mejor (p=1.76e-08, +153)
+       control · constante 1.25 h        empate (p=1, +0)   peor (p=5.17e-09, -99)
+       control · constante 2.00 h peor (p=5.58e-05, -100)         empate (p=1, +0)
+
+==========================================================================================================================
+externo no Apache
+==========================================================================================================================
+                            brazo  PRED25  PRED50  factor2  MdMRE  MdAElog      R2
+           0 · el modelo tal cual  0.1705  0.3422   0.4167 0.6975   0.8533  0.1009
+     A · Bayes con vectores (E27)  0.1982  0.3636   0.3838 0.7230   0.9445 -0.0447
+B · Bayes + predicción del modelo  0.1907  0.3510   0.3927 0.7137   0.9493 -0.0293
+        C · B con temperatura 0.5  0.1856  0.3422   0.3851 0.7230   0.9486 -0.0532
+              D · C con tope ×2.0  0.2008  0.3598   0.4053 0.7083   0.9445  0.0202
+ B2 · Bayes factor 2 + predicción  0.1730  0.3636   0.4672 0.7500   0.9163  0.0165
+       control · constante 1.25 h  0.1793  0.3497   0.3699 0.6875   0.9658 -0.1712
+       control · constante 2.00 h  0.1705  0.3523   0.4848 0.7778   0.9163 -0.0084
+                            brazo        pred25_vs_cte         factor2_vs_cte
+           0 · el modelo tal cual   peor (p=0.669, -7) peor (p=0.000129, -54)
+     A · Bayes con vectores (E27) mejor (p=0.319, +15) peor (p=6.64e-10, -80)
+B · Bayes + predicción del modelo  mejor (p=0.599, +9) peor (p=1.36e-05, -73)
+        C · B con temperatura 0.5  mejor (p=0.789, +5) peor (p=2.19e-06, -79)
+              D · C con tope ×2.0 mejor (p=0.268, +17) peor (p=7.86e-05, -63)
+ B2 · Bayes factor 2 + predicción   peor (p=0.788, -5)    peor (p=0.403, -14)
+       control · constante 1.25 h     empate (p=1, +0) peor (p=2.22e-17, -91)
+       control · constante 2.00 h   peor (p=0.718, -7)       empate (p=1, +0)
+
+escrito results\tasa_acierto/afinado.csv y contrastes.csv

@@ -1,0 +1,117 @@
+corpus 24,848 · vistas: e5-large 1024 · e5 + tfidf car 1280 · e5 + tfidf car + pal 1536 · tfidf pal 256 · mpnet (referencia) 768
+  e5-large               squared_ prof  4 it 300 -> val 0.7998 · fija 0.8347
+  e5-large               squared_ prof  4 it 800 -> val 0.8031 · fija 0.8297
+  e5-large               squared_ prof  6 it 300 -> val 0.7949 · fija 0.8410
+  e5-large               squared_ prof  6 it 800 -> val 0.7951 · fija 0.8412
+  e5-large               squared_ prof 10 it 300 -> val 0.7985 · fija 0.8248
+  e5-large               squared_ prof 10 it 800 -> val 0.7985 · fija 0.8248
+  e5-large               absolute prof  4 it 300 -> val 0.8006 · fija 0.8361
+  e5-large               absolute prof  4 it 800 -> val 0.7995 · fija 0.8340
+  e5-large               absolute prof  6 it 300 -> val 0.7844 · fija 0.8386
+  e5-large               absolute prof  6 it 800 -> val 0.7768 · fija 0.8310
+  e5-large               absolute prof 10 it 300 -> val 0.7963 · fija 0.8356
+  e5-large               absolute prof 10 it 800 -> val 0.7967 · fija 0.8310
+  e5 + tfidf car         squared_ prof  4 it 300 -> val 0.7917 · fija 0.8363
+  e5 + tfidf car         squared_ prof  4 it 800 -> val 0.7929 · fija 0.8399
+  e5 + tfidf car         squared_ prof  6 it 300 -> val 0.7914 · fija 0.8376
+  e5 + tfidf car         squared_ prof  6 it 800 -> val 0.7914 · fija 0.8376
+  e5 + tfidf car         squared_ prof 10 it 300 -> val 0.7828 · fija 0.8380
+  e5 + tfidf car         squared_ prof 10 it 800 -> val 0.7828 · fija 0.8380
+  e5 + tfidf car         absolute prof  4 it 300 -> val 0.7855 · fija 0.8397
+  e5 + tfidf car         absolute prof  4 it 800 -> val 0.7815 · fija 0.8415
+  e5 + tfidf car         absolute prof  6 it 300 -> val 0.7989 · fija 0.8343
+  e5 + tfidf car         absolute prof  6 it 800 -> val 0.7908 · fija 0.8385
+  e5 + tfidf car         absolute prof 10 it 300 -> val 0.7882 · fija 0.8270
+  e5 + tfidf car         absolute prof 10 it 800 -> val 0.7915 · fija 0.8222
+  e5 + tfidf car + pal   squared_ prof  4 it 300 -> val 0.7849 · fija 0.8329
+  e5 + tfidf car + pal   squared_ prof  4 it 800 -> val 0.7840 · fija 0.8251
+  e5 + tfidf car + pal   squared_ prof  6 it 300 -> val 0.7733 · fija 0.8347
+  e5 + tfidf car + pal   squared_ prof  6 it 800 -> val 0.7782 · fija 0.8324
+  e5 + tfidf car + pal   squared_ prof 10 it 300 -> val 0.7843 · fija 0.8316
+  e5 + tfidf car + pal   squared_ prof 10 it 800 -> val 0.7843 · fija 0.8316
+  e5 + tfidf car + pal   absolute prof  4 it 300 -> val 0.7827 · fija 0.8354
+  e5 + tfidf car + pal   absolute prof  4 it 800 -> val 0.7835 · fija 0.8314
+  e5 + tfidf car + pal   absolute prof  6 it 300 -> val 0.7909 · fija 0.8359
+  e5 + tfidf car + pal   absolute prof  6 it 800 -> val 0.7918 · fija 0.8353
+  e5 + tfidf car + pal   absolute prof 10 it 300 -> val 0.7830 · fija 0.8274
+  e5 + tfidf car + pal   absolute prof 10 it 800 -> val 0.7731 · fija 0.8232
+  tfidf pal              squared_ prof  4 it 300 -> val 0.8215 · fija 0.8516
+  tfidf pal              squared_ prof  4 it 800 -> val 0.8215 · fija 0.8516
+  tfidf pal              squared_ prof  6 it 300 -> val 0.8107 · fija 0.8576
+  tfidf pal              squared_ prof  6 it 800 -> val 0.8107 · fija 0.8576
+  tfidf pal              squared_ prof 10 it 300 -> val 0.8136 · fija 0.8665
+  tfidf pal              squared_ prof 10 it 800 -> val 0.8136 · fija 0.8665
+  tfidf pal              absolute prof  4 it 300 -> val 0.8093 · fija 0.8477
+  tfidf pal              absolute prof  4 it 800 -> val 0.8046 · fija 0.8345
+  tfidf pal              absolute prof  6 it 300 -> val 0.8059 · fija 0.8538
+  tfidf pal              absolute prof  6 it 800 -> val 0.8046 · fija 0.8557
+  tfidf pal              absolute prof 10 it 300 -> val 0.8023 · fija 0.8539
+  tfidf pal              absolute prof 10 it 800 -> val 0.7987 · fija 0.8552
+  mpnet (referencia)     squared_ prof  4 it 300 -> val 0.8199 · fija 0.8532
+  mpnet (referencia)     squared_ prof  4 it 800 -> val 0.8199 · fija 0.8532
+  mpnet (referencia)     squared_ prof  6 it 300 -> val 0.7977 · fija 0.8341
+  mpnet (referencia)     squared_ prof  6 it 800 -> val 0.7977 · fija 0.8341
+  mpnet (referencia)     squared_ prof 10 it 300 -> val 0.7951 · fija 0.8500
+  mpnet (referencia)     squared_ prof 10 it 800 -> val 0.7951 · fija 0.8500
+  mpnet (referencia)     absolute prof  4 it 300 -> val 0.7906 · fija 0.8478
+  mpnet (referencia)     absolute prof  4 it 800 -> val 0.7846 · fija 0.8477
+  mpnet (referencia)     absolute prof  6 it 300 -> val 0.7967 · fija 0.8442
+  mpnet (referencia)     absolute prof  6 it 800 -> val 0.7923 · fija 0.8366
+  mpnet (referencia)     absolute prof 10 it 300 -> val 0.7969 · fija 0.8597
+  mpnet (referencia)     absolute prof 10 it 800 -> val 0.7969 · fija 0.8597
+
+==================================================================================================================================
+MEJORES 12 POR VALIDACIÓN (MdAElog simétrico)
+==================================================================================================================================
+               vista        perdida  prof  iters  arboles  val_MdAElog  prueba fija|MdMRE  prueba fija|MdAElog  prueba fija|R2  prueba fija|spearman  externo no Apache|MdAElog
+e5 + tfidf car + pal absolute_error    10    800      538       0.7731             0.6919               0.8232          0.1315                0.3432                     0.9098
+e5 + tfidf car + pal  squared_error     6    300      300       0.7733             0.6852               0.8347          0.1542                0.3778                     0.9549
+            e5-large absolute_error     6    800      532       0.7768             0.6949               0.8310          0.1285                0.3354                     0.9531
+e5 + tfidf car + pal  squared_error     6    800      322       0.7782             0.6853               0.8324          0.1540                0.3779                     0.9517
+      e5 + tfidf car absolute_error     4    800      664       0.7815             0.6891               0.8415          0.1306                0.3412                     0.9215
+e5 + tfidf car + pal absolute_error     4    300      300       0.7827             0.6898               0.8354          0.1296                0.3415                     0.9344
+      e5 + tfidf car  squared_error    10    300      278       0.7828             0.6925               0.8380          0.1484                0.3675                     0.9666
+      e5 + tfidf car  squared_error    10    800      278       0.7828             0.6925               0.8380          0.1484                0.3675                     0.9666
+e5 + tfidf car + pal absolute_error    10    300      300       0.7830             0.6898               0.8274          0.1333                0.3435                     0.9195
+e5 + tfidf car + pal absolute_error     4    800      313       0.7835             0.6911               0.8314          0.1290                0.3407                     0.9291
+e5 + tfidf car + pal  squared_error     4    800      362       0.7840             0.6853               0.8251          0.1492                0.3689                     0.9367
+e5 + tfidf car + pal  squared_error    10    300      284       0.7843             0.6813               0.8316          0.1466                0.3643                     0.9429
+
+==================================================================================================================================
+EFECTO DE LA PÉRDIDA, PROMEDIADO SOBRE LA REJILLA
+==================================================================================================================================
+                val_MdAElog  prueba fija|MdAElog  prueba fija|MdMRE  prueba fija|R2  prueba fija|spearman  prueba fija|sesgo
+perdida                                                                                                                     
+absolute_error       0.7926               0.8398             0.6957          0.1149                0.3238             0.9131
+squared_error        0.7976               0.8413             0.6929          0.1264                0.3396             0.9222
+
+==================================================================================================================================
+APILADO DE 5 MODELOS (pesos ajustados en validación)
+==================================================================================================================================
+  pesos: e5 + tfidf car + pal +0.210 · e5-large +0.279 · e5 + tfidf car +0.256 · mpnet (referencia) +0.197 · tfidf pal +0.211
+
+prueba fija
+                                 modelo    n  MdMRE  MdAElog  PRED25  MAE_h     R2  sesgo  spearman
+                                apilado 4225 0.6964   0.8187  0.1707 5.0372 0.1505 0.9618    0.3577
+mejor individual (e5 + tfidf car + pal) 4225 0.6919   0.8232  0.1723 5.0521 0.1315 0.8983    0.3432
+  mpnet + cuadrática (punto de partida) 4225 0.7012   0.8341  0.1572 5.1157 0.1072 0.9399    0.3141
+
+prueba SiP
+                                 modelo    n  MdMRE  MdAElog  PRED25  MAE_h     R2  sesgo  spearman
+                                apilado 1885 0.7058   0.8259  0.1671 5.9099 0.2242 0.9883    0.4434
+mejor individual (e5 + tfidf car + pal) 1885 0.7148   0.8247  0.1703 5.9369 0.1980 0.9360    0.4232
+  mpnet + cuadrática (punto de partida) 1885 0.7359   0.8472  0.1629 6.0270 0.1614 1.0266    0.3732
+
+prueba TAWOS
+                                 modelo    n  MdMRE  MdAElog  PRED25  MAE_h     R2  sesgo  spearman
+                                apilado 2340 0.6843   0.8147  0.1735 4.3342 0.0841 0.9478    0.2864
+mejor individual (e5 + tfidf car + pal) 2340 0.6701   0.8204  0.1739 4.3393 0.0715 0.8728    0.2772
+  mpnet + cuadrática (punto de partida) 2340 0.6823   0.8267  0.1526 4.3816 0.0582 0.8728    0.2695
+
+externo no Apache
+                                 modelo   n  MdMRE  MdAElog  PRED25  MAE_h     R2  sesgo  spearman
+                                apilado 792 0.7101   0.9060  0.1263 5.7710 0.0437 1.1081    0.2376
+mejor individual (e5 + tfidf car + pal) 792 0.7313   0.9098  0.1376 5.7737 0.0370 1.0028    0.2241
+  mpnet + cuadrática (punto de partida) 792 0.7211   0.9071  0.1389 5.7808 0.0142 0.9818    0.1998
+
+escrito results\barrido/rejilla.csv y apilado.csv

@@ -1,0 +1,90 @@
+varianza del residuo entre proyectos 0.5722 · dentro 0.8909
+  lambda teórico (var_dentro / var_entre) = 1.6
+
+elección de lambda en validación (MdAElog medio sobre k=1..10):
+  lambda   0.0 -> 0.8854
+  lambda   0.5 -> 0.8367
+  lambda   1.0 -> 0.8117
+  lambda   2.0 -> 0.7912
+  lambda   3.0 -> 0.7795
+  lambda   5.0 -> 0.7708
+  lambda   8.0 -> 0.7664
+  lambda  12.0 -> 0.7640
+  lambda  20.0 -> 0.7648
+  lambda  40.0 -> 0.7676
+  elegido lambda = 12
+
+prueba fija
+   0 anclas sin contraer     MdMRE 0.6860 · MdAElog 0.8346 · PRED25 0.1631 · R² +0.1520
+   1 anclas sin contraer     MdMRE 0.8167 · MdAElog 1.1119 · PRED25 0.1262 · R² -0.4757
+   1 anclas contraído λ=12   MdMRE 0.6846 · MdAElog 0.8372 · PRED25 0.1651 · R² +0.1595
+   2 anclas sin contraer     MdMRE 0.7635 · MdAElog 0.9523 · PRED25 0.1445 · R² -0.1021
+   2 anclas contraído λ=12   MdMRE 0.6837 · MdAElog 0.8339 · PRED25 0.1668 · R² +0.1642
+   3 anclas sin contraer     MdMRE 0.7602 · MdAElog 0.9489 · PRED25 0.1449 · R² -0.1074
+   3 anclas contraído λ=12   MdMRE 0.6859 · MdAElog 0.8352 · PRED25 0.1666 · R² +0.1639
+   5 anclas sin contraer     MdMRE 0.7403 · MdAElog 0.8966 · PRED25 0.1541 · R² +0.0012
+   5 anclas contraído λ=12   MdMRE 0.6851 · MdAElog 0.8213 · PRED25 0.1650 · R² +0.1736
+  10 anclas sin contraer     MdMRE 0.7120 · MdAElog 0.8416 · PRED25 0.1608 · R² +0.1164
+  10 anclas contraído λ=12   MdMRE 0.6837 · MdAElog 0.8133 · PRED25 0.1669 · R² +0.1849
+  20 anclas sin contraer     MdMRE 0.6898 · MdAElog 0.8107 · PRED25 0.1687 · R² +0.1728
+  20 anclas contraído λ=12   MdMRE 0.6791 · MdAElog 0.8033 · PRED25 0.1702 · R² +0.1936
+
+prueba SiP
+   0 anclas sin contraer     MdMRE 0.7086 · MdAElog 0.8405 · PRED25 0.1602 · R² +0.2223
+   1 anclas sin contraer     MdMRE 0.9815 · MdAElog 1.1822 · PRED25 0.1203 · R² -0.5232
+   1 anclas contraído λ=12   MdMRE 0.7049 · MdAElog 0.8473 · PRED25 0.1624 · R² +0.2214
+   2 anclas sin contraer     MdMRE 0.7973 · MdAElog 0.9625 · PRED25 0.1406 · R² -0.0303
+   2 anclas contraído λ=12   MdMRE 0.7051 · MdAElog 0.8463 · PRED25 0.1631 · R² +0.2237
+   3 anclas sin contraer     MdMRE 0.7723 · MdAElog 0.9400 · PRED25 0.1471 · R² -0.0122
+   3 anclas contraído λ=12   MdMRE 0.7044 · MdAElog 0.8413 · PRED25 0.1649 · R² +0.2250
+   5 anclas sin contraer     MdMRE 0.7692 · MdAElog 0.9279 · PRED25 0.1481 · R² +0.0160
+   5 anclas contraído λ=12   MdMRE 0.7066 · MdAElog 0.8404 · PRED25 0.1629 · R² +0.2148
+  10 anclas sin contraer     MdMRE 0.7372 · MdAElog 0.8696 · PRED25 0.1554 · R² +0.1487
+  10 anclas contraído λ=12   MdMRE 0.7112 · MdAElog 0.8363 · PRED25 0.1624 · R² +0.2242
+  20 anclas sin contraer     MdMRE 0.7326 · MdAElog 0.8488 · PRED25 0.1599 · R² +0.1864
+  20 anclas contraído λ=12   MdMRE 0.7141 · MdAElog 0.8399 · PRED25 0.1623 · R² +0.2221
+
+externo no Apache
+   0 anclas sin contraer     MdMRE 0.7260 · MdAElog 0.9422 · PRED25 0.1389 · R² +0.0424
+   1 anclas sin contraer     MdMRE 0.8494 · MdAElog 1.1045 · PRED25 0.1212 · R² -0.3517
+   1 anclas contraído λ=12   MdMRE 0.7198 · MdAElog 0.8929 · PRED25 0.1375 · R² +0.0806
+   2 anclas sin contraer     MdMRE 0.7469 · MdAElog 0.9364 · PRED25 0.1475 · R² -0.0114
+   2 anclas contraído λ=12   MdMRE 0.7080 · MdAElog 0.8619 · PRED25 0.1438 · R² +0.1158
+   3 anclas sin contraer     MdMRE 0.7316 · MdAElog 0.9028 · PRED25 0.1486 · R² +0.0454
+   3 anclas contraído λ=12   MdMRE 0.6982 · MdAElog 0.8449 · PRED25 0.1479 · R² +0.1425
+   5 anclas sin contraer     MdMRE 0.7076 · MdAElog 0.8475 · PRED25 0.1649 · R² +0.1593
+   5 anclas contraído λ=12   MdMRE 0.6895 · MdAElog 0.8281 · PRED25 0.1563 · R² +0.1721
+  10 anclas sin contraer     MdMRE 0.6634 · MdAElog 0.7834 · PRED25 0.1751 · R² +0.2279
+  10 anclas contraído λ=12   MdMRE 0.6646 · MdAElog 0.7958 · PRED25 0.1746 · R² +0.2031
+  20 anclas sin contraer     MdMRE 0.6237 · MdAElog 0.7313 · PRED25 0.1879 · R² +0.2609
+  20 anclas contraído λ=12   MdMRE 0.6290 · MdAElog 0.7578 · PRED25 0.1888 · R² +0.2465
+
+================================================================================================================
+RESUMEN: CONTRAER FRENTE A NO ANCLAR
+================================================================================================================
+
+prueba fija (sin anclas: MdMRE 0.6860 · R² +0.1520)
+   1 anclas · MdMRE 0.6846 (-0.0013) · R² +0.1595 (+0.0076) · PRED25 0.165
+   2 anclas · MdMRE 0.6837 (-0.0022) · R² +0.1642 (+0.0122) · PRED25 0.167
+   3 anclas · MdMRE 0.6859 (-0.0001) · R² +0.1639 (+0.0119) · PRED25 0.167
+   5 anclas · MdMRE 0.6851 (-0.0008) · R² +0.1736 (+0.0216) · PRED25 0.165
+  10 anclas · MdMRE 0.6837 (-0.0023) · R² +0.1849 (+0.0329) · PRED25 0.167
+  20 anclas · MdMRE 0.6791 (-0.0068) · R² +0.1936 (+0.0416) · PRED25 0.170
+
+prueba SiP (sin anclas: MdMRE 0.7086 · R² +0.2223)
+   1 anclas · MdMRE 0.7049 (-0.0038) · R² +0.2214 (-0.0009) · PRED25 0.162
+   2 anclas · MdMRE 0.7051 (-0.0036) · R² +0.2237 (+0.0014) · PRED25 0.163
+   3 anclas · MdMRE 0.7044 (-0.0043) · R² +0.2250 (+0.0026) · PRED25 0.165
+   5 anclas · MdMRE 0.7066 (-0.0021) · R² +0.2148 (-0.0075) · PRED25 0.163
+  10 anclas · MdMRE 0.7112 (+0.0025) · R² +0.2242 (+0.0018) · PRED25 0.162
+  20 anclas · MdMRE 0.7141 (+0.0055) · R² +0.2221 (-0.0003) · PRED25 0.162
+
+externo no Apache (sin anclas: MdMRE 0.7260 · R² +0.0424)
+   1 anclas · MdMRE 0.7198 (-0.0062) · R² +0.0806 (+0.0382) · PRED25 0.138
+   2 anclas · MdMRE 0.7080 (-0.0180) · R² +0.1158 (+0.0734) · PRED25 0.144
+   3 anclas · MdMRE 0.6982 (-0.0278) · R² +0.1425 (+0.1001) · PRED25 0.148
+   5 anclas · MdMRE 0.6895 (-0.0365) · R² +0.1721 (+0.1297) · PRED25 0.156
+  10 anclas · MdMRE 0.6646 (-0.0614) · R² +0.2031 (+0.1607) · PRED25 0.175
+  20 anclas · MdMRE 0.6290 (-0.0970) · R² +0.2465 (+0.2041) · PRED25 0.189
+
+escrito results\anclas/contraidas.csv

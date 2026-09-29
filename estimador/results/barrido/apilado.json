@@ -1,0 +1,42 @@
+{
+ "claves": [
+  [
+   "e5 + tfidf car + pal",
+   "absolute_error",
+   10,
+   800
+  ],
+  [
+   "e5-large",
+   "absolute_error",
+   6,
+   800
+  ],
+  [
+   "e5 + tfidf car",
+   "absolute_error",
+   4,
+   800
+  ],
+  [
+   "mpnet (referencia)",
+   "absolute_error",
+   4,
+   800
+  ],
+  [
+   "tfidf pal",
+   "absolute_error",
+   10,
+   800
+  ]
+ ],
+ "pesos": [
+  0.20959472116482245,
+  0.27922489898522784,
+  0.2556715745194268,
+  0.19680112460844484,
+  0.21057178627678955
+ ],
+ "intercepto": -0.024440224638793917
+}

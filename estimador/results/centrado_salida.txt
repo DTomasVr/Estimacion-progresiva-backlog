@@ -1,0 +1,82 @@
+aviso: e5-large solo está codificado para el corpus sin Apache; se usa mpnet de títulos, que cubre todo
+corpus completo 89,851 · entrenamiento con Apache 63,926 · sin Apache 16,648
+  ajustado con «todo (con Apache)»
+  ajustado con «sin Apache»
+
+====================================================================================================================================
+prueba fija
+====================================================================================================================================
+                                                 brazo    n  MdMRE  MdAElog  PRED25      R2  sesgo  spearman  R2_intra  rho_intra
+                                    crudo · sin Apache 4225 0.6971   0.8511  0.1508  0.1089 0.9390    0.3120    0.0973     0.2871
+                centrado + mediana global · sin Apache 4225 0.7026   0.8601  0.1538  0.0945 0.8558    0.3134    0.1001     0.2910
+       centrado + media REAL del proyecto · sin Apache 4225 0.7164   0.8612  0.1591  0.0750 0.9107    0.2858    0.1001     0.2910
+centrado + media REAL del proyecto · todo (con Apache) 4225 0.7078   0.8648  0.1538  0.0627 0.9328    0.2405    0.0882     0.2867
+                             crudo · todo (con Apache) 4225 0.7027   0.9550  0.1564 -0.0744 0.6015    0.2541    0.0690     0.2405
+         centrado + mediana global · todo (con Apache) 4225 0.7220   1.0492  0.1418 -0.3172 0.4354    0.2979    0.0882     0.2867
+
+====================================================================================================================================
+prueba SiP
+====================================================================================================================================
+                                                 brazo    n  MdMRE  MdAElog  PRED25      R2  sesgo  spearman  R2_intra  rho_intra
+       centrado + media REAL del proyecto · sin Apache 1885 0.7388   0.8558  0.1592  0.1883 1.0257    0.4044    0.1430     0.3626
+                                    crudo · sin Apache 1885 0.7353   0.8730  0.1448  0.1614 1.0568    0.3773    0.1419     0.3468
+                centrado + mediana global · sin Apache 1885 0.7242   0.8819  0.1416  0.1321 0.8950    0.3802    0.1430     0.3626
+centrado + media REAL del proyecto · todo (con Apache) 1885 0.7368   0.8894  0.1432  0.1655 1.0776    0.3729    0.1134     0.3272
+                             crudo · todo (con Apache) 1885 0.7111   0.8897  0.1512  0.0146 0.7508    0.2986    0.1005     0.2833
+         centrado + mediana global · todo (con Apache) 1885 0.7191   0.9839  0.1618 -0.2914 0.4735    0.3355    0.1134     0.3272
+
+====================================================================================================================================
+prueba TAWOS
+====================================================================================================================================
+                                                 brazo    n  MdMRE  MdAElog  PRED25      R2  sesgo  spearman  R2_intra  rho_intra
+                centrado + mediana global · sin Apache 2340 0.6775   0.8366  0.1637  0.0602 0.8322    0.2602    0.0598     0.2320
+                                    crudo · sin Apache 2340 0.6742   0.8398  0.1556  0.0612 0.8632    0.2625    0.0552     0.2400
+centrado + media REAL del proyecto · todo (con Apache) 2340 0.6859   0.8448  0.1624 -0.0297 0.8500    0.1363    0.0644     0.2538
+       centrado + media REAL del proyecto · sin Apache 2340 0.6972   0.8667  0.1590 -0.0267 0.8405    0.1884    0.0598     0.2320
+                             crudo · todo (con Apache) 2340 0.6961   1.0125  0.1607 -0.1547 0.5108    0.2430    0.0393     0.2071
+         centrado + mediana global · todo (con Apache) 2340 0.7247   1.1115  0.1256 -0.3415 0.4148    0.2656    0.0644     0.2538
+
+====================================================================================================================================
+externo no Apache
+====================================================================================================================================
+                                                 brazo   n  MdMRE  MdAElog  PRED25      R2  sesgo  spearman  R2_intra  rho_intra
+                                    crudo · sin Apache 792 0.7244   0.9296  0.1364  0.0258 1.0004    0.1933    0.0358     0.2287
+                centrado + mediana global · sin Apache 792 0.7254   0.9512  0.1578  0.0305 0.9336    0.1879    0.0518     0.2247
+       centrado + media REAL del proyecto · sin Apache 792 0.7254   0.9512  0.1578  0.0305 0.9336    0.1879    0.0518     0.2247
+                             crudo · todo (con Apache) 792 0.7643   1.1089  0.1086 -0.2786 0.4749    0.0896    0.0218     0.1818
+centrado + media REAL del proyecto · todo (con Apache) 792 0.7719   1.1311  0.1263 -0.2801 0.4519    0.1347    0.0489     0.2017
+         centrado + mediana global · todo (con Apache) 792 0.7719   1.1311  0.1263 -0.2801 0.4519    0.1347    0.0489     0.2017
+
+====================================================================================================================================
+externo (94 % Apache)
+====================================================================================================================================
+                                                 brazo     n  MdMRE  MdAElog  PRED25      R2  sesgo  spearman  R2_intra  rho_intra
+                             crudo · todo (con Apache) 13255 0.7255   0.8354  0.1538  0.0009 0.9717    0.1359    0.0120     0.1576
+         centrado + mediana global · todo (con Apache) 13255 0.7141   0.8533  0.1575  0.0340 0.9796    0.1881    0.0417     0.1793
+centrado + media REAL del proyecto · todo (con Apache) 13255 0.7141   0.8533  0.1575  0.0340 0.9796    0.1881    0.0417     0.1793
+                centrado + mediana global · sin Apache 13255 0.9734   0.9935  0.1311 -0.2027 1.9598    0.1802   -0.0018     0.1627
+       centrado + media REAL del proyecto · sin Apache 13255 0.9734   0.9935  0.1311 -0.2027 1.9598    0.1802   -0.0018     0.1627
+                                    crudo · sin Apache 13255 1.0686   1.0098  0.1307 -0.2603 2.0686    0.1849   -0.0266     0.1641
+
+====================================================================================================================================
+LA PREGUNTA DE FONDO: ¿MEJORA EL TEXTO AL CENTRAR?
+====================================================================================================================================
+  (R²_intra y ρ_intra no dependen de acertar la escala)
+
+  prueba fija
+    crudo · todo (con Apache)                            R²_intra +0.0690 · ρ_intra +0.2405
+    centrado + mediana global · todo (con Apache)        R²_intra +0.0882 · ρ_intra +0.2867
+    centrado + media REAL del proyecto · todo (con Apache) R²_intra +0.0882 · ρ_intra +0.2867
+    crudo · sin Apache                                   R²_intra +0.0973 · ρ_intra +0.2871
+    centrado + mediana global · sin Apache               R²_intra +0.1001 · ρ_intra +0.2910
+    centrado + media REAL del proyecto · sin Apache      R²_intra +0.1001 · ρ_intra +0.2910
+
+  externo no Apache
+    crudo · todo (con Apache)                            R²_intra +0.0218 · ρ_intra +0.1818
+    centrado + mediana global · todo (con Apache)        R²_intra +0.0489 · ρ_intra +0.2017
+    centrado + media REAL del proyecto · todo (con Apache) R²_intra +0.0489 · ρ_intra +0.2017
+    crudo · sin Apache                                   R²_intra +0.0358 · ρ_intra +0.2287
+    centrado + mediana global · sin Apache               R²_intra +0.0518 · ρ_intra +0.2247
+    centrado + media REAL del proyecto · sin Apache      R²_intra +0.0518 · ρ_intra +0.2247
+
+escrito results\centrado/resumen.csv

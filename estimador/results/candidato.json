@@ -1,0 +1,50 @@
+{
+ "elegido": "título + categoría",
+ "bandas": {
+  "validación sin Apache": {
+   "factor50": 2.2108886094800404,
+   "factor80": 4.7122205464950175,
+   "factor90": 7.477336804822042
+  },
+  "validación completa": {
+   "factor50": 2.70292248905256,
+   "factor80": 5.998816491670697,
+   "factor90": 9.343109547401054
+  }
+ },
+ "cobertura80": [
+  {
+   "bloque": "prueba fija",
+   "cobertura80": 0.7834319526627219
+  },
+  {
+   "bloque": "prueba SiP",
+   "cobertura80": 0.8047745358090186
+  },
+  {
+   "bloque": "prueba TAWOS",
+   "cobertura80": 0.7662393162393163
+  },
+  {
+   "bloque": "externo no Apache",
+   "cobertura80": 0.7247474747474747
+  },
+  {
+   "bloque": "externo (94 % Apache)",
+   "cobertura80": 0.7192757450018861
+  }
+ ],
+ "sonda_generadas": {
+  "en": {
+   "mediana": 2.7702401329142963,
+   "p10": 2.0704017240132946,
+   "p90": 4.019970954368394
+  },
+  "es": {
+   "mediana": 2.8807278668768626,
+   "p10": 2.1389794579848638,
+   "p90": 4.593444040919439
+  }
+ },
+ "n_train": 16648
+}

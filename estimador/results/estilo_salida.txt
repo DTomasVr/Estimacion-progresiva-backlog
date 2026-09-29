@@ -1,0 +1,139 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+======================================================================================================================================================
+1 · IDIOMA DE ENTRADA · modelo entrenado en inglés, prueba de v3
+======================================================================================================================================================
+                            entrada    n  MdMRE  MdAElog  PRED25  MAE_h  sesgo  spearman
+entrada en inglés (como se entrenó) 2608 0.6845   0.8233  0.1637 4.2723 0.9595    0.3834
+     entrada en español (traducida) 2608 0.7143   0.8489  0.1561 4.3349 1.0317    0.3425
+  darle el español cuesta +0.0297 de MdMRE (1.043x) y 1.031x de error logarítmico
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 8056.47it/s]
+tareas generadas para la sonda: 115
+  ajustado [título + descripción] [actual (vector+cat+fuente+num)] [todo] n=63,926
+  ajustado [título + descripción] [actual (vector+cat+fuente+num)] [sin Apache] n=16,648
+  ajustado [título + descripción] [actual (vector+cat+fuente+num)] [Apache x0,25] n=63,926
+  ajustado [título + descripción] [despliegue (vector+categoría)] [todo] n=63,926
+  ajustado [título + descripción] [despliegue (vector+categoría)] [sin Apache] n=16,648
+  ajustado [título + descripción] [despliegue (vector+categoría)] [Apache x0,25] n=63,926
+  ajustado [solo título] [actual (vector+cat+fuente+num)] [todo] n=63,926
+  ajustado [solo título] [actual (vector+cat+fuente+num)] [sin Apache] n=16,648
+  ajustado [solo título] [actual (vector+cat+fuente+num)] [Apache x0,25] n=63,926
+  ajustado [solo título] [despliegue (vector+categoría)] [todo] n=63,926
+  ajustado [solo título] [despliegue (vector+categoría)] [sin Apache] n=16,648
+  ajustado [solo título] [despliegue (vector+categoría)] [Apache x0,25] n=63,926
+
+======================================================================================================================================================
+prueba fija · n=4,225
+======================================================================================================================================================
+               vista                         rasgos       corpus  n_train  val_MdAElog  MdMRE  MdAElog  PRED25  MAE_h  sesgo  spearman
+         solo título actual (vector+cat+fuente+num)         todo    63926       0.7355 0.6837   0.8222  0.1621 5.0176 0.8775    0.3790
+         solo título actual (vector+cat+fuente+num) Apache x0,25    63926       0.7677 0.6787   0.8255  0.1662 5.0070 0.8717    0.3688
+título + descripción actual (vector+cat+fuente+num)         todo    63926       0.7289 0.6854   0.8279  0.1666 5.0007 0.8700    0.3924
+título + descripción actual (vector+cat+fuente+num) Apache x0,25    63926       0.7628 0.6878   0.8290  0.1664 5.0101 0.8696    0.3855
+título + descripción actual (vector+cat+fuente+num)   sin Apache    16648       0.9480 0.6802   0.8347  0.1688 5.0003 0.9039    0.3943
+         solo título  despliegue (vector+categoría)   sin Apache    16648       0.9943 0.6867   0.8381  0.1621 5.0653 0.9095    0.3473
+         solo título actual (vector+cat+fuente+num)   sin Apache    16648       0.9588 0.6818   0.8423  0.1699 5.0392 0.8881    0.3572
+título + descripción  despliegue (vector+categoría)   sin Apache    16648       0.9846 0.6907   0.8486  0.1657 5.0555 0.9269    0.3622
+título + descripción  despliegue (vector+categoría) Apache x0,25    63926       0.7866 0.6887   0.8629  0.1636 5.1042 0.7361    0.3518
+         solo título  despliegue (vector+categoría) Apache x0,25    63926       0.8340 0.6929   0.8891  0.1602 5.1380 0.7205    0.3253
+título + descripción  despliegue (vector+categoría)         todo    63926       0.7692 0.6976   0.9267  0.1493 5.2027 0.6374    0.3076
+         solo título  despliegue (vector+categoría)         todo    63926       0.7781 0.6991   0.9317  0.1543 5.2398 0.6115    0.2919
+
+======================================================================================================================================================
+prueba SiP · n=1,885
+======================================================================================================================================================
+               vista                         rasgos       corpus  n_train  val_MdAElog  MdMRE  MdAElog  PRED25  MAE_h  sesgo  spearman
+         solo título actual (vector+cat+fuente+num)         todo    63926       0.7355 0.7059   0.8254  0.1560 5.9386 0.9526    0.4375
+         solo título actual (vector+cat+fuente+num) Apache x0,25    63926       0.7677 0.7062   0.8260  0.1645 5.9391 0.9458    0.4179
+título + descripción actual (vector+cat+fuente+num)         todo    63926       0.7289 0.7128   0.8343  0.1660 5.9534 0.9742    0.4403
+título + descripción  despliegue (vector+categoría) Apache x0,25    63926       0.7866 0.7005   0.8379  0.1655 5.9676 0.8937    0.4100
+         solo título  despliegue (vector+categoría)   sin Apache    16648       0.9943 0.7093   0.8384  0.1597 5.9355 0.9698    0.4356
+título + descripción actual (vector+cat+fuente+num) Apache x0,25    63926       0.7628 0.7154   0.8403  0.1682 5.9557 0.9747    0.4256
+título + descripción actual (vector+cat+fuente+num)   sin Apache    16648       0.9480 0.7063   0.8451  0.1682 5.9390 0.9855    0.4438
+título + descripción  despliegue (vector+categoría)   sin Apache    16648       0.9846 0.7059   0.8459  0.1581 5.9548 0.9668    0.4353
+         solo título actual (vector+cat+fuente+num)   sin Apache    16648       0.9588 0.7079   0.8553  0.1698 5.9524 0.9665    0.4116
+         solo título  despliegue (vector+categoría) Apache x0,25    63926       0.8340 0.7085   0.8620  0.1544 6.0088 0.8572    0.3882
+título + descripción  despliegue (vector+categoría)         todo    63926       0.7692 0.6965   0.8679  0.1422 6.0384 0.8241    0.3717
+         solo título  despliegue (vector+categoría)         todo    63926       0.7781 0.7048   0.8687  0.1597 6.0960 0.7801    0.3511
+
+======================================================================================================================================================
+prueba TAWOS · n=2,340
+======================================================================================================================================================
+               vista                         rasgos       corpus  n_train  val_MdAElog  MdMRE  MdAElog  PRED25  MAE_h  sesgo  spearman
+         solo título actual (vector+cat+fuente+num)         todo    63926       0.7355 0.6618   0.8196  0.1671 4.2757 0.8345    0.3316
+título + descripción actual (vector+cat+fuente+num)         todo    63926       0.7289 0.6646   0.8213  0.1671 4.2334 0.8177    0.3531
+título + descripción actual (vector+cat+fuente+num) Apache x0,25    63926       0.7628 0.6627   0.8229  0.1650 4.2485 0.8091    0.3525
+         solo título actual (vector+cat+fuente+num) Apache x0,25    63926       0.7677 0.6569   0.8242  0.1675 4.2562 0.8320    0.3290
+título + descripción actual (vector+cat+fuente+num)   sin Apache    16648       0.9480 0.6619   0.8249  0.1692 4.2442 0.8633    0.3568
+         solo título actual (vector+cat+fuente+num)   sin Apache    16648       0.9588 0.6632   0.8352  0.1701 4.3036 0.8548    0.3160
+         solo título  despliegue (vector+categoría)   sin Apache    16648       0.9943 0.6717   0.8369  0.1641 4.3643 0.8618    0.2756
+título + descripción  despliegue (vector+categoría)   sin Apache    16648       0.9846 0.6818   0.8496  0.1718 4.3311 0.8906    0.3024
+título + descripción  despliegue (vector+categoría) Apache x0,25    63926       0.7866 0.6751   0.8889  0.1620 4.4087 0.6431    0.3164
+         solo título  despliegue (vector+categoría) Apache x0,25    63926       0.8340 0.6748   0.9126  0.1650 4.4366 0.6217    0.2899
+título + descripción  despliegue (vector+categoría)         todo    63926       0.7692 0.6987   0.9773  0.1551 4.5294 0.5474    0.2880
+         solo título  despliegue (vector+categoría)         todo    63926       0.7781 0.6928   0.9886  0.1500 4.5501 0.5121    0.2687
+
+======================================================================================================================================================
+externo · n=13,255
+======================================================================================================================================================
+               vista                         rasgos       corpus  n_train  val_MdAElog  MdMRE  MdAElog  PRED25  MAE_h  sesgo  spearman
+título + descripción actual (vector+cat+fuente+num)         todo    63926       0.7289 0.7032   0.8170  0.1586 2.3290 0.8608    0.1674
+         solo título actual (vector+cat+fuente+num)         todo    63926       0.7355 0.7062   0.8203  0.1578 2.3314 0.8671    0.1647
+título + descripción actual (vector+cat+fuente+num) Apache x0,25    63926       0.7628 0.7065   0.8216  0.1606 2.3162 0.9785    0.1915
+título + descripción  despliegue (vector+categoría)         todo    63926       0.7692 0.7159   0.8327  0.1553 2.3335 0.9455    0.1483
+         solo título  despliegue (vector+categoría)         todo    63926       0.7781 0.7242   0.8334  0.1554 2.3366 0.9618    0.1418
+         solo título actual (vector+cat+fuente+num) Apache x0,25    63926       0.7677 0.7215   0.8373  0.1568 2.3305 0.9908    0.1737
+título + descripción  despliegue (vector+categoría) Apache x0,25    63926       0.7866 0.7313   0.8449  0.1541 2.3436 1.0868    0.1564
+         solo título  despliegue (vector+categoría) Apache x0,25    63926       0.8340 0.7512   0.8629  0.1509 2.3525 1.1838    0.1614
+título + descripción actual (vector+cat+fuente+num)   sin Apache    16648       0.9480 0.9065   0.9450  0.1316 2.6282 1.8570    0.2147
+         solo título actual (vector+cat+fuente+num)   sin Apache    16648       0.9588 0.9304   0.9671  0.1393 2.6297 1.8964    0.2024
+título + descripción  despliegue (vector+categoría)   sin Apache    16648       0.9846 0.9976   0.9971  0.1298 2.6747 1.9976    0.1953
+         solo título  despliegue (vector+categoría)   sin Apache    16648       0.9943 1.0246   1.0057  0.1304 2.6833 2.0246    0.1855
+
+======================================================================================================================================================
+externo no Apache · n=792
+======================================================================================================================================================
+               vista                         rasgos       corpus  n_train  val_MdAElog  MdMRE  MdAElog  PRED25  MAE_h  sesgo  spearman
+         solo título actual (vector+cat+fuente+num)   sin Apache    16648       0.9588 0.6961   0.8867  0.1578 5.6709 0.9546    0.2767
+título + descripción actual (vector+cat+fuente+num)   sin Apache    16648       0.9480 0.7199   0.8879  0.1402 5.6493 0.9249    0.2998
+         solo título  despliegue (vector+categoría)   sin Apache    16648       0.9943 0.7208   0.8956  0.1490 5.7779 1.0054    0.1979
+título + descripción  despliegue (vector+categoría)   sin Apache    16648       0.9846 0.7174   0.9430  0.1540 5.7271 0.9543    0.2480
+         solo título  despliegue (vector+categoría) Apache x0,25    63926       0.8340 0.7424   1.0269  0.1250 5.9471 0.5889    0.1464
+título + descripción actual (vector+cat+fuente+num) Apache x0,25    63926       0.7628 0.7397   1.0434  0.1263 5.9076 0.5265    0.2428
+título + descripción  despliegue (vector+categoría) Apache x0,25    63926       0.7866 0.7462   1.0508  0.1389 5.9312 0.5880    0.1599
+         solo título actual (vector+cat+fuente+num) Apache x0,25    63926       0.7677 0.7481   1.0609  0.1136 5.9652 0.4961    0.2325
+título + descripción  despliegue (vector+categoría)         todo    63926       0.7692 0.7499   1.1006  0.1237 6.0342 0.4769    0.1231
+         solo título  despliegue (vector+categoría)         todo    63926       0.7781 0.7573   1.1130  0.1187 6.0462 0.4665    0.1214
+         solo título actual (vector+cat+fuente+num)         todo    63926       0.7355 0.7589   1.1211  0.0947 6.0751 0.4201    0.2041
+título + descripción actual (vector+cat+fuente+num)         todo    63926       0.7289 0.7525   1.1444  0.1073 6.0287 0.4414    0.2439
+
+======================================================================================================================================================
+SONDA: QUE RESPONDE CADA CONFIGURACION A LAS 115 TAREAS GENERADAS
+======================================================================================================================================================
+               vista                         rasgos       corpus  n_train idioma  mediana_h   p10    p90  dispersion
+         solo título actual (vector+cat+fuente+num) Apache x0,25    63926     en      2.729 1.759  4.539       2.581
+         solo título actual (vector+cat+fuente+num) Apache x0,25    63926     es      2.618 1.698  4.199       2.474
+         solo título actual (vector+cat+fuente+num)   sin Apache    16648     en      2.586 1.764  3.985       2.259
+         solo título actual (vector+cat+fuente+num)   sin Apache    16648     es      2.686 1.814  4.214       2.323
+         solo título actual (vector+cat+fuente+num)         todo    63926     en      2.807 1.998  4.217       2.110
+         solo título actual (vector+cat+fuente+num)         todo    63926     es      2.643 1.811  3.913       2.160
+         solo título  despliegue (vector+categoría) Apache x0,25    63926     en      2.253 1.671  3.267       1.956
+         solo título  despliegue (vector+categoría) Apache x0,25    63926     es      2.011 1.423  2.891       2.032
+         solo título  despliegue (vector+categoría)   sin Apache    16648     en      2.770 2.070  4.020       1.942
+         solo título  despliegue (vector+categoría)   sin Apache    16648     es      2.881 2.139  4.593       2.147
+         solo título  despliegue (vector+categoría)         todo    63926     en      1.685 1.174  2.363       2.012
+         solo título  despliegue (vector+categoría)         todo    63926     es      1.438 1.042  2.049       1.966
+título + descripción actual (vector+cat+fuente+num) Apache x0,25    63926     en      4.197 2.630  6.792       2.582
+título + descripción actual (vector+cat+fuente+num) Apache x0,25    63926     es      4.325 2.455  7.673       3.125
+título + descripción actual (vector+cat+fuente+num)   sin Apache    16648     en      3.158 1.634  4.896       2.996
+título + descripción actual (vector+cat+fuente+num)   sin Apache    16648     es      2.870 1.910  5.481       2.870
+título + descripción actual (vector+cat+fuente+num)         todo    63926     en      8.982 4.928 16.664       3.382
+título + descripción actual (vector+cat+fuente+num)         todo    63926     es      8.703 5.131 17.186       3.349
+título + descripción  despliegue (vector+categoría) Apache x0,25    63926     en      6.848 3.592 15.768       4.390
+título + descripción  despliegue (vector+categoría) Apache x0,25    63926     es      6.110 2.988 13.289       4.447
+título + descripción  despliegue (vector+categoría)   sin Apache    16648     en      3.192 1.918  5.996       3.126
+título + descripción  despliegue (vector+categoría)   sin Apache    16648     es      3.599 2.354  6.270       2.663
+título + descripción  despliegue (vector+categoría)         todo    63926     en      6.531 3.175 12.198       3.842
+título + descripción  despliegue (vector+categoría)         todo    63926     es      6.119 3.142 11.039       3.513
+
+escrito results/estilo_idioma.csv, estilo_dominio.csv, estilo_sonda_generadas.csv

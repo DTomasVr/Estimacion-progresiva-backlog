@@ -1,0 +1,49 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+tareas generadas: 115 de 3 dominios
+  palabras por tarea: mediana 10 (es) / 7 (en)
+  corpus de entrenamiento: 63,926 tareas, mediana 1.00 h
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 7856.79it/s]
+
+======================================================================================================================
+DONDE CAEN, COMPARADO CON TAREAS REALES
+======================================================================================================================
+                     conjunto   n  cos_max  cos_top10  horas_vecinos  horas_predichas   p10    p90  horas_reales
+          generadas (español) 115    0.611      0.565          2.083            8.703 5.131 17.186           NaN
+           generadas (inglés) 115    0.603      0.554          1.933            8.982 4.928 16.664           NaN
+real · prueba SiP (comercial) 400    0.718      0.655          1.750            2.295 1.394  3.948           2.0
+          real · prueba TAWOS 400    0.656      0.608          1.083            1.923 1.300  3.357           2.0
+ real · externo (94 % Apache) 400    0.681      0.638          0.667            1.827 1.314  3.201           1.0
+
+======================================================================================================================
+DE QUE PARTE DEL CORPUS SALEN LOS 5 VECINOS MAS CERCANOS
+======================================================================================================================
+  fuente: {'SiP': 0.483, 'JiraPublico': 0.423, 'TAWOS': 0.094}
+  jira:   {'-': 0.577, 'Apache': 0.275, 'Jira': 0.07, 'RedHat': 0.026, 'Sakai': 0.017}
+
+======================================================================================================================
+EJEMPLOS: TAREA GENERADA -> VECINO MAS CERCANO DEL CORPUS
+======================================================================================================================
+  [ 8.93 h es |  6.35 h en | cos 0.73] Hacer configurable el administrador de la tienda
+        vecino ( 1.00 h): Add configure store
+  [ 7.69 h es |  5.32 h en | cos 0.62] Mostrar las alertas de ventas en el panels del gerente
+        vecino ( 0.43 h): YouLink HR: Manage Company Information Screen Is Greying Out The Wrong Button
+  [19.66 h es |  6.25 h en | cos 0.52] Mostrar el estado en el panel del paciente
+        vecino ( 3.00 h): Prepare test server for Health Monitor system
+  [26.17 h es | 54.33 h en | cos 0.59] Mostrar retroalimentación en el panel del paciente
+        vecino ( 8.00 h): Review comment results
+  [ 6.94 h es |  7.41 h en | cos 0.71] Añadir documentación para el Recepcionista
+        vecino ( 8.00 h): documentation changes
+  [ 8.75 h es |  8.26 h en | cos 0.63] Añadir notificaciones a los consumidores futuros
+        vecino ( 0.17 h): Consumer Register Support
+  [ 5.80 h es |  3.55 h en | cos 0.61] Almacenar los datos de pago en el perfil del miembro
+        vecino ( 0.33 h): Add message details to consumer audit log
+  [ 4.52 h es |  6.69 h en | cos 0.69] Añadir niveles de inventario a las alertas
+        vecino ( 0.50 h): Increase unit test coverage for Alerts List
+  [ 5.90 h es |  7.35 h en | cos 0.56] Almacenar el número de vendedores en la base de datos
+        vecino ( 3.00 h): Business Object Summary Row Identification Mechanism
+  [ 6.82 h es |  7.76 h en | cos 0.60] Mostrar alertas de retorno en el panel de gerente de tienda
+        vecino ( 0.43 h): YouLink HR: Manage Company Information Screen Is Greying Out The Wrong Button
+
+misma tarea en español y en inglés: diferencia mediana 1.440x, p90 2.139x
+
+escrito results/tareas_generadas.csv y tareas_generadas_detalle.csv

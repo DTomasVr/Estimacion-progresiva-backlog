@@ -1,0 +1,62 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+entrenamiento 16,648 (sin Apache) · validación 3,183 sin Apache de 8,445
+bloques: prueba fija 4,225 · prueba SiP 1,885 · prueba TAWOS 2,340 · externo no Apache 792 · externo (94 % Apache) 13,255
+  ajustado «solo el texto del título» en 5 s
+  ajustado «título + categoría» en 4 s
+
+================================================================================================================================
+LAS DOS VARIANTES SOBRE LOS BLOQUES CONGELADOS
+================================================================================================================================
+
+prueba fija · n=4,225
+                variante  MdMRE  MdAElog  PRED25  MAE_h  sesgo  spearman
+solo el texto del título 0.6971   0.8511  0.1508 5.1145 0.9390    0.3120
+      título + categoría 0.6867   0.8381  0.1621 5.0653 0.9095    0.3473
+
+prueba SiP · n=1,885
+                variante  MdMRE  MdAElog  PRED25  MAE_h  sesgo  spearman
+solo el texto del título 0.7353   0.8730  0.1448 6.0213 1.0568    0.3773
+      título + categoría 0.7093   0.8384  0.1597 5.9355 0.9698    0.4356
+
+prueba TAWOS · n=2,340
+                variante  MdMRE  MdAElog  PRED25  MAE_h  sesgo  spearman
+solo el texto del título 0.6742   0.8398  0.1556 4.3840 0.8632    0.2625
+      título + categoría 0.6717   0.8369  0.1641 4.3643 0.8618    0.2756
+
+externo no Apache · n=792
+                variante  MdMRE  MdAElog  PRED25  MAE_h  sesgo  spearman
+solo el texto del título 0.7244   0.9296  0.1364 5.7979 1.0004    0.1933
+      título + categoría 0.7208   0.8956  0.1490 5.7779 1.0054    0.1979
+
+externo (94 % Apache) · n=13,255
+                variante  MdMRE  MdAElog  PRED25  MAE_h  sesgo  spearman
+solo el texto del título 1.0686   1.0098  0.1307 2.6638 2.0686    0.1849
+      título + categoría 1.0246   1.0057  0.1304 2.6833 2.0246    0.1855
+
+candidato elegido sobre SiP + externo no Apache: «título + categoría»
+
+bandas conformes (factor multiplicativo):
+  validación sin Apache    factor50 ×2.21 · factor80 ×4.71 · factor90 ×7.48
+  validación completa      factor50 ×2.70 · factor80 ×6.00 · factor90 ×9.34
+cobertura real de la banda del 80 %: prueba fija 0.783 · prueba SiP 0.805 · prueba TAWOS 0.766 · externo no Apache 0.725 · externo (94 % Apache) 0.719
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 8270.41it/s]
+
+sonda sobre 115 tareas generadas:
+  en: mediana 2.77 h · p10–p90 2.07–4.02 h
+  es: mediana 2.88 h · p10–p90 2.14–4.59 h
+
+escrito models\candidato_titulos.joblib (1.00 MB), results/candidato.csv y candidato.json
+
+uso:
+    import joblib, numpy as np, pandas as pd
+    from sentence_transformers import SentenceTransformer
+    a = joblib.load("models/candidato_titulos.joblib")
+    st = SentenceTransformer(a["codificador"])
+    textos = ["Store payment data in the member profile"]     # INGLES, titulo solo
+    X = st.encode(textos, normalize_embeddings=False)          # SIN normalizar
+    if a["onehot"] is not None:                                # variante elegida
+        cat = pd.DataFrame({"task_kind": ["task"] * len(textos)}).astype(str)
+        X = np.hstack([X, a["onehot"].transform(cat)])
+    horas = np.exp(a["regresor"].predict(X))
+    k = a["bandas"]["validación sin Apache"]["factor80"]
+    bajo, alto = horas / k, horas * k

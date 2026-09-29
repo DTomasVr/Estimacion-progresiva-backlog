@@ -61,8 +61,13 @@ def main():
     print(f"  corpus de entrenamiento: {len(tr):,} tareas, mediana {np.median(y_tr):.2f} h")
 
     st = SentenceTransformer(MODELO, device="cuda" if torch.cuda.is_available() else "cpu")
-    G = {k: st.encode(g[k].tolist(), normalize_embeddings=True, show_progress_bar=False)
+    # SIN normalizar: el corpus se codifico sin normalizar y el regresor se ajusto
+    # sobre esos vectores. Normalizar aqui mete la entrada en otra escala y el
+    # modelo responde cualquier cosa. La normalizacion se aplica aparte, solo
+    # para los cosenos.
+    G = {k: st.encode(g[k].tolist(), normalize_embeddings=False, show_progress_bar=False)
          for k in ("es", "en")}
+    Gn = {k: v / np.linalg.norm(v, axis=1, keepdims=True) for k, v in G.items()}
 
     art = joblib.load("models/frio_v4.joblib")
     reg, oh, sc = art["regresor"], art["onehot"], art["escalador"]
@@ -85,9 +90,9 @@ def main():
         return np.take_along_axis(top, orden, 1), idx
 
     filas = []
-    for nombre, X in (("generadas (español)", G["es"]), ("generadas (inglés)", G["en"])):
-        s, idx = vecinos(X)
-        p = predecir(X)
+    for nombre, k in (("generadas (español)", "es"), ("generadas (inglés)", "en")):
+        s, idx = vecinos(Gn[k])
+        X, p = G[k], predecir(G[k])
         filas.append(dict(conjunto=nombre, n=len(X), cos_max=float(np.median(s[:, 0])),
                           cos_top10=float(np.median(s.mean(1))),
                           horas_vecinos=float(np.median(np.median(y_tr[idx], axis=1))),
@@ -114,7 +119,7 @@ def main():
     print(t.round(3).to_string(index=False))
 
     # ---------------------------------------------- 2 · de donde son los vecinos
-    s, idx = vecinos(G["es"])
+    s, idx = vecinos(Gn["es"])
     fuente = tr.source.to_numpy()[idx[:, :5]].ravel()
     jira = tr.fuente_jira.fillna("-").to_numpy()[idx[:, :5]].ravel()
     print(f"\n{SEP}\nDE QUE PARTE DEL CORPUS SALEN LOS 5 VECINOS MAS CERCANOS\n{SEP}")

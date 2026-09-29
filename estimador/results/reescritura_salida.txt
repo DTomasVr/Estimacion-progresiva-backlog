@@ -1,0 +1,46 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+muestra: 800 tareas ({'prueba SiP': 400, 'externo no Apache': 400})
+  reanudando: 800 ya hechas
+
+reescritas 800/800 (0 s, 0.00 s/tarea)
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 7820.50it/s]
+
+======================================================================================================================
+                         version   n  MdMRE  MdAElog  PRED25  MAE_h  sesgo  spearman
+          original (estilo Jira) 800 0.7217   0.9008  0.1650 5.1946 1.0213    0.2457
+reescrito (estilo del generador) 800 0.7877   0.9803  0.1450 5.2868 1.1972    0.2214
+           prueba SiP · original 400 0.6999   0.8668  0.1775 4.6965 1.0068    0.3982
+          prueba SiP · reescrito 400 0.8081   0.9648  0.1375 4.8075 1.2350    0.3784
+    externo no Apache · original 400 0.7610   0.9298  0.1525 5.6926 1.0298    0.0995
+   externo no Apache · reescrito 400 0.7751   1.0226  0.1525 5.7661 1.1717    0.0721
+======================================================================================================================
+reescribir cuesta +0.0660 de MdMRE (IC95 [+0.033, +0.099], Wilcoxon p=0.00932) y +0.0796 de error logarítmico
+sentido conservado: coseno mediano 0.839 (p10 0.634)
+
+ejemplos:
+  real   0.50 h |  0.56 ->  1.26 h | cos 0.87
+     ori: User Support: XXXX User Cannot Get Rid Of Remaining USM errors
+     re : Remove remaining USM errors for user
+  real   0.33 h |  0.79 ->  1.07 h | cos 0.82
+     ori: NullPointerException in EntityCrawler
+     re : Implement null check in EntityCrawler
+  real  15.50 h |  4.27 ->  2.95 h | cos 0.21
+     ori: Setting up new laptop
+     re : Set up development environment
+  real   2.00 h |  1.67 ->  1.41 h | cos 0.57
+     ori: Uncomment HA invokers in sample-bindings.xml
+     re : Uncomment HA invokers
+  real   9.00 h |  4.79 ->  3.79 h | cos 0.92
+     ori: Validating and fixing the RI Structure
+     re : Fix RI Structure Validation Issues
+  real   0.50 h |  3.00 ->  4.47 h | cos 0.99
+     ori: How to add Hibernate 3.2.7 to the index?
+     re : Add Hibernate 3.2.7 to the index
+  real   5.00 h |  1.08 ->  1.59 h | cos 0.73
+     ori: We have strange behavior with aliases
+     re : Identify and fix alias behavior issues
+  real   0.33 h |  0.38 ->  1.06 h | cos 0.79
+     ori: Bordereau Back Loader on 30/01/07
+     re : Store Bordereau Back Loader
+
+escrito results\reescritura/comparacion.csv y resumen.csv

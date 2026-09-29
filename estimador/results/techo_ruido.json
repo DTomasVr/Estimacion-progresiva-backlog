@@ -1,0 +1,11 @@
+{
+ "sd_log_mediana": 0.49012907173427356,
+ "factor": 1.6325269194381529,
+ "varianza_total": 1.5674125562088117,
+ "varianza_dentro": 0.5702545862230693,
+ "fraccion_irreducible": 0.3638190749233093,
+ "n_grupos": 101,
+ "n_tareas": 275,
+ "techo_MdMRE": 0.3203842982650286,
+ "techo_PRED25": 0.39726
+}

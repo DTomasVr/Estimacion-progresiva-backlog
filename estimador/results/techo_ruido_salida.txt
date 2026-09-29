@@ -1,0 +1,27 @@
+==============================================================================================================
+RUIDO IRREDUCIBLE DESDE EL TEXTO
+==============================================================================================================
+  tareas con texto idéntico repetido: 275 en 101 grupos
+  desviación típica de log-horas dentro de esos grupos: mediana 0.490
+    -> dos tareas con EL MISMO texto difieren típicamente ×1.63
+  varianza total de log-horas: 1.567
+  varianza dentro de grupo: 0.570 (36.4% de la total, irreducible desde el texto)
+  dentro del mismo proyecto: 57 grupos, mediana 0.490 (×1.63) -- el proyecto no explica el ruido
+
+==============================================================================================================
+TECHO: LO QUE SACARÍA UN ORÁCULO QUE SOLO CARGA ESE RUIDO
+==============================================================================================================
+ sd_log  factor  MdMRE  PRED25  PRED50  MdAElog
+   0.30    1.35  0.201   0.601   0.901    0.203
+   0.40    1.49  0.264   0.476   0.803    0.270
+   0.49    1.63  0.320   0.397   0.719    0.330
+   0.60    1.82  0.387   0.331   0.628    0.403
+
+  con el ruido medido (sd 0.490) el oráculo sacaría MdMRE 0.320 y PRED(25) 0.397
+  criterio de aceptación de la tesis: PRED(25) >= 0,75  ->  INALCANZABLE, el techo está en 0.40
+  nuestro modelo: MdMRE 0,687 y PRED(25) 0,162 en la prueba fija, así que del techo nos separa bastante: sí queda margen, pero no hasta 0,75
+
+  aviso: los títulos repetidos son genéricos y probablemente más ruidosos que
+  la media, así que esta es una cota SUPERIOR del ruido y un techo PESIMISTA.
+
+escrito results/techo_ruido.csv y techo_ruido.json

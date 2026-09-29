@@ -1,0 +1,19 @@
+{
+ "ganador": "C2 - correccion sin texto: estimacion + frio",
+ "SA_val": {
+  "R0 - en frio (solo el texto)": 0.41910240588919834,
+  "H0 - estimacion del usuario, tal cual": 0.49917933284485383,
+  "C1 - correccion: texto + estimacion + frio": 0.5632124685962564,
+  "C2 - correccion sin texto: estimacion + frio": 0.5799107257040594
+ },
+ "MdMRE_val": {
+  "R0 - en frio (solo el texto)": 0.6795358145229509,
+  "H0 - estimacion del usuario, tal cual": 0.25,
+  "C1 - correccion: texto + estimacion + frio": 0.3022763958335785,
+  "C2 - correccion sin texto: estimacion + frio": 0.27007244643860623
+ },
+ "n_pool": 16648,
+ "n_train_est": 8143,
+ "n_val_est": 1571,
+ "densidad_estimacion": 0.48912782316194137
+}

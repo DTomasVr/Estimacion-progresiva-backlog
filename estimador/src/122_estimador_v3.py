@@ -77,6 +77,23 @@ class EstimadorV3:
             self._st = SentenceTransformer(self.p["codificador"], device=d)
         return self._st
 
+    @property
+    def codificador_ajustado(self):
+        if getattr(self, "_aj", None) is None:
+            import torch
+            from sentence_transformers import SentenceTransformer, models
+            d = self._dev or ("cuda" if torch.cuda.is_available() else "cpu")
+            w = models.Transformer(self.p["codificador_ajustado"], max_seq_length=48)
+            self._aj = SentenceTransformer(
+                modules=[w, models.Pooling(w.get_word_embedding_dimension(), "mean")],
+                device=d)
+        return self._aj
+
+    def _ajustado(self, textos):
+        return self.codificador_ajustado.encode(
+            ["query: " + t for t in textos], normalize_embeddings=False,
+            show_progress_bar=False).astype(np.float32)
+
     def _vistas(self, textos):
         V = self.codificador.encode(["query: " + t for t in textos],
                                     normalize_embeddings=False,
@@ -99,7 +116,8 @@ class EstimadorV3:
         n = len(textos)
         V, Xd, Ms = self._vistas(textos)
         Z = np.column_stack([np.mean([m.predict(Xd) for m in self.p["bolsa"]], 0),
-                             self.p["ridge"].predict(Ms), self.p["svr"].predict(Ms)])
+                             self.p["ridge"].predict(Ms), self.p["svr"].predict(Ms),
+                             self.p["hgb_ajustado"].predict(self._ajustado(textos))])
         lp = self.p["apilado"].predict(Z)
         if estilo_generador:
             lp = lp + np.log(self.p["factor_estilo"])
@@ -159,8 +177,10 @@ def construir():
     Ms = sparse.hstack([f["tfc"].transform(tit), f["tfw"].transform(tit)]).tocsr()
     Xd = np.hstack([E5] + [sv.transform(tf.transform(tit)).astype(np.float32)
                            for tf, sv in zip((f["tfc"], f["tfw"]), f["svds"])])
+    AJ = np.load(CACHE / "e5-ajustado.npy")
     Z = np.column_stack([np.mean([m.predict(Xd) for m in f["bolsa"]], 0),
-                         f["ridge"].predict(Ms), f["svr"].predict(Ms)])
+                         f["ridge"].predict(Ms), f["svr"].predict(Ms),
+                         f["hgb_ajustado"].predict(AJ)])
     lp = f["apilado"].predict(Z)
 
     res = np.abs(ly[va_m] - lp[va_m])

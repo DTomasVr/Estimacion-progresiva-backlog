@@ -110,9 +110,18 @@ def main():
     lin_s = LinearSVR(C=.3, max_iter=4000, random_state=0).fit(Xs[tr_m], ly[tr_m])
     print("  lineales dispersos ajustados")
 
+    # el codificador ajustado de extremo a extremo (script 105). Por su cuenta
+    # ordena mejor (Spearman 0,364 -> 0,393) y estima peor la escala
+    # (R2 0,149 -> 0,091); dentro del apilado esa diferencia es justo lo que
+    # aporta, y en proyectos nuevos casi duplica el R2 del conjunto.
+    AJ = np.load(CACHE / "e5-ajustado.npy")
+    hgb_aj = hgb().fit(AJ[tr_m], ly[tr_m])
+    print("  HGB sobre el codificador ajustado")
+
     base = {"bolsa": np.mean([m.predict(Xd) for m in bolsa], 0),
             "ridge disperso": lin_r.predict(Xs),
-            "SVR disperso": lin_s.predict(Xs)}
+            "SVR disperso": lin_s.predict(Xs),
+            "e5 ajustado": hgb_aj.predict(AJ)}
     Z = np.column_stack(list(base.values()))
     ap = RidgeCV(alphas=np.logspace(-2, 3, 20)).fit(Z[va_m], ly[va_m])
     lp = ap.predict(Z)
@@ -177,7 +186,8 @@ def main():
         print(f"\n{SEP}\n{b}\n{SEP}")
         print(t[t.bloque == b][cols].round(4).to_string(index=False))
     t.to_csv(OUT / "resumen.csv", index=False)
-    joblib.dump({"bolsa": bolsa, "ridge": lin_r, "svr": lin_s, "apilado": ap,
+    joblib.dump({"bolsa": bolsa, "ridge": lin_r, "svr": lin_s, "hgb_ajustado": hgb_aj,
+                 "codificador_ajustado": "models/e5_ajustado", "apilado": ap,
                  "tfc": tfc, "tfw": tfw, "svds": svds, "corrector": corrector,
                  "lambda": LAMBDA, "codificador": "intfloat/multilingual-e5-large",
                  "dim_emb": int(partes[0].shape[1]), "corpus": "v4 sin Apache",

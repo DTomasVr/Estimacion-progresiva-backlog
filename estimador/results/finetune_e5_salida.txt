@@ -22,3 +22,39 @@ Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF
     ep3 paso    0/693 pérdida 1.0871 · 5 s
     ep3 paso  150/693 pérdida 1.0348 · 812 s
     ep3 paso  300/693 pérdida 1.0311 · 1488 s
+    ep3 paso  450/693 pérdida 1.0261 · 2154 s
+    ep3 paso  600/693 pérdida 1.0279 · 2828 s
+  época 3/3 · 3461 s · MAE log val 0.9726
+
+mejor época 2 (MAE log 0.9383); extrayendo vectores
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 7164.49it/s]
+
+================================================================================================================
+AJUSTE FINO DE e5-large
+================================================================================================================
+
+prueba fija
+                codificador    n  MdMRE  MdAElog  PRED25  MAE_h     R2  sesgo  spearman
+         e5-large congelado 4225 0.6884   0.8303  0.1605 5.0464 0.1487 0.9109    0.3636
+          e5-large ajustado 4225 0.6891   0.8444  0.1804 5.0643 0.0913 0.8908    0.3927
+cabeza del ajuste (sin HGB) 4225 0.6720   0.8208  0.1707 4.9566 0.1241 0.8013    0.4086
+
+prueba SiP
+                codificador    n  MdMRE  MdAElog  PRED25  MAE_h     R2  sesgo  spearman
+         e5-large congelado 1885 0.7137   0.8249  0.1523 5.9177 0.2215 0.9932    0.4423
+          e5-large ajustado 1885 0.6739   0.7986  0.1952 5.8004 0.2461 0.9400    0.5110
+cabeza del ajuste (sin HGB) 1885 0.6601   0.7688  0.1820 5.7257 0.2567 0.8282    0.5245
+
+prueba TAWOS
+                codificador    n  MdMRE  MdAElog  PRED25  MAE_h      R2  sesgo  spearman
+         e5-large congelado 2340 0.6648   0.8323  0.1671 4.3445  0.0830 0.8400    0.3028
+          e5-large ajustado 2340 0.6945   0.8935  0.1684 4.4713 -0.0474 0.8496    0.2921
+cabeza del ajuste (sin HGB) 2340 0.6780   0.8524  0.1615 4.3371  0.0052 0.7782    0.3088
+
+externo no Apache
+                codificador   n  MdMRE  MdAElog  PRED25  MAE_h     R2  sesgo  spearman
+         e5-large congelado 792 0.7376   0.9640  0.1427 5.8067 0.0323 0.9691    0.2182
+          e5-large ajustado 792 0.7336   0.9152  0.1692 5.5876 0.0209 0.9206    0.3213
+cabeza del ajuste (sin HGB) 792 0.7017   0.9295  0.1604 5.4877 0.0738 0.9008    0.3304
+
+escrito results\finetune_e5/resumen.csv y pesos en models\e5_ajustado

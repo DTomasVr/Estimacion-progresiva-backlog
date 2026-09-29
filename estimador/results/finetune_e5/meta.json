@@ -1,0 +1,9 @@
+{
+ "base": "intfloat/multilingual-e5-large",
+ "maxlen": 48,
+ "lote": 24,
+ "epocas": 3,
+ "lr": 1e-05,
+ "mejor_epoca": 2,
+ "mae_log_val": 0.9382904171943665
+}

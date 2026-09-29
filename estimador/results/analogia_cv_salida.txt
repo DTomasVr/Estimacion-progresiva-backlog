@@ -1,0 +1,27 @@
+24,848 tareas · 204 proyectos · 5 pliegues por proyecto entero · 6 s
+  pliegue 1/5 · 4,970 tareas · 98 s
+  pliegue 2/5 · 4,970 tareas · 194 s
+  pliegue 3/5 · 4,970 tareas · 300 s
+  pliegue 4/5 · 4,969 tareas · 407 s
+  pliegue 5/5 · 4,969 tareas · 499 s
+
+====================================================================================================================
+TODA LA MUESTRA EVALUADA COMO SI SU PROYECTO FUESE NUEVO
+====================================================================================================================
+                                  brazo     n  MAE_h  MdAElog  zeta_pc  SSPB_pc  R2log  PRED25  factor2    rho
+modelo (apilado, sin el canal con fuga) 24848 5.0433   0.9178 150.3772   4.7876 0.1026  0.1518   0.3882 0.3089
+      analogia k=25, moda en la rejilla 24848 5.1142   0.9163 150.0000   0.0000 0.0655  0.1592   0.4189 0.2882
+        analogia encaminada por acuerdo 24848 5.0928   0.9163 150.0000   0.0000 0.0780  0.1579   0.4156 0.2978
+
+====================================================================================================================
+CONTRASTES CONTRA EL MODELO, PAREADOS
+====================================================================================================================
+  analogia k=25, moda en la rejilla  PRED25   +0.0074 [-0.0010, +0.0149] · McNemar p = 0.00591 (+185)
+  analogia k=25, moda en la rejilla  factor2  +0.0308 [+0.0151, +0.0426] · McNemar p = 3.97e-28 (+765)
+  analogia encaminada por acuerdo    PRED25   +0.0061 [-0.0004, +0.0118] · McNemar p = 0.0141 (+152)
+  analogia encaminada por acuerdo    factor2  +0.0274 [+0.0140, +0.0379] · McNemar p = 1.8e-26 (+682)
+
+  el IC se calcula remuestreando PROYECTOS enteros, no tareas sueltas:
+  con tareas sueltas saldria mucho mas estrecho de lo que corresponde
+
+escrito results\analogia_cv/resumen.csv · 500 s

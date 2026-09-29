@@ -1,0 +1,76 @@
+datos y modelo actual listos · 9 s
+  pliegue 1/5 · 84 s
+  pliegue 2/5 · 161 s
+  pliegue 3/5 · 230 s
+  pliegue 4/5 · 316 s
+  pliegue 5/5 · 398 s
+residuo fuera de muestra en entrenamiento: sd 1.116 · en muestra 0.853  (si el de en muestra fuese mucho menor, medirlo asi era imprescindible)
+matriz (24848, 3585) · 41 tramos de residuo
+  red 0 · NLL val 3.2399 · 409 s
+  red 1 · NLL val 3.2634 · 411 s
+  red 2 · NLL val 3.2335 · 412 s
+  red 3 · NLL val 3.2332 · 414 s
+  red 4 · NLL val 3.2258 · 416 s
+Bayes sobre la distribucion desplazada · 417 s
+
+================================================================================================================================
+prueba fija
+================================================================================================================================
+                                 brazo  MAE_h  MdAElog  zeta_pc  SSPB_pc   R2log  PRED25  factor2    rho
+        0 · el modelo actual (apilado) 4.9194   0.7832 118.8402  -1.1574  0.1988  0.1669   0.4464 0.4162
+       1 · apilado + media del residuo 4.9586   0.8191 126.8475 -20.1736  0.1225  0.1761   0.4317 0.4073
+     2 · apilado + mediana del residuo 4.9891   0.8263 128.4896 -16.2312  0.1055  0.1785   0.4303 0.4041
+  3 · Bayes +-25 % sobre la desplazada 5.0425   0.8267 128.5714 -14.2857  0.0818  0.1773   0.4511 0.3938
+4 · Bayes factor 2 sobre la desplazada 5.0412   0.8473 133.3333 -18.0952  0.0732  0.1837   0.4454 0.3908
+            control · constante 1.25 h 5.3972   0.9163 150.0000 -60.0000 -0.1963  0.1768   0.3721    NaN
+            control · constante 2.00 h 5.2515   0.8927 144.1667   0.0000 -0.0092  0.1524   0.4514    NaN
+                                 brazo          pred25_vs_cte          factor2_vs_cte        pred25_vs_base         factor2_vs_base
+        0 · el modelo actual (apilado)    peor (p=0.211, -42)     peor (p=0.556, -21)      empate (p=1, +0)        empate (p=1, +0)
+       1 · apilado + media del residuo     peor (p=0.952, -3)    peor (p=0.0357, -83)  mejor (p=0.167, +39)    peor (p=0.0152, -62)
+     2 · apilado + mediana del residuo    mejor (p=0.857, +7)    peor (p=0.0264, -89)  mejor (p=0.087, +49)    peor (p=0.0109, -68)
+  3 · Bayes +-25 % sobre la desplazada    mejor (p=0.976, +2)          peor (p=1, -1)  mejor (p=0.135, +44)      mejor (p=0.5, +20)
+4 · Bayes factor 2 sobre la desplazada   mejor (p=0.404, +29)     peor (p=0.552, -25) mejor (p=0.0196, +71)      peor (p=0.918, -4)
+            control · constante 1.25 h       empate (p=1, +0) peor (p=7.42e-34, -335)  mejor (p=0.211, +42) peor (p=6.18e-18, -314)
+            control · constante 2.00 h peor (p=0.00593, -103)        empate (p=1, +0)  peor (p=0.0446, -61)    mejor (p=0.556, +21)
+
+================================================================================================================================
+prueba SiP
+================================================================================================================================
+                                 brazo  MAE_h  MdAElog  zeta_pc  SSPB_pc   R2log  PRED25  factor2    rho
+        0 · el modelo actual (apilado) 5.7386   0.7731 116.6491   9.2630  0.3009  0.1629   0.4546 0.5235
+       1 · apilado + media del residuo 5.6976   0.7753 117.1150 -19.5379  0.2729  0.1899   0.4541 0.5305
+     2 · apilado + mediana del residuo 5.7111   0.7760 117.2754 -17.2761  0.2643  0.1926   0.4509 0.5322
+  3 · Bayes +-25 % sobre la desplazada 5.7684   0.8109 125.0000 -20.0000  0.2324  0.1798   0.4780 0.5216
+4 · Bayes factor 2 sobre la desplazada 5.7774   0.8109 125.0000 -27.2727  0.2209  0.1936   0.4642 0.5168
+            control · constante 1.25 h 6.3518   0.9163 150.0000 -60.0000 -0.2072  0.1878   0.3703    NaN
+            control · constante 2.00 h 6.2348   0.9808 166.6667   0.0000 -0.0138  0.1347   0.4228    NaN
+                                 brazo           pred25_vs_cte           factor2_vs_cte         pred25_vs_base         factor2_vs_base
+        0 · el modelo actual (apilado)     peor (p=0.039, -47)    mejor (p=0.0111, +60)       empate (p=1, +0)        empate (p=1, +0)
+       1 · apilado + media del residuo     mejor (p=0.895, +4)    mejor (p=0.0293, +59) mejor (p=0.00896, +51)          peor (p=1, -1)
+     2 · apilado + mediana del residuo     mejor (p=0.728, +9)    mejor (p=0.0531, +53) mejor (p=0.00461, +56)      peor (p=0.733, -7)
+  3 · Bayes +-25 % sobre la desplazada     peor (p=0.544, -15) mejor (p=0.000172, +104)   mejor (p=0.118, +32)   mejor (p=0.0241, +44)
+4 · Bayes factor 2 sobre la desplazada    mejor (p=0.657, +11)   mejor (p=0.00513, +78) mejor (p=0.00615, +58)    mejor (p=0.393, +18)
+            control · constante 1.25 h        empate (p=1, +0)   peor (p=5.17e-09, -99)   mejor (p=0.039, +47) peor (p=4.05e-10, -159)
+            control · constante 2.00 h peor (p=5.58e-05, -100)         empate (p=1, +0)  peor (p=0.00717, -53)    peor (p=0.0111, -60)
+
+================================================================================================================================
+externo no Apache
+================================================================================================================================
+                                 brazo  MAE_h  MdAElog  zeta_pc  SSPB_pc   R2log  PRED25  factor2    rho
+        0 · el modelo actual (apilado) 5.5847   0.8533 134.7348  -2.8374  0.1009  0.1705   0.4167 0.3039
+       1 · apilado + media del residuo 5.4483   0.8874 142.8750  -5.9108  0.0699  0.1705   0.4078 0.3342
+     2 · apilado + mediana del residuo 5.4640   0.9038 146.8943  -3.6489  0.0644  0.1755   0.4015 0.3402
+  3 · Bayes +-25 % sobre la desplazada 5.5231   0.8846 142.2120   0.0000  0.0611  0.1818   0.4407 0.3439
+4 · Bayes factor 2 sobre la desplazada 5.5312   0.9163 150.0000   0.0000  0.0457  0.1831   0.4470 0.3380
+            control · constante 1.25 h 6.0015   0.9658 162.6785 -60.0000 -0.1712  0.1793   0.3699    NaN
+            control · constante 2.00 h 5.8144   0.9163 150.0000   0.0000 -0.0084  0.1705   0.4848    NaN
+                                 brazo       pred25_vs_cte         factor2_vs_cte       pred25_vs_base         factor2_vs_base
+        0 · el modelo actual (apilado)  peor (p=0.669, -7) peor (p=0.000129, -54)     empate (p=1, +0)        empate (p=1, +0)
+       1 · apilado + media del residuo  peor (p=0.674, -7) peor (p=0.000227, -61)     empate (p=1, +0)      peor (p=0.573, -7)
+     2 · apilado + mediana del residuo   peor (p=0.89, -3) peor (p=7.52e-05, -66)  mejor (p=0.801, +4)     peor (p=0.323, -12)
+  3 · Bayes +-25 % sobre la desplazada mejor (p=0.946, +2)    peor (p=0.038, -35)  mejor (p=0.507, +9)    mejor (p=0.113, +19)
+4 · Bayes factor 2 sobre la desplazada mejor (p=0.893, +3)   peor (p=0.0862, -30) mejor (p=0.485, +10)   mejor (p=0.0652, +24)
+            control · constante 1.25 h    empate (p=1, +0) peor (p=2.22e-17, -91)  mejor (p=0.669, +7)    peor (p=0.0202, -37)
+            control · constante 2.00 h  peor (p=0.718, -7)       empate (p=1, +0)     empate (p=1, +0) mejor (p=0.000129, +54)
+
+escrito results\forma_residual/resumen.csv · 417 s

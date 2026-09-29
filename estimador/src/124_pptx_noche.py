@@ -40,8 +40,8 @@ def v3(bloque, met):
 def main():
     prs = P.nueva()
     P.portada(prs, "Una noche sobre la\npredicción en frío",
-              "Veinticuatro experimentos: siete con ganancia, diecisiete cerrados\n"
-              "con medición. Y una explicación de por qué el techo está donde está.",
+              "Veintisiete experimentos. Seis dejaron ganancia y el resto quedaron\n"
+              "cerrados con su medición, o sirvieron para medir mejor.",
               "29 de septiembre de 2026")
 
     # ------------------------------------------------------------------ 2

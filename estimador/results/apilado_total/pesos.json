@@ -1,0 +1,15 @@
+{
+ "pesos": {
+  "bolsa sobre e5-large + TF-IDF": 0.04360124031129109,
+  "ridge disperso": 0.14815737365530815,
+  "SVR disperso": -0.022837593770101423,
+  "e5 ajustado": 0.3086063965740454,
+  "HGB sobre bge-m3": 0.13347637005725155,
+  "HGB sobre qwen3-0.6B": 0.10244640170354569,
+  "HGB sobre e5-base": 0.0483686064844564,
+  "HGB sobre mpnet": 0.06310267432650762,
+  "HGB sobre la descripcion": 0.2187910037071452,
+  "ridge denso sobre e5-large": -0.05269408038315149,
+  "analogia k=15": 0.1985550424002105
+ }
+}

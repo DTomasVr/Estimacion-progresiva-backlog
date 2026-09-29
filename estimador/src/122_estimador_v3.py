@@ -118,7 +118,7 @@ class EstimadorV3:
             est = np.array([np.nan if e is None else float(e) for e in estimacion_usuario])
             hay = ~np.isnan(est)
             if hay.any():
-                Zc = np.column_stack([np.log(np.where(hay, est, 1)), lp])
+                Zc = np.hstack([V, np.log(np.where(hay, est, 1))[:, None], lp[:, None]])
                 horas = np.where(hay, np.where(hay, est, 1) *
                                  np.exp(self.p["corrector"].predict(Zc)), horas)
 
@@ -170,7 +170,35 @@ def construir():
     corr = json.load(open("results/correcciones.json", encoding="utf-8"))
     Xn = E5 / np.linalg.norm(E5, axis=1, keepdims=True)
 
+    # corrector C1 (estimacion + frio + TEXTO): E24 lo midio mejor que el C2 que
+    # traia el modelo final, sobre todo donde lo real difiere de lo estimado
+    # (R2 0,4745 frente a 0,4607)
+    sw2 = sw.copy()
+    sw2["est"] = sw2.HoursEstimate.where(sw2.HoursEstimate > 0)
+    pt = sw2[(sw2.source == "TAWOS") & (sw2.story_point > 0)]
+    ptr = pt[pt.split_t3 == "train"]
+    pend, corte = np.polyfit(np.log(ptr.story_point.to_numpy(float)),
+                             np.log(ptr.effort_hours.to_numpy(float)), 1)
+    sw2.loc[pt.index, "est"] = np.exp(corte) * pt.story_point.to_numpy(float) ** pend
+    est = sw2.est.to_numpy(float)
+    hay = ~np.isnan(est)
+    from sklearn.model_selection import KFold
+    oof = lp.copy()
+    it = np.flatnonzero(tr_m)
+    for a_, b_ in KFold(5, shuffle=True, random_state=0).split(it):
+        oof[it[b_]] = HistGradientBoostingRegressor(
+            max_iter=300, max_depth=6, learning_rate=.06, l2_regularization=1.,
+            random_state=0).fit(Xd[it[a_]], ly[it[a_]]).predict(Xd[it[b_]])
+    kk = tr_m & hay
+    Zc = np.hstack([E5, np.log(np.where(hay, est, 1))[:, None], oof[:, None]])
+    corrector = HistGradientBoostingRegressor(
+        max_iter=300, max_depth=6, learning_rate=.06, l2_regularization=1.,
+        random_state=0).fit(Zc[kk], (ly - np.log(np.where(hay, est, 1)))[kk])
+    print("  corrector C1 (con texto) ajustado")
+
     paq = dict(f)
+    paq["corrector"] = corrector
+    paq["corrector_variante"] = "C1 (vector + log estimacion + frio)"
     paq.update({"factor_banda80": banda80, "smearing": S, "suma_residual": suma_res,
                 "factor_estilo": corr["estilo_medio"],
                 "centros": Xn[tr_m].astype(np.float32),

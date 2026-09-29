@@ -1,0 +1,58 @@
+rasgos (24848, 1536) · 4 s
+pesos LDS: min 0.51 · max 150.16 · la tarea mas rara pesa 293 veces mas que la mas comun
+  A · cuadratica en log (lo actual)      listo · 21 s
+  B · ABSOLUTA en log                    listo · 35 s
+  C · cuantil 0,5 en log                 listo · 50 s
+  D · absoluta en HORAS                  listo · 67 s
+  E · cuadratica en log con pesos LDS    listo · 198 s
+  F · devianza gamma en horas            listo · 203 s
+  cuantil 0.35 listo · 220 s
+  cuantil 0.40 listo · 235 s
+  cuantil 0.45 listo · 254 s
+
+================================================================================================================================
+prueba fija
+================================================================================================================================
+                              brazo  MAE_h  MdAElog  zeta_pc  SSPB_pc   R2log  PRED25  factor2    rho
+  A · cuadratica en log (lo actual) 5.0430   0.8344 130.3497 -10.7088  0.1463  0.1607   0.4239 0.3611
+                B · ABSOLUTA en log 5.0621   0.8356 130.6200  -9.1644  0.1389  0.1690   0.4182 0.3550
+             C · cuantil 0,5 en log 5.0621   0.8356 130.6200  -9.1644  0.1389  0.1690   0.4182 0.3550
+              D · absoluta en HORAS 5.0870   0.8578 135.8023  -1.1066  0.1178  0.1654   0.4123 0.3290
+E · cuadratica en log con pesos LDS 5.2306   0.8928 144.2077  -7.3440  0.0469  0.1581   0.3877 0.3276
+        F · devianza gamma en horas 5.4361   0.9199 150.9120  71.6382 -0.0411  0.1460   0.3917 0.3172
+            G · cuantil 0.35 en log 5.2361   0.9218 151.3703 -72.7368 -0.0323  0.1581   0.3858 0.3499
+            G · cuantil 0.40 en log 5.1621   0.8765 140.2576 -47.8685  0.0495  0.1626   0.3995 0.3445
+            G · cuantil 0.45 en log 5.1084   0.8447 132.7313 -28.9527  0.1052  0.1562   0.4159 0.3467
+  mejor en cada metrica: MAE_h -> A · MdAElog -> A · R2log -> A · PRED25 -> B · factor2 -> A · rho -> A
+
+================================================================================================================================
+prueba SiP
+================================================================================================================================
+                              brazo  MAE_h  MdAElog  zeta_pc  SSPB_pc  R2log  PRED25  factor2    rho
+  A · cuadratica en log (lo actual) 5.9296   0.8353 130.5573   1.7615 0.2171  0.1560   0.4207 0.4408
+                B · ABSOLUTA en log 5.9560   0.8376 131.0899  -3.9938 0.2024  0.1629   0.4101 0.4381
+             C · cuantil 0,5 en log 5.9560   0.8376 131.0899  -3.9938 0.2024  0.1629   0.4101 0.4381
+              D · absoluta en HORAS 5.9939   0.8788 140.7959   6.1357 0.1758  0.1533   0.3947 0.4051
+E · cuadratica en log con pesos LDS 6.0622   0.8578 135.7980  17.6671 0.1476  0.1565   0.4042 0.4021
+        F · devianza gamma en horas 6.3105   0.9490 158.3096  76.7299 0.0428  0.1342   0.3857 0.3950
+            G · cuantil 0.35 en log 6.1360   0.8768 140.3146 -60.3048 0.0234  0.1719   0.4090 0.4382
+            G · cuantil 0.40 en log 6.0623   0.8684 138.3102 -39.9833 0.1087  0.1724   0.4080 0.4284
+            G · cuantil 0.45 en log 5.9967   0.8438 132.5073 -22.7500 0.1741  0.1538   0.4159 0.4412
+  mejor en cada metrica: MAE_h -> A · MdAElog -> A · R2log -> A · PRED25 -> G · factor2 -> A · rho -> G
+
+================================================================================================================================
+externo no Apache
+================================================================================================================================
+                              brazo  MAE_h  MdAElog  zeta_pc  SSPB_pc   R2log  PRED25  factor2    rho
+  A · cuadratica en log (lo actual) 5.7618   0.9092 148.2317  -1.7299  0.0439  0.1439   0.3876 0.2376
+                B · ABSOLUTA en log 5.7533   0.9467 157.7092   2.2615  0.0490  0.1553   0.4040 0.2177
+             C · cuantil 0,5 en log 5.7533   0.9467 157.7092   2.2615  0.0490  0.1553   0.4040 0.2177
+              D · absoluta en HORAS 5.8161   0.9485 158.1889  12.5827  0.0340  0.1288   0.3826 0.2149
+E · cuadratica en log con pesos LDS 5.9916   0.9646 162.3807   1.0549 -0.0828  0.1326   0.3561 0.2221
+        F · devianza gamma en horas 6.3727   1.0246 178.5999 108.0754 -0.1943  0.1212   0.3384 0.2098
+            G · cuantil 0.35 en log 5.8685   1.0177 176.6704 -55.5549 -0.0538  0.1742   0.3611 0.2153
+            G · cuantil 0.40 en log 5.7887   0.9663 162.8208 -32.4668  0.0172  0.1730   0.3712 0.2345
+            G · cuantil 0.45 en log 5.7813   0.9625 161.8187 -17.8690  0.0307  0.1667   0.3876 0.2151
+  mejor en cada metrica: MAE_h -> B · MdAElog -> A · R2log -> B · PRED25 -> G · factor2 -> B · rho -> A
+
+escrito results\perdidas/resumen.csv · 254 s

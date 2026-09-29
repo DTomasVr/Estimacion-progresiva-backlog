@@ -115,9 +115,37 @@ def avance():
     guardar(fig, "noche_avance")
 
 
+def techo():
+    t = pd.read_csv("results/techo/afinado.csv")
+    v = t[t.umbral == 0.95]
+    dentro = v[v.conjunto == "mismo proyecto"].iloc[0]
+    fuera = v[v.conjunto == "proyectos distintos"].iloc[0]
+    NL = chr(10)
+    fig, ax = plt.subplots(1, 2, figsize=(12.6, 4.6))
+    etq = ["dentro del" + NL + "MISMO proyecto" + NL + f"({int(dentro.pares):,} pares)".replace(",", "."),
+           "entre proyectos" + NL + "DISTINTOS" + NL + f"({int(fuera.pares):,} pares)".replace(",", ".")]
+    for a, vals, ylab, fmt, lim in (
+            (ax[0], [dentro.dif_mediana_h, fuera.dif_mediana_h],
+             "cuanto difieren las horas (mediana)", "x{:.2f}", 2.6),
+            (ax[1], [dentro.fraccion * 100, fuera.fraccion * 100],
+             "% de la varianza de log-horas", "{:.1f} %", 60)):
+        b = a.bar([0, 1], vals, .55, color=[TINTA, AVISO])
+        for r, val in zip(b, vals):
+            a.text(r.get_x() + r.get_width() / 2, val + lim * .02, fmt.format(val),
+                   ha="center", fontsize=15, weight="700", color=NEGRO)
+        a.set_xticks([0, 1], etq, fontsize=11)
+        a.set_ylabel(ylab)
+        a.set_ylim(0, lim)
+    ax[0].axhline(1, color=GRIS, ls=":", lw=1.6)
+    fig.suptitle("Dos tareas con el MISMO texto: dentro del proyecto tardan lo mismo, "
+                 "en otro proyecto el doble", x=.01, ha="left", fontsize=14.5, weight="600")
+    guardar(fig, "noche_techo")
+
+
 if __name__ == "__main__":
     print("figuras:")
     palancas()
     anclas()
     avance()
+    techo()
     print("listo")

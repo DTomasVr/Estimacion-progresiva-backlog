@@ -97,6 +97,17 @@ def main():
     s, y = P.lamina(prs, "La misma idea, en dos barras")
     P.figura_ajustada(s, FIG / "noche_techo.png", y, Inches(4.3))
 
+    # ------------------------------------------------------------------ 5b
+    s, y = P.lamina(prs, "Pero los gemelos son raros, y eso cambia la lectura",
+                    "3 millones de pares dentro del mismo proyecto, en todo el rango "
+                    "de parecido.")
+    _, y2 = P.figura_ajustada(s, FIG / "noche_senal.png", y, Inches(3.5))
+    P.veredicto(s, y2 + Inches(0.12), "el matiz",
+                "El 93 % de los pares está por debajo de coseno 0,90, y ahí dos tareas "
+                "«parecidas» tardan 3,4 veces distinto. El texto solo informa mucho cuando "
+                "es casi idéntico: el 1–3 % de las tareas. Techo realista: MdMRE 0,497 y "
+                "PRED(25) 0,250.", tono="ambar")
+
     # ------------------------------------------------------------------ 6
     P.seccion(prs, "2", "Lo que sí mejoró el frío",
               "Codificador, representación y ensamblado.\n"

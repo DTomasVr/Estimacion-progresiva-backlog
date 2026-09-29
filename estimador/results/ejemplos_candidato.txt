@@ -1,0 +1,76 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+artefacto: título + categoría · corpus v4 sin Apache · 16,648 filas · banda 80 % ×4.71
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8192.40it/s]
+
+====================================================================================================================================
+A · LO QUE RESPONDE A LAS TAREAS DEL GENERADOR (n=115)
+====================================================================================================================================
+
+  — canchas —
+     1.61 h  [ 0.3–  7.6]  Notificar a los miembros de las próximas citas
+     1.62 h  [ 0.3–  7.7]  Añadir notificación sobre la disponibilidad
+     1.78 h  [ 0.4–  8.4]  Añadir la propuesta de aprobación
+     4.44 h  [ 0.9– 20.9]  Aplicar una membresía al mercado
+     4.62 h  [ 1.0– 21.8]  Supervisar la disponibilidad de todo el tiempo
+     4.79 h  [ 1.0– 22.6]  Detectar el número de bloques dañados durante el día
+
+  — clinica —
+     1.95 h  [ 0.4–  9.2]  Almacenar recordatorios en la base de datos
+     2.05 h  [ 0.4–  9.6]  Almacenar el estado de las citas del paciente en la base de datos
+     2.06 h  [ 0.4–  9.7]  Mostrar detalles de medicamentos en el panel de mando
+     3.85 h  [ 0.8– 18.1]  Realizar el procedimiento para enviar una aplicación completa
+     4.09 h  [ 0.9– 19.3]  Almacenar los detalles de la asignación de escritorio en la base de datos
+     5.23 h  [ 1.1– 24.7]  Desarrollar un formulario de asignación de escritorio en la aplicación de rece
+
+  — inventario —
+     1.41 h  [ 0.3–  6.7]  Eliminar colecciones no utilizadas
+     1.85 h  [ 0.4–  8.7]  Añadir notificación sobre los próximos elementos
+     1.95 h  [ 0.4–  9.2]  Añadir notificaciones a los consumidores futuros
+     5.12 h  [ 1.1– 24.1]  Mejorar el panel del administrador de tiendas
+     5.24 h  [ 1.1– 24.7]  Generar informes sobre patrones de ventas
+     5.80 h  [ 1.2– 27.3]  Desarrollar una función de seguimiento de informes de ventas en la base de dat
+
+  resumen: mediana 2.77 h · p10–p90 2.07–4.02 h · min 1.41 · max 5.80
+  suma del backlog completo: 341 h (43 días-persona) para 115 tareas
+
+====================================================================================================================================
+B · TAREAS REALES DE «prueba SiP» (n=1,885)
+====================================================================================================================================
+     real    0.80 h -> predice  2.17 h (× 2.71)  Tiptree Laser Printer - Changing Black Cartridge & Sourcing New To
+     real    0.68 h -> predice  1.60 h (× 2.35)  Network Issue: EMail and Database Server Disappeared From Network
+     real    1.00 h -> predice  1.72 h (× 1.72)  SCMS CCC Support: RI Quota Share Check Discrepancy
+     real    2.25 h -> predice  1.27 h (× 0.56)  RITC - Mart Emails Requesting Explanations/Sample Extracts Based o
+  ok real    5.75 h -> predice  7.45 h (× 1.30)  Flex Mobile - CRM System Integration - Porting Flex Mobile To New 
+     real    5.75 h -> predice  2.80 h (× 0.49)  Release CCC Application To Live -- v2.2. <NUM> . <NUM>
+     real   41.25 h -> predice  2.64 h (× 0.06)  <NUM> Conversion - Claim Reconciliatons Report - EROS TO SCMS
+     real   30.75 h -> predice  2.02 h (× 0.07)  Steamship account has moved XXXX - <NUM> Splits need data updating
+
+  tramo         n  real med  pred med   sesgo  PRED25
+  <1 h        466      0.50      1.54    3.15   0.058
+  1–4 h       764      1.81      1.84    1.12   0.304
+  4–16 h      478      7.00      2.33    0.35   0.088
+  >16 h       177     32.40      3.39    0.09   0.000
+
+====================================================================================================================================
+B · TAREAS REALES DE «externo no Apache» (n=792)
+====================================================================================================================================
+     real    0.17 h -> predice  1.82 h (×10.89)  Please create an account for me, for http://code.google.com/p/agim
+     real    0.07 h -> predice  5.19 h (×77.91)  Enable compression on the server side to speed up the website
+     real    2.00 h -> predice  1.04 h (× 0.52)  Master teiid spring boot doc varient should not reference the ws t
+     real    2.25 h -> predice  1.07 h (× 0.48)  Errors not escalated to portal error handler
+     real    8.00 h -> predice  4.54 h (× 0.57)  Upgrade to Spring Integration 2.0
+     real    4.00 h -> predice  1.89 h (× 0.47)  org.jboss.test.cmp2.audit.test.AuditUnitTestCase(JACC+SecurityMgr)
+     real   24.00 h -> predice  5.25 h (× 0.22)  Update container integration to SPI 3.0 M1
+     real   32.00 h -> predice  5.38 h (× 0.17)  As a manager I want to be able to set a capacity for my Versions b
+
+  tramo         n  real med  pred med   sesgo  PRED25
+  <1 h        167      0.33      2.28    7.03   0.006
+  1–4 h       330      2.00      2.12    1.28   0.279
+  4–16 h      202      6.00      2.57    0.41   0.124
+  >16 h        93     24.00      3.62    0.12   0.000
+
+====================================================================================================================================
+C · LO QUE SE VE EN LOS TRAMOS
+====================================================================================================================================
+  El modelo comprime: exagera lo pequeño y se queda corto en lo grande.
+  Es la razón de que la banda sea ancha y de que PRED(25) no suba.

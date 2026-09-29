@@ -191,8 +191,44 @@ def panel():
     guardar(fig, "6_panel_de_metricas")
 
 
+def analogia():
+    """El barrido entero, para ver que el efecto no depende de la configuracion."""
+    d = pd.read_csv("results/analogia/rejilla.csv")
+    r = pd.read_csv("results/analogia/resumen.csv")
+    base = r[(r.bloque == "prueba fija") &
+             (r.brazo == "0 · el apilado actual")].iloc[0].PRED25
+    fig, (a1, a2) = plt.subplots(1, 2, figsize=(12.8, 4.8))
+    cols = {"media": GRIS, "mediana": AMBAR, "moda en la rejilla": TINTA}
+    for ag, c in cols.items():
+        q = d[d.agregador == ag].groupby("k")["prueba fija_PRED25"].mean()
+        a1.plot(q.index, q.values, "o-", color=c, lw=2.2, ms=7, label=ag)
+    a1.axhline(base, color=AVISO, lw=1.8, ls="--")
+    a1.text(50, base, " el apilado", color=AVISO, va="center", fontsize=10.5)
+    a1.set_xlabel("k, numero de vecinos")
+    a1.set_ylabel("PRED(25) en la prueba fija")
+    a1.legend(loc="lower right")
+    a1.set_title("Caer sobre un valor que de verdad se observa" + NL +
+                 "moda > mediana > media, en toda la rejilla")
+    ord_b = ["prueba fija", "prueba SiP", "externo no Apache"]
+    x = np.arange(len(ord_b))
+    for i, (b, c) in enumerate((("0 · el apilado actual", GRIS),
+                                ("2 · encaminado por dispersion de los vecinos", TINTA))):
+        v = r[r.brazo == b].set_index("bloque").reindex(ord_b)
+        a2.bar(x + (i - .5) * .36, v.PRED25, .34, color=c,
+               label="el apilado" if i == 0 else "analogia encaminada")
+    a2.set_xticks(x)
+    a2.set_xticklabels(["prueba fija", "prueba SiP", "proyectos" + NL + "nuevos"], fontsize=10)
+    a2.set_ylabel("PRED(25)")
+    a2.set_ylim(.14, .20)
+    a2.legend(loc="upper left", ncol=2)
+    a2.set_title("Y aguanta en los tres bloques")
+    fig.suptitle("Estimacion por analogia: lo unico que sube PRED(25) y factor 2 a la vez",
+                 x=.005, ha="left", fontsize=15, weight="600")
+    guardar(fig, "7_analogia")
+
+
 if __name__ == "__main__":
-    for f in (la_trampa, extremos, frontera, canales, intervalos, panel):
+    for f in (la_trampa, extremos, frontera, canales, intervalos, panel, analogia):
         try:
             f()
         except Exception as e:

@@ -5,7 +5,9 @@ siempre sobre los mismos tres bloques congelados: **prueba fija** (4.225 tareas,
 corte cronológico dentro de proyectos conocidos), **prueba SiP** (1.885, el
 subconjunto industrial) y **externo no Apache** (792, proyectos nunca vistos).
 
-Resumen en una línea: **el error no bajó, y ahora sé por qué**. Las tasas de acierto
+Resumen en dos líneas: **el error no bajó, y ahora sé por qué**. Pero la estimación
+por analogía **sí sube PRED(25) y factor 2 a la vez** — la única de toda la serie —
+con significancia en dos de los tres bloques.
 sí suben entre 1 y 3 puntos, pero siempre a costa del error, y eso resultó ser una
 propiedad del problema, no un fallo de implementación.
 
@@ -102,9 +104,42 @@ todas. Mi recomendación es MdAElog / ζ como principal, porque es la que la lit
 de datos positivos y sesgados avala (Morley et al. 2018) y la que no premia
 subestimar.
 
-## 5 · El otro hallazgo: la analogía gana la tasa de acierto (E39–E40)
+## 5 · Lo único que sí mejoró: la estimación por analogía (E39–E41)
 
-Figura: `reports/figuras_metricas/4_que_sabe_cada_canal.png`
+Figuras: `reports/figuras_metricas/4_que_sabe_cada_canal.png` y `7_analogia.png`
+
+**Este es el resultado a llevarse a la tesis.** La mediana (o mejor, la moda sobre
+la rejilla de valores frecuentes) de las k tareas de entrenamiento con el título más
+parecido supera al apilado en las dos métricas de tolerancia a la vez, que es algo
+que no consiguió ningún otro brazo de toda la serie:
+
+| bloque | PRED(25) apilado → analogía | McNemar | factor 2 apilado → analogía |
+|---|---|---|---|
+| prueba fija (4.225) | 0,1669 → **0,1834** | **mejor**, p = 0,0186 (+70) | 0,4464 → **0,4528** |
+| prueba SiP (1.885) | 0,1629 → **0,1883** | **mejor**, p = 0,0214 (+48) | 0,4546 → **0,4621** |
+| externo no Apache (792) | 0,1705 → **0,1780** | mejor, p = 0,69 (+6) | 0,4167 → **0,4369** |
+
+Configuración elegida en validación: **e5-large, k = 25, moda sobre la rejilla**.
+Encaminar por la dispersión de los vecinos (usar la analogía en el 85 % de las tareas
+donde los vecinos concuerdan, y el apilado en el resto) sube un poco más el PRED(25)
+y recupera parte del R² (0,072 → 0,106).
+
+**El barrido completo — 4 vistas × 5 valores de k × 3 agregadores — confirma el
+mecanismo**: moda > mediana > media en las sesenta combinaciones. Lo que manda es
+caer sobre un valor que de verdad se observa, no el estadístico concreto.
+
+Dos matices que hay que escribir:
+- Sigue costando R² (0,199 → 0,072) y MdAElog (0,783 → 0,847). El canje no desaparece,
+  solo es mejor que en todos los demás brazos.
+- El +0,002 que añade la moda sobre la mediana explica por qué el "ajuste a la rejilla"
+  de E27 no funcionaba: casi todo el efecto viene de que el valor sea **local y
+  empírico**, no de redondear la predicción de un modelo.
+
+Esto conecta con la familia clásica de estimación por analogía (ABE) de la literatura
+de esfuerzo y explica por qué esos métodos sobrevivieron tanto tiempo siendo evaluados
+con PRED(25).
+
+### El detalle de los canales
 
 | canal | R² log | PRED(25) |
 |---|---|---|

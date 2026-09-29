@@ -1,0 +1,12 @@
+{
+ "brazos": [
+  "A · solo el título",
+  "B · título + descripción del proyecto",
+  "C · título + descripción PERMUTADA (control)",
+  "D · título + media de los otros títulos",
+  "E · título + descripción + otros títulos",
+  "F · título + mediana REAL del proyecto (oráculo)"
+ ],
+ "n": 9559,
+ "proyectos": 26
+}

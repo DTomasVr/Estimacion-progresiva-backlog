@@ -1,0 +1,41 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+banco «jira»: 7,498 tareas · 158 proyectos · varianza entre proyectos 21.6%
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 8712.50it/s]
+  A · solo el título                           MdMRE 0.7770 · R² +0.0587
+  B · + nombre del proyecto                    MdMRE 0.7639 · R² +0.0813
+  C · + nombre PERMUTADO (control)             MdMRE 0.7859 · R² +0.0264
+  D · + el backlog entero (otros títulos)      MdMRE 0.7975 · R² +0.0054
+  E · + backlog PERMUTADO (control)            MdMRE 0.7866 · R² +0.0225
+  F · + solo 10 tareas del backlog             MdMRE 0.7849 · R² +0.0455
+  G · + nombre + backlog                       MdMRE 0.7827 · R² +0.0488
+  H · + mediana REAL del proyecto (oráculo)    MdMRE 0.7257 · R² +0.2007
+
+============================================================================================================================
+BANCO «jira» · validación cruzada por proyecto entero
+============================================================================================================================
+                                    brazo    n  MdMRE  MdAElog  PRED25  MAE_h  sesgo     R2  spearman
+                       A · solo el título 7498 0.7770   1.0371  0.1292 5.5623 0.9214 0.0587    0.2759
+                B · + nombre del proyecto 7498 0.7639   0.9950  0.1367 5.4997 0.9174 0.0813    0.2963
+         C · + nombre PERMUTADO (control) 7498 0.7859   1.0635  0.1307 5.5972 0.9080 0.0264    0.2240
+  D · + el backlog entero (otros títulos) 7498 0.7975   1.0701  0.1272 5.6534 0.8958 0.0054    0.1979
+        E · + backlog PERMUTADO (control) 7498 0.7866   1.0399  0.1283 5.6142 0.9467 0.0225    0.2335
+         F · + solo 10 tareas del backlog 7498 0.7849   1.0412  0.1330 5.6052 0.8704 0.0455    0.2604
+                   G · + nombre + backlog 7498 0.7827   1.0208  0.1342 5.5827 0.9340 0.0488    0.2428
+H · + mediana REAL del proyecto (oráculo) 7498 0.7257   0.8922  0.1562 5.1893 0.9363 0.2007    0.4478
+
+============================================================================================================================
+FRENTE A SOLO EL TÍTULO
+============================================================================================================================
+  B · + nombre del proyecto                    ΔMdMRE -0.0130 · ΔR² +0.0226 · Δρ +0.0204
+  C · + nombre PERMUTADO (control)             ΔMdMRE +0.0090 · ΔR² -0.0323 · Δρ -0.0518
+  D · + el backlog entero (otros títulos)      ΔMdMRE +0.0205 · ΔR² -0.0533 · Δρ -0.0780
+  E · + backlog PERMUTADO (control)            ΔMdMRE +0.0097 · ΔR² -0.0362 · Δρ -0.0423
+  F · + solo 10 tareas del backlog             ΔMdMRE +0.0079 · ΔR² -0.0132 · Δρ -0.0155
+  G · + nombre + backlog                       ΔMdMRE +0.0057 · ΔR² -0.0099 · Δρ -0.0331
+  H · + mediana REAL del proyecto (oráculo)    ΔMdMRE -0.0513 · ΔR² +0.1419 · Δρ +0.1720
+
+  señal atribuible a nombre del proyecto: ΔMdMRE -0.0220 · ΔR² +0.0549  (real 0.7639 vs permutado 0.7859)
+
+  señal atribuible a el backlog: ΔMdMRE +0.0108 · ΔR² -0.0171  (real 0.7975 vs permutado 0.7866)
+
+escrito results\escala_proyecto/banco_jira.csv

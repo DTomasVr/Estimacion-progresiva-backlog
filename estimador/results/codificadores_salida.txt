@@ -1,0 +1,76 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+corpus sin Apache: 24,848 tareas
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 2968.85it/s]
+  mpnet (el actual)    (24848, 768) en 29 s
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 5820.39it/s]
+  e5-base              (24848, 768) en 44 s
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 6015.27it/s]
+  e5-large             (24848, 1024) en 122 s
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 26943.10it/s]
+  bge-m3               (24848, 1024) en 88 s
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]Loading weights: 100%|██████████| 310/310 [00:00<00:00, 7158.89it/s]
+  qwen3-0.6B           (24848, 1024) en 104 s
+  tf-idf (24848, 256)
+  mpnet (el actual)                val 0.6673 · fija 0.6995 · externo 0.7148
+  e5-base                          val 0.6632 · fija 0.7005 · externo 0.7205
+  e5-large                         val 0.6617 · fija 0.6884 · externo 0.7376
+  bge-m3                           val 0.6618 · fija 0.6884 · externo 0.7454
+  qwen3-0.6B                       val 0.6813 · fija 0.7148 · externo 0.7275
+  tf-idf de caracteres (control)   val 0.6769 · fija 0.6909 · externo 0.7301
+  concatenación de los dos mejores val 0.6642 · fija 0.6822 · externo 0.7476
+
+==========================================================================================================================
+CODIFICADORES, MISMO CORPUS Y MISMAS PARTICIONES
+==========================================================================================================================
+
+prueba fija
+                     codificador  dim  val_MdMRE  MdMRE  MdAElog  PRED25     R2  sesgo  spearman
+  tf-idf de caracteres (control)  256     0.6769 0.6909   0.8165  0.1647 0.1164 0.9378    0.3218
+concatenación de los dos mejores 2048     0.6642 0.6822   0.8230  0.1553 0.1432 0.9071    0.3646
+                        e5-large 1024     0.6617 0.6884   0.8303  0.1605 0.1487 0.9109    0.3636
+               mpnet (el actual)  768     0.6673 0.6995   0.8479  0.1503 0.1131 0.9342    0.3200
+                          bge-m3 1024     0.6618 0.6884   0.8555  0.1683 0.1244 0.9178    0.3369
+                         e5-base  768     0.6632 0.7005   0.8600  0.1572 0.1182 0.9371    0.3273
+                      qwen3-0.6B 1024     0.6813 0.7148   0.8632  0.1588 0.1108 0.9700    0.3020
+
+prueba SiP
+                     codificador  dim  val_MdMRE  MdMRE  MdAElog  PRED25     R2  sesgo  spearman
+  tf-idf de caracteres (control)  256     0.6769 0.7108   0.8057  0.1666 0.1936 1.0131    0.4331
+concatenación de los dos mejores 2048     0.6642 0.6961   0.8186  0.1395 0.2163 1.0401    0.4483
+                        e5-large 1024     0.6617 0.7137   0.8249  0.1523 0.2215 0.9932    0.4423
+                          bge-m3 1024     0.6618 0.7236   0.8482  0.1581 0.1757 1.0312    0.3952
+                         e5-base  768     0.6632 0.7114   0.8504  0.1607 0.1966 1.0349    0.4162
+               mpnet (el actual)  768     0.6673 0.7337   0.8727  0.1528 0.1636 1.0700    0.3803
+                      qwen3-0.6B 1024     0.6813 0.7506   0.9139  0.1549 0.1744 1.0944    0.3751
+
+prueba TAWOS
+                     codificador  dim  val_MdMRE  MdMRE  MdAElog  PRED25     R2  sesgo  spearman
+               mpnet (el actual)  768     0.6673 0.6774   0.8183  0.1483 0.0673 0.8690    0.2744
+  tf-idf de caracteres (control)  256     0.6769 0.6756   0.8258  0.1632 0.0468 0.8806    0.2266
+concatenación de los dos mejores 2048     0.6642 0.6731   0.8290  0.1679 0.0773 0.8442    0.3021
+                        e5-large 1024     0.6617 0.6648   0.8323  0.1671 0.0830 0.8400    0.3028
+                      qwen3-0.6B 1024     0.6813 0.6883   0.8372  0.1620 0.0534 0.8799    0.2519
+                          bge-m3 1024     0.6618 0.6644   0.8595  0.1765 0.0779 0.8416    0.2959
+                         e5-base  768     0.6632 0.6895   0.8631  0.1543 0.0475 0.8510    0.2539
+
+externo no Apache
+                     codificador  dim  val_MdMRE  MdMRE  MdAElog  PRED25     R2  sesgo  spearman
+  tf-idf de caracteres (control)  256     0.6769 0.7301   0.9094  0.1641 0.0615 1.0085    0.2148
+               mpnet (el actual)  768     0.6673 0.7148   0.9213  0.1439 0.0312 1.0095    0.2069
+                         e5-base  768     0.6632 0.7205   0.9267  0.1578 0.0442 0.9430    0.2326
+concatenación de los dos mejores 2048     0.6642 0.7476   0.9313  0.1364 0.0166 0.9372    0.2037
+                          bge-m3 1024     0.6618 0.7454   0.9501  0.1604 0.0187 0.9544    0.2145
+                      qwen3-0.6B 1024     0.6813 0.7275   0.9540  0.1578 0.0403 0.9760    0.2269
+                        e5-large 1024     0.6617 0.7376   0.9640  0.1427 0.0323 0.9691    0.2182
+
+==========================================================================================================================
+FRENTE AL ACTUAL, EN LA PRUEBA FIJA
+==========================================================================================================================
+  e5-base                          ΔMdMRE +0.0010 · ΔR² +0.0051 · Δρ +0.0073
+  e5-large                         ΔMdMRE -0.0111 · ΔR² +0.0356 · Δρ +0.0436
+  bge-m3                           ΔMdMRE -0.0111 · ΔR² +0.0113 · Δρ +0.0169
+  qwen3-0.6B                       ΔMdMRE +0.0153 · ΔR² -0.0023 · Δρ -0.0180
+  tf-idf de caracteres (control)   ΔMdMRE -0.0087 · ΔR² +0.0033 · Δρ +0.0018
+  concatenación de los dos mejores ΔMdMRE -0.0173 · ΔR² +0.0301 · Δρ +0.0445
+
+escrito results\codificadores/resumen.csv

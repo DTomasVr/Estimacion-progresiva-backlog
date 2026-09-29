@@ -1,0 +1,30 @@
+24,848 tareas · varianza total de log-horas 1.996
+pares dentro del mismo proyecto: 3,000,000
+
+============================================================================================================
+CÓMO CRECE LA DIFERENCIA DE HORAS AL BAJAR EL PARECIDO
+============================================================================================================
+   coseno   pares  dif_mediana_h  sigma_log  fraccion_ruido
+0.70–0.75   33451         3.8000     0.8367          0.3508
+0.75–0.80 1335631         3.5342     0.8161          0.3337
+0.80–0.85 1454001         3.3333     0.7870          0.3104
+0.85–0.90  162800         3.0000     0.7565          0.2867
+0.90–0.93    8294         2.1333     0.6964          0.2430
+0.93–0.95    2141         1.5152     0.5501          0.1516
+0.95–0.97    2526         1.2500     0.4102          0.0843
+0.97–1.01    1126         1.2500     0.4191          0.0880
+
+============================================================================================================
+LECTURA
+============================================================================================================
+  σ en el tramo más parecido (≥ 0,97): 0.419
+  σ típico, ponderando como se reparten los pares de verdad: 0.798
+  fracción de la varianza que ese σ representa: 31.9%
+  techo implicado si el modelo solo pudiera distinguir por parecido:
+    MdMRE 0.497 · PRED25 0.250 · R² máx 0.681
+
+  el modelo final está en MdMRE 0,679 · PRED25 0,168 · R² 0,181
+  (el techo de arriba es optimista: supone que el modelo aprovecha TODO
+   el parecido semántico, y ademas los pares se reparten muy desigual)
+
+escrito results\techo/curva_senal.csv

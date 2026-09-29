@@ -1,0 +1,26 @@
+vista (24848, 1536) · train 16,648 · val 3,183
+  bolsa 1/7
+  bolsa 2/7
+  bolsa 3/7
+  bolsa 4/7
+  bolsa 5/7
+  bolsa 6/7
+  bolsa 7/7
+  cuantiles y clasificador de tramo ajustados
+escrito models\estimador_agix_v2.joblib (162 MB) en 303 s
+  banda 80 % ×4.70 · smearing 1.568 · suma residual 0.672 · umbral 0.9766
+
+================================================================================================================================
+VERIFICACIÓN DEL v2 SOBRE LOS BLOQUES CONGELADOS
+================================================================================================================================
+           bloque subconjunto    n  cobertura  MdMRE  MdAElog  PRED25  MAE_h     R2  sesgo  spearman
+      prueba fija       todas 4225     1.0000 0.6798   0.8257  0.1586 5.0133 0.1666 0.9173    0.3794
+      prueba fija respondidas 2017     0.4774 0.6470   0.7611  0.1730 3.5823 0.1771 0.9263    0.3798
+       prueba SiP       todas 1885     1.0000 0.6999   0.8396  0.1581 5.8876 0.2356 0.9954    0.4584
+       prueba SiP respondidas 1077     0.5714 0.6597   0.7611  0.1792 4.1257 0.2605 1.0294    0.4699
+     prueba TAWOS       todas 2340     1.0000 0.6686   0.8134  0.1590 4.3091 0.1044 0.8591    0.3143
+     prueba TAWOS respondidas  940     0.4017 0.6183   0.7591  0.1660 2.9597 0.0668 0.7907    0.2867
+externo no Apache       todas  792     1.0000 0.7217   0.9271  0.1465 5.7400 0.0595 1.0064    0.2454
+externo no Apache respondidas  202     0.2551 0.7095   0.9003  0.1386 4.4037 0.0528 0.9143    0.2554
+
+escrito results\estimador_v2/verificacion.csv

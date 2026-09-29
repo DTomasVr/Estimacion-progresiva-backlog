@@ -1,0 +1,29 @@
+24,848 tareas · 204 proyectos · con estimación 49.8%
+  pliegue 1/5 · 89 s
+  pliegue 2/5 · 174 s
+  pliegue 3/5 · 266 s
+  pliegue 4/5 · 434 s
+  pliegue 5/5 · 516 s
+   0 anclas · estimación False -> MdMRE 0.7533 · R² +0.0632
+   0 anclas · estimación True  -> MdMRE 0.5404 · R² +0.3402
+   3 anclas · estimación False -> MdMRE 0.7428 · R² +0.0856
+   3 anclas · estimación True  -> MdMRE 0.5429 · R² +0.3409
+  10 anclas · estimación False -> MdMRE 0.7311 · R² +0.1067
+  10 anclas · estimación True  -> MdMRE 0.5499 · R² +0.3366
+  20 anclas · estimación False -> MdMRE 0.7264 · R² +0.1101
+  20 anclas · estimación True  -> MdMRE 0.5596 · R² +0.3294
+
+============================================================================================================================
+PALANCAS EN PROYECTOS NUNCA VISTOS · 24,848 tareas, 204 proyectos
+============================================================================================================================
+ anclas  estimacion  MdMRE  MdAElog  PRED25  MAE_h     R2     SA  sesgo  spearman  rho_intra
+      0       False 0.7533   0.9297  0.1463 5.0919 0.0632 0.3958 0.9867    0.2548     0.2407
+      0        True 0.5404   0.6058  0.2848 4.2625 0.3402 0.4942 0.9825    0.5611     0.5359
+      3       False 0.7428   0.9125  0.1478 4.9911 0.0856 0.4001 1.0005    0.2916     0.2416
+      3        True 0.5429   0.6047  0.2680 4.2234 0.3409 0.4924 0.9680    0.5668     0.5373
+     10       False 0.7311   0.8966  0.1517 4.8758 0.1067 0.4054 0.9969    0.3229     0.2411
+     10        True 0.5499   0.6199  0.2454 4.2400 0.3366 0.4829 0.9580    0.5702     0.5378
+     20       False 0.7264   0.8886  0.1543 4.8267 0.1101 0.4065 1.0019    0.3307     0.2404
+     20        True 0.5596   0.6303  0.2306 4.2847 0.3294 0.4731 0.9491    0.5698     0.5378
+
+escrito results\palancas_cv/resumen.csv

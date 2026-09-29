@@ -1,0 +1,74 @@
+corpus 24,848 · con estimación 49.8%
+  bolsa 1/7
+  bolsa 2/7
+  bolsa 3/7
+  bolsa 4/7
+  bolsa 5/7
+  bolsa 6/7
+  bolsa 7/7
+  corrector C2 ajustado
+  prueba fija           0 anclas · estimación False -> MdMRE 0.6876 · R² +0.1539
+  prueba fija           0 anclas · estimación True  -> MdMRE 0.4945 · R² +0.3541
+  prueba fija           3 anclas · estimación False -> MdMRE 0.6886 · R² +0.1652
+  prueba fija           3 anclas · estimación True  -> MdMRE 0.4973 · R² +0.3659
+  prueba fija          10 anclas · estimación False -> MdMRE 0.6878 · R² +0.1899
+  prueba fija          10 anclas · estimación True  -> MdMRE 0.4988 · R² +0.3855
+  prueba fija          20 anclas · estimación False -> MdMRE 0.6831 · R² +0.1956
+  prueba fija          20 anclas · estimación True  -> MdMRE 0.5007 · R² +0.3867
+  prueba SiP            0 anclas · estimación False -> MdMRE 0.7147 · R² +0.2227
+  prueba SiP            0 anclas · estimación True  -> MdMRE 0.2789 · R² +0.6845
+  prueba SiP            3 anclas · estimación False -> MdMRE 0.7096 · R² +0.2251
+  prueba SiP            3 anclas · estimación True  -> MdMRE 0.2797 · R² +0.6844
+  prueba SiP           10 anclas · estimación False -> MdMRE 0.7125 · R² +0.2233
+  prueba SiP           10 anclas · estimación True  -> MdMRE 0.2808 · R² +0.6811
+  prueba SiP           20 anclas · estimación False -> MdMRE 0.7234 · R² +0.2192
+  prueba SiP           20 anclas · estimación True  -> MdMRE 0.2776 · R² +0.6778
+  externo no Apache     0 anclas · estimación False -> MdMRE 0.7064 · R² +0.0563
+  externo no Apache     0 anclas · estimación True  -> MdMRE 0.5212 · R² +0.3020
+  externo no Apache     3 anclas · estimación False -> MdMRE 0.6813 · R² +0.1542
+  externo no Apache     3 anclas · estimación True  -> MdMRE 0.4783 · R² +0.3635
+  externo no Apache    10 anclas · estimación False -> MdMRE 0.6530 · R² +0.2161
+  externo no Apache    10 anclas · estimación True  -> MdMRE 0.4541 · R² +0.4013
+  externo no Apache    20 anclas · estimación False -> MdMRE 0.6245 · R² +0.2666
+  externo no Apache    20 anclas · estimación True  -> MdMRE 0.4265 · R² +0.4243
+
+================================================================================================================================
+prueba fija
+================================================================================================================================
+ anclas  estimacion  MdMRE  MdAElog  PRED25  MAE_h     R2     SA  sesgo  spearman
+      0       False 0.6876   0.8347  0.1567 5.0389 0.1539 0.4171 0.9188    0.3684
+      0        True 0.4945   0.5441  0.2987 4.4621 0.3541 0.4838 0.9667    0.5753
+      3       False 0.6886   0.8367  0.1611 5.0169 0.1652 0.4195 0.9339    0.3853
+      3        True 0.4973   0.5512  0.3018 4.4258 0.3659 0.4879 0.9707    0.5864
+     10       False 0.6878   0.8187  0.1649 4.9627 0.1899 0.4234 0.9760    0.4102
+     10        True 0.4988   0.5473  0.3033 4.3712 0.3855 0.4922 0.9907    0.6032
+     20       False 0.6831   0.8109  0.1691 4.9419 0.1956 0.4238 0.9851    0.4169
+     20        True 0.5007   0.5449  0.3036 4.3719 0.3867 0.4903 0.9916    0.6051
+
+================================================================================================================================
+prueba SiP
+================================================================================================================================
+ anclas  estimacion  MdMRE  MdAElog  PRED25  MAE_h     R2     SA  sesgo  spearman
+      0       False 0.7147   0.8429  0.1533 5.9167 0.2227 0.4300 1.0362    0.4524
+      0        True 0.2789   0.2856  0.4743 4.5911 0.6845 0.5577 0.9831    0.8428
+      3       False 0.7096   0.8470  0.1593 5.8968 0.2251 0.4313 1.0120    0.4586
+      3        True 0.2797   0.2924  0.4710 4.5620 0.6844 0.5600 0.9797    0.8431
+     10       False 0.7125   0.8445  0.1585 5.8641 0.2233 0.4319 1.0144    0.4619
+     10        True 0.2808   0.2959  0.4690 4.5216 0.6811 0.5620 0.9778    0.8412
+     20       False 0.7234   0.8478  0.1566 5.8203 0.2192 0.4306 1.0714    0.4597
+     20        True 0.2776   0.2916  0.4735 4.5149 0.6778 0.5583 0.9807    0.8409
+
+================================================================================================================================
+externo no Apache
+================================================================================================================================
+ anclas  estimacion  MdMRE  MdAElog  PRED25  MAE_h     R2     SA  sesgo  spearman
+      0       False 0.7064   0.9328  0.1326 5.7600 0.0563 0.4020 0.9906    0.2369
+      0        True 0.5212   0.5541  0.2828 4.4636 0.3020 0.5366 1.0030    0.4989
+      3       False 0.6813   0.8355  0.1531 5.1044 0.1542 0.4208 0.9586    0.3606
+      3        True 0.4783   0.5189  0.3153 3.9903 0.3635 0.5473 0.9842    0.5784
+     10       False 0.6530   0.7791  0.1753 4.4117 0.2161 0.4341 0.9799    0.4399
+     10        True 0.4541   0.4878  0.3343 3.6162 0.4013 0.5360 0.9759    0.6320
+     20       False 0.6245   0.7286  0.1792 3.9676 0.2666 0.4437 0.9901    0.4999
+     20        True 0.4265   0.4661  0.3550 3.2704 0.4243 0.5419 0.9740    0.6613
+
+escrito results\palancas/resumen.csv

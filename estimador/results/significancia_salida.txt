@@ -1,0 +1,15 @@
+  A · punto de partida ajustado
+  B · modelo final ajustado
+
+======================================================================================================================
+CONTRASTES PAREADOS SOBRE LAS MISMAS TAREAS
+======================================================================================================================
+           bloque    n                          comparacion veredicto  dif_MdMRE            IC95_MdMRE  dif_MdAElog          IC95_MdAElog  p_wilcoxon
+      prueba fija 4225     final frente al punto de partida     mejor   -0.02049    [-0.0365, -0.0056]     -0.04128    [-0.0656, -0.0175]     0.00000
+      prueba fija 3745 20 anclas frente al final sin anclas    empate   -0.00190 (media de 20 sorteos)     -0.01446 (media de 20 sorteos)     0.00009
+       prueba SiP 1885     final frente al punto de partida     mejor   -0.04640    [-0.0641, -0.0259]     -0.06962    [-0.1043, -0.0360]     0.00000
+       prueba SiP 1665 20 anclas frente al final sin anclas    empate    0.01338 (media de 20 sorteos)      0.00987 (media de 20 sorteos)     0.24519
+externo no Apache  792     final frente al punto de partida    empate    0.00523    [-0.0337, +0.0401]     -0.02398    [-0.0873, +0.0341]     0.28310
+externo no Apache  409 20 anclas frente al final sin anclas    empate   -0.05525 (media de 20 sorteos)     -0.11780 (media de 20 sorteos)     0.00000
+
+escrito results\final/significancia.csv

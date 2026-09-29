@@ -1,0 +1,37 @@
+vista (24848, 1536) · superficie (24848, 10)
+  1 · texto (referencia)     fija R² +0.1520 · R²_intra +0.1313
+  2 · texto + superficie     fija R² +0.1480 · R²_intra +0.1274
+  3 · solo superficie        fija R² -0.0103 · R²_intra -0.0229
+  ranker ajustado
+    ranker prueba fija          ρ_intra +0.2861
+    ranker prueba SiP           ρ_intra +0.3386
+    ranker externo no Apache    ρ_intra +0.2498
+
+========================================================================================================================
+prueba fija
+========================================================================================================================
+                                modelo  MdMRE  MdAElog  PRED25      R2  spearman  R2_intra  rho_intra
+                1 · texto (referencia) 0.6860   0.8346  0.1631  0.1520    0.3713    0.1313     0.3389
+                2 · texto + superficie 0.6908   0.8471  0.1640  0.1480    0.3645    0.1274     0.3329
+                   3 · solo superficie 0.7572   0.9005  0.1482 -0.0103    0.0704   -0.0229     0.0497
+4 · ranker (orden dentro del proyecto)    NaN      NaN     NaN     NaN    0.3076       NaN     0.2861
+
+========================================================================================================================
+prueba SiP
+========================================================================================================================
+                                modelo  MdMRE  MdAElog  PRED25      R2  spearman  R2_intra  rho_intra
+                1 · texto (referencia) 0.7086   0.8405  0.1602  0.2223    0.4492    0.1837     0.4027
+                2 · texto + superficie 0.7039   0.8431  0.1655  0.2166    0.4429    0.1749     0.3939
+                   3 · solo superficie 0.7938   0.9472  0.1353 -0.0163    0.0836   -0.0376     0.0445
+4 · ranker (orden dentro del proyecto)    NaN      NaN     NaN     NaN    0.3870       NaN     0.3386
+
+========================================================================================================================
+externo no Apache
+========================================================================================================================
+                                modelo  MdMRE  MdAElog  PRED25      R2  spearman  R2_intra  rho_intra
+                1 · texto (referencia)  0.726   0.9422  0.1389  0.0424    0.2358    0.0416     0.2572
+                2 · texto + superficie  0.711   0.9478  0.1439  0.0547    0.2404    0.0467     0.2541
+                   3 · solo superficie  0.755   0.9406  0.1578 -0.0284    0.0312   -0.0164     0.0522
+4 · ranker (orden dentro del proyecto)    NaN      NaN     NaN     NaN    0.2333       NaN     0.2498
+
+escrito results\rasgos_orden/resumen.csv

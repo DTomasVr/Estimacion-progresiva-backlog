@@ -1,0 +1,26 @@
+24,848 tareas · 204 proyectos · 5 pliegues por proyecto entero
+  pliegue 1/5 · 107 s
+  pliegue 2/5 · 222 s
+  pliegue 3/5 · 335 s
+  pliegue 4/5 · 441 s
+  pliegue 5/5 · 541 s
+  ajuste de intercepto del apilado: -0.8817 en log
+
+====================================================================================================================
+VALIDACIÓN CRUZADA POR PROYECTO ENTERO · 24,848 tareas
+====================================================================================================================
+                        modelo     n  MdMRE  MdAElog  PRED25  MAE_h     R2  sesgo  spearman  rho_intra
+punto de partida (mpnet + HGB) 24848  0.744   0.9235  0.1499 5.0709 0.0888 1.0196    0.2919     0.2877
+                  modelo final 24848  0.734   0.9108  0.1490 5.0197 0.1138 1.0000    0.3293     0.3271
+
+====================================================================================================================
+CONTRASTE PAREADO EN PROYECTOS NUNCA VISTOS
+====================================================================================================================
+  el modelo final frente al punto de partida: MEJOR
+    ΔMdMRE   -0.0104  IC95 [-0.0157, -0.0049]
+    ΔMdAElog -0.0129  IC95 [-0.0228, -0.0024]
+    Wilcoxon p = 2.36e-10
+
+  (el bloque externo no-Apache, con 792 tareas, daba IC95 [-0,034, +0,040] y p = 0,28)
+
+escrito results\cv_proyectos/resumen.csv y contraste.json

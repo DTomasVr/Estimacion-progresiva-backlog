@@ -1,0 +1,49 @@
+nivel,metodo,bloque,cobertura,anchura_x,anchura_media_x
+50%,A · anchura constante (conforme),validacion (calibracion),0.5001570845114671,4.542301811311659,4.54230181131166
+50%,A · anchura constante (conforme),prueba fija,0.48355029585798814,4.542301811311659,4.54230181131166
+50%,A · anchura constante (conforme),prueba SiP,0.49389920424403183,4.542301811311659,4.54230181131166
+50%,A · anchura constante (conforme),externo no Apache,0.4532828282828283,4.542301811311659,4.542301811311659
+50%,"B · cuantiles del modelo, sin corregir",validacion (calibracion),0.5284322965755577,4.000000000000001,4.181577942662172
+50%,"B · cuantiles del modelo, sin corregir",prueba fija,0.4833136094674556,4.000000000000001,4.201736484240138
+50%,"B · cuantiles del modelo, sin corregir",prueba SiP,0.4816976127320955,4.0,3.7738872295908807
+50%,"B · cuantiles del modelo, sin corregir",externo no Apache,0.4772727272727273,4.000000000000001,4.306801051426329
+50%,C · conforme cuantilico (adaptativo),validacion (calibracion),0.5284322965755577,4.000000000000001,4.181577942662172
+50%,C · conforme cuantilico (adaptativo),prueba fija,0.4833136094674556,4.000000000000001,4.201736484240138
+50%,C · conforme cuantilico (adaptativo),prueba SiP,0.4816976127320955,4.0,3.7738872295908807
+50%,C · conforme cuantilico (adaptativo),externo no Apache,0.4772727272727273,4.000000000000001,4.306801051426329
+50%,D · C calibrado con lo mas reciente,validacion (calibracion),0.40245051837888784,3.3057851239669414,3.455849539390224
+50%,D · C calibrado con lo mas reciente,prueba fija,0.3701775147928994,3.3057851239669414,3.4725094911075503
+50%,D · C calibrado con lo mas reciente,prueba SiP,0.36074270557029176,3.3057851239669414,3.1189150657775873
+50%,D · C calibrado con lo mas reciente,externo no Apache,0.3484848484848485,3.3057851239669414,3.559339711922585
+80%,A · anchura constante (conforme),validacion (calibracion),0.8001885014137606,18.666520160976322,18.666520160976322
+80%,A · anchura constante (conforme),prueba fija,0.7756213017751479,18.666520160976322,18.666520160976336
+80%,A · anchura constante (conforme),prueba SiP,0.8015915119363395,18.666520160976322,18.66652016097633
+80%,A · anchura constante (conforme),externo no Apache,0.7095959595959596,18.666520160976322,18.666520160976322
+80%,"B · cuantiles del modelo, sin corregir",validacion (calibracion),0.8092994030788564,15.999999999999998,15.997590074736369
+80%,"B · cuantiles del modelo, sin corregir",prueba fija,0.7687573964497041,15.999999999999998,16.31974224357817
+80%,"B · cuantiles del modelo, sin corregir",prueba SiP,0.7745358090185677,13.999999999999996,13.04855508894249
+80%,"B · cuantiles del modelo, sin corregir",externo no Apache,0.7348484848484849,16.799999999999994,17.26112299591479
+80%,C · conforme cuantilico (adaptativo),validacion (calibracion),0.8092994030788564,15.999999999999998,15.997590074736369
+80%,C · conforme cuantilico (adaptativo),prueba fija,0.7687573964497041,15.999999999999998,16.31974224357817
+80%,C · conforme cuantilico (adaptativo),prueba SiP,0.7745358090185677,13.999999999999996,13.04855508894249
+80%,C · conforme cuantilico (adaptativo),externo no Apache,0.7348484848484849,16.799999999999994,17.26112299591479
+80%,D · C calibrado con lo mas reciente,validacion (calibracion),0.6990260760289035,10.468819753086414,10.467242936011202
+80%,D · C calibrado con lo mas reciente,prueba fija,0.6624852071005917,10.468819753086414,10.678027497803118
+80%,D · C calibrado con lo mas reciente,prueba SiP,0.6562334217506631,9.160217283950612,8.537685704022334
+80%,D · C calibrado con lo mas reciente,externo no Apache,0.6262626262626263,10.992260740740733,11.293974086255432
+90%,A · anchura constante (conforme),validacion (calibracion),0.9004084197298147,47.527677396407675,47.52767739640763
+90%,A · anchura constante (conforme),prueba fija,0.8868639053254438,47.527677396407675,47.52767739640761
+90%,A · anchura constante (conforme),prueba SiP,0.9082228116710875,47.527677396407675,47.52767739640759
+90%,A · anchura constante (conforme),externo no Apache,0.821969696969697,47.527677396407675,47.52767739640763
+90%,"B · cuantiles del modelo, sin corregir",validacion (calibracion),0.8947533773169966,40.000000000000014,39.036694220221136
+90%,"B · cuantiles del modelo, sin corregir",prueba fija,0.8736094674556213,41.999999999999986,40.24459771305972
+90%,"B · cuantiles del modelo, sin corregir",prueba SiP,0.8790450928381963,32.0,31.054072246046605
+90%,"B · cuantiles del modelo, sin corregir",externo no Apache,0.851010101010101,47.999999999999986,44.04399686735675
+90%,C · conforme cuantilico (adaptativo),validacion (calibracion),0.9004084197298147,43.83789062500002,42.7821582896906
+90%,C · conforme cuantilico (adaptativo),prueba fija,0.8757396449704142,46.029785156249986,44.105956819805954
+90%,C · conforme cuantilico (adaptativo),prueba SiP,0.8827586206896552,35.0703125,34.03362556457598
+90%,C · conforme cuantilico (adaptativo),externo no Apache,0.851010101010101,52.60546874999999,48.269897933975706
+90%,D · C calibrado con lo mas reciente,validacion (calibracion),0.8278353754319824,24.000000000000014,23.42201653213271
+90%,D · C calibrado con lo mas reciente,prueba fija,0.7966863905325444,25.199999999999996,24.146758627835847
+90%,D · C calibrado con lo mas reciente,prueba SiP,0.8005305039787799,19.200000000000003,18.632443347627966
+90%,D · C calibrado con lo mas reciente,externo no Apache,0.7638888888888888,28.799999999999997,26.426398120414056

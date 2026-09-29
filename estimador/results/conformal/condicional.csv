@@ -1,0 +1,17 @@
+metodo,tramo,n,cobertura,anchura_x
+A · anchura constante (conforme),muy pequena,1057,0.8126773888363292,18.666520160976322
+A · anchura constante (conforme),pequena,1056,0.7897727272727273,18.666520160976322
+A · anchura constante (conforme),mediana,1056,0.7632575757575758,18.666520160976322
+A · anchura constante (conforme),grande,1056,0.7367424242424242,18.666520160976322
+"B · cuantiles del modelo, sin corregir",muy pequena,1057,0.7899716177861873,14.000000000000004
+"B · cuantiles del modelo, sin corregir",pequena,1056,0.7897727272727273,17.999999999999996
+"B · cuantiles del modelo, sin corregir",mediana,1056,0.771780303030303,16.799999999999994
+"B · cuantiles del modelo, sin corregir",grande,1056,0.7234848484848485,15.999999999999998
+C · conforme cuantilico (adaptativo),muy pequena,1057,0.7899716177861873,14.000000000000004
+C · conforme cuantilico (adaptativo),pequena,1056,0.7897727272727273,17.999999999999996
+C · conforme cuantilico (adaptativo),mediana,1056,0.771780303030303,16.799999999999994
+C · conforme cuantilico (adaptativo),grande,1056,0.7234848484848485,15.999999999999998
+D · C calibrado con lo mas reciente,muy pequena,1057,0.663197729422895,9.160217283950615
+D · C calibrado con lo mas reciente,pequena,1056,0.6931818181818182,11.777422222222215
+D · C calibrado con lo mas reciente,mediana,1056,0.6704545454545454,10.992260740740733
+D · C calibrado con lo mas reciente,grande,1056,0.6231060606060606,10.468819753086414

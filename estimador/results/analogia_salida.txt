@@ -1,0 +1,85 @@
+datos listos · rejilla de 41 atomos · 10 s
+  e5-large listo · 15 s
+  e5 ajustado listo · 21 s
+  TF-IDF (SVD) listo · 24 s
+  e5-large + ajustado listo · 31 s
+
+==============================================================================================================================
+1 y 2 - CUANTO DEPENDE DE k, DE LA SIMILITUD Y DEL AGREGADOR
+==============================================================================================================================
+  (PRED25 por bloque · la columna de validacion es la que se puede usar para elegir)
+k                                           5       10      15      25      50
+vista               agregador                                                 
+TF-IDF (SVD)        media               0.1572  0.1602  0.1692  0.1621  0.1666
+                    mediana             0.1680  0.1699  0.1735  0.1740  0.1714
+                    moda en la rejilla  0.1688  0.1775  0.1759  0.1763  0.1794
+e5 ajustado         media               0.1733  0.1699  0.1744  0.1678  0.1636
+                    mediana             0.1617  0.1742  0.1792  0.1744  0.1711
+                    moda en la rejilla  0.1647  0.1782  0.1818  0.1766  0.1770
+e5-large            media               0.1572  0.1695  0.1744  0.1669  0.1659
+                    mediana             0.1593  0.1683  0.1775  0.1811  0.1707
+                    moda en la rejilla  0.1619  0.1768  0.1801  0.1834  0.1770
+e5-large + ajustado media               0.1733  0.1702  0.1733  0.1685  0.1640
+                    mediana             0.1626  0.1749  0.1782  0.1744  0.1711
+                    moda en la rejilla  0.1659  0.1787  0.1808  0.1766  0.1768
+
+  mejor combinacion en VALIDACION: e5-large · k=25 · moda en la rejilla  (val 0.2243 -> fija 0.1834)
+
+==============================================================================================================================
+3 - ENCAMINAR CADA TAREA AL BRAZO QUE LE CONVIENE
+==============================================================================================================================
+  dispersion de los vecinos: mediana 1.284 · correlacion con |error| de la analogia +0.241
+  umbral elegido en validacion: dispersion <= 1.524, que encamina el 85.1% de las tareas a la analogia
+
+==============================================================================================================================
+validacion
+==============================================================================================================================
+                                            brazo  MAE_h  MdAElog  zeta_pc  R2log  PRED25  factor2    rho
+                            0 · el apilado actual 4.3617   0.7567 113.1268 0.2648  0.1822   0.4647 0.4996
+1 · analogia (e5-large, k=25, moda en la rejilla) 4.4627   0.6931 100.0000 0.1867  0.2243   0.5020 0.4358
+     2 · encaminado por dispersion de los vecinos 4.4098   0.7045 102.2858 0.2167  0.2259   0.4973 0.4580
+                  3 · media geometrica de los dos 4.3646   0.7316 107.8477 0.2605  0.2055   0.4801 0.4977
+
+==============================================================================================================================
+prueba fija
+==============================================================================================================================
+                                            brazo  MAE_h  MdAElog  zeta_pc  R2log  PRED25  factor2    rho
+                            0 · el apilado actual 4.9194   0.7832 118.8402 0.1988  0.1669   0.4464 0.4162
+1 · analogia (e5-large, k=25, moda en la rejilla) 5.1037   0.8473 133.3333 0.0717  0.1834   0.4528 0.3076
+     2 · encaminado por dispersion de los vecinos 5.0392   0.8438 132.5102 0.1056  0.1837   0.4547 0.3347
+                  3 · media geometrica de los dos 4.9719   0.7987 122.2706 0.1702  0.1754   0.4400 0.3884
+                                            brazo     pred25_vs_apilado   factor2_vs_apilado
+                            0 · el apilado actual      empate (p=1, +0)     empate (p=1, +0)
+1 · analogia (e5-large, k=25, moda en la rejilla) mejor (p=0.0186, +70) mejor (p=0.382, +27)
+     2 · encaminado por dispersion de los vecinos mejor (p=0.0103, +71) mejor (p=0.213, +35)
+                  3 · media geometrica de los dos  mejor (p=0.128, +36)  peor (p=0.222, -27)
+
+==============================================================================================================================
+prueba SiP
+==============================================================================================================================
+                                            brazo  MAE_h  MdAElog  zeta_pc  R2log  PRED25  factor2    rho
+                            0 · el apilado actual 5.7386   0.7731 116.6491 0.3009  0.1629   0.4546 0.5235
+1 · analogia (e5-large, k=25, moda en la rejilla) 5.9667   0.8473 133.3333 0.1614  0.1883   0.4621 0.4056
+     2 · encaminado por dispersion de los vecinos 5.9027   0.8421 132.1299 0.1915  0.1889   0.4642 0.4279
+                  3 · media geometrica de los dos 5.8082   0.7896 120.2439 0.2667  0.1756   0.4440 0.4968
+                                            brazo     pred25_vs_apilado   factor2_vs_apilado
+                            0 · el apilado actual      empate (p=1, +0)     empate (p=1, +0)
+1 · analogia (e5-large, k=25, moda en la rejilla) mejor (p=0.0214, +48) mejor (p=0.517, +14)
+     2 · encaminado por dispersion de los vecinos mejor (p=0.0136, +49) mejor (p=0.359, +18)
+                  3 · media geometrica de los dos  mejor (p=0.157, +24)  peor (p=0.185, -20)
+
+==============================================================================================================================
+externo no Apache
+==============================================================================================================================
+                                            brazo  MAE_h  MdAElog  zeta_pc   R2log  PRED25  factor2    rho
+                            0 · el apilado actual 5.5847   0.8533 134.7348  0.1009  0.1705   0.4167 0.3039
+1 · analogia (e5-large, k=25, moda en la rejilla) 5.7755   0.9808 166.6667 -0.0070  0.1780   0.4369 0.2033
+     2 · encaminado por dispersion de los vecinos 5.7240   0.9808 166.6667  0.0248  0.1806   0.4280 0.2308
+                  3 · media geometrica de los dos 5.6469   0.8834 141.9189  0.0797  0.1742   0.4078 0.2720
+                                            brazo   pred25_vs_apilado   factor2_vs_apilado
+                            0 · el apilado actual    empate (p=1, +0)     empate (p=1, +0)
+1 · analogia (e5-large, k=25, moda en la rejilla) mejor (p=0.689, +6) mejor (p=0.247, +16)
+     2 · encaminado por dispersion de los vecinos mejor (p=0.526, +8)  mejor (p=0.474, +9)
+                  3 · media geometrica de los dos mejor (p=0.842, +3)   peor (p=0.515, -7)
+
+escrito results\analogia/resumen.csv · 36 s

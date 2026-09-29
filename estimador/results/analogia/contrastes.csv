@@ -1,0 +1,13 @@
+bloque,brazo,pred25_vs_apilado,factor2_vs_apilado
+prueba fija,0 · el apilado actual,"empate (p=1, +0)","empate (p=1, +0)"
+prueba fija,"1 · analogia (e5-large, k=25, moda en la rejilla)","mejor (p=0.0186, +70)","mejor (p=0.382, +27)"
+prueba fija,2 · encaminado por dispersion de los vecinos,"mejor (p=0.0103, +71)","mejor (p=0.213, +35)"
+prueba fija,3 · media geometrica de los dos,"mejor (p=0.128, +36)","peor (p=0.222, -27)"
+prueba SiP,0 · el apilado actual,"empate (p=1, +0)","empate (p=1, +0)"
+prueba SiP,"1 · analogia (e5-large, k=25, moda en la rejilla)","mejor (p=0.0214, +48)","mejor (p=0.517, +14)"
+prueba SiP,2 · encaminado por dispersion de los vecinos,"mejor (p=0.0136, +49)","mejor (p=0.359, +18)"
+prueba SiP,3 · media geometrica de los dos,"mejor (p=0.157, +24)","peor (p=0.185, -20)"
+externo no Apache,0 · el apilado actual,"empate (p=1, +0)","empate (p=1, +0)"
+externo no Apache,"1 · analogia (e5-large, k=25, moda en la rejilla)","mejor (p=0.689, +6)","mejor (p=0.247, +16)"
+externo no Apache,2 · encaminado por dispersion de los vecinos,"mejor (p=0.526, +8)","mejor (p=0.474, +9)"
+externo no Apache,3 · media geometrica de los dos,"mejor (p=0.842, +3)","peor (p=0.515, -7)"

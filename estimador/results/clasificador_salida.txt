@@ -1,0 +1,101 @@
+entrenamiento 16,648 · reparto de tramos: <1 h 25.3% · 1-4 h 38.8% · 4-16 h 26.5% · >16 h 9.5%
+  mediana de horas por tramo en el entrenamiento: <1 h 0.50 h · 1-4 h 2.00 h · 4-16 h 6.50 h · >16 h 25.13 h
+
+================================================================================================================================
+prueba fija · n=4,225
+================================================================================================================================
+clasificador de tramo:
+              precision    recall  f1-score   support
+
+        <1 h      0.390     0.320     0.351       991
+       1-4 h      0.453     0.647     0.533      1786
+      4-16 h      0.351     0.258     0.297      1099
+       >16 h      0.357     0.057     0.099       349
+
+    accuracy                          0.420      4225
+   macro avg      0.388     0.320     0.320      4225
+weighted avg      0.404     0.420     0.393      4225
+
+  matriz de confusión (filas = real, columnas = predicho):
+        <1 h  1-4 h  4-16 h  >16 h
+<1 h     317    554     113      7
+1-4 h    339   1155     282     10
+4-16 h   128    669     283     19
+>16 h     29    172     128     20
+  F1 macro · clasificador 0.320 vs tramo implícito del regresor 0.266
+  cobertura de las tareas >16 h · clasificador 0.057 vs regresor 0.000
+
+================================================================================================================================
+prueba SiP · n=1,885
+================================================================================================================================
+clasificador de tramo:
+              precision    recall  f1-score   support
+
+        <1 h      0.449     0.380     0.412       466
+       1-4 h      0.434     0.639     0.517       764
+      4-16 h      0.322     0.234     0.271       478
+       >16 h      0.500     0.051     0.092       177
+
+    accuracy                          0.417      1885
+   macro avg      0.426     0.326     0.323      1885
+weighted avg      0.415     0.417     0.389      1885
+
+  matriz de confusión (filas = real, columnas = predicho):
+        <1 h  1-4 h  4-16 h  >16 h
+<1 h     177    243      46      0
+1-4 h    157    488     117      2
+4-16 h    44    315     112      7
+>16 h     16     79      73      9
+  F1 macro · clasificador 0.323 vs tramo implícito del regresor 0.289
+  cobertura de las tareas >16 h · clasificador 0.051 vs regresor 0.000
+
+================================================================================================================================
+externo no Apache · n=792
+================================================================================================================================
+clasificador de tramo:
+              precision    recall  f1-score   support
+
+        <1 h      0.243     0.156     0.190       167
+       1-4 h      0.443     0.636     0.522       330
+      4-16 h      0.301     0.277     0.289       202
+       >16 h      0.120     0.032     0.051        93
+
+    accuracy                          0.372       792
+   macro avg      0.277     0.275     0.263       792
+weighted avg      0.327     0.372     0.337       792
+
+  matriz de confusión (filas = real, columnas = predicho):
+        <1 h  1-4 h  4-16 h  >16 h
+<1 h      26    100      38      3
+1-4 h     56    210      54     10
+4-16 h    21    116      56      9
+>16 h      4     48      38      3
+  F1 macro · clasificador 0.263 vs tramo implícito del regresor 0.238
+  cobertura de las tareas >16 h · clasificador 0.032 vs regresor 0.000
+
+================================================================================================================================
+HORAS A PARTIR DEL CLASIFICADOR
+================================================================================================================================
+
+prueba fija
+                               metodo    n  MdMRE  MdAElog  PRED25  MAE_h  sesgo  suma_pred_real
+                 regresor (lo actual) 4225 0.6867   0.8381  0.1621 5.0653 0.9095          0.3765
+               esperanza sobre tramos 4225 0.9262   0.9546  0.1404 5.4968 1.8800          0.7626
+         dos etapas: tramo -> mediana 4225 0.7315   0.8755  0.1498 5.3418 0.9449          0.4620
+media geométrica regresor × esperanza 4225 0.7478   0.8387  0.1546 5.0995 1.3153          0.5312
+
+prueba SiP
+                               metodo    n  MdMRE  MdAElog  PRED25  MAE_h  sesgo  suma_pred_real
+                 regresor (lo actual) 1885 0.7093   0.8384  0.1597 5.9355 0.9698          0.3352
+               esperanza sobre tramos 1885 0.9817   0.9968  0.1300 6.2632 1.9817          0.6594
+         dos etapas: tramo -> mediana 1885 0.7143   0.9163  0.1427 6.1235 0.9078          0.3823
+media geométrica regresor × esperanza 1885 0.7846   0.8673  0.1464 5.9434 1.3723          0.4655
+
+externo no Apache
+                               metodo   n  MdMRE  MdAElog  PRED25  MAE_h  sesgo  suma_pred_real
+                 regresor (lo actual) 792 0.7208   0.8956  0.1490 5.7779 1.0054          0.4071
+               esperanza sobre tramos 792 1.1405   1.1033  0.1351 6.6211 2.1405          0.8495
+         dos etapas: tramo -> mediana 792 0.8000   1.0986  0.1465 6.4293 1.0000          0.5260
+media geométrica regresor × esperanza 792 0.8422   0.9201  0.1364 5.9721 1.4956          0.5823
+
+escrito results/clasificador_tramo.csv, .json y models/clasificador_tramo.joblib

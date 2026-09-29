@@ -1,0 +1,45 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+factor de smearing de Duan ajustado en el entrenamiento: S = 1.8377
+  (residuos: sd 1.111 · si fueran normales seria exp(sd²/2) = 1.8543)
+
+==============================================================================================================================
+1 · SMEARING: QUE ARREGLA Y QUE ROMPE
+==============================================================================================================================
+           bloque    n      version  MdMRE  MdAElog  PRED25  MAE_h  sesgo  suma_pred_real
+      prueba fija 4225 sin corregir 0.6867   0.8381  0.1621 5.0653 0.9095          0.3765
+      prueba fija 4225 con smearing 0.8584   0.8959  0.1546 5.3344 1.6714          0.6920
+       prueba SiP 1885 sin corregir 0.7093   0.8384  0.1597 5.9355 0.9698          0.3352
+       prueba SiP 1885 con smearing 0.9051   0.9210  0.1385 6.1683 1.7823          0.6161
+     prueba TAWOS 2340 sin corregir 0.6717   0.8369  0.1641 4.3643 0.8618          0.4201
+     prueba TAWOS 2340 con smearing 0.8098   0.8712  0.1675 4.6627 1.5838          0.7720
+externo no Apache  792 sin corregir 0.7208   0.8956  0.1490 5.7779 1.0054          0.4071
+externo no Apache  792 con smearing 0.9139   0.9868  0.1389 6.2683 1.8477          0.7481
+
+  el smearing sube todas las predicciones por igual: empeora el MdMRE y
+  acerca la SUMA, que es lo que importa cuando se planifica un backlog entero.
+
+==============================================================================================================================
+2 · FACTOR DE ESTILO: AJUSTADO EN UN BLOQUE, VERIFICADO EN EL OTRO
+==============================================================================================================================
+      ajustado_en       evaluado_en   n                version  MdMRE  MdAElog  PRED25  MAE_h  sesgo  suma_pred_real
+       prueba SiP externo no Apache 400 original (estilo Jira) 0.7610   0.9298  0.1525 5.6926 1.0298          0.4073
+       prueba SiP externo no Apache 400 reescrito sin corregir 0.7751   1.0226  0.1525 5.7661 1.1717          0.4530
+       prueba SiP externo no Apache 400      reescrito × 0.810 0.7423   1.0704  0.1775 5.6948 0.9487          0.3668
+externo no Apache        prueba SiP 400 original (estilo Jira) 0.6999   0.8668  0.1775 4.6965 1.0068          0.4032
+externo no Apache        prueba SiP 400 reescrito sin corregir 0.8081   0.9648  0.1375 4.8075 1.2350          0.4609
+externo no Apache        prueba SiP 400      reescrito × 0.853 0.7736   0.9677  0.1525 4.7803 1.0540          0.3933
+
+  factores: prueba SiP ×0.810 · externo no Apache ×0.853  ->  media geométrica ×0.831
+
+==============================================================================================================================
+3 · EFECTO SOBRE EL BACKLOG QUE PRODUCE EL GENERADOR
+==============================================================================================================================
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 9024.30it/s]
+  sin corregir           mediana  2.77 h · backlog    341 h ( 42.6 días-persona)
+  × estilo               mediana  2.30 h · backlog    283 h ( 35.4 días-persona)
+  × smearing             mediana  5.09 h · backlog    626 h ( 78.3 días-persona)
+  × estilo × smearing    mediana  4.23 h · backlog    521 h ( 65.1 días-persona)
+
+  n = 115 tareas generadas
+
+escrito results/correccion_smearing.csv, correccion_estilo.csv, correcciones.json

@@ -1,0 +1,38 @@
+entrenamiento 16,648 · calibración 3,183 · prueba fija 4,225 · prueba SiP 1,885 · externo no Apache 792
+
+A · banda global: factor ×4.71
+B · cuantílica q=0.1 ajustada
+B · cuantílica q=0.5 ajustada
+B · cuantílica q=0.9 ajustada
+C · conformal por tramo de predicción: <1 h ×3.18 · 1-4 h ×4.70 · 4-16 h ×5.32 · >16 h ×4.71
+
+================================================================================================================================
+COBERTURA (nominal 0,80) Y ANCHURA
+================================================================================================================================
+
+prueba fija
+                  banda    n  cobertura  ancho_mediano_h  factor_mediano  cob_<1 h  cob_1-4 h  cob_4-16 h  cob_>16 h
+             A · global 4225      0.783            8.480           4.712     0.625      0.990       0.784      0.175
+         B · cuantílica 4225      0.772            8.172           4.723     0.569      1.000       0.793      0.115
+C · conformal por tramo 4225      0.778            8.448           4.696     0.608      0.983       0.781      0.198
+
+prueba SiP
+                  banda    n  cobertura  ancho_mediano_h  factor_mediano  cob_<1 h  cob_1-4 h  cob_4-16 h  cob_>16 h
+             A · global 1885      0.805            8.859           4.712     0.727      0.987       0.831      0.153
+         B · cuantílica 1885      0.765            8.147           4.411     0.582      1.000       0.818      0.090
+C · conformal por tramo 1885      0.800            8.826           4.696     0.717      0.980       0.828      0.164
+
+externo no Apache
+                  banda   n  cobertura  ancho_mediano_h  factor_mediano  cob_<1 h  cob_1-4 h  cob_4-16 h  cob_>16 h
+             A · global 792      0.725           10.825           4.712     0.329      0.979       0.851      0.258
+         B · cuantílica 792      0.730           11.557           5.180     0.359      1.000       0.856      0.161
+C · conformal por tramo 792      0.727           10.784           4.696     0.311      0.988       0.842      0.301
+
+================================================================================================================================
+LO QUE SE VE
+================================================================================================================================
+  A · global                 cobertura por tramo 0.175–0.990 (rango 0.815) · global 0.783
+  B · cuantílica             cobertura por tramo 0.115–1.000 (rango 0.885) · global 0.772
+  C · conformal por tramo    cobertura por tramo 0.198–0.983 (rango 0.785) · global 0.778
+
+escrito results/bandas_condicionales.csv, bandas.json y models/cuantiles_titulos.joblib

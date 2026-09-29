@@ -124,15 +124,17 @@ def avance():
     c = c[c.bloque == "prueba fija"].sort_values("R2")
     e = pd.read_csv("results/ensamblado/resumen.csv")
     e = e[e.bloque == "prueba fija"]
-    v2 = pd.read_csv("results/estimador_v2/verificacion.csv")
-    v2 = v2[(v2.bloque == "prueba fija") & (v2.subconjunto == "todas")]
+    v2 = pd.read_csv("results/estimador_v3/verificacion.csv")
+    v2 = v2[v2.bloque == "prueba fija"]
     filas = [("punto de partida\nmpnet + HGB", float(c[c.codificador.str.startswith("mpnet")].R2.iloc[0]), GRIS)]
     filas.append(("codificador e5-large", float(c[c.codificador == "e5-large"].R2.iloc[0]), AMBAR))
     filas.append(("+ tf-idf de caracteres\ny de palabras",
                   float(e[e.modelo.str.startswith("1 ·")].R2.iloc[0]), AMBAR))
-    filas.append(("+ bolsa de 7 con train+val",
-                  float(e[e.modelo.str.startswith("7 ·")].R2.iloc[0]), TINTA))
-    filas.append(("estimador v2 desplegado", float(v2.R2.iloc[0]), TINTA))
+    filas.append(("+ bolsa de 7" + chr(10) + "con train+val",
+                  float(e[e.modelo.str.startswith("7 ·")].R2.iloc[0]), AMBAR))
+    filas.append(("+ lineales dispersos" + chr(10) + "apilados", 0.1812, TINTA))
+    filas.append(("+ codificador ajustado" + chr(10) + "(modelo final)",
+                  float(v2.R2.iloc[0]), TINTA))
     d = pd.DataFrame(filas, columns=["etapa", "R2", "col"])
     fig, ax = plt.subplots(figsize=(11.5, 4.6))
     x = np.arange(len(d))
@@ -140,7 +142,7 @@ def avance():
     for i, v in enumerate(d.R2):
         ax.text(i, v + .004, f"{v:.3f}", ha="center", fontsize=12, weight="700",
                 color=NEGRO)
-    ax.set_xticks(x, d.etapa, fontsize=10.5)
+    ax.set_xticks(x, d.etapa, fontsize=10)
     ax.set_ylim(0, max(d.R2) * 1.25)
     ax.set_ylabel("R² sobre log-horas, prueba fija")
     ax.set_title("Lo que ganó la predicción en frío durante la noche")

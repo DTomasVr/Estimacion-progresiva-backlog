@@ -1,0 +1,45 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+reajustados regresor, cuantiles y clasificador sobre solo texto
+estimador de riesgo ajustado en 3,183 filas de validación · umbral al 50% de cobertura = 0.9943
+  pesos: anchura +0.2291 · confianza -0.8712 · cercanía -0.3232
+  smearing S = 1.9472 · con él la suma en validación sigue siendo el 80.2% de la real
+escrito models\estimador_agix.joblib (51.9 MB)
+
+==============================================================================================================================
+VERIFICACIÓN SOBRE LOS BLOQUES CONGELADOS
+==============================================================================================================================
+           bloque          subconjunto    n  cobertura  MdMRE  MdAElog  PRED25  banda80  frac_grandes  suma_con_smearing
+      prueba fija                todas 4225     1.0000 0.6971   0.8511  0.1508   0.7770        0.0750             0.7403
+      prueba fija solo las respondidas 2053     0.4859 0.6628   0.7967  0.1603   0.8032        0.0482             0.8263
+       prueba SiP                todas 1885     1.0000 0.7353   0.8730  0.1448   0.7878        0.0907             0.6712
+       prueba SiP solo las respondidas 1056     0.5602 0.7013   0.8078  0.1600   0.8191        0.0549             0.7952
+externo no Apache                todas  792     1.0000 0.7244   0.9296  0.1364   0.7285        0.0821             0.7499
+externo no Apache solo las respondidas  210     0.2652 0.6461   0.7713  0.1667   0.7714        0.0619             0.7388
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 9407.13it/s]
+
+==============================================================================================================================
+LO QUE MOSTRARÍA AGIX PARA UN BACKLOG GENERADO
+==============================================================================================================================
+
+  umbral absoluto: responde el 15% de las tareas
+     1.29 h  [ 0.3–  6.1]  1-4 h   Store court times in the database
+     2.42 h  [ 0.5– 11.4]  <1 h    Monitor the number of rows in the time
+     3.28 h  [ 0.7– 15.4]  1-4 h   Store payment details in the member's profile
+      — preguntar al usuario —        <1 h    Display court times on the admin panel
+      — preguntar al usuario —        1-4 h   Monitoring of the availability of the entire time
+      — preguntar al usuario —        4-16 h  monitor the number of queues in the time
+
+  umbral relativo: responde el 50% de las tareas
+     1.29 h  [ 0.3–  6.1]  1-4 h   Store court times in the database
+     2.70 h  [ 0.6– 12.7]  1-4 h   Monitoring of the availability of the entire time
+     2.42 h  [ 0.5– 11.4]  <1 h    Monitor the number of rows in the time
+      — preguntar al usuario —        <1 h    Display court times on the admin panel
+      — preguntar al usuario —        4-16 h  monitor the number of queues in the time
+      — preguntar al usuario —        4-16 h  Please review the upcoming dates
+
+  115 tareas · 57 sin respuesta (50%)
+  suma de las medianas         270 h
+  total esperado (smearing)    526 h (66 días-persona)
+  ajustado por lo que la suma se sigue quedando corta (×1.25):    656 h
+
+escrito results/estimador_verificacion.csv y estimador_demo.csv

@@ -33,6 +33,38 @@ def guardar(fig, nombre):
 
 
 def palancas():
+    """La tabla grande (validacion cruzada por proyecto) y la pequeña, juntas,
+    porque la diferencia entre las dos es en si misma un resultado."""
+    NL = chr(10)
+    g = pd.read_csv("results/palancas_cv/resumen.csv")
+    fig, a = plt.subplots(figsize=(11.8, 4.8))
+    etq, r2, mdm, col = [], [], [], []
+    for _, r in g.iterrows():
+        if r.anclas not in (0, 20):
+            continue
+        nom = ("en frio" if not r.estimacion and r.anclas == 0 else
+               "20 anclas" if not r.estimacion else
+               "estimacion del usuario" if r.anclas == 0 else "anclas + estimacion")
+        etq.append(nom)
+        r2.append(r.R2)
+        mdm.append(r.MdMRE)
+        col.append({"en frio": GRIS, "20 anclas": AMBAR,
+                    "estimacion del usuario": TINTA, "anclas + estimacion": AVISO}[nom])
+    x = np.arange(len(etq))
+    a.bar(x, r2, .6, color=col)
+    for i, (q, m) in enumerate(zip(r2, mdm)):
+        a.text(i, q + .008, "R2 " + f"{q:.3f}" + NL + "MdMRE " + f"{m:.3f}", ha="center",
+               fontsize=11, weight="600", color=NEGRO)
+    a.set_xticks(x, etq, fontsize=11)
+    a.set_ylim(0, max(r2) * 1.32)
+    a.set_ylabel("R2 sobre log-horas")
+    a.set_title("Palancas en proyectos nunca vistos" + NL +
+                "24.848 tareas de 204 proyectos, validacion cruzada por proyecto entero",
+                fontsize=13)
+    guardar(fig, "noche_palancas_cv")
+
+
+def palancas_bloque():
     t = pd.read_csv("results/palancas/resumen.csv")
     fig, ax = plt.subplots(1, 2, figsize=(13.2, 5.0))
     for a, b, titulo in ((ax[0], "externo no Apache", "Proyectos nuevos (externo no Apache)"),
@@ -145,6 +177,7 @@ def techo():
 if __name__ == "__main__":
     print("figuras:")
     palancas()
+    palancas_bloque()
     anclas()
     avance()
     techo()

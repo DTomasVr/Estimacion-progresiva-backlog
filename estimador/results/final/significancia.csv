@@ -1,0 +1,7 @@
+bloque,n,comparacion,veredicto,dif_MdMRE,IC95_MdMRE,dif_MdAElog,IC95_MdAElog,p_wilcoxon
+prueba fija,4225,final frente al punto de partida,mejor,-0.020490003845658578,"[-0.0365, -0.0056]",-0.041280957337431035,"[-0.0656, -0.0175]",9.87790594646934e-13
+prueba fija,3745,20 anclas frente al final sin anclas,empate,-0.001902414252696491,(media de 20 sorteos),-0.014459566652398365,(media de 20 sorteos),8.698738480738137e-05
+prueba SiP,1885,final frente al punto de partida,mejor,-0.04639848058189966,"[-0.0641, -0.0259]",-0.0696162712451352,"[-0.1043, -0.0360]",5.433831023857648e-12
+prueba SiP,1665,20 anclas frente al final sin anclas,empate,0.01338036107357669,(media de 20 sorteos),0.009869739015125917,(media de 20 sorteos),0.24518857645452702
+externo no Apache,792,final frente al punto de partida,empate,0.0052335935359775765,"[-0.0337, +0.0401]",-0.023976532278393137,"[-0.0873, +0.0341]",0.2830952564988014
+externo no Apache,409,20 anclas frente al final sin anclas,empate,-0.05525256161141874,(media de 20 sorteos),-0.1177991357737446,(media de 20 sorteos),1.965561447675854e-09

@@ -174,6 +174,34 @@ def techo():
     guardar(fig, "noche_techo")
 
 
+def senal():
+    """Como se apaga la señal del texto al bajar el parecido."""
+    NL = chr(10)
+    c = pd.read_csv("results/techo/curva_senal.csv")
+    x = np.arange(len(c))
+    fig, ax = plt.subplots(figsize=(12.0, 4.8))
+    a2 = ax.twinx()
+    a2.grid(False)
+    b = ax.bar(x, c.pares / 1e6, .55, color="#dcebe9", label="pares (millones, eje izquierdo)")
+    a2.plot(x, c.dif_mediana_h, "-o", color=AVISO, lw=2.6, ms=7,
+            label="cuanto difieren las horas (eje derecho)")
+    for i, v in enumerate(c.dif_mediana_h):
+        a2.text(i, v + .08, "x" + f"{v:.2f}", ha="center", fontsize=11, weight="700",
+                color=NEGRO)
+    ax.set_xticks(x, c.coseno, fontsize=10.5)
+    ax.set_xlabel("coseno entre las dos tareas, dentro del mismo proyecto")
+    ax.set_ylabel("pares (millones)")
+    a2.set_ylabel("diferencia de horas (mediana)")
+    a2.set_ylim(0, max(c.dif_mediana_h) * 1.25)
+    h1, l1 = a2.get_legend_handles_labels()
+    h2, l2 = ax.get_legend_handles_labels()
+    ax.legend(h1 + h2, l1 + l2, loc="upper left")
+    ax.set_title("El texto solo informa cuando es casi identico" + NL +
+                 "y el 93 % de los pares de un proyecto estan por debajo de 0,90",
+                 fontsize=13)
+    guardar(fig, "noche_senal")
+
+
 if __name__ == "__main__":
     print("figuras:")
     palancas()
@@ -181,4 +209,5 @@ if __name__ == "__main__":
     anclas()
     avance()
     techo()
+    senal()
     print("listo")

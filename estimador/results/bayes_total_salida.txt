@@ -1,0 +1,16 @@
+114 proyectos · residuo mediano x1.003
+
+======================================================================================================================
+TOTAL DEL PROYECTO · deslizar la ventana
+======================================================================================================================
+                                    brazo    MAE_h    RMSE_h  MdMRE  R2_log  PRED25  PRED50  factor2  SSPB_pc
+                        0 · sin desplazar 455.2991 1090.3229 0.3552  0.8167  0.3684  0.6053   0.7281  -0.3054
+    1 · desplazamiento global para pred25 460.0885 1046.9680 0.3671  0.8190  0.3509  0.6140   0.7281  -3.8782
+ 2 · desplazamiento por tramo para pred25 607.1670 1816.9587 0.4820  0.8054  0.3158  0.5088   0.6667  15.4287
+   1 · desplazamiento global para factor2 460.5718 1008.1180 0.3667  0.8200  0.3684  0.6316   0.7105  -8.1175
+2 · desplazamiento por tramo para factor2 471.8338 1091.9667 0.4445  0.7741  0.2807  0.5702   0.7193  24.7561
+
+  el desplazamiento tipico para el +-25 % es x0.966
+  +-25 %: 36.8% -> 35.1% · y el MdMRE pasa de 0.3552 a 0.3671
+
+escrito results\bayes_total/resumen.csv

@@ -1,0 +1,45 @@
+114 proyectos · 60 sorteos por fraccion
+
+================================================================================================================
+B · con horas perfectas
+================================================================================================================
+ fraccion  MdMRE  PRED25  PRED50  factor2   SSPB_pc
+      0.5 0.5014  0.0000  0.4298   0.4298 -100.5469
+      0.7 0.3001  0.0702  1.0000   1.0000  -42.8739
+      0.8 0.2006  0.9561  1.0000   1.0000  -25.0904
+      0.9 0.1005  1.0000  1.0000   1.0000  -11.1708
+      1.0 0.0000  1.0000  1.0000   1.0000    0.0000
+      1.1 0.1007  1.0000  1.0000   1.0000   10.0691
+      1.3 0.2977  0.0263  1.0000   1.0000   29.7693
+      1.5 0.4988  0.0000  0.5175   1.0000   49.8835
+
+================================================================================================================
+A · con el modelo
+================================================================================================================
+ fraccion  MdMRE  PRED25  PRED50  factor2   SSPB_pc
+      0.5 0.5531  0.1842  0.4123   0.4211 -100.9612
+      0.7 0.4338  0.2632  0.6053   0.6754  -43.1605
+      0.8 0.3852  0.2719  0.6053   0.6930  -24.8595
+      0.9 0.3860  0.3070  0.5965   0.6930  -11.8103
+      1.0 0.4384  0.3772  0.5789   0.6930   -0.4498
+      1.1 0.4449  0.3772  0.5614   0.6930    9.9291
+      1.3 0.4543  0.2895  0.5175   0.6404   29.7055
+      1.5 0.5314  0.2368  0.4649   0.6140   48.9734
+
+================================================================================================================
+LECTURA
+================================================================================================================
+  con horas PERFECTAS y un 20 % de tareas de menos, el 95.6% de los proyectos sigue dentro del +-25 %:
+  un error del 20 % en el conteo se traduce en un 20 % en el total, y eso
+  cabe dentro de la ventana. Con el modelo real y el conteo EXACTO, solo el
+  37.7%.
+
+  o sea que el error del modelo por tarea pesa MUCHO mas que el del conteo.
+  La pipeline de generacion tendria que equivocarse en mas de un 25 % del
+  numero de tareas para que el conteo fuese el problema principal.
+
+  robustez practica del +-25 %: 30.7% con un 10 % de tareas
+  de menos · 37.7% con el conteo exacto · 37.7% con un 10 % de mas
+  y el factor 2 apenas se mueve entre 0,8 y 1,1 (69.3% a 69.3%)
+
+escrito results\sensibilidad_conteo/resumen.csv

@@ -1,0 +1,11 @@
+====================================================================================================
+LAS MISMAS PREDICCIONES, EN LAS DOS UNIDADES
+====================================================================================================
+      unidad     n  MdMRE  PRED25  factor2
+   por tarea 24622 1.3704  0.1207   0.3307
+por proyecto   114 0.3552  0.3684   0.7281
+
+  sumar divide el MdMRE por 3.86
+  (la cabeza de la media sobreestima la tarea suelta a proposito: es el precio de poder sumarla)
+
+escrito results\cancelacion/resumen.csv

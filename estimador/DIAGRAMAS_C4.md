@@ -1,5 +1,11 @@
 # Diagramas C4 · Componente de estimación de esfuerzo de Agix
 
+> ⚠️ **Desactualizado en lo que toca al modelo.** Estos diagramas describen una versión
+> anterior (codificador *mpnet* de 768 dimensiones, `frio_v4.joblib`, un solo regresor). El
+> modelo vigente es `estimador_agix_v6` y está documentado en
+> **[`DISENO_PIPELINE.md`](DISENO_PIPELINE.md)**, que incluye sus propios diagramas.
+> Las vistas de contexto y de tubería de datos de aquí siguen siendo válidas.
+
 Cuatro vistas: contexto, contenedores en ejecución, contenedores de la tubería de datos y
 componentes internos, más una vista dinámica de una petición. Sintaxis Mermaid C4 (se
 renderiza en GitHub, VS Code y la mayoría de visores Markdown).

@@ -103,8 +103,11 @@ El valor heredado del anclaje por tarea resultó ser el correcto también aquí.
 
 ### 3 · Por qué sumar funciona, y por qué no llega a cero
 
-**A favor:** los errores de tareas distintas se cancelan al sumar. El MdMRE pasa de
-0,741 por tarea a 0,355 por proyecto.
+**A favor:** los errores de tareas distintas se cancelan al sumar. Con las **mismas**
+predicciones (E73, `src/181_cancelacion_al_sumar.py`), el MdMRE pasa de **1,370 por
+tarea a 0,355 por proyecto**: sumar lo divide por 3,86. Que la cabeza de la media
+salga mal por tarea es deliberado —la media está por encima de la mediana en una
+distribución asimétrica— y es justo lo que obliga a llevar dos cabezas.
 
 **En contra:** no son independientes. Hay un error **común a todo el proyecto** —el
 modelo lo sitúa entero alto o bajo— que ninguna suma cancela. Por eso los proyectos

@@ -18,32 +18,9 @@
     escrito results\usuario_proyecto/resumen.csv · 93 s
 
 >>> 141_figuras_metricas.py · figuras
-       reports/figuras_metricas/8_total_proyecto.png
+       reports/figuras_metricas/10_anclas_escala.png
 
 >>> 152_pptx_exposicion.py · deck
+    escrito entrega\presentaciones\6_metrica_de_proyecto.pptx · 13 láminas
 
-e following exception:
-
-Traceback (most recent call last):
-  File "C:\Users\User\Documents\Programacao\Agix-Dataset\src\152_pptx_exposicion.py", line 248, in <module>
-    main()
-  File "C:\Users\User\Documents\Programacao\Agix-Dataset\src\152_pptx_exposicion.py", line 38, in main
-    k5 = tot.loc["2 · con 5 tareas cerradas (cociente de sumas)"]
-         ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\pandas\core\indexing.py", line 1207, in __getitem__
-    return self._getitem_axis(maybe_callable, axis=axis)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\pandas\core\indexing.py", line 1449, in _getitem_axis
-    return self._get_label(key, axis=axis)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\pandas\core\indexing.py", line 1399, in _get_label
-    return self.obj.xs(label, axis=axis)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\pandas\core\generic.py", line 4241, in xs
-    loc = index.get_loc(key)
-          ^^^^^^^^^^^^^^^^^^
-  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\pandas\core\indexes\base.py", line 3648, in get_loc
-    raise KeyError(key) from err
-KeyError: '2 · con 5 tareas cerradas (cociente de sumas)'
-
-!!! 152_pptx_exposicion.py fallo con codigo 1
+cadena rehecha en 108 s

@@ -1,0 +1,17 @@
+24,848 tareas · codificador por pliegue: todavia no · 6 s
+  pliegue 1/5 · 65 s
+  pliegue 2/5 · 119 s
+  pliegue 3/5 · 174 s
+  pliegue 4/5 · 240 s
+  pliegue 5/5 · 290 s
+
+==========================================================================================================================
+TOTAL DEL PROYECTO (114 proyectos)
+==========================================================================================================================
+                           brazo    MAE_h    RMSE_h  MdMRE   MMRE  R2_log  PRED25  PRED50  factor2  SSPB_pc
+     0 · los tres canales de E52 458.7846 1104.2690 0.3753 0.8097  0.8146  0.3684  0.6053   0.7193   3.7097
+1 · + lineal disperso de Poisson 455.2991 1090.3229 0.3552 0.8100  0.8167  0.3684  0.6053   0.7281  -0.3054
+            2 · + la descripcion 418.8321  879.4720 0.3799 0.7825  0.8180  0.3333  0.5877   0.6842   0.5273
+   3 · todo (sin el codificador) 421.5075  891.5313 0.3694 0.7860  0.8181  0.3509  0.5789   0.6667  -1.2660
+
+escrito results\total_ampliado/resumen.csv · 290 s

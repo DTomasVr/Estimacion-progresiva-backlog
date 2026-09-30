@@ -91,15 +91,17 @@ def main():
         return np.exp(lpx) * pd.DataFrame({"t": tr, "e": e}).groupby("t").e.mean(
         ).reindex(tr).to_numpy()
 
+    tot_t = np.load("results/modelo_total/pred_total.npy")
     d = pd.DataFrame({"p": proy, "real": y, "sm": smear(lp), "poi": np.clip(poi, 1e-6, None),
-                      "ana": smear(lana), "lp": lp})
+                      "ana": smear(lana), "lp": lp, "tot": np.clip(tot_t, 1e-6, None)})
     tam = d.groupby("p").size()
     d = d[d.p.isin(tam[tam >= MIN_TAREAS].index)].reset_index(drop=True)
     nombres = list(pd.unique(d.p))
     g = d.groupby("p")
     real = g.real.sum().reindex(nombres).to_numpy()
     n_t = g.size().reindex(nombres).to_numpy()
-    base = {"ascendente smearing": g.sm.sum().reindex(nombres).to_numpy(),
+    base = {"ascendente modelo del total": g.tot.sum().reindex(nombres).to_numpy(),
+            "ascendente smearing": g.sm.sum().reindex(nombres).to_numpy(),
             "ascendente Poisson": g.poi.sum().reindex(nombres).to_numpy(),
             "ascendente analogia": g.ana.sum().reindex(nombres).to_numpy()}
 

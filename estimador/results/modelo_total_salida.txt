@@ -1,0 +1,19 @@
+24,848 tareas · 1536 rasgos · 3 s
+  pliegue 1/5 · 43 s
+  pliegue 2/5 · 80 s
+  pliegue 3/5 · 117 s
+  pliegue 4/5 · 162 s
+  pliegue 5/5 · 196 s
+
+==========================================================================================================================
+TOTAL DEL PROYECTO (114 proyectos)
+==========================================================================================================================
+                                           brazo    MAE_h    RMSE_h  MdMRE   MMRE  R2_log  PRED25  PRED50  factor2  SSPB_pc
+modelo entrenado PARA el total (Poisson apilado) 458.7475 1103.8223 0.3719 0.8097  0.8145  0.3684  0.6053   0.7193   3.7097
+               ascendente smearing (lo anterior) 460.9379 1238.1474 0.4384 0.7960  0.8132  0.3772  0.5789   0.6930  -0.4498
+
+  para comparar, lo mejor que habia (E50):
+    combinada, pesos para MdMRE        MdMRE 0.3529 · R2 0.8275 · PRED25 0.3596 · factor2 0.7105
+    ascendente Poisson                 MdMRE 0.3679 · R2 0.8191 · PRED25 0.3158 · factor2 0.7281
+
+escrito results\modelo_total/resumen.csv · 196 s

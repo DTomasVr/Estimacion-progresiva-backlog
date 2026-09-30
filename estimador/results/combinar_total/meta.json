@@ -1,5 +1,6 @@
 {
  "estimadores": [
+  "ascendente modelo del total",
   "ascendente smearing",
   "ascendente Poisson",
   "ascendente analogia",
@@ -7,10 +8,11 @@
   "ascendente Poisson sin sesgo"
  ],
  "pesos_lectura": [
-  0.058823230311242654,
-  0.43060171593623864,
-  0.034091211441624664,
-  0.41076058527081327,
-  0.0657232570400809
+  0.1869477772076077,
+  0.04065362985430962,
+  0.36440850405679426,
+  0.027921662051778456,
+  0.37977685228499164,
+  0.000291574544518414
  ]
 }

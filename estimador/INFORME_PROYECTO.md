@@ -87,6 +87,49 @@ sola tarea real ya mejora tanto.
 
 ---
 
+## El hilo que recorre toda la sección: mediana frente a media
+
+Tres veces, en tres sitios distintos, el mismo fallo:
+
+| dónde | el componente predecía | lo que hacía falta | lo que costaba |
+|---|---|---|---|
+| sumar las tareas (E43) | la mediana condicional | la media | el total salía al 44 % del real |
+| anclar con tareas cerradas (E53) | la mediana de los cocientes | el cociente de sumas | con 20 tareas, sesgo −45,7 % |
+| corregir la estimación del usuario (E58) | la mediana del factor | la media | sesgo −31,2 % y peor que no corregir |
+
+**La regla, en una frase: en cuanto algo se va a SUMAR, el componente que lo
+produce tiene que estimar la media, no la mediana.** Todo el modelo estaba
+entrenado con error cuadrático sobre log-horas, que da la mediana, porque estaba
+pensado para acertar una tarea suelta. Pasar a nivel de proyecto obliga a revisar
+cada pieza de la cadena, y las tres que no se revisaron fallaron por el mismo
+motivo.
+
+---
+
+## Qué aporta pedirle la estimación al usuario (E58)
+
+Medido sobre los **43 proyectos** que tienen estimación de usuario en al menos el
+80 % de sus tareas:
+
+| | MAE (h) | MdMRE | R² | **±25 %** | ±50 % | sesgo |
+|---|---|---|---|---|---|---|
+| constante | 1040 | 0,738 | 0,171 | 4,7 % | 16,3 % | −282 % |
+| el modelo en frío | 590 | 0,348 | 0,919 | 44,2 % | 69,8 % | −4,4 % |
+| estimación del usuario en crudo | 302 | **0,167** | 0,957 | 62,8 % | 86,0 % | +12,5 % |
+| corregida con error cuadrático | 452 | 0,272 | 0,936 | 46,5 % | 95,3 % | −31,2 % |
+| **corregida con Poisson** | 305 | 0,171 | **0,959** | **69,8 %** | 93,0 % | −13,3 % |
+
+**Decisión de producto:** el formulario debe pedir una estimación. Pasar de 44,2 %
+a 69,8 % de proyectos dentro del ±25 % es la diferencia entre una herramienta que
+orienta y una con la que se puede negociar un plazo.
+
+**Aviso obligado:** estos 43 proyectos son más fáciles que el conjunto de 114 (el
+modelo en frío saca R² 0,919 aquí y 0,815 allí), así que **estas cifras no son
+comparables con la tabla principal**. Lo comparable es la diferencia entre brazos
+dentro de esta misma tabla.
+
+---
+
 ## Lo que aporta la estimación descendente (E48)
 
 De Jørgensen (2004): con equipos de profesionales, la estrategia **ascendente**

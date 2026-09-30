@@ -1,0 +1,25 @@
+
+>>> 163_modelo_v5.py · apilado v5 con los dos codificadores ajustados
+    escrito results\modelo_v5/panel.csv y models/estimador_agix_v5.joblib · 110 s
+
+>>> 171_estimador_v6.py · estimador v6 de servicio
+    escrito models\estimador_agix_v6.joblib (221 MB) · 82 s
+
+>>> prueba de extremo a extremo
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights:  84%|████████▎ | 327/391 [00:00<00:00, 3242.92it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 3183.99it/s]
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 4753.43it/s]
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 4889.01it/s]
+                                             texto  horas  valor_probable  banda_baja  banda_alta
+                      Add OAuth2 login with Google   4.16            4.16        0.96       17.96
+                 Fix typo in the login page footer   0.52            0.50        0.12        2.22
+Migrate the reporting service to the new event bus   6.82            6.82        1.58       29.42
+               Add pagination to the backup report   4.37            6.00        1.01       18.88
+    Write integration tests for the payment module  10.99            7.00        2.55       47.44
+               Update README with deployment steps   2.38            2.50        0.55       10.26
+
+  en frio                    total    64.1 h · banda al 80% de 23 a 129 h · cerradas 0
+  con 2 tareas cerradas      total    62.4 h · banda al 80% de 23 a 126 h · cerradas 2
+  con estimacion del usuario total    68.2 h · banda al 80% de 25 a 137 h · cerradas 0
+
+artefacto rehecho y probado en 235 s

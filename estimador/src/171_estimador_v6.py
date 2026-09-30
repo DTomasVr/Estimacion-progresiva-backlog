@@ -93,8 +93,12 @@ class EstimadorV6:
         Vn = V / np.maximum(np.linalg.norm(V, axis=1, keepdims=True), 1e-9)
         s = Vn @ self.p["vec_V"].astype(np.float32).T
         j = np.argpartition(-s, K_VEC, axis=1)[:, :K_VEC]
-        return np.median(self.p["vec_y"][j], axis=1), np.std(
-            np.log(np.clip(self.p["vec_y"][j], 1e-6, None)), axis=1)
+        v = self.p["vec_y"][j]
+        med = np.median(v, axis=1)
+        rej = self.p["rejilla"]
+        moda = rej[np.abs(np.log(rej)[None, :] -
+                          np.log(np.clip(med, 1e-6, None))[:, None]).argmin(1)]
+        return moda, np.std(np.log(np.clip(v, 1e-6, None)), axis=1)
 
     def estimar_tareas(self, textos):
         """La mediana condicional: el numero que se le ensena a una persona."""
@@ -211,6 +215,41 @@ def construir():
     p.update({"tot_bolsa": bolsa, "tot_sv": m_sv, "tot_ana": m_an, "tot_lin": m_li,
               "tot_apilado": ap, "corrector_total": corr,
               "vec_V": Vn[tr].astype(np.float16), "vec_y": y[tr].astype(np.float32)})
+
+    # La rejilla de valores frecuentes y el umbral de acuerdo entre vecinos venian
+    # del v4; el v5 se construye sobre el v3 y no los hereda. Sin ellos el
+    # artefacto se construye igual y revienta al estimar, que es justo lo que
+    # destapo la prueba de extremo a extremo.
+    cuentas = pd.Series(y[tr]).value_counts()
+    rej = np.sort(cuentas[cuentas >= 60].index.to_numpy())
+    p["rejilla"] = rej
+    A2, yv2 = Vn[tr], y[tr]
+    ana = np.zeros(len(sw))
+    disp = np.zeros(len(sw))
+    for i in range(0, len(sw), 2048):
+        sm = Vn[i:i + 2048] @ A2.T
+        j = np.argpartition(-sm, K_VEC, axis=1)[:, :K_VEC]
+        v = yv2[j]
+        med = np.median(v, axis=1)
+        ana[i:i + 2048] = rej[np.abs(np.log(rej)[None, :] -
+                                     np.log(np.clip(med, 1e-6, None))[:, None]).argmin(1)]
+        disp[i:i + 2048] = np.std(np.log(np.clip(v, 1e-6, None)), axis=1)
+    lp_v5 = p["apilado"].predict(np.column_stack([
+        np.mean([m.predict(np.hstack([E5, SV])) for m in p["bolsa"]], 0),
+        p["ridge"].predict(Xs), p["svr"].predict(Xs),
+        p["hgb_ajustado"].predict(np.load(CACHE / "e5-ajustado.npy")),
+        p["hgb_ajustado_C"].predict(np.load(CACHE / "e5-ajustado-C.npy"))]))
+    va2 = (sw.split_t3 == "val").to_numpy()
+    mejor_u, mejor_v = float(np.median(disp)), -1.
+    for u in np.quantile(disp[va2], np.arange(.05, 1., .05)):
+        q = np.where(disp <= u, ana, np.exp(lp_v5))
+        v_ = float(np.mean(np.abs(q[va2] - y[va2]) / y[va2] <= .25))
+        if v_ > mejor_v:
+            mejor_u, mejor_v = float(u), v_
+    p["umbral_dispersion"] = mejor_u
+    print(f"rejilla de {len(rej)} valores · umbral de acuerdo {mejor_u:.3f} "
+          f"({(disp <= mejor_u).mean():.1%} de las tareas) · PRED25 val {mejor_v:.4f}",
+          flush=True)
     tot = pd.read_csv("results/curva_final/totales.csv")
     p["residuos_proyecto"] = np.log(tot.real.to_numpy() / tot.frio.to_numpy())
     OUT.mkdir(parents=True, exist_ok=True)

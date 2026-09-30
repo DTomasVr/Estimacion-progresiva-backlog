@@ -243,6 +243,28 @@ el texto no da.
 los 114 proyectos incluido el evaluado. Con el SVD dentro del pliegue, el Spearman
 baja de 0,521 a 0,481 y el ±25 % de 43,0 % a 39,5 %.)*
 
+### Y tampoco ayuda entrenar la escala con Apache (E69)
+
+Tenía buena pinta: Apache aporta **186 proyectos más** (300 en total) y un recorrido
+de escala **más ancho** (sd 1,024 frente a 0,791), que es justo lo que le falta a un
+modelo comprimido.
+
+| | error de escala | dispersión | **Spearman** | R² | pendiente |
+|---|---|---|---|---|---|
+| la media de las predicciones | 0,382 | 0,271 | 0,444 | 0,182 | 1,374 |
+| modelo de proyecto, **sin** Apache | 0,399 | 0,350 | **0,487** | 0,235 | 1,128 |
+| modelo de proyecto, **con** Apache | 0,504 | 0,514 | 0,315 | −0,006 | 0,502 |
+| con Apache + la media como rasgo | 0,546 | 0,553 | 0,373 | 0,058 | 0,564 |
+
+Apache **ensancha la dispersión** (0,35 → 0,51) pero **destroza el orden** (0,487 →
+0,315). La relación entre el texto y la escala es distinta allí: sus convenciones de
+registro no transfieren. Misma conclusión que E38 sacó para la predicción por tarea.
+
+**Con esto, la vía de arreglar la compresión sin tareas cerradas queda agotada:** se
+probaron mapeo de cuantiles, calibración lineal, cambio de etiqueta, un modelo de
+escala propio y triplicar la muestra con Apache. Lo único que funciona y se puede
+demostrar son las tareas cerradas.
+
 ---
 
 ## El hilo que recorre toda la sección: mediana frente a media

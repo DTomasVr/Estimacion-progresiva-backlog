@@ -1,0 +1,26 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights:  75%|███████▍  | 293/391 [00:00<00:00, 2901.71it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 3149.19it/s]
+  E35: checkpointing, embeddings libres, lote 24, fp16  90.2 min/epoca · 11.29 GB
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights:  73%|███████▎  | 284/391 [00:00<00:00, 2822.98it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 3013.70it/s]
+  sin checkpointing, lote 24, bf16                     103.8 min/epoca · 11.30 GB
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 5253.19it/s]
+  + embeddings congelados, lote 24, bf16                12.2 min/epoca · 8.65 GB
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 6884.11it/s]
+  + lote 64                                             47.6 min/epoca · 9.66 GB
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 6149.54it/s]
+  + lote 128                                            42.8 min/epoca · 12.74 GB
+
+====================================================================================================================
+QUE CUESTA CADA COSA
+====================================================================================================================
+                                       configuracion  params_M  lote  s_por_paso  min_por_epoca  VRAM_GB
+E35: checkpointing, embeddings libres, lote 24, fp16       560    24      7.7968           90.2    11.29
+                    sin checkpointing, lote 24, bf16       560    24      8.9717          103.8    11.30
+              + embeddings congelados, lote 24, bf16       304    24      1.0512           12.2     8.65
+                                           + lote 64       304    64     10.9319           47.6     9.66
+                                          + lote 128       304   128     19.5847           42.8    12.74
+
+  de 90.2 a 12.2 min por epoca -> x7.4 mas rapido
+  las tres epocas de un brazo pasan de 4.5 h a 0.6 h
+
+escrito results\finetune_rapido/banco.csv

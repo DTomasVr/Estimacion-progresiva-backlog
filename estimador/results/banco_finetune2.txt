@@ -1,0 +1,35 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights:  76%|███████▋  | 299/391 [00:00<00:00, 2978.53it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 3177.24it/s]
+  checkpointing + embeddings libres, lote 24, fp16      62.0 min/epoca · 11.26 GB
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights:  87%|████████▋ | 339/391 [00:00<00:00, 3378.28it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 3479.75it/s]
+  sin checkpointing, lote 24, bf16                      88.3 min/epoca · 11.24 GB
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 6498.88it/s]
+  + embeddings congelados, lote 24, bf16                20.1 min/epoca · 8.11 GB
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 7233.25it/s]
+  + lote 64                                             27.5 min/epoca · 9.63 GB
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 7486.48it/s]
+  + lote 128                                            45.2 min/epoca · 12.74 GB
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights:  53%|█████▎    | 206/391 [00:00<00:00, 2055.32it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 2785.56it/s]
+  congelados + recorte, lote 16                          8.7 min/epoca · 7.26 GB
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 7195.99it/s]
+  congelados + recorte, lote 32                         10.3 min/epoca · 8.12 GB
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 8155.05it/s]
+  congelados + recorte, lote 48                         22.0 min/epoca · 8.86 GB
+
+====================================================================================================================
+QUE CUESTA CADA COSA
+====================================================================================================================
+                                   configuracion  params_M  lote  s_por_paso  min_por_epoca  VRAM_GB
+checkpointing + embeddings libres, lote 24, fp16       560    24      5.3624           62.0    11.26
+                sin checkpointing, lote 24, bf16       560    24      7.6308           88.3    11.24
+          + embeddings congelados, lote 24, bf16       304    24      1.7416           20.1     8.11
+                                       + lote 64       304    64      6.3234           27.5     9.63
+                                      + lote 128       304   128     20.7170           45.2    12.74
+                   congelados + recorte, lote 16       304    16      0.4998            8.7     7.26
+                   congelados + recorte, lote 32       304    32      1.1894           10.3     8.12
+                   congelados + recorte, lote 48       304    48      3.7989           22.0     8.86
+
+  de 62.0 a 8.7 min por epoca -> x7.1 mas rapido
+  las tres epocas de un brazo pasan de 3.1 h a 0.4 h
+
+escrito results\finetune_rapido/banco.csv

@@ -1,0 +1,6 @@
+configuracion,params_M,lote,s_por_paso,min_por_epoca,VRAM_GB
+"E35: checkpointing, embeddings libres, lote 24, fp16",560,24,7.7968,90.2,11.29
+"sin checkpointing, lote 24, bf16",560,24,8.9717,103.8,11.3
+"+ embeddings congelados, lote 24, bf16",304,24,1.0512,12.2,8.65
++ lote 64,304,64,10.9319,47.6,9.66
++ lote 128,304,128,19.5847,42.8,12.74

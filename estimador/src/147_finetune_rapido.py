@@ -87,6 +87,16 @@ def construir(dev, congelar_emb, checkpointing, K):
     return Red(base, K).to(dev)
 
 
+def recorte(IDS, MASK, j):
+    """Recorta el lote a la longitud real mas larga que contenga.
+
+    Los titulos tienen 18 piezas de mediana y el relleno fijo los lleva a 48, o
+    sea que se computa 2,5 veces lo necesario. El tokenizador rellena por la
+    derecha, asi que basta con cortar por la ultima posicion con mascara."""
+    L = int(MASK[j].sum(1).max())
+    return IDS[j][:, :L], MASK[j][:, :L]
+
+
 def tokenizar(textos, dev):
     import torch
     from transformers import AutoTokenizer
@@ -107,11 +117,17 @@ def banco():
     tr = np.flatnonzero((sw.split_t3 == "train").to_numpy())
     obj = torch.tensor(np.random.default_rng(0).integers(0, 44, len(sw)), device=dev)
     ce = nn.CrossEntropyLoss()
-    cfgs = [("E35: checkpointing, embeddings libres, lote 24, fp16", True, False, 24, "fp16"),
+    # OJO: el recorte dinamico se aplica en todas las filas, asi que estas tres
+    # primeras ya no son la configuracion de E35 tal cual. El 90,2 min/epoca
+    # original esta medido y guardado en la corrida anterior de banco.csv.
+    cfgs = [("checkpointing + embeddings libres, lote 24, fp16", True, False, 24, "fp16"),
             ("sin checkpointing, lote 24, bf16", False, False, 24, "bf16"),
             ("+ embeddings congelados, lote 24, bf16", False, True, 24, "bf16"),
             ("+ lote 64", False, True, 64, "bf16"),
-            ("+ lote 128", False, True, 128, "bf16")]
+            ("+ lote 128", False, True, 128, "bf16"),
+            ("congelados + recorte, lote 16", False, True, 16, "bf16"),
+            ("congelados + recorte, lote 32", False, True, 32, "bf16"),
+            ("congelados + recorte, lote 48", False, True, 48, "bf16")]
     filas = []
     for etq, chk, cong, lote, prec in cfgs:
         try:
@@ -129,8 +145,9 @@ def banco():
                     torch.cuda.synchronize()
                     t0 = time.time()
                 j = rng.choice(tr, lote, replace=False)
+                ids, mask = recorte(IDS, MASK, j)
                 with torch.amp.autocast("cuda", dtype=dt):
-                    p = ce(net(IDS[j], MASK[j]), obj[j])
+                    p = ce(net(ids, mask), obj[j])
                 opt.zero_grad()
                 esc.scale(p).backward()
                 esc.step(opt)
@@ -178,6 +195,9 @@ def ajustar(modo, lote, dev="cuda"):
     cl = torch.tensor(np.abs(lrej[None, :] - ly[:, None]).argmin(1), device=dev)
     lrej_t = torch.tensor(lrej, dtype=torch.float32, device=dev)
     IDS, MASK = tokenizar(tit, dev)
+    ly_t = torch.tensor(ly, device=dev)
+    torch.backends.cuda.matmul.allow_tf32 = True
+    torch.backends.cudnn.benchmark = True
     net = construir(dev, True, False, len(rej))
     opt = torch.optim.AdamW([p for p in net.parameters() if p.requires_grad],
                             lr=LR, weight_decay=.01)
@@ -189,32 +209,43 @@ def ajustar(modo, lote, dev="cuda"):
           f"{sum(p.numel() for p in net.parameters() if p.requires_grad) / 1e6:.0f}M "
           f"parametros entrenables", flush=True)
 
+    largo = MASK.sum(1).cpu().numpy()
+
     @torch.no_grad()
     def inferir(idx):
+        """Ordenado por longitud: asi cada lote agrupa titulos parecidos y el
+        recorte deja fuera casi todo el relleno."""
         net.eval()
-        V, P = [], []
-        for i in range(0, len(idx), 256):
-            j = idx[i:i + 256]
+        orden = idx[np.argsort(largo[idx], kind="stable")]
+        V = np.zeros((len(idx), 1024), np.float32)
+        P = np.zeros((len(idx), len(rej)), np.float32)
+        pos = {t: k for k, t in enumerate(idx)}
+        dest = np.array([pos[t] for t in orden])
+        for i in range(0, len(orden), 512):
+            j = torch.tensor(orden[i:i + 512], device=dev)
+            ids, mask = recorte(IDS, MASK, j)
             with torch.amp.autocast("cuda", dtype=torch.bfloat16):
-                v = net.vector(IDS[j], MASK[j])
+                v = net.vector(ids, mask)
                 o = net.cab(v)
-            V.append(v.float().cpu().numpy())
-            P.append(torch.softmax(o.float(), 1).cpu().numpy())
+            V[dest[i:i + 512]] = v.float().cpu().numpy()
+            P[dest[i:i + 512]] = torch.softmax(o.float(), 1).cpu().numpy()
         net.train()
-        return np.concatenate(V), np.concatenate(P)
+        return V, P
 
     mejor = 1e9
     for ep in range(EPOCAS):
         t0 = time.time()
         perm = np.random.default_rng(ep).permutation(tr)
+        perm_t = torch.tensor(perm, device=dev)
         for k, i in enumerate(range(0, len(perm), lote)):
-            j = torch.tensor(perm[i:i + lote], device=dev)
+            j = perm_t[i:i + lote]
+            ids, mask = recorte(IDS, MASK, j)
             with torch.amp.autocast("cuda", dtype=torch.bfloat16):
-                o = net(IDS[j], MASK[j])
+                o = net(ids, mask)
                 p = ce(o, cl[j])
                 if modo == "C":
                     e = (torch.softmax(o.float(), 1) * lrej_t).sum(1)
-                    t = torch.tensor(ly[perm[i:i + lote]], device=dev)
+                    t = ly_t[j]
                     d = t[:, None] - t[None, :]
                     g = (d.abs() > .5).float().triu(1)
                     if g.sum() > 0:

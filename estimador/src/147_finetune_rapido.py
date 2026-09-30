@@ -183,6 +183,7 @@ def banco():
 def ajustar(modo, lote, dev="cuda"):
     import torch
     import torch.nn as nn
+    from transformers import AutoTokenizer
     OUT.mkdir(parents=True, exist_ok=True)
     sw = cargar()
     tit = ("query: " + sw.title.fillna("").astype(str)).tolist()
@@ -273,7 +274,15 @@ def ajustar(modo, lote, dev="cuda"):
         if v < mejor:                           # se guarda EN CUANTO mejora
             mejor = v
             np.save(CACHE / f"e5-ajustado-{modo}.npy", V.astype(np.float32))
-            print(f"    guardado e5-ajustado-{modo}.npy", flush=True)
+            # Y TAMBIEN LOS PESOS. La primera version guardaba solo los vectores,
+            # y con eso el modelo sirve para medir pero no para desplegar: no hay
+            # forma de codificar texto nuevo. Es el mismo fallo que ya se cometio
+            # con el ajuste de mpnet al principio del proyecto.
+            dest = Path(f"models/e5_ajustado_{modo}")
+            dest.mkdir(parents=True, exist_ok=True)
+            net.b.save_pretrained(dest)
+            AutoTokenizer.from_pretrained(BASE).save_pretrained(dest)
+            print(f"    guardado e5-ajustado-{modo}.npy y {dest}", flush=True)
     del net, opt
     torch.cuda.empty_cache()
 

@@ -1,0 +1,224 @@
+"""E64 - El estimador v6: el que se integra en Agix.
+
+Junta en un objeto todo lo que sobrevivio a su medicion, y separa con claridad las
+dos preguntas que el producto hace, porque NO tienen la misma respuesta:
+
+  CUANTO TARDA ESTA TAREA   quiere la mediana condicional. Es el numero que se le
+                            ensena a una persona al lado de una tarea
+  CUANTO TARDA EL PROYECTO  quiere la MEDIA, porque se va a sumar. Sumar medianas
+                            deja el total en el 44 % de lo que toca
+
+Por eso lleva dos modelos y no uno, entrenados con perdidas distintas sobre los
+mismos rasgos. Confundirlos fue el fallo que aparecio tres veces esta noche.
+
+Lo que hace:
+
+    estimar_tareas(textos)                     horas por tarea, con su banda
+    estimar_proyecto(textos, cerradas=None,    total del proyecto, con intervalo
+                     estimaciones=None)        al 80 % y anclaje si hay historial
+
+Detalles que importan y que costaron encontrar:
+
+  - el anclaje con tareas cerradas usa el COCIENTE DE SUMAS, no la mediana de los
+    cocientes, y contrae con James-Stein (lambda 12). Con la mediana, cuantas mas
+    tareas cerradas peor: el sesgo llegaba a -45 %
+  - las tareas ya cerradas se SABEN. El total es lo conocido mas la estimacion
+    corregida de lo que queda
+  - si el usuario estima, se corrige su numero con un modelo de Poisson, no con el
+    corrector cuadratico: a nivel de proyecto el cuadratico EMPEORA la estimacion
+    cruda del usuario
+"""
+import json
+import sys
+import time
+import warnings
+from pathlib import Path
+
+import joblib
+import numpy as np
+import pandas as pd
+from scipy import sparse
+from sklearn.ensemble import HistGradientBoostingRegressor
+from sklearn.linear_model import PoissonRegressor
+
+sys.path.insert(0, "src")
+warnings.filterwarnings("ignore")
+pd.set_option("display.width", 215)
+CACHE = Path("data/processed/embeddings/codificadores")
+V5 = Path("models/estimador_agix_v5.joblib")
+V6 = Path("models/estimador_agix_v6.joblib")
+OUT = Path("results/estimador_v6")
+S = "=" * 116
+N_BOLSA, K_VEC, LAMBDA = 5, 25, 12
+
+
+def poi(semilla=0, **kw):
+    p = dict(max_iter=250, max_depth=6, learning_rate=.06, l2_regularization=1.,
+             loss="poisson", random_state=semilla)
+    p.update(kw)
+    return HistGradientBoostingRegressor(**p)
+
+
+class EstimadorV6:
+    def __init__(self, paquete=V6, dispositivo=None):
+        self.p = joblib.load(paquete)
+        self._st, self._aj, self._ac, self._dev = None, None, None, dispositivo
+
+    def _cod(self, ruta, attr, maxlen=48):
+        if getattr(self, attr) is None:
+            import torch
+            from sentence_transformers import SentenceTransformer, models
+            dv = self._dev or ("cuda" if torch.cuda.is_available() else "cpu")
+            if ruta.startswith("intfloat"):
+                setattr(self, attr, SentenceTransformer(ruta, device=dv))
+            else:
+                w = models.Transformer(ruta, max_seq_length=maxlen)
+                setattr(self, attr, SentenceTransformer(
+                    modules=[w, models.Pooling(w.get_word_embedding_dimension(), "mean")],
+                    device=dv))
+        return getattr(self, attr)
+
+    def _vistas(self, textos):
+        V = self._cod(self.p["codificador"], "_st").encode(
+            ["query: " + t for t in textos], normalize_embeddings=False,
+            show_progress_bar=False).astype(np.float32)
+        Ms = sparse.hstack([self.p["tfc"].transform(textos),
+                            self.p["tfw"].transform(textos)]).tocsr()
+        SV = np.hstack([sv.transform(tf.transform(textos)).astype(np.float32)
+                        for tf, sv in zip((self.p["tfc"], self.p["tfw"]),
+                                          self.p["svds"])])
+        return V, np.hstack([V, SV]), SV, Ms
+
+    def _analogia(self, V):
+        Vn = V / np.maximum(np.linalg.norm(V, axis=1, keepdims=True), 1e-9)
+        s = Vn @ self.p["vec_V"].astype(np.float32).T
+        j = np.argpartition(-s, K_VEC, axis=1)[:, :K_VEC]
+        return np.median(self.p["vec_y"][j], axis=1), np.std(
+            np.log(np.clip(self.p["vec_y"][j], 1e-6, None)), axis=1)
+
+    def estimar_tareas(self, textos):
+        """La mediana condicional: el numero que se le ensena a una persona."""
+        textos = list(textos)
+        V, Xd, SV, Ms = self._vistas(textos)
+        aj = self._cod(self.p["codificador_ajustado"], "_aj").encode(
+            ["query: " + t for t in textos], normalize_embeddings=False,
+            show_progress_bar=False).astype(np.float32)
+        ac = self._cod(self.p["codificador_ajustado_C"], "_ac").encode(
+            ["query: " + t for t in textos], normalize_embeddings=False,
+            show_progress_bar=False).astype(np.float32)
+        Z = np.column_stack([np.mean([m.predict(Xd) for m in self.p["bolsa"]], 0),
+                             self.p["ridge"].predict(Ms), self.p["svr"].predict(Ms),
+                             self.p["hgb_ajustado"].predict(aj),
+                             self.p["hgb_ajustado_C"].predict(ac)])
+        h = np.exp(self.p["apilado"].predict(Z) + np.log(self.p["factor_estilo"]))
+        ana, disp = self._analogia(V)
+        k = self.p["factor_banda80"]
+        return pd.DataFrame({"texto": textos, "horas": h,
+                             "valor_probable": np.where(
+                                 disp <= self.p["umbral_dispersion"], ana, h),
+                             "banda_baja": h / k, "banda_alta": h * k})
+
+    def _media_tarea(self, textos):
+        """La media condicional: lo que hay que sumar para un total."""
+        V, Xd, SV, Ms = self._vistas(textos)
+        ana, _ = self._analogia(V)
+        C = np.column_stack([np.mean([m.predict(Xd) for m in self.p["tot_bolsa"]], 0),
+                             self.p["tot_sv"].predict(SV),
+                             self.p["tot_ana"].predict(ana[:, None]),
+                             self.p["tot_lin"].predict(Ms)])
+        return np.clip(self.p["tot_apilado"].predict(C), 1e-6, None)
+
+    def estimar_proyecto(self, textos, cerradas=None, estimaciones=None, nivel=.8):
+        """cerradas: horas REALES ya registradas, None donde no las haya.
+
+        estimaciones: lo que el usuario estimo, None donde no haya estimado."""
+        textos = list(textos)
+        m = self._media_tarea(textos)
+        cer = (np.array([np.nan if c is None else float(c) for c in cerradas])
+               if cerradas is not None else np.full(len(textos), np.nan))
+        hay = ~np.isnan(cer)
+        if estimaciones is not None:
+            est = np.array([np.nan if e is None else float(e) for e in estimaciones])
+            he = ~np.isnan(est)
+            if he.any():
+                V, _, _, _ = self._vistas(textos)
+                Xc = np.hstack([V, np.log(np.where(he, est, 1))[:, None],
+                                np.log(m)[:, None]])
+                m = np.where(he, self.p["corrector_total"].predict(Xc), m)
+        k = int(hay.sum())
+        if k:
+            off = np.log(cer[hay].sum() / m[hay].sum()) * k / (k + LAMBDA)
+            total = float(cer[hay].sum() + (m[~hay] * np.exp(off)).sum())
+        else:
+            total = float(m.sum())
+        q = self.p["residuos_proyecto"]
+        a = (1 - nivel) / 2
+        return dict(total_horas=total,
+                    banda_baja=float(total * np.exp(np.quantile(q, a))),
+                    banda_alta=float(total * np.exp(np.quantile(q, 1 - a))),
+                    nivel=nivel, tareas=len(textos), cerradas=k)
+
+
+def construir():
+    t0 = time.time()
+    p = dict(joblib.load(V5))
+    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    sw = df[df.is_software_task == 1].copy()
+    sw = sw[~sw.fuente_jira.eq("Apache")].reset_index(drop=True)
+    tit = sw.title.fillna("").astype(str)
+    y = sw.effort_hours.to_numpy()
+    tr = (sw.split_t3 == "train").to_numpy()
+    E5 = np.load(CACHE / "e5-large.npy")
+    Vn = E5 / np.maximum(np.linalg.norm(E5, axis=1, keepdims=True), 1e-9)
+    SV = np.hstack([sv.transform(tf.transform(tit)).astype(np.float32)
+                    for tf, sv in zip((p["tfc"], p["tfw"]), p["svds"])])
+    X = np.hstack([E5, SV])
+    Xs = sparse.hstack([p["tfc"].transform(tit), p["tfw"].transform(tit)]).tocsr()
+
+    rng = np.random.default_rng(0)
+    idx = np.flatnonzero(tr)
+    bolsa = []
+    for s in range(N_BOLSA):
+        sub = rng.choice(idx, int(.85 * len(idx)), replace=False)
+        bolsa.append(poi(s, max_features=.8).fit(X[sub], y[sub]))
+    m_sv = poi().fit(SV[tr], y[tr])
+    A, yv = Vn[tr], y[tr]
+
+    def vecino(sel):
+        out = np.zeros(len(sel))
+        for i in range(0, len(sel), 2048):
+            s = Vn[sel[i:i + 2048]] @ A.T
+            j = np.argpartition(-s, K_VEC, axis=1)[:, :K_VEC]
+            out[i:i + 2048] = np.median(yv[j], axis=1)
+        return out
+    an = vecino(np.arange(len(sw)))
+    m_an = poi().fit(an[tr][:, None], y[tr])
+    m_li = PoissonRegressor(alpha=1e-3, max_iter=400).fit(Xs[tr], y[tr])
+    C = np.column_stack([np.mean([m.predict(X) for m in bolsa], 0),
+                         m_sv.predict(SV), m_an.predict(an[:, None]),
+                         m_li.predict(Xs)])
+    va = (sw.split_t3 == "val").to_numpy()
+    ap = poi(max_iter=120, max_depth=3).fit(C[va], y[va])
+    print(f"modelo del total ajustado · {time.time() - t0:.0f} s", flush=True)
+
+    est = np.array(sw.HoursEstimate.where(sw.HoursEstimate > 0), dtype=float)
+    hay = ~np.isnan(est)
+    Xc = np.hstack([E5, np.log(np.where(hay, est, 1))[:, None],
+                    np.log(np.clip(ap.predict(C), 1e-6, None))[:, None]])
+    k = hay & tr
+    corr = poi().fit(Xc[k], y[k])
+
+    p.update({"tot_bolsa": bolsa, "tot_sv": m_sv, "tot_ana": m_an, "tot_lin": m_li,
+              "tot_apilado": ap, "corrector_total": corr,
+              "vec_V": Vn[tr].astype(np.float16), "vec_y": y[tr].astype(np.float32)})
+    tot = pd.read_csv("results/curva_final/totales.csv")
+    p["residuos_proyecto"] = np.log(tot.real.to_numpy() / tot.frio.to_numpy())
+    OUT.mkdir(parents=True, exist_ok=True)
+    joblib.dump(p, V6, compress=3)
+    print(f"escrito {V6} ({V6.stat().st_size / 1e6:.0f} MB) · {time.time() - t0:.0f} s")
+    json.dump({"n_bolsa": N_BOLSA, "k_vec": K_VEC, "lambda": LAMBDA},
+              open(OUT / "meta.json", "w"), indent=1)
+
+
+if __name__ == "__main__":
+    construir()

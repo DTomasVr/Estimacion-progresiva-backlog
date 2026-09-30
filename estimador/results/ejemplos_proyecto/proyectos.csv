@@ -1,0 +1,4 @@
+tamano,proyecto,tareas,estimado_h,real_h,error,banda_80,dentro
+pequeno,RedHat:WFCORE,8,44,87,-50 %,11 a 130 h,si
+mediano,Spring:SJC,28,153,280,-45 %,57 a 314 h,si
+grande,SiP-PC13,145,1030,780,+32 %,252 a 1988 h,si

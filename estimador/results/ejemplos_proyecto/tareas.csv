@@ -1,0 +1,8 @@
+titulo,est,real,razon
+Develop integration tests for ConfigurationParser implementations,7.960549547912378,8.0,0.9950686934890473
+Multiple @ResourceBundles declarations causes IllegalStateException,3.163919905000931,3.0,1.0546399683336436
+Migrate build from Maven to Spring Build,4.3847814926090765,4.0,1.0961953731522691
+Circular dependencies in Javaconfig raise StackOverflow Error,2.8668541558863834,2.5,1.1467416623545534
+Add option to @Import for importing configuration into sub ApplicationContext,5.580696489577644,0.75,7.440928652770192
+Point SJC FishEye at src.springframework.org SVN,5.9885546999753165,0.16666666666666666,35.931328199851905
+Point SJC Bamboo at src.springframework.org,16.444967805518033,0.25,65.77987122207213

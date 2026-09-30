@@ -150,6 +150,21 @@ factor 2 ni se mueve.
 
 ## Contexto de literatura
 
+- **Sousa et al. (IEEE Access, 2023)**, *Applying Machine Learning to Estimate the
+  Effort and Duration of Individual Tasks in Software Projects*. **Es el aval
+  directo de este enfoque, y ya está en la bibliografía del informe de
+  benchmarking** (es el que se cita para Random Forest). Estiman tareas
+  individuales con ocho algoritmos sobre tres conjuntos de datos y obtienen MMRE
+  por tarea de entre 0,11 y 9,45; pero **incluso en el peor conjunto, al agregar
+  al nivel de proyecto obtienen MMRE 0,23**, y lo atribuyen explícitamente a la
+  compensación de errores. O sea: que las tareas sueltas fallen y el total acierte
+  no es una excusa nuestra, es un resultado conocido.
+
+  Nuestro MMRE por proyecto en frío es 0,81 y el MdMRE 0,372, peores que su 0,23.
+  La diferencia esperable es el corpus: ellos usan proyectos de organizaciones
+  concretas con prácticas de registro homogéneas, y aquí hay 114 proyectos de
+  fuentes distintas, algunos con tareas registradas a 0,05 h.
+
 - **Jørgensen (2004)**, *Top-Down and Bottom-Up Expert Estimation*: la ascendente
   casi dobla en precisión a la descendente con equipos humanos; y la precondición de
   la descendente es recordar proyectos muy parecidos.

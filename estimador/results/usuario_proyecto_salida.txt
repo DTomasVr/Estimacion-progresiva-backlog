@@ -1,0 +1,23 @@
+puntos de historia convertidos con horas = 2.80 x puntos^0.517
+43 proyectos con al menos 8 tareas y estimacion en el 80% o mas · 9,659 tareas
+  pliegue 1/5 · 18 s
+  pliegue 2/5 · 38 s
+  pliegue 3/5 · 58 s
+  pliegue 4/5 · 79 s
+  pliegue 5/5 · 98 s
+
+========================================================================================================================
+TOTAL DEL PROYECTO · 43 proyectos con estimacion de usuario
+========================================================================================================================
+                                          brazo     MAE_h    RMSE_h  MdMRE   MMRE  R2_log  PRED25  PRED50  factor2   SSPB_pc
+                    0 · constante (n x mediana) 1040.0345 2173.0201 0.7382 0.6794  0.1708  0.0465  0.1628   0.1628 -282.0091
+                          1 · el modelo en frio  589.7331 1532.3610 0.3484 0.3737  0.9190  0.4419  0.6977   0.9070   -4.3767
+            2 · estimacion del usuario en crudo  302.1894  637.4568 0.1666 0.2625  0.9573  0.6279  0.8605   0.9535   12.5274
+   3 · corregida con error cuadratico (mediana)  452.4339 1001.1316 0.2718 0.2589  0.9359  0.4651  0.9535   0.9535  -31.1751
+              4 · corregida con Poisson (media)  304.6181  640.8063 0.1709 0.2157  0.9588  0.6977  0.9302   0.9302  -13.2925
+5 · media geometrica de la de Poisson y el frio  361.0439  754.3522 0.2549 0.2621  0.9416  0.4884  0.8837   0.9070  -14.8288
+
+  el usuario en crudo se queda a un sesgo del +13 %; corregido, -13 %
+  +-25 %: en frio 44.2% · usuario crudo 62.8% · corregida con Poisson 69.8%
+
+escrito results\usuario_proyecto/resumen.csv · 98 s

@@ -1,0 +1,19 @@
+89,209 tareas · 300 proyectos · 2 s
+  evaluables 114 · Apache en entrenamiento 186 · 6 s
+  B · modelo de proyecto, SIN Apache listo · 7 s
+  C · modelo de proyecto, CON Apache listo · 9 s
+  D · C + la media de las predicciones listo · 11 s
+
+==================================================================================================================
+ESCALA DEL PROYECTO · evaluado en los 114 sin Apache
+==================================================================================================================
+                                        brazo  err_log     sd  spearman      R2  pendiente
+A · la media de las predicciones (lo que hay)   0.3820 0.2710    0.4443  0.1824     1.3744
+           B · modelo de proyecto, SIN Apache   0.3988 0.3501    0.4873  0.2352     1.1276
+           C · modelo de proyecto, CON Apache   0.5040 0.5137    0.3148 -0.0060     0.5018
+         D · C + la media de las predicciones   0.5460 0.5529    0.3733  0.0584     0.5637
+                            REAL (referencia)   0.0000 0.7911    1.0000  1.0000     1.0000
+
+  mejor por orden: B · modelo de proyecto, SIN Apache · Spearman 0.4873 frente a 0.4443 de lo que hay
+
+escrito results\escala_con_apache/resumen.csv · 11 s

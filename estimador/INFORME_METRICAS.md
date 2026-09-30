@@ -234,3 +234,83 @@ Eso es más de lo que consiguen los trabajos que replicaron.
 | `src/140_pesos_por_metrica.py` | pesos elegidos para la métrica |
 | `src/141_figuras_metricas.py` | las seis figuras |
 | `src/142_analogia.py` | barrido de la analogia: vistas, k, agregadores, encaminado |
+
+---
+
+# La métrica de presentación: el TOTAL de horas del proyecto (E43–E44)
+
+Lo que recomendó la asesora y lo que miden los criterios del informe de benchmarking
+(**MAE, RMSE, R²**): sumar las horas predichas de todas las tareas que la pipeline
+genera para un proyecto y comparar ese total con el real.
+
+Figura: `reports/figuras_metricas/8_total_proyecto.png`
+
+## Por qué mejora tanto, y por qué no llega a cero
+
+**A favor:** los errores se cancelan al sumar. Si fueran independientes, el error
+relativo del total caería como 1/√n.
+
+**En contra:** no son independientes. Hay un error **común a todo el proyecto** — el
+modelo lo sitúa entero demasiado alto o demasiado bajo — que ninguna suma cancela. Es
+el mismo desplazamiento que E30 midió valiendo 0,115 de R². Por eso la tabla por
+tamaño no baja indefinidamente: los proyectos de más de 400 tareas se quedan en
+MdMRE 0,251, no en cero.
+
+## La corrección que no es opcional
+
+El modelo minimiza error cuadrático sobre log-horas, así que `exp(predicción)` es la
+**mediana** condicional. Un total necesita la **media**, y con esta asimetría la media
+es mucho mayor. Sumar medianas subestima sistemáticamente.
+
+La corrección es el **estimador de smearing de Duan (1983)**, que no supone
+lognormalidad. Aquí el factor es **2,254**: sin él el total sale al **44 %** del real
+(SSPB −130 %). Con él, prácticamente insesgado (SSPB −0,4 %).
+
+## Resultados · 114 proyectos, todos predichos como si fueran nuevos
+
+Validación cruzada por proyecto entero, sin fuga. Cada proyecto tiene al menos 8
+tareas; la mediana es 48 tareas y 358 h reales.
+
+| | MAE h | RMSE h | MdMRE | **R² log** | **±25 %** | ±50 % | factor 2 |
+|---|---|---|---|---|---|---|---|
+| constante (n × mediana) | 885,6 | 2046,0 | 0,694 | 0,364 | 8,8 % | 22,8 % | 24,6 % |
+| **en frío, con smearing** | **460,9** | **1238,1** | **0,438** | **0,813** | **37,7 %** | 57,9 % | **69,3 %** |
+| con 1 tarea cerrada | 447,3 | 1238,4 | 0,408 | 0,836 | 37,7 % | 56,1 % | 71,9 % |
+| con 3 tareas cerradas | 405,9 | 1141,3 | 0,366 | 0,868 | 40,4 % | 62,3 % | 78,9 % |
+| **con 5 tareas cerradas** | **345,7** | **982,1** | **0,309** | **0,889** | **43,9 %** | 68,4 % | **83,3 %** |
+| con 20 tareas cerradas | 245,6 | 515,6 | 0,253 | 0,889 | 48,2 % | 70,2 % | 81,6 % |
+
+El desplazamiento del proyecto se estima con **contracción de James-Stein** (λ = 12),
+que no es un adorno: con 1 o 2 tareas el desplazamiento crudo es ruido y empeora.
+
+**Frente a la misma métrica tarea a tarea**, y con el estimador que le corresponde a
+cada una (mediana para tareas, media para totales): MdMRE **0,741 → 0,438** y
+PRED(25) **15,2 % → 37,7 %**.
+
+## Por tamaño de proyecto
+
+| tareas | proyectos | MdMRE | ±25 % | factor 2 | MdMRE del constante |
+|---|---|---|---|---|---|
+| 8–15 | 29 | 0,593 | 24,1 % | 55,2 % | 0,712 |
+| 16–40 | 18 | 0,492 | 38,9 % | 66,7 % | 0,762 |
+| 41–120 | 31 | 0,334 | 45,2 % | 61,3 % | 0,738 |
+| 121–400 | 23 | 0,456 | 26,1 % | 82,6 % | 0,656 |
+| más de 400 | 13 | **0,251** | 46,2 % | **92,3 %** | 0,607 |
+
+## Tres advertencias para la defensa
+
+1. **La unidad de análisis son 114 proyectos, no 24.848 tareas.** Los intervalos son
+   mucho más anchos de lo que sugiere el corpus, y los tramos por tamaño tienen entre
+   13 y 31 proyectos cada uno. La no monotonía del tramo 121–400 es muy probablemente
+   ruido de muestreo.
+2. **El MMRE (media) del total empeora** respecto al sin corregir (0,79 frente a 0,60)
+   porque se lo comen dos o tres proyectos que fallan por mucho. La mediana, que es lo
+   que reporta esta literatura, mejora sin ambigüedad. Hay que reportar las dos.
+3. **El desplazamiento mediano real del proyecto NO es un techo**: con 20 tareas
+   cerradas se le gana. Centrar cada tarea por separado no es lo mismo que acertar su
+   suma, y la contracción deja un desplazamiento menor que para un total va mejor.
+
+| script | qué hace |
+|---|---|
+| `src/148_total_proyecto.py` | la métrica de proyecto y el smearing |
+| `src/149_mejorar_total.py` | cuántas tareas cerradas hacen falta |

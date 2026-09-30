@@ -227,8 +227,49 @@ def analogia():
     guardar(fig, "7_analogia")
 
 
+
+
+def total_proyecto():
+    """La metrica de presentacion: acertar el total de horas del proyecto."""
+    r = pd.read_csv("results/mejorar_total/resumen.csv")
+    t = pd.read_csv("results/total_proyecto/totales.csv")
+    fig, (a1, a2) = plt.subplots(1, 2, figsize=(13.0, 5.0))
+    a1.loglog([t.real.min() * .8, t.real.max() * 1.2],
+              [t.real.min() * .8, t.real.max() * 1.2], color=GRIS, lw=1.3, ls="--")
+    for f, c in ((1.25, AMBAR), (2.0, "#d9e2e8")):
+        for k in (f, 1 / f):
+            a1.loglog([t.real.min() * .8, t.real.max() * 1.2],
+                      [t.real.min() * .8 * k, t.real.max() * 1.2 * k],
+                      color=c, lw=1, ls=":")
+    a1.scatter(t.real, t.mod_sm, s=26, color=TINTA, alpha=.75, zorder=3)
+    a1.set_xlabel("horas reales del proyecto")
+    a1.set_ylabel("horas estimadas")
+    a1.set_title("114 proyectos, todos predichos como si fuesen nuevos" + NL +
+                 "las lineas de puntos son +-25 % y factor 2")
+    ks = ["1b · frio, smearing por tramo", "2 · con 1 tarea cerrada",
+          "2 · con 3 tareas cerradas", "2 · con 5 tareas cerradas",
+          "2 · con 10 tareas cerradas", "2 · con 20 tareas cerradas"]
+    v = r.set_index("brazo").reindex(ks)
+    x = np.arange(len(ks))
+    a2.plot(x, v.PRED25, "o-", color=TINTA, lw=2.4, ms=8, label="dentro del +-25 %")
+    a2.plot(x, v.factor2, "o-", color=AMBAR, lw=2.4, ms=8, label="dentro del factor 2")
+    cte = r.set_index("brazo").loc["0 · constante (n x mediana)"]
+    a2.axhline(cte.PRED25, color=AVISO, lw=1.6, ls="--")
+    a2.text(len(ks) - 1, cte.PRED25 + .015, "constante", color=AVISO, ha="right", fontsize=10.5)
+    a2.set_xticks(x)
+    a2.set_xticklabels(["en frio", "1", "3", "5", "10", "20"])
+    a2.set_xlabel("tareas del proyecto ya cerradas")
+    a2.set_ylabel("fraccion de proyectos")
+    a2.set_ylim(0, .95)
+    a2.legend(loc="center right")
+    a2.set_title("Y mejora sola en cuanto el equipo cierra tareas")
+    fig.suptitle("Total de horas del proyecto: la metrica que se presenta",
+                 x=.005, ha="left", fontsize=15, weight="600")
+    guardar(fig, "8_total_proyecto")
+
 if __name__ == "__main__":
-    for f in (la_trampa, extremos, frontera, canales, intervalos, panel, analogia):
+    for f in (la_trampa, extremos, frontera, canales, intervalos, panel, analogia,
+              total_proyecto):
         try:
             f()
         except Exception as e:

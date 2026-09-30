@@ -1,0 +1,52 @@
+82 proyectos con fecha de cierre en al menos el 80% de sus tareas · 11,652 tareas · 0 s
+  k=1 listo · 1 s
+  k=2 listo · 1 s
+  k=3 listo · 1 s
+  k=5 listo · 1 s
+  k=10 listo · 1 s
+
+======================================================================================================================
+SEGUN QUE TAREAS SE CIERREN PRIMERO (82 proyectos)
+======================================================================================================================
+
+SSPB_pc:
+k                                       1        2        3         5         10
+regla                                                                           
+a · al azar                        -3.6091  -2.2192  -0.3481    1.6195    3.3028
+b · las mas cortas de verdad      -32.1412 -54.6772 -80.4755 -113.3829 -166.4028
+c · las que el modelo cree cortas   1.8630   3.9429   5.9433   13.7807    6.6646
+d · el orden real de cierre        -2.4059  -4.3921  -1.6105   -3.3389    0.1571
+e · las mas largas primero         33.1671  52.7332  60.4183   66.4832   73.7171
+
+MdMRE:
+k                                      1       2       3       5       10
+regla                                                                    
+a · al azar                        0.4024  0.3822  0.3589  0.3133  0.2786
+b · las mas cortas de verdad       0.3995  0.4664  0.5065  0.5377  0.6653
+c · las que el modelo cree cortas  0.3986  0.4122  0.4142  0.3695  0.3469
+d · el orden real de cierre        0.3943  0.3754  0.3351  0.2813  0.2922
+e · las mas largas primero         0.4158  0.5274  0.6045  0.6649  0.7373
+
+PRED25:
+k                                      1       2       3       5       10
+regla                                                                    
+a · al azar                        0.3346  0.3553  0.3669  0.4134  0.4620
+b · las mas cortas de verdad       0.2195  0.2195  0.1951  0.1341  0.1463
+c · las que el modelo cree cortas  0.3537  0.3293  0.3902  0.4024  0.3659
+d · el orden real de cierre        0.3659  0.3659  0.4024  0.4634  0.4390
+e · las mas largas primero         0.3659  0.3293  0.2683  0.1707  0.1707
+
+  en frio: SSPB -2.11 % · MdMRE 0.4419 · PRED25 0.3537
+
+======================================================================================================================
+LECTURA
+======================================================================================================================
+  con 3 tareas cerradas:
+    al azar          SSPB  -0.35 % · MdMRE 0.3589 · PRED25 0.3669
+    orden REAL       SSPB  -1.61 % · MdMRE 0.3351 · PRED25 0.4024
+    las mas cortas   SSPB -80.48 % · MdMRE 0.5065 · PRED25 0.1951
+
+  la diferencia de sesgo entre el orden real y el azar es de 1.3 puntos
+  la curva publicada NO es optimista por este motivo
+
+escrito results\orden_cierre/resumen.csv · 1 s

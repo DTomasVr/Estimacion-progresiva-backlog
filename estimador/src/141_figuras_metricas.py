@@ -267,9 +267,66 @@ def total_proyecto():
                  x=.005, ha="left", fontsize=15, weight="600")
     guardar(fig, "8_total_proyecto")
 
+
+
+def compresion_escala():
+    """Lo que el modelo sabe y lo que no: el numero de tareas y el tamano tipico."""
+    import numpy as np
+    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    sw = df[df.is_software_task == 1]
+    sw = sw[~sw.fuente_jira.eq("Apache")].reset_index(drop=True)
+    y = sw.effort_hours.to_numpy()
+    est = np.clip(np.load("results/modelo_total/pred_total.npy"), 1e-6, None)
+    d = pd.DataFrame({"p": sw.project.to_numpy(), "real": y, "est": est})
+    t = d.groupby("p").size()
+    d = d[d.p.isin(t[t >= 8].index)]
+    g = d.groupby("p")
+    tr = g.real.median().to_numpy()
+    tp = g.est.median().to_numpy()
+    n = g.size().to_numpy()
+    fig, (a1, a2) = plt.subplots(1, 2, figsize=(12.6, 4.9))
+    lim = [min(tr.min(), tp.min()) * .7, max(tr.max(), tp.max()) * 1.4]
+    a1.loglog(lim, lim, color=GRIS, lw=1.3, ls="--")
+    a1.scatter(tr, tp, s=30, color=TINTA, alpha=.75, zorder=3)
+    a1.set_xlim(*lim)
+    a1.set_ylim(*lim)
+    a1.set_xlabel("tamano tipico REAL de la tarea (h)")
+    a1.set_ylabel("tamano tipico predicho (h)")
+    a1.set_title("No distingue un equipo de tickets de media" + NL +
+                 "hora de uno de tareas de ocho")
+    b = np.polyfit(np.log(tr), np.log(tp), 1)[0]
+    a1.text(.04, .93, f"la nube es horizontal: sd predicha {np.log(tp).std():.2f}" + NL +
+            f"frente a sd real {np.log(tr).std():.2f}", transform=a1.transAxes,
+            fontsize=11, color=AVISO, va="top")
+    d2 = pd.read_csv("results/donde_falla/proyectos.csv")
+    d2["tramo"] = pd.cut(d2.h_por_tarea, [0, .5, 1, 2, 4, 1e9],
+                         labels=["<0,5", "0,5-1", "1-2", "2-4", ">4"])
+    r = d2.groupby("tramo", observed=True).apply(
+        lambda q: pd.Series(dict(sesgo=q.razon.median(), n=len(q))))
+    a2.axhline(1, color=GRIS, lw=1.3, ls="--")
+    b2 = a2.bar(range(len(r)), r.sesgo, color=[AVISO if v > 1.6 or v < .7 else TINTA
+                                               for v in r.sesgo], width=.62)
+    a2.set_yscale("log")
+    a2.set_yticks([.5, 1, 2, 5])
+    a2.set_yticklabels(["x0,5", "igual", "x2", "x5"])
+    a2.set_yticks([], minor=True)
+    a2.set_ylim(.45, 7.5)
+    a2.set_xticks(range(len(r)))
+    a2.set_xticklabels([f"{i}" + NL + f"({int(v)} proy.)" for i, v in
+                        zip(r.index.astype(str), r.n)], fontsize=10)
+    a2.set_xlabel("mediana de horas por tarea del proyecto")
+    a2.set_title("Y por eso se pasa con los de tareas cortas" + NL +
+                 "y se queda corto con los de tareas largas")
+    for rr, v in zip(b2, r.sesgo):
+        a2.text(rr.get_x() + rr.get_width() / 2, v, f"x{v:.2f}", ha="center",
+                va="bottom" if v >= 1 else "top", fontsize=10.5, color=NEGRO)
+    fig.suptitle("Lo que el texto no dice: la escala del proyecto", x=.005,
+                 ha="left", fontsize=15, weight="600")
+    guardar(fig, "9_compresion_escala")
+
 if __name__ == "__main__":
     for f in (la_trampa, extremos, frontera, canales, intervalos, panel, analogia,
-              total_proyecto):
+              total_proyecto, compresion_escala):
         try:
             f()
         except Exception as e:

@@ -1,0 +1,27 @@
+114 proyectos
+  log(real) = -0.158 +1.006 x log(estimado)  ->  pendiente 1.006
+  sd del estimado 1.505 · sd del real 1.671 · razon 0.901
+  no pide nada
+
+  y sobre el tamano tipico de TAREA: pendiente 1.542 (sd predicho 0.308 · sd real 0.867)
+
+====================================================================================================================
+TOTAL DEL PROYECTO
+====================================================================================================================
+                          brazo    MAE_h    RMSE_h  MdMRE  R2_log  PRED25  PRED50  factor2  SSPB_pc
+                  0 · sin tocar 455.2991 1090.3229 0.3552  0.8167  0.3684  0.6053   0.7281  -0.3054
+             1 · solo pendiente 468.8949 1193.7252 0.3573  0.8145  0.3684  0.6053   0.7281  -0.8175
+2 · recalibracion lineal en log 479.0151 1061.0300 0.3842  0.8164  0.3246  0.6228   0.7105 -13.7478
+                  3 · isotonica 540.9817 1166.6367 0.4683  0.7931  0.2807  0.5175   0.6140 -13.6592
+
+escrito results\expansion_proyecto/resumen.csv
+
+====================================================================================================================
+DESCOMPOSICION EN NUMERO DE TAREAS Y TAMANO TIPICO
+====================================================================================================================
+  log(real) = -0.831 +1.001 log(n) +1.375 log(tamano)
+  si el coeficiente del tamano fuese > 1 claramente, expandirlo ayudaria
+
+                      brazo    MAE_h    RMSE_h  MdMRE  R2_log  PRED25  PRED50  factor2  SSPB_pc
+              0 · sin tocar 455.2991 1090.3229 0.3552  0.8167  0.3684  0.6053   0.7281  -0.3054
+4 · n y tamano por separado 503.2468 1146.9921 0.3280  0.8159  0.3070  0.6316   0.7105 -11.4699

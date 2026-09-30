@@ -239,6 +239,17 @@ def main():
         "iguala y la anchura pasa a ×2,7 para los de más de 200 tareas.",
     ], tam=15)
 
+    # ---------------------------------------------------------------- 11
+    s, y0 = P.lamina(prs, "Lo que el texto no dice",
+                     "Por qué una sola tarea cerrada mejora tanto.")
+    P.figura_ajustada(s, f"{FIG}/9_compresion_escala.png", y0, Inches(3.0))
+    P.veredicto(s, y0 + Inches(3.2), "El diagnóstico, en una frase",
+                "El número de tareas del proyecto se conoce exacto (coeficiente 1,001) "
+                "y el tamaño típico de tarea se predice con solo el 36 % de su "
+                "dispersión real (0,31 frente a 0,86). El modelo no puede saber por el "
+                "texto si el equipo trabaja en tickets de media hora o en tareas de "
+                "ocho; en cuanto cierra una, lo sabe.", "tinta")
+
     SAL.parent.mkdir(parents=True, exist_ok=True)
     prs.save(SAL)
     print(f"escrito {SAL} · {len(prs.slides)} láminas")

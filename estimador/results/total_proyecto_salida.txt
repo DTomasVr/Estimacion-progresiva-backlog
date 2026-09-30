@@ -1,0 +1,40 @@
+24,848 tareas · 204 proyectos · predicciones fuera de muestra por proyecto entero (E42, sin fuga)
+factor de smearing: mediana 2.254 (sin el, el total saldria a 44% de lo que toca)
+proyectos con al menos 8 tareas: 114 (mediana de 48 tareas, total real mediano 358 h)
+
+==========================================================================================================================
+TOTAL DE HORAS DEL PROYECTO · la unidad de analisis es el PROYECTO
+==========================================================================================================================
+                                  brazo  n_proy    MAE_h    RMSE_h  MdMRE   MMRE  R2_log  PRED25  PRED50  factor2   SSPB_pc
+     0 · constante (n x mediana global)     114 885.6164 2046.0340 0.6939 0.6569  0.3638  0.0877  0.2281   0.2456 -202.5463
+1 · suma de las medianas (sin corregir)     114 745.5034 1742.3233 0.6059 0.6021  0.6268  0.0965  0.3333   0.3596 -129.8875
+          2 · suma CON smearing de Duan     114 482.1282 1360.9110 0.4515 0.7869  0.8132  0.3509  0.5702   0.6842   -2.0914
+  3 · suma de la analogia, con smearing     114 501.7048 1563.2550 0.4155 0.9372  0.7902  0.3246  0.5702   0.7018   11.5410
+
+==========================================================================================================================
+COMPARADO CON LA MISMA METRICA TAREA A TAREA
+==========================================================================================================================
+                                                   brazo  n_tareas  MdMRE   MMRE  PRED25  PRED50  factor2
+       modelo por tarea, mediana (lo que toca por tarea)     24848 0.7410 2.0507  0.1518  0.3137   0.3882
+modelo por tarea, con smearing (el estimador de totales)     24848 1.3619 4.9086  0.1240  0.2478   0.3323
+                             analogia por tarea, mediana     24848 0.7500 1.9181  0.1592  0.3257   0.4189
+
+  comparacion honesta: MdMRE 0.741 por tarea (con su estimador) frente a 0.416 por proyecto -> se divide por 1.8
+  y el PRED(25) sube de 0.152 a 0.325, que es un factor de 2.1
+  el MMRE del total sale PEOR que el sin corregir (0,79 frente a 0,60) porque
+  es una media y se la comen dos o tres proyectos que fallan por mucho; la
+  mediana, que es lo que se reporta en esta literatura, mejora sin ambiguedad
+
+==========================================================================================================================
+COMO MEJORA SEGUN EL TAMANO DEL PROYECTO
+==========================================================================================================================
+    tareas  proyectos  MdMRE  PRED25  factor2  MdMRE_constante  PRED25_constante
+      8-15         29 0.5933  0.2414   0.5517           0.7115            0.1034
+     16-40         18 0.4915  0.3889   0.6667           0.7615            0.0556
+    41-120         31 0.3339  0.4516   0.6129           0.7382            0.1613
+   121-400         23 0.4564  0.2609   0.8261           0.6556            0.0435
+mas de 400         13 0.2505  0.4615   0.9231           0.6067            0.0000
+  si el error cayese como 1/raiz(n) bajaria sin parar; si se aplana, lo que
+  queda es el desplazamiento comun del proyecto, que ninguna suma cancela
+
+escrito results\total_proyecto/resumen.csv

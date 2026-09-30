@@ -188,6 +188,57 @@ def main():
         "estimación del usuario, no en clavar una tarea suelta.",
     ], salto=Inches(1.05))
 
+    # ---------------------------------------------------------------- 9
+    us = pd.read_csv("results/usuario_proyecto/resumen.csv").set_index("brazo")
+    s, y0 = P.lamina(prs, "Qué aporta pedirle una estimación al usuario",
+                     "43 proyectos con estimación en al menos el 80 % de sus tareas.")
+    P.tabla(s, y0, ["", "MAE (h)", "MdMRE", "R²", "±25 %", "±50 %"],
+            [[e, n(us.loc[c, "MAE_h"], 0), n(us.loc[c, "MdMRE"]),
+              n(us.loc[c, "R2_log"]), pc(us.loc[c, "PRED25"]), pc(us.loc[c, "PRED50"])]
+             for e, c in (("el modelo en frío", "1 · el modelo en frio"),
+                          ("la estimación del usuario, en crudo",
+                           "2 · estimacion del usuario en crudo"),
+                          ("la estimación corregida por el modelo",
+                           "4 · corregida con Poisson (media)"))],
+            anchos=[Inches(4.0), Inches(1.4), Inches(1.3), Inches(1.2), Inches(1.3),
+                    Inches(1.3)])
+    P.veredicto(s, y0 + Inches(2.1), "Decisión de producto",
+                "El formulario debe pedir una estimación. Pasar del 44 % al 70 % de "
+                "proyectos dentro del ±25 % es la diferencia entre una herramienta que "
+                "orienta y una con la que se puede negociar un plazo.", "tinta")
+    P.vinetas(s, y0 + Inches(3.5), [
+        "Estos 43 proyectos son más fáciles que el conjunto de 114, así que estas "
+        "cifras no son comparables con la tabla principal: lo comparable es la "
+        "diferencia entre filas de esta misma tabla.",
+    ], tam=15)
+
+    # ---------------------------------------------------------------- 10
+    ej = pd.read_csv("results/ejemplos_proyecto/proyectos.csv")
+    s, y0 = P.lamina(prs, "Tres proyectos reales",
+                     "El de error mediano de cada tramo de tamaño: la mitad de su "
+                     "tramo sale mejor y la mitad peor.")
+    P.tabla(s, y0, ["tamaño", "proyecto", "tareas", "estimado", "real", "error",
+                    "intervalo al 80 %"],
+            [[r.tamano, r.proyecto, str(r.tareas), f"{r.estimado_h} h",
+              f"{r.real_h} h", r.error, r.banda_80] for _, r in ej.iterrows()],
+            anchos=[Inches(1.3), Inches(2.2), Inches(1.0), Inches(1.3), Inches(1.1),
+                    Inches(1.1), Inches(2.5)])
+    bp = pd.read_csv("results/banda_proyecto/resumen.csv")
+    b80 = bp[(bp.escenario == "en frio") & (bp.nivel == "80%") &
+             (bp.metodo == "cuantiles del residuo")].iloc[0]
+    b10 = bp[(bp.escenario == "con 10 tareas cerradas") & (bp.nivel == "80%") &
+             (bp.metodo == "cuantiles del residuo")].iloc[0]
+    P.veredicto(s, y0 + Inches(2.0), "El intervalo, no solo el número",
+                f"Con un MdMRE de {n(frio.MdMRE)} nadie debería decir «el proyecto son "
+                f"640 horas». El intervalo al 80 % cubre el {pc(b80.cobertura)} con una "
+                f"anchura de ×{b80.anchura_x:.1f} en frío, y ×{b10.anchura_x:.1f} cuando "
+                "el equipo lleva 10 tareas cerradas.", "tinta")
+    P.vinetas(s, y0 + Inches(3.6), [
+        "Ese intervalo único está mal repartido: cubre el 70 % de los proyectos "
+        "pequeños y el 96 % de los grandes. Estratificando por tamaño la cobertura se "
+        "iguala y la anchura pasa a ×2,7 para los de más de 200 tareas.",
+    ], tam=15)
+
     SAL.parent.mkdir(parents=True, exist_ok=True)
     prs.save(SAL)
     print(f"escrito {SAL} · {len(prs.slides)} láminas")

@@ -1,0 +1,28 @@
+escenario,nivel,metodo,cobertura,anchura_x
+en frio,50%,cuantiles del residuo,0.49122807017543857,2.0703182709135017
+en frio,50%,simetrico (control),0.5,2.142340573355997
+en frio,50%,por tramo de tamano,0.47368421052631576,2.1385544109959027
+en frio,80%,cuantiles del residuo,0.7894736842105263,5.622050302857311
+en frio,80%,simetrico (control),0.8070175438596491,6.694684859430424
+en frio,80%,por tramo de tamano,0.7456140350877193,5.535234206429764
+en frio,90%,cuantiles del residuo,0.8947368421052632,12.592287906223488
+en frio,90%,simetrico (control),0.9035087719298246,11.466872063662505
+en frio,90%,por tramo de tamano,0.8508771929824561,12.931205381980428
+con 3 tareas cerradas,50%,cuantiles del residuo,0.49122807017543857,1.8581295408904936
+con 3 tareas cerradas,50%,simetrico (control),0.5,1.7994995134892813
+con 3 tareas cerradas,50%,por tramo de tamano,0.4824561403508772,1.8599216816024118
+con 3 tareas cerradas,80%,cuantiles del residuo,0.7807017543859649,3.990961175212249
+con 3 tareas cerradas,80%,simetrico (control),0.8070175438596491,4.46772093087622
+con 3 tareas cerradas,80%,por tramo de tamano,0.7631578947368421,4.130587702884147
+con 3 tareas cerradas,90%,cuantiles del residuo,0.8859649122807017,7.755182509385679
+con 3 tareas cerradas,90%,simetrico (control),0.9035087719298246,7.517618902459277
+con 3 tareas cerradas,90%,por tramo de tamano,0.8333333333333334,7.651728648130255
+con 10 tareas cerradas,50%,cuantiles del residuo,0.49122807017543857,1.573096131277131
+con 10 tareas cerradas,50%,simetrico (control),0.5,1.606973276344314
+con 10 tareas cerradas,50%,por tramo de tamano,0.47368421052631576,1.5455594976303273
+con 10 tareas cerradas,80%,cuantiles del residuo,0.7894736842105263,2.7522605258260913
+con 10 tareas cerradas,80%,simetrico (control),0.8070175438596491,2.929533678479281
+con 10 tareas cerradas,80%,por tramo de tamano,0.7543859649122807,2.591307528887337
+con 10 tareas cerradas,90%,cuantiles del residuo,0.8771929824561403,4.883990038894871
+con 10 tareas cerradas,90%,simetrico (control),0.9035087719298246,5.055445178020874
+con 10 tareas cerradas,90%,por tramo de tamano,0.8333333333333334,4.485041719232129

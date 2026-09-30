@@ -1,0 +1,67 @@
+114 proyectos
+
+====================================================================================================================
+en frio
+====================================================================================================================
+nivel                metodo  cobertura  anchura_x
+  50% cuantiles del residuo      0.491      2.070
+  50%   simetrico (control)      0.500      2.142
+  50%   por tramo de tamano      0.474      2.139
+  80% cuantiles del residuo      0.789      5.622
+  80%   simetrico (control)      0.807      6.695
+  80%   por tramo de tamano      0.746      5.535
+  90% cuantiles del residuo      0.895     12.592
+  90%   simetrico (control)      0.904     11.467
+  90%   por tramo de tamano      0.851     12.931
+
+====================================================================================================================
+con 3 tareas cerradas
+====================================================================================================================
+nivel                metodo  cobertura  anchura_x
+  50% cuantiles del residuo      0.491      1.858
+  50%   simetrico (control)      0.500      1.799
+  50%   por tramo de tamano      0.482      1.860
+  80% cuantiles del residuo      0.781      3.991
+  80%   simetrico (control)      0.807      4.468
+  80%   por tramo de tamano      0.763      4.131
+  90% cuantiles del residuo      0.886      7.755
+  90%   simetrico (control)      0.904      7.518
+  90%   por tramo de tamano      0.833      7.652
+
+====================================================================================================================
+con 10 tareas cerradas
+====================================================================================================================
+nivel                metodo  cobertura  anchura_x
+  50% cuantiles del residuo      0.491      1.573
+  50%   simetrico (control)      0.500      1.607
+  50%   por tramo de tamano      0.474      1.546
+  80% cuantiles del residuo      0.789      2.752
+  80%   simetrico (control)      0.807      2.930
+  80%   por tramo de tamano      0.754      2.591
+  90% cuantiles del residuo      0.877      4.884
+  90%   simetrico (control)      0.904      5.055
+  90%   por tramo de tamano      0.833      4.485
+
+====================================================================================================================
+COBERTURA AL 80 % POR TAMANO DE PROYECTO (en frio)
+====================================================================================================================
+     tramo          metodo  proyectos  cobertura  anchura_x
+     21-60 intervalo unico         30      0.767      5.622
+    61-200 intervalo unico         23      0.739      5.622
+      8-20 intervalo unico         33      0.697      5.622
+mas de 200 intervalo unico         28      0.964      5.622
+     21-60       por tramo         30      0.767      5.535
+    61-200       por tramo         23      0.739      7.903
+      8-20       por tramo         33      0.758     11.458
+mas de 200       por tramo         28      0.714      2.718
+
+====================================================================================================================
+LECTURA
+====================================================================================================================
+  al 80 %, en frio: cubre el 78.9% con un intervalo de x5.6
+  al 80 %, con 10 tareas cerradas: 78.9% con x2.8
+
+  ejemplo con un proyecto de tamano mediano (48 tareas):
+    estimacion puntual 255 h · intervalo al 80 % de 92 a 517 h · real 193 h
+
+escrito results\banda_proyecto/resumen.csv

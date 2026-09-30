@@ -1,0 +1,33 @@
+24,848 tareas · 1536 rasgos · 5 s
+  pliegue 1/5 · 31 s
+  pliegue 2/5 · 56 s
+  pliegue 3/5 · 85 s
+  pliegue 4/5 · 114 s
+  pliegue 5/5 · 140 s
+114 proyectos con al menos 8 tareas
+
+========================================================================================================================
+TOTAL DEL PROYECTO · que estimador de la media funciona mejor
+========================================================================================================================
+                         estimador    MAE_h    RMSE_h  MdMRE   MMRE  R2_log  PRED25  PRED50  factor2  SSPB_pc
+            media directa, Poisson 462.5842 1021.4684 0.3679 0.6782  0.8191  0.3158  0.6316   0.7281 -15.2576
+              media directa, gamma 498.1180 1113.2979 0.3703 0.6558  0.7943  0.2982  0.5877   0.6579 -28.4899
+media directa, cuadratica en horas 480.5060 1275.4321 0.3860 0.8238  0.8063  0.3421  0.5789   0.7018   1.8603
+          media de las dos mejores 476.2733 1080.6849 0.3862 0.7032  0.8124  0.3246  0.6228   0.6930 -15.7442
+      mediana x smearing por tramo 460.9379 1238.1474 0.4384 0.7960  0.8132  0.3772  0.5789   0.6930  -0.4498
+         mediana x smearing global 482.1282 1360.9110 0.4515 0.7869  0.8132  0.3509  0.5702   0.6842  -2.0914
+
+========================================================================================================================
+LOS MISMOS ESTIMADORES, TAREA A TAREA
+========================================================================================================================
+                         estimador  MdMRE   MMRE  PRED25  factor2  SSPB_pc
+media directa, cuadratica en horas 1.3405 5.1899  0.1240   0.3268 134.0465
+            media directa, Poisson 1.1050 4.2425  0.1303   0.3444 110.4960
+              media directa, gamma 0.9337 3.8212  0.1351   0.3566  89.4565
+         mediana x smearing global 1.3801 4.9329  0.1233   0.3316 138.0123
+      mediana x smearing por tramo 1.3504 4.8800  0.1246   0.3344 135.0412
+          media de las dos mejores 1.1137 4.2593  0.1307   0.3469 111.3738
+  ojo: tarea a tarea estos estimadores tienen que salir PEOR que la mediana,
+  porque estiman la media y la media no es el mejor punto para una tarea suelta
+
+escrito results\media_condicional/resumen.csv · 140 s

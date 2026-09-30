@@ -23,11 +23,15 @@ por proyecto.
 |---|---|---|---|---|---|---|---|---|
 | constante (no lee el texto) | 886 | 2046 | 0,694 | 0,364 | 8,8 % | 22,8 % | 24,6 % | −203 % |
 | **en frío** | **455** | **1090** | **0,355** | **0,817** | **36,8 %** | 60,5 % | **72,8 %** | −0,3 % |
-| con 1 tarea cerrada | 421 | 914 | 0,341 | 0,844 | 39,5 % | 64,9 % | 75,4 % | −4,6 % |
-| con 3 tareas cerradas | 365 | 816 | 0,281 | 0,882 | 45,6 % | 71,1 % | 79,8 % | −5,7 % |
-| **con 5 tareas cerradas** | **326** | **736** | **0,256** | **0,910** | **48,3 %** | 74,6 % | **82,5 %** | −2,5 % |
-| con 10 tareas cerradas | 281 | 702 | 0,219 | 0,920 | 51,8 % | 79,8 % | 88,6 % | −1,4 % |
-| con 20 tareas cerradas | **170** | **336** | **0,186** | 0,913 | **63,2 %** | 79,0 % | 87,7 % | +0,5 % |
+| con 1 tarea cerrada | 428 | 995 | 0,344 | 0,847 | 36,9 % | 64,4 % | 75,6 % | −3,3 % |
+| con 3 tareas cerradas | 394 | 954 | 0,326 | 0,882 | 39,7 % | 70,1 % | 80,3 % | −2,5 % |
+| **con 5 tareas cerradas** | **379** | 991 | **0,292** | **0,911** | **43,7 %** | 75,7 % | **85,5 %** | +0,2 % |
+| con 10 tareas cerradas | 336 | 891 | 0,266 | 0,917 | 47,9 % | 77,5 % | 87,7 % | +2,1 % |
+| con 20 tareas cerradas | **291** | **795** | **0,219** | 0,908 | **54,3 %** | 78,4 % | 87,5 % | +1,5 % |
+
+Las filas con tareas cerradas se promedian sobre 60 sorteos de **cuáles** fueron las
+tareas que se cerraron primero. La dispersión entre sorteos es de ±0,025 en MdMRE y
+±0,037 en el ±25 %: qué tareas toquen importa unos cuatro puntos.
 
 Por tamaño de proyecto, en frío:
 
@@ -69,7 +73,7 @@ bolsa de 5, canal de TF-IDF y canal de analogía, apilados también con Poisson.
 Mejora MdMRE (0,438 → 0,355), MAE, RMSE, ±50 % y factor 2 a la vez, y deja el
 ±25 % prácticamente igual.
 
-### 2 · Anclar con el cociente de sumas, no con la mediana de cocientes (E53)
+### 2 · Anclar bien, que tiene tres trampas (E53)
 
 Cuando el proyecto ya tiene tareas cerradas, el cronómetro da horas reales y se
 puede corregir el desplazamiento del proyecto. Pero **el estadístico importa**: si
@@ -78,11 +82,24 @@ esa mediana es sistemáticamente negativa con una distribución asimétrica. Anc
 así, cuantas más tareas cerradas **peor**: con 20 tareas el sesgo llegaba a −45,7 %
 y el ±25 % caía a 26,3 %.
 
-Para un total lo que corresponde es el **cociente de sumas**. Con eso, 20 tareas
-cerradas dan ±25 % del 63,2 % en vez del 26,3 %.
+Para un total lo que corresponde es el **cociente de sumas**.
 
-La contracción de James-Stein (λ = 12) sigue siendo imprescindible: con 1 o 2
-tareas el desplazamiento crudo es ruido.
+**Segunda trampa: las tareas ya cerradas se saben, no se estiman.** Si el equipo
+cerró tres tareas, sus horas son un dato. El total es lo conocido más la estimación
+corregida de lo que queda; sumar la estimación de lo ya cerrado es tirar información.
+
+**Tercera trampa, y la que más costaba: hay que promediar la MÉTRICA, no la
+predicción.** Cuáles son las tres tareas que se cierran primero es un sorteo, así que
+hay que repetirlo. Pero promediar las *predicciones* de 60 sorteos y medir sobre esa
+media cancela la varianza del sorteo y da lo que se conseguiría con 60 × k tareas, no
+con k. Con ese fallo, λ = 0 y 3 tareas daban un MdMRE de 0,08 y un ±25 % del 92 %,
+que es imposible; ahí se detectó. Corregido, la curva baja entre 4 y 9 puntos
+respecto a la que llegué a escribir.
+
+**La contracción de James-Stein (λ = 12) está bien calibrada.** Se barrió λ de 0 a 24
+(E62): sin contracción el MdMRE con una tarea cerrada es 0,726 en vez de 0,347, y
+elegir λ dejando fuera cada proyecto es **peor** que dejarlo en 12 para todos los k.
+El valor heredado del anclaje por tarea resultó ser el correcto también aquí.
 
 ### 3 · Por qué sumar funciona, y por qué no llega a cero
 

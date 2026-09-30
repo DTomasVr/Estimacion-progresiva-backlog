@@ -35,7 +35,7 @@ def main():
     ana = pd.read_csv("results/analogia/resumen.csv")
     pan = pd.read_csv("results/panel/panel.csv")
     frio = tot.loc["1 · en frio"]
-    k5 = tot.loc["2 · con 5 tareas cerradas (cociente de sumas)"]
+    k5 = tot.loc["2 · con 5 tareas cerradas"]
     cte = tot.loc["0 · constante (n x mediana)"]
     prs = P.nueva()
 
@@ -113,10 +113,10 @@ def main():
                  "Tareas cerradas del proyecto frente a acierto del total.")
     filas = []
     for etq, c in (("en frío", "1 · en frio"),
-                   ("1 tarea cerrada", "2 · con 1 tarea cerrada (cociente de sumas)"),
-                   ("3 tareas cerradas", "2 · con 3 tareas cerradas (cociente de sumas)"),
-                   ("5 tareas cerradas", "2 · con 5 tareas cerradas (cociente de sumas)"),
-                   ("20 tareas cerradas", "2 · con 20 tareas cerradas (cociente de sumas)")):
+                   ("1 tarea cerrada", "2 · con 1 tarea cerrada"),
+                   ("3 tareas cerradas", "2 · con 3 tareas cerradas"),
+                   ("5 tareas cerradas", "2 · con 5 tareas cerradas"),
+                   ("20 tareas cerradas", "2 · con 20 tareas cerradas")):
         r = tot.loc[c]
         filas.append([etq, n(r.MAE_h, 0), n(r.MdMRE), n(r.R2_log), pc(r.PRED25),
                       pc(r.factor2)])
@@ -225,9 +225,9 @@ def main():
                     Inches(1.1), Inches(2.5)])
     bp = pd.read_csv("results/banda_proyecto/resumen.csv")
     b80 = bp[(bp.escenario == "en frio") & (bp.nivel == "80%") &
-             (bp.metodo == "cuantiles del residuo")].iloc[0]
+             (bp.metodo == "unico")].iloc[0]
     b10 = bp[(bp.escenario == "con 10 tareas cerradas") & (bp.nivel == "80%") &
-             (bp.metodo == "cuantiles del residuo")].iloc[0]
+             (bp.metodo == "unico")].iloc[0]
     P.veredicto(s, y0 + Inches(2.0), "El intervalo, no solo el número",
                 f"Con un MdMRE de {n(frio.MdMRE)} nadie debería decir «el proyecto son "
                 f"640 horas». El intervalo al 80 % cubre el {pc(b80.cobertura)} con una "

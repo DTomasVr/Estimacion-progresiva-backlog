@@ -1,0 +1,61 @@
+114 proyectos · MdMRE 0.3552
+
+======================================================================================================================
+CORRELACION DE CADA RASGO CON EL ERROR DEL TOTAL (Spearman)
+======================================================================================================================
+  nw_media       -0.274
+  frac_micro     +0.269
+  frac_bajo1h    +0.254
+  h_por_tarea    -0.212
+  n              -0.154
+  frac_desc      -0.097
+  (positivo = ese rasgo va con MAS error)
+
+======================================================================================================================
+ERROR SEGUN LO CREIBLE QUE SEA EL REGISTRO DE HORAS
+======================================================================================================================
+         proyectos  h_por_tarea  MdMRE  PRED25  factor2  sesgo_x
+tramo                                                           
+<0,5 h         6.0         0.50  4.363   0.000    0.000    5.363
+0,5-1 h       18.0         1.00  0.708   0.167    0.611    1.708
+1-2 h         34.0         2.00  0.373   0.353    0.765    1.312
+2-4 h         29.0         3.14  0.193   0.655    0.931    0.893
+>4 h          27.0         7.00  0.386   0.296    0.704    0.614
+
+======================================================================================================================
+Y SI SE QUITAN LOS PROYECTOS CON REGISTRO POCO CREIBLE
+======================================================================================================================
+  todos                                      n=114 · MdMRE 0.3552 · PRED25 0.3684 · factor2 0.7281
+  quitando los de menos de 0,5 h por tarea   n=112 · MdMRE 0.3473 · PRED25 0.3750 · factor2 0.7411
+  quitando los de menos de 1 h por tarea     n=100 · MdMRE 0.3266 · PRED25 0.4100 · factor2 0.7700
+
+  esto NO es una mejora del modelo: es medir sobre un subconjunto. Solo
+  sirve para saber cuanto de la cifra reportada se lo lleva el ruido del
+  registro, que es lo que conviene tener claro antes de que lo pregunten
+
+======================================================================================================================
+LOS OCHO PROYECTOS QUE MAS FALLAN
+======================================================================================================================
+                    n     real      est  h_por_tarea  frac_micro  razon       fuente
+p                                                                                   
+Hyperledger:IR     18   17.667  159.769        0.367       0.278  9.044  JiraPublico
+Spring:DATACMNS    57   48.517  336.323        0.500       0.368  6.932  JiraPublico
+Jira:CWD            9   13.750   93.777        2.000       0.222  6.820  JiraPublico
+Spring:SLICE       47   80.917  487.581        1.000       0.128  6.026  JiraPublico
+Spring:DATAJPA     46   43.033  248.461        0.500       0.348  5.774  JiraPublico
+Sonatype:NEXUS    119  132.000  653.621        0.500       0.370  4.952  JiraPublico
+Qt:QSR              9   13.900   59.777        1.000       0.333  4.301  JiraPublico
+Spring:DATAMONGO   89   95.983  403.343        0.833       0.146  4.202  JiraPublico
+
+escrito results\donde_falla/proyectos.csv
+
+======================================================================================================================
+LA MISMA TABLA, PERO CON TAREAS YA CERRADAS
+======================================================================================================================
+  tramo  proyectos  MdMRE_0  sesgo_0  MdMRE_1  sesgo_1  MdMRE_3  sesgo_3
+ <0,5 h          6    4.363    5.363    3.564    4.564    2.679    3.679
+0,5-1 h         18    0.708    1.708    0.604    1.531    0.550    1.467
+  1-2 h         34    0.373    1.312    0.307    1.224    0.266    1.189
+  2-4 h         29    0.193    0.893    0.224    0.868    0.195    0.851
+   >4 h         27    0.386    0.614    0.373    0.627    0.316    0.684
+  MdMRE_k y sesgo_k son con k tareas cerradas; k=0 es en frio

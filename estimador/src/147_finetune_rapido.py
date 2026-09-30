@@ -221,15 +221,21 @@ def ajustar(modo, lote, dev="cuda"):
         P = np.zeros((len(idx), len(rej)), np.float32)
         pos = {t: k for k, t in enumerate(idx)}
         dest = np.array([pos[t] for t in orden])
-        for i in range(0, len(orden), 512):
-            j = torch.tensor(orden[i:i + 512], device=dev)
+        for i in range(0, len(orden), 192):
+            j = torch.tensor(orden[i:i + 192], device=dev)
             ids, mask = recorte(IDS, MASK, j)
             with torch.amp.autocast("cuda", dtype=torch.bfloat16):
                 v = net.vector(ids, mask)
                 o = net.cab(v)
-            V[dest[i:i + 512]] = v.float().cpu().numpy()
-            P[dest[i:i + 512]] = torch.softmax(o.float(), 1).cpu().numpy()
+            V[dest[i:i + 192]] = v.float().cpu().numpy()
+            P[dest[i:i + 192]] = torch.softmax(o.float(), 1).cpu().numpy()
         net.train()
+        # Devolver la memoria al final de la inferencia. Sin esto, los lotes
+        # grandes de la inferencia dejan la VRAM llena y fragmentada, y la epoca
+        # siguiente entrena al borde de los 8,15 GB: en la corrida del brazo C la
+        # epoca 1 tardo 270 s y la 2 iba camino de 2.700 con la GPU al 100 % de
+        # "utilizacion" pero a 36 W de 145, o sea esperando, no calculando.
+        torch.cuda.empty_cache()
         return V, P
 
     mejor = 1e9

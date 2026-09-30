@@ -260,10 +260,43 @@ Apache **ensancha la dispersión** (0,35 → 0,51) pero **destroza el orden** (0
 0,315). La relación entre el texto y la escala es distinta allí: sus convenciones de
 registro no transfieren. Misma conclusión que E38 sacó para la predicción por tarea.
 
-**Con esto, la vía de arreglar la compresión sin tareas cerradas queda agotada:** se
+### Y la réplica independiente lo cierra (E71)
+
+Con 114 proyectos la potencia es del 20 %, así que "no significativo" podía
+significar simplemente "muestra pequeña". Para resolverlo **no hay que generar
+proyectos sintéticos** —heredarían las relaciones que el modelo ya aprendió y
+darían p-valores buenos y falsos— sino replicar en datos reales independientes: los
+**186 proyectos de Apache**, con su propio pipeline montado de cero.
+
+| | ±25 % | McNemar | error en log | Wilcoxon |
+|---|---|---|---|---|
+| Apache, el modelo de escala frente al frío | 23,7 % → 26,9 % | p = 0,31 | 0,541 → **0,590** | p = 0,77 |
+| **Fisher, combinando las dos réplicas** | | **p = 0,28** | | **p = 0,42** |
+
+**No hay efecto.** Y esto cierra la cuestión mucho mejor que "no se pudo demostrar
+con 114 proyectos": se probó en dos corpus independientes y no aparece.
+
+*(Aquí hubo un fallo propio que habría engañado: la primera versión del contraste
+le quitaba el sesgo solo al brazo corregido, y en Apache el brazo en frío tiene un
+sesgo del +41 %. Así salía Wilcoxon p = 0,045 y Fisher combinado p = 0,048 —
+significativo—, pero esa "mejora" era quitar el sesgo, no ordenar mejor. Con los dos
+brazos centrados, nada.)*
+
+**En cambio la compresión sí se replica, y es peor:**
+
+| corpus | sd predicha | sd real | razón | Spearman |
+|---|---|---|---|---|
+| sin Apache (114 proyectos) | 0,271 | 0,791 | 34 % | 0,444 |
+| **Apache (186 proyectos)** | 0,192 | 1,024 | **19 %** | **0,108** |
+
+En Apache el modelo apenas puede ordenar los proyectos por escala. El diagnóstico
+es general y más severo allí, lo que encaja con que Apache mezcle equipos con
+prácticas de registro mucho más dispares.
+
+**Con esto, la vía de arreglar la compresión sin tareas cerradas queda cerrada:** se
 probaron mapeo de cuantiles, calibración lineal, cambio de etiqueta, un modelo de
-escala propio y triplicar la muestra con Apache. Lo único que funciona y se puede
-demostrar son las tareas cerradas.
+escala propio, triplicar la muestra con Apache y una réplica independiente en un
+segundo corpus. Lo único que funciona y se puede demostrar son las tareas cerradas.
 
 ---
 

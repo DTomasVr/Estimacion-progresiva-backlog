@@ -1,0 +1,75 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 8319.03it/s]
+  e5-large-instruct      (24848, 1024) en 57 s
+[transformers] A new version of the following files was downloaded from https://huggingface.co/Alibaba-NLP/new-impl:
+- configuration.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+[transformers] A new version of the following files was downloaded from https://huggingface.co/Alibaba-NLP/new-impl:
+- modeling.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+Loading weights:   0%|          | 0/136 [00:00<?, ?it/s]Loading weights: 100%|██████████| 136/136 [00:00<00:00, 8672.11it/s]
+[transformers] [1mNewModel LOAD REPORT[0m from: Alibaba-NLP/gte-multilingual-base
+Key               | Status     |  | 
+------------------+------------+--+-
+classifier.bias   | UNEXPECTED |  | 
+classifier.weight | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+[transformers] Detected the usage of `get_extended_attention_mask`: This function is deprecated and will be removed in v5.12.0. Please use the new API in `transformers.masking_utils`
+  gte-multilingual       FALLO: AcceleratorError: CUDA error: device-side assert triggered
+Search for `cudaErrorAssert' in https://docs.nvidia.com/cuda/cuda-run
+[transformers] A new version of the following files was downloaded from https://huggingface.co/jinaai/jina-embeddings-v3:
+- custom_st.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+[transformers] A new version of the following files was downloaded from https://huggingface.co/jinaai/xlm-roberta-flash-implementation:
+- configuration_xlm_roberta.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[transformers] A new version of the following files was downloaded from https://huggingface.co/jinaai/xlm-roberta-flash-implementation:
+- mlp.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+[transformers] Encountered exception while importing einops: No module named 'einops'
+  jina-v3                FALLO: ImportError: This modeling file requires the following packages that were not found in your environment: einops. Run `pip i
+  e5-large (el actual)   evaluado
+  qwen3-0.6B (de E4)     evaluado
+  e5-large-instruct      evaluado
+  concatenado con e5-large-instruct (mejor en validacion) evaluado
+
+======================================================================================================================
+validacion  (el MISMO HGB sobre cada juego de vectores)
+======================================================================================================================
+                 codificador  MAE_h  MdAElog  zeta_pc  R2log  PRED25  factor2    rho
+        e5-large (el actual) 4.5032   0.7958 121.6234 0.2027  0.1806   0.4392 0.4374
+e5-large + e5-large-instruct 4.4927   0.7866 119.5837 0.2025  0.1769   0.4511 0.4400
+           e5-large-instruct 4.5034   0.7944 121.3136 0.1986  0.1731   0.4423 0.4301
+          qwen3-0.6B (de E4) 4.5222   0.8191 126.8500 0.1820  0.1797   0.4367 0.3955
+
+======================================================================================================================
+prueba fija  (el MISMO HGB sobre cada juego de vectores)
+======================================================================================================================
+                 codificador  MAE_h  MdAElog  zeta_pc  R2log  PRED25  factor2    rho
+        e5-large (el actual) 5.0464   0.8303 129.3991 0.1487  0.1605   0.4189 0.3636
+e5-large + e5-large-instruct 5.0447   0.8488 133.6760 0.1333  0.1685   0.4187 0.3496
+           e5-large-instruct 5.0772   0.8442 132.6113 0.1232  0.1609   0.4182 0.3275
+          qwen3-0.6B (de E4) 5.0956   0.8632 137.0666 0.1108  0.1588   0.4104 0.3020
+
+======================================================================================================================
+prueba SiP  (el MISMO HGB sobre cada juego de vectores)
+======================================================================================================================
+                 codificador  MAE_h  MdAElog  zeta_pc  R2log  PRED25  factor2    rho
+        e5-large (el actual) 5.9177   0.8249 128.1553 0.2215  0.1523   0.4143 0.4423
+e5-large + e5-large-instruct 5.9304   0.8832 141.8550 0.2009  0.1698   0.4058 0.4202
+           e5-large-instruct 5.9578   0.8558 135.3313 0.1908  0.1618   0.4064 0.3974
+          qwen3-0.6B (de E4) 5.9956   0.9139 149.3981 0.1744  0.1549   0.4011 0.3751
+
+======================================================================================================================
+externo no Apache  (el MISMO HGB sobre cada juego de vectores)
+======================================================================================================================
+                 codificador  MAE_h  MdAElog  zeta_pc  R2log  PRED25  factor2    rho
+           e5-large-instruct 5.7684   0.9490 158.3159 0.0405  0.1490   0.3801 0.2279
+e5-large + e5-large-instruct 5.7350   0.9609 161.4004 0.0404  0.1629   0.3851 0.2352
+          qwen3-0.6B (de E4) 5.7982   0.9540 159.6006 0.0403  0.1578   0.3864 0.2269
+        e5-large (el actual) 5.8067   0.9640 162.2246 0.0323  0.1427   0.3674 0.2182
+
+escrito results\codificadores_2026/resumen.csv

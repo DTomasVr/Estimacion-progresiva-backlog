@@ -196,6 +196,7 @@ def ajustar(modo, lote, dev="cuda"):
     cl = torch.tensor(np.abs(lrej[None, :] - ly[:, None]).argmin(1), device=dev)
     lrej_t = torch.tensor(lrej, dtype=torch.float32, device=dev)
     IDS, MASK = tokenizar(tit, dev)
+    tok = AutoTokenizer.from_pretrained(BASE)   # para guardarlo junto a los pesos
     ly_t = torch.tensor(ly, device=dev)
     torch.backends.cuda.matmul.allow_tf32 = True
     torch.backends.cudnn.benchmark = True
@@ -281,7 +282,7 @@ def ajustar(modo, lote, dev="cuda"):
             dest = Path(f"models/e5_ajustado_{modo}")
             dest.mkdir(parents=True, exist_ok=True)
             net.b.save_pretrained(dest)
-            AutoTokenizer.from_pretrained(BASE).save_pretrained(dest)
+            tok.save_pretrained(dest)
             print(f"    guardado e5-ajustado-{modo}.npy y {dest}", flush=True)
     del net, opt
     torch.cuda.empty_cache()

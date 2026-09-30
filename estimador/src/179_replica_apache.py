@@ -40,7 +40,7 @@ import joblib  # noqa: E402
 import numpy as np  # noqa: E402
 import pandas as pd  # noqa: E402
 from scipy import sparse  # noqa: E402
-from scipy.stats import binomtest, chi2, wilcoxon  # noqa: E402
+from scipy.stats import binomtest, wilcoxon  # noqa: E402
 from sklearn.decomposition import TruncatedSVD  # noqa: E402
 from sklearn.ensemble import HistGradientBoostingRegressor  # noqa: E402
 from sklearn.linear_model import PoissonRegressor, RidgeCV  # noqa: E402
@@ -176,11 +176,15 @@ def main():
         m = RidgeCV(alphas=np.logspace(-1, 5, 40)).fit((Xa - mu) / sd, esc_r[a])
         esc_m[b] = m.predict((Xb - mu) / sd)
     print(f"\n{S}\nLA ESCALA EN APACHE\n{S}")
-    for etq, e in (("la media de las predicciones", A), ("modelo de proyecto", esc_m)):
+    esc = {}
+    for etq, cl, e in (("la media de las predicciones", "A", A),
+                       ("modelo de proyecto", "modelo", esc_m)):
+        esc[f"sd_{cl}"] = float(e.std())
         print(f"  {etq:30s} sd {e.std():.3f} · err_log "
               f"{np.median(np.abs(e - esc_r)):.4f} · Spearman "
               f"{pd.Series(e).corr(pd.Series(esc_r), method='spearman'):.4f} · "
               f"pendiente {np.polyfit(e, esc_r, 1)[0]:.4f}")
+    esc["sd_real"] = float(esc_r.std())
     print(f"  {'REAL':30s} sd {esc_r.std():.3f}")
 
     # 4 - el mismo contraste
@@ -206,16 +210,21 @@ def main():
     print(f"  error en log: {np.median(ea):.4f} -> {np.median(eb):.4f} · "
           f"Wilcoxon p = {pw:.4g} · mejora en {int((eb < ea).sum())} de {len(nom)}")
 
-    # combinar las dos replicas independientes con el metodo de Fisher
-    p_resto_w, p_resto_m = 0.1862, 0.2632      # medidos antes sobre los 114
-    for etq, p1, p2 in (("Wilcoxon", p_resto_w, pw), ("McNemar", p_resto_m, pm)):
-        x = -2 * (np.log(max(p1, 1e-12)) + np.log(max(p2, 1e-12)))
-        pc_ = float(chi2.sf(x, 4))
-        print(f"  Fisher del {etq}: resto p = {p1:.4f} · Apache p = {p2:.4g} "
-              f"-> combinado p = {pc_:.4g}")
+    # La combinacion de las dos replicas con el metodo de Fisher se hace en E72
+    # (180_contraste_corpus.py), que es quien mide el corpus propio con este mismo
+    # procedimiento. Aqui estaba escrita a mano con dos constantes que no salian de
+    # ningun fichero y que resultaron ser ademas equivocadas: el Wilcoxon de los 114
+    # es 0,0833 y no 0,1862. Calcular lo mismo en dos sitios es lo que lo permitio.
+    print("\n  el Fisher de las dos replicas lo calcula src/180_contraste_corpus.py")
+
     tt.to_csv(OUT / "totales.csv", index=False)
     json.dump({"proyectos": len(nom), "tareas": int(len(sw)),
                "p_wilcoxon": pw, "p_mcnemar": pm,
+               "pred25_frio": float(ha.mean()), "pred25_corregido": float(hb.mean()),
+               "err_log_frio": float(np.median(ea)),
+               "err_log_corregido": float(np.median(eb)),
+               "mejora_en": int((eb < ea).sum()),
+               "mcnemar_01": n01, "mcnemar_10": n10, **esc,
                "spearman_A": float(pd.Series(A).corr(pd.Series(esc_r), method="spearman")),
                "spearman_modelo": float(pd.Series(esc_m).corr(pd.Series(esc_r),
                                                               method="spearman"))},

@@ -1,0 +1,33 @@
+CORPUS PROPIO · 24,622 tareas · 114 proyectos · 1 s
+
+====================================================================================================================
+TOTAL DEL PROYECTO EN EL CORPUS PROPIO (114 proyectos)
+====================================================================================================================
+             brazo    MAE_h  MdMRE  R2_log  PRED25  PRED50  factor2  SSPB_pc
+el modelo, en frio 455.2991 0.3552  0.8167  0.3684  0.6053   0.7281  -0.3054
+
+====================================================================================================================
+LA ESCALA EN EL CORPUS PROPIO
+====================================================================================================================
+  la media de las predicciones   sd 0.271 · err_log 0.3820 · Spearman 0.4443 · pendiente 1.3744
+  modelo de proyecto             sd 0.344 · err_log 0.3908 · Spearman 0.4800 · pendiente 1.1379
+  REAL                           sd 0.791
+
+====================================================================================================================
+CONTRASTE · el modelo de escala frente al frio, los dos centrados
+====================================================================================================================
+  +-25 %: 0.3596 -> 0.3684 · McNemar p = 1 (12-11)
+  error en log: 0.3935 -> 0.3972 · Wilcoxon p = 0.08331 · mejora en 67 de 114
+
+  no hay efecto
+
+====================================================================================================================
+LAS DOS REPLICAS JUNTAS (Fisher)
+====================================================================================================================
+  corpus propio 114 proyectos · Apache 186 proyectos · 300 en total
+  wilcoxon  propio p = 0.08331 · Apache p = 0.7653 -> combinado p = 0.2393
+  mcnemar   propio p = 1 · Apache p = 0.3075 -> combinado p = 0.6701
+
+  el efecto no aparece en ninguna de las dos, ni juntas
+
+escrito results\contraste_corpus/ · 3 s

@@ -203,9 +203,11 @@ def main():
             anchos=[Inches(4.0), Inches(1.4), Inches(1.3), Inches(1.2), Inches(1.3),
                     Inches(1.3)])
     P.veredicto(s, y0 + Inches(2.1), "Decisión de producto",
-                "El formulario debe pedir una estimación. Pasar del 44 % al 70 % de "
-                "proyectos dentro del ±25 % es la diferencia entre una herramienta que "
-                "orienta y una con la que se puede negociar un plazo.", "tinta")
+                f"El formulario debe pedir una estimación. Pasar del "
+                f"{pc(us.loc['1 · el modelo en frio', 'PRED25'])} al "
+                f"{pc(us.loc['4 · corregida con Poisson (media)', 'PRED25'])} de "
+                f"proyectos dentro del ±25 % es la diferencia entre una herramienta que "
+                f"orienta y una con la que se puede negociar un plazo.", "tinta")
     P.vinetas(s, y0 + Inches(3.5), [
         "Estos 43 proyectos son más fáciles que el conjunto de 114, así que estas "
         "cifras no son comparables con la tabla principal: lo comparable es la "
@@ -233,22 +235,30 @@ def main():
                 f"640 horas». El intervalo al 80 % cubre el {pc(b80.cobertura)} con una "
                 f"anchura de ×{b80.anchura_x:.1f} en frío, y ×{b10.anchura_x:.1f} cuando "
                 "el equipo lleva 10 tareas cerradas.", "tinta")
+    pt = pd.read_csv("results/banda_proyecto/por_tamano.csv")
+    un = pt[pt.metodo.eq("intervalo unico")].set_index("tramo")
+    tr = pt[pt.metodo.eq("por tramo")].set_index("tramo")
     P.vinetas(s, y0 + Inches(3.6), [
-        "Ese intervalo único está mal repartido: cubre el 70 % de los proyectos "
-        "pequeños y el 96 % de los grandes. Estratificando por tamaño la cobertura se "
-        "iguala y la anchura pasa a ×2,7 para los de más de 200 tareas.",
+        f"Ese intervalo único está mal repartido: cubre el "
+        f"{pc(un.loc['8-20', 'cobertura'])} de los proyectos pequeños y el "
+        f"{pc(un.loc['mas de 200', 'cobertura'])} de los grandes. Estratificando por "
+        f"tamaño la cobertura se iguala ({pc(tr.loc['8-20', 'cobertura'])} y "
+        f"{pc(tr.loc['mas de 200', 'cobertura'])}) y la anchura de los grandes pasa a "
+        f"×{tr.loc['mas de 200', 'anchura_x']:.1f}".replace(".", ",") + ".",
     ], tam=15)
 
     # ---------------------------------------------------------------- 11
     s, y0 = P.lamina(prs, "Lo que el texto no dice",
                      "Por qué una sola tarea cerrada mejora tanto.")
     P.figura_ajustada(s, f"{FIG}/9_compresion_escala.png", y0, Inches(3.0))
+    cc = pd.read_json("results/contraste_corpus/meta.json", typ="series")
     P.veredicto(s, y0 + Inches(3.2), "El diagnóstico, en una frase",
-                "El número de tareas del proyecto se conoce exacto (coeficiente 1,001) "
-                "y el tamaño típico de tarea se predice con solo el 36 % de su "
-                "dispersión real (0,31 frente a 0,86). El modelo no puede saber por el "
-                "texto si el equipo trabaja en tickets de media hora o en tareas de "
-                "ocho; en cuanto cierra una, lo sabe.", "tinta")
+                f"El número de tareas del proyecto se conoce exacto (coeficiente 1,001) "
+                f"y el tamaño típico de tarea se predice con solo el "
+                f"{cc.sd_A / cc.sd_real * 100:.0f} % de su dispersión real "
+                f"({n(cc.sd_A, 2)} frente a {n(cc.sd_real, 2)}). El modelo no puede "
+                f"saber por el texto si el equipo trabaja en tickets de media hora o en "
+                f"tareas de ocho; en cuanto cierra una, lo sabe.", "tinta")
 
     # ---------------------------------------------------------------- 12
     an = pd.read_csv("results/anclas_escala/resumen.csv").set_index("k")
@@ -266,6 +276,66 @@ def main():
              for k in (3, 5, 10)],
             anchos=[Inches(2.2), Inches(2.0), Inches(1.3), Inches(1.3), Inches(1.4),
                     Inches(1.6)])
+
+
+    # ---------------------------------------------------------------- 13
+    oc = pd.read_csv("results/orden_cierre/resumen.csv")
+
+    def oc3(pref, k=3):
+        return oc[(oc.k == k) & oc.regla.str.startswith(pref)].iloc[0]
+
+    s, y0 = P.lamina(prs, "¿Y si el equipo no cierra las tareas al azar?",
+                     "La curva supone un sorteo. El dataset guarda la fecha de "
+                     "cierre, así que no hace falta suponerlo.")
+    P.figura_ajustada(s, f"{FIG}/11_robustez.png", y0, Inches(2.85))
+    P.tabla(s, y0 + Inches(3.0),
+            ["con 3 tareas cerradas", "sesgo del total", "MdMRE", "±25 %"],
+            [[etq, f"{oc3(pref).SSPB_pc:+.1f} %".replace(".", ","),
+              n(oc3(pref).MdMRE), pc(oc3(pref).PRED25)]
+             for pref, etq in (("a ·", "al azar (lo que supone la curva)"),
+                               ("d ·", "el orden REAL de cierre"),
+                               ("b ·", "lo más corto primero (el peor caso)"))],
+            anchos=[Inches(3.4), Inches(1.7), Inches(1.4), Inches(1.4)],
+            resaltar={2: P.AVISO_SUAVE})
+
+    # ---------------------------------------------------------------- 14
+    ap = pd.read_json("results/replica_apache/meta.json", typ="series")
+    cp = pd.read_json("results/contraste_corpus/meta.json", typ="series")
+    s, y0 = P.lamina(prs, "Lo que no se pudo arreglar, comprobado dos veces",
+                     "La corrección de la escala en frío, contrastada en dos corpus "
+                     "reales e independientes con el mismo procedimiento.")
+    y = P.tabla(s, y0, ["", "proyectos", "en frío", "corregido", "Wilcoxon",
+                        "McNemar"],
+                [["el corpus de Agix", f"{int(cp.proyectos)}", pc(cp.pred25_frio),
+                  pc(cp.pred25_corregido),
+                  f"p = {cp.p_wilcoxon:.3f}".replace(".", ","),
+                  f"p = {cp.p_mcnemar:.2f}".replace(".", ",")],
+                 ["Apache (independiente)", f"{int(ap.proyectos)}",
+                  pc(ap.pred25_frio), pc(ap.pred25_corregido),
+                  f"p = {ap.p_wilcoxon:.2f}".replace(".", ","),
+                  f"p = {ap.p_mcnemar:.2f}".replace(".", ",")],
+                 ["las dos juntas, con Fisher",
+                  f"{int(cp.proyectos) + int(ap.proyectos)}", "—", "—",
+                  f"p = {cp.fisher_wilcoxon:.2f}".replace(".", ","),
+                  f"p = {cp.fisher_mcnemar:.2f}".replace(".", ",")]],
+                anchos=[Inches(2.9), Inches(1.2), Inches(1.3), Inches(1.4),
+                        Inches(1.4), Inches(1.3)],
+                resaltar={2: P.SUAVE})
+    y = P.veredicto(
+        s, y + Inches(0.26), "El resultado es nulo, y se reporta como tal",
+        f"La corrección no se sostiene en ninguno de los dos corpus ni al combinarlos. "
+        f"En Apache el error mediano en log incluso empeora, de {n(ap.err_log_frio)} a "
+        f"{n(ap.err_log_corregido)}, y solo mejora en {int(ap.mejora_en)} de "
+        f"{int(ap.proyectos)} proyectos. Lo que sí replica es el diagnóstico: el modelo "
+        f"cubre el {ap.sd_A / ap.sd_real * 100:.0f} % del recorrido real de la escala en "
+        f"Apache y el {cp.sd_A / cp.sd_real * 100:.0f} % en el corpus propio.", "aviso")
+    P.veredicto(
+        s, y + Inches(0.20), "Dos fallos propios, corregidos",
+        "La primera versión del contraste solo le quitaba el sesgo al brazo corregido "
+        "y daba p = 0,045: significativo y falso, porque esa mejora era quitar el "
+        "sesgo y no ordenar mejor. Y el p del corpus propio estaba escrito a mano "
+        "(0,186) en vez de medido; medido con el procedimiento idéntico es "
+        f"{n(cp.p_wilcoxon)}.", "ambar")
 
     SAL.parent.mkdir(parents=True, exist_ok=True)
     prs.save(SAL)

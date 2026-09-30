@@ -362,9 +362,77 @@ def anclas_escala():
                  x=.005, ha="left", fontsize=15, weight="600")
     guardar(fig, "10_anclas_escala")
 
+
+
+def robustez():
+    """Las dos comprobaciones que cierran el argumento (E70 y E71).
+
+    Izquierda: el anclaje supone que las tareas ya cerradas son un sorteo al azar.
+    Con el ORDEN REAL de cierre no lo es y aun asi no hay sesgo; el escenario que
+    si lo rompe (despachar primero lo mas corto) queda acotado y medido.
+
+    Derecha: la compresion de la escala no es un artefacto del corpus. En 186
+    proyectos de Apache, independientes, es incluso mas severa.
+    """
+    o = pd.read_csv("results/orden_cierre/resumen.csv")
+    ap = pd.read_json("results/replica_apache/meta.json", typ="series")
+    ex = pd.read_csv("results/escala_con_apache/resumen.csv")
+    fig, (a1, a2) = plt.subplots(1, 2, figsize=(12.8, 4.9))
+
+    reglas = [("a · al azar", "lo que supone la curva", TINTA, "o-"),
+              ("d · el orden real de cierre", "el orden REAL de cierre", AMBAR, "s-"),
+              ("b · las mas cortas de verdad", "lo mas corto primero", AVISO, "v--"),
+              ("e · las mas largas primero", "lo mas largo primero", GRIS, "^--")]
+    ks = sorted(o[o.k > 0].k.unique())
+    a1.axhline(0, color=NEGRO, lw=1.1)
+    for clave, etq, col, est in reglas:
+        q = o[o.regla.eq(clave)].set_index("k").reindex(ks)
+        a1.plot(range(len(ks)), q.SSPB_pc, est, color=col, lw=2.2, ms=7, label=etq)
+    a1.set_xticks(range(len(ks)))
+    a1.set_xticklabels([str(int(k)) for k in ks])
+    a1.set_xlabel("tareas del proyecto ya cerradas")
+    a1.set_ylabel("sesgo del total (SSPB, %)")
+    a1.legend(loc="lower left", ncol=2, fontsize=10)
+    d3 = float(o[(o.k == 3) & o.regla.str.startswith("d")].SSPB_pc.iloc[0])
+    a3 = float(o[(o.k == 3) & o.regla.str.startswith("a")].SSPB_pc.iloc[0])
+    a1.set_title(f"El orden REAL no mete sesgo: {d3:+.1f} % con tres{NL}"
+                 f"cerradas, frente a {a3:+.1f} % si fuesen al azar".replace(".", ","),
+                 fontsize=12.5)
+
+    # la compresion, en los dos corpus
+    sdA = float(ex[ex.brazo.str.startswith("A")].sd.iloc[0])
+    sdR = float(ex[ex.brazo.str.startswith("REAL")].sd.iloc[0])
+    spA = float(ex[ex.brazo.str.startswith("A")].spearman.iloc[0])
+    corpus = [("los 114 del corpus", sdA, sdR, spA),
+              ("los 186 de Apache", float(ap.sd_A), float(ap.sd_real),
+               float(ap.spearman_A))]
+    x = np.arange(len(corpus))
+    a2.bar(x - .19, [c[1] for c in corpus], .36, color=TINTA,
+           label="dispersion que el modelo predice")
+    a2.bar(x + .19, [c[2] for c in corpus], .36, color=AVISO,
+           label="dispersion real")
+    for i, (_, sp, sr, sc) in enumerate(corpus):
+        a2.text(i - .19, sp + .03, f"{sp:.2f}".replace(".", ","), ha="center",
+                fontsize=11, color=TINTA)
+        a2.text(i + .19, sr + .03, f"{sr:.2f}".replace(".", ","), ha="center",
+                fontsize=11, color=AVISO)
+        a2.text(i, -.135, f"cubre el {sp / sr:.0%} · orden {sc:.2f}".replace(".", ","),
+                ha="center", fontsize=10.5, color=GRIS)
+    a2.set_xticks(x)
+    a2.set_xticklabels([c[0] for c in corpus])
+    a2.set_ylim(0, 1.25)
+    a2.legend(loc="upper left", fontsize=10.5)
+    a2.set_title(f"Se replica en un corpus independiente, y es peor:{NL}"
+                 f"alli solo cubre el {float(ap.sd_A) / float(ap.sd_real):.0%} "
+                 f"del recorrido real", fontsize=12.5)
+    fig.suptitle("Las dos comprobaciones que cierran el argumento",
+                 x=.005, ha="left", fontsize=15, weight="600")
+    guardar(fig, "11_robustez")
+
+
 if __name__ == "__main__":
     for f in (la_trampa, extremos, frontera, canales, intervalos, panel, analogia,
-              total_proyecto, compresion_escala, anclas_escala):
+              total_proyecto, compresion_escala, anclas_escala, robustez):
         try:
             f()
         except Exception as e:

@@ -260,6 +260,44 @@ Apache **ensancha la dispersión** (0,35 → 0,51) pero **destroza el orden** (0
 0,315). La relación entre el texto y la escala es distinta allí: sus convenciones de
 registro no transfieren. Misma conclusión que E38 sacó para la predicción por tarea.
 
+### ¿Y si las tareas que se cierran primero no son una muestra al azar? (E70)
+
+Figura: `reports/figuras_metricas/11_robustez.png`
+
+Toda la curva de anclaje supone que las *k* tareas ya cerradas son un sorteo
+aleatorio. En un equipo real eso es dudoso: se suele empezar por lo fácil, y si las
+primeras en cerrarse fuesen sistemáticamente las más cortas, el desplazamiento
+estimado saldría bajo y el total se quedaría corto. Sería un sesgo que la evaluación
+no ve y el producto sí sufriría.
+
+No hace falta suponer nada, porque el dataset guarda la fecha de cierre:
+**82 proyectos** la tienen en al menos el 80 % de sus tareas, así que se puede
+usar el **orden real**.
+
+| con 3 tareas cerradas | sesgo del total (SSPB) | MdMRE | ±25 % |
+|---|---|---|---|
+| al azar (lo que supone la curva) | −0,3 % | 0,359 | 36,7 % |
+| **el orden REAL de cierre** | **−1,6 %** | **0,335** | **40,2 %** |
+| las que el modelo cree cortas | +5,9 % | 0,414 | 39,0 % |
+| lo más corto primero (el peor caso) | −80,5 % | 0,506 | 19,5 % |
+| lo más largo primero | +60,4 % | 0,604 | 26,8 % |
+
+**El orden real no es una amenaza.** Con tres cerradas el sesgo sigue siendo
+despreciable (−1,6 %, frente a −0,3 % del sorteo: menos de dos puntos de diferencia)
+y la exactitud **mejora**: el MdMRE baja de 0,359 a 0,335 y el ±25 % sube del
+36,7 % al 40,2 %. Los equipos de este corpus no despachan lo más corto primero; al
+contrario, el orden con que cierran de verdad ayuda algo.
+
+**Pero el escenario que sí lo rompería queda medido**, y hay que decirlo: si un equipo
+cerrase de verdad las más cortas primero, el total saldría un −80,5 % con tres cerradas
+y hasta −166,4 % con diez. Es la única condición bajo la cual el anclaje engaña, y es
+observable en producción: basta vigilar si las primeras tareas cerradas de un
+proyecto quedan sistemáticamente por debajo de la mediana del equipo. La variante
+realista —cerrar primero lo que el modelo *cree* corto, que es cómo elige un equipo,
+por tamaño percibido y no por el real— da +5,9 %, inofensivo.
+
+---
+
 ### Y la réplica independiente lo cierra (E71)
 
 Con 114 proyectos la potencia es del 20 %, así que "no significativo" podía
@@ -268,19 +306,33 @@ proyectos sintéticos** —heredarían las relaciones que el modelo ya aprendió
 darían p-valores buenos y falsos— sino replicar en datos reales independientes: los
 **186 proyectos de Apache**, con su propio pipeline montado de cero.
 
-| | ±25 % | McNemar | error en log | Wilcoxon |
-|---|---|---|---|---|
-| Apache, el modelo de escala frente al frío | 23,7 % → 26,9 % | p = 0,31 | 0,541 → **0,590** | p = 0,77 |
-| **Fisher, combinando las dos réplicas** | | **p = 0,28** | | **p = 0,42** |
+Para que el Fisher signifique algo, los dos p-valores tienen que salir del mismo
+procedimiento, así que el del corpus propio se vuelve a medir con el guion espejo
+(**E72**, `src/180_contraste_corpus.py`), que reproduce exactamente la métrica en
+frío publicada (MAE 455,30 · MdMRE 0,3552 · ±25 % 36,84 %).
 
-**No hay efecto.** Y esto cierra la cuestión mucho mejor que "no se pudo demostrar
-con 114 proyectos": se probó en dos corpus independientes y no aparece.
+| corpus | proyectos | ±25 % en frío → corregido | McNemar | error en log | Wilcoxon |
+|---|---|---|---|---|---|
+| el corpus de Agix (E72) | 114 | 36,0 % → 36,8 % | p = 1,00 (12-11) | 0,394 → **0,397** | p = 0,083 |
+| Apache, independiente (E71) | 186 | 23,7 % → 26,9 % | p = 0,31 (15-9) | 0,541 → **0,590** | p = 0,77 |
+| **las dos juntas, con Fisher** | **300** | | **p = 0,67** | | **p = 0,24** |
 
-*(Aquí hubo un fallo propio que habría engañado: la primera versión del contraste
-le quitaba el sesgo solo al brazo corregido, y en Apache el brazo en frío tiene un
-sesgo del +41 %. Así salía Wilcoxon p = 0,045 y Fisher combinado p = 0,048 —
-significativo—, pero esa "mejora" era quitar el sesgo, no ordenar mejor. Con los dos
-brazos centrados, nada.)*
+**No hay efecto**, ni por separado ni combinando. En los dos corpus el error mediano
+en log empeora al corregir, y en Apache solo mejora en 95 de 186 proyectos: la
+mitad justa. Y esto cierra la cuestión mucho mejor que "no se pudo demostrar con 114
+proyectos": se probó en dos corpus reales e independientes y no aparece.
+
+*(Aquí hubo **dos fallos propios**, los dos detectados al revisar y los dos corregidos.
+El primero: la primera versión del contraste le quitaba el sesgo solo al brazo
+corregido, y en Apache el brazo en frío tiene un sesgo del +41 %. Así salía Wilcoxon
+p = 0,045 y Fisher combinado p = 0,048 —significativo—, pero esa "mejora" era quitar
+el sesgo, no ordenar mejor; con los dos brazos centrados, nada. El segundo: el
+p-valor del corpus propio que entraba en el Fisher estaba escrito a mano dentro de
+E71 (0,1862) en vez de leído de un fichero, y además era el de otro contraste
+distinto —el de E68, encoger hacia el modelo—, así que el Fisher combinaba dos cosas
+que no eran comparables. Medido con el procedimiento idéntico al de Apache sale
+0,0833, el Fisher pasa de 0,42 a 0,24, y el cálculo vive ahora en un solo sitio
+que lee los dos ficheros.)*
 
 **En cambio la compresión sí se replica, y es peor:**
 

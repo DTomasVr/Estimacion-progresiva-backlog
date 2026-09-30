@@ -1,0 +1,22 @@
+{
+ "proyectos": 114,
+ "tareas": 24622,
+ "p_wilcoxon": 0.08331280637832339,
+ "p_mcnemar": 1.0,
+ "pred25_frio": 0.35964912280701755,
+ "pred25_corregido": 0.3684210526315789,
+ "err_log_frio": 0.39352506286128874,
+ "err_log_corregido": 0.39720064683366507,
+ "mejora_en": 67,
+ "mcnemar_01": 12,
+ "mcnemar_10": 11,
+ "sd_A": 0.2710161730714112,
+ "sd_modelo": 0.3437439522288386,
+ "sd_real": 0.7910704129133485,
+ "fisher_wilcoxon": 0.23926292322852094,
+ "apache_wilcoxon": 0.7652879431151373,
+ "fisher_mcnemar": 0.6700770681867348,
+ "apache_mcnemar": 0.30745625495910645,
+ "spearman_A": 0.4443287904254673,
+ "spearman_modelo": 0.4799943298029607
+}

@@ -1,0 +1,23 @@
+114 proyectos · vector de proyecto (114, 1024) · 7 agregados · 1 s
+  B · vector medio del proyecto listo · 2 s
+  C · agregados listo · 2 s
+  D · B + C listo · 3 s
+  E · D + lo que hay listo · 3 s
+
+================================================================================================================
+PREDECIR log(horas medias por tarea) DEL PROYECTO
+================================================================================================================
+                                        brazo  err_log     sd  spearman     R2  pendiente
+A · la media de las predicciones (lo que hay)   0.3820 0.2710    0.4443 0.1824     1.3744
+                B · vector medio del proyecto   0.3963 0.3154    0.4568 0.2127     1.1693
+                                C · agregados   0.5126 0.3513    0.3276 0.1109     0.7812
+                                    D · B + C   0.3824 0.3460    0.4685 0.2239     1.0853
+                           E · D + lo que hay   0.3686 0.3556    0.4809 0.2509     1.1209
+                            REAL (referencia)   0.0000 0.7911    1.0000 1.0000     1.0000
+  R2 negativo = peor que decir siempre la media. err_log es el error
+  absoluto mediano en logaritmos; spearman es la calidad del ORDEN
+
+  el mejor por orden es E · D + lo que hay: Spearman 0.4809 frente a 0.4443 de lo que hay
+  -> mejora el orden, merece la pena llevarlo al total
+
+escrito results\predecir_escala/resumen.csv · 3 s

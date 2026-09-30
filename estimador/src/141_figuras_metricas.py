@@ -324,9 +324,47 @@ def compresion_escala():
                  ha="left", fontsize=15, weight="600")
     guardar(fig, "9_compresion_escala")
 
+
+
+def anclas_escala():
+    """Lo que de verdad arregla la escala: tareas cerradas."""
+    import numpy as np
+    r = pd.read_csv("results/anclas_escala/resumen.csv")
+    fig, (a1, a2) = plt.subplots(1, 2, figsize=(12.8, 4.9))
+    xc = np.arange(len(r))
+    a1.axhline(0.791, color=AVISO, lw=1.6, ls="--")
+    a1.text(xc[-1], .791, " dispersion real ", color=AVISO, va="bottom", ha="right",
+            fontsize=10.5)
+    a1.plot(xc, r.sd, "o-", color=TINTA, lw=2.4, ms=8, label="dispersion de la escala")
+    a1.plot(xc, r.spearman, "o-", color=AMBAR, lw=2.4, ms=8,
+            label="calidad del orden (Spearman)")
+    a1.set_xticks(xc)
+    a1.set_xticklabels(["en frio" if k == 0 else str(int(k)) for k in r.k])
+    a1.set_xlabel("tareas del proyecto ya cerradas")
+    a1.set_ylim(0, .95)
+    a1.legend(loc="lower right")
+    a1.set_title("El orden pasa de 0,44 a 0,77 con cinco tareas" + NL +
+                 "y la dispersion se recupera a medias")
+    x = np.arange(len(r))
+    a2.bar(x, r.PRED25, .36, color=TINTA, label="dentro del +-25 %")
+    a2.bar(x + .38, r.factor2, .36, color=AMBAR, label="dentro del factor 2")
+    for i, (p, sig) in enumerate(zip(r.PRED25, r.sorteos_signif)):
+        if i and sig >= .8:
+            a2.text(i, p + .02, "*", ha="center", fontsize=19, color=AVISO)
+    a2.set_xticks(x + .19)
+    a2.set_xticklabels(["en frio" if k == 0 else str(int(k)) for k in r.k])
+    a2.set_xlabel("tareas del proyecto ya cerradas")
+    a2.set_ylim(0, 1.0)
+    a2.legend(loc="upper left", ncol=2)
+    a2.set_title("Y la mejora del total es significativa desde dos" + NL +
+                 "(* = Wilcoxon < 0,05 en al menos el 80 % de los sorteos)")
+    fig.suptitle("Lo unico que arregla la escala, y se puede demostrar",
+                 x=.005, ha="left", fontsize=15, weight="600")
+    guardar(fig, "10_anclas_escala")
+
 if __name__ == "__main__":
     for f in (la_trampa, extremos, frontera, canales, intervalos, panel, analogia,
-              total_proyecto, compresion_escala):
+              total_proyecto, compresion_escala, anclas_escala):
         try:
             f()
         except Exception as e:

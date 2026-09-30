@@ -250,6 +250,23 @@ def main():
                 "texto si el equipo trabaja en tickets de media hora o en tareas de "
                 "ocho; en cuanto cierra una, lo sabe.", "tinta")
 
+    # ---------------------------------------------------------------- 12
+    an = pd.read_csv("results/anclas_escala/resumen.csv").set_index("k")
+    s, y0 = P.lamina(prs, "Lo que sí arregla la escala",
+                     "Y es lo único que se puede demostrar con esta muestra.")
+    P.figura_ajustada(s, f"{FIG}/10_anclas_escala.png", y0, Inches(2.9))
+    P.tabla(s, y0 + Inches(3.05),
+            ["tareas cerradas", "orden de la escala", "MdMRE", "±25 %", "factor 2",
+             "Wilcoxon"],
+            [["ninguna (en frío)", n(an.loc[0, "spearman"]), n(an.loc[0, "MdMRE"]),
+              pc(an.loc[0, "PRED25"]), pc(an.loc[0, "factor2"]), "—"]] +
+            [[str(k), n(an.loc[k, "spearman"]), n(an.loc[k, "MdMRE"]),
+              pc(an.loc[k, "PRED25"]), pc(an.loc[k, "factor2"]),
+              f"p = {an.loc[k, 'p_wilcoxon']:.4f}".replace(".", ",")]
+             for k in (3, 5, 10)],
+            anchos=[Inches(2.2), Inches(2.0), Inches(1.3), Inches(1.3), Inches(1.4),
+                    Inches(1.6)])
+
     SAL.parent.mkdir(parents=True, exist_ok=True)
     prs.save(SAL)
     print(f"escrito {SAL} · {len(prs.slides)} láminas")

@@ -145,7 +145,55 @@ de registro.
 
 ---
 
-## ¿Se puede arreglar la compresión de la escala? (E65–E66)
+## Lo que sí arregla la escala: tareas cerradas (E67–E68)
+
+**Esta es la conclusión operativa de toda la sección.** Figura:
+`reports/figuras_metricas/10_anclas_escala.png`
+
+Anclar con tareas ya cerradas ataca directamente lo que estaba roto — el orden de
+la escala — y, a diferencia de todo lo demás, **se puede demostrar**:
+
+| tareas cerradas | orden de la escala (Spearman) | dispersión | pendiente | MdMRE | ±25 % | factor 2 | Wilcoxon vs frío |
+|---|---|---|---|---|---|---|---|
+| ninguna | 0,444 | 0,271 | 1,374 | 0,355 | 36,8 % | 72,8 % | — |
+| 1 | 0,549 | 0,338 | 1,362 | 0,346 | 37,6 % | 75,3 % | p = 0,015 (73 % de sorteos) |
+| 2 | 0,622 | 0,399 | 1,291 | 0,333 | 38,4 % | 78,0 % | p = 0,0026 (92 %) |
+| **3** | **0,700** | 0,448 | 1,268 | 0,319 | 40,7 % | 80,8 % | **p = 0,0003 (100 %)** |
+| **5** | **0,769** | 0,519 | 1,197 | 0,292 | 43,2 % | 84,4 % | **p < 0,0001 (100 %)** |
+| 10 | 0,780 | 0,553 | 1,140 | 0,260 | 48,4 % | 87,4 % | p < 0,0001 (100 %) |
+
+*(la dispersión real es 0,791; "% de sorteos" es en cuántos de los 60 sorteos de qué
+tareas se cerraron primero el contraste sale por debajo de 0,05)*
+
+**Con cinco tareas cerradas el orden pasa de 0,44 a 0,77.** No queda perfecto —la
+contracción deja algo de compresión a propósito, y la pendiente se queda en 1,20—
+pero es otra cosa. Y desde **dos o tres tareas** la mejora del total es significativa
+en prácticamente todos los sorteos.
+
+**Recomendación de producto:** mostrar la estimación como provisional y recalcularla
+en cuanto el equipo cierre las primeras tres tareas. No hace falta esperar a veinte.
+
+### Y una mejora que no se puede demostrar (E68)
+
+Contraer el anclaje hacia el **modelo de escala** de E66 en vez de hacia cero —
+James-Stein hacia un centro informado en lugar de hacia el origen— es mejor en casi
+todo y tiene sesgo cero por construcción:
+
+| tareas cerradas | MdMRE hacia cero → hacia el modelo | ±25 % | MAE (h) |
+|---|---|---|---|
+| ninguna | 0,355 → 0,355 | 36,8 % → **42,1 %** | 455 → **423** |
+| 1 | 0,346 → **0,335** | 37,6 % → 40,1 % | 423 → 404 |
+| 3 | 0,325 → **0,310** | 38,9 % → 42,1 % | 396 → 383 |
+| 5 | 0,287 → 0,288 | 44,1 % → 44,2 % | 377 → 370 |
+
+Consistente en dirección en los siete valores de k, pero **no significativa en
+ninguno por separado**: en frío, Wilcoxon p = 0,186 y McNemar del ±25 % p = 0,263
+(13 mejoran, 7 empeoran), con IC 95 % [−0,026, +0,123]. Se documenta, no se
+presenta como mejora.
+
+---
+
+## ¿Se puede arreglar la compresión de la escala sin tareas cerradas? (E65–E66)
 
 Sí se puede corregir la escala. **No se nota en el total.**
 

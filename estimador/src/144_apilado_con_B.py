@@ -88,6 +88,7 @@ def main():
     E5 = np.load(CACHE / "e5-large.npy")
     A = np.load(CACHE / "e5-ajustado.npy")
     B = np.load(CACHE / "e5-ajustado-B.npy")
+    C = np.load(CACHE / "e5-ajustado-C.npy")
     SV = np.hstack([sv.transform(tf.transform(tit)).astype(np.float32)
                     for tf, sv in zip((f["tfc"], f["tfw"]), f["svds"])])
     Xd = np.hstack([E5, SV])
@@ -107,14 +108,18 @@ def main():
              "SVR disperso": LinearSVR(C=.3, max_iter=4000, random_state=0).fit(
                  Xs[tr], ly[tr]).predict(Xs),
              "A escalar": hgb().fit(A[tr], ly[tr]).predict(A),
-             "B clasificacion": hgb().fit(B[tr], ly[tr]).predict(B)}
+             "B clasificacion": hgb().fit(B[tr], ly[tr]).predict(B),
+             "C clasificacion + orden": hgb().fit(C[tr], ly[tr]).predict(C)}
     print(f"canales listos · {time.time() - t0:.0f} s", flush=True)
 
-    comb = {"0 · el de siempre (con A)": ["bolsa", "ridge disperso", "SVR disperso", "A escalar"],
-            "1 · con B en lugar de A": ["bolsa", "ridge disperso", "SVR disperso", "B clasificacion"],
-            "2 · con los dos": ["bolsa", "ridge disperso", "SVR disperso", "A escalar",
-                                "B clasificacion"],
-            "3 · sin codificador ajustado": ["bolsa", "ridge disperso", "SVR disperso"]}
+    L = ["bolsa", "ridge disperso", "SVR disperso"]
+    comb = {"0 · el de siempre (con A)": L + ["A escalar"],
+            "1 · con B en lugar de A": L + ["B clasificacion"],
+            "2 · con C en lugar de A": L + ["C clasificacion + orden"],
+            "3 · con A y C": L + ["A escalar", "C clasificacion + orden"],
+            "4 · con los tres": L + ["A escalar", "B clasificacion",
+                                     "C clasificacion + orden"],
+            "5 · sin codificador ajustado": L}
     pred = {"referencia · el artefacto v3": actual}
     for n, ks in comb.items():
         Z = np.column_stack([canal[k] for k in ks])

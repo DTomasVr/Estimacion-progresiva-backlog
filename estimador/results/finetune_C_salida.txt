@@ -1,0 +1,86 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 5213.21it/s]
+[cuda] brazo C · lote 16 · 1041 pasos por epoca · 304M parametros entrenables
+    ep1 paso 40/1041 (4%) · 15 s · faltan 6 min
+    ep1 paso 80/1041 (8%) · 22 s · faltan 4 min
+    ep1 paso 120/1041 (12%) · 30 s · faltan 4 min
+    ep1 paso 160/1041 (15%) · 40 s · faltan 4 min
+    ep1 paso 200/1041 (19%) · 49 s · faltan 3 min
+    ep1 paso 240/1041 (23%) · 60 s · faltan 3 min
+    ep1 paso 280/1041 (27%) · 71 s · faltan 3 min
+    ep1 paso 320/1041 (31%) · 80 s · faltan 3 min
+    ep1 paso 360/1041 (35%) · 90 s · faltan 3 min
+    ep1 paso 400/1041 (39%) · 100 s · faltan 3 min
+    ep1 paso 440/1041 (42%) · 111 s · faltan 3 min
+    ep1 paso 480/1041 (46%) · 120 s · faltan 2 min
+    ep1 paso 520/1041 (50%) · 130 s · faltan 2 min
+    ep1 paso 560/1041 (54%) · 140 s · faltan 2 min
+    ep1 paso 600/1041 (58%) · 151 s · faltan 2 min
+    ep1 paso 640/1041 (62%) · 160 s · faltan 2 min
+    ep1 paso 680/1041 (65%) · 170 s · faltan 1 min
+    ep1 paso 720/1041 (69%) · 179 s · faltan 1 min
+    ep1 paso 760/1041 (73%) · 189 s · faltan 1 min
+    ep1 paso 800/1041 (77%) · 199 s · faltan 1 min
+    ep1 paso 840/1041 (81%) · 209 s · faltan 1 min
+    ep1 paso 880/1041 (85%) · 220 s · faltan 1 min
+    ep1 paso 920/1041 (88%) · 231 s · faltan 1 min
+    ep1 paso 960/1041 (92%) · 242 s · faltan 0 min
+    ep1 paso 1000/1041 (96%) · 253 s · faltan 0 min
+    ep1 paso 1040/1041 (100%) · 264 s · faltan 0 min
+  epoca 1/3 · MSE val 1.6128 · 455 s
+    guardado e5-ajustado-C.npy
+    ep2 paso 40/1041 (4%) · 13 s · faltan 5 min
+    ep2 paso 80/1041 (8%) · 27 s · faltan 5 min
+    ep2 paso 120/1041 (12%) · 44 s · faltan 6 min
+    ep2 paso 160/1041 (15%) · 61 s · faltan 6 min
+    ep2 paso 200/1041 (19%) · 79 s · faltan 5 min
+    ep2 paso 240/1041 (23%) · 96 s · faltan 5 min
+    ep2 paso 280/1041 (27%) · 114 s · faltan 5 min
+    ep2 paso 320/1041 (31%) · 133 s · faltan 5 min
+    ep2 paso 360/1041 (35%) · 151 s · faltan 5 min
+    ep2 paso 400/1041 (39%) · 169 s · faltan 5 min
+    ep2 paso 440/1041 (42%) · 187 s · faltan 4 min
+    ep2 paso 480/1041 (46%) · 205 s · faltan 4 min
+    ep2 paso 520/1041 (50%) · 222 s · faltan 4 min
+    ep2 paso 560/1041 (54%) · 240 s · faltan 3 min
+    ep2 paso 600/1041 (58%) · 261 s · faltan 3 min
+    ep2 paso 640/1041 (62%) · 279 s · faltan 3 min
+    ep2 paso 680/1041 (65%) · 297 s · faltan 3 min
+    ep2 paso 720/1041 (69%) · 315 s · faltan 2 min
+    ep2 paso 760/1041 (73%) · 334 s · faltan 2 min
+    ep2 paso 800/1041 (77%) · 353 s · faltan 2 min
+    ep2 paso 840/1041 (81%) · 371 s · faltan 1 min
+    ep2 paso 880/1041 (85%) · 389 s · faltan 1 min
+    ep2 paso 920/1041 (88%) · 407 s · faltan 1 min
+    ep2 paso 960/1041 (92%) · 425 s · faltan 1 min
+    ep2 paso 1000/1041 (96%) · 443 s · faltan 0 min
+    ep2 paso 1040/1041 (100%) · 462 s · faltan 0 min
+  epoca 2/3 · MSE val 1.4080 · 592 s
+    guardado e5-ajustado-C.npy
+    ep3 paso 40/1041 (4%) · 23 s · faltan 9 min
+    ep3 paso 80/1041 (8%) · 46 s · faltan 9 min
+    ep3 paso 120/1041 (12%) · 70 s · faltan 9 min
+    ep3 paso 160/1041 (15%) · 91 s · faltan 8 min
+    ep3 paso 200/1041 (19%) · 112 s · faltan 8 min
+    ep3 paso 240/1041 (23%) · 133 s · faltan 7 min
+    ep3 paso 280/1041 (27%) · 155 s · faltan 7 min
+    ep3 paso 320/1041 (31%) · 177 s · faltan 7 min
+    ep3 paso 360/1041 (35%) · 199 s · faltan 6 min
+    ep3 paso 400/1041 (39%) · 219 s · faltan 6 min
+    ep3 paso 440/1041 (42%) · 242 s · faltan 5 min
+    ep3 paso 480/1041 (46%) · 264 s · faltan 5 min
+    ep3 paso 520/1041 (50%) · 285 s · faltan 5 min
+    ep3 paso 560/1041 (54%) · 305 s · faltan 4 min
+    ep3 paso 600/1041 (58%) · 328 s · faltan 4 min
+    ep3 paso 640/1041 (62%) · 350 s · faltan 4 min
+    ep3 paso 680/1041 (65%) · 373 s · faltan 3 min
+    ep3 paso 720/1041 (69%) · 396 s · faltan 3 min
+    ep3 paso 760/1041 (73%) · 417 s · faltan 3 min
+    ep3 paso 800/1041 (77%) · 438 s · faltan 2 min
+    ep3 paso 840/1041 (81%) · 461 s · faltan 2 min
+    ep3 paso 880/1041 (85%) · 483 s · faltan 1 min
+    ep3 paso 920/1041 (88%) · 505 s · faltan 1 min
+    ep3 paso 960/1041 (92%) · 529 s · faltan 1 min
+    ep3 paso 1000/1041 (96%) · 551 s · faltan 0 min
+    ep3 paso 1040/1041 (100%) · 573 s · faltan 0 min
+  epoca 3/3 · MSE val 1.4202 · 682 s

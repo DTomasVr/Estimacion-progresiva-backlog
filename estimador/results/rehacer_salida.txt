@@ -1,0 +1,27 @@
+
+>>> 165_total_ampliado.py · modelo del total, con todos los canales
+    escrito results\total_ampliado/resumen.csv · 290 s
+
+>>> elegir el mejor brazo y publicarlo como pred_total.npy
+  brazo elegido: 1 · + lineal disperso de Poisson  (gana 3 de 4 metricas)
+  MdMRE        0.3552 · R2_log       0.8167 · PRED25       0.3684 · factor2      0.7281 · MAE_h      455.2991
+
+>>> 159_curva_final.py · curva de tareas cerradas
+    escrito results\curva_final/resumen.csv
+
+>>> 161_banda_proyecto.py · intervalos
+    escrito results\banda_proyecto/resumen.csv
+
+>>> 162_ejemplos_proyecto.py · ejemplos concretos
+    escrito results\ejemplos_proyecto/proyectos.csv
+
+>>> 164_estimacion_usuario_proyecto.py · estimacion del usuario
+    escrito results\usuario_proyecto/resumen.csv · 93 s
+
+>>> 141_figuras_metricas.py · figuras
+       reports/figuras_metricas/8_total_proyecto.png
+
+>>> 152_pptx_exposicion.py · deck
+    escrito entrega\presentaciones\6_metrica_de_proyecto.pptx · 11 láminas
+
+cadena rehecha en 401 s

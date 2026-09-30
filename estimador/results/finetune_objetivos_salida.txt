@@ -1,0 +1,13 @@
+[cuda] train 16,648 · val 3,183 · 44 clases
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+  ajustando B · cabeza de clasificacion
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 5806.69it/s]
+    epoca 1/3 · MSE val 1.5151 · 2992 s
+[transformers] `use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.
+    epoca 2/3 · MSE val 1.4123 · 3369 s
+    epoca 3/3 · MSE val 1.4146 · 3397 s
+
+  ajustando C · clasificacion + ordenacion
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights:  76%|███████▌  | 296/391 [00:00<00:00, 2947.98it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 3163.79it/s]
+    epoca 1/3 · MSE val 1.5459 · 3823 s

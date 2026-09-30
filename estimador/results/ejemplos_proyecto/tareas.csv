@@ -1,8 +1,8 @@
 titulo,est,real,razon
-Develop integration tests for ConfigurationParser implementations,7.960549547912378,8.0,0.9950686934890473
-Multiple @ResourceBundles declarations causes IllegalStateException,3.163919905000931,3.0,1.0546399683336436
-Migrate build from Maven to Spring Build,4.3847814926090765,4.0,1.0961953731522691
-Circular dependencies in Javaconfig raise StackOverflow Error,2.8668541558863834,2.5,1.1467416623545534
-Add option to @Import for importing configuration into sub ApplicationContext,5.580696489577644,0.75,7.440928652770192
-Point SJC FishEye at src.springframework.org SVN,5.9885546999753165,0.16666666666666666,35.931328199851905
-Point SJC Bamboo at src.springframework.org,16.444967805518033,0.25,65.77987122207213
+There is no mention of `etc/jolokia-access.xml`,2.8569461057228733,3.0,0.9523153685742911
+There should be a list of camel components which are supported or not-supported with FIS 2.0,7.287638833865258,8.0,0.9109548542331573
+Broken link to openshift-maven-plugin in 7.9 release notes,4.367525988164371,4.0,1.0918814970410928
+"A-MQ Client Connectivity Guide - few typos, repeating words, etc..",3.5045161175302244,4.0,0.8761290293825561
+Several links in documentation tab are not working in Languages page,5.558642549509183,0.5,11.117285099018366
+Supported patch level inconsistency,5.830155127730951,0.5,11.660310255461901
+Configuration to securely access maven repository using basic authentication in fabric environment.,12.157030805810924,1.0,12.157030805810924

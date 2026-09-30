@@ -22,22 +22,31 @@ por proyecto.
 | historial del proyecto | MAE (h) | RMSE (h) | MdMRE | **R² log** | **±25 %** | ±50 % | **factor 2** | sesgo |
 |---|---|---|---|---|---|---|---|---|
 | constante (no lee el texto) | 886 | 2046 | 0,694 | 0,364 | 8,8 % | 22,8 % | 24,6 % | −203 % |
-| **en frío** | **459** | **1104** | **0,372** | **0,815** | **36,8 %** | 60,5 % | **71,9 %** | +3,7 % |
-| con 1 tarea cerrada | 423 | 922 | 0,338 | 0,842 | 41,2 % | 65,8 % | 74,6 % | +0,2 % |
-| con 3 tareas cerradas | 366 | 824 | 0,283 | 0,881 | 44,7 % | 71,9 % | 80,7 % | −2,7 % |
-| **con 5 tareas cerradas** | **329** | **748** | **0,263** | **0,909** | **48,3 %** | 77,2 % | **85,1 %** | −0,5 % |
-| con 10 tareas cerradas | 284 | 717 | 0,223 | 0,919 | 51,8 % | 80,7 % | 88,6 % | +0,1 % |
-| con 20 tareas cerradas | **169** | **336** | **0,174** | 0,912 | **63,2 %** | 79,8 % | 87,7 % | +1,3 % |
+| **en frío** | **455** | **1090** | **0,355** | **0,817** | **36,8 %** | 60,5 % | **72,8 %** | −0,3 % |
+| con 1 tarea cerrada | 421 | 914 | 0,341 | 0,844 | 39,5 % | 64,9 % | 75,4 % | −4,6 % |
+| con 3 tareas cerradas | 365 | 816 | 0,281 | 0,882 | 45,6 % | 71,1 % | 79,8 % | −5,7 % |
+| **con 5 tareas cerradas** | **326** | **736** | **0,256** | **0,910** | **48,3 %** | 74,6 % | **82,5 %** | −2,5 % |
+| con 10 tareas cerradas | 281 | 702 | 0,219 | 0,920 | 51,8 % | 79,8 % | 88,6 % | −1,4 % |
+| con 20 tareas cerradas | **170** | **336** | **0,186** | 0,913 | **63,2 %** | 79,0 % | 87,7 % | +0,5 % |
 
 Por tamaño de proyecto, en frío:
 
 | tareas | proyectos | MdMRE | ±25 % | factor 2 | MdMRE del constante |
 |---|---|---|---|---|---|
-| 8–15 | 29 | 0,495 | 31,0 % | 62,1 % | 0,712 |
-| 16–40 | 18 | 0,458 | 33,3 % | 66,7 % | 0,762 |
-| 41–120 | 31 | 0,321 | 45,2 % | 61,3 % | 0,738 |
-| 121–400 | 23 | 0,360 | 26,1 % | 91,3 % | 0,656 |
-| más de 400 | 13 | **0,232** | **53,8 %** | **92,3 %** | 0,607 |
+| 8–15 | 29 | 0,510 | 27,6 % | 62,1 % | 0,712 |
+| 16–40 | 18 | 0,438 | 38,9 % | 72,2 % | 0,762 |
+| 41–120 | 31 | 0,290 | 45,2 % | 58,1 % | 0,738 |
+| 121–400 | 23 | 0,358 | 26,1 % | 95,7 % | 0,656 |
+| más de 400 | 13 | **0,236** | **53,8 %** | 92,3 % | 0,607 |
+
+Tres proyectos reales, el de **error mediano** de cada tramo (la mitad de su tramo
+sale mejor y la mitad peor), con su intervalo al 80 %:
+
+| tamaño | proyecto | tareas | estimado | real | error | intervalo al 80 % | dentro |
+|---|---|---|---|---|---|---|---|
+| pequeño | RedHat:WFCORE | 8 | 43 h | 87 h | −51 % | 12 a 113 h | sí |
+| mediano | RedHat:FUSEDOC | 37 | 261 h | 183 h | +43 % | 100 a 495 h | sí |
+| grande | JSWCLOUD | 226 | 1885 h | 1410 h | +34 % | 1008 a 2750 h | sí |
 
 ---
 
@@ -57,7 +66,7 @@ objetivo equivocado, el problema es el objetivo.
 
 El modelo del total es el mismo conjunto pero con **pérdida de Poisson sobre horas**:
 bolsa de 5, canal de TF-IDF y canal de analogía, apilados también con Poisson.
-Mejora MdMRE (0,438 → 0,372), MAE, RMSE, ±50 % y factor 2 a la vez, y deja el
+Mejora MdMRE (0,438 → 0,355), MAE, RMSE, ±50 % y factor 2 a la vez, y deja el
 ±25 % prácticamente igual.
 
 ### 2 · Anclar con el cociente de sumas, no con la mediana de cocientes (E53)
@@ -78,11 +87,11 @@ tareas el desplazamiento crudo es ruido.
 ### 3 · Por qué sumar funciona, y por qué no llega a cero
 
 **A favor:** los errores de tareas distintas se cancelan al sumar. El MdMRE pasa de
-0,741 por tarea a 0,372 por proyecto.
+0,741 por tarea a 0,355 por proyecto.
 
 **En contra:** no son independientes. Hay un error **común a todo el proyecto** —el
 modelo lo sitúa entero alto o bajo— que ninguna suma cancela. Por eso los proyectos
-de más de 400 tareas se quedan en MdMRE 0,232 y no en cero, y por eso conocer una
+de más de 400 tareas se quedan en MdMRE 0,236 y no en cero, y por eso conocer una
 sola tarea real ya mejora tanto.
 
 ---
@@ -114,17 +123,18 @@ Medido sobre los **43 proyectos** que tienen estimación de usuario en al menos 
 | | MAE (h) | MdMRE | R² | **±25 %** | ±50 % | sesgo |
 |---|---|---|---|---|---|---|
 | constante | 1040 | 0,738 | 0,171 | 4,7 % | 16,3 % | −282 % |
-| el modelo en frío | 590 | 0,348 | 0,919 | 44,2 % | 69,8 % | −4,4 % |
-| estimación del usuario en crudo | 302 | **0,167** | 0,957 | 62,8 % | 86,0 % | +12,5 % |
-| corregida con error cuadrático | 452 | 0,272 | 0,936 | 46,5 % | 95,3 % | −31,2 % |
-| **corregida con Poisson** | 305 | 0,171 | **0,959** | **69,8 %** | 93,0 % | −13,3 % |
+| el modelo en frío | 586 | 0,332 | 0,921 | 44,2 % | 69,8 % | −5,9 % |
+| estimación del usuario en crudo | 302 | **0,167** | 0,957 | 62,8 % | 86,0 % | +12,1 % |
+| corregida con error cuadrático | 446 | 0,273 | 0,933 | 39,5 % | 90,7 % | −35,5 % |
+| **corregida con Poisson** | **301** | 0,183 | **0,958** | **65,1 %** | **95,3 %** | −13,1 % |
 
 **Decisión de producto:** el formulario debe pedir una estimación. Pasar de 44,2 %
-a 69,8 % de proyectos dentro del ±25 % es la diferencia entre una herramienta que
-orienta y una con la que se puede negociar un plazo.
+a 65,1 % de proyectos dentro del ±25 %, y de 69,8 % a 95,3 % dentro del ±50 %, es
+la diferencia entre una herramienta que orienta y una con la que se puede negociar
+un plazo.
 
 **Aviso obligado:** estos 43 proyectos son más fáciles que el conjunto de 114 (el
-modelo en frío saca R² 0,919 aquí y 0,815 allí), así que **estas cifras no son
+modelo en frío saca R² 0,921 aquí y 0,817 allí), así que **estas cifras no son
 comparables con la tabla principal**. Lo comparable es la diferencia entre brazos
 dentro de esta misma tabla.
 
@@ -144,7 +154,7 @@ elegidos dejando fuera cada proyecto:
 
 | | MAE | RMSE | MdMRE | R² | ±25 % | factor 2 |
 |---|---|---|---|---|---|---|
-| en frío (solo ascendente) | 459 | 1104 | 0,372 | 0,815 | 36,8 % | 71,9 % |
+| en frío (solo ascendente) | 455 | 1090 | 0,355 | 0,817 | 36,8 % | 72,8 % |
 | **combinada con historial** | 468 | 1194 | **0,352** | **0,829** | 36,8 % | 71,1 % |
 
 **Supuesto que hay que declarar:** la descendente usa los totales **reales** de otros
@@ -184,10 +194,13 @@ factor 2 ni se mueve.
 3. **Tarea a tarea el problema sigue siendo difícil**: el tamaño del efecto frente al
    azar es pequeño (Δ de Glass 0,203). El valor del modelo está en el total del
    proyecto y en corregir la estimación del usuario, no en clavar una tarea suelta.
-4. **La cifra en frío es conservadora.** El canal del codificador ajustado de extremo
-   a extremo, que sí aporta (E35 brazo C), no entra en la validación cruzada por
-   proyecto sin reajustarlo por pliegue, porque vio las etiquetas de los proyectos que
-   cada pliegue deja fuera. El modelo desplegado lo lleva.
+4. **El codificador ajustado de extremo a extremo no aporta al total.** Aporta a la
+   predicción por tarea (E35 brazo C: R² del apilado 0,199 → 0,204), pero no se podía
+   meter en la validación cruzada por proyecto sin reajustarlo por pliegue, porque vio
+   las etiquetas de los proyectos que cada pliegue deja fuera. Se reajustó por pliegue
+   (E54, 90 minutos de GPU) y el resultado es que **empeora** el total: MdMRE 0,355 →
+   0,434. Así que la cifra en frío de arriba no tiene asteriscos ni está esperando una
+   mejora escondida.
 
 ---
 
@@ -203,7 +216,7 @@ factor 2 ni se mueve.
   compensación de errores. O sea: que las tareas sueltas fallen y el total acierte
   no es una excusa nuestra, es un resultado conocido.
 
-  Nuestro MMRE por proyecto en frío es 0,81 y el MdMRE 0,372, peores que su 0,23.
+  Nuestro MMRE por proyecto en frío es 0,81 y el MdMRE 0,355, peores que su 0,23.
   La diferencia esperable es el corpus: ellos usan proyectos de organizaciones
   concretas con prácticas de registro homogéneas, y aquí hay 114 proyectos de
   fuentes distintas, algunos con tareas registradas a 0,05 h.

@@ -113,6 +113,38 @@ sola tarea real ya mejora tanto.
 
 ---
 
+## Dónde falla, y por qué (E61)
+
+El MdMRE de 0,355 es una mediana: hay proyectos que fallan por factores de cinco.
+No están repartidos al azar. Agrupando por el **tamaño típico de tarea** del
+proyecto:
+
+| mediana de horas por tarea | proyectos | MdMRE | ±25 % | factor 2 | sesgo |
+|---|---|---|---|---|---|
+| menos de 0,5 h | 6 | **4,36** | 0 % | 0 % | ×5,36 |
+| 0,5–1 h | 18 | 0,708 | 16,7 % | 61,1 % | ×1,71 |
+| 1–2 h | 34 | 0,373 | 35,3 % | 76,5 % | ×1,31 |
+| **2–4 h** | 29 | **0,193** | **65,5 %** | **93,1 %** | ×0,89 |
+| más de 4 h | 27 | 0,386 | 29,6 % | 70,4 % | ×0,61 |
+
+Los ocho proyectos que peor salen son **todos** de JiraPublico, con medianas de
+0,5 a 2 h por tarea y hasta un 37 % de tareas por debajo de 0,25 h. Un proyecto
+que registra 57 tareas con mediana de 0,5 h no está midiendo esfuerzo de
+desarrollo.
+
+**La lectura correcta no es "el dato es malo", es que el modelo comprime la escala
+del proyecto**: a los que van a 0,5 h por tarea les predice ~3 h, y a los que van a
+7 h les predice ~4 h. Es la misma compresión que se ve por tarea, ahora visible por
+proyecto. Y explica por qué una sola tarea cerrada ya mejora tanto: es la única
+información sobre la escala que el texto no da.
+
+Quitando los 14 proyectos con menos de 1 h por tarea, el MdMRE pasa de 0,355 a
+0,327 y el ±25 % del 36,8 % al 41,0 %. **Eso no es una mejora del modelo**, es medir
+sobre otro subconjunto; sirve solo para saber cuánto de la cifra se lleva el ruido
+de registro.
+
+---
+
 ## El hilo que recorre toda la sección: mediana frente a media
 
 Tres veces, en tres sitios distintos, el mismo fallo:

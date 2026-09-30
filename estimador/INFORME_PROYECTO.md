@@ -145,6 +145,58 @@ de registro.
 
 ---
 
+## ¿Se puede arreglar la compresión de la escala? (E65–E66)
+
+Sí se puede corregir la escala. **No se nota en el total.**
+
+El orden no es malo: el Spearman entre la escala predicha y la real es **0,444**. El
+modelo sí sabe qué proyecto es más grande; solo se queda corto de recorrido. Eso
+abre tres vías, todas de la literatura:
+
+| método | dispersión | error de escala | pendiente |
+|---|---|---|---|
+| sin tocar | 0,271 | 0,382 | 1,374 |
+| mapeo de cuantiles (corrección de sesgo, climatología) | **0,781** | 0,447 | 0,428 |
+| calibración lineal en log | 0,369 | **0,347** | 0,934 |
+| cambio de etiqueta (BBSE, Lipton et al. 2018) | 1,828 | 1,181 | 0,181 |
+| *(real, referencia)* | *0,791* | — | *1,0* |
+
+El **mapeo de cuantiles** deja la dispersión clavada (0,781 frente a 0,791) pero
+empeora el error puntual: es el canje conocido entre calibrar la distribución y
+acertar cada caso. El **cambio de etiqueta** se pasa de largo — con 8 a 20 tareas por
+proyecto, el reparto observado de predicciones es demasiado ruidoso para invertir la
+matriz de confusión.
+
+Mejor camino: **predecir la escala como problema propio**, con rasgos de proyecto
+(vector medio de sus tareas + agregados), en vez de promediar predicciones por tarea
+ya aplastadas:
+
+| | error de escala | dispersión | **Spearman** | R² | pendiente |
+|---|---|---|---|---|---|
+| la media de las predicciones | 0,382 | 0,271 | 0,444 | 0,182 | 1,374 |
+| vector medio + agregados | 0,382 | 0,346 | 0,469 | 0,224 | 1,085 |
+| **+ la media como rasgo** | **0,369** | 0,356 | **0,481** | **0,251** | **1,121** |
+
+Mejora el orden y la pendiente, que es justo lo que estaba roto.
+
+**Y aun así, en el total no se nota:** MdMRE 0,355 → 0,336, MAE 455 → 410,
+±25 % 36,8 % → 39,5 %. El contraste dice que eso es ruido:
+
+- Wilcoxon pareado **p = 0,441**, con mejora en 62 de 114 proyectos
+- McNemar del ±25 % **p = 0,711** (16 mejoran, 13 empeoran)
+- IC 95 % de la diferencia de error **[−0,094, +0,105]**, que cruza el cero
+
+Con 114 proyectos no hay potencia para ver una mejora de ese tamaño. **No se
+presenta como mejora.** Lo que sí está establecido, y con significancia, es que
+**una sola tarea cerrada arregla la escala**: es la única información sobre ella que
+el texto no da.
+
+*(Nota metodológica: la primera versión ajustaba el SVD del vector de proyecto con
+los 114 proyectos incluido el evaluado. Con el SVD dentro del pliegue, el Spearman
+baja de 0,521 a 0,481 y el ±25 % de 43,0 % a 39,5 %.)*
+
+---
+
 ## El hilo que recorre toda la sección: mediana frente a media
 
 Tres veces, en tres sitios distintos, el mismo fallo:

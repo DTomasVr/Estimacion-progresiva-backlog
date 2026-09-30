@@ -1,0 +1,16 @@
+{
+ "estimadores": [
+  "ascendente smearing",
+  "ascendente Poisson",
+  "ascendente analogia",
+  "descendente k=5",
+  "ascendente Poisson sin sesgo"
+ ],
+ "pesos_lectura": [
+  0.058823230311242654,
+  0.43060171593623864,
+  0.034091211441624664,
+  0.41076058527081327,
+  0.0657232570400809
+ ]
+}

@@ -1,0 +1,25 @@
+800 reescrituras · 800 con horas reales · 1 s
+  reparto por particion: {'test': 400, 'externo': 400}
+  se evalua sobre 800 tareas fuera del entrenamiento
+  estimador cargado · 4 s
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 8145.74it/s]
+  bloque 1 listo · 29 s
+
+====================================================================================================
+EL FACTOR DE ESTILO PARA LA CABEZA DE LA MEDIA
+====================================================================================================
+                bloque   n  sesgo_original  sesgo_reescrito  factor  mediana_cociente  horas_reales  horas_original  horas_reescrito
+fuera de entrenamiento 800          1.0018           1.3775  0.7273            0.7353      4950.775       4959.7285        6819.6586
+
+====================================================================================================
+LECTURA
+====================================================================================================
+  sobre el texto ORIGINAL   la suma predicha es el 1.002 de la real
+  sobre el texto REESCRITO  la suma predicha es el 1.377 de la real
+  -> el estilo del generador multiplica el total por 1.375
+  -> el factor que lo corrige es 0.7273
+
+  el de la cabeza de la MEDIANA, que ya esta en el artefacto, es 0.8313
+  NO son el mismo (difieren 0.104): hay que usar el medido aqui para el total
+
+escrito results\estilo_total/resumen.csv · 30 s

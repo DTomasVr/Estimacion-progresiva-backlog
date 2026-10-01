@@ -522,6 +522,39 @@ Cuantiles empíricos de `log(real / estimado)` sobre los 114 proyectos de evalua
 
 ---
 
+### 6,4 · Enganche con el generador de backlog
+
+El estimador no recibe texto de Jira en produccion: recibe **lo que escribe el generador
+de historias y tareas** de Agix. Son dos repositorios distintos y los une
+`src/34_estimacion.py` (en el repositorio del generador), que toma la salida del
+generador y le pone horas.
+
+Dos detalles del enganche que no son opcionales:
+
+**1 · Se le pasa el INGLES.** El generador trabaja en ingles internamente y solo traduce
+al final, asi que el adaptador usa `h["tareas"]` y nunca `h["tareas_es"]`. Pasarle el
+espanol seria salirse del contrato sin que nada fallase: solo acertaria menos.
+
+**2 · El factor de estilo del total NO es el de la mediana (E74).** La cabeza A
+multiplica por 0,8313 para compensar que el texto del generador es mas escueto que un
+titulo de Jira. La cabeza B no aplica nada, y el factor de la cabeza A no vale: son dos
+modelos con perdidas distintas. Medido sobre las 800 tareas reales ya reescritas al
+estilo del generador, todas fuera del entrenamiento, con cociente de sumas:
+
+| texto de entrada | suma predicha / suma real |
+|---|---|
+| titulo original de Jira | **1,0018** — calibrado |
+| el mismo contenido en estilo del generador | **1,3775** |
+| **factor que lo corrige** | **0,7273** |
+
+Sin esa correccion **el total del proyecto sale un 37 % alto**. Con ella, la media por
+tarea de un backlog generado queda en 6,3 h, que es la media del corpus (6,11 h).
+
+El factor se aplica **antes** del anclaje con tareas cerradas, no despues: la contraccion
+de James-Stein hace que no se cancele solo.
+
+---
+
 ## 7 · Contrato de la interfaz
 
 ```python

@@ -16,7 +16,12 @@ sys.path.insert(0, "src")
 import pptx_comun as P  # noqa: E402
 
 warnings.filterwarnings("ignore")
-SAL = Path("entrega/presentaciones/6_metrica_de_proyecto.pptx")
+# --sin-nube quita la lamina del diagrama de dispersion de la escala: es un
+# resultado honesto, pero en una presentacion de resultados no se quiere empezar
+# ensenando la nube horizontal. El resto del deck no cambia.
+SIN_NUBE = "--sin-nube" in sys.argv
+SAL = Path("entrega/presentaciones/" + ("7_metricas_sin_nube.pptx" if SIN_NUBE
+                                        else "6_metrica_de_proyecto.pptx"))
 FIG = "reports/figuras_metricas"
 
 
@@ -34,6 +39,7 @@ def main():
     tam = pd.read_csv("results/curva_final/por_tamano.csv")
     ana = pd.read_csv("results/analogia/resumen.csv")
     pan = pd.read_csv("results/panel/panel.csv")
+    canc = pd.read_csv("results/cancelacion/resumen.csv").set_index("unidad")
     frio = tot.loc["1 · en frio"]
     k5 = tot.loc["2 · con 5 tareas cerradas"]
     cte = tot.loc["0 · constante (n x mediana)"]
@@ -79,11 +85,45 @@ def main():
             anchos=[Inches(3.1), Inches(1.2), Inches(1.3), Inches(1.1), Inches(1.0),
                     Inches(1.1), Inches(1.2)])
 
+    # ------------------------------------------------- 2b · estado del arte
+    lit = pd.read_csv("results/baselines_literatura.csv").set_index("modelo")
+    s, y0 = P.lamina(prs, "Frente al estado del arte",
+                     "Las dos comparaciones que se pueden hacer, y por qué son dos.")
+    y = P.tabla(s, y0, ["por TAREA · 24 proyectos, protocolo de la literatura",
+                        "MdMRE", "±25 %", "MAE (h)", "gana a la base"],
+                [[k, n(v.MdMRE), pc(v.PRED25), n(v.MAE_h, 2), v.gana_base]
+                 for k, v in lit.iterrows()],
+                anchos=[Inches(4.6), Inches(1.3), Inches(1.2), Inches(1.3),
+                        Inches(1.6)],
+                resaltar={1: P.SUAVE})
+    y = P.tabla(s, y + Inches(0.3),
+                ["por PROYECTO · 114 proyectos, lo que se presenta",
+                 "MdMRE", "±25 %", "MAE (h)", "R²"],
+                [["constante (no lee el texto)", n(cte.MdMRE), pc(cte.PRED25),
+                  n(cte.MAE_h, 0), n(cte.R2_log)],
+                 ["nuestro modelo, en frío", n(frio.MdMRE), pc(frio.PRED25),
+                  n(frio.MAE_h, 0), n(frio.R2_log)],
+                 ["nuestro, con 5 tareas cerradas", n(k5.MdMRE), pc(k5.PRED25),
+                  n(k5.MAE_h, 0), n(k5.R2_log)]],
+                anchos=[Inches(4.6), Inches(1.3), Inches(1.2), Inches(1.3),
+                        Inches(1.6)],
+                resaltar={1: P.SUAVE})
+    P.veredicto(s, y + Inches(0.26), "Por qué no hay una sola tabla",
+                "Deep-SE y GPT2SP estiman la INCIDENCIA individual, que es lo que esa "
+                "línea publica; se reimplementaron y se midieron sobre los mismos datos "
+                "y con su mismo protocolo, y ahí vamos a la par. Ninguno reporta el "
+                "TOTAL del proyecto a partir del texto, así que a ese nivel el contraste "
+                "obligatorio es contra el control constante, y se le gana por más del "
+                "doble en MdMRE y por cuatro veces en ±25 %.", "tinta")
+
     # ---------------------------------------------------------------- 3
     s, y0 = P.lamina(prs, "Por qué sumar funciona", "Y por qué no llega a cero.")
     P.vinetas(s, y0, [
-        "A favor: los errores de tareas distintas se cancelan al sumar. El MdMRE pasa "
-        "de 0,741 por tarea a " + n(frio.MdMRE) + " por proyecto.",
+        "A favor: los errores de tareas distintas se cancelan al sumar. Con las MISMAS "
+        "predicciones, el MdMRE pasa de " + n(canc.loc["por tarea", "MdMRE"]) +
+        " por tarea a " + n(canc.loc["por proyecto", "MdMRE"]) + " por proyecto: "
+        "sumar lo divide por " + n(canc.loc["por tarea", "MdMRE"] /
+                                   canc.loc["por proyecto", "MdMRE"], 2) + ".",
         "En contra: hay un error COMÚN a todo el proyecto —el modelo lo sitúa entero "
         "alto o bajo— que ninguna suma cancela. Por eso los proyectos de más de 400 "
         "tareas se quedan en MdMRE " + n(float(tam.MdMRE.iloc[-1])) + " y no en cero.",
@@ -248,17 +288,18 @@ def main():
     ], tam=15)
 
     # ---------------------------------------------------------------- 11
-    s, y0 = P.lamina(prs, "Lo que el texto no dice",
-                     "Por qué una sola tarea cerrada mejora tanto.")
-    P.figura_ajustada(s, f"{FIG}/9_compresion_escala.png", y0, Inches(3.0))
     cc = pd.read_json("results/contraste_corpus/meta.json", typ="series")
-    P.veredicto(s, y0 + Inches(3.2), "El diagnóstico, en una frase",
-                f"El número de tareas del proyecto se conoce exacto (coeficiente 1,001) "
-                f"y el tamaño típico de tarea se predice con solo el "
-                f"{cc.sd_A / cc.sd_real * 100:.0f} % de su dispersión real "
-                f"({n(cc.sd_A, 2)} frente a {n(cc.sd_real, 2)}). El modelo no puede "
-                f"saber por el texto si el equipo trabaja en tickets de media hora o en "
-                f"tareas de ocho; en cuanto cierra una, lo sabe.", "tinta")
+    if not SIN_NUBE:
+        s, y0 = P.lamina(prs, "Lo que el texto no dice",
+                         "Por qué una sola tarea cerrada mejora tanto.")
+        P.figura_ajustada(s, f"{FIG}/9_compresion_escala.png", y0, Inches(3.0))
+        P.veredicto(s, y0 + Inches(3.2), "El diagnóstico, en una frase",
+                    f"El número de tareas del proyecto se conoce exacto (coeficiente "
+                    f"1,001) y el tamaño típico de tarea se predice con solo el "
+                    f"{cc.sd_A / cc.sd_real * 100:.0f} % de su dispersión real "
+                    f"({n(cc.sd_A, 2)} frente a {n(cc.sd_real, 2)}). El modelo no puede "
+                    f"saber por el texto si el equipo trabaja en tickets de media hora "
+                    f"o en tareas de ocho; en cuanto cierra una, lo sabe.", "tinta")
 
     # ---------------------------------------------------------------- 12
     an = pd.read_csv("results/anclas_escala/resumen.csv").set_index("k")

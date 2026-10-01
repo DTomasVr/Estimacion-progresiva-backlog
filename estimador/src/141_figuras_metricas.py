@@ -3,6 +3,7 @@
 Todas las cifras se leen de los CSV de resultados en tiempo de ejecucion.
 """
 import os
+import re
 
 import matplotlib
 import matplotlib.pyplot as plt
@@ -246,10 +247,16 @@ def total_proyecto():
     a1.set_ylabel("horas estimadas")
     a1.set_title("114 proyectos, todos predichos como si fuesen nuevos" + NL +
                  "las lineas de puntos son +-25 % y factor 2")
-    ks = ["1 · en frio"] + [f"2 · con {k} tarea{'s' if k > 1 else ''} "
-                            f"cerrada{'s' if k > 1 else ''} (cociente de sumas)"
-                            for k in (1, 3, 5, 10, 20)]
-    v = r.set_index("brazo").reindex(ks)
+    # Las etiquetas se leen del CSV. Antes estaban escritas a mano con un sufijo
+    # "(cociente de sumas)" que el CSV no tiene, asi que el reindex devolvia NaN y
+    # la curva no se dibujaba: solo salia el punto de "en frio".
+    br = r.set_index("brazo")
+    cerradas = sorted([b for b in br.index if b.startswith("2 · con ")],
+                      key=lambda b: int(re.search(r"con (\d+)", b).group(1)))
+    ks = ["1 · en frio"] + cerradas
+    v = br.reindex(ks)
+    assert not v.PRED25.isna().any(), f"faltan brazos en el CSV: {ks}"
+    etiq = ["en frio"] + [re.search(r"con (\d+)", b).group(1) for b in cerradas]
     x = np.arange(len(ks))
     a2.plot(x, v.PRED25, "o-", color=TINTA, lw=2.4, ms=8, label="dentro del +-25 %")
     a2.plot(x, v.factor2, "o-", color=AMBAR, lw=2.4, ms=8, label="dentro del factor 2")
@@ -257,7 +264,7 @@ def total_proyecto():
     a2.axhline(cte.PRED25, color=AVISO, lw=1.6, ls="--")
     a2.text(len(ks) - 1, cte.PRED25 + .015, "constante", color=AVISO, ha="right", fontsize=10.5)
     a2.set_xticks(x)
-    a2.set_xticklabels(["en frio", "1", "3", "5", "10", "20"])
+    a2.set_xticklabels(etiq)
     a2.set_xlabel("tareas del proyecto ya cerradas")
     a2.set_ylabel("fraccion de proyectos")
     a2.set_ylim(0, .95)

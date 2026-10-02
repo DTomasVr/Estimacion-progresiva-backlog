@@ -1,0 +1,10 @@
+{
+ "proyectos": 41,
+ "con_hermano": 20,
+ "organizaciones": 3,
+ "var_entre": 0.003418381302798797,
+ "var_dentro": 0.02606550099852629,
+ "err_hermanos": 0.14531228634237653,
+ "err_global": 0.14853831855720337,
+ "mejora": 0.02171851846824608
+}

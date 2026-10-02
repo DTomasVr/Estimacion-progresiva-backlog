@@ -1,0 +1,31 @@
+41 proyectos con estimacion · 20 en organizaciones con hermano · 3 organizaciones
+
+================================================================================================
+EL SESGO DE CADA PROYECTO, POR ORGANIZACION
+================================================================================================
+  JiraEcosystem    n= 5  media -0.085  sd 0.110   [-0.27 -0.09 -0.04 -0.02 -0.01]
+  RedHat           n= 9  media -0.085  sd 0.167   [-0.40 -0.25 -0.17 -0.13 -0.02 -0.01 +0.00 +0.08 +0.12]
+  Spring           n= 6  media -0.213  sd 0.187   [-0.51 -0.30 -0.26 -0.14 -0.05 -0.01]
+
+================================================================================================
+¿ES DEL EQUIPO O DEL PROYECTO?
+================================================================================================
+  varianza ENTRE organizaciones  0.0034   11.6%
+  varianza DENTRO de cada una    0.0261   88.4%
+
+================================================================================================
+PREDECIR EL SESGO DE UN PROYECTO (20 proyectos)
+================================================================================================
+  con el sesgo de sus HERMANOS del mismo equipo   error medio 0.1453
+  con la mediana global de todos los proyectos    error medio 0.1485
+  los hermanos MEJORAN un 2.2%
+
+================================================================================================
+LECTURA
+================================================================================================
+  El sesgo es sobre todo del PROYECTO, no del equipo: lo que un equipo
+  se equivoco en un proyecto no dice gran cosa del siguiente.
+
+  AVISO: 3 organizaciones y 20 proyectos son muy pocos. Esto orienta, no decide.
+
+escrito results\sesgo_del_equipo/por_proyecto.csv

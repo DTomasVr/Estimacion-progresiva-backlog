@@ -1,0 +1,40 @@
+41 proyectos · 9,451 tareas · 1 s
+  pliegue 1/5 · 7 s
+  pliegue 2/5 · 13 s
+  pliegue 3/5 · 21 s
+  pliegue 4/5 · 28 s
+  pliegue 5/5 · 35 s
+
+========================================================================================================
+QUE QUEDA DEL RESIDUO DESPUES DE LA ESTIMACION DEL USUARIO
+========================================================================================================
+                                      entre proy.    dentro   % entre
+  residuo del modelo en frio               0.1852    1.4828    11.1%
+  residuo tras la estimacion               0.0107    0.5604     1.9%
+  la varianza DENTRO baja un 62%; la de ENTRE, un 94%
+
+========================================================================================================
+¿SE SUMAN LAS DOS PALANCAS? (41 proyectos)
+========================================================================================================
+                          brazo  PRED25  MdMRE  factor2    MAE_h  SSPB_pc
+                    A · en frio  0.4634 0.3171   0.9024 587.3458  -5.8911
+C · solo estimacion del usuario  0.7317 0.1544   0.9756 262.4121 -10.6653
+     B · solo 3 tareas cerradas  0.4496 0.2796   0.9289 466.7287  -7.1925
+    D · estimacion + 3 cerradas  0.7049 0.1616   0.9886 276.5452 -12.4986
+     B · solo 5 tareas cerradas  0.5252 0.2383   0.9537 420.3172  -5.0956
+    D · estimacion + 5 cerradas  0.7565 0.1460   0.9882 263.3504  -8.1101
+    B · solo 10 tareas cerradas  0.6004 0.1912   0.9553 398.0065  -2.6732
+   D · estimacion + 10 cerradas  0.7992 0.1123   0.9935 273.2744  -4.6333
+
+========================================================================================================
+LECTURA
+========================================================================================================
+  en frio 46.3% · solo estimacion 73.2% (+26.8)
+  k= 3: cerradas 45.0% (-1.4%) · estimacion +26.8% · JUNTAS 70.5% (+24.1%)
+        si se sumaran darian 71.8%; se consigue el 95 % de esa suma
+  k= 5: cerradas 52.5% (+6.2%) · estimacion +26.8% · JUNTAS 75.7% (+29.3%)
+        si se sumaran darian 79.3%; se consigue el 89 % de esa suma
+  k=10: cerradas 60.0% (+13.7%) · estimacion +26.8% · JUNTAS 79.9% (+33.6%)
+        si se sumaran darian 86.9%; se consigue el 83 % de esa suma
+
+escrito results\combinar_palancas/resumen.csv · 35 s

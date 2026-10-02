@@ -50,6 +50,14 @@ V6 = Path("models/estimador_agix_v6.joblib")
 OUT = Path("results/estimador_v6")
 S = "=" * 116
 N_BOLSA, K_VEC, LAMBDA = 5, 25, 12
+# La contraccion del anclaje depende de cuanto desplazamiento de proyecto quede por
+# corregir, y eso cambia si el usuario ha estimado. Medido en E85/E86: en frio el
+# residuo tiene un 11,1 % de su varianza ENTRE proyectos, pero tras aplicar la
+# estimacion del usuario solo queda un 1,9 %. Con tan poco que corregir, el anclaje
+# con lambda = 12 mete mas ruido que senal: anclar 3 tareas sobre la estimacion
+# BAJABA el +-25 % del 73,2 % al 70,5 %. Con lambda = 96 ya no empeora en ningun k
+# y el mejor caso sube del 79,9 % al 87,4 %.
+LAMBDA_CON_ESTIMACION = 96
 
 
 def poi(semilla=0, **kw):
@@ -141,6 +149,7 @@ class EstimadorV6:
         cer = (np.array([np.nan if c is None else float(c) for c in cerradas])
                if cerradas is not None else np.full(len(textos), np.nan))
         hay = ~np.isnan(cer)
+        uso_estimacion = False
         if estimaciones is not None:
             est = np.array([np.nan if e is None else float(e) for e in estimaciones])
             he = ~np.isnan(est)
@@ -149,9 +158,11 @@ class EstimadorV6:
                 Xc = np.hstack([V, np.log(np.where(he, est, 1))[:, None],
                                 np.log(m)[:, None]])
                 m = np.where(he, self.p["corrector_total"].predict(Xc), m)
+                uso_estimacion = True
         k = int(hay.sum())
+        lam = LAMBDA_CON_ESTIMACION if uso_estimacion else LAMBDA
         if k:
-            off = np.log(cer[hay].sum() / m[hay].sum()) * k / (k + LAMBDA)
+            off = np.log(cer[hay].sum() / m[hay].sum()) * k / (k + lam)
             total = float(cer[hay].sum() + (m[~hay] * np.exp(off)).sum())
         else:
             total = float(m.sum())
@@ -160,7 +171,8 @@ class EstimadorV6:
         return dict(total_horas=total,
                     banda_baja=float(total * np.exp(np.quantile(q, a))),
                     banda_alta=float(total * np.exp(np.quantile(q, 1 - a))),
-                    nivel=nivel, tareas=len(textos), cerradas=k)
+                    nivel=nivel, tareas=len(textos), cerradas=k,
+                    con_estimacion=uso_estimacion, lambda_usada=lam)
 
 
 def construir():

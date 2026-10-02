@@ -1,0 +1,13 @@
+{
+ "proyectos": 41,
+ "recomendacion": {
+  "sin estimacion": {
+   "mejor_global": 12,
+   "mejor_k_pequeno": 96
+  },
+  "CON estimacion": {
+   "mejor_global": 96,
+   "mejor_k_pequeno": 96
+  }
+ }
+}

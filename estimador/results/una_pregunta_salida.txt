@@ -1,0 +1,32 @@
+114 proyectos · 24,622 tareas · 0 s
+  mediana de h/tarea: real 2.00 · predicha 5.42
+  dispersion en log: real 0.863 · predicha 0.308
+  desfase global mediana real / mediana predicha: x0.47 (se quita fuera de muestra)
+
+========================================================================================================
+UNA SOLA PREGUNTA AL USUARIO (114 proyectos)
+========================================================================================================
+                        brazo                     detalle  PRED25  MdMRE  factor2    MAE_h  SSPB_pc
+                  A · en frio                              0.3684 0.3552   0.7281 455.2991  -0.3054
+B · el usuario acierta exacto                   sin error  0.4123 0.3005   0.8421 300.0488  16.4889
+    C · el usuario falla x1.2                 sd log 0.18  0.3794 0.3383   0.8263 360.7170  11.4943
+    C · el usuario falla x1.5                 sd log 0.41  0.3121 0.4152   0.7307 570.8821   9.2692
+    C · el usuario falla x2.0                 sd log 0.69  0.2379 0.5290   0.5900 953.1886   7.4051
+D · el usuario elige un TRAMO <1 · 1-2 · 2-4 · 4-8 · >8 h  0.3333 0.4464   0.7544 494.2132  25.4844
+        E · 3 tareas cerradas            mecanismo actual  0.3986 0.3234   0.8047 393.8135  -2.5705
+        E · 5 tareas cerradas            mecanismo actual  0.4394 0.2891   0.8467 376.0832  -0.3519
+
+========================================================================================================
+LECTURA
+========================================================================================================
+  B · el usuario acierta exacto      ±25 %  41.2%  ( +4.4 pts sobre el frio)
+  C · el usuario falla x1.2          ±25 %  37.9%  ( +1.1 pts sobre el frio)
+  C · el usuario falla x1.5          ±25 %  31.2%  ( -5.6 pts sobre el frio)
+  C · el usuario falla x2.0          ±25 %  23.8%  (-13.1 pts sobre el frio)
+  D · el usuario elige un TRAMO      ±25 %  33.3%  ( -3.5 pts sobre el frio)
+  E · 3 tareas cerradas              ±25 %  39.9%  ( +3.0 pts sobre el frio)
+  E · 5 tareas cerradas              ±25 %  43.9%  ( +7.1 pts sobre el frio)
+
+  un desplegable de 5 tramos vale menos que cinco tareas cerradas (33.3% contra 43.9%)
+
+escrito results\una_pregunta/resumen.csv · 2 s

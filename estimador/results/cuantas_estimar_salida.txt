@@ -1,0 +1,32 @@
+41 proyectos con estimacion en >=80% de sus tareas · 9,451 tareas · 98.4% con estimacion · 1 s
+  en frio: ±25 % 46.3%
+  pliegue 1/5 · 8 s
+  pliegue 2/5 · 14 s
+  pliegue 3/5 · 21 s
+  pliegue 4/5 · 28 s
+  pliegue 5/5 · 36 s
+
+========================================================================================================
+¿CUANTAS TAREAS TIENE QUE ESTIMAR EL USUARIO? (41 proyectos)
+========================================================================================================
+                               brazo  PRED25  MdMRE  factor2    MAE_h  SSPB_pc
+        A · en frio, no se pide nada  0.4634 0.3171   0.9024 587.3458  -5.8911
+         C · el usuario estima TODAS  0.7317 0.1544   0.9756 262.4121 -10.6653
+             B · el usuario estima 1  0.3992 0.3131   0.9126 534.6434 -11.2504
+             B · el usuario estima 3  0.4390 0.2856   0.9378 447.9434  -8.5646
+             B · el usuario estima 5  0.4911 0.2601   0.9415 442.3450  -7.4273
+            B · el usuario estima 10  0.5337 0.2314   0.9114 378.9918  -8.7890
+D · 3 tareas CERRADAS (horas reales)  0.4415 0.2829   0.9439 456.3129  -5.8342
+D · 5 tareas CERRADAS (horas reales)  0.5187 0.2382   0.9593 459.7463  -4.6486
+
+========================================================================================================
+LECTURA
+========================================================================================================
+  no pedir nada            ±25 % 46.3%
+  estimarlas TODAS         ±25 % 73.2%  (+26.8 pts)
+  estimar solo  1          ±25 % 39.9%  (-6.4 pts · -24 % de lo que dan todas)
+  estimar solo  3          ±25 % 43.9%  (-2.4 pts · -9 % de lo que dan todas)
+  estimar solo  5          ±25 % 49.1%  (+2.8 pts · 10 % de lo que dan todas)
+  estimar solo 10          ±25 % 53.4%  (+7.0 pts · 26 % de lo que dan todas)
+
+escrito results\cuantas_estimar/resumen.csv · 36 s

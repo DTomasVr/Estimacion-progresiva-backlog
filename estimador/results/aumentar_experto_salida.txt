@@ -1,0 +1,33 @@
+12,743 tareas cortas · 204 proyectos · norma media del vector 1.00 · 1 s
+  A · el experto tal cual · 32 s
+  B · ruido en el vector sd=0.02 · 67 s
+  B · ruido en el vector sd=0.05 · 104 s
+  B · ruido en el vector sd=0.1 · 143 s
+  C · mixup alfa=0.2 · 177 s
+  C · mixup alfa=0.4 · 215 s
+  bolsa · 423 s
+
+====================================================================================================
+CURAR LA VARIANZA DEL EXPERTO CORTO
+====================================================================================================
+                         brazo    rho  err_log  brecha  PRED25  sd_log_pred
+       A · el experto tal cual 0.1002   0.5814  0.3064  0.2205       0.2201
+B · ruido en el vector sd=0.02 0.0923   0.5862  0.3024  0.2164       0.2202
+B · ruido en el vector sd=0.05 0.0691   0.5869  0.2891  0.2167       0.2209
+ B · ruido en el vector sd=0.1 0.0901   0.5809  0.2684  0.2204       0.2182
+            C · mixup alfa=0.2 0.0793   0.5870  0.3137  0.2155       0.2194
+            C · mixup alfa=0.4 0.0726   0.5906  0.3111  0.2116       0.2187
+       D · bolsa de 7 expertos 0.1039   0.5685  0.2385  0.2065       0.1627
+
+====================================================================================================
+LECTURA
+====================================================================================================
+  spearman: 0.1002 (tal cual) -> 0.1039 (D · bolsa de 7 expertos)
+  error:    0.5814 -> 0.5685 (D · bolsa de 7 expertos)
+  brecha:   0.3064 -> 0.2385 (D · bolsa de 7 expertos)
+
+  Ninguna cura mueve el orden. El sobreajuste es real pero
+  quitarlo no destapa senal: debajo no hay nada que aprender
+  dentro del regimen corto, y por eso Apache tampoco servia.
+
+escrito results\aumentar_experto/resumen.csv · 423 s

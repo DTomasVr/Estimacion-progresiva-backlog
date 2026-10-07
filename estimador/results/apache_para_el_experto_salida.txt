@@ -1,0 +1,37 @@
+no Apache: 24,848 tareas · Apache: 65,003 · cortas de Apache: 51,215 · 1 s
+  horas medianas · no Apache 1.00 h · Apache 0.50 h
+  A · solo no Apache pliegue 1/3 · n=8,553 · 11 s
+  A · solo no Apache pliegue 2/3 · n=8,549 · 23 s
+  A · solo no Apache pliegue 3/3 · n=8,384 · 34 s
+  B · + Apache entero pliegue 1/3 · n=59,768 · 48 s
+  B · + Apache entero pliegue 2/3 · n=59,764 · 69 s
+  B · + Apache entero pliegue 3/3 · n=59,599 · 85 s
+  C · + un cuarto de Apache pliegue 1/3 · n=21,356 · 89 s
+  C · + un cuarto de Apache pliegue 2/3 · n=21,352 · 97 s
+  C · + un cuarto de Apache pliegue 3/3 · n=21,187 · 105 s
+  D · + media Apache pliegue 1/3 · n=34,160 · 112 s
+  D · + media Apache pliegue 2/3 · n=34,156 · 126 s
+  D · + media Apache pliegue 3/3 · n=33,991 · 137 s
+
+====================================================================================================
+EL EXPERTO CORTO, EVALUADO SIEMPRE EN PROYECTOS NO APACHE NUNCA VISTOS
+====================================================================================================
+                    brazo  n_entreno  err_log    rho  PRED25  sesgo  sd_log_pred
+       A · solo no Apache       8384   0.5814 0.1002  0.2205 0.8554       0.2201
+      B · + Apache entero      59599   0.6320 0.0539  0.1760 0.6697       0.1119
+C · + un cuarto de Apache      21187   0.6102 0.0468  0.1589 0.7154       0.1140
+       D · + media Apache      33991   0.6190 0.0473  0.1690 0.6942       0.1146
+
+====================================================================================================
+LECTURA
+====================================================================================================
+  spearman  0.1002 -> 0.0539  (-0.0463)
+  error log 0.5814 -> 0.6320  (+0.0506)
+  ±25 %     22.1% -> 17.6%
+  n entreno 8,384 -> 59,599
+
+  Apache NO sirve. Sus tareas cortas no se parecen a las nuestras,
+  y eso es un aviso para lo sintetico: mas texto del tipo que no
+  toca no arregla nada.
+
+escrito results\apache_para_el_experto/resumen.csv · 137 s

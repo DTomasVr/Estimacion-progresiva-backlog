@@ -1,0 +1,50 @@
+24,848 tareas · 204 proyectos · cortas 51.3% · 1 s
+
+====================================================================================================
+1. LA BRECHA ENTRE ENTRENAMIENTO Y FUERA DE PLIEGUE
+====================================================================================================
+                  modelo   evaluado en   dentro    fuera   brecha  rho fuera
+                  global         todas   0.6479   0.9120   0.2641     0.3357
+                  global        cortas   0.6180   0.9508   0.3328     0.1273
+           EXPERTO corto        cortas   0.2938   0.5514   0.2576     0.1018
+  · 18 s
+
+====================================================================================================
+2. CURVA DE APRENDIZAJE DEL EXPERTO CORTO (se quitan PROYECTOS enteros)
+====================================================================================================
+   % proyectos   n cortas  error fuera  rho fuera
+          10%        642       0.6356     0.0371
+          25%      1,503       0.6269     0.0254
+          50%      4,482       0.5985     0.0499
+         100%      8,495       0.5814     0.1002
+  · 119 s
+
+====================================================================================================
+3. ¿MAS REGULARIZACION O MAS CAPACIDAD? (el EXPERTO corto)
+====================================================================================================
+                         configuracion   dentro    fuera   brecha  rho fuera
+              mas regularizado  l2=100   0.3160   0.5866   0.2705     0.0904
+      · 162 s
+               mas regularizado  l2=10   0.2821   0.5773   0.2952     0.0933
+      · 191 s
+                             el actual   0.2750   0.5814   0.3064     0.1002
+      · 221 s
+                mas capacidad  prof=10   0.2474   0.5834   0.3360     0.0860
+      · 261 s
+               mas capacidad  iter=800   0.0719   0.5830   0.5111     0.0973
+      · 340 s
+     mucha capacidad  prof=12 iter=800   0.0499   0.5822   0.5322     0.0761
+      · 457 s
+
+====================================================================================================
+VEREDICTO
+====================================================================================================
+  brecha del EXPERTO corto: 0.3064 en log (x1.36 de error extra fuera de pliegue)
+  la curva, del 50 % al 100 % de los proyectos: error -0.0171 · rho +0.0503
+  mejor por error: mas regularizado  l2=10 (0.5773 contra 0.5814)
+  mejor por rho:   el actual (0.1002 contra 0.1002)
+
+  SOBREAJUSTA. Mas tareas cortas tienen recorrido, y las
+  sinteticas pueden valer si se parecen a las reales.
+
+escrito results\sobreajuste/ · 457 s

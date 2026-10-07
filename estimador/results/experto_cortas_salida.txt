@@ -1,0 +1,56 @@
+24,848 tareas · 204 proyectos · cortas (<=2 h) 51.3% · 51% del recuento pero 8.0% de las horas · 0 s
+  pliegue 1/5 · entreno corto n=9,786 · largo n=10,092 · 33 s
+  pliegue 2/5 · entreno corto n=10,156 · largo n=9,722 · 62 s
+  pliegue 3/5 · entreno corto n=10,380 · largo n=9,498 · 91 s
+  pliegue 4/5 · entreno corto n=10,435 · largo n=9,444 · 117 s
+  pliegue 5/5 · entreno corto n=10,215 · largo n=9,664 · 145 s
+
+========================================================================================================
+LA COMPUERTA: ¿SE PUEDE SABER POR EL TEXTO SI UNA TAREA ES CORTA?
+========================================================================================================
+  AUC 0.6461 · acierto 60.9% · base (decir siempre la clase mayoritaria) 51.3%
+
+========================================================================================================
+TODAS
+========================================================================================================
+                               brazo ambito  PRED25  MdMRE  factor2  MAE_h  sesgo  spearman  sd_log_pred
+              A · global (lo actual)  todas  0.1506 0.7398   0.3901 5.0449 1.0163    0.3183       0.5450
+     B · enrutado duro por compuerta  todas  0.1155 0.8047   0.3345 5.7261 0.9436    0.2969       1.2230
+ C · mezcla blanda (prob. compuerta)  todas  0.1496 0.7318   0.3950 5.0267 1.0173    0.3210       0.5106
+D · enrutado ORACULO (cota superior)  todas  0.2085 0.5393   0.5807 4.0650 1.0106    0.7880       1.1558
+
+========================================================================================================
+SOLO CORTAS
+========================================================================================================
+                               brazo      ambito  PRED25  MdMRE  factor2  MAE_h  sesgo  spearman  sd_log_pred
+              A · global (lo actual) solo cortas  0.1550 1.4630   0.4014 1.4152 2.4630    0.1314       0.5059
+     B · enrutado duro por compuerta solo cortas  0.1165 0.9612   0.3609 2.7917 1.9612    0.1082       1.1572
+ C · mezcla blanda (prob. compuerta) solo cortas  0.1526 1.4561   0.4080 1.3771 2.4561    0.1164       0.4680
+D · enrutado ORACULO (cota superior) solo cortas  0.1996 0.5145   0.5742 0.5212 0.8544    0.0584       0.1772
+                   E · experto corto solo cortas  0.1996 0.5145   0.5742 0.5212 0.8544    0.0584       0.1772
+
+========================================================================================================
+SOLO LARGAS
+========================================================================================================
+                               brazo      ambito  PRED25  MdMRE  factor2  MAE_h  sesgo  spearman  sd_log_pred
+              A · global (lo actual) solo largas  0.1459 0.6253   0.3782 8.8659 0.4013    0.2677       0.5468
+     B · enrutado duro por compuerta solo largas  0.1146 0.7980   0.3067 8.8152 0.3624    0.2554       1.2212
+ C · mezcla blanda (prob. compuerta) solo largas  0.1464 0.6181   0.3813 8.8687 0.4009    0.2734       0.5163
+D · enrutado ORACULO (cota superior) solo largas  0.2180 0.5808   0.5874 7.7955 1.1720    0.2582       0.3066
+                   E · experto largo solo largas  0.2180 0.5808   0.5874 7.7955 1.1720    0.2582       0.3066
+
+========================================================================================================
+LO QUE DECIDE
+========================================================================================================
+  global 15.1% · ORACULO 20.9% (+5.8 pts)
+  El oraculo SI mejora: hay techo, y lo que falta es la compuerta
+  (AUC actual 0.646).
+
+  EN TAREAS CORTAS, el experto contra el global:
+    sesgo      x2.46 -> x0.85  (1,0 es lo justo)
+    ±25 %      15.5% -> 20.0%
+    spearman   0.131 -> 0.058  (¿ordena DENTRO del regimen?)
+    El experto corrige la ESCALA pero no ordena: dentro del regimen
+    corto el texto no dice cual tarea cuesta mas.
+
+escrito results\experto_cortas/resumen.csv · 145 s

@@ -1,0 +1,50 @@
+{
+ "identicas_por_tarea": 0.346959986142387,
+ "por_tarea": [
+  {
+   "subconjunto": "todas",
+   "n": 11546,
+   "texto": 0.14472544604191928,
+   "con_estimacion": 0.41330330850511,
+   "cruda": 0.48952018014896936,
+   "texto_MdMRE": 0.7591211577065344,
+   "con_estimacion_MdMRE": 0.32437180738512694
+  },
+  {
+   "subconjunto": "SIN las identicas",
+   "n": 7540,
+   "texto": 0.1523872679045093,
+   "con_estimacion": 0.2380636604774536,
+   "cruda": 0.21830238726790452,
+   "texto_MdMRE": 0.7051693850061271,
+   "con_estimacion_MdMRE": 0.5137790784650873
+  },
+  {
+   "subconjunto": "solo las identicas",
+   "n": 4006,
+   "texto": 0.13030454318522217,
+   "con_estimacion": 0.7431352970544184,
+   "cruda": 1.0,
+   "texto_MdMRE": 0.9505786563963101,
+   "con_estimacion_MdMRE": 0.14347952622191973
+  }
+ ],
+ "por_proyecto": [
+  {
+   "subconjunto": "todos",
+   "proyectos": 41,
+   "frio": 0.4634146341463415,
+   "con_estimacion": 0.7317073170731707,
+   "frio_MdMRE": 0.31707134630342826,
+   "con_estimacion_MdMRE": 0.15436829232011007
+  },
+  {
+   "subconjunto": "proyectos con <25 % de identicas",
+   "proyectos": 13,
+   "frio": 0.46153846153846156,
+   "con_estimacion": 0.8461538461538461,
+   "frio_MdMRE": 0.2735259716996694,
+   "con_estimacion_MdMRE": 0.09623701480206827
+  }
+ ]
+}

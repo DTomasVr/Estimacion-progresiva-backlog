@@ -1,0 +1,12 @@
+{
+ "pred25_global": 0.15055537669027688,
+ "pred25_oraculo": 0.20854797166773986,
+ "mejor_auc_real": 0.6493034524903614,
+ "mejor_abstencion": {
+  "fraccion_enrutada": 0,
+  "acierto_en_la_franja": NaN,
+  "PRED25": 0.15055537669027688,
+  "MdMRE": 0.7398481360590161,
+  "MAE_h": 5.044915263931116
+ }
+}

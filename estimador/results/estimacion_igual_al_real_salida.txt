@@ -1,0 +1,32 @@
+11,546 tareas con estimacion · identicas 34.7% · 1 s
+  pliegue 1/5 · 18 s
+  pliegue 2/5 · 37 s
+  pliegue 3/5 · 53 s
+  pliegue 4/5 · 71 s
+  pliegue 5/5 · 87 s
+
+====================================================================================================
+(1) POR TAREA: CON Y SIN LAS FILAS IDENTICAS
+====================================================================================================
+  subconjunto                              n   solo texto  +estimacion   est. cruda
+  todas                               11,546       14.5%        41.3%        49.0%
+  SIN las identicas                    7,540       15.2%        23.8%        21.8%
+  solo las identicas                   4,006       13.0%        74.3%       100.0%
+
+====================================================================================================
+(2) POR PROYECTO: LA CIFRA DE HU-51 (44,2 % -> 65,1 %)
+====================================================================================================
+  41 proyectos · fraccion de tareas identicas: mediana 32.5% · max 100.0%
+  todos                              n= 41  en frio 46.3% -> con estimacion 73.2%  (+26.8 pts)
+  proyectos con <25 % de identicas   n= 13  en frio 46.2% -> con estimacion 84.6%  (+38.5 pts)
+
+====================================================================================================
+LECTURA
+====================================================================================================
+  POR TAREA: la ventaja de la estimacion pasa de +26.9 puntos a +8.6 al quitar las filas identicas.
+  Aguanta: la estimacion del usuario aporta de verdad, no solo por
+  las filas en que el real es la propia estimacion copiada.
+
+  POR PROYECTO: la ganancia pasa de +26.8 puntos (todos) a +38.5 en los 13 proyectos menos contaminados.
+
+escrito results\estimacion_igual_al_real/ · 123 s

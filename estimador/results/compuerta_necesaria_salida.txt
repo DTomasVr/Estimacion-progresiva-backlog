@@ -1,0 +1,45 @@
+24,848 tareas · global ±25 % 15.1% · oraculo 20.9% · 0 s
+
+====================================================================================================
+1. ¿HAY UNA COMPUERTA MEJOR?
+====================================================================================================
+  clasificador (E90)         AUC 0.6461 · acierto 60.8% · ±25 % enrutando 11.6%
+  la prediccion del global   AUC 0.6493 · acierto 61.0% · ±25 % enrutando 11.5%
+  las dos juntas             AUC 0.6437 · acierto 60.7% · ±25 % enrutando 11.6%
+  (sin enrutar: el global)                                  ±25 % 15.1%
+
+====================================================================================================
+2. ¿CUANTO TENDRIA QUE ACERTAR LA COMPUERTA?
+====================================================================================================
+  AUC 0.65 · ±25 % 12.7% · MdMRE 0.804 · MAE 5.62 h
+  AUC 0.70 · ±25 % 13.4% · MdMRE 0.777 · MAE 5.48 h
+  AUC 0.75 · ±25 % 14.2% · MdMRE 0.742 · MAE 5.32 h
+  AUC 0.80 · ±25 % 15.1% · MdMRE 0.704 · MAE 5.16 h  <- el global
+  AUC 0.85 · ±25 % 16.0% · MdMRE 0.668 · MAE 4.99 h
+  AUC 0.90 · ±25 % 17.1% · MdMRE 0.636 · MAE 4.79 h
+  AUC 0.95 · ±25 % 18.3% · MdMRE 0.603 · MAE 4.55 h
+  AUC 1.00 · ±25 % 20.9% · MdMRE 0.539 · MAE 4.06 h
+
+  el global esta en 15.1%; enrutar empata o gana a partir de AUC ~0.80
+  la mejor compuerta real que tenemos: AUC 0.649
+
+====================================================================================================
+3. ENRUTAR SOLO CUANDO LA COMPUERTA ESTA SEGURA
+====================================================================================================
+  compuerta: la prediccion del global
+  se enruta el    0% mas seguro · acierto ahi nan% · ±25 % 15.1% · MdMRE 0.740
+  se enruta el    5% mas seguro · acierto ahi 75.7% · ±25 % 14.9% · MdMRE 0.741
+  se enruta el   10% mas seguro · acierto ahi 74.2% · ±25 % 14.7% · MdMRE 0.741
+  se enruta el   20% mas seguro · acierto ahi 71.6% · ±25 % 14.5% · MdMRE 0.744
+  se enruta el   30% mas seguro · acierto ahi 69.7% · ±25 % 14.1% · MdMRE 0.749
+  se enruta el   50% mas seguro · acierto ahi 66.8% · ±25 % 14.1% · MdMRE 0.766
+  se enruta el  100% mas seguro · acierto ahi 60.9% · ±25 % 11.6% · MdMRE 0.814
+
+====================================================================================================
+LECTURA
+====================================================================================================
+  global 15.1% · oraculo 20.9% · mejor abstencion 15.1% (enrutando el 0%)
+  La abstencion no rescata nada: la compuerta no es fiable ni en
+  sus propios extremos.
+
+escrito results\compuerta_necesaria/ · 1 s

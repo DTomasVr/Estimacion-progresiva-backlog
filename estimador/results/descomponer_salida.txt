@@ -1,0 +1,48 @@
+3,000 tareas · 131 proyectos · cuda · 13 s
+Loading weights:   0%|          | 0/190 [00:00<?, ?it/s]Loading weights: 100%|##########| 190/190 [00:00<00:00, 2014.91it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie shared.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+  0/3,000 · 34 s
+  480/3,000 · 53 s
+  960/3,000 · 69 s
+  1,440/3,000 · 87 s
+  1,920/3,000 · 105 s
+  2,400/3,000 · 122 s
+  2,880/3,000 · 143 s
+
+====================================================================================================
+LO QUE SALE DEL DESCOMPONEDOR
+====================================================================================================
+  pasos por tarea: mediana 2 · p10 2 · p90 3
+  rho(n_pasos          , horas reales) = +0.0124
+  rho(palabras_totales , horas reales) = -0.0320
+  rho(paso_mas_largo   , horas reales) = -0.0514
+  rho(pasos_distintos  , horas reales) = +0.0006
+
+  tres ejemplos:
+    [  0.50 h] JQL auto complete dialog should get close if user click any 
+             -> 2 pasos: JQL auto complete dialog should be close if user clicks when a user clicks in the dropdown
+    [  7.00 h] Various Miscellaneous Performance Improvements For Business 
+             -> 3 pasos: Miscellaneous Performance Improvements for Business Objects | Allow agents to filter their
+    [  2.25 h] Prices and research for SIP's trip to the horses this July
+             -> 2 pasos: Attend SIP and research for SIP's trip in the July | Attend the SIP and study for SIP’s tr
+
+====================================================================================================
+¿ANADE ALGO SOBRE EL TEXTO? (3,000 tareas)
+====================================================================================================
+                      brazo  err_log    rho  PRED25
+      A · solo el vector e5   0.9516 0.2470  0.1397
+ B · solo la descomposicion   0.9545 0.0137  0.1410
+C · vector + descomposicion   0.9561 0.2463  0.1453
+
+====================================================================================================
+LECTURA
+====================================================================================================
+  solo texto          rho 0.2470 · error 0.9516
+  solo descomposicion rho 0.0137
+  las dos             rho 0.2463 (-0.0007)
+
+  No aporta. El descomponedor solo reexpresa el titulo: si el
+  texto no sabe cuanto cuesta, su descomposicion tampoco, porque
+  sale del mismo texto.
+
+escrito results\descomponer/ · 182 s

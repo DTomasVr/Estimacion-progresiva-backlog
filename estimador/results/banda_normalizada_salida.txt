@@ -1,0 +1,86 @@
+114 proyectos · 24,622 tareas · ventana local 60 · 0 s
+  reparto por tramo: 8-20 n=31 · 21-60 n=31 · 61-200 n=23 · mas de 200 n=29
+  k=0 listo · 0 s
+  k=3 listo · 2 s
+  k=5 listo · 3 s
+  k=10 listo · 5 s
+
+================================================================================================================
+COBERTURA Y ANCHURA AL 80 %
+================================================================================================================
+metodo  A · banda unica  B · por tramo de tamano  C · normalizada (parametrica)  D · normalizada (ajuste libre)  E · normalizada + por tramo  F · local en log(n)  G · local + normalizada
+k                                                                                                                                                                                         
+0                 0.807                   0.8246                          0.807                           0.807                       0.8246               0.8246                   0.8246
+3                 0.807                   0.8246                          0.807                           0.807                       0.8246               0.8336                   0.8342
+5                 0.807                   0.8246                          0.807                           0.807                       0.8246               0.8354                   0.8351
+10                0.807                   0.8246                          0.807                           0.807                       0.8246               0.8140                   0.8170
+
+  anchura media (factor x):
+metodo  A · banda unica  B · por tramo de tamano  C · normalizada (parametrica)  D · normalizada (ajuste libre)  E · normalizada + por tramo  F · local en log(n)  G · local + normalizada
+k                                                                                                                                                                                         
+0                  6.51                     9.37                           6.89                            6.83                         9.79                 9.60                     9.81
+3                  4.37                     5.61                           4.44                            4.66                         5.81                 5.70                     5.87
+5                  3.68                     4.38                           3.70                            3.77                         4.45                 4.55                     4.62
+10                 3.21                     4.56                           3.29                            4.01                         4.56                 3.53                     3.74
+
+================================================================================================================
+LO QUE IMPORTA: COBERTURA POR TAMANO AL 80 % (objetivo 0,80 en las CUATRO)
+================================================================================================================
+
+  k=0 tareas cerradas
+                                 8-20  21-60  61-200  mas de 200  desvio max
+metodo                                                                      
+A · banda unica                 0.677  0.806   0.739       1.000       0.200
+B · por tramo de tamano         0.806  0.806   0.826       0.862       0.062
+C · normalizada (parametrica)   0.710  0.806   0.739       0.966       0.166
+D · normalizada (ajuste libre)  0.710  0.839   0.739       0.931       0.131
+E · normalizada + por tramo     0.806  0.806   0.826       0.862       0.062
+F · local en log(n)             0.774  0.839   0.696       0.966       0.166
+G · local + normalizada         0.774  0.839   0.696       0.966       0.166
+
+  k=3 tareas cerradas
+                                 8-20  21-60  61-200  mas de 200  desvio max
+metodo                                                                      
+A · banda unica                 0.769  0.783   0.713       0.948       0.148
+B · por tramo de tamano         0.806  0.806   0.826       0.862       0.062
+C · normalizada (parametrica)   0.783  0.783   0.700       0.944       0.144
+D · normalizada (ajuste libre)  0.808  0.792   0.700       0.907       0.107
+E · normalizada + por tramo     0.806  0.806   0.826       0.862       0.062
+F · local en log(n)             0.797  0.824   0.778       0.928       0.128
+G · local + normalizada         0.805  0.819   0.777       0.926       0.126
+
+  k=5 tareas cerradas
+                                 8-20  21-60  61-200  mas de 200  desvio max
+metodo                                                                      
+A · banda unica                 0.816  0.775   0.703       0.914       0.114
+B · por tramo de tamano         0.806  0.806   0.826       0.862       0.062
+C · normalizada (parametrica)   0.817  0.775   0.703       0.913       0.113
+D · normalizada (ajuste libre)  0.815  0.780   0.704       0.909       0.109
+E · normalizada + por tramo     0.806  0.806   0.826       0.862       0.062
+F · local en log(n)             0.828  0.802   0.793       0.913       0.113
+G · local + normalizada         0.828  0.801   0.793       0.913       0.113
+
+  k=10 tareas cerradas
+                                 8-20  21-60  61-200  mas de 200  desvio max
+metodo                                                                      
+A · banda unica                 0.749  0.802   0.772       0.901       0.101
+B · por tramo de tamano         0.806  0.806   0.826       0.862       0.062
+C · normalizada (parametrica)   0.773  0.804   0.752       0.890       0.090
+D · normalizada (ajuste libre)  0.786  0.763   0.752       0.920       0.120
+E · normalizada + por tramo     0.806  0.806   0.826       0.862       0.062
+F · local en log(n)             0.775  0.809   0.780       0.889       0.089
+G · local + normalizada         0.788  0.809   0.777       0.889       0.089
+
+================================================================================================================
+VEREDICTO
+================================================================================================================
+  k= 0: el actual se desvia hasta 0.200 con anchura x6.51
+        mejor: B · por tramo de tamano · desvio 0.062 · anchura x9.37 · cobertura global 0.825
+  k= 3: el actual se desvia hasta 0.148 con anchura x4.37
+        mejor: B · por tramo de tamano · desvio 0.062 · anchura x5.61 · cobertura global 0.825
+  k= 5: el actual se desvia hasta 0.114 con anchura x3.68
+        mejor: B · por tramo de tamano · desvio 0.062 · anchura x4.38 · cobertura global 0.825
+  k=10: el actual se desvia hasta 0.101 con anchura x3.21
+        mejor: B · por tramo de tamano · desvio 0.062 · anchura x4.56 · cobertura global 0.825
+
+escrito results\banda_normalizada/resumen.csv · 5 s

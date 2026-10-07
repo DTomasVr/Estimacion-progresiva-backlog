@@ -1,0 +1,10 @@
+{
+ "proyectos": 114,
+ "sorteos": 30,
+ "lambda": 12,
+ "cortes": [
+  20,
+  60,
+  200
+ ]
+}

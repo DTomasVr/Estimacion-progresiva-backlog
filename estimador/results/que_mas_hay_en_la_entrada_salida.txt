@@ -1,0 +1,36 @@
+24,848 tareas · 204 proyectos · 12 tipos · 38 prioridades · descripcion en 56.9% · 0 s
+  horas medianas por tipo: bug 1.5 · support 1.5 · training 1.5 · docs 1.8 · spec 2.0 · release 2.6 · improvement 3.0 · task 3.0 · feature 4.0 · test 4.0 · other 5.5 · conversion 7.5
+  pliegue 1/5 · 81 s
+  pliegue 2/5 · 165 s
+  pliegue 3/5 · 246 s
+  pliegue 4/5 · 327 s
+  pliegue 5/5 · 409 s
+
+====================================================================================================
+¿SUBE LA COMPUERTA? ¿SUBE EL REGRESOR?
+====================================================================================================
+                 brazo  AUC_compuerta  PRED25  MdMRE  factor2  MAE_h  spearman
+       A · solo titulo         0.6461  0.1506 0.7398   0.3901 5.0449    0.3183
+B · + tipo y prioridad         0.6516  0.1510 0.7277   0.3976 4.9900    0.3408
+     C · + descripcion         0.6501  0.1507 0.7374   0.3892 5.0357    0.3198
+        D · todo junto         0.6587  0.1534 0.7244   0.3967 4.9716    0.3531
+
+====================================================================================================
+SOLO LAS 14,147 TAREAS QUE TRAEN DESCRIPCION
+====================================================================================================
+                 brazo  AUC_compuerta  PRED25  MdMRE  spearman
+       A · solo titulo         0.6483  0.1465 0.7373    0.3203
+B · + tipo y prioridad         0.6515  0.1475 0.7283    0.3401
+     C · + descripcion         0.6567  0.1473 0.7317    0.3289
+        D · todo junto         0.6619  0.1493 0.7245    0.3541
+
+====================================================================================================
+LECTURA
+====================================================================================================
+  compuerta: 0.6461 (solo titulo) -> 0.6587 (D · todo junto)
+  umbral para que la mezcla de expertos compense: 0,80
+  No se mueve. El techo no es del titulo: es de la tarea aislada.
+
+  regresor: 15.1% (solo titulo) -> 15.3% (D · todo junto) · +0.3 puntos
+
+escrito results\que_mas_hay_en_la_entrada/resumen.csv · 409 s

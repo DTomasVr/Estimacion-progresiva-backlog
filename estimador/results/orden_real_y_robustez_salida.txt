@@ -1,0 +1,69 @@
+114 proyectos · 24,622 tareas · 58 con fecha de cierre completa · 0 s
+  en frio: ±25 % 36.8% · MdMRE 0.3552
+  cociente de sumas listo · 2 s
+  media de logs listo · 4 s
+  mediana de logs listo · 6 s
+  Huber listo · 11 s
+  sumas recortadas listo · 13 s
+
+========================================================================================================
+(A) ¿CAMBIA ALGO SI LAS CERRADAS SON LAS PRIMERAS, NO UNA MUESTRA AL AZAR?
+========================================================================================================
+
+  114 proyectos · en frio ±25 % = 36.8%
+orden  al azar  las primeras (creacion)
+k                                      
+1       0.3683                   0.3860
+2       0.3921                   0.4035
+3       0.3996                   0.4211
+5       0.4398                   0.4561
+10      0.4885                   0.4298
+20      0.5475                   0.4649
+    'las primeras (creacion)' frente al azar: -1.2 puntos de media
+
+  58 con fecha de cierre · en frio ±25 % = 34.5%
+orden  al azar  las primeras (creacion)  las primeras (cierre)
+k                                                             
+1       0.3371                   0.3793                 0.3621
+2       0.3667                   0.3966                 0.3621
+3       0.3902                   0.4310                 0.3966
+5       0.4198                   0.4138                 0.4310
+10      0.4448                   0.4828                 0.4828
+20      0.5032                   0.4655                 0.4310
+    'las primeras (creacion)' frente al azar: +1.8 puntos de media
+    'las primeras (cierre)' frente al azar: +0.1 puntos de media
+
+========================================================================================================
+(B) ¿QUE ESTIMADOR DEL DESPLAZAMIENTO AGUANTA MEJOR?
+========================================================================================================
+
+  114 proyectos · al azar · ±25 %
+estimador   Huber  cociente de sumas  media de logs  mediana de logs  sumas recortadas
+k                                                                                     
+1          0.3683             0.3683         0.3683           0.3683            0.3683
+2          0.3832             0.3921         0.3832           0.3832            0.3921
+3          0.3908             0.3996         0.3937           0.3896            0.3896
+5          0.4278             0.4398         0.4256           0.4273            0.4300
+10         0.4431             0.4885         0.4406           0.4363            0.4813
+20         0.4314             0.5475         0.4311           0.4281            0.5418
+    mejor con k<=3: cociente de sumas (38.7%) · el actual: 38.7%
+
+  58 con fecha de cierre · las primeras (cierre) · ±25 %
+estimador   Huber  cociente de sumas  media de logs  mediana de logs  sumas recortadas
+k                                                                                     
+1          0.3621             0.3621         0.3621           0.3621            0.3621
+2          0.3448             0.3621         0.3448           0.3448            0.3621
+3          0.3621             0.3966         0.3448           0.3621            0.3621
+5          0.3793             0.4310         0.4310           0.4310            0.4138
+10         0.3448             0.4828         0.3621           0.3448            0.4310
+20         0.3966             0.4310         0.4483           0.4138            0.4310
+    mejor con k<=3: cociente de sumas (37.4%) · el actual: 37.4%
+
+========================================================================================================
+LECTURA
+========================================================================================================
+  (A) El orden NO cambia el resultado (+0.1 puntos de media).
+      Lo medido al azar vale como medida de produccion.
+  (B) Ningun estimador mejora al cociente de sumas con k<=3 (mejor cociente de sumas: 38.7% contra 38.7%).
+
+escrito results\orden_real_y_robustez/resumen.csv · 13 s

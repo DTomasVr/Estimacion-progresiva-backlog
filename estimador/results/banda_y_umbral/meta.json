@@ -1,0 +1,10 @@
+{
+ "k_hoy": 4.3156629578020915,
+ "k_simetrica": 4.336497392238474,
+ "asimetrica_lo": 0.2300845713657303,
+ "asimetrica_hi": 4.327327075657917,
+ "umbral_hoy": 1.5242808066335687,
+ "umbral_elegido": 1.5242808066335687,
+ "cobertura_hoy": 0.7756,
+ "cobertura_asim": 0.776
+}

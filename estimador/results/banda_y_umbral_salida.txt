@@ -1,0 +1,44 @@
+validacion 1500 · prueba 2500 · k de hoy 4.3157 · umbral de hoy 1.5243 · 4 s
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights:  64%|######4   | 252/391 [00:00<00:00, 2499.17it/s]Loading weights: 100%|##########| 391/391 [00:00<00:00, 2833.27it/s]
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights:  91%|######### | 355/391 [00:00<00:00, 3528.79it/s]Loading weights: 100%|##########| 391/391 [00:00<00:00, 3567.58it/s]
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights:  72%|#######1  | 280/391 [00:00<00:00, 2779.96it/s]Loading weights: 100%|##########| 391/391 [00:00<00:00, 3011.14it/s]
+  val listo · 51 s
+  test listo · 70 s
+
+====================================================================================================
+LA BANDA POR TAREA AL 80% (objetivo de cobertura 0.80)
+====================================================================================================
+                                 banda  cobertura  anchura_x  anchura_mediana_x
+            A · hoy, simetrica k=4.316     0.7756    18.6249            18.6249
+     B · simetrica re-estimada k=4.336     0.7764    18.8052            18.8052
+C · asimetrica conforme [x0.23, x4.33]     0.7760    18.8075            18.8075
+
+====================================================================================================
+EL UMBRAL DE DISPERSION
+====================================================================================================
+      umbral  % por analogia   ±25 % val  ±25 % prueba  factor2 prueba
+        0.00           0.0%       18.7%         17.4%           47.0%
+        0.40           1.6%       21.0%         18.5%           47.2%
+        0.60           1.8%       21.1%         18.7%           47.2%
+        0.80           2.6%       21.4%         18.8%           47.4%
+        1.00          10.6%       20.9%         18.8%           46.6%
+        1.20          35.8%       21.1%         18.0%           46.4%
+        1.52          85.5%       22.7%         18.7%           45.9%  <- el de hoy
+        1.80          98.6%       21.7%         18.5%           45.4%
+        2.20         100.0%       21.7%         18.3%           45.3%
+        3.00         100.0%       21.7%         18.3%           45.3%
+       99.00         100.0%       21.7%         18.3%           45.3%
+
+  elegido por validacion: umbral 1.52 · en prueba 18.7%
+  el de hoy (1.52): en prueba 18.7%
+
+====================================================================================================
+LECTURA
+====================================================================================================
+  banda: hoy cubre 77.6% con anchura x18.62, cuando promete 80%
+         asimetrica cubre 77.6% con anchura x18.81
+         la asimetrica cumple mejor; conviene cambiarla
+  umbral: el de hoy esta bien, no se toca (+0.0 puntos)
+
+escrito results\banda_y_umbral/ · 70 s

@@ -1,0 +1,8 @@
+{
+ "n": 24848,
+ "K": 200,
+ "actual": 0.15055537669027688,
+ "constante": 0.17160334835801674,
+ "mejor": 0.17578879587894397,
+ "mejor_brazo": "E \u00b7 vecinos contraidos w=0.5"
+}

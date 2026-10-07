@@ -61,6 +61,7 @@ LAMBDA_CON_ESTIMACION = 96
 # cortes de tamano para calibrar la banda por tramo, y cuantos proyectos hacen
 # falta en un tramo para fiarse de el en vez de caer a la banda unica
 CORTES_TRAMO = [20, 60, 200]
+N_REJILLA = 30
 MIN_CALIBRACION = 12
 
 
@@ -143,9 +144,18 @@ class EstimadorV6:
         h = np.exp(self.p["apilado"].predict(Z) + np.log(self.p["factor_estilo"]))
         ana, disp = self._analogia(V)
         k = self.p["factor_banda80"]
+        # El valor probable se ajusta SIEMPRE a la rejilla, tambien cuando los
+        # vecinos no concuerdan y se cae a la prediccion del apilado. Las horas
+        # que la gente registra son un peine -treinta valores cubren la mitad
+        # del corpus- y PRED(25) premia caer encima de un diente: ajustar sube
+        # el +-25 % de 15,5 % a 17,1 % y el factor 2 de 0,403 a 0,424 sin mover
+        # el MAE, el SA ni el orden entre tareas (E95, E96).
+        crudo = np.where(disp <= self.p["umbral_dispersion"], ana, h)
+        rej = self.p["rejilla"]
+        probable = rej[np.abs(np.log(rej)[None, :] -
+                              np.log(np.clip(crudo, 1e-6, None))[:, None]).argmin(1)]
         return pd.DataFrame({"texto": textos, "horas": h,
-                             "valor_probable": np.where(
-                                 disp <= self.p["umbral_dispersion"], ana, h),
+                             "valor_probable": probable,
                              "banda_baja": h / k, "banda_alta": h * k})
 
     def _media_tarea(self, textos):
@@ -264,8 +274,11 @@ def construir():
     # del v4; el v5 se construye sobre el v3 y no los hereda. Sin ellos el
     # artefacto se construye igual y revienta al estimar, que es justo lo que
     # destapo la prueba de extremo a extremo.
+    # El tamano de la rejilla se barrio fuera de pliegue en E96: 30 valores por
+    # frecuencia es el optimo. El umbral de 60 apariciones daba 41 valores y
+    # rendia medio punto menos de +-25 % (16,59 % contra 17,11 %).
     cuentas = pd.Series(y[tr]).value_counts()
-    rej = np.sort(cuentas[cuentas >= 60].index.to_numpy())
+    rej = np.sort(cuentas.index.to_numpy()[:N_REJILLA])
     p["rejilla"] = rej
     A2, yv2 = Vn[tr], y[tr]
     ana = np.zeros(len(sw))

@@ -1,0 +1,48 @@
+24,848 tareas · 0 s
+
+========================================================================================================
+¿CUANTOS VALORES DEBE TENER LA REJILLA?
+========================================================================================================
+rejilla  frecuencia  geometrica
+tamano                         
+4            0.1566      0.1490
+6            0.1577      0.1467
+8            0.1588      0.1559
+10           0.1627      0.1511
+12           0.1658      0.1533
+16           0.1654      0.1553
+20           0.1694      0.1482
+30           0.1696      0.1482
+50           0.1610      0.1481
+
+  mejor: 30 valores, rejilla por frecuencia · ±25 % 16.96% · factor2 0.4144 · MAE 5.044 · SA 0.0270
+  la rejilla: 0.0833333 · 0.166667 · 0.25 · 0.33 · 0.333333 · 0.5 · 0.666667 · 0.75 · 0.833333 · 1 · 1.25 · 1.5 · 1.75 · 2 · 2.25 · 2.5 · 3 · 3.5 · 4 · 4.5 · 5 · 5.5 · 6 · 7 · 8 · 9 · 10 · 12 · 16 · 24 h
+
+========================================================================================================
+EN EL BLOQUE split_t3 == test (4,225 tareas)
+========================================================================================================
+                        modelo  PRED25  MdMRE  factor2  MAE_h      SA  spearman
+          nuestro, sin ajustar  0.1553 0.7259   0.4026 5.1112  0.0267    0.2983
+nuestro, AJUSTADO a la rejilla  0.1702 0.7297   0.4241 5.1090  0.0271    0.2970
+            la mejor constante  0.1782 0.7415   0.3640 5.3296 -0.0149    0.0003
+
+  lo publicado sobre el mismo bloque:
+    linea base (mediana por proyecto)          ±25 % 0.1636 · MdMRE 0.7273
+    nuestro: ridge sobre SBERT congelado       ±25 % 0.1657 · MdMRE 0.6993
+    Deep-SE (LSTM)                             ±25 % 0.1683 · MdMRE 0.7133
+    GPT2SP (GPT-2 ajustado)                    ±25 % 0.1692 · MdMRE 0.6804
+
+========================================================================================================
+LECTURA
+========================================================================================================
+  sin ajustar 15.53% · AJUSTADO 17.02% (+1.5 pts)
+  el mejor publicado: GPT2SP (GPT-2 ajustado) con 16.92%
+  la mejor constante: 17.82%
+
+  OJO: una constante le gana a TODO lo publicado en esta metrica.
+  No es un resultado sobre nuestro modelo, es sobre la metrica:
+  PRED(25) mide la curtosis de estimado/real, no la capacidad de
+  ordenar. Hay que reportarlo junto al SA y al spearman, donde la
+  constante saca 0 y nosotros no.
+
+escrito results\rejilla_valores/ · 1 s

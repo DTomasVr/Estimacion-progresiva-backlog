@@ -1,0 +1,10 @@
+{
+ "n_val": 1200,
+ "n_test": 2000,
+ "factor_estilo": 0.8312837794981665,
+ "centrado": 0.9692562631704624,
+ "pred25_hoy": 0.1685,
+ "pred25_corregido": 0.175,
+ "sesgo_hoy": 0.8201436221244652,
+ "sesgo_corregido": 1.0
+}

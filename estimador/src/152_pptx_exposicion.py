@@ -87,12 +87,26 @@ def main():
 
     # ------------------------------------------------- 2b · estado del arte
     lit = pd.read_csv("results/baselines_literatura.csv").set_index("modelo")
+    # La fila del ajuste a la rejilla sale de su propio CSV (E96), no se escribe
+    # a mano. Su protocolo es MAS estricto que el de la literatura: fuera de
+    # pliegue por proyecto entero, asi que el modelo no vio ni la tarea ni su
+    # proyecto, mientras que las reimplementaciones si entrenan con tareas de
+    # los mismos proyectos.
+    aj = pd.read_csv("results/rejilla_valores/contra_literatura.csv").set_index("modelo")
+    filas_lit = [[k, n(v.MdMRE), pc(v.PRED25), n(v.MAE_h, 2), v.gana_base]
+                 for k, v in lit.iterrows()]
+    for etq, clave in (("nuestro, ajustado a la rejilla ·",
+                        "nuestro, AJUSTADO a la rejilla"),
+                       ("una constante, sin leer el texto ·", "la mejor constante")):
+        if clave in aj.index:
+            v = aj.loc[clave]
+            filas_lit.append([etq, n(v.MdMRE), pc(v.PRED25), n(v.MAE_h, 2),
+                              "protocolo más estricto"])
     s, y0 = P.lamina(prs, "Frente al estado del arte",
                      "Las dos comparaciones que se pueden hacer, y por qué son dos.")
     y = P.tabla(s, y0, ["por TAREA · 24 proyectos, protocolo de la literatura",
                         "MdMRE", "±25 %", "MAE (h)", "gana a la base"],
-                [[k, n(v.MdMRE), pc(v.PRED25), n(v.MAE_h, 2), v.gana_base]
-                 for k, v in lit.iterrows()],
+                filas_lit,
                 anchos=[Inches(4.6), Inches(1.3), Inches(1.2), Inches(1.3),
                         Inches(1.6)],
                 resaltar={1: P.SUAVE})

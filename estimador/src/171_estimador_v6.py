@@ -127,8 +127,20 @@ class EstimadorV6:
                           np.log(np.clip(med, 1e-6, None))[:, None]).argmin(1)]
         return moda, np.std(np.log(np.clip(v, 1e-6, None)), axis=1)
 
-    def estimar_tareas(self, textos):
-        """La mediana condicional: el numero que se le ensena a una persona."""
+    def estimar_tareas(self, textos, estilo="persona"):
+        """La mediana condicional: el numero que se le ensena a una persona.
+
+        estilo: "persona" para texto escrito por alguien -lo normal- y
+        "generador" para texto que viene de la tuberia de generacion.
+
+        El factor de estilo se midio en E74 sobre DOS corpus: el texto original
+        de Jira sale con sesgo x1,002, es decir ninguno, y el del generador con
+        x1,378. El factor corrige al generador. Aplicarlo tambien al texto de
+        persona -que es lo que se hacia- encogia la prediccion un 17 % sin
+        motivo: el sesgo mediano del artefacto sobre texto real era x0,820 en
+        lugar de 1,0 (E97). Quitarlo deja el sesgo en x0,987, y con el ajuste a
+        la rejilla en x1,000 exacto (E98).
+        """
         textos = list(textos)
         V, Xd, SV, Ms = self._vistas(textos)
         aj = self._cod(self.p["codificador_ajustado"], "_aj").encode(
@@ -141,7 +153,8 @@ class EstimadorV6:
                              self.p["ridge"].predict(Ms), self.p["svr"].predict(Ms),
                              self.p["hgb_ajustado"].predict(aj),
                              self.p["hgb_ajustado_C"].predict(ac)])
-        h = np.exp(self.p["apilado"].predict(Z) + np.log(self.p["factor_estilo"]))
+        fe = self.p["factor_estilo"] if estilo == "generador" else 1.0
+        h = np.exp(self.p["apilado"].predict(Z) + np.log(fe))
         ana, disp = self._analogia(V)
         k = self.p["factor_banda80"]
         # El valor probable se ajusta SIEMPRE a la rejilla, tambien cuando los

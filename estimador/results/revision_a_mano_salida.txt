@@ -1,0 +1,69 @@
+400 tareas reales del bloque de prueba · el artefacto no las vio · 2 s
+  factor_estilo del artefacto: 0.8313 (se aplica SIEMPRE) · 41 s
+
+==============================================================================================================
+LO QUE SALE DEL ARTEFACTO, SOBRE TEXTO REAL
+==============================================================================================================
+                     salida  PRED25  MdMRE  factor2  MAE_h  sesgo_mediano
+         horas (con factor)  0.1475 0.6680   0.4050 5.7164         0.6862
+           horas SIN factor  0.1450 0.6835   0.4225 5.6028         0.8255
+valor probable (con factor)  0.1575 0.7273   0.4225 5.9002         0.7500
+  valor probable SIN factor  0.1600 0.7236   0.4150 5.8480         0.8750
+
+==============================================================================================================
+30 TAREAS, A MANO (ordenadas por horas reales)
+==============================================================================================================
+                                                  titulo   real  horas  probable  sin factor  cociente
+CloverReport task should run when invoked by CLI and clo   0.12   1.61      3.50        1.93     30.00
+ No visible labels in activity's date access restriction   0.25   0.98      1.00        1.18      4.00
+Group associations are not preserved for synced users wi   0.30   1.57      3.00        1.89     10.00
+           XXXX Period Close Errors On v2 Live - Resolve   0.50   1.23      2.00        1.48      4.00
+                              SIP Admin - LinkEX Licence   0.50   5.67      5.50        6.82     11.00
+             V3 Last grid column sometimes does not size   0.50   1.10      2.00        1.32      4.00
+                              Assign - Class refactoring   0.83   4.18      4.00        5.03      4.80
+                 Create release note for Studio 4.8.0.RC   1.00   1.67      3.00        2.01      3.00
+                 CCC - Syndicate XXXX,XXXX close support   1.00   1.50      1.25        1.80      1.25
+               Make upload copy buffer size configurable   1.05   1.37      1.75        1.64      1.67
+V3 Problems with Grids not Directly Bound To Business Ob   1.50   2.53      2.00        3.04      1.33
+                   YYY ZZZ - XXXX and XXXX Close Support   1.75   0.79      1.00        0.95      0.57
+audit all issue table gadgets for front-end feature cons   2.00   2.77      3.50        3.34      1.75
+                      CCC Migration: XXXX Reference Data   2.17   2.35     10.00        2.82      4.61
+             Test Large Tensor Support in 'pad' operator   2.50   2.05      3.50        2.47      1.40
+Resolution date is not set correctly for this set of dat   3.00   1.14      1.00        1.38      0.33
+             Code Generator Release - 3.0. <NUM> . <NUM>   3.40   5.36      5.00        6.45      1.47
+                              Another round of IT fixing   3.98   3.47      3.00        4.17      0.75
+Provide example to illustrate usage of CSVIter in C++ AP   4.17   3.38      3.50        4.07      0.84
+YYY ZZZ Syndicate XXXX - INTECH --> IRIS Populate UPRIRE   5.00   2.30      1.00        2.77      0.20
+Condition: ""Completion of other courses"" is set withou   5.50   1.16      1.25        1.40      0.23
+Can't create Plan from POM if the only Builder detected    6.00   2.62      3.00        3.16      0.50
+                                BMS Support for 18/08/08   7.00   2.14      2.00        2.57      0.29
+            Reconfiguring Home Network For New Broadband   7.60   2.90      2.00        3.49      0.26
+                                MCTS 70-515 Web App .NET   9.00   3.87      7.00        4.65      0.78
+       Activity chooser has to fetch data before showing  10.67   1.55      2.00        1.87      0.19
+Create new modules that runs nexus oss ITs against the b  12.33   4.44      4.00        5.34      0.32
+                      Create Web Version of Grid Control  17.50   8.53      4.00       10.26      0.23
+Add page for selecting a course (tool_moodlenet all vers  46.00   1.90      2.00        2.28      0.04
+                                  H5P editor integration 243.10  14.85     16.00       17.86      0.07
+
+==============================================================================================================
+POR TRAMO DE HORAS REALES
+==============================================================================================================
+   tramo    n  real med    horas  probable  sesgo h  sesgo vp
+     <=1   89      0.50     1.13      1.50     2.91      4.00
+     1-2   70      1.10     1.64      1.75     1.36      1.37
+     2-4   75      2.75     1.49      1.75     0.59      0.62
+     4-8   86      5.52     2.14      2.00     0.37      0.35
+    8-16   46     10.58     2.89      2.50     0.27      0.23
+     >16   34     33.25     4.68      3.50     0.13      0.10
+
+==============================================================================================================
+LECTURA
+==============================================================================================================
+  sesgo mediano de las horas: con factor x0.686 · sin factor x0.825  (1,0 es lo justo)
+  ±25 % del valor probable: con factor 15.8% · sin factor 16.0%
+
+  EL FACTOR DE ESTILO NO DEBE APLICARSE AL TEXTO REAL. Se midio
+  para el texto del generador; sobre texto de persona encoge la
+  prediccion sin motivo. Tiene que ser condicional al origen.
+
+escrito results\revision_a_mano/ · 41 s

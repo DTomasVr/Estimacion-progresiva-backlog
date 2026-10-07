@@ -62,6 +62,8 @@ LAMBDA_CON_ESTIMACION = 96
 # falta en un tramo para fiarse de el en vez de caer a la banda unica
 CORTES_TRAMO = [20, 60, 200]
 N_REJILLA = 30
+# contraccion del ancla por persona; barrida en E100 sobre 423 desarrolladores
+LAMBDA_PERSONA = 8
 MIN_CALIBRACION = 12
 
 
@@ -127,11 +129,69 @@ class EstimadorV6:
                           np.log(np.clip(med, 1e-6, None))[:, None]).argmin(1)]
         return moda, np.std(np.log(np.clip(v, 1e-6, None)), axis=1)
 
-    def estimar_tareas(self, textos, estilo="persona"):
+    def _offsets_persona(self, personas, historial):
+        """Un desplazamiento por persona, a partir de SUS tareas ya cerradas.
+
+        Mismo mecanismo que el anclaje de proyecto -cociente de sumas contraido
+        con k/(k+lambda)- pero por quien hace la tarea. E100 descompuso el
+        residuo en tres niveles y encontro que entre DESARROLLADORES del mismo
+        proyecto hay un 9,8 % de la varianza, casi tanto como entre proyectos
+        (12,4 %), y ese trozo estaba dentro del 89 % que se daba por ruido.
+
+        Solo sirve en EQUIPO: en un proyecto de una sola persona este
+        desplazamiento y el del proyecto son el mismo numero.
+        """
+        quien = sorted({p for p in personas if p is not None and p in historial
+                        and len(historial[p]) > 0})
+        if not quien:
+            return {}
+        # se codifica todo el historial de una vez, no persona a persona
+        plano, corte = [], {}
+        for q in quien:
+            i0 = len(plano)
+            plano.extend(t for t, _ in historial[q])
+            corte[q] = (i0, len(plano))
+        h = self._apilado_crudo(plano)
+        off = {}
+        for q in quien:
+            i0, i1 = corte[q]
+            real = np.array([v for _, v in historial[q]], float)
+            k = len(real)
+            off[q] = float(np.log(real.sum() / max(h[i0:i1].sum(), 1e-9))
+                           * k / (k + LAMBDA_PERSONA))
+        return off
+
+    def _apilado_crudo(self, textos):
+        """Las horas del apilado, sin factor de estilo ni rejilla."""
+        V, Xd, SV, Ms = self._vistas(textos)
+        aj = self._cod(self.p["codificador_ajustado"], "_aj").encode(
+            ["query: " + t for t in textos], normalize_embeddings=False,
+            show_progress_bar=False).astype(np.float32)
+        ac = self._cod(self.p["codificador_ajustado_C"], "_ac").encode(
+            ["query: " + t for t in textos], normalize_embeddings=False,
+            show_progress_bar=False).astype(np.float32)
+        Z = np.column_stack([np.mean([m.predict(Xd) for m in self.p["bolsa"]], 0),
+                             self.p["ridge"].predict(Ms), self.p["svr"].predict(Ms),
+                             self.p["hgb_ajustado"].predict(aj),
+                             self.p["hgb_ajustado_C"].predict(ac)])
+        return np.exp(self.p["apilado"].predict(Z))
+
+    def estimar_tareas(self, textos, estilo="persona", personas=None,
+                       historial=None):
         """La mediana condicional: el numero que se le ensena a una persona.
 
         estilo: "persona" para texto escrito por alguien -lo normal- y
         "generador" para texto que viene de la tuberia de generacion.
+
+        personas: quien hara cada tarea, en el mismo orden que textos, con None
+        donde no se sepa. historial: {persona: [(texto, horas_reales), ...]} con
+        sus tareas ya cerradas. Si se pasan los dos, cada tarea se corrige con
+        el desplazamiento de quien la hara.
+
+        Sobre la vista por tarea esto mejora el orden y el error absoluto
+        (spearman 0,317 -> 0,358, SA 0,026 -> 0,036, MAE 5,06 -> 5,00 h). NO se
+        usa para el total del proyecto: ahi los desplazamientos de las personas
+        se cancelan al sumar y empeoran el pronostico (E101).
 
         El factor de estilo se midio en E74 sobre DOS corpus: el texto original
         de Jira sale con sesgo x1,002, es decir ninguno, y el del generador con
@@ -155,6 +215,13 @@ class EstimadorV6:
                              self.p["hgb_ajustado_C"].predict(ac)])
         fe = self.p["factor_estilo"] if estilo == "generador" else 1.0
         h = np.exp(self.p["apilado"].predict(Z) + np.log(fe))
+        # el desplazamiento de quien hara la tarea, si se sabe
+        ajuste = np.ones(len(textos))
+        if personas is not None and historial:
+            off = self._offsets_persona(personas, historial)
+            ajuste = np.array([np.exp(off.get(q, 0.0)) if q is not None else 1.0
+                               for q in personas])
+            h = h * ajuste
         ana, disp = self._analogia(V)
         k = self.p["factor_banda80"]
         # El valor probable se ajusta SIEMPRE a la rejilla, tambien cuando los
@@ -163,13 +230,16 @@ class EstimadorV6:
         # del corpus- y PRED(25) premia caer encima de un diente: ajustar sube
         # el +-25 % de 15,5 % a 17,1 % y el factor 2 de 0,403 a 0,424 sin mover
         # el MAE, el SA ni el orden entre tareas (E95, E96).
-        crudo = np.where(disp <= self.p["umbral_dispersion"], ana, h)
+        # el desplazamiento de la persona se aplica tambien a la analogia: es una
+        # propiedad de quien hace la tarea, no del canal que la estimo
+        crudo = np.where(disp <= self.p["umbral_dispersion"], ana * ajuste, h)
         rej = self.p["rejilla"]
         probable = rej[np.abs(np.log(rej)[None, :] -
                               np.log(np.clip(crudo, 1e-6, None))[:, None]).argmin(1)]
         return pd.DataFrame({"texto": textos, "horas": h,
                              "valor_probable": probable,
-                             "banda_baja": h / k, "banda_alta": h * k})
+                             "banda_baja": h / k, "banda_alta": h * k,
+                             "ajuste_persona": ajuste})
 
     def _media_tarea(self, textos):
         """La media condicional: lo que hay que sumar para un total."""

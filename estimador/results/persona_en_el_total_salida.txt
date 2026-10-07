@@ -1,0 +1,49 @@
+114 proyectos · 24,622 tareas · 104 con desarrollador en mas de la mitad · la persona que mas carga lleva: mediana 51% de las tareas · 0 s
+  k=3 listo · 6 s
+  k=5 listo · 13 s
+  k=10 listo · 21 s
+
+====================================================================================================
+EL TOTAL DEL PROYECTO (114 proyectos)
+====================================================================================================
+                brazo  k  PRED25  MdMRE  factor2    MAE_h
+          A · en frio  3  0.3945 0.3340   0.7730 445.2408
+B · ancla de PROYECTO  3  0.4015 0.3231   0.8007 395.0161
+ C · ancla de PERSONA  3  0.4022 0.3170   0.7759 402.9226
+          D · las dos  3  0.3899 0.3264   0.8083 389.2784
+          A · en frio  5  0.4090 0.3169   0.8018 438.4161
+B · ancla de PROYECTO  5  0.4346 0.2910   0.8504 375.9451
+ C · ancla de PERSONA  5  0.4404 0.2892   0.8158 379.1302
+          D · las dos  5  0.4331 0.2916   0.8730 374.9071
+          A · en frio 10  0.4206 0.3093   0.8173 426.2293
+B · ancla de PROYECTO 10  0.4765 0.2644   0.8792 354.5528
+ C · ancla de PERSONA 10  0.4721 0.2732   0.8564 342.5530
+          D · las dos 10  0.4822 0.2617   0.8814 381.2936
+
+====================================================================================================
+SOLO LO QUE QUEDA ABIERTO (lo que de verdad hay que pronosticar)
+====================================================================================================
+                brazo  k  PRED25  MdMRE  factor2    MAE_h
+          A · en frio  3  0.3594 0.3741   0.7132 445.2408
+B · ancla de PROYECTO  3  0.3643 0.3596   0.7458 395.0161
+ C · ancla de PERSONA  3  0.3654 0.3523   0.7263 402.9226
+          D · las dos  3  0.3531 0.3574   0.7533 389.2784
+          A · en frio  5  0.3257 0.3989   0.7011 438.4161
+B · ancla de PROYECTO  5  0.3592 0.3558   0.7423 375.9451
+ C · ancla de PERSONA  5  0.3539 0.3616   0.7145 379.1302
+          D · las dos  5  0.3487 0.3656   0.7539 374.9071
+          A · en frio 10  0.3127 0.4035   0.7081 426.2293
+B · ancla de PROYECTO 10  0.3605 0.3460   0.7829 354.5528
+ C · ancla de PERSONA 10  0.3465 0.3488   0.7463 342.5530
+          D · las dos 10  0.3605 0.3409   0.7737 381.2936
+
+====================================================================================================
+LECTURA
+====================================================================================================
+  total          k=5: solo proyecto 43.5% · con persona 43.3% (-0.2 pts)
+  solo abierto   k=5: solo proyecto 35.9% · con persona 34.9% (-1.1 pts)
+
+  La persona ESTROPEA el total. En el artefacto debe quedar como
+  ancla de la vista POR TAREA y no entrar en el total.
+
+escrito results\persona_en_el_total/ · 21 s

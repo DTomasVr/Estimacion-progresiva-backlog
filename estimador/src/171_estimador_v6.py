@@ -58,6 +58,24 @@ N_BOLSA, K_VEC, LAMBDA = 5, 25, 12
 # BAJABA el +-25 % del 73,2 % al 70,5 %. Con lambda = 96 ya no empeora en ningun k
 # y el mejor caso sube del 79,9 % al 87,4 %.
 LAMBDA_CON_ESTIMACION = 96
+# cortes de tamano para calibrar la banda por tramo, y cuantos proyectos hacen
+# falta en un tramo para fiarse de el en vez de caer a la banda unica
+CORTES_TRAMO = [20, 60, 200]
+MIN_CALIBRACION = 12
+
+
+def qconf(x, p, arriba):
+    """Cuantil CONFORME: el estadistico de orden ceil((m+1)p), no np.quantile.
+
+    Es lo que da la garantia de cobertura con m puntos de calibracion. Con el
+    cuantil muestral la banda cubre de MENOS, y el sesgo crece cuanto mas
+    pequeno es el grupo: el 80 % nominal salia 78,1 % con los 114 proyectos y
+    74,6 % calibrando por tramo. Con esta correccion salen 80,7 % y 82,5 %.
+    """
+    s = np.sort(np.asarray(x, float))
+    m = len(s)
+    j = (int(np.ceil((m + 1) * p)) if arriba else int(np.floor((m + 1) * p))) - 1
+    return float(s[int(np.clip(j, 0, m - 1))])
 
 
 def poi(semilla=0, **kw):
@@ -166,13 +184,27 @@ class EstimadorV6:
             total = float(cer[hay].sum() + (m[~hay] * np.exp(off)).sum())
         else:
             total = float(m.sum())
+        # La banda se calibra DENTRO del tramo de tamano del proyecto. Con una
+        # banda unica la cobertura global cuadra pero por tamano no: en frio
+        # cubre el 67,7 % de los proyectos de 8-20 tareas prometiendo un 80 %, y
+        # el 100 % de los de mas de 400, donde sobra anchura. Por tramo el
+        # desvio maximo baja de 0,200 a 0,062 (E89).
         q = self.p["residuos_proyecto"]
+        g = self.p.get("residuos_por_tramo")
+        tramo = None
+        if g:
+            tramo = int(np.digitize(len(textos), self.p["cortes_tramo"]))
+            if len(g.get(tramo, ())) >= MIN_CALIBRACION:
+                q = g[tramo]
+            else:
+                tramo = None
         a = (1 - nivel) / 2
         return dict(total_horas=total,
-                    banda_baja=float(total * np.exp(np.quantile(q, a))),
-                    banda_alta=float(total * np.exp(np.quantile(q, 1 - a))),
+                    banda_baja=float(total * np.exp(qconf(q, a, False))),
+                    banda_alta=float(total * np.exp(qconf(q, 1 - a, True))),
                     nivel=nivel, tareas=len(textos), cerradas=k,
-                    con_estimacion=uso_estimacion, lambda_usada=lam)
+                    con_estimacion=uso_estimacion, lambda_usada=lam,
+                    tramo_banda=tramo, n_calibracion=len(q))
 
 
 def construir():
@@ -263,7 +295,14 @@ def construir():
           f"({(disp <= mejor_u).mean():.1%} de las tareas) · PRED25 val {mejor_v:.4f}",
           flush=True)
     tot = pd.read_csv("results/curva_final/totales.csv")
-    p["residuos_proyecto"] = np.log(tot.real.to_numpy() / tot.frio.to_numpy())
+    res_p = np.log(tot.real.to_numpy() / tot.frio.to_numpy())
+    p["residuos_proyecto"] = res_p
+    gr = np.digitize(tot.n.to_numpy(), CORTES_TRAMO)
+    p["residuos_por_tramo"] = {int(t): res_p[gr == t] for t in np.unique(gr)}
+    p["cortes_tramo"] = CORTES_TRAMO
+    print("  banda por tramo: " + " · ".join(
+        f"{t}:n={len(v)}" for t, v in sorted(p["residuos_por_tramo"].items())),
+        flush=True)
     OUT.mkdir(parents=True, exist_ok=True)
     joblib.dump(p, V6, compress=3)
     print(f"escrito {V6} ({V6.stat().st_size / 1e6:.0f} MB) · {time.time() - t0:.0f} s")

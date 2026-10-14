@@ -1,0 +1,42 @@
+114 proyectos · 24,622 tareas · 52 con historial de SUS desarrolladores · 72 con historial de su organizacion · 2 s
+  se evalua sobre los 34 que tienen las dos
+  B · pasadas de SUS desarrolladores listo · 2 s
+  B' · idem, ponderado por parecido listo · 5 s
+  C · pasadas de su ORGANIZACION listo · 5 s
+  D · pasadas AL AZAR (control) listo · 6 s
+  E · cerradas del PROPIO proyecto listo · 6 s
+
+================================================================================================================
+POR TAREA · 4,409 tareas de 34 proyectos en FRIO
+================================================================================================================
+                             brazo  k  lam  PRED25  MdMRE  MAE_h     SA  sesgo  spearman
+                       A · en frio  0    0  0.1418 0.7583 4.5411 0.0299 1.0725    0.3347
+  E · cerradas del PROPIO proyecto 10   48  0.1433 0.7650 4.5149 0.0355 1.1695    0.3687
+ B' · idem, ponderado por parecido  5   48  0.1422 0.7628 4.5417 0.0298 1.0778    0.3380
+    C · pasadas de su ORGANIZACION  5   48  0.1423 0.7669 4.5445 0.0292 1.1231    0.3384
+B · pasadas de SUS desarrolladores  5   48  0.1411 0.7663 4.5467 0.0287 1.0906    0.3368
+     D · pasadas AL AZAR (control)  5   48  0.1413 0.7684 4.5539 0.0272 1.1263    0.3299
+
+  (de cada brazo, su mejor k y lambda por SA)
+
+================================================================================================================
+EL CONTROL DE NEGATIVE TRANSFER
+================================================================================================================
+  B · pasadas de SUS desarrolladores     SA 0.0299 -> 0.0287 (-0.0012) · k=5 lambda=48
+  B' · idem, ponderado por parecido      SA 0.0299 -> 0.0298 (-0.0001) · k=5 lambda=48
+  C · pasadas de su ORGANIZACION         SA 0.0299 -> 0.0292 (-0.0007) · k=5 lambda=48
+  D · pasadas AL AZAR (control)          SA 0.0299 -> 0.0272 (-0.0027) · k=5 lambda=48
+  E · cerradas del PROPIO proyecto       SA 0.0299 -> 0.0355 (+0.0056) · k=10 lambda=48
+
+================================================================================================================
+LECTURA
+================================================================================================================
+  en frio                      SA 0.0299
+  historial de sus devs        SA 0.0287 (-0.0012)
+  historial al azar (control)  SA 0.0272 (-0.0027)
+  cerradas del propio proyecto SA 0.0355 (+0.0056)
+
+  Lo que gana el historial propio (-0.0012) no supera al
+  azar (-0.0027): es recalibracion global, no transferencia.
+
+escrito results\arranque_con_historial/resumen.csv · 7 s

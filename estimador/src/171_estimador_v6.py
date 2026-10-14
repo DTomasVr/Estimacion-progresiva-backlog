@@ -274,30 +274,46 @@ class EstimadorV6:
         lam = LAMBDA_CON_ESTIMACION if uso_estimacion else LAMBDA
         if k:
             off = np.log(cer[hay].sum() / m[hay].sum()) * k / (k + lam)
-            total = float(cer[hay].sum() + (m[~hay] * np.exp(off)).sum())
+            cerrado = float(cer[hay].sum())
+            abierto = float((m[~hay] * np.exp(off)).sum())
         else:
-            total = float(m.sum())
-        # La banda se calibra DENTRO del tramo de tamano del proyecto. Con una
-        # banda unica la cobertura global cuadra pero por tamano no: en frio
-        # cubre el 67,7 % de los proyectos de 8-20 tareas prometiendo un 80 %, y
-        # el 100 % de los de mas de 400, donde sobra anchura. Por tramo el
-        # desvio maximo baja de 0,200 a 0,062 (E89).
-        q = self.p["residuos_proyecto"]
-        g = self.p.get("residuos_por_tramo")
-        tramo = None
-        if g:
-            tramo = int(np.digitize(len(textos), self.p["cortes_tramo"]))
+            cerrado, abierto = 0.0, float(m.sum())
+        total = cerrado + abierto
+        # La banda va SOLO sobre lo que queda abierto: las horas cerradas se
+        # saben y no tienen incertidumbre. Y se calibra al numero de tareas
+        # cerradas y al tramo de tamano del proyecto. Antes multiplicaba el total
+        # entero por el residuo en frio y no se estrechaba nunca: x10,61 con 0 o
+        # con 20 tareas cerradas, cubriendo el 98 % al final. Ahora baja a x4,96
+        # con 3, x3,75 con 5, x2,37 con 10 y x2,05 con 20, manteniendo el 80 %
+        # (E107). Por tramo se conserva el reparto honesto de E89.
+        tramo = int(np.digitize(len(textos), self.p["cortes_tramo"]))
+        tabla = self.p.get("residuos_abierto")
+        if tabla:
+            # el k calibrado mas cercano por DEBAJO: con menos historial la banda
+            # es mas ancha, asi que redondear hacia abajo es lo prudente
+            kb = max(x for x in self.p["ks_banda"] if x <= k)
+            g = tabla[kb]
+            if len(g.get(tramo, ())) >= MIN_CALIBRACION:
+                q = g[tramo]
+            else:
+                q, tramo = g[-1], None
+        else:
+            kb = 0
+            q = self.p["residuos_proyecto"]
+            g = self.p.get("residuos_por_tramo") or {}
             if len(g.get(tramo, ())) >= MIN_CALIBRACION:
                 q = g[tramo]
             else:
                 tramo = None
         a = (1 - nivel) / 2
-        return dict(total_horas=total,
-                    banda_baja=float(total * np.exp(qconf(q, a, False))),
-                    banda_alta=float(total * np.exp(qconf(q, 1 - a, True))),
+        return dict(total_horas=total, horas_cerradas=cerrado,
+                    horas_abiertas=abierto,
+                    banda_baja=float(cerrado + abierto * np.exp(qconf(q, a, False))),
+                    banda_alta=float(cerrado + abierto *
+                                     np.exp(qconf(q, 1 - a, True))),
                     nivel=nivel, tareas=len(textos), cerradas=k,
                     con_estimacion=uso_estimacion, lambda_usada=lam,
-                    tramo_banda=tramo, n_calibracion=len(q))
+                    tramo_banda=tramo, k_banda=kb, n_calibracion=len(q))
 
 
 def construir():

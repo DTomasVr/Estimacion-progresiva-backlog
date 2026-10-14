@@ -1,0 +1,42 @@
+  pliegue 1/3 · 9 s
+  pliegue 2/3 · 18 s
+  pliegue 3/3 · 26 s
+  M=2 listo · 83 s
+  M=3 listo · 141 s
+  M=5 listo · 200 s
+  M=8 listo · 260 s
+
+================================================================================================================
+EL CONJUNTO AL 80%, HECHO USABLE (24,848 tareas)
+================================================================================================================
+                      conjunto  cobertura  anchura_mediana  anchura_p25  anchura_p75  trozos_mediana
+           A · la banda de hoy      0.798           31.992       29.906       32.554             1.0
+          C · HPD crudo (E110)      0.788           10.038        4.601       13.167            43.0
+E · HPD unido, maximo 2 trozos      0.728           60.580       11.893       69.382             2.0
+E · HPD unido, maximo 3 trozos      0.802           64.832       19.781       71.776             3.0
+E · HPD unido, maximo 5 trozos      0.881           76.813       69.382       85.041             5.0
+E · HPD unido, maximo 8 trozos      0.796           24.245       11.893       46.184             8.0
+
+================================================================================================================
+COBERTURA POR TRAMO
+================================================================================================================
+                      conjunto  cob_<=1  cob_1-2  cob_2-4  cob_4-8  cob_8-16  cob_>16
+           A · la banda de hoy    0.602    0.984    0.999    0.960     0.748    0.253
+          C · HPD crudo (E110)    0.824    0.841    0.855    0.813     0.741    0.444
+E · HPD unido, maximo 2 trozos    0.346    0.911    0.834    0.957     0.892    0.550
+E · HPD unido, maximo 3 trozos    0.431    0.947    0.986    1.000     0.925    0.600
+E · HPD unido, maximo 5 trozos    0.649    0.955    0.993    1.000     0.991    0.760
+E · HPD unido, maximo 8 trozos    0.572    0.826    0.927    0.994     0.928    0.549
+
+================================================================================================================
+LECTURA
+================================================================================================================
+  C · HPD crudo (E110)                   x 10.04 (78.8%, 43 trozos) · +69% de anchura
+  E · HPD unido, maximo 2 trozos         x 60.58 (72.8%, 2 trozos) · -89% de anchura
+  E · HPD unido, maximo 3 trozos         x 64.83 (80.2%, 3 trozos) · -103% de anchura
+  E · HPD unido, maximo 5 trozos         x 76.81 (88.1%, 5 trozos) · -140% de anchura
+  E · HPD unido, maximo 8 trozos         x 24.24 (79.6%, 8 trozos) · +24% de anchura
+
+  USABLE: E · HPD unido, maximo 8 trozos · x24.24 cubriendo 79.6%, un 24% mas estrecho que hoy.
+
+escrito results\hpd_usable/resumen.csv · 260 s

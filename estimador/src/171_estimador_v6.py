@@ -177,7 +177,7 @@ class EstimadorV6:
         return np.exp(self.p["apilado"].predict(Z))
 
     def estimar_tareas(self, textos, estilo="persona", personas=None,
-                       historial=None):
+                       historial=None, estimaciones=None):
         """La mediana condicional: el numero que se le ensena a una persona.
 
         estilo: "persona" para texto escrito por alguien -lo normal- y
@@ -192,6 +192,13 @@ class EstimadorV6:
         (spearman 0,317 -> 0,358, SA 0,026 -> 0,036, MAE 5,06 -> 5,00 h). NO se
         usa para el total del proyecto: ahi los desplazamientos de las personas
         se cancelan al sumar y empeoran el pronostico (E101).
+
+        estimaciones: lo que estima el usuario, en el orden de textos, con None
+        donde no estime. Donde la hay, las horas salen del corrector por tarea y
+        la banda es la suya: x10,4 de anchura en lugar de x32, con la misma
+        cobertura del 80 % medida sin las filas de real copiado (E108). Con solo
+        el texto la banda NO se puede estrechar: ni por acuerdo de vecinos, ni
+        con cuantiles aprendidos, ni por valor predicho.
 
         El factor de estilo se midio en E74 sobre DOS corpus: el texto original
         de Jira sale con sesgo x1,002, es decir ninguno, y el del generador con
@@ -233,13 +240,27 @@ class EstimadorV6:
         # el desplazamiento de la persona se aplica tambien a la analogia: es una
         # propiedad de quien hace la tarea, no del canal que la estimo
         crudo = np.where(disp <= self.p["umbral_dispersion"], ana * ajuste, h)
+        lo_b, hi_b = h / k, h * k
+        con_est = np.zeros(len(textos), bool)
+        if estimaciones is not None and "corrector_tarea_v6" in self.p:
+            e_ = np.array([np.nan if v is None else float(v) for v in estimaciones])
+            con_est = ~np.isnan(e_) & (np.nan_to_num(e_) > 0)
+            if con_est.any():
+                Vn = V / np.maximum(np.linalg.norm(V, axis=1, keepdims=True), 1e-9)
+                Xc = np.hstack([Vn, np.log(np.where(con_est, e_, 1))[:, None]])
+                hc = np.exp(self.p["corrector_tarea_v6"].predict(Xc)) * ajuste
+                bl, bh = self.p["banda_con_estimacion"]
+                h = np.where(con_est, hc, h)
+                crudo = np.where(con_est, hc, crudo)
+                lo_b = np.where(con_est, hc * np.exp(bl), lo_b)
+                hi_b = np.where(con_est, hc * np.exp(bh), hi_b)
         rej = self.p["rejilla"]
         probable = rej[np.abs(np.log(rej)[None, :] -
                               np.log(np.clip(crudo, 1e-6, None))[:, None]).argmin(1)]
         return pd.DataFrame({"texto": textos, "horas": h,
                              "valor_probable": probable,
-                             "banda_baja": h / k, "banda_alta": h * k,
-                             "ajuste_persona": ajuste})
+                             "banda_baja": lo_b, "banda_alta": hi_b,
+                             "ajuste_persona": ajuste, "con_estimacion": con_est})
 
     def _media_tarea(self, textos):
         """La media condicional: lo que hay que sumar para un total."""

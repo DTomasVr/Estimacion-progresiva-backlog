@@ -1,0 +1,43 @@
+24,848 tareas · 240 bins de x1.034 · 2 s
+  banda de hoy: x31.99 · 79.8%
+  K=200 suave=0.25: x29.72 · 80.0% · tau=0.7980 · 38 s
+  K=200 suave=0.05: x29.72 · 80.0% · tau=0.8050 · 49 s
+  K=100 suave=0.1: x29.72 · 80.0% · tau=0.8098 · 60 s
+  K=50 suave=0.1: x29.72 · 79.8% · tau=0.8235 · 71 s
+  K=50 suave=0.02: x30.74 · 80.0% · tau=0.8319 · 81 s
+  K=25 suave=0.05: x32.90 · 80.0% · tau=0.8677 · 92 s
+
+================================================================================================================
+LA VENTANA CONTIGUA MAS CORTA, EN FRIO (24,848 tareas)
+================================================================================================================
+                                conjunto  cobertura  anchura_mediana  anchura_p10  anchura_p90
+              A · simetrica en log (hoy)      0.798           31.992       29.906       32.554
+B · ventana mas corta · K=200 suave=0.25      0.800           29.717       20.463       41.716
+B · ventana mas corta · K=200 suave=0.05      0.800           29.717       18.483       46.184
+ B · ventana mas corta · K=100 suave=0.1      0.800           29.717       17.271       49.425
+  B · ventana mas corta · K=50 suave=0.1      0.798           29.717       16.695       56.607
+ B · ventana mas corta · K=50 suave=0.02      0.800           30.742       16.695       58.560
+ B · ventana mas corta · K=25 suave=0.05      0.800           32.899       15.600       79.463
+
+================================================================================================================
+COBERTURA POR TRAMO
+================================================================================================================
+                                conjunto  cob_<=1  cob_1-2  cob_2-4  cob_4-8  cob_8-16  cob_>16
+              A · simetrica en log (hoy)    0.602    0.984    0.999    0.960     0.748    0.253
+B · ventana mas corta · K=200 suave=0.25    0.625    1.000    1.000    0.976     0.750    0.156
+B · ventana mas corta · K=200 suave=0.05    0.641    1.000    0.999    0.947     0.713    0.202
+ B · ventana mas corta · K=100 suave=0.1    0.645    0.999    0.999    0.946     0.689    0.221
+  B · ventana mas corta · K=50 suave=0.1    0.649    0.993    0.997    0.920     0.677    0.262
+ B · ventana mas corta · K=50 suave=0.02    0.655    0.991    0.995    0.916     0.685    0.272
+ B · ventana mas corta · K=25 suave=0.05    0.659    0.989    0.992    0.902     0.685    0.305
+
+================================================================================================================
+LECTURA
+================================================================================================================
+  hoy          x 31.99 (cubre 79.8%)
+  lo mejor     x 29.72 (cubre 80.0%) · B · ventana mas corta · K=200 suave=0.25
+
+  Estrecha un 7% siendo UN SOLO INTERVALO, asi que se puede
+  ensenar tal cual. Y la densidad mas afilada ayuda: ver el barrido.
+
+escrito results\ventana_mas_corta/resumen.csv · 92 s

@@ -262,6 +262,71 @@ class EstimadorV6:
                              "banda_baja": lo_b, "banda_alta": hi_b,
                              "ajuste_persona": ajuste, "con_estimacion": con_est})
 
+    def tira_probabilidad(self, textos, nivel=None, max_trozos=None):
+        """La region de densidad predictiva maxima (HPD) de cada tarea.
+
+        Devuelve, por tarea, una lista de (desde_h, hasta_h, probabilidad) con
+        los tramos donde se concentra la masa. NO sustituye a la banda: es una
+        tira de probabilidad para el detalle, porque sale fragmentada.
+
+        Es un 68 % mas estrecha EN MEDIDA que la banda al 80 % y reparte mucho
+        mejor la cobertura por tamano de tarea (0,45-0,86 contra 0,25-1,00),
+        pero se queda con los dientes del peine y tira los huecos, asi que su
+        RECORRIDO es mayor: para un "entre X e Y" la banda sigue siendo mejor
+        (E110-E112).
+
+        max_trozos recorta a los trozos de mas masa. Ojo: con cinco o menos el
+        conjunto deja de cubrir lo que promete, porque la masa esta dispersa.
+        """
+        if "tau_tira" not in self.p:
+            raise RuntimeError("el paquete no trae la tira; corre "
+                               "src/230_parche_tira_hpd.py")
+        borde = self.p["bordes_tira"]
+        marg = self.p["marginal_tira"]
+        nb = len(marg)
+        paso = float(borde[1] - borde[0])
+        tau = self.p["tau_tira"]
+        if nivel is not None and abs(nivel - .8) > 1e-9:
+            # el tau guardado es para el 80 %; para otro nivel se reescala de
+            # forma aproximada y se avisa en la salida
+            tau = float(np.clip(tau * nivel / .8, .05, .9995))
+        V, _, _, _ = self._vistas(list(textos))
+        Vn = V / np.maximum(np.linalg.norm(V, axis=1, keepdims=True), 1e-9)
+        BV = np.asarray(self.p["vec_V"], np.float32)
+        BV = BV / np.maximum(np.linalg.norm(BV, axis=1, keepdims=True), 1e-9)
+        b_b = np.clip(np.digitize(np.log(np.clip(
+            np.asarray(self.p["vec_y"], float), 1e-6, None)), borde) - 1, 0, nb - 1)
+        k = min(self.p["k_dens_tira"], len(b_b) - 1)
+        sw_ = self.p["suave_tira"]
+        salida = []
+        for i in range(0, len(Vn), 512):
+            sim = Vn[i:i + 512] @ BV.T
+            vec = np.argpartition(-sim, k, axis=1)[:, :k]
+            d = np.zeros((vec.shape[0], nb), np.float32)
+            fil = np.repeat(np.arange(vec.shape[0]), k)
+            np.add.at(d, (fil, b_b[vec].ravel()), 1.0)
+            d /= d.sum(1, keepdims=True)
+            d = (1 - sw_) * d + sw_ * marg
+            for fila in d:
+                ordn = np.argsort(-fila)
+                acum = np.cumsum(fila[ordn])
+                cuantos = int(np.searchsorted(acum, tau) + 1)
+                dentro = np.sort(ordn[:cuantos])
+                cortes = np.flatnonzero(np.diff(dentro) > 1)
+                ini = np.r_[0, cortes + 1]
+                fin = np.r_[cortes, len(dentro) - 1]
+                trozos = [(float(np.exp(borde[dentro[a]])),
+                           float(np.exp(borde[dentro[b] + 1])),
+                           float(fila[dentro[a]:dentro[b] + 1].sum()))
+                          for a, b in zip(ini, fin)]
+                trozos.sort(key=lambda x: -x[2])
+                if max_trozos:
+                    trozos = trozos[:max_trozos]
+                trozos.sort(key=lambda x: x[0])
+                salida.append([(round(a, 2), round(b, 2), round(pr, 4))
+                               for a, b, pr in trozos])
+        return salida
+
     def _media_tarea(self, textos):
         """La media condicional: lo que hay que sumar para un total."""
         V, Xd, SV, Ms = self._vistas(textos)

@@ -64,6 +64,11 @@ CORTES_TRAMO = [20, 60, 200]
 N_REJILLA = 30
 # contraccion del ancla por persona; barrida en E100 sobre 423 desarrolladores
 LAMBDA_PERSONA = 8
+# Contraccion del cuantil del tramo hacia el global, por numero de tareas
+# cerradas. Calibrar cada tramo por separado cuesta anchura cuando hay pocos
+# puntos: con k=1 la banda sale x7,80 y contrayendo x5,40, a la MISMA cobertura
+# real del 80 % (E114). Con k>=10 el tramo ya tiene bastante y no se contrae.
+M_TRAMO = {0: 1500, 3: 600, 5: 200, 10: 0, 20: 0}
 MIN_CALIBRACION = 12
 
 
@@ -373,14 +378,31 @@ class EstimadorV6:
         # con 3, x3,75 con 5, x2,37 con 10 y x2,05 con 20, manteniendo el 80 %
         # (E107). Por tramo se conserva el reparto honesto de E89.
         tramo = int(np.digitize(len(textos), self.p["cortes_tramo"]))
+        a = (1 - nivel) / 2
         tabla = self.p.get("residuos_abierto")
         if tabla:
             # el k calibrado mas cercano por DEBAJO: con menos historial la banda
             # es mas ancha, asi que redondear hacia abajo es lo prudente
             kb = max(x for x in self.p["ks_banda"] if x <= k)
             g = tabla[kb]
-            if len(g.get(tramo, ())) >= MIN_CALIBRACION:
-                q = g[tramo]
+            qt = g.get(tramo, ())
+            if len(qt) >= MIN_CALIBRACION:
+                M = M_TRAMO.get(kb, 0)
+                if M:
+                    # el cuantil del tramo, contraido hacia el global
+                    w = len(qt) / (len(qt) + M)
+                    ql = w * qconf(qt, a, False) + (1 - w) * qconf(g[-1], a, False)
+                    qh = w * qconf(qt, 1 - a, True) + (1 - w) * qconf(g[-1], 1 - a, True)
+                    return dict(total_horas=total, horas_cerradas=cerrado,
+                                horas_abiertas=abierto,
+                                banda_baja=float(cerrado + abierto * np.exp(ql)),
+                                banda_alta=float(cerrado + abierto * np.exp(qh)),
+                                nivel=nivel, tareas=len(textos), cerradas=k,
+                                con_estimacion=uso_estimacion, lambda_usada=lam,
+                                tramo_banda=tramo, k_banda=kb,
+                                contraccion_tramo=round(w, 4),
+                                n_calibracion=len(qt))
+                q = qt
             else:
                 q, tramo = g[-1], None
         else:
@@ -391,7 +413,6 @@ class EstimadorV6:
                 q = g[tramo]
             else:
                 tramo = None
-        a = (1 - nivel) / 2
         return dict(total_horas=total, horas_cerradas=cerrado,
                     horas_abiertas=abierto,
                     banda_baja=float(cerrado + abierto * np.exp(qconf(q, a, False))),
@@ -399,7 +420,8 @@ class EstimadorV6:
                                      np.exp(qconf(q, 1 - a, True))),
                     nivel=nivel, tareas=len(textos), cerradas=k,
                     con_estimacion=uso_estimacion, lambda_usada=lam,
-                    tramo_banda=tramo, k_banda=kb, n_calibracion=len(q))
+                    tramo_banda=tramo, k_banda=kb, contraccion_tramo=1.0,
+                    n_calibracion=len(q))
 
 
 def construir():

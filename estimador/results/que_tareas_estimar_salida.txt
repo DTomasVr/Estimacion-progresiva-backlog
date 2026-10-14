@@ -1,0 +1,62 @@
+41 proyectos · 9,451 tareas · limpias 62.6% de las que traen estimacion · 1 s
+  pliegue 1/5 · 17 s
+  pliegue 2/5 · 35 s
+  pliegue 3/5 · 54 s
+  pliegue 4/5 · 72 s
+  pliegue 5/5 · 91 s
+  todas listo · 91 s
+  solo limpias listo · 91 s
+
+================================================================================================================
+±25 % DEL TOTAL · TODAS
+================================================================================================================
+criterio  ORACULO    azar  mas atipicas  mas horas  mas inciertas
+k                                                                
+1          0.5366  0.4480        0.4634     0.4146         0.4634
+3          0.6098  0.4366        0.3902     0.4390         0.5122
+5          0.6341  0.4545        0.4634     0.4634         0.4878
+10         0.6585  0.4862        0.4878     0.4878         0.5122
+20         0.6098  0.5496        0.5854     0.5122         0.5610
+  en frio 46.3% · estimando TODAS 73.2%
+
+  fraccion de las horas previstas que cubren las elegidas:
+criterio  ORACULO   azar  mas atipicas  mas horas  mas inciertas
+k                                                               
+1           0.055  0.038         0.038      0.087          0.046
+3           0.138  0.114         0.108      0.214          0.127
+5           0.222  0.190         0.182      0.305          0.211
+10          0.379  0.351         0.345      0.453          0.363
+20          0.509  0.483         0.468      0.581          0.496
+
+================================================================================================================
+±25 % DEL TOTAL · SOLO LIMPIAS
+================================================================================================================
+criterio  ORACULO    azar  mas atipicas  mas horas  mas inciertas
+k                                                                
+1          0.5366  0.4455        0.4634     0.4390         0.4634
+3          0.5610  0.4642        0.4878     0.4878         0.5366
+5          0.5610  0.4691        0.5122     0.4634         0.4878
+10         0.5366  0.5065        0.5122     0.5122         0.5122
+20         0.5854  0.5528        0.5610     0.5854         0.5610
+  en frio 46.3% · estimando TODAS 63.4%
+
+  fraccion de las horas previstas que cubren las elegidas:
+criterio  ORACULO   azar  mas atipicas  mas horas  mas inciertas
+k                                                               
+1           0.050  0.037         0.037      0.079          0.043
+3           0.121  0.111         0.105      0.185          0.118
+5           0.197  0.185         0.176      0.258          0.202
+10          0.302  0.284         0.280      0.349          0.295
+20          0.375  0.359         0.351      0.430          0.370
+
+================================================================================================================
+LECTURA
+================================================================================================================
+  en frio 46.3% · estimando TODAS 63.4% (+17.1 puntos)
+  k= 1: al azar 44.6% (-10% de lo que dan todas) · por MAS HORAS 43.9% (-14%)
+  k= 3: al azar 46.4% (0% de lo que dan todas) · por MAS HORAS 48.8% (14%)
+  k= 5: al azar 46.9% (3% de lo que dan todas) · por MAS HORAS 46.3% (0%)
+  k=10: al azar 50.7% (25% de lo que dan todas) · por MAS HORAS 51.2% (29%)
+  k=20: al azar 55.3% (52% de lo que dan todas) · por MAS HORAS 58.5% (71%)
+
+escrito results\que_tareas_estimar/resumen.csv · 91 s

@@ -1,0 +1,36 @@
+41 proyectos con estimacion · limpias 65.3% de las que la traen · 1 s
+  tareas limpias por proyecto: mediana 37 · p10 5 · p90 217
+  pliegue 1/5 · 14 s
+  pliegue 2/5 · 25 s
+  pliegue 3/5 · 39 s
+  pliegue 4/5 · 54 s
+  pliegue 5/5 · 69 s
+  k=3 listo · 69 s
+  k=5 listo · 69 s
+  k=10 listo · 69 s
+  k=20 listo · 70 s
+
+================================================================================================================
+±25 % DE LO QUE QUEDA ABIERTO
+================================================================================================================
+brazo  A · en frio (todas)  A' · en frio, solo limpias  B · anclaje (todas)  B' · anclaje, solo limpias  E1 · estimacion, todo contaminado  E2 · entrenado con todo, evaluado limpio  E3 · entrenado y evaluado LIMPIO
+k                                                                                                                                                                                                                     
+3                   0.3927                      0.3153               0.3866                      0.3982                             0.7488                                    0.6836                            0.6604
+5                   0.3756                      0.3232               0.4116                      0.4067                             0.7213                                    0.6765                            0.6636
+10                  0.3674                      0.2962               0.4326                      0.4463                             0.7229                                    0.7195                            0.7048
+20                  0.3938                      0.3195               0.5277                      0.4976                             0.7580                                    0.7130                            0.7027
+
+================================================================================================================
+LECTURA
+================================================================================================================
+  k= 3: anclaje limpio 39.8% · E1 contaminado 74.9% · E3 LIMPIO 66.0%
+  k= 5: anclaje limpio 40.7% · E1 contaminado 72.1% · E3 LIMPIO 66.4%
+  k=10: anclaje limpio 44.6% · E1 contaminado 72.3% · E3 LIMPIO 70.5%
+  k=20: anclaje limpio 49.8% · E1 contaminado 75.8% · E3 LIMPIO 70.3%
+
+  media: anclaje 43.7% · contaminado 73.8% · limpio 68.3%
+
+  La palanca AGUANTA el control: la estimacion sigue muy por
+  encima del anclaje con los datos limpios.
+
+escrito results\abierto_sin_contaminar/resumen.csv · 70 s

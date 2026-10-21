@@ -1,0 +1,14 @@
+{
+ "vocab": 250002,
+ "conservados": 14897,
+ "oov_tokens_prueba": 0.0027052516628611138,
+ "titulos_con_oov_prueba": 0.04686390532544379,
+ "oov_tokens_generador": 0.020687107499076467,
+ "titulos_con_oov_generador": 0.24120603015075376,
+ "desvio_horas_vs_int8_mediano": 0.04743822059103664,
+ "mb": {
+  "e5_base": 319.803073,
+  "e5_ajustado": 319.803073,
+  "e5_ajustado_C": 319.803073
+ }
+}

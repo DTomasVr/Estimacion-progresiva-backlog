@@ -7,7 +7,7 @@ documento las reúne en uno solo:
 
 | | qué hace | modelos | estado |
 |---|---|---|---|
-| **Tubería 1 · Generación** | descripción → historias de usuario con sus tareas | 2 × mT5-small podado (121 M) + SBERT propio + Marian | desplegado 28/09/2026 |
+| **Tubería 1 · Generación** | descripción → historias de usuario con sus tareas | 3 × mT5-small podado (121 M) + SBERT propio + Marian | desplegado 28/09/2026, revisado 21/10/2026 |
 | **Tubería 2 · Estimación** | tareas → horas, y el total del proyecto | e5-large congelado (ONNX int8, 397 MB) + dos apilados | `estimador_agix_v7`, 21/10/2026 |
 
 > **Alcance:** solo el diseño vigente de las dos tuberías. El camino de los experimentos
@@ -29,7 +29,7 @@ también como **figura exportada** en SVG vectorial y PNG a 300 dpi para pegar e
 - [0.4 El contrato entre las dos tuberías](#04--el-contrato-entre-las-dos-tuberías)
 
 **Parte A · Generación de historias y tareas** — [A.1](#a1-qué-hace-y-qué-decide-el-diseño) ·
-[A.2 las cinco decisiones](#a2-las-cinco-decisiones-de-diseño) · [A.3 flujo](#a3-figura-1--flujo-de-extremo-a-extremo) ·
+[A.2 las siete decisiones](#a2-las-siete-decisiones-de-diseño) · [A.3 flujo](#a3-figura-1--flujo-de-extremo-a-extremo) ·
 [A.4 etapas](#a4-detalle-de-cada-etapa) · [A.5 las dos mitades](#a5-figura-2--las-dos-mitades) ·
 [A.6 plan de roles](#a6-figura-3--el-plan-de-roles-y-las-fichas-de-control) ·
 [A.7 procedencia](#a7-figura-4--procedencia-de-datos-y-modelos) · [A.8 artefactos](#a8-artefactos-que-se-cargan-en-ejecución) ·
@@ -130,21 +130,23 @@ flowchart TB
         D1{"¿está<br/>en español?"}
         D2["Leer los ACTORES del español<br/>léxico de 57 actores"]
         D3["Traducir la entrada<br/>Marian es→en"]
-        P1["Planificar ROLES<br/>4 fuentes, nunca vacío"]
+        P1["Planificar ROLES<br/>4 fuentes, nunca vacío<br/>plantel solo con respaldo"]
         P2["Planificar CLASES de función<br/>2 por rol · 6 clases"]
         V1["Recuperar vecinos · k=2"]
         M1[["mT5 One2One · 121M<br/>muestreo top-p 0,95<br/>6 muestras por par (rol, clase)"]]
         B1[/"Banco de ~36 candidatas"/]
-        S1["SELECCIÓN por cobertura de rasgos<br/>voraz submodular + 6 castigos de forma"]
+        AN["ANCLAS · una historia por<br/>función descrita, prefijo forzado"]
+        S1["SELECCIÓN por cobertura de rasgos<br/>anclas primero + voraz submodular<br/>+ 6 castigos de forma"]
         H1[/"12 historias elegidas"/]
         V2["Recuperar vecinos por historia"]
-        M2[["mT5 One2Seq · 121M<br/>haz de 4, sin repetir 4-gramas"]]
-        DD["Deduplicar · tope de arranques<br/>reasignar cada tarea a su historia"]
+        M2[["2 × mT5 One2Seq · 121M en conjunto<br/>haz de 4, sin repetir 4-gramas"]]
+        DD["Filtrar no-desarrollo · deduplicar<br/>tope de arranques · reasignar cada tarea"]
         R1[("corpus o2o<br/>pipeline_emb.npz")]
         R2[("corpus hist<br/>s2s_hist_train")]
         D1 -->|sí| D2 --> D3 --> P1
         D1 -->|no| P1
         P1 --> P2 --> V1 --> M1 --> B1 --> S1 --> H1 --> V2 --> M2 --> DD
+        P2 --> AN --> S1
         R1 -.-> V1
         R2 -.-> V2
     end
@@ -193,7 +195,9 @@ flowchart TB
 Tres cosas que esta figura hace explícitas y que son todo el diseño:
 
 1. **La tubería 1 genera; el pipeline decide.** El modelo de arriba produce ~36 candidatas y la
-   selección por cobertura elige 12. La calidad no sale del modelo, sale de la elección.
+   selección por cobertura elige 12. La calidad no sale del modelo, sale de la elección. Lo único
+   que se fuerza es que cada función que la descripción nombra tenga su historia (las anclas,
+   A.2.6), porque lo que el modelo no genera no se puede elegir.
 2. **La tubería 2 tiene dos cabezas y no una.** La de la mediana contesta «cuánto tarda esta
    tarea» y la de la media contesta «cuánto suma esto». No son el mismo número y no se pueden
    intercambiar.
@@ -239,7 +243,8 @@ cancelación es parcial, y la predicción corregida es el mejor punto hacia el q
 # PARTE A · Generación de historias y tareas
 
 > La primera tubería: de la descripción del producto al backlog. Estado desplegado a
-> 28/09/2026. Los experimentos descartados están en `ROL_FUNCION_LITERATURA.md` y
+> 21/10/2026: el diseño del 28/09 más los arreglos de la revisión de extremo a extremo
+> (A.2.6, A.2.7 y A.12). Los experimentos descartados están en `ROL_FUNCION_LITERATURA.md` y
 > `AUMENTO_DATOS_LITERATURA.md`.
 
 ---
@@ -251,21 +256,23 @@ cancelación es parcial, y la predicción corregida es el mejor punto hacia el q
 **tareas**, en español.
 
 **Coste**: ~26 s por descripción en una RTX 5060, de los cuales ~20 s son cargar los modelos una sola
-vez. Dos mT5-small podados de 121 M parámetros cada uno; entran de sobra en 8 GB de VRAM.
+vez. Tres mT5-small podados de 121 M parámetros cada uno —uno arriba y dos en conjunto abajo—;
+entran de sobra en 8 GB de VRAM. Las anclas de A.2.6 añaden ~0,4 s en GPU y 1,3–2,3 s en CPU.
 
 El problema que el diseño tiene que resolver no es generar texto plausible —un modelo pequeño lo hace—
 sino tres cosas que un modelo pequeño **no** hace solo:
 
 1. que el backlog tenga **varios actores** y que sean los del producto descrito;
 2. que no sean doce historias de **pedir ver cosas**;
-3. que las tareas pertenezcan a **su** historia y no se repitan.
+3. que las tareas pertenezcan a **su** historia y no se repitan;
+4. que **cada función que la descripción nombra** esté en el backlog, con su actor.
 
-Las tres se resuelven **fuera del modelo**: condicionando la generación con fichas de control y
+Las cuatro se resuelven **fuera del modelo**: condicionando la generación con fichas de control y
 eligiendo después entre muchas candidatas. El modelo genera; el pipeline decide.
 
 ---
 
-## A.2 Las cinco decisiones de diseño
+## A.2 Las siete decisiones de diseño
 
 Cada una con el número que la sostiene. Son las que hay que poder defender.
 
@@ -306,6 +313,13 @@ Medido sobre 30 descripciones reservadas: los rasgos cubiertos pasan del 81,1 % 
 backlogs que los cubren todos del 53,3 % al **66,7 %**. Cuesta 2,6 puntos de atribución, y se acepta:
 un rasgo sin cubrir es trabajo que no existe en el backlog.
 
+**Los rasgos se leen de la descripción entera** (`rasgos_con_sujeto`). El extractor anterior
+cortaba por el primer «with» y tiraba la cabeza de la frase, que es justo donde va la función
+central: «A web application to book home cleaning services, with…» daba solo lo de detrás del
+«with», y «graduates apply with their CV» daba «their CV». La selección llevaba tiempo cubriendo
+los rasgos equivocados. Ahora se parte por comas, punto y coma y dos puntos, y cada rasgo guarda
+su **sujeto** («companies» en «companies publish offers»), que A.2.6 usa para elegir el actor.
+
 Sobre esa selección van **seis castigos de forma** (circularidad, autorreferencia, eco, rol-función,
 largo, beneficio vacío) y tres términos de cobertura (rol, clase de función, beneficio literal).
 
@@ -316,6 +330,51 @@ es español que pasa por Marian. Ese inglés no habla igual: el viaje de ida y v
 de las palabras**. Se añadieron al conjunto los mismos ejemplos con la descripción retrotraducida por
 los **mismos** modelos que el producto usa. Resultado pareado con tres semillas: **+0,0118 de sF1**,
 las tres a favor, con desviación 0,0017.
+
+### A.2.6 Una historia ancla por función descrita
+
+En la revisión de extremo a extremo, dos de seis proyectos salían **sin su función central**:
+reservar una limpieza, reservar una sala de estudio. No era la selección: en salas el banco traía
+**1 candidata de reservar sala entre 28**, y en la ferretería **0 de transferencias entre tiendas**.
+Lo que no se genera no se puede elegir. Y pedirlo por la entrada no funciona: con «A mobile app:
+find and book study rooms» el modelo sigue escribiendo lecciones, porque la ficha de función son
+seis verbos sin objeto y el decodificador copia poco objeto de la entrada.
+
+Lo que el modelo **sí obedece** es un **prefijo forzado** en el decodificador. Por cada función que
+la descripción enumera (A.2.4) se construye «As a student, I want to find and book study rooms on
+campus in real time, so that» y el modelo escribe solo el beneficio (6 muestras, elige el
+reordenador de beneficios). La capacidad sale de `capacidad_de_rasgo`: el rasgo tal cual si empieza
+por verbo, o con un verbo ligero si es un sustantivo («low stock alerts» → «receive low stock
+alerts»). El actor sale del sujeto del rasgo, con una tabla para los colectivos que el SBERT no
+casa con su rol («companies» quedaba más cerca de «graduate» que de «recruiter»).
+
+Las anclas entran **siempre**, hasta k/2, y la selección normal rellena el resto. Es un chequeo de
+cobertura, pero en el lado de la **generación**, que es donde estaba el hueco. `AGIX_ANCLAR=0` lo
+apaga para comparar.
+
+Según el informe del chat de generación (`RESPUESTA_REVISION_EXTREMO_A_EXTREMO.md`), de la mejora total de sF1 de la revisión
+(+0,0317), **+0,0261 son de las anclas** (ablación, IC95 [+0,018, +0,034]). **Al citarlo:** la
+capacidad sale literal de la descripción, que es la entrada y no la referencia, así que no hay
+fuga; pero el sF1 premia reutilizar la descripción, y parte de la ganancia es eso.
+
+### A.2.7 El plantel del sector solo entra con respaldo
+
+El umbral de sector (0,65) decide si **hay** plantel, pero no si es el **correcto**. Limpieza a
+domicilio caía en *atención domiciliaria* con 0,691 contra 0,682 del sector de limpieza —gana por
+0,009— y el backlog salía entero de enfermeras. Salas de estudio nombra solo «estudiante», y el
+plantel de docencia metía instructor y asistente, y con ellos asistencia y lecciones. Los sectores
+acertados están en 0,75 o más (taller 0,755, clínica 0,827, delivery 0,853, banca 0,920); los
+equivocados, entre 0,69 y 0,71.
+
+Por eso, **por debajo de 0,75** (`UMBRAL_PLANTEL_LIBRE`) un rol del plantel solo entra si la
+descripción lo **respalda**: comparte con ella una palabra de dominio, por raíz de cinco letras
+(«cleaner» con «cleaning», «store manager» con «stores»; `rol_respaldado`). Las palabras de rol que
+no dicen nada del dominio —manager, agent, member, administrator…— no cuentan como respaldo.
+Calibrado sobre 9 puntos, no más.
+
+Además se leen del español «egresado», «recepción» y, solo en un portal de empleo, «empresa». Al
+empleador se le pide *recruiter* y no *employer*: en una sonda de 16 muestras «employer» se obedece
+11 veces y el resto sale «lawyer»; «recruiter», 16 de 16.
 
 ---
 
@@ -331,25 +390,31 @@ flowchart TD
     B -->|sí| B1["Leer los ACTORES del español<br/>actores_es_nombrados"]
     B1 --> B2["Traducir a inglés<br/>Marian opus-mt-es-en"]
     B -->|no| C
-    B2 --> C["Planificar ROLES<br/>PlanificadorRoles"]
+    B2 --> C["Planificar ROLES<br/>PlanificadorRoles<br/>plantel con respaldo si sector &lt; 0,75"]
     C --> D["Planificar CLASES de función<br/>plan_funciones"]
     D --> E["Recuperar vecinos del corpus<br/>k=2, tabla o2o"]
     E --> F["MITAD DE ARRIBA<br/>descripción + fichas → 1 historia<br/>muestreo, 6 por par (rol, clase)"]
     F --> G["Banco de candidatas<br/>filtros de forma y de léxico"]
-    G --> H["SELECCIÓN por cobertura de rasgos<br/>seleccion_por_rasgos, voraz"]
+    D --> AN["ANCLAS: una historia por función descrita<br/>prefijo forzado, el modelo escribe el beneficio"]
+    AN --> H
+    G --> H["SELECCIÓN por cobertura de rasgos<br/>las anclas entran siempre, hasta k/2"]
     H --> I["Recuperar vecinos por historia<br/>tabla hist"]
     I --> J["MITAD DE ABAJO<br/>historia → conjunto de tareas<br/>haz de 4"]
-    J --> K["Deduplicar tareas<br/>global 0,90 · intrahistoria 0,95<br/>y 0,95 sin el verbo"]
+    J --> K["Filtrar y deduplicar tareas<br/>no-desarrollo · global 0,90<br/>intrahistoria 0,95 y 0,95 sin el verbo"]
     K --> L["Tope de arranques repetidos<br/>máximo 2 por backlog"]
     L --> M["Reasignar la tarea a su historia<br/>y piso de pertenencia 0,30"]
     M --> N["Traducir al español<br/>Marian opus-mt-en-es"]
-    N --> O["Reparaciones en español<br/>glosario · glosario con fuente<br/>unificar roles · verbo en infinitivo<br/>eco por flexión"]
+    N --> O["Reparaciones en español<br/>glosario · glosario con fuente · glosario general<br/>restos en inglés · unificar roles<br/>verbo en infinitivo · eco por flexión"]
     O --> P["Backlog final<br/>12 historias con tareas"]
 ```
 
 Las etapas que el propio pipeline cronometra, en orden: `traducir_entrada`, `recuperar_arriba`,
 `generar_historias`, `deduplicar_historias`, `recuperar_abajo`, `generar_tareas`, `deduplicar_tareas`,
 `reasignar_tareas`, `traducir`, `total`.
+
+> La figura exportada (`fig1_pipeline.png`) es del 28/09 y **no lleva las anclas**; el diagrama
+> Mermaid de arriba sí está al día. Se regenera con `src/90_figuras.py` del repositorio del
+> generador.
 
 ---
 
@@ -364,14 +429,15 @@ Las etapas que el propio pipeline cronometra, en orden: `traducir_entrada`, `rec
 | 5 | Vecinos de arriba | 2 ejemplos del corpus real por similitud del SBERT propio, que van en el prompt | `_vecinos` |
 | 6 | Generación de arriba | una tanda de muestreo **por par (rol, clase)**, mínimo 6 muestras cada una | `_generar` |
 | 7 | Filtros del banco | formato de historia, rol válido (persona, no sustantivo cualquiera), léxico de Jira | `rol_valido`, `degenerada_texto` |
-| 8 | Selección | cobertura de rasgos + 3 términos de reparto + 6 castigos de forma | `seleccion_por_rasgos` |
+| 7b | Anclas | una historia por función enumerada, con prefijo forzado y el beneficio elegido entre 6 | `rasgos_con_sujeto`, `capacidad_de_rasgo` |
+| 8 | Selección | las anclas primero (hasta k/2); el resto por cobertura de rasgos + 3 términos de reparto + 6 castigos de forma | `seleccion_por_rasgos` |
 | 9 | Vecinos de abajo | ejemplos para cada historia elegida | `_vecinos` |
 | 10 | Generación de abajo | haz de 4, sin repetir 4-gramas, penalización 1,3 | `_generar` |
-| 11 | Deduplicar tareas | 0,90 entre historias · 0,95 dentro · 0,95 **sin el verbo inicial** | `__call__` |
+| 11 | Filtrar y deduplicar tareas | fuera lo que no es desarrollo (verbo como *attend*, *proceed*, *discuss*, *please*; «prepare for»; frases de historia como «I would like») · 0,90 entre historias · 0,95 dentro · 0,95 **sin el verbo inicial** | `tarea_degenerada`, `__call__` |
 | 12 | Tope de arranques | máximo 2 tareas por backlog con el mismo arranque de dos palabras | `arranque` |
-| 13 | Reasignar | cada tarea va a la historia a la que de verdad pertenece; piso 0,30 | `__call__` |
+| 13 | Reasignar | cada tarea va a la historia a la que de verdad pertenece; piso 0,30. Ninguna historia se queda vacía, y el rescate prefiere una tarea que no esté ya en otra historia | `__call__` |
 | 14 | Traducir la salida | Marian `opus-mt-en-es` | `__call__` |
-| 15 | Reparaciones | glosario, glosario con fuente inglesa, unificar nombres de rol, verbo en infinitivo, eco por flexión | `glosario`, `glosario_fuente`, `unificar_roles_es`, `normalizar_verbo_es`, `eco_por_raiz` |
+| 15 | Reparaciones | glosario, glosario con fuente inglesa, **glosario general** disparado por el inglés de origen (stock → existencias, job listing → oferta de empleo, Implement → Implementar, apply → postular en empleo, grade → calificación, appointment → cita, branches → sucursales fuera de un repositorio, test case → caso de prueba), **restos en inglés** (real-time, follow-up, Scheduler, HR…), unificar nombres de rol, verbo en infinitivo, eco por flexión | `glosario`, `glosario_fuente`, `glosario_general`, `unificar_roles_es`, `normalizar_verbo_es`, `eco_por_raiz` |
 
 **Por qué el tope de arranques está en la salida y no en los datos**: los datos de entrenamiento ya
 están planos (3,0 % de concentración en los cinco arranques más frecuentes, contra 2,6 % humano) y el
@@ -431,7 +497,7 @@ flowchart TD
     C -->|no| E["Extractor sobre el inglés<br/>actores_nombrados, léxico de 935 roles"]
     E --> F["Descartar los que son MÁQUINA<br/>rol_infraestructura"]
     F --> G{"¿la descripción se parece a<br/>un sector de la taxonomía?<br/>similitud ≥ 0,65"}
-    G -->|sí| H["Plan = actores leídos + plantel del sector<br/>hasta k = 4"]
+    G -->|sí| H["Plan = actores leídos + plantel del sector<br/>hasta k = 4<br/>bajo 0,75: solo roles respaldados"]
     G -->|no| I{"¿2 o más actores?"}
     I -->|sí| J["Plan = solo los actores leídos"]
     I -->|no| K["Actores COLECTIVOS<br/>the team → team member"]
@@ -460,6 +526,8 @@ Dos reglas del plan, las dos falsificadas antes de entrar:
   producto, que es justo el que se buscaba.
 - **Si el español nombra 2 actores o más, no se consulta la traducción**, porque su entrada es una
   versión con pérdidas de la misma frase.
+- **Con similitud de sector por debajo de 0,75, el plantel solo aporta roles respaldados** por la
+  descripción (A.2.7). Es la regla que quitó las enfermeras de la limpieza a domicilio.
 
 ---
 
@@ -505,6 +573,7 @@ queda excluido porque su licencia obligaría a poner «Llama» en el nombre del 
 |---|---|---|
 | `models/..._v9bt_agix_v1` | `09_train_mt5.py` | mitad de arriba |
 | `models/..._hist_agix_v1_v5_agix_v1` | `09_train_mt5.py` | mitad de abajo |
+| `models/mt5-small-pruned_hist_agix_v1_bs8_lr9.2e-4` | `09_train_mt5.py` | mitad de abajo, 2.º del conjunto: sola empata, pero se equivoca distinto y la unión sube la cobertura |
 | `models/sbert_agix_v1` | `06_finetune_sbert.py` | recuperación, selección, deduplicado |
 | `models/reordenador_beneficio.joblib` | `74_reordenador.py` | bonificación por coherencia del beneficio (AUC 0,728) |
 | `data/processed/pipeline_emb.npz` | `08_preprocess.py` | embeddings del corpus para recuperar vecinos |
@@ -515,7 +584,7 @@ queda excluido porque su licencia obligaría a poner «Llama» en el nombre del 
 | `data/processed/matriz_rol_verbo.json` | `83_matriz_rol_verbo.py` | asociación rol×verbo |
 | `data/processed/lexico_jira_estricto.json` | `81_lexico_jira_estricto.py` | 167 palabras de Jira a vetar en las tareas |
 | `data/synth/descripciones_v3.json` | `53_dominios_v3.py` | 622 descripciones y el plantel de 40 sectores |
-| `Helsinki-NLP/opus-mt-{es-en,en-es}` | caché en `models/hf_cache` | traducción de entrada y de salida |
+| `models/marian_es_en`, `models/marian_en_es` | copia local de `Helsinki-NLP/opus-mt-*` | traducción de entrada y de salida. Desde carpeta y no desde el caché de HF: con el caché, estando en línea, la librería volvía a resolver `main` y bajaba otra variante de los pesos (+600 MB, y el paquete dejaba de ser offline sin avisar) |
 
 Comprobar que están todos: `python src/91_comprobar_entorno.py`.
 
@@ -531,6 +600,10 @@ Todo se puede sobreescribir por variable de entorno; estos son los valores por o
 | `N_MUESTRAS` | 30 | candidatas pedidas (mínimo 6 por par rol×clase) |
 | `K_VECINOS` | 2 | vecinos recuperados por consulta |
 | `UMBRAL_SECTOR` | 0,65 | a partir de aquí se usa el plantel del sector |
+| `UMBRAL_PLANTEL_LIBRE` | 0,75 | por debajo, un rol del plantel solo entra si la descripción lo respalda |
+| `ANCLAR` | 1 | una historia ancla por función descrita |
+| `N_BEN_ANCLA` | 6 | beneficios muestreados por ancla |
+| `CONJUNTO` | `dos_modelos` | la mitad de abajo con los dos modelos; `no` usa uno solo |
 | `MODO_ROLES` | `descripcion` | manda lo que la descripción nombra |
 | `MIN_ACTORES_CON_PLANTEL` | 1 | con plantel basta un actor leído |
 | `MIN_ACTORES_SIN_PLANTEL` | 2 | sin plantel hacen falta dos |
@@ -655,6 +728,33 @@ Diferencia **+0,0118**, medida pareada: las tres semillas a favor, desviación 0
 | Formato «Como… quiero… para…» | — | **100 %** |
 | Atribución tarea→historia | 83 % | **86 %** |
 
+### Revisión de extremo a extremo (21/10/2026)
+
+El chat del estimador corrió el sistema completo sobre seis descripciones y revisó a mano las 199
+tareas; los fallos se confirmaron después con **3 semillas** y eran sistemáticos. Cifras del informe
+del chat de generación (`RESPUESTA_REVISION_EXTREMO_A_EXTREMO.md`), no de un CSV:
+
+| proyecto | antes | después |
+|---|---|---|
+| Reservas de limpieza | enfermera, cuidador; ninguna reserva | cliente y limpiador; reservar servicios, citas recurrentes, pagos |
+| Salas de estudio | instructor, asistente; ninguna sala | «encontrar» y «reservar salas de estudio» siempre; el resto aún tira a lo académico |
+| Bolsa de trabajo | faltaban publicar y postular | reclutador «publicar ofertas», egresado «postular con mi CV» |
+| Ferretería | sin transferencias; «acciones» | «gestionar transferencias entre tiendas», «existencias» |
+| Historias clínicas | bien | igual, y ahora con recepcionista, que la descripción nombra |
+| Delivery | bien | publicar menús, pedir, pagar y rutas, cada uno con su actor |
+
+Contra las **328 historias humanas**, pareado en la misma sesión, 3 semillas × 6 proyectos:
+
+| | sF1 |
+|---|---|
+| antes de la revisión | 0,6354 |
+| **después** | **0,6671** |
+| diferencia | **+0,0317**, IC95 [+0,025, +0,038] |
+
+Gana en los 6 proyectos y en las 3 semillas; +0,0261 es de las anclas (A.2.6, con su salvedad).
+El filtro nuevo de tareas quita 33 de 1.240 (2,7 %) en 36 backlogs, y leídas una a una son todas
+ruido. El duplicado literal entre historias es 1 de ~620 tareas (0,2 %).
+
 ---
 
 ## A.13 Lo que queda mal y las vías cerradas
@@ -669,6 +769,10 @@ Escrito para que nadie lo descubra creyendo que es nuevo.
 | Beneficio con un objeto ajeno al dominio | ~4 de 84 | abierto; misma familia que la fuga de sector |
 | Eco por flexión residual | 0,8 % de las tareas | abierto |
 | Términos técnicos que el traductor de salida rompe | corregidos *branch*, *runs*, *pipeline* | abierto para el resto; se amplía en `_GLOSARIO_FUENTE` |
+| **Fuera de lo que la descripción nombra**, el modelo rellena con lo típico del sector (salas de estudio, fuera de sus dos anclas, sigue tirando a lo académico) | — | abierto. En la interfaz conviene pedir al usuario quién hace qué (`INTEGRACION.md` §4) |
+| Beneficios genéricos frecuentes («para poder ofrecer un mejor servicio») | — | abierto |
+| Alguna tarea floja bajo las anclas («Crear un proyecto» para «encontrar salas») | — | abierto |
+| El **sustantivo** «Procedure for…» pasa el filtro de no-desarrollo, que atrapa el verbo *proceed* («Proceder para solicitudes recurrentes», visto en la prueba del paquete del 21/10) | 1 en 36 tareas de esa prueba | abierto |
 | Diversidad de superficie de las descripciones sintéticas | 81 arranques distintos para 622 | abierto; la vía sería generar con atributos ortogonales al estilo AttrPrompt, lo que exige volver a pasar el profesor |
 
 ---

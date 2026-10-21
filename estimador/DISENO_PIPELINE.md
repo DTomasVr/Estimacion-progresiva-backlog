@@ -132,21 +132,22 @@ flowchart TB
         D3["Traducir la entrada<br/>Marian es→en"]
         P1["Planificar ROLES<br/>4 fuentes, nunca vacío<br/>plantel solo con respaldo"]
         P2["Planificar CLASES de función<br/>2 por rol · 6 clases"]
-        V1["Recuperar vecinos · k=2"]
+        V1["Recuperar vecinos · k=2<br/>procedencia, no van al prompt"]
         M1[["mT5 One2One · 121M<br/>muestreo top-p 0,95<br/>6 muestras por par (rol, clase)"]]
         B1[/"Banco de ~36 candidatas"/]
-        AN["ANCLAS · una historia por<br/>función descrita, prefijo forzado"]
-        S1["SELECCIÓN por cobertura de rasgos<br/>anclas primero + voraz submodular<br/>+ 6 castigos de forma"]
+        ANC["ANCLAS · una historia por<br/>función descrita, prefijo forzado"]
+        S1["SELECCIÓN por cobertura de rasgos<br/>voraz submodular + 6 castigos de forma"]
+        FU["FUSIÓN · anclas primero, hasta k/2<br/>y la selección sin duplicarlas"]
         H1[/"12 historias elegidas"/]
-        V2["Recuperar vecinos por historia"]
+        V2["Recuperar vecinos por historia<br/>procedencia, no van al prompt"]
         M2[["2 × mT5 One2Seq · 121M en conjunto<br/>haz de 4, sin repetir 4-gramas"]]
         DD["Filtrar no-desarrollo · deduplicar<br/>tope de arranques · reasignar cada tarea"]
         R1[("corpus o2o<br/>pipeline_emb.npz")]
         R2[("corpus hist<br/>s2s_hist_train")]
         D1 -->|sí| D2 --> D3 --> P1
         D1 -->|no| P1
-        P1 --> P2 --> V1 --> M1 --> B1 --> S1 --> H1 --> V2 --> M2 --> DD
-        P2 --> AN --> S1
+        P1 --> P2 --> V1 --> M1 --> B1 --> S1 --> FU --> H1 --> V2 --> M2 --> DD
+        P1 --> ANC --> FU
         R1 -.-> V1
         R2 -.-> V2
     end
@@ -348,7 +349,9 @@ por verbo, o con un verbo ligero si es un sustantivo («low stock alerts» → �
 alerts»). El actor sale del sujeto del rasgo, con una tabla para los colectivos que el SBERT no
 casa con su rol («companies» quedaba más cerca de «graduate» que de «recruiter»).
 
-Las anclas entran **siempre**, hasta k/2, y la selección normal rellena el resto. Es un chequeo de
+Las anclas salen de las funciones de la descripción y del plan de **roles** (no del de
+clases), y se **fusionan después** de la selección: entran **siempre**, primero, hasta k/2, y el
+resto de lo seleccionado completa el backlog sin duplicarlas. Es un chequeo de
 cobertura, pero en el lado de la **generación**, que es donde estaba el hueco. `AGIX_ANCLAR=0` lo
 apaga para comparar.
 
@@ -392,13 +395,14 @@ flowchart TD
     B -->|no| C
     B2 --> C["Planificar ROLES<br/>PlanificadorRoles<br/>plantel con respaldo si sector &lt; 0,75"]
     C --> D["Planificar CLASES de función<br/>plan_funciones"]
-    D --> E["Recuperar vecinos del corpus<br/>k=2, tabla o2o"]
+    D --> E["Recuperar vecinos del corpus<br/>k=2, tabla o2o<br/>procedencia, no van al prompt"]
     E --> F["MITAD DE ARRIBA<br/>descripción + fichas → 1 historia<br/>muestreo, 6 por par (rol, clase)"]
     F --> G["Banco de candidatas<br/>filtros de forma y de léxico"]
-    D --> AN["ANCLAS: una historia por función descrita<br/>prefijo forzado, el modelo escribe el beneficio"]
-    AN --> H
-    G --> H["SELECCIÓN por cobertura de rasgos<br/>las anclas entran siempre, hasta k/2"]
-    H --> I["Recuperar vecinos por historia<br/>tabla hist"]
+    C --> AN["ANCLAS: una historia por función descrita<br/>funciones de la descripción + plan de roles<br/>prefijo forzado, el modelo escribe el beneficio"]
+    G --> H["SELECCIÓN por cobertura de rasgos<br/>seleccion_por_rasgos, voraz"]
+    H --> FU["FUSIÓN: las anclas primero, hasta k/2<br/>y la selección sin duplicarlas"]
+    AN --> FU
+    FU --> I["Recuperar vecinos por historia<br/>tabla hist · procedencia"]
     I --> J["MITAD DE ABAJO<br/>historia → conjunto de tareas<br/>haz de 4"]
     J --> K["Filtrar y deduplicar tareas<br/>no-desarrollo · global 0,90<br/>intrahistoria 0,95 y 0,95 sin el verbo"]
     K --> L["Tope de arranques repetidos<br/>máximo 2 por backlog"]
@@ -412,10 +416,6 @@ Las etapas que el propio pipeline cronometra, en orden: `traducir_entrada`, `rec
 `generar_historias`, `deduplicar_historias`, `recuperar_abajo`, `generar_tareas`, `deduplicar_tareas`,
 `reasignar_tareas`, `traducir`, `total`.
 
-> La figura exportada (`fig1_pipeline.png`) es del 28/09 y **no lleva las anclas**; el diagrama
-> Mermaid de arriba sí está al día. Se regenera con `src/90_figuras.py` del repositorio del
-> generador.
-
 ---
 
 ## A.4 Detalle de cada etapa
@@ -426,12 +426,12 @@ Las etapas que el propio pipeline cronometra, en orden: `traducir_entrada`, `rec
 | 2 | Traducir la entrada | Marian `opus-mt-es-en` | `Pipeline.__call__` |
 | 3 | Plan de roles | cuatro fuentes en orden de fiabilidad (figura 3) | `PlanificadorRoles` |
 | 4 | Plan de clases | 2 clases por rol según P(clase \| familia del rol), con piso 0,10 | `plan_funciones` |
-| 5 | Vecinos de arriba | 2 ejemplos del corpus real por similitud del SBERT propio, que van en el prompt | `_vecinos` |
+| 5 | Vecinos de arriba | 2 ejemplos del corpus real por similitud del SBERT propio. **No van en el prompt** (`EJEMPLOS_ARRIBA = False`: con ellos el sF1 bajaba 0,022); quedan para procedencia y orden | `_vecinos` |
 | 6 | Generación de arriba | una tanda de muestreo **por par (rol, clase)**, mínimo 6 muestras cada una | `_generar` |
 | 7 | Filtros del banco | formato de historia, rol válido (persona, no sustantivo cualquiera), léxico de Jira | `rol_valido`, `degenerada_texto` |
-| 7b | Anclas | una historia por función enumerada, con prefijo forzado y el beneficio elegido entre 6 | `rasgos_con_sujeto`, `capacidad_de_rasgo` |
-| 8 | Selección | las anclas primero (hasta k/2); el resto por cobertura de rasgos + 3 términos de reparto + 6 castigos de forma | `seleccion_por_rasgos` |
-| 9 | Vecinos de abajo | ejemplos para cada historia elegida | `_vecinos` |
+| 7b | Anclas | una historia por función enumerada, a partir de las funciones de la descripción y del plan de roles, con prefijo forzado y el beneficio elegido entre 6 | `_anclas`, `rasgos_con_sujeto`, `capacidad_de_rasgo` |
+| 8 | Selección y fusión | cobertura de rasgos + 3 términos de reparto + 6 castigos de forma; después, las anclas primero (hasta k/2) y lo seleccionado sin duplicarlas | `seleccion_por_rasgos`, `__call__` |
+| 9 | Vecinos de abajo | ejemplos para cada historia elegida; **tampoco van en el prompt** (`EJEMPLOS_ABAJO = False`, empate con y sin ellos) | `_vecinos` |
 | 10 | Generación de abajo | haz de 4, sin repetir 4-gramas, penalización 1,3 | `_generar` |
 | 11 | Filtrar y deduplicar tareas | fuera lo que no es desarrollo (verbo como *attend*, *proceed*, *discuss*, *please*; «prepare for»; frases de historia como «I would like») · 0,90 entre historias · 0,95 dentro · 0,95 **sin el verbo inicial** | `tarea_degenerada`, `__call__` |
 | 12 | Tope de arranques | máximo 2 tareas por backlog con el mismo arranque de dos palabras | `arranque` |
@@ -456,13 +456,13 @@ inferencia.
 flowchart LR
     subgraph ARRIBA["Mitad de arriba: One2One"]
         direction TB
-        A1["feature -> user story<br/>| role: X | funcion: Y |<br/>&lt;descripción&gt; | examples: &lt;vecinos&gt;"]
+        A1["feature -> user story<br/>| role: X | funcion: Y |<br/>&lt;descripción&gt; | examples:"]
         A2["Una historia de usuario<br/>As a X, I want ..., so that ..."]
         A1 --> A2
     end
     subgraph ABAJO["Mitad de abajo: One2Seq"]
         direction TB
-        B1["decompose story into tasks<br/>&lt;historia&gt; | examples: &lt;vecinos&gt;"]
+        B1["decompose story into tasks<br/>&lt;historia&gt; | examples:"]
         B2["Conjunto de tareas<br/>t1 ; t2 ; t3 ..."]
         B1 --> B2
     end
@@ -472,9 +472,14 @@ flowchart LR
 Formato exacto de entrada de cada mitad:
 
 ```
-arriba:  feature -> user story | role: courier | funcion: track | <descripción> | examples: <vecinos>
-abajo:   decompose story into tasks: <historia> | examples: <vecinos>
+arriba:  feature -> user story | role: courier | funcion: track | <descripción> | examples:
+abajo:   decompose story into tasks: <historia> | examples:
 ```
+
+El campo `examples:` va **vacío** en las dos mitades. Los modelos se entrenaron con ese formato,
+pero medido en `24_calidad_arriba.py` los ejemplos recuperados no ayudan: arriba el sF1 sube 0,022
+**sin** ellos y no hay fuga de vocabulario de los vecinos; abajo, empate. La recuperación sigue
+corriendo para la procedencia (`vecinos_proyecto`) y para ordenar, no para el prompt.
 
 | | decodificación | por qué |
 |---|---|---|
@@ -547,17 +552,21 @@ flowchart LR
     M1 --> LA["s2s_hist<br/>src/15_datos_historias.py"]
     LA --> LB["s2s_v5<br/>real + profesor curado"]
     LB --> LC["MITAD DE ABAJO<br/>_hist_v5_agix_v1"]
-    S0["all-MiniLM-L6-v2"] --> S1["SBERT propio<br/>src/06_finetune_sbert.py<br/>sbert_agix_v1"]
+    S0["paraphrase-multilingual-<br/>mpnet-base-v2"] --> S1["SBERT propio<br/>src/06_finetune_sbert.py<br/>sbert_agix_v1"]
 ```
 
-Hiperparámetros de las dos etapas finales, que son las que hay que repetir:
+Hiperparámetros de los tres modelos desplegados, que son los que hay que repetir:
 
 | mitad | base | bs × acum | max_out | lr | épocas | val por época |
 |---|---|---|---|---|---|---|
 | arriba (`v9bt`) | `_o2o_agix_v1_o2ofmt_agix_v1` | 32 × 1 | 48 | 5e-4 | 4 | 1,7947 · 1,8017 · **1,7897** · 1,8208 |
 | abajo (`v5`) | `_hist_agix_v1` | 16 × 1 | 192 | 5e-4 | 4 | **3,3210** · 3,3393 · 3,3565 |
+| abajo, 2.º del conjunto (`_hist_bs8_lr9.2e-4`) | datos: solo `s2s_hist`, 22.871 ejemplos, sin profesor | 8 × 1 | — | 9,2e-4 | parada en la 5.ª | mejor la 3.ª |
 
-Se guarda la **mejor época por pérdida de validación**, no la última.
+Se guarda la **mejor época por pérdida de validación**, no la última. Datos y épocas leídos de
+los registros de entrenamiento (`logs/09_v9bt.log`, `logs/44_train_abajo_v5.log`,
+`logs/09_train_hist_hp.log`) del repositorio del generador: `v9bt` con 25.938 ejemplos, `v5`
+con 28.274.
 
 **Nota de licencia**: el profesor sintético es `qwen2.5:7b`, Apache-2.0, elegido a propósito. Llama
 queda excluido porque su licencia obligaría a poner «Llama» en el nombre del modelo resultante.

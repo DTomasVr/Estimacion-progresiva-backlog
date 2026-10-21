@@ -8,7 +8,7 @@ documento las reúne en uno solo:
 | | qué hace | modelos | estado |
 |---|---|---|---|
 | **Tubería 1 · Generación** | descripción → historias de usuario con sus tareas | 2 × mT5-small podado (121 M) + SBERT propio + Marian | desplegado 28/09/2026 |
-| **Tubería 2 · Estimación** | tareas → horas, y el total del proyecto | e5-large congelado + 2 ajustados + dos apilados | `estimador_agix_v6`, 29/09/2026 |
+| **Tubería 2 · Estimación** | tareas → horas, y el total del proyecto | e5-large congelado (ONNX int8, 397 MB) + dos apilados | `estimador_agix_v7`, 21/10/2026 |
 
 > **Alcance:** solo el diseño vigente de las dos tuberías. El camino de los experimentos
 > descartados está en `ROL_FUNCION_LITERATURA.md`, `AUMENTO_DATOS_LITERATURA.md` (generación) y
@@ -43,7 +43,7 @@ también como **figura exportada** en SVG vectorial y PNG a 300 dpi para pegar e
 [B.6 mecanismos de proyecto](#b6--los-tres-mecanismos-que-usan-información-del-proyecto) ·
 [B.7 contrato](#b7--contrato-de-la-interfaz) · [B.8 artefactos y rendimiento](#b8--artefactos-y-rendimiento-medido) ·
 [B.9 calidad](#b9--calidad-medida) · [B.10 límite conocido](#b10--límite-conocido-la-compresión-de-la-escala) ·
-[B.11 operación](#b11--operación) · [B.12 decisiones](#b12--resumen-de-decisiones-de-diseño)
+[B.11 descartes](#b11--lo-que-se-midió-y-se-descartó) · [B.12 trampas](#b12--dos-trampas-de-medición-que-conviene-no-repetir) · [B.13 operación](#b13--operación) · [B.14 decisiones](#b14--resumen-de-decisiones-de-diseño)
 
 ---
 
@@ -711,7 +711,8 @@ una línea base en la misma sesión (sección 11, regla 2).
 # PARTE B · Estimación de esfuerzo
 
 > La segunda tubería: de cada tarea a sus horas, y del backlog entero al total del proyecto.
-> `estimador_agix_v6`, corpus v4 sin Apache, construido el 29/09/2026. Los experimentos
+> `estimador_agix_v7`, corpus v4 sin Apache, construido el 21/10/2026 sobre el v6 del
+> 29/09/2026: el mismo diseño con **un solo codificador** (ver B.5.1). Los experimentos
 > descartados están en `INFORME_PROYECTO.md`.
 
 ---
@@ -760,7 +761,7 @@ mismos rasgos:
 Antes esto se resolvía empujando la mediana con el estimador de *smearing* de Duan (1983).
 Funcionaba, pero entrenar directamente para el objetivo correcto mejora MdMRE, MAE, RMSE,
 ±50 % y factor 2 **a la vez**. El factor de smearing sigue en el paquete por trazabilidad, pero
-**el servidor v6 no lo usa**.
+**el servidor no lo usa**.
 
 ---
 
@@ -792,12 +793,12 @@ flowchart TB
     NORM --> VIS["codificar: 3 vistas del texto"]
     VIS --> RA{"que se pregunta?"}
 
-    RA -->|cuanto tarda ESTA tarea| CA["Cabeza A · MEDIANA<br/>apilado de 5 canales"]
+    RA -->|cuanto tarda ESTA tarea| CA["Cabeza A · MEDIANA<br/>apilado de 3 canales"]
     CA --> EST["x factor de estilo 0,831"]
-    EST --> BND["banda x4,32"]
+    EST --> BND["banda x4,45"]
     VIS --> ANA["analogia: 25 vecinos<br/>enganchada a la rejilla"]
     ANA --> VP{"vecinos<br/>de acuerdo?"}
-    VP -->|si, el 85,3 %| VPS["valor_probable = rejilla"]
+    VP -->|si, el 94,7 %| VPS["valor_probable = rejilla"]
     VP -->|no| VPN["valor_probable = apilado"]
     BND --> OUT1(["horas · valor_probable · banda"])
     VPS --> OUT1
@@ -826,11 +827,9 @@ flowchart TB
 flowchart TB
     subgraph COD["1 · Codificacion del titulo"]
         direction LR
-        T["titulo"] --> E5["e5-large congelado<br/>1024 dim"]
+        T["titulo"] --> E5["e5-large congelado<br/>ONNX int8 · 1024 dim"]
         T --> TF["TF-IDF caracteres 3-5<br/>+ palabras 1-2"]
         TF --> SVD["SVD 256 + 256"]
-        T --> AJ["e5 ajustado A<br/>escalar cuadratico"]
-        T --> AC["e5 ajustado C<br/>clasificacion + orden por pares"]
     end
 
     subgraph CA["2a · Cabeza A · horas por TAREA (mediana)"]
@@ -838,8 +837,6 @@ flowchart TB
         A1["bolsa de 7 HGB<br/>e5 + SVD"] --> AP{{"apilado RidgeCV<br/>ajustado en validacion"}}
         A2["Ridge disperso"] --> AP
         A3["SVR disperso"] --> AP
-        A4["HGB sobre e5 ajustado A"] --> AP
-        A5["HGB sobre e5 ajustado C"] --> AP
         AP --> AX["exp(.) x factor de estilo"]
     end
 
@@ -874,7 +871,7 @@ System(estimacion, "Componente de estimación de esfuerzo", "Horas por tarea y t
 System_Ext(agix, "Agix · aplicación web", "Gestión de proyectos: backlog, tablero y time tracker")
 System_Ext(llm, "Generador de tareas (LLM)", "Descompone el proyecto en tareas")
 System_Ext(corpus, "Corpus públicos", "TAWOS, The Public Jira Dataset, SiP (Jones)")
-System_Ext(hf, "Hugging Face Hub", "Pesos de intfloat/multilingual-e5-large")
+System_Ext(hf, "Hugging Face Hub", "Origen de intfloat/multilingual-e5-large; en servicio va dentro del paquete")
 
 Rel(dev, agix, "Crea proyectos y registra horas", "HTTPS")
 Rel(agix, llm, "Pide la descomposición en tareas", "HTTP/JSON")
@@ -883,7 +880,7 @@ Rel(estimacion, agix, "Devuelve horas, total e intervalo", "HTTP/JSON")
 Rel(agix, estimacion, "Horas reales de las tareas cerradas", "en cada recálculo")
 Rel(tesista, estimacion, "Entrena, selecciona y evalúa", "scripts")
 Rel(corpus, estimacion, "Alimentan el entrenamiento", "volcados SQL / mongodump")
-Rel(hf, estimacion, "Provee el codificador base congelado", "descarga única")
+Rel(hf, estimacion, "Provee el codificador base congelado", "descarga única, al construir")
 
 UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="2")
 ```
@@ -892,22 +889,21 @@ UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="2")
 
 ```mermaid
 C4Container
-title Nivel 2 · Contenedores en tiempo de ejecución (v6)
+title Nivel 2 · Contenedores en tiempo de ejecución (v7)
 
 Person(dev, "Desarrollador", "Usa Agix")
 System_Ext(agix, "Agix · aplicación web", "Backend + frontend")
 
 Container_Boundary(est, "Componente de estimación de esfuerzo") {
-  Container(api, "EstimadorV6", "Python", "Dos entradas: estimar_tareas y estimar_proyecto; carga perezosa de codificadores")
-  Container(encbase, "Codificador base", "PyTorch · multilingual-e5-large CONGELADO", "Texto a vector de 1024. Lo usan las DOS rutas")
-  Container(encaj, "Codificadores ajustados A y C", "PyTorch · e5-large reajustado", "Solo para la ruta por tarea. 2,2 GB cada uno")
-  Container(cabA, "Cabeza A · mediana", "scikit-learn · apilado RidgeCV de 5 canales", "Horas de UNA tarea, con banda x4,32")
+  Container(api, "EstimadorV6", "Python", "Dos entradas: estimar_tareas y estimar_proyecto; carga perezosa del codificador")
+  Container(encbase, "Codificador", "ONNX Runtime · multilingual-e5-large CONGELADO, int8, vocabulario podado", "Texto a vector de 1024. 397 MB. Lo usan las DOS rutas")
+    Container(cabA, "Cabeza A · mediana", "scikit-learn · apilado RidgeCV de 3 canales", "Horas de UNA tarea, con banda x4,45")
   Container(cabB, "Cabeza B · media", "scikit-learn · apilado HGB de Poisson de 4 canales", "Horas que se pueden SUMAR")
   Container(analogia, "Índice de analogía", "numpy · 16.648 vectores float16", "25 vecinos más próximos, mediana enganchada a la rejilla")
   Container(anclaje, "Anclaje por proyecto", "Python", "Cociente de sumas contraído con James-Stein, lambda = 12")
   Container(corrector, "Corrector de la estimación del usuario", "scikit-learn · HGB de Poisson", "Vector + log(estimación) + log(predicción en frío)")
   Container(intervalo, "Intervalo del total", "Python · cuantiles empíricos", "Residuos en log de los 114 proyectos")
-  ContainerDb(artefactos, "Almacén de artefactos", "joblib + carpetas de pesos", "estimador_agix_v6.joblib de 221 MB, mas models/e5_ajustado y _C")
+  ContainerDb(artefactos, "Almacén de artefactos", "joblib + carpetas de pesos", "estimador_agix_v7.joblib de 106 MB, mas models/e5_v7 (ONNX, tokenizador, tabla del vocabulario)")
   ContainerDb(historial, "Historial de tareas", "base de datos de Agix", "Tareas cerradas con horas reales y estimaciones del usuario")
   Container(reentreno, "Reentrenamiento por lotes", "Python", "Reajusta las cabezas; el codificador base NO se toca")
 }
@@ -915,9 +911,8 @@ Container_Boundary(est, "Componente de estimación de esfuerzo") {
 Rel(dev, agix, "Crea el proyecto y registra horas", "HTTPS")
 Rel(agix, api, "estimar_tareas / estimar_proyecto", "JSON")
 Rel(api, encbase, "Texto de las tareas", "en proceso")
-Rel(api, encaj, "Solo en la ruta por tarea", "en proceso")
+Rel(encbase, cabA, "Vectores", "numpy")
 Rel(encbase, cabB, "Vectores", "numpy")
-Rel(encaj, cabA, "Vectores ajustados", "numpy")
 Rel(encbase, analogia, "Vector normalizado", "numpy")
 Rel(analogia, cabA, "Valor de la rejilla", "numpy")
 Rel(analogia, cabB, "Canal de analogía", "numpy")
@@ -934,9 +929,10 @@ Rel(reentreno, artefactos, "Escribe el artefacto nuevo", "joblib")
 UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")
 ```
 
-> **Decisión que se ve aquí:** el codificador base está **congelado** y los codificadores
-> ajustados **solo hacen falta para la ruta por tarea**. Un despliegue que solo necesite el
-> total del proyecto —que es la métrica que se presenta— ahorra **4,4 GB**.
+> **Decisión que se ve aquí:** hay **un solo codificador**, congelado, y lo comparten las dos
+> rutas. El v6 llevaba además dos codificadores ajustados (2,2 GB cada uno) para la ruta por
+> tarea; medidos fuera de pliegue no aportaban y el v7 los quitó (B.5.1). El codificador va en
+> ONNX int8 con el vocabulario podado: **397 MB** frente a los 6,5 GB de los tres del v6.
 
 ### B.3.6 · Nivel 2b · Tubería de datos y entrenamiento (fuera de línea)
 
@@ -954,9 +950,9 @@ Container_Boundary(tuberia, "Tubería de datos") {
   Container(construccion, "Constructor del dataset", "Python · 39_build_v3, 52_build_v4", "Armoniza taxonomías, unifica unidades, descarta filas y arma las particiones")
   ContainerDb(procesado, "Dataset", "Parquet · agix_effort_v4.parquet", "90.975 filas: train 63.926, val 8.445, test 4.225, externo 13.255")
   Container(codificacion, "Codificación con caché", "Python · 53_encode_v4, 98_codificadores", "Reutiliza vectores calculados; solo codifica el texto nuevo")
-  ContainerDb(vectores, "Vectores", "npy · embeddings/codificadores/", "e5-large.npy y los dos ajustados, alineados por fila")
-  Container(finetune, "Ajuste de codificadores", "PyTorch · 147_finetune_rapido", "Brazos A y C sobre e5-large, con la tabla de embeddings congelada")
-  Container(entrenamiento, "Entrenamiento de las cabezas", "Python · 163_modelo_v5, 171_estimador_v6", "Ajusta los canales y el apilado; elige SIEMPRE en validación")
+  ContainerDb(vectores, "Vectores", "npy · embeddings/codificadores/", "e5-large.npy, alineado por fila (y los ajustados de los experimentos)")
+  Container(finetune, "Ajuste de codificadores", "PyTorch · 147_finetune_rapido", "Brazos A y C sobre e5-large. Solo experimentos: el v7 no los usa")
+  Container(entrenamiento, "Entrenamiento de las cabezas", "Python · 163_modelo_v5, 171_estimador_v6, 252_estimador_v7", "Ajusta los canales y el apilado; elige SIEMPRE en validación")
   Container(evaluacion, "Evaluación", "Python · GroupKFold por proyecto", "MdMRE, PRED(25), MAE, SA, zeta, SSPB y contrastes pareados")
   ContainerDb(resultados, "Resultados", "CSV/JSON · results/", "Una fila por brazo, escenario y bloque de prueba")
 }
@@ -993,8 +989,10 @@ case con su cabeza **no falla: solo acierta menos**.
 ```mermaid
 flowchart LR
     F["147_finetune_rapido.py<br/>reentrena el codificador C"] --> V5["163_modelo_v5.py<br/>apilado por tarea"]
-    V5 --> V6["171_estimador_v6.py<br/>paquete de servicio"]
-    V6 --> P{{"prueba de extremo a extremo<br/>estima de verdad, con y sin cerradas"}}
+    V5 --> V6["171_estimador_v6.py<br/>paquete v6"]
+    V6 --> V7["252_estimador_v7.py<br/>un solo codificador"]
+    V7 --> OX["246 + 249: ONNX int8<br/>y vocabulario podado"]
+    OX --> P{{"prueba de extremo a extremo<br/>estima de verdad, con y sin cerradas"}}
     P -->|verde| OK(["artefacto desplegable"])
     P -->|roja| STOP(["no se despliega"])
     ORQ["177_rehacer_artefacto.py<br/>encadena y se niega si faltan requisitos"] -.-> V5
@@ -1005,6 +1003,10 @@ flowchart LR
 La prueba final no es opcional: **es lo único que demuestra que el artefacto sirve**. La primera
 vez que se construyó el v6 parecía correcto y no podía codificar texto nuevo, porque los pesos
 del codificador nunca se habían guardado. Lo destapó justamente esa prueba.
+
+Con el v7 el codificador ya no se reajusta, así que la parte que más se rompía —un
+codificador nuevo con una cabeza vieja— desaparece. Si se cambia el codificador base, el
+ONNX y la tabla del vocabulario se regeneran con `246` y `249`, y se mide con `253`.
 
 ### B.3.8 · Vista dinámica · el ciclo de vida de un proyecto
 
@@ -1083,40 +1085,65 @@ Tres vistas del mismo texto, porque cada una acierta en cosas distintas:
 
 | vista | qué es | dimensiones |
 |---|---|---|
-| **semántica** | `intfloat/multilingual-e5-large`, **congelado**, prefijo `query: ` | 1024 |
+| **semántica** | `intfloat/multilingual-e5-large`, **congelado**, prefijo `query: `, en ONNX int8 | 1024 |
 | **léxica densa** | TF-IDF de caracteres `char_wb` 3–5 (vocab 35.450) + palabras 1–2 (vocab 20.256), `sublinear_tf`, reducidos con SVD | 256 + 256 |
 | **léxica dispersa** | el mismo TF-IDF **sin reducir**, para los modelos lineales | ~55.700 |
 
-Además, **dos codificadores ajustados** sobre el mismo `e5-large`, que aportan cosas distintas
-y por eso van los dos:
+**Un solo codificador.** El v6 llevaba además dos codificadores ajustados sobre el mismo
+`e5-large` —A, con pérdida cuadrática, y C, con clasificación sobre la rejilla más orden por
+pares— y pesaban en el apilado +0,251 y +0,233. Pero el apilado se ajusta en
+`split_t3 == "val"`, que tiene tareas de los **mismos proyectos** que vieron esos codificadores
+al ajustarse: premiaba justo lo que no generaliza a un proyecto nuevo (la fuga de E54).
 
-- **A** — ajustado con un escalar de pérdida cuadrática: estima mejor la **escala**.
-- **C** — ajustado con cabeza de clasificación sobre la rejilla más una pérdida de **ordenación
-  por pares**: **ordena** mejor.
+Medido fuera de pliegue, con `GroupKFold` por proyecto entero y los codificadores ajustados
+**por pliegue** (E120, `248`–`251`). El ±25 % va sin ajustar a la rejilla, por eso queda por
+debajo del 17 % de B.9:
 
-En el ajuste se **congela la tabla de embeddings** (es la mitad de los parámetros y no aporta en
-títulos de ~48 piezas), se recorta cada lote a su longitud real y se entrena en bf16.
+| | ±25 % | SA | Spearman |
+|---|---|---|---|
+| e5-large base | 14,9 % | 0,0268 | 0,320 |
+| base + ajustado C | 14,7 % | 0,0232 | 0,305 |
+| solo el ajustado C | 14,4 % | 0,0054 | 0,193 |
+
+Añadir el canal ajustado **empeora**. El v7 los quita y se queda con el base.
+
+**En ONNX int8 y con el vocabulario podado.** De los 250.002 tokens de XLM-R se conservan
+90.559: los que aparecen en el corpus más todo token de alfabeto latino. Solo con los del corpus
+el 24 % de las tareas del generador tenía algún token podado; con los latinos, ninguna. Delante del modelo va una tabla
+id_original → id_podado y un token ausente cae en `<unk>`. El codificador pasa de 2,2 GB a
+**397 MB** y corre en CPU sin torch, con las métricas del bloque de prueba intactas (B.9).
+
+**Y no el e5-small.** Con la misma receta fuera de pliegue el small empata en ±25 %
+(−0,16 puntos, IC95 [−0,62, +0,24]) pero ordena peor: Spearman −0,037, IC95 [−0,053, −0,021],
+y SA −0,0061. Con el large ya en 397 MB no compensa.
 
 ### B.5.2 · Cabeza A · horas por tarea (la mediana)
 
-Cinco canales apilados con `RidgeCV` (α = 48,3) ajustado **en validación**, no en
+Tres canales apilados con `RidgeCV` (α = 7,85) ajustado **en validación**, no en
 entrenamiento, para que los pesos no premien al canal que más sobreajusta:
 
 | canal | peso |
 |---|---|
-| bolsa de 7 HGB sobre e5 + SVD (85 % de muestras, 80 % de rasgos cada uno) | **+0,280** |
-| HGB sobre e5 **ajustado A** | **+0,251** |
-| HGB sobre e5 **ajustado C** | **+0,233** |
-| Ridge sobre TF-IDF disperso | +0,188 |
-| LinearSVR sobre TF-IDF disperso | −0,015 |
+| bolsa de 7 HGB sobre e5 + SVD (85 % de muestras, 80 % de rasgos cada uno) | **+0,759** |
+| Ridge sobre TF-IDF disperso | +0,386 |
+| LinearSVR sobre TF-IDF disperso | −0,032 |
 
 El peso negativo del SVR no es un error: el apilado lo usa como **corrección** del Ridge, que ve
-los mismos rasgos.
+los mismos rasgos. Los modelos de canal son los del v6; solo se reajustó el apilado. La banda
+por tarea al 80 % es ×4,45: el cuantil **conforme** del residuo de validación, con el apilado
+ajustado por pliegues dentro de validación para no medirla sobre lo que ajustó.
 
 La salida se exponencia y se multiplica por un **factor de estilo de 0,831**. El texto del
 generador es más escueto que un título de Jira e infla las predicciones (el sesgo pasa de 1,02 a
 1,20 con el mismo contenido reescrito al estilo del generador); el factor lo compensa, ajustado
 en un bloque y verificado en el otro.
+
+> **Abierto en el v7.** El factor es el heredado del v6. Sobre las 199 tareas de la prueba de
+> extremo a extremo, la cabeza A del v7 da por tarea **×0,81** lo que daba la del v6; el
+> total no cambia (lo calcula la cabeza B). Re-medirlo con el corpus de 800 títulos reescritos
+> no sirve: lo reescribió un LLM local y no el generador, y el procedimiento no reproduce ni el
+> valor del v6 (0,584 frente a 0,831). Cerrarlo pide tareas del generador
+> actual con horas reales.
 
 ### B.5.3 · Cabeza B · horas para sumar (la media)
 
@@ -1156,7 +1183,7 @@ Dos decisiones, las dos medidas:
 2. **30 valores, no 41.** El umbral anterior (aparecer 60 veces) daba 41 valores y rendía medio
    punto menos: 16,59 % contra 17,11 % de ±25 %.
 
-El umbral de acuerdo entre vecinos (**1,524**, que cubre el 85,3 % de las tareas) sigue
+El umbral de acuerdo entre vecinos (**1,656**, que cubre el 94,7 % de las tareas) sigue
 decidiendo si el valor base es la analogía o el apilado, pero ya no decide si se ajusta.
 
 **Lo que gana ajustar**, sobre el bloque de prueba de 4.225 tareas:
@@ -1381,7 +1408,7 @@ de James-Stein hace que no se cancele solo.
 ## B.7 · Contrato de la interfaz
 
 ```python
-est = EstimadorV6()                      # carga models/estimador_agix_v6.joblib
+est = EstimadorV6(paquete="models/estimador_agix_v7.joblib")   # la clase sirve v6 y v7
 
 est.estimar_tareas(textos,               # -> DataFrame
                    estilo="persona",     #   o "generador" si viene de la tubería 1
@@ -1413,6 +1440,8 @@ Reglas del contrato, que importan:
 - `horas` es la mediana; `valor_probable` es un valor de la rejilla. **Ninguna de las dos es
   para sumar**: el total sale de `estimar_proyecto`, que usa la otra cabeza.
 - `historial` solo debe traer tareas **del mismo proyecto** (ver B.6.4).
+- Las rutas del ONNX, del tokenizador y de la tabla van **relativas al paquete**: la clase las
+  resuelve desde la carpeta que contiene `models/`. No hace falta `HF_HOME` ni red.
 - Los campos de diagnóstico (`lambda_usada`, `tramo_banda`, `k_banda`,
   `contraccion_tramo`, `ajuste_persona`, `con_estimacion`) existen para que la interfaz pueda
   explicar **de dónde sale** cada número, que es un criterio de aceptación de las historias de
@@ -1436,41 +1465,27 @@ Reglas del contrato, que importan:
 flowchart TB
     subgraph SRV["Proceso de servicio"]
         API["EstimadorV6<br/>proceso Python"]
-        PKG[("estimador_agix_v6.joblib<br/>221 MB")]
-        B["e5-large congelado<br/>descarga de HF"]
-        FA[("models/e5_ajustado<br/>2,2 GB")]
-        FC[("models/e5_ajustado_C<br/>2,2 GB")]
+        PKG[("estimador_agix_v7.joblib<br/>106 MB")]
+        B[("models/e5_v7<br/>ONNX int8 · 397 MB<br/>+ tokenizador + tabla")]
         API --> PKG
         API --> B
-        API -.->|solo para estimar_tareas| FA
-        API -.->|solo para estimar_tareas| FC
     end
-    style FA stroke-dasharray: 5 5
-    style FC stroke-dasharray: 5 5
 ```
 
-**Los dos codificadores ajustados solo hacen falta para `estimar_tareas`.** La ruta del total
-—`estimar_proyecto`, que es la métrica que se presenta— usa **únicamente el codificador base**.
-Verificado en proceso limpio: tras estimar un proyecto de 42 tareas, A y C siguen sin cargar.
-
-Medido en este equipo, con GPU CUDA disponible:
+Un solo codificador para las dos rutas, dentro del paquete: no se descarga nada ni hace falta el
+caché de Hugging Face. Medido en CPU, sin GPU y sin red (`255_medidas_servicio_v7.py`):
 
 | | |
 |---|---|
-| carga del paquete joblib | **4,5 s** |
-| primera llamada a `estimar_tareas` (carga los 3 codificadores) | 44 s |
-| primera llamada a `estimar_proyecto` (carga solo el base) | 31 s |
-| `estimar_tareas`, lote de 42 | **462 ms · 11 ms/tarea** |
-| `estimar_proyecto`, 42 tareas, ya cargado | **200–275 ms** |
-| memoria residente del proceso | ~1,9 GB de RAM |
+| carga del paquete | **3,0 s** |
+| primera llamada a `estimar_tareas`, 42 tareas (abre el ONNX) | 12,2 s |
+| `estimar_tareas`, lote de 42, ya cargado | **574 ms · 13,7 ms/tarea** |
+| `estimar_proyecto`, 42 tareas, ya cargado | **529 ms** |
+| memoria residente del estimador solo | 1,7 GB de RAM |
+| generador + estimador, en CPU (paquete de producción) | 5,2 GB de RAM, pico |
 
-Los pesos de los codificadores viven en VRAM con GPU y no cuentan en esa RAM; en CPU hay que
-sumar ~2,2 GB por codificador cargado. La carga es **perezosa**: en servicio conviene
-precalentar al arrancar, no en la primera petición del usuario.
-
-> **Optimización pendiente, no aplicada:** el paquete arrastra de la versión 3 una matriz
-> `centros` de **68 MB** y los objetos `corrector`, `smearing` y `suma_residual`, que el
-> servidor v6 **no usa**. Quitarlos dejaría el artefacto en ~150 MB.
+Con el v6 eran tres codificadores de 2,2 GB y, en CPU, unos 10 GB de RAM para las dos tuberías.
+La carga sigue siendo **perezosa**: en servicio conviene precalentar al arrancar.
 
 ### Por qué un modelo propio y no un LLM en línea
 
@@ -1485,7 +1500,8 @@ Banco medido sobre 601 tareas contra cuatro LLM locales (`gemma2:9b`, `llama3.1:
 
 Y el coste no se parece: el LLM tarda **0,31 a 2,45 s por tarea** frente a los **11 ms** medidos
 aquí, entre **28× y 223× más lento**. La sonda de contaminación descarta que los LLM reconozcan
-las incidencias: ninguno acertó la clave exacta en 450 intentos.
+las incidencias: ninguno acertó la clave exacta en 450 intentos. (Los 11 ms son del v6 en GPU;
+el v7 en CPU va a 13,7 ms por tarea.)
 
 ---
 
@@ -1536,6 +1552,21 @@ la tarea ni su proyecto; las reimplementaciones entrenan con tareas de los mismo
 PRED(25) mide la dispersión y la curtosis de estimado/real, no la capacidad de ordenar
 (Shepperd y Kitchenham). Por eso se reporta **siempre junto al SA y al Spearman**, donde esa
 constante saca −0,015 y 0,000 y el modelo no.
+
+### v7 contra v6, sobre el mismo bloque
+
+Lo que sale del artefacto (no fuera de pliegue), sobre las mismas 4.225 tareas:
+
+| | ±25 % horas | ±25 % valor probable | SA | Spearman | cobertura de la banda |
+|---|---|---|---|---|---|
+| v6 (3 codificadores) | 16,2 % | 18,7 % | 0,0645 | 0,421 | 77,9 % |
+| v7 fp32 | 16,8 % | 18,7 % | 0,0546 | 0,398 | 77,9 % |
+| **v7 int8 podado** (desplegado) | **16,5 %** | 17,7 % | 0,0528 | 0,399 | 78,0 % |
+
+En este bloque el v6 **ordena algo mejor**, y es lo esperable: sus codificadores ajustados
+vieron tareas de los mismos proyectos que el bloque. Para un proyecto nuevo la medida es la de
+B.5.1, fuera de pliegue, donde quitarlos **mejora** el SA y el Spearman. El total del proyecto
+no cambia entre v6 y v7: lo calcula la cabeza B, que nunca usó los codificadores ajustados.
 
 ### Lo que gana la suma
 
@@ -1602,6 +1633,8 @@ Cada línea tiene su experimento detrás.
 | tipo, prioridad y descripción como rasgos | AUC de la compuerta 0,646 → 0,659 |
 | entrenar para ordenar (learning to rank) | peor: ρ intra 0,286 contra 0,339 |
 | descomponer la tarea en pasos (WBS) | ρ(nº de pasos, horas) = +0,012 |
+| codificadores ajustados por pliegue (A y C) | fuera de pliegue empeoran: SA 0,0268 → 0,0232 |
+| e5-small en lugar de e5-large | empata en ±25 %, ordena peor: Spearman 0,283 contra 0,320 |
 
 **El denominador común.** El texto de una tarea no permite saber en qué régimen cae. Para
 distinguir «≤2 h» de «>2 h» harían falta **AUC 0,80** solo para empatar con el modelo global, y
@@ -1698,8 +1731,8 @@ veinte: desde k = 3 la mejora es significativa en el 100 % de los sorteos.
 | idioma del título | ≠ inglés | fuera de contrato |
 
 **Reentrenamiento.** Por lotes, con las horas reales que va acumulando el time tracker. El
-**codificador base no se toca**; se reajustan las cabezas y, si se rehacen los codificadores
-ajustados, hay que repetir la cadena completa en el orden de [B.3.7](#b37--orden-de-reconstrucción).
+**codificador no se toca**; se reajustan las cabezas en el orden de
+[B.3.7](#b37--orden-de-reconstrucción) y se repite la prueba de extremo a extremo.
 La evaluación debe mantener siempre `GroupKFold` **por proyecto entero**.
 
 ---
@@ -1711,7 +1744,8 @@ La evaluación debe mantener siempre `GroupKFold` **por proyecto entero**.
 | **dos cabezas**, mediana y media | una sola cabeza | sumar medianas deja el total en el 44 % |
 | Poisson sobre horas para el total | log + smearing de Duan | mejora MdMRE, MAE, RMSE, ±50 % y factor 2 a la vez |
 | apilado ajustado en **validación** | ajustado en entrenamiento | si no, los pesos premian al canal que más sobreajusta |
-| **dos** codificadores ajustados | solo uno | uno ordena mejor y el otro estima mejor la escala |
+| **un solo** codificador, el base | tres (base + dos ajustados, v6) | fuera de pliegue los ajustados empeoran el SA y el orden; 6,5 GB → 397 MB |
+| ONNX int8, vocabulario podado | fp32 completo | mismas métricas, 2,2 GB → 397 MB, sin torch ni caché de HF |
 | codificador base **congelado** | ajustarlo de extremo a extremo | permite cachear vectores y reentrenar solo las cabezas |
 | solo el **título**, en inglés | título + descripción | es lo que el generador produce |
 | **sin Apache** en entrenamiento | corpus completo | su mediana de 0,67 h desplaza toda la escala |

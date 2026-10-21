@@ -1,0 +1,7624 @@
+[
+ {
+  "titulo": "Reservas de limpieza",
+  "descripcion": "Una aplicación web para reservar servicios de limpieza a domicilio, con citas recurrentes y pagos en la app.",
+  "fp32": {
+   "historias": [
+    {
+     "historia": "As a family member, I want to receive a payment to the app, so that I can encourage my earnings.",
+     "votos": 1,
+     "relevancia": 0.487,
+     "tareas": [
+      "Store payment details in the database",
+      "Display payment details on the family member's dashboard",
+      "Send payment notifications to the family member"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:COST",
+       "similitud": 0.469
+      },
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.451
+      }
+     ],
+     "historia_es": "Como miembro de la familia, quiero recibir un pago a la aplicación, para poder alentar mis ganancias.",
+     "tareas_es": [
+      "Almacenar los datos de pago en la base de datos",
+      "Mostrar los detalles de pago en el panel del miembro de la familia",
+      "Enviar notificaciones de pago al miembro de la familia"
+     ],
+     "horas_suma": 19.6,
+     "horas_tareas": [
+      3.53,
+      3.15,
+      2.71
+     ],
+     "horas_probables": [
+      6.0,
+      3.0,
+      2.5
+     ],
+     "horas_banda": [
+      [
+       0.8,
+       15.3
+      ],
+      [
+       0.7,
+       13.6
+      ],
+      [
+       0.6,
+       11.7
+      ]
+     ]
+    },
+    {
+     "historia": "As a nurse, I want to update the availability of my recurring appointments, so that I can ensure adequate coverage.",
+     "votos": 1,
+     "relevancia": 0.413,
+     "tareas": [
+      "Create a recurring appointment update form in the nurse app",
+      "Send a notification to the nurse if the recurring request is updated",
+      "Update the availability of the recurring admissions",
+      "Update the scheduler availability of a recurring assignment",
+      "Allow nurses to update recurring appointments in the database",
+      "Send notifications to nurses about recurring prescriptions",
+      "Procedure for recurring requests"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.486
+      },
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.425
+      }
+     ],
+     "historia_es": "Como enfermera, quiero actualizar la disponibilidad de mis citas recurrentes, para poder asegurar una cobertura adecuada.",
+     "tareas_es": [
+      "Crear un formulario de actualización de cita recurrente en la aplicación de enfermería",
+      "Enviar una notificación a la enfermera si la solicitud recurrente se actualiza",
+      "Actualizar la disponibilidad de las admisiones recurrentes",
+      "Actualizar la disponibilidad del planificador de una asignación recurrente",
+      "Permitir que los enfermeros actualicen las citas recurrentes en la base de datos",
+      "Enviar notificaciones a enfermeras sobre recetas recurrentes",
+      "Proceder para solicitudes recurrentes"
+     ],
+     "horas_suma": 24.8,
+     "horas_tareas": [
+      4.97,
+      1.84,
+      1.93,
+      1.61,
+      2.96,
+      1.78,
+      2.57
+     ],
+     "horas_probables": [
+      2.0,
+      1.0,
+      1.25,
+      1.5,
+      3.0,
+      2.25,
+      2.0
+     ],
+     "horas_banda": [
+      [
+       1.2,
+       21.5
+      ],
+      [
+       0.4,
+       7.9
+      ],
+      [
+       0.4,
+       8.3
+      ],
+      [
+       0.4,
+       6.9
+      ],
+      [
+       0.7,
+       12.8
+      ],
+      [
+       0.4,
+       7.7
+      ],
+      [
+       0.6,
+       11.1
+      ]
+     ]
+    },
+    {
+     "historia": "As a care coordinator, I want to track the availability of completed appointments, so that I can make informed decisions.",
+     "votos": 2,
+     "relevancia": 0.447,
+     "tareas": [
+      "Store appointment details in the database",
+      "Display appointment details on the care coordinator's dashboard",
+      "Initial planning of completed requests",
+      "Send notifications to care coordinators about new appointments"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.508
+      },
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.436
+      }
+     ],
+     "historia_es": "Como coordinador de cuidados, quiero hacer un seguimiento de la disponibilidad de citas completas, para poder tomar decisiones informadas.",
+     "tareas_es": [
+      "Almacenar los detalles de la cita en la base de datos",
+      "Mostrar los detalles de la cita en el panel de coordinación de cuidados",
+      "Planificar inicialmente las solicitudes completadas",
+      "Enviar notificaciones a coordinador de cuidados sobre nuevas citas"
+     ],
+     "horas_suma": 16.5,
+     "horas_tareas": [
+      3.51,
+      3.41,
+      3.66,
+      2.0
+     ],
+     "horas_probables": [
+      3.0,
+      3.0,
+      4.0,
+      4.0
+     ],
+     "horas_banda": [
+      [
+       0.8,
+       15.1
+      ],
+      [
+       0.8,
+       14.7
+      ],
+      [
+       0.8,
+       15.8
+      ],
+      [
+       0.5,
+       8.6
+      ]
+     ]
+    },
+    {
+     "historia": "As a caregiver, I want to set up a recurring appointment in the app, so that I can plan my day efficiently.",
+     "votos": 2,
+     "relevancia": 0.588,
+     "tareas": [
+      "Create a recurring appointment form in the caregiver app",
+      "Scheduler restart",
+      "Procedure to cancel a recurring app",
+      "Implement a recurring appointment scheduling feature in the caregiver app"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:YUNIKORN",
+       "similitud": 0.473
+      },
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.468
+      }
+     ],
+     "historia_es": "Como cuidador, quiero establecer una cita recurrente en la aplicación, para poder planificar mi día de manera eficiente.",
+     "tareas_es": [
+      "Crear un formulario de cita recurrente en la aplicación de cuidador",
+      "Reiniciar el planificador",
+      "Proceder a cancelar una aplicación recurrente",
+      "Implementar una función de programación de citas recurrentes en la aplicación de cuidador"
+     ],
+     "horas_suma": 20.9,
+     "horas_tareas": [
+      5.96,
+      2.01,
+      1.73,
+      7.64
+     ],
+     "horas_probables": [
+      6.0,
+      2.5,
+      1.0,
+      4.0
+     ],
+     "horas_banda": [
+      [
+       1.4,
+       25.7
+      ],
+      [
+       0.5,
+       8.7
+      ],
+      [
+       0.4,
+       7.5
+      ],
+      [
+       1.8,
+       33.0
+      ]
+     ]
+    },
+    {
+     "historia": "As a caregiver, I want to manage my visit records, so that I can provide better care.",
+     "votos": 1,
+     "relevancia": 0.341,
+     "tareas": [
+      "Store visit records in the caregiver's profile",
+      "Display visit records on the caregiver’s dashboard",
+      "Delete records",
+      "Delete search records"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.419
+      },
+      {
+       "proyecto": "Apache:MAPREDUCE",
+       "similitud": 0.405
+      }
+     ],
+     "historia_es": "Como cuidador, quiero administrar mis registros de visitas, para poder proporcionar mejor atención.",
+     "tareas_es": [
+      "Almacenar registros de visitas en el perfil del cuidador",
+      "Mostrar registros de visitas en el panel de la cuidadora",
+      "Eliminar registros",
+      "Eliminar registros de búsqueda"
+     ],
+     "horas_suma": 14.6,
+     "horas_tareas": [
+      2.22,
+      3.85,
+      2.42,
+      1.58
+     ],
+     "horas_probables": [
+      2.25,
+      4.0,
+      2.0,
+      1.75
+     ],
+     "horas_banda": [
+      [
+       0.5,
+       9.6
+      ],
+      [
+       0.9,
+       16.6
+      ],
+      [
+       0.6,
+       10.5
+      ],
+      [
+       0.4,
+       6.8
+      ]
+     ]
+    },
+    {
+     "historia": "As a care coordinator, I want to monitor caregiver availability, so that I can ensure accurate care.",
+     "votos": 1,
+     "relevancia": 0.326,
+     "tareas": [
+      "Implement a notification system for the care coordinator",
+      "Store caregiver availability data in the database",
+      "Add ability to monitor queues"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:SLING",
+       "similitud": 0.481
+      },
+      {
+       "proyecto": "RedHat:ENTMQMAAS",
+       "similitud": 0.471
+      }
+     ],
+     "historia_es": "Como coordinador de cuidados, quiero monitorear la disponibilidad de cuidador, para poder asegurar una atención precisa.",
+     "tareas_es": [
+      "Implementar un sistema de notificación para el coordinador de cuidados",
+      "Almacenar los datos de disponibilidad de los cuidadores en la base de datos",
+      "Añadir capacidad para monitorear colas"
+     ],
+     "horas_suma": 33.5,
+     "horas_tareas": [
+      6.07,
+      5.44,
+      6.47
+     ],
+     "horas_probables": [
+      4.0,
+      5.0,
+      6.0
+     ],
+     "horas_banda": [
+      [
+       1.4,
+       26.2
+      ],
+      [
+       1.3,
+       23.5
+      ],
+      [
+       1.5,
+       27.9
+      ]
+     ]
+    },
+    {
+     "historia": "As a family member, I want to view a list of upcoming recurring appointments, so that I can plan my schedule.",
+     "votos": 2,
+     "relevancia": 0.42,
+     "tareas": [
+      "Add a list of recurring requests to the scheduler",
+      "Add an additional recurring assignment to the Scheduler",
+      "Notify the family member if a recurring occurs"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.599
+      },
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.536
+      }
+     ],
+     "historia_es": "Como miembro de la familia, quiero ver una lista de citas recurrentes que se avecinan, para poder planificar mi horario.",
+     "tareas_es": [
+      "Añadir una lista de peticiones recurrentes al planificador",
+      "Añadir una asignación adicional recurrente al Scheduler",
+      "Notificar al familiar si ocurre una repetición"
+     ],
+     "horas_suma": 12.3,
+     "horas_tareas": [
+      2.85,
+      1.58,
+      2.24
+     ],
+     "horas_probables": [
+      3.0,
+      2.5,
+      1.0
+     ],
+     "horas_banda": [
+      [
+       0.7,
+       12.3
+      ],
+      [
+       0.4,
+       6.8
+      ],
+      [
+       0.5,
+       9.6
+      ]
+     ]
+    },
+    {
+     "historia": "As a family member, I want to see a list of upcoming appointments, so that I can plan my schedule accordingly.",
+     "votos": 2,
+     "relevancia": 0.403,
+     "tareas": [
+      "Display appointment details on the family member's dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.603
+      },
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.514
+      }
+     ],
+     "historia_es": "Como miembro de la familia, quiero ver una lista de las próximas citas, para que pueda planificar mi horario en consecuencia.",
+     "tareas_es": [
+      "Mostrar los detalles de la cita en el panel del miembro de la familia"
+     ],
+     "horas_suma": 5.3,
+     "horas_tareas": [
+      3.37
+     ],
+     "horas_probables": [
+      3.0
+     ],
+     "horas_banda": [
+      [
+       0.8,
+       14.6
+      ]
+     ]
+    },
+    {
+     "historia": "As a nurse, I want to receive notifications about upcoming appointments, so that I can manage my appointments.",
+     "votos": 1,
+     "relevancia": 0.437,
+     "tareas": [
+      "Store appointment details in the nurse's profile"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.549
+      },
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.491
+      }
+     ],
+     "historia_es": "Como enfermera, quiero recibir notificaciones sobre las próximas citas, para poder gestionar mis citas.",
+     "tareas_es": [
+      "Guardar los detalles de la cita en el perfil de la enfermera."
+     ],
+     "horas_suma": 3.3,
+     "horas_tareas": [
+      2.5
+     ],
+     "horas_probables": [
+      2.25
+     ],
+     "horas_banda": [
+      [
+       0.6,
+       10.8
+      ]
+     ]
+    },
+    {
+     "historia": "As a nurse, I want to view my recurring appointment history, so that I can track my availability.",
+     "votos": 1,
+     "relevancia": 0.44,
+     "tareas": [
+      "Add documentation for recurring admission history",
+      "Add documentation about recurring assignment history",
+      "Provide a notification to the nurse about recurring prescription history"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:MAPREDUCE",
+       "similitud": 0.517
+      },
+      {
+       "proyecto": "RedHat:RIFTSAW",
+       "similitud": 0.463
+      }
+     ],
+     "historia_es": "Como enfermera, quiero ver mi historial recurrente de citas, para poder rastrear mi disponibilidad.",
+     "tareas_es": [
+      "Añadir documentación para el historial de admisión recurrente",
+      "Añadir documentación sobre el historial de asignaciones recurrentes",
+      "Proporcionar una notificación a la enfermera sobre la historia recurrente de receta"
+     ],
+     "horas_suma": 13.3,
+     "horas_tareas": [
+      2.66,
+      1.47,
+      1.57
+     ],
+     "horas_probables": [
+      3.0,
+      2.0,
+      1.25
+     ],
+     "horas_banda": [
+      [
+       0.6,
+       11.5
+      ],
+      [
+       0.3,
+       6.4
+      ],
+      [
+       0.4,
+       6.8
+      ]
+     ]
+    },
+    {
+     "historia": "As a family member, I want to request a reminder with my upcoming appointments, so that I do not miss the appointment.",
+     "votos": 1,
+     "relevancia": 0.399,
+     "tareas": [
+      "Send a confirmation email to the family member",
+      "Store the reminder request details in the database",
+      "Send an email notification to the family member about the reminder"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.461
+      },
+      {
+       "proyecto": "Apache:YARN",
+       "similitud": 0.424
+      }
+     ],
+     "historia_es": "Como miembro de la familia, quiero pedir un recordatorio con mis próximas citas, para que no me pierda la cita.",
+     "tareas_es": [
+      "Enviar un correo electrónico de confirmación al miembro de la familia",
+      "Almacenar los detalles de la solicitud de recordatorio en la base de datos",
+      "Enviar una notificación por correo electrónico al miembro de la familia sobre el recordatorio"
+     ],
+     "horas_suma": 14.3,
+     "horas_tareas": [
+      2.84,
+      2.52,
+      2.57
+     ],
+     "horas_probables": [
+      1.5,
+      3.0,
+      2.5
+     ],
+     "horas_banda": [
+      [
+       0.7,
+       12.2
+      ],
+      [
+       0.6,
+       10.9
+      ],
+      [
+       0.6,
+       11.1
+      ]
+     ]
+    },
+    {
+     "historia": "As a care coordinator, I want to track the status of my assigned appointments, so that I can manage responsibilities.",
+     "votos": 2,
+     "relevancia": 0.411,
+     "tareas": [
+      "Membership Status"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.507
+      },
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.481
+      }
+     ],
+     "historia_es": "Como coordinador de cuidados, quiero seguir el estado de mis citas asignadas, para poder manejar las responsabilidades.",
+     "tareas_es": [
+      "Ser miembro Estado"
+     ],
+     "horas_suma": 5.3,
+     "horas_tareas": [
+      2.13
+     ],
+     "horas_probables": [
+      1.75
+     ],
+     "horas_banda": [
+      [
+       0.5,
+       9.2
+      ]
+     ]
+    }
+   ],
+   "tiempos": {
+    "traducir_entrada": 1.308,
+    "recuperar_arriba": 0.209,
+    "generar_historias": 10.548,
+    "deduplicar_historias": 0.326,
+    "recuperar_abajo": 0.016,
+    "generar_tareas": 9.142,
+    "deduplicar_tareas": 0.063,
+    "reasignar_tareas": 0.043,
+    "traducir": 0.462,
+    "total": 22.116
+   },
+   "vecinos_proyecto": [
+    {
+     "proyecto": "dalpiaz:g04-recycling",
+     "similitud": 0.451
+    },
+    {
+     "proyecto": "RedHat:HOSTEDCP",
+     "similitud": 0.423
+    }
+   ],
+   "n_banco": 48,
+   "n_tareas": 37,
+   "estimacion": {
+    "disponible": true,
+    "total_horas": 183.7,
+    "banda_baja": 66.7,
+    "banda_alta": 363.3,
+    "nivel": 0.8,
+    "tareas": 37,
+    "cerradas": 0,
+    "por_tarea": true,
+    "factor_estilo": 0.7273,
+    "fuente_estilo": "C:\\Users\\User\\Documents\\Programacao\\Agix-Dataset\\results\\estilo_total\\meta.json",
+    "dias_persona": 23.0,
+    "segundos": 23.27,
+    "seg_total": 14.19,
+    "seg_tareas": 9.08
+   }
+  },
+  "int8": {
+   "historias": [
+    {
+     "historia": "As a family member, I want to receive a payment to the app, so that I can encourage my earnings.",
+     "votos": 1,
+     "relevancia": 0.487,
+     "tareas": [
+      "Store payment details in the database",
+      "Display payment details on the family member's dashboard",
+      "Send payment notifications to the family member"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:COST",
+       "similitud": 0.469
+      },
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.451
+      }
+     ],
+     "historia_es": "Como miembro de la familia, quiero recibir un pago a la aplicación, para poder alentar mis ganancias.",
+     "tareas_es": [
+      "Almacenar los datos de pago en la base de datos",
+      "Mostrar los detalles de pago en el panel del miembro de la familia",
+      "Enviar notificaciones de pago al miembro de la familia"
+     ],
+     "horas_suma": 18.7,
+     "horas_tareas": [
+      3.59,
+      3.11,
+      2.55
+     ],
+     "horas_probables": [
+      5.0,
+      3.0,
+      3.0
+     ],
+     "horas_banda": [
+      [
+       0.8,
+       15.5
+      ],
+      [
+       0.7,
+       13.4
+      ],
+      [
+       0.6,
+       11.0
+      ]
+     ]
+    },
+    {
+     "historia": "As a nurse, I want to update the availability of my recurring appointments, so that I can ensure adequate coverage.",
+     "votos": 1,
+     "relevancia": 0.413,
+     "tareas": [
+      "Create a recurring appointment update form in the nurse app",
+      "Send a notification to the nurse if the recurring request is updated",
+      "Update the availability of the recurring admissions",
+      "Update the scheduler availability of a recurring assignment",
+      "Allow nurses to update recurring appointments in the database",
+      "Send notifications to nurses about recurring prescriptions",
+      "Procedure for recurring requests"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.486
+      },
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.425
+      }
+     ],
+     "historia_es": "Como enfermera, quiero actualizar la disponibilidad de mis citas recurrentes, para poder asegurar una cobertura adecuada.",
+     "tareas_es": [
+      "Crear un formulario de actualización de cita recurrente en la aplicación de enfermería",
+      "Enviar una notificación a la enfermera si la solicitud recurrente se actualiza",
+      "Actualizar la disponibilidad de las admisiones recurrentes",
+      "Actualizar la disponibilidad del planificador de una asignación recurrente",
+      "Permitir que los enfermeros actualicen las citas recurrentes en la base de datos",
+      "Enviar notificaciones a enfermeras sobre recetas recurrentes",
+      "Proceder para solicitudes recurrentes"
+     ],
+     "horas_suma": 24.5,
+     "horas_tareas": [
+      4.86,
+      1.8,
+      2.1,
+      1.56,
+      3.07,
+      1.71,
+      2.89
+     ],
+     "horas_probables": [
+      5.0,
+      1.0,
+      2.0,
+      1.75,
+      3.0,
+      1.75,
+      2.0
+     ],
+     "horas_banda": [
+      [
+       1.1,
+       21.0
+      ],
+      [
+       0.4,
+       7.8
+      ],
+      [
+       0.5,
+       9.1
+      ],
+      [
+       0.4,
+       6.7
+      ],
+      [
+       0.7,
+       13.3
+      ],
+      [
+       0.4,
+       7.4
+      ],
+      [
+       0.7,
+       12.5
+      ]
+     ]
+    },
+    {
+     "historia": "As a care coordinator, I want to track the availability of completed appointments, so that I can make informed decisions.",
+     "votos": 2,
+     "relevancia": 0.447,
+     "tareas": [
+      "Store appointment details in the database",
+      "Display appointment details on the care coordinator's dashboard",
+      "Initial planning of completed requests",
+      "Send notifications to care coordinators about new appointments"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.508
+      },
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.436
+      }
+     ],
+     "historia_es": "Como coordinador de cuidados, quiero hacer un seguimiento de la disponibilidad de citas completas, para poder tomar decisiones informadas.",
+     "tareas_es": [
+      "Almacenar los detalles de la cita en la base de datos",
+      "Mostrar los detalles de la cita en el panel de coordinación de cuidados",
+      "Planificar inicialmente las solicitudes completadas",
+      "Enviar notificaciones a coordinador de cuidados sobre nuevas citas"
+     ],
+     "horas_suma": 16.6,
+     "horas_tareas": [
+      3.61,
+      3.21,
+      3.88,
+      1.8
+     ],
+     "horas_probables": [
+      3.0,
+      3.0,
+      3.0,
+      3.0
+     ],
+     "horas_banda": [
+      [
+       0.8,
+       15.6
+      ],
+      [
+       0.7,
+       13.9
+      ],
+      [
+       0.9,
+       16.7
+      ],
+      [
+       0.4,
+       7.7
+      ]
+     ]
+    },
+    {
+     "historia": "As a caregiver, I want to set up a recurring appointment in the app, so that I can plan my day efficiently.",
+     "votos": 2,
+     "relevancia": 0.588,
+     "tareas": [
+      "Create a recurring appointment form in the caregiver app",
+      "Scheduler restart",
+      "Procedure to cancel a recurring app",
+      "Implement a recurring appointment scheduling feature in the caregiver app"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:YUNIKORN",
+       "similitud": 0.473
+      },
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.468
+      }
+     ],
+     "historia_es": "Como cuidador, quiero establecer una cita recurrente en la aplicación, para poder planificar mi día de manera eficiente.",
+     "tareas_es": [
+      "Crear un formulario de cita recurrente en la aplicación de cuidador",
+      "Reiniciar el planificador",
+      "Proceder a cancelar una aplicación recurrente",
+      "Implementar una función de programación de citas recurrentes en la aplicación de cuidador"
+     ],
+     "horas_suma": 21.2,
+     "horas_tareas": [
+      6.05,
+      2.17,
+      1.64,
+      7.04
+     ],
+     "horas_probables": [
+      4.0,
+      2.5,
+      1.0,
+      7.0
+     ],
+     "horas_banda": [
+      [
+       1.4,
+       26.1
+      ],
+      [
+       0.5,
+       9.4
+      ],
+      [
+       0.4,
+       7.1
+      ],
+      [
+       1.6,
+       30.4
+      ]
+     ]
+    },
+    {
+     "historia": "As a caregiver, I want to manage my visit records, so that I can provide better care.",
+     "votos": 1,
+     "relevancia": 0.341,
+     "tareas": [
+      "Store visit records in the caregiver's profile",
+      "Display visit records on the caregiver’s dashboard",
+      "Delete records",
+      "Delete search records"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.419
+      },
+      {
+       "proyecto": "Apache:MAPREDUCE",
+       "similitud": 0.405
+      }
+     ],
+     "historia_es": "Como cuidador, quiero administrar mis registros de visitas, para poder proporcionar mejor atención.",
+     "tareas_es": [
+      "Almacenar registros de visitas en el perfil del cuidador",
+      "Mostrar registros de visitas en el panel de la cuidadora",
+      "Eliminar registros",
+      "Eliminar registros de búsqueda"
+     ],
+     "horas_suma": 13.8,
+     "horas_tareas": [
+      2.22,
+      3.82,
+      2.21,
+      1.58
+     ],
+     "horas_probables": [
+      2.25,
+      4.0,
+      1.75,
+      2.0
+     ],
+     "horas_banda": [
+      [
+       0.5,
+       9.6
+      ],
+      [
+       0.9,
+       16.5
+      ],
+      [
+       0.5,
+       9.5
+      ],
+      [
+       0.4,
+       6.8
+      ]
+     ]
+    },
+    {
+     "historia": "As a care coordinator, I want to monitor caregiver availability, so that I can ensure accurate care.",
+     "votos": 1,
+     "relevancia": 0.326,
+     "tareas": [
+      "Implement a notification system for the care coordinator",
+      "Store caregiver availability data in the database",
+      "Add ability to monitor queues"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:SLING",
+       "similitud": 0.481
+      },
+      {
+       "proyecto": "RedHat:ENTMQMAAS",
+       "similitud": 0.471
+      }
+     ],
+     "historia_es": "Como coordinador de cuidados, quiero monitorear la disponibilidad de cuidador, para poder asegurar una atención precisa.",
+     "tareas_es": [
+      "Implementar un sistema de notificación para el coordinador de cuidados",
+      "Almacenar los datos de disponibilidad de los cuidadores en la base de datos",
+      "Añadir capacidad para monitorear colas"
+     ],
+     "horas_suma": 27.9,
+     "horas_tareas": [
+      5.86,
+      5.32,
+      5.96
+     ],
+     "horas_probables": [
+      4.0,
+      4.0,
+      6.0
+     ],
+     "horas_banda": [
+      [
+       1.4,
+       25.3
+      ],
+      [
+       1.2,
+       23.0
+      ],
+      [
+       1.4,
+       25.7
+      ]
+     ]
+    },
+    {
+     "historia": "As a family member, I want to view a list of upcoming recurring appointments, so that I can plan my schedule.",
+     "votos": 2,
+     "relevancia": 0.42,
+     "tareas": [
+      "Add a list of recurring requests to the scheduler",
+      "Add an additional recurring assignment to the Scheduler",
+      "Notify the family member if a recurring occurs"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.599
+      },
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.536
+      }
+     ],
+     "historia_es": "Como miembro de la familia, quiero ver una lista de citas recurrentes que se avecinan, para poder planificar mi horario.",
+     "tareas_es": [
+      "Añadir una lista de peticiones recurrentes al planificador",
+      "Añadir una asignación adicional recurrente al Scheduler",
+      "Notificar al familiar si ocurre una repetición"
+     ],
+     "horas_suma": 13.4,
+     "horas_tareas": [
+      2.92,
+      1.67,
+      2.33
+     ],
+     "horas_probables": [
+      3.0,
+      2.5,
+      1.25
+     ],
+     "horas_banda": [
+      [
+       0.7,
+       12.6
+      ],
+      [
+       0.4,
+       7.2
+      ],
+      [
+       0.5,
+       10.0
+      ]
+     ]
+    },
+    {
+     "historia": "As a family member, I want to see a list of upcoming appointments, so that I can plan my schedule accordingly.",
+     "votos": 2,
+     "relevancia": 0.403,
+     "tareas": [
+      "Display appointment details on the family member's dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.603
+      },
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.514
+      }
+     ],
+     "historia_es": "Como miembro de la familia, quiero ver una lista de las próximas citas, para que pueda planificar mi horario en consecuencia.",
+     "tareas_es": [
+      "Mostrar los detalles de la cita en el panel del miembro de la familia"
+     ],
+     "horas_suma": 4.7,
+     "horas_tareas": [
+      3.27
+     ],
+     "horas_probables": [
+      2.0
+     ],
+     "horas_banda": [
+      [
+       0.8,
+       14.1
+      ]
+     ]
+    },
+    {
+     "historia": "As a nurse, I want to receive notifications about upcoming appointments, so that I can manage my appointments.",
+     "votos": 1,
+     "relevancia": 0.437,
+     "tareas": [
+      "Store appointment details in the nurse's profile"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.549
+      },
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.491
+      }
+     ],
+     "historia_es": "Como enfermera, quiero recibir notificaciones sobre las próximas citas, para poder gestionar mis citas.",
+     "tareas_es": [
+      "Guardar los detalles de la cita en el perfil de la enfermera."
+     ],
+     "horas_suma": 2.8,
+     "horas_tareas": [
+      2.6
+     ],
+     "horas_probables": [
+      2.0
+     ],
+     "horas_banda": [
+      [
+       0.6,
+       11.2
+      ]
+     ]
+    },
+    {
+     "historia": "As a nurse, I want to view my recurring appointment history, so that I can track my availability.",
+     "votos": 1,
+     "relevancia": 0.44,
+     "tareas": [
+      "Add documentation for recurring admission history",
+      "Add documentation about recurring assignment history",
+      "Provide a notification to the nurse about recurring prescription history"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:MAPREDUCE",
+       "similitud": 0.517
+      },
+      {
+       "proyecto": "RedHat:RIFTSAW",
+       "similitud": 0.463
+      }
+     ],
+     "historia_es": "Como enfermera, quiero ver mi historial recurrente de citas, para poder rastrear mi disponibilidad.",
+     "tareas_es": [
+      "Añadir documentación para el historial de admisión recurrente",
+      "Añadir documentación sobre el historial de asignaciones recurrentes",
+      "Proporcionar una notificación a la enfermera sobre la historia recurrente de receta"
+     ],
+     "horas_suma": 12.4,
+     "horas_tareas": [
+      2.42,
+      1.33,
+      1.61
+     ],
+     "horas_probables": [
+      2.5,
+      2.0,
+      1.5
+     ],
+     "horas_banda": [
+      [
+       0.6,
+       10.4
+      ],
+      [
+       0.3,
+       5.7
+      ],
+      [
+       0.4,
+       6.9
+      ]
+     ]
+    },
+    {
+     "historia": "As a family member, I want to request a reminder with my upcoming appointments, so that I do not miss the appointment.",
+     "votos": 1,
+     "relevancia": 0.399,
+     "tareas": [
+      "Send a confirmation email to the family member",
+      "Store the reminder request details in the database",
+      "Send an email notification to the family member about the reminder"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.461
+      },
+      {
+       "proyecto": "Apache:YARN",
+       "similitud": 0.424
+      }
+     ],
+     "historia_es": "Como miembro de la familia, quiero pedir un recordatorio con mis próximas citas, para que no me pierda la cita.",
+     "tareas_es": [
+      "Enviar un correo electrónico de confirmación al miembro de la familia",
+      "Almacenar los detalles de la solicitud de recordatorio en la base de datos",
+      "Enviar una notificación por correo electrónico al miembro de la familia sobre el recordatorio"
+     ],
+     "horas_suma": 15.2,
+     "horas_tareas": [
+      2.81,
+      2.37,
+      2.24
+     ],
+     "horas_probables": [
+      1.0,
+      2.5,
+      2.25
+     ],
+     "horas_banda": [
+      [
+       0.7,
+       12.1
+      ],
+      [
+       0.5,
+       10.2
+      ],
+      [
+       0.5,
+       9.7
+      ]
+     ]
+    },
+    {
+     "historia": "As a care coordinator, I want to track the status of my assigned appointments, so that I can manage responsibilities.",
+     "votos": 2,
+     "relevancia": 0.411,
+     "tareas": [
+      "Membership Status"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.507
+      },
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.481
+      }
+     ],
+     "historia_es": "Como coordinador de cuidados, quiero seguir el estado de mis citas asignadas, para poder manejar las responsabilidades.",
+     "tareas_es": [
+      "Ser miembro Estado"
+     ],
+     "horas_suma": 5.2,
+     "horas_tareas": [
+      2.35
+     ],
+     "horas_probables": [
+      1.5
+     ],
+     "horas_banda": [
+      [
+       0.5,
+       10.1
+      ]
+     ]
+    }
+   ],
+   "tiempos": {
+    "traducir_entrada": 1.308,
+    "recuperar_arriba": 0.209,
+    "generar_historias": 10.548,
+    "deduplicar_historias": 0.326,
+    "recuperar_abajo": 0.016,
+    "generar_tareas": 9.142,
+    "deduplicar_tareas": 0.063,
+    "reasignar_tareas": 0.043,
+    "traducir": 0.462,
+    "total": 22.116
+   },
+   "vecinos_proyecto": [
+    {
+     "proyecto": "dalpiaz:g04-recycling",
+     "similitud": 0.451
+    },
+    {
+     "proyecto": "RedHat:HOSTEDCP",
+     "similitud": 0.423
+    }
+   ],
+   "n_banco": 48,
+   "n_tareas": 37,
+   "estimacion": {
+    "disponible": true,
+    "total_horas": 176.4,
+    "banda_baja": 64.1,
+    "banda_alta": 348.9,
+    "nivel": 0.8,
+    "tareas": 37,
+    "cerradas": 0,
+    "por_tarea": true,
+    "factor_estilo": 0.7273,
+    "fuente_estilo": "C:\\Users\\User\\Documents\\Programacao\\Agix-Dataset\\results\\estilo_total\\meta.json",
+    "dias_persona": 22.0,
+    "segundos": 2.11,
+    "seg_total": 0.65,
+    "seg_tareas": 1.46
+   }
+  }
+ },
+ {
+  "titulo": "Salas de estudio",
+  "descripcion": "Una aplicación móvil donde los estudiantes de una universidad encuentran y reservan salas de estudio en el campus en tiempo real.",
+  "fp32": {
+   "historias": [
+    {
+     "historia": "As a student, I want to see my availability on time, so that I can plan my schedule.",
+     "votos": 2,
+     "relevancia": 0.491,
+     "tareas": [
+      "Store the availability data in the database",
+      "Display the availability on the student's dashboard",
+      "Send a notification to the student about the availability",
+      "Please review availability on time",
+      "Please review and vote on availability"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.475
+      },
+      {
+       "proyecto": "Apache:DATALAB",
+       "similitud": 0.471
+      }
+     ],
+     "historia_es": "Como estudiante, quiero ver mi disponibilidad a tiempo, para poder planificar mi horario.",
+     "tareas_es": [
+      "Almacenar los datos de disponibilidad en la base de datos",
+      "Mostrar la disponibilidad en el panel del estudiante",
+      "Enviar una notificación al estudiante sobre la disponibilidad",
+      "Revisar la disponibilidad a tiempo",
+      "Revisar y votar sobre la disponibilidad"
+     ],
+     "horas_suma": 24.3,
+     "horas_tareas": [
+      6.23,
+      4.43,
+      3.07,
+      1.77,
+      1.92
+     ],
+     "horas_probables": [
+      4.5,
+      2.5,
+      3.0,
+      2.0,
+      2.0
+     ],
+     "horas_banda": [
+      [
+       1.4,
+       26.9
+      ],
+      [
+       1.0,
+       19.1
+      ],
+      [
+       0.7,
+       13.3
+      ],
+      [
+       0.4,
+       7.7
+      ],
+      [
+       0.4,
+       8.3
+      ]
+     ]
+    },
+    {
+     "historia": "As a teaching assistant, I want to receive notifications when a student has completed their lessons, so that I can prepare.",
+     "votos": 1,
+     "relevancia": 0.485,
+     "tareas": [
+      "Implement a notification system in the teaching assistant dashboard",
+      "Send notifications to students about their lessons",
+      "Add notifications when student is finished",
+      "Add notification when student finishes their lessons"
+     ],
+     "origen": [
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.554
+      },
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.448
+      }
+     ],
+     "historia_es": "Como asistente docente, quiero recibir notificaciones cuando un estudiante ha completado sus lecciones, para que pueda prepararme.",
+     "tareas_es": [
+      "Implementar un sistema de notificación en el panel de los auxiliares docentes",
+      "Enviar notificaciones a los estudiantes sobre sus lecciones",
+      "Añadir notificaciones cuando el estudiante haya terminado",
+      "Añadir notificación cuando el estudiante termina sus lecciones"
+     ],
+     "horas_suma": 21.2,
+     "horas_tareas": [
+      6.91,
+      3.71,
+      2.72,
+      3.45
+     ],
+     "horas_probables": [
+      3.0,
+      3.5,
+      2.5,
+      3.5
+     ],
+     "horas_banda": [
+      [
+       1.6,
+       29.8
+      ],
+      [
+       0.9,
+       16.0
+      ],
+      [
+       0.6,
+       11.7
+      ],
+      [
+       0.8,
+       14.9
+      ]
+     ]
+    },
+    {
+     "historia": "As an instructor, I want to track student attendance, so that I can make informed decisions.",
+     "votos": 1,
+     "relevancia": 0.391,
+     "tareas": [
+      "Store student attendance data in the database",
+      "Display student attendance on the instructor's dashboard",
+      "Attend weekly admission"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:ACCUMULO",
+       "similitud": 0.445
+      },
+      {
+       "proyecto": "Apache:LENS",
+       "similitud": 0.438
+      }
+     ],
+     "historia_es": "Como instructor, quiero seguir la asistencia a los estudiantes, para poder tomar decisiones informadas.",
+     "tareas_es": [
+      "Almacenar los datos de asistencia a los estudiantes en la base de datos",
+      "Mostrar la asistencia de los estudiantes en el panel del instructor",
+      "Asistir a la admisión semanal"
+     ],
+     "horas_suma": 14.2,
+     "horas_tareas": [
+      6.02,
+      3.85,
+      2.04
+     ],
+     "horas_probables": [
+      2.5,
+      2.5,
+      2.0
+     ],
+     "horas_banda": [
+      [
+       1.4,
+       26.0
+      ],
+      [
+       0.9,
+       16.6
+      ],
+      [
+       0.5,
+       8.8
+      ]
+     ]
+    },
+    {
+     "historia": "As a coordinator, I want to monitor the progress of student attendance, so that I can identify areas for improvement.",
+     "votos": 2,
+     "relevancia": 0.361,
+     "tareas": [
+      "Store student attendance data in the database"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:ACCUMULO",
+       "similitud": 0.54
+      },
+      {
+       "proyecto": "RedHat:ENTMQMAAS",
+       "similitud": 0.419
+      }
+     ],
+     "historia_es": "Como coordinador, quiero supervisar el progreso de la asistencia de los estudiantes, para poder identificar áreas de mejora.",
+     "tareas_es": [
+      "Almacenar los datos de asistencia a los estudiantes en la base de datos"
+     ],
+     "horas_suma": 6.9,
+     "horas_tareas": [
+      6.02
+     ],
+     "horas_probables": [
+      2.5
+     ],
+     "horas_banda": [
+      [
+       1.4,
+       26.0
+      ]
+     ]
+    },
+    {
+     "historia": "As a coordinator, I want to manage the teaching schedule, so that I can support the teaching environment.",
+     "votos": 1,
+     "relevancia": 0.243,
+     "tareas": [
+      "Create a schedule management interface in the coordinator dashboard",
+      "Store teaching schedule information in the database",
+      "Send a notification to the coordinator about the schedule",
+      "Create a separate project structure for the teaching schedule"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:YARN",
+       "similitud": 0.464
+      },
+      {
+       "proyecto": "Apache:OOZIE",
+       "similitud": 0.46
+      }
+     ],
+     "historia_es": "Como coordinador, quiero gestionar el horario de enseñanza, para poder apoyar el entorno de enseñanza.",
+     "tareas_es": [
+      "Crear una interfaz de gestión de horarios en el panel de coordinación",
+      "Almacenar información sobre el horario de enseñanza en la base de datos",
+      "Enviar una notificación al coordinador sobre el calendario",
+      "Crear una estructura de proyecto separada para el horario de enseñanza"
+     ],
+     "horas_suma": 20.0,
+     "horas_tareas": [
+      7.09,
+      2.97,
+      2.13,
+      3.6
+     ],
+     "horas_probables": [
+      7.0,
+      4.0,
+      2.25,
+      2.0
+     ],
+     "horas_banda": [
+      [
+       1.6,
+       30.6
+      ],
+      [
+       0.7,
+       12.8
+      ],
+      [
+       0.5,
+       9.2
+      ],
+      [
+       0.8,
+       15.6
+      ]
+     ]
+    },
+    {
+     "historia": "As an instructor, I want to set up student quizzes, so that I can attract more teachers.",
+     "votos": 1,
+     "relevancia": 0.279,
+     "tareas": [
+      "Store quiz assignments in the database",
+      "Display quiz assignment status on the instructor's profile",
+      "Notify the teachers of new quiz assignments"
+     ],
+     "origen": [
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.589
+      },
+      {
+       "proyecto": "TAWOS-Moodle:MDL",
+       "similitud": 0.562
+      }
+     ],
+     "historia_es": "Como instructor, quiero preparar cuestionarios para estudiantes, para que pueda atraer a más profesores.",
+     "tareas_es": [
+      "Almacenar las tareas de los cuestionarios en la base de datos",
+      "Mostrar el estado de la asignación del cuestionario en el perfil del instructor",
+      "Notificar a los maestros de nuevas tareas de examen"
+     ],
+     "horas_suma": 13.7,
+     "horas_tareas": [
+      3.94,
+      1.42,
+      1.84
+     ],
+     "horas_probables": [
+      4.5,
+      1.5,
+      1.75
+     ],
+     "horas_banda": [
+      [
+       0.9,
+       17.0
+      ],
+      [
+       0.3,
+       6.1
+      ],
+      [
+       0.4,
+       7.9
+      ]
+     ]
+    },
+    {
+     "historia": "As a teaching assistant, I want to view student course attendance, so that I can prepare for the study.",
+     "votos": 1,
+     "relevancia": 0.495,
+     "tareas": [
+      "Attend the course attendance",
+      "Attend the weekly participation",
+      "Prepare the evening participation"
+     ],
+     "origen": [
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.493
+      },
+      {
+       "proyecto": "Apache:LENS",
+       "similitud": 0.478
+      }
+     ],
+     "historia_es": "Como asistente docente, quiero ver la asistencia al curso de los estudiantes, para que pueda prepararme para el estudio.",
+     "tareas_es": [
+      "Asistir a la asistencia al curso",
+      "Asistir a la participación semanal",
+      "Preparar la participación nocturna"
+     ],
+     "horas_suma": 15.2,
+     "horas_tareas": [
+      2.75,
+      2.65,
+      4.36
+     ],
+     "horas_probables": [
+      4.5,
+      1.5,
+      4.0
+     ],
+     "horas_banda": [
+      [
+       0.6,
+       11.9
+      ],
+      [
+       0.6,
+       11.5
+      ],
+      [
+       1.0,
+       18.8
+      ]
+     ]
+    },
+    {
+     "historia": "As a teaching assistant, I want to view student progress statistics, so that I can track progress.",
+     "votos": 1,
+     "relevancia": 0.325,
+     "tareas": [
+      "Display progress statistics on the teaching assistant dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.519
+      },
+      {
+       "proyecto": "Apache:ACCUMULO",
+       "similitud": 0.487
+      }
+     ],
+     "historia_es": "Como asistente docente, quiero ver estadísticas de progreso de los estudiantes, para poder seguir el progreso.",
+     "tareas_es": [
+      "Mostrar estadísticas de progreso en el panel de los asistentes docentes"
+     ],
+     "horas_suma": 6.6,
+     "horas_tareas": [
+      4.55
+     ],
+     "horas_probables": [
+      1.75
+     ],
+     "horas_banda": [
+      [
+       1.1,
+       19.6
+      ]
+     ]
+    },
+    {
+     "historia": "As a teaching assistant, I want to upload book submissions, so that I can assist academic students.",
+     "votos": 1,
+     "relevancia": 0.499,
+     "tareas": [
+      "Store book upload details in the database",
+      "Implement a submission form in the teaching assistant dashboard",
+      "Store submission details in the database"
+     ],
+     "origen": [
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.539
+      },
+      {
+       "proyecto": "RedHat:AF",
+       "similitud": 0.514
+      }
+     ],
+     "historia_es": "Como asistente docente, quiero subir las presentaciones de libros, para poder ayudar a los estudiantes académicos.",
+     "tareas_es": [
+      "Almacenar los detalles de la carga de libros en la base de datos",
+      "Implementar un formulario de presentación en el panel de los asistentes docentes",
+      "Almacenar los detalles de la presentación en la base de datos"
+     ],
+     "horas_suma": 19.6,
+     "horas_tareas": [
+      2.89,
+      5.9,
+      3.76
+     ],
+     "horas_probables": [
+      5.0,
+      3.0,
+      5.0
+     ],
+     "horas_banda": [
+      [
+       0.7,
+       12.5
+      ],
+      [
+       1.4,
+       25.5
+      ],
+      [
+       0.9,
+       16.2
+      ]
+     ]
+    },
+    {
+     "historia": "As a student, I want to view student feedback, so that I can improve my performance.",
+     "votos": 1,
+     "relevancia": 0.393,
+     "tareas": [
+      "Display feedback on the student's profile page",
+      "Add ability to view student feedback",
+      "Display feedback on the student's dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.55
+      },
+      {
+       "proyecto": "RedHat:WINDUP",
+       "similitud": 0.509
+      }
+     ],
+     "historia_es": "Como estudiante, quiero ver la retroalimentación de los estudiantes, para poder mejorar mi rendimiento.",
+     "tareas_es": [
+      "Mostrar comentarios en la página de perfil del estudiante",
+      "Añadir capacidad para ver la retroalimentación de los estudiantes",
+      "Mostrar comentarios en el panel del estudiante"
+     ],
+     "horas_suma": 15.8,
+     "horas_tareas": [
+      2.26,
+      3.9,
+      4.27
+     ],
+     "horas_probables": [
+      1.5,
+      4.0,
+      4.5
+     ],
+     "horas_banda": [
+      [
+       0.5,
+       9.8
+      ],
+      [
+       0.9,
+       16.8
+      ],
+      [
+       1.0,
+       18.4
+      ]
+     ]
+    },
+    {
+     "historia": "As an instructor, I want to review student progress, so that I can ensure proper student performance.",
+     "votos": 1,
+     "relevancia": 0.349,
+     "tareas": [
+      "Display student progress on the dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "TAWOS-Moodle:MDL",
+       "similitud": 0.493
+      },
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.479
+      }
+     ],
+     "historia_es": "Como instructor, quiero revisar el progreso de los estudiantes, para poder asegurar un desempeño adecuado.",
+     "tareas_es": [
+      "Mostrar el progreso del estudiante en el panel"
+     ],
+     "horas_suma": 6.4,
+     "horas_tareas": [
+      4.25
+     ],
+     "horas_probables": [
+      4.5
+     ],
+     "horas_banda": [
+      [
+       1.0,
+       18.3
+      ]
+     ]
+    },
+    {
+     "historia": "As a student, I want to provide feedback on my teaching experience, so that I can improve my engagement.",
+     "votos": 1,
+     "relevancia": 0.316,
+     "tareas": [
+      "Store feedback data in the student's profile"
+     ],
+     "origen": [
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.521
+      },
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.439
+      }
+     ],
+     "historia_es": "Como estudiante, quiero proporcionar retroalimentación sobre mi experiencia docente, para poder mejorar mi compromiso.",
+     "tareas_es": [
+      "Almacenar datos de retroalimentación en el perfil del estudiante"
+     ],
+     "horas_suma": 6.3,
+     "horas_tareas": [
+      3.71
+     ],
+     "horas_probables": [
+      2.0
+     ],
+     "horas_banda": [
+      [
+       0.9,
+       16.0
+      ]
+     ]
+    }
+   ],
+   "tiempos": {
+    "traducir_entrada": 0.138,
+    "recuperar_arriba": 0.014,
+    "generar_historias": 3.965,
+    "deduplicar_historias": 0.394,
+    "recuperar_abajo": 0.016,
+    "generar_tareas": 5.233,
+    "deduplicar_tareas": 0.073,
+    "reasignar_tareas": 0.03,
+    "traducir": 0.181,
+    "total": 10.043
+   },
+   "vecinos_proyecto": [
+    {
+     "proyecto": "MongoDB:DOCS",
+     "similitud": 0.485
+    },
+    {
+     "proyecto": "RedHat:FH",
+     "similitud": 0.462
+    }
+   ],
+   "n_banco": 48,
+   "n_tareas": 32,
+   "estimacion": {
+    "disponible": true,
+    "total_horas": 170.0,
+    "banda_baja": 61.8,
+    "banda_alta": 336.4,
+    "nivel": 0.8,
+    "tareas": 32,
+    "cerradas": 0,
+    "por_tarea": true,
+    "factor_estilo": 0.7273,
+    "fuente_estilo": "C:\\Users\\User\\Documents\\Programacao\\Agix-Dataset\\results\\estilo_total\\meta.json",
+    "dias_persona": 21.3,
+    "segundos": 0.4,
+    "seg_total": 0.16,
+    "seg_tareas": 0.24
+   }
+  },
+  "int8": {
+   "historias": [
+    {
+     "historia": "As a student, I want to see my availability on time, so that I can plan my schedule.",
+     "votos": 2,
+     "relevancia": 0.491,
+     "tareas": [
+      "Store the availability data in the database",
+      "Display the availability on the student's dashboard",
+      "Send a notification to the student about the availability",
+      "Please review availability on time",
+      "Please review and vote on availability"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.475
+      },
+      {
+       "proyecto": "Apache:DATALAB",
+       "similitud": 0.471
+      }
+     ],
+     "historia_es": "Como estudiante, quiero ver mi disponibilidad a tiempo, para poder planificar mi horario.",
+     "tareas_es": [
+      "Almacenar los datos de disponibilidad en la base de datos",
+      "Mostrar la disponibilidad en el panel del estudiante",
+      "Enviar una notificación al estudiante sobre la disponibilidad",
+      "Revisar la disponibilidad a tiempo",
+      "Revisar y votar sobre la disponibilidad"
+     ],
+     "horas_suma": 25.2,
+     "horas_tareas": [
+      5.99,
+      4.47,
+      3.04,
+      1.93,
+      2.15
+     ],
+     "horas_probables": [
+      4.5,
+      4.5,
+      3.0,
+      2.0,
+      2.0
+     ],
+     "horas_banda": [
+      [
+       1.4,
+       25.9
+      ],
+      [
+       1.0,
+       19.3
+      ],
+      [
+       0.7,
+       13.1
+      ],
+      [
+       0.4,
+       8.3
+      ],
+      [
+       0.5,
+       9.3
+      ]
+     ]
+    },
+    {
+     "historia": "As a teaching assistant, I want to receive notifications when a student has completed their lessons, so that I can prepare.",
+     "votos": 1,
+     "relevancia": 0.485,
+     "tareas": [
+      "Implement a notification system in the teaching assistant dashboard",
+      "Send notifications to students about their lessons",
+      "Add notifications when student is finished",
+      "Add notification when student finishes their lessons"
+     ],
+     "origen": [
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.554
+      },
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.448
+      }
+     ],
+     "historia_es": "Como asistente docente, quiero recibir notificaciones cuando un estudiante ha completado sus lecciones, para que pueda prepararme.",
+     "tareas_es": [
+      "Implementar un sistema de notificación en el panel de los auxiliares docentes",
+      "Enviar notificaciones a los estudiantes sobre sus lecciones",
+      "Añadir notificaciones cuando el estudiante haya terminado",
+      "Añadir notificación cuando el estudiante termina sus lecciones"
+     ],
+     "horas_suma": 19.6,
+     "horas_tareas": [
+      6.15,
+      3.52,
+      2.6,
+      3.29
+     ],
+     "horas_probables": [
+      3.0,
+      3.5,
+      2.25,
+      3.5
+     ],
+     "horas_banda": [
+      [
+       1.4,
+       26.6
+      ],
+      [
+       0.8,
+       15.2
+      ],
+      [
+       0.6,
+       11.2
+      ],
+      [
+       0.8,
+       14.2
+      ]
+     ]
+    },
+    {
+     "historia": "As an instructor, I want to track student attendance, so that I can make informed decisions.",
+     "votos": 1,
+     "relevancia": 0.391,
+     "tareas": [
+      "Store student attendance data in the database",
+      "Display student attendance on the instructor's dashboard",
+      "Attend weekly admission"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:ACCUMULO",
+       "similitud": 0.445
+      },
+      {
+       "proyecto": "Apache:LENS",
+       "similitud": 0.438
+      }
+     ],
+     "historia_es": "Como instructor, quiero seguir la asistencia a los estudiantes, para poder tomar decisiones informadas.",
+     "tareas_es": [
+      "Almacenar los datos de asistencia a los estudiantes en la base de datos",
+      "Mostrar la asistencia de los estudiantes en el panel del instructor",
+      "Asistir a la admisión semanal"
+     ],
+     "horas_suma": 14.2,
+     "horas_tareas": [
+      5.88,
+      4.29,
+      1.97
+     ],
+     "horas_probables": [
+      3.5,
+      3.0,
+      1.75
+     ],
+     "horas_banda": [
+      [
+       1.4,
+       25.4
+      ],
+      [
+       1.0,
+       18.5
+      ],
+      [
+       0.5,
+       8.5
+      ]
+     ]
+    },
+    {
+     "historia": "As a coordinator, I want to monitor the progress of student attendance, so that I can identify areas for improvement.",
+     "votos": 2,
+     "relevancia": 0.361,
+     "tareas": [
+      "Store student attendance data in the database"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:ACCUMULO",
+       "similitud": 0.54
+      },
+      {
+       "proyecto": "RedHat:ENTMQMAAS",
+       "similitud": 0.419
+      }
+     ],
+     "historia_es": "Como coordinador, quiero supervisar el progreso de la asistencia de los estudiantes, para poder identificar áreas de mejora.",
+     "tareas_es": [
+      "Almacenar los datos de asistencia a los estudiantes en la base de datos"
+     ],
+     "horas_suma": 6.6,
+     "horas_tareas": [
+      5.88
+     ],
+     "horas_probables": [
+      3.5
+     ],
+     "horas_banda": [
+      [
+       1.4,
+       25.4
+      ]
+     ]
+    },
+    {
+     "historia": "As a coordinator, I want to manage the teaching schedule, so that I can support the teaching environment.",
+     "votos": 1,
+     "relevancia": 0.243,
+     "tareas": [
+      "Create a schedule management interface in the coordinator dashboard",
+      "Store teaching schedule information in the database",
+      "Send a notification to the coordinator about the schedule",
+      "Create a separate project structure for the teaching schedule"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:YARN",
+       "similitud": 0.464
+      },
+      {
+       "proyecto": "Apache:OOZIE",
+       "similitud": 0.46
+      }
+     ],
+     "historia_es": "Como coordinador, quiero gestionar el horario de enseñanza, para poder apoyar el entorno de enseñanza.",
+     "tareas_es": [
+      "Crear una interfaz de gestión de horarios en el panel de coordinación",
+      "Almacenar información sobre el horario de enseñanza en la base de datos",
+      "Enviar una notificación al coordinador sobre el calendario",
+      "Crear una estructura de proyecto separada para el horario de enseñanza"
+     ],
+     "horas_suma": 20.6,
+     "horas_tareas": [
+      6.13,
+      2.74,
+      2.29,
+      3.96
+     ],
+     "horas_probables": [
+      6.0,
+      3.5,
+      2.25,
+      4.0
+     ],
+     "horas_banda": [
+      [
+       1.4,
+       26.4
+      ],
+      [
+       0.6,
+       11.8
+      ],
+      [
+       0.5,
+       9.9
+      ],
+      [
+       0.9,
+       17.1
+      ]
+     ]
+    },
+    {
+     "historia": "As an instructor, I want to set up student quizzes, so that I can attract more teachers.",
+     "votos": 1,
+     "relevancia": 0.279,
+     "tareas": [
+      "Store quiz assignments in the database",
+      "Display quiz assignment status on the instructor's profile",
+      "Notify the teachers of new quiz assignments"
+     ],
+     "origen": [
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.589
+      },
+      {
+       "proyecto": "TAWOS-Moodle:MDL",
+       "similitud": 0.562
+      }
+     ],
+     "historia_es": "Como instructor, quiero preparar cuestionarios para estudiantes, para que pueda atraer a más profesores.",
+     "tareas_es": [
+      "Almacenar las tareas de los cuestionarios en la base de datos",
+      "Mostrar el estado de la asignación del cuestionario en el perfil del instructor",
+      "Notificar a los maestros de nuevas tareas de examen"
+     ],
+     "horas_suma": 14.0,
+     "horas_tareas": [
+      3.88,
+      1.55,
+      1.84
+     ],
+     "horas_probables": [
+      4.0,
+      3.0,
+      1.75
+     ],
+     "horas_banda": [
+      [
+       0.9,
+       16.8
+      ],
+      [
+       0.4,
+       6.7
+      ],
+      [
+       0.4,
+       8.0
+      ]
+     ]
+    },
+    {
+     "historia": "As a teaching assistant, I want to view student course attendance, so that I can prepare for the study.",
+     "votos": 1,
+     "relevancia": 0.495,
+     "tareas": [
+      "Attend the course attendance",
+      "Attend the weekly participation",
+      "Prepare the evening participation"
+     ],
+     "origen": [
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.493
+      },
+      {
+       "proyecto": "Apache:LENS",
+       "similitud": 0.478
+      }
+     ],
+     "historia_es": "Como asistente docente, quiero ver la asistencia al curso de los estudiantes, para que pueda prepararme para el estudio.",
+     "tareas_es": [
+      "Asistir a la asistencia al curso",
+      "Asistir a la participación semanal",
+      "Preparar la participación nocturna"
+     ],
+     "horas_suma": 15.8,
+     "horas_tareas": [
+      2.85,
+      2.62,
+      3.83
+     ],
+     "horas_probables": [
+      3.0,
+      1.5,
+      3.5
+     ],
+     "horas_banda": [
+      [
+       0.7,
+       12.3
+      ],
+      [
+       0.6,
+       11.3
+      ],
+      [
+       0.9,
+       16.5
+      ]
+     ]
+    },
+    {
+     "historia": "As a teaching assistant, I want to view student progress statistics, so that I can track progress.",
+     "votos": 1,
+     "relevancia": 0.325,
+     "tareas": [
+      "Display progress statistics on the teaching assistant dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.519
+      },
+      {
+       "proyecto": "Apache:ACCUMULO",
+       "similitud": 0.487
+      }
+     ],
+     "historia_es": "Como asistente docente, quiero ver estadísticas de progreso de los estudiantes, para poder seguir el progreso.",
+     "tareas_es": [
+      "Mostrar estadísticas de progreso en el panel de los asistentes docentes"
+     ],
+     "horas_suma": 7.1,
+     "horas_tareas": [
+      4.75
+     ],
+     "horas_probables": [
+      1.75
+     ],
+     "horas_banda": [
+      [
+       1.1,
+       20.5
+      ]
+     ]
+    },
+    {
+     "historia": "As a teaching assistant, I want to upload book submissions, so that I can assist academic students.",
+     "votos": 1,
+     "relevancia": 0.499,
+     "tareas": [
+      "Store book upload details in the database",
+      "Implement a submission form in the teaching assistant dashboard",
+      "Store submission details in the database"
+     ],
+     "origen": [
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.539
+      },
+      {
+       "proyecto": "RedHat:AF",
+       "similitud": 0.514
+      }
+     ],
+     "historia_es": "Como asistente docente, quiero subir las presentaciones de libros, para poder ayudar a los estudiantes académicos.",
+     "tareas_es": [
+      "Almacenar los detalles de la carga de libros en la base de datos",
+      "Implementar un formulario de presentación en el panel de los asistentes docentes",
+      "Almacenar los detalles de la presentación en la base de datos"
+     ],
+     "horas_suma": 17.1,
+     "horas_tareas": [
+      2.54,
+      5.64,
+      3.64
+     ],
+     "horas_probables": [
+      4.5,
+      3.0,
+      4.5
+     ],
+     "horas_banda": [
+      [
+       0.6,
+       11.0
+      ],
+      [
+       1.3,
+       24.4
+      ],
+      [
+       0.8,
+       15.7
+      ]
+     ]
+    },
+    {
+     "historia": "As a student, I want to view student feedback, so that I can improve my performance.",
+     "votos": 1,
+     "relevancia": 0.393,
+     "tareas": [
+      "Display feedback on the student's profile page",
+      "Add ability to view student feedback",
+      "Display feedback on the student's dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.55
+      },
+      {
+       "proyecto": "RedHat:WINDUP",
+       "similitud": 0.509
+      }
+     ],
+     "historia_es": "Como estudiante, quiero ver la retroalimentación de los estudiantes, para poder mejorar mi rendimiento.",
+     "tareas_es": [
+      "Mostrar comentarios en la página de perfil del estudiante",
+      "Añadir capacidad para ver la retroalimentación de los estudiantes",
+      "Mostrar comentarios en el panel del estudiante"
+     ],
+     "horas_suma": 14.7,
+     "horas_tareas": [
+      2.3,
+      4.03,
+      4.26
+     ],
+     "horas_probables": [
+      1.5,
+      4.0,
+      4.5
+     ],
+     "horas_banda": [
+      [
+       0.5,
+       9.9
+      ],
+      [
+       0.9,
+       17.4
+      ],
+      [
+       1.0,
+       18.4
+      ]
+     ]
+    },
+    {
+     "historia": "As an instructor, I want to review student progress, so that I can ensure proper student performance.",
+     "votos": 1,
+     "relevancia": 0.349,
+     "tareas": [
+      "Display student progress on the dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "TAWOS-Moodle:MDL",
+       "similitud": 0.493
+      },
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.479
+      }
+     ],
+     "historia_es": "Como instructor, quiero revisar el progreso de los estudiantes, para poder asegurar un desempeño adecuado.",
+     "tareas_es": [
+      "Mostrar el progreso del estudiante en el panel"
+     ],
+     "horas_suma": 8.4,
+     "horas_tareas": [
+      3.84
+     ],
+     "horas_probables": [
+      4.0
+     ],
+     "horas_banda": [
+      [
+       0.9,
+       16.6
+      ]
+     ]
+    },
+    {
+     "historia": "As a student, I want to provide feedback on my teaching experience, so that I can improve my engagement.",
+     "votos": 1,
+     "relevancia": 0.316,
+     "tareas": [
+      "Store feedback data in the student's profile"
+     ],
+     "origen": [
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.521
+      },
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.439
+      }
+     ],
+     "historia_es": "Como estudiante, quiero proporcionar retroalimentación sobre mi experiencia docente, para poder mejorar mi compromiso.",
+     "tareas_es": [
+      "Almacenar datos de retroalimentación en el perfil del estudiante"
+     ],
+     "horas_suma": 6.3,
+     "horas_tareas": [
+      3.6
+     ],
+     "horas_probables": [
+      2.0
+     ],
+     "horas_banda": [
+      [
+       0.8,
+       15.5
+      ]
+     ]
+    }
+   ],
+   "tiempos": {
+    "traducir_entrada": 0.138,
+    "recuperar_arriba": 0.014,
+    "generar_historias": 3.965,
+    "deduplicar_historias": 0.394,
+    "recuperar_abajo": 0.016,
+    "generar_tareas": 5.233,
+    "deduplicar_tareas": 0.073,
+    "reasignar_tareas": 0.03,
+    "traducir": 0.181,
+    "total": 10.043
+   },
+   "vecinos_proyecto": [
+    {
+     "proyecto": "MongoDB:DOCS",
+     "similitud": 0.485
+    },
+    {
+     "proyecto": "RedHat:FH",
+     "similitud": 0.462
+    }
+   ],
+   "n_banco": 48,
+   "n_tareas": 32,
+   "estimacion": {
+    "disponible": true,
+    "total_horas": 169.5,
+    "banda_baja": 61.6,
+    "banda_alta": 335.4,
+    "nivel": 0.8,
+    "tareas": 32,
+    "cerradas": 0,
+    "por_tarea": true,
+    "factor_estilo": 0.7273,
+    "fuente_estilo": "C:\\Users\\User\\Documents\\Programacao\\Agix-Dataset\\results\\estilo_total\\meta.json",
+    "dias_persona": 21.2,
+    "segundos": 1.82,
+    "seg_total": 0.5,
+    "seg_tareas": 1.32
+   }
+  }
+ },
+ {
+  "titulo": "Historias clínicas",
+  "descripcion": "Sistema para que una clínica pequeña gestione historias clínicas, citas y recetas, con acceso por roles para médicos y recepción.",
+  "fp32": {
+   "historias": [
+    {
+     "historia": "As a receptionist, I want to receive notifications for medicine feedback, so that I can communicate with patients.",
+     "votos": 1,
+     "relevancia": 0.588,
+     "tareas": [
+      "Implement a feedback form in the patient's profile",
+      "Send notifications to patients via email",
+      "Send a notification to the patient about the status"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:CB",
+       "similitud": 0.456
+      },
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.455
+      }
+     ],
+     "historia_es": "Como recepcionista, quiero recibir notificaciones para recibir información sobre medicamentos, de modo que pueda comunicarme con los pacientes.",
+     "tareas_es": [
+      "Implementar un formulario de retroalimentación en el perfil del paciente",
+      "Enviar notificaciones a los pacientes por correo electrónico",
+      "Enviar una notificación al paciente sobre el estado"
+     ],
+     "horas_suma": 16.8,
+     "horas_tareas": [
+      4.44,
+      4.36,
+      3.27
+     ],
+     "horas_probables": [
+      2.0,
+      4.5,
+      3.5
+     ],
+     "horas_banda": [
+      [
+       1.0,
+       19.2
+      ],
+      [
+       1.0,
+       18.8
+      ],
+      [
+       0.8,
+       14.1
+      ]
+     ]
+    },
+    {
+     "historia": "As a patient, I want to access medicine records, so that I can take care.",
+     "votos": 3,
+     "relevancia": 0.72,
+     "tareas": [
+      "Store patient records in the database",
+      "Store medical records in the database",
+      "Display medical records on the patient's dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:MODE",
+       "similitud": 0.446
+      },
+      {
+       "proyecto": "RedHat:RIFTSAW",
+       "similitud": 0.42
+      }
+     ],
+     "historia_es": "Como paciente, quiero acceder a los registros de medicamentos, para que pueda cuidarme.",
+     "tareas_es": [
+      "Almacenar los registros de pacientes en la base de datos",
+      "Almacenar los registros médicos en la base de datos",
+      "Mostrar los registros médicos en el panel del paciente"
+     ],
+     "horas_suma": 16.6,
+     "horas_tareas": [
+      5.46,
+      4.68,
+      5.28
+     ],
+     "horas_probables": [
+      4.0,
+      6.0,
+      5.5
+     ],
+     "horas_banda": [
+      [
+       1.3,
+       23.6
+      ],
+      [
+       1.1,
+       20.2
+      ],
+      [
+       1.2,
+       22.8
+      ]
+     ]
+    },
+    {
+     "historia": "As a doctor, I want to update patient information, so that I can provide better service.",
+     "votos": 2,
+     "relevancia": 0.646,
+     "tareas": [
+      "Update doc",
+      "Allow doctors to update patient information in the database"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:RAVE",
+       "similitud": 0.51
+      },
+      {
+       "proyecto": "RedHat:RIFTSAW",
+       "similitud": 0.44
+      }
+     ],
+     "historia_es": "Como médico, quiero actualizar la información del paciente, para poder ofrecer un mejor servicio.",
+     "tareas_es": [
+      "Actualizar documento",
+      "Permitir a los médicos actualizar la información del paciente en la base de datos"
+     ],
+     "horas_suma": 7.5,
+     "horas_tareas": [
+      1.69,
+      3.49
+     ],
+     "horas_probables": [
+      1.75,
+      5.0
+     ],
+     "horas_banda": [
+      [
+       0.4,
+       7.3
+      ],
+      [
+       0.8,
+       15.1
+      ]
+     ]
+    },
+    {
+     "historia": "As a clinic manager, I want to monitor patient attendance, so that I can identify clinic trends.",
+     "votos": 1,
+     "relevancia": 0.532,
+     "tareas": [
+      "Store patient attendance data in the database",
+      "Display patient attendance on the clinic dashboard",
+      "Develop a patient attendance dashboard",
+      "Store attendance data in the database",
+      "Display attendance data on the clinic manager's dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:ENTMQMAAS",
+       "similitud": 0.483
+      },
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.473
+      }
+     ],
+     "historia_es": "Como gerente de clínica, quiero monitorear la asistencia de los pacientes, para poder identificar las tendencias de la clínica.",
+     "tareas_es": [
+      "Almacenar los datos de asistencia de pacientes en la base de datos",
+      "Mostrar la asistencia de los pacientes en el panel de la clínica",
+      "Desarrollar un panel de asistencia a pacientes",
+      "Almacenar los datos de asistencia en la base de datos",
+      "Mostrar los datos de asistencia en el panel del administrador de la clínica"
+     ],
+     "horas_suma": 36.5,
+     "horas_tareas": [
+      5.38,
+      4.95,
+      10.17,
+      6.04,
+      5.93
+     ],
+     "horas_probables": [
+      4.0,
+      5.0,
+      5.0,
+      4.0,
+      6.0
+     ],
+     "horas_banda": [
+      [
+       1.2,
+       23.2
+      ],
+      [
+       1.1,
+       21.4
+      ],
+      [
+       2.4,
+       43.9
+      ],
+      [
+       1.4,
+       26.1
+      ],
+      [
+       1.4,
+       25.6
+      ]
+     ]
+    },
+    {
+     "historia": "As a patient, I want to track the status of my appointment, so that I can manage my schedule.",
+     "votos": 3,
+     "relevancia": 0.589,
+     "tareas": [
+      "Implement a status tracking feature in the patient dashboard",
+      "Procedure to track the status of a given job",
+      "Procedure to monitor the status of an app",
+      "Store the appointment status in the database"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.536
+      },
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.508
+      }
+     ],
+     "historia_es": "Como paciente, quiero seguir el estado de mi cita, para poder manejar mi horario.",
+     "tareas_es": [
+      "Implementar una función de seguimiento de estado en el panel de pacientes",
+      "Realizar un procedimiento para seguir el estado de un trabajo dado",
+      "Realizar un procedimiento para controlar el estado de una aplicación",
+      "Almacenar el estado de las citas en la base de datos"
+     ],
+     "horas_suma": 24.0,
+     "horas_tareas": [
+      8.49,
+      4.29,
+      5.31,
+      3.92
+     ],
+     "horas_probables": [
+      9.0,
+      4.5,
+      4.0,
+      3.0
+     ],
+     "horas_banda": [
+      [
+       2.0,
+       36.6
+      ],
+      [
+       1.0,
+       18.5
+      ],
+      [
+       1.2,
+       22.9
+      ],
+      [
+       0.9,
+       16.9
+      ]
+     ]
+    },
+    {
+     "historia": "As a clinic manager, I want to manage the staff schedule for each patient, so that I can ensure timely follow-up.",
+     "votos": 2,
+     "relevancia": 0.597,
+     "tareas": [
+      "Develop a staff schedule management interface",
+      "Store staff schedule details in the database",
+      "Add ability to set the number of sessions in the scheduler",
+      "Make the scheduler more configurable",
+      "Add time based scheduling for the worker"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:YARN",
+       "similitud": 0.451
+      },
+      {
+       "proyecto": "Apache:DATALAB",
+       "similitud": 0.439
+      }
+     ],
+     "historia_es": "Como gerente de clínica, quiero administrar el horario del personal para cada paciente, de modo que pueda asegurar follow-up oportuno.",
+     "tareas_es": [
+      "Desarrollar una interfaz de gestión del calendario del personal",
+      "Almacenar los detalles del horario del personal en la base de datos",
+      "Añadir capacidad para establecer el número de sesiones en el planificador",
+      "Hacer que el planificador sea más configurable",
+      "Añadir horario basado en el tiempo para el trabajador"
+     ],
+     "horas_suma": 34.6,
+     "horas_tareas": [
+      9.72,
+      3.16,
+      3.26,
+      3.88,
+      5.44
+     ],
+     "horas_probables": [
+      5.0,
+      3.5,
+      3.5,
+      3.0,
+      2.0
+     ],
+     "horas_banda": [
+      [
+       2.3,
+       42.0
+      ],
+      [
+       0.7,
+       13.6
+      ],
+      [
+       0.8,
+       14.1
+      ],
+      [
+       0.9,
+       16.8
+      ],
+      [
+       1.3,
+       23.5
+      ]
+     ]
+    },
+    {
+     "historia": "As a doctor, I want to receive notifications about upcoming appointments, so that I can monitor doctor scheduling.",
+     "votos": 3,
+     "relevancia": 0.563,
+     "tareas": [
+      "Store appointment details in the doctor's profile",
+      "Add notifications about upcoming admissions",
+      "Add notification about upcoming status"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.556
+      },
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.537
+      }
+     ],
+     "historia_es": "Como médico, quiero recibir notificaciones sobre las próximas citas, para poder monitorear la programación del médico.",
+     "tareas_es": [
+      "Almacenar los detalles de la cita en el perfil del médico",
+      "Añadir notificaciones sobre las próximas admisiones",
+      "Añadir notificación sobre el estado siguiente"
+     ],
+     "horas_suma": 15.7,
+     "horas_tareas": [
+      2.28,
+      3.66,
+      4.01
+     ],
+     "horas_probables": [
+      2.0,
+      3.0,
+      3.0
+     ],
+     "horas_banda": [
+      [
+       0.5,
+       9.8
+      ],
+      [
+       0.8,
+       15.8
+      ],
+      [
+       0.9,
+       17.3
+      ]
+     ]
+    },
+    {
+     "historia": "As a patient, I want to create a medical records summary, so that I can schedule clinic schedules.",
+     "votos": 1,
+     "relevancia": 0.669,
+     "tareas": [
+      "Create a medical summary form in the patient dashboard",
+      "Create a preliminary recovery summary"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:MODE",
+       "similitud": 0.45
+      },
+      {
+       "proyecto": "Qt:QTBUG",
+       "similitud": 0.433
+      }
+     ],
+     "historia_es": "Como paciente, quiero crear un resumen de los registros médicos, para poder programar los horarios de la clínica.",
+     "tareas_es": [
+      "Crear un formulario de resumen médico en el panel de pacientes",
+      "Crear un resumen preliminar de recuperación"
+     ],
+     "horas_suma": 24.1,
+     "horas_tareas": [
+      7.81,
+      4.27
+     ],
+     "horas_probables": [
+      5.0,
+      1.5
+     ],
+     "horas_banda": [
+      [
+       1.8,
+       33.7
+      ],
+      [
+       1.0,
+       18.4
+      ]
+     ]
+    },
+    {
+     "historia": "As a patient, I want to track my upcoming appointments, so that I can prepare for the day.",
+     "votos": 3,
+     "relevancia": 0.562,
+     "tareas": [
+      "Display appointment details on the patient’s dashboard",
+      "Prepare for upcoming admissions"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.506
+      },
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.492
+      }
+     ],
+     "historia_es": "Como paciente, quiero seguir mis próximas citas, para poder prepararme para el día.",
+     "tareas_es": [
+      "Mostrar los detalles de la cita en el panel del paciente",
+      "Prepararse para las próximas admisiones"
+     ],
+     "horas_suma": 17.0,
+     "horas_tareas": [
+      4.12,
+      5.17
+     ],
+     "horas_probables": [
+      4.0,
+      3.5
+     ],
+     "horas_banda": [
+      [
+       1.0,
+       17.8
+      ],
+      [
+       1.2,
+       22.3
+      ]
+     ]
+    },
+    {
+     "historia": "As a clinic manager, I want to monitor clinic availability, so that I can manage staff effectively.",
+     "votos": 1,
+     "relevancia": 0.619,
+     "tareas": [
+      "Store clinic availability data in the database"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:SLING",
+       "similitud": 0.529
+      },
+      {
+       "proyecto": "RedHat:ENTMQMAAS",
+       "similitud": 0.477
+      }
+     ],
+     "historia_es": "Como gerente de clínica, quiero monitorear la disponibilidad de la clínica, para poder manejar al personal de manera efectiva.",
+     "tareas_es": [
+      "Almacenar los datos de disponibilidad clínica en la base de datos"
+     ],
+     "horas_suma": 5.9,
+     "horas_tareas": [
+      5.38
+     ],
+     "horas_probables": [
+      5.5
+     ],
+     "horas_banda": [
+      [
+       1.2,
+       23.2
+      ]
+     ]
+    },
+    {
+     "historia": "As a doctor, I want to receive notifications for patient appointments, so that I can inform patient causes them.",
+     "votos": 1,
+     "relevancia": 0.532,
+     "tareas": [
+      "Add notifications for diagnostics"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:YARN",
+       "similitud": 0.53
+      },
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.468
+      }
+     ],
+     "historia_es": "Como médico, quiero recibir notificaciones para las citas con pacientes, para poder informar a los pacientes que las causan.",
+     "tareas_es": [
+      "Añadir notificaciones para diagnósticos"
+     ],
+     "horas_suma": 3.7,
+     "horas_tareas": [
+      3.04
+     ],
+     "horas_probables": [
+      3.0
+     ],
+     "horas_banda": [
+      [
+       0.7,
+       13.1
+      ]
+     ]
+    },
+    {
+     "historia": "As a receptionist, I want to update patient records, so that I can ensure adequate treatment.",
+     "votos": 6,
+     "relevancia": 0.635,
+     "tareas": [
+      "Update documentation about the new version"
+     ],
+     "origen": [
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.419
+      },
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.407
+      }
+     ],
+     "historia_es": "Como recepcionista, quiero actualizar los registros de los pacientes, para poder asegurar un tratamiento adecuado.",
+     "tareas_es": [
+      "Actualizar la documentación sobre la nueva versión"
+     ],
+     "horas_suma": 3.9,
+     "horas_tareas": [
+      2.26
+     ],
+     "horas_probables": [
+      2.25
+     ],
+     "horas_banda": [
+      [
+       0.5,
+       9.7
+      ]
+     ]
+    }
+   ],
+   "tiempos": {
+    "traducir_entrada": 0.148,
+    "recuperar_arriba": 0.009,
+    "generar_historias": 3.779,
+    "deduplicar_historias": 0.286,
+    "recuperar_abajo": 0.015,
+    "generar_tareas": 4.967,
+    "deduplicar_tareas": 0.058,
+    "reasignar_tareas": 0.037,
+    "traducir": 0.299,
+    "total": 9.596
+   },
+   "vecinos_proyecto": [
+    {
+     "proyecto": "Hyperledger:CE",
+     "similitud": 0.469
+    },
+    {
+     "proyecto": "TAWOS-Lsstcorp:DM",
+     "similitud": 0.462
+    }
+   ],
+   "n_banco": 48,
+   "n_tareas": 32,
+   "estimacion": {
+    "disponible": true,
+    "total_horas": 206.3,
+    "banda_baja": 74.9,
+    "banda_alta": 408.2,
+    "nivel": 0.8,
+    "tareas": 32,
+    "cerradas": 0,
+    "por_tarea": true,
+    "factor_estilo": 0.7273,
+    "fuente_estilo": "C:\\Users\\User\\Documents\\Programacao\\Agix-Dataset\\results\\estilo_total\\meta.json",
+    "dias_persona": 25.8,
+    "segundos": 0.48,
+    "seg_total": 0.2,
+    "seg_tareas": 0.28
+   }
+  },
+  "int8": {
+   "historias": [
+    {
+     "historia": "As a receptionist, I want to receive notifications for medicine feedback, so that I can communicate with patients.",
+     "votos": 1,
+     "relevancia": 0.588,
+     "tareas": [
+      "Implement a feedback form in the patient's profile",
+      "Send notifications to patients via email",
+      "Send a notification to the patient about the status"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:CB",
+       "similitud": 0.456
+      },
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.455
+      }
+     ],
+     "historia_es": "Como recepcionista, quiero recibir notificaciones para recibir información sobre medicamentos, de modo que pueda comunicarme con los pacientes.",
+     "tareas_es": [
+      "Implementar un formulario de retroalimentación en el perfil del paciente",
+      "Enviar notificaciones a los pacientes por correo electrónico",
+      "Enviar una notificación al paciente sobre el estado"
+     ],
+     "horas_suma": 16.2,
+     "horas_tareas": [
+      4.25,
+      4.25,
+      2.89
+     ],
+     "horas_probables": [
+      2.25,
+      4.5,
+      3.0
+     ],
+     "horas_banda": [
+      [
+       1.0,
+       18.3
+      ],
+      [
+       1.0,
+       18.3
+      ],
+      [
+       0.7,
+       12.5
+      ]
+     ]
+    },
+    {
+     "historia": "As a patient, I want to access medicine records, so that I can take care.",
+     "votos": 3,
+     "relevancia": 0.72,
+     "tareas": [
+      "Store patient records in the database",
+      "Store medical records in the database",
+      "Display medical records on the patient's dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:MODE",
+       "similitud": 0.446
+      },
+      {
+       "proyecto": "RedHat:RIFTSAW",
+       "similitud": 0.42
+      }
+     ],
+     "historia_es": "Como paciente, quiero acceder a los registros de medicamentos, para que pueda cuidarme.",
+     "tareas_es": [
+      "Almacenar los registros de pacientes en la base de datos",
+      "Almacenar los registros médicos en la base de datos",
+      "Mostrar los registros médicos en el panel del paciente"
+     ],
+     "horas_suma": 16.0,
+     "horas_tareas": [
+      4.83,
+      5.08,
+      4.86
+     ],
+     "horas_probables": [
+      5.0,
+      5.0,
+      5.0
+     ],
+     "horas_banda": [
+      [
+       1.1,
+       20.8
+      ],
+      [
+       1.2,
+       21.9
+      ],
+      [
+       1.1,
+       21.0
+      ]
+     ]
+    },
+    {
+     "historia": "As a doctor, I want to update patient information, so that I can provide better service.",
+     "votos": 2,
+     "relevancia": 0.646,
+     "tareas": [
+      "Update doc",
+      "Allow doctors to update patient information in the database"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:RAVE",
+       "similitud": 0.51
+      },
+      {
+       "proyecto": "RedHat:RIFTSAW",
+       "similitud": 0.44
+      }
+     ],
+     "historia_es": "Como médico, quiero actualizar la información del paciente, para poder ofrecer un mejor servicio.",
+     "tareas_es": [
+      "Actualizar documento",
+      "Permitir a los médicos actualizar la información del paciente en la base de datos"
+     ],
+     "horas_suma": 7.8,
+     "horas_tareas": [
+      1.8,
+      3.34
+     ],
+     "horas_probables": [
+      1.75,
+      3.5
+     ],
+     "horas_banda": [
+      [
+       0.4,
+       7.8
+      ],
+      [
+       0.8,
+       14.4
+      ]
+     ]
+    },
+    {
+     "historia": "As a clinic manager, I want to monitor patient attendance, so that I can identify clinic trends.",
+     "votos": 1,
+     "relevancia": 0.532,
+     "tareas": [
+      "Store patient attendance data in the database",
+      "Display patient attendance on the clinic dashboard",
+      "Develop a patient attendance dashboard",
+      "Store attendance data in the database",
+      "Display attendance data on the clinic manager's dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:ENTMQMAAS",
+       "similitud": 0.483
+      },
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.473
+      }
+     ],
+     "historia_es": "Como gerente de clínica, quiero monitorear la asistencia de los pacientes, para poder identificar las tendencias de la clínica.",
+     "tareas_es": [
+      "Almacenar los datos de asistencia de pacientes en la base de datos",
+      "Mostrar la asistencia de los pacientes en el panel de la clínica",
+      "Desarrollar un panel de asistencia a pacientes",
+      "Almacenar los datos de asistencia en la base de datos",
+      "Mostrar los datos de asistencia en el panel del administrador de la clínica"
+     ],
+     "horas_suma": 30.9,
+     "horas_tareas": [
+      4.94,
+      4.71,
+      10.26,
+      5.92,
+      5.37
+     ],
+     "horas_probables": [
+      4.0,
+      4.5,
+      5.0,
+      4.0,
+      5.5
+     ],
+     "horas_banda": [
+      [
+       1.1,
+       21.3
+      ],
+      [
+       1.1,
+       20.3
+      ],
+      [
+       2.4,
+       44.3
+      ],
+      [
+       1.4,
+       25.5
+      ],
+      [
+       1.2,
+       23.2
+      ]
+     ]
+    },
+    {
+     "historia": "As a patient, I want to track the status of my appointment, so that I can manage my schedule.",
+     "votos": 3,
+     "relevancia": 0.589,
+     "tareas": [
+      "Implement a status tracking feature in the patient dashboard",
+      "Procedure to track the status of a given job",
+      "Procedure to monitor the status of an app",
+      "Store the appointment status in the database"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.536
+      },
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.508
+      }
+     ],
+     "historia_es": "Como paciente, quiero seguir el estado de mi cita, para poder manejar mi horario.",
+     "tareas_es": [
+      "Implementar una función de seguimiento de estado en el panel de pacientes",
+      "Realizar un procedimiento para seguir el estado de un trabajo dado",
+      "Realizar un procedimiento para controlar el estado de una aplicación",
+      "Almacenar el estado de las citas en la base de datos"
+     ],
+     "horas_suma": 23.0,
+     "horas_tareas": [
+      8.35,
+      4.1,
+      4.73,
+      3.79
+     ],
+     "horas_probables": [
+      5.0,
+      4.0,
+      4.0,
+      3.5
+     ],
+     "horas_banda": [
+      [
+       1.9,
+       36.0
+      ],
+      [
+       0.9,
+       17.7
+      ],
+      [
+       1.1,
+       20.4
+      ],
+      [
+       0.9,
+       16.4
+      ]
+     ]
+    },
+    {
+     "historia": "As a clinic manager, I want to manage the staff schedule for each patient, so that I can ensure timely follow-up.",
+     "votos": 2,
+     "relevancia": 0.597,
+     "tareas": [
+      "Develop a staff schedule management interface",
+      "Store staff schedule details in the database",
+      "Add ability to set the number of sessions in the scheduler",
+      "Make the scheduler more configurable",
+      "Add time based scheduling for the worker"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:YARN",
+       "similitud": 0.451
+      },
+      {
+       "proyecto": "Apache:DATALAB",
+       "similitud": 0.439
+      }
+     ],
+     "historia_es": "Como gerente de clínica, quiero administrar el horario del personal para cada paciente, de modo que pueda asegurar follow-up oportuno.",
+     "tareas_es": [
+      "Desarrollar una interfaz de gestión del calendario del personal",
+      "Almacenar los detalles del horario del personal en la base de datos",
+      "Añadir capacidad para establecer el número de sesiones en el planificador",
+      "Hacer que el planificador sea más configurable",
+      "Añadir horario basado en el tiempo para el trabajador"
+     ],
+     "horas_suma": 35.3,
+     "horas_tareas": [
+      9.69,
+      3.44,
+      3.19,
+      3.67,
+      5.38
+     ],
+     "horas_probables": [
+      4.0,
+      3.5,
+      3.0,
+      4.0,
+      2.0
+     ],
+     "horas_banda": [
+      [
+       2.2,
+       41.8
+      ],
+      [
+       0.8,
+       14.8
+      ],
+      [
+       0.7,
+       13.8
+      ],
+      [
+       0.9,
+       15.8
+      ],
+      [
+       1.2,
+       23.2
+      ]
+     ]
+    },
+    {
+     "historia": "As a doctor, I want to receive notifications about upcoming appointments, so that I can monitor doctor scheduling.",
+     "votos": 3,
+     "relevancia": 0.563,
+     "tareas": [
+      "Store appointment details in the doctor's profile",
+      "Add notifications about upcoming admissions",
+      "Add notification about upcoming status"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.556
+      },
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.537
+      }
+     ],
+     "historia_es": "Como médico, quiero recibir notificaciones sobre las próximas citas, para poder monitorear la programación del médico.",
+     "tareas_es": [
+      "Almacenar los detalles de la cita en el perfil del médico",
+      "Añadir notificaciones sobre las próximas admisiones",
+      "Añadir notificación sobre el estado siguiente"
+     ],
+     "horas_suma": 13.5,
+     "horas_tareas": [
+      2.48,
+      3.3,
+      3.69
+     ],
+     "horas_probables": [
+      2.0,
+      3.0,
+      4.0
+     ],
+     "horas_banda": [
+      [
+       0.6,
+       10.7
+      ],
+      [
+       0.8,
+       14.2
+      ],
+      [
+       0.9,
+       15.9
+      ]
+     ]
+    },
+    {
+     "historia": "As a patient, I want to create a medical records summary, so that I can schedule clinic schedules.",
+     "votos": 1,
+     "relevancia": 0.669,
+     "tareas": [
+      "Create a medical summary form in the patient dashboard",
+      "Create a preliminary recovery summary"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:MODE",
+       "similitud": 0.45
+      },
+      {
+       "proyecto": "Qt:QTBUG",
+       "similitud": 0.433
+      }
+     ],
+     "historia_es": "Como paciente, quiero crear un resumen de los registros médicos, para poder programar los horarios de la clínica.",
+     "tareas_es": [
+      "Crear un formulario de resumen médico en el panel de pacientes",
+      "Crear un resumen preliminar de recuperación"
+     ],
+     "horas_suma": 22.9,
+     "horas_tareas": [
+      7.22,
+      4.11
+     ],
+     "horas_probables": [
+      5.0,
+      1.5
+     ],
+     "horas_banda": [
+      [
+       1.7,
+       31.2
+      ],
+      [
+       1.0,
+       17.7
+      ]
+     ]
+    },
+    {
+     "historia": "As a patient, I want to track my upcoming appointments, so that I can prepare for the day.",
+     "votos": 3,
+     "relevancia": 0.562,
+     "tareas": [
+      "Display appointment details on the patient’s dashboard",
+      "Prepare for upcoming admissions"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.506
+      },
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.492
+      }
+     ],
+     "historia_es": "Como paciente, quiero seguir mis próximas citas, para poder prepararme para el día.",
+     "tareas_es": [
+      "Mostrar los detalles de la cita en el panel del paciente",
+      "Prepararse para las próximas admisiones"
+     ],
+     "horas_suma": 15.6,
+     "horas_tareas": [
+      3.45,
+      4.8
+     ],
+     "horas_probables": [
+      3.0,
+      4.0
+     ],
+     "horas_banda": [
+      [
+       0.8,
+       14.9
+      ],
+      [
+       1.1,
+       20.7
+      ]
+     ]
+    },
+    {
+     "historia": "As a clinic manager, I want to monitor clinic availability, so that I can manage staff effectively.",
+     "votos": 1,
+     "relevancia": 0.619,
+     "tareas": [
+      "Store clinic availability data in the database"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:SLING",
+       "similitud": 0.529
+      },
+      {
+       "proyecto": "RedHat:ENTMQMAAS",
+       "similitud": 0.477
+      }
+     ],
+     "historia_es": "Como gerente de clínica, quiero monitorear la disponibilidad de la clínica, para poder manejar al personal de manera efectiva.",
+     "tareas_es": [
+      "Almacenar los datos de disponibilidad clínica en la base de datos"
+     ],
+     "horas_suma": 6.2,
+     "horas_tareas": [
+      5.35
+     ],
+     "horas_probables": [
+      3.5
+     ],
+     "horas_banda": [
+      [
+       1.2,
+       23.1
+      ]
+     ]
+    },
+    {
+     "historia": "As a doctor, I want to receive notifications for patient appointments, so that I can inform patient causes them.",
+     "votos": 1,
+     "relevancia": 0.532,
+     "tareas": [
+      "Add notifications for diagnostics"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:YARN",
+       "similitud": 0.53
+      },
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.468
+      }
+     ],
+     "historia_es": "Como médico, quiero recibir notificaciones para las citas con pacientes, para poder informar a los pacientes que las causan.",
+     "tareas_es": [
+      "Añadir notificaciones para diagnósticos"
+     ],
+     "horas_suma": 3.6,
+     "horas_tareas": [
+      2.72
+     ],
+     "horas_probables": [
+      3.0
+     ],
+     "horas_banda": [
+      [
+       0.6,
+       11.8
+      ]
+     ]
+    },
+    {
+     "historia": "As a receptionist, I want to update patient records, so that I can ensure adequate treatment.",
+     "votos": 6,
+     "relevancia": 0.635,
+     "tareas": [
+      "Update documentation about the new version"
+     ],
+     "origen": [
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.419
+      },
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.407
+      }
+     ],
+     "historia_es": "Como recepcionista, quiero actualizar los registros de los pacientes, para poder asegurar un tratamiento adecuado.",
+     "tareas_es": [
+      "Actualizar la documentación sobre la nueva versión"
+     ],
+     "horas_suma": 3.7,
+     "horas_tareas": [
+      2.31
+     ],
+     "horas_probables": [
+      2.25
+     ],
+     "horas_banda": [
+      [
+       0.5,
+       10.0
+      ]
+     ]
+    }
+   ],
+   "tiempos": {
+    "traducir_entrada": 0.148,
+    "recuperar_arriba": 0.009,
+    "generar_historias": 3.779,
+    "deduplicar_historias": 0.286,
+    "recuperar_abajo": 0.015,
+    "generar_tareas": 4.967,
+    "deduplicar_tareas": 0.058,
+    "reasignar_tareas": 0.037,
+    "traducir": 0.299,
+    "total": 9.596
+   },
+   "vecinos_proyecto": [
+    {
+     "proyecto": "Hyperledger:CE",
+     "similitud": 0.469
+    },
+    {
+     "proyecto": "TAWOS-Lsstcorp:DM",
+     "similitud": 0.462
+    }
+   ],
+   "n_banco": 48,
+   "n_tareas": 32,
+   "estimacion": {
+    "disponible": true,
+    "total_horas": 194.7,
+    "banda_baja": 70.7,
+    "banda_alta": 385.3,
+    "nivel": 0.8,
+    "tareas": 32,
+    "cerradas": 0,
+    "por_tarea": true,
+    "factor_estilo": 0.7273,
+    "fuente_estilo": "C:\\Users\\User\\Documents\\Programacao\\Agix-Dataset\\results\\estilo_total\\meta.json",
+    "dias_persona": 24.3,
+    "segundos": 1.74,
+    "seg_total": 0.47,
+    "seg_tareas": 1.27
+   }
+  }
+ },
+ {
+  "titulo": "Inventario de ferretería",
+  "descripcion": "Un sistema de inventario para una ferretería con varias sucursales, con alertas de stock bajo, transferencias entre tiendas y reportes de ventas.",
+  "fp32": {
+   "historias": [
+    {
+     "historia": "As a seller, I want to manage multiple store accounts, so that I can optimize stock utilization.",
+     "votos": 1,
+     "relevancia": 0.577,
+     "tareas": [
+      "Store accounts in the database",
+      "Send a notification to the seller when a new account is available",
+      "Allow multiple store accounts to be managed",
+      "Add ability to manage store accounts"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.471
+      },
+      {
+       "proyecto": "Apache:INLONG",
+       "similitud": 0.449
+      }
+     ],
+     "historia_es": "Como vendedor, quiero administrar múltiples cuentas de la tienda, para que pueda optimizar la utilización de las acciones.",
+     "tareas_es": [
+      "Almacenar cuentas en la base de datos",
+      "Enviar una notificación al vendedor cuando una nueva cuenta está disponible",
+      "Permitir que se gestionen varias cuentas de almacenamiento",
+      "Añadir capacidad para administrar cuentas de tienda"
+     ],
+     "horas_suma": 36.8,
+     "horas_tareas": [
+      4.36,
+      1.87,
+      4.67,
+      6.01
+     ],
+     "horas_probables": [
+      6.0,
+      1.75,
+      4.0,
+      4.0
+     ],
+     "horas_banda": [
+      [
+       1.0,
+       18.8
+      ],
+      [
+       0.4,
+       8.1
+      ],
+      [
+       1.1,
+       20.1
+      ],
+      [
+       1.4,
+       26.0
+      ]
+     ]
+    },
+    {
+     "historia": "As a shopper, I want to purchase a stock alert, so that I can compare prices.",
+     "votos": 1,
+     "relevancia": 0.545,
+     "tareas": [
+      "Store stock alerts in the database",
+      "Display stock alerts on the shopper's dashboard",
+      "Initial changes in the marketplace",
+      "Create a stock alert form in the shopper dashboard",
+      "Send a notification to the shopper about the stock alert"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.519
+      },
+      {
+       "proyecto": "Apache:TOMEE",
+       "similitud": 0.501
+      }
+     ],
+     "historia_es": "Como comprador, quiero comprar una alerta de acciones, para poder comparar precios.",
+     "tareas_es": [
+      "Almacenar las alertas de existencias en la base de datos",
+      "Mostrar alertas de stock en el panel de compras",
+      "Iniciar cambios en el mercado",
+      "Crear un formulario de alerta de stock en el panel de compras",
+      "Enviar una notificación al comprador sobre la alerta de stock"
+     ],
+     "horas_suma": 30.4,
+     "horas_tareas": [
+      3.6,
+      3.72,
+      4.99,
+      5.95,
+      2.69
+     ],
+     "horas_probables": [
+      3.5,
+      3.5,
+      2.5,
+      2.25,
+      2.5
+     ],
+     "horas_banda": [
+      [
+       0.8,
+       15.5
+      ],
+      [
+       0.9,
+       16.1
+      ],
+      [
+       1.2,
+       21.5
+      ],
+      [
+       1.4,
+       25.7
+      ],
+      [
+       0.6,
+       11.6
+      ]
+     ]
+    },
+    {
+     "historia": "As a store manager, I want to monitor the sales statistics, so that I can analyze customer performance.",
+     "votos": 3,
+     "relevancia": 0.472,
+     "tareas": [
+      "Store sales statistics in the database",
+      "Display sales statistics on the manager's dashboard",
+      "Add statistics to the store manager"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.562
+      },
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.488
+      }
+     ],
+     "historia_es": "Como gerente de tienda, quiero monitorear las estadísticas de ventas, para poder analizar el rendimiento del cliente.",
+     "tareas_es": [
+      "Almacenar estadísticas de ventas en la base de datos",
+      "Mostrar estadísticas de ventas en el panel de gerente de tienda",
+      "Añadir estadísticas al gestor de la tienda"
+     ],
+     "horas_suma": 24.8,
+     "horas_tareas": [
+      4.77,
+      4.57,
+      6.69
+     ],
+     "horas_probables": [
+      3.0,
+      4.5,
+      3.0
+     ],
+     "horas_banda": [
+      [
+       1.1,
+       20.6
+      ],
+      [
+       1.1,
+       19.7
+      ],
+      [
+       1.6,
+       28.9
+      ]
+     ]
+    },
+    {
+     "historia": "As a warehouse picker, I want to receive notifications about immediate picking process, so that I can manage picking effectively.",
+     "votos": 2,
+     "relevancia": 0.314,
+     "tareas": [
+      "Implement a notification system in the warehouse picker dashboard",
+      "Send notifications to the warehouse operator when a picking process is processed",
+      "Add notification about immediate picking process"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:CB",
+       "similitud": 0.425
+      },
+      {
+       "proyecto": "JiraEcosystem:AUI",
+       "similitud": 0.4
+      }
+     ],
+     "historia_es": "Como recolector de almacenes, quiero recibir notificaciones sobre el proceso de recogida inmediata, para que pueda gestionar la recogida de manera efectiva.",
+     "tareas_es": [
+      "Implementar un sistema de notificación en el panel recolector de almacenes",
+      "Enviar notificaciones al operador de almacén cuando se procesa un proceso de recolección",
+      "Añadir notificación sobre el proceso de selección inmediata"
+     ],
+     "horas_suma": 25.7,
+     "horas_tareas": [
+      7.58,
+      2.98,
+      3.21
+     ],
+     "horas_probables": [
+      8.0,
+      3.0,
+      3.0
+     ],
+     "horas_banda": [
+      [
+       1.8,
+       32.7
+      ],
+      [
+       0.7,
+       12.8
+      ],
+      [
+       0.7,
+       13.8
+      ]
+     ]
+    },
+    {
+     "historia": "As a seller, I want to set up return reports, so that I can manage delivery schedules efficiently.",
+     "votos": 1,
+     "relevancia": 0.439,
+     "tareas": [
+      "Store return reports in the database",
+      "Display return reports on the seller's dashboard",
+      "Create a list of the available reports"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.477
+      },
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.468
+      }
+     ],
+     "historia_es": "Como vendedor, quiero configurar informes de retorno, para que pueda gestionar los horarios de entrega de manera eficiente.",
+     "tareas_es": [
+      "Almacenar los informes de retorno en la base de datos",
+      "Mostrar informes de retorno en el panel del vendedor",
+      "Crear una lista de los informes disponibles"
+     ],
+     "horas_suma": 16.8,
+     "horas_tareas": [
+      3.44,
+      3.9,
+      3.53
+     ],
+     "horas_probables": [
+      4.0,
+      4.0,
+      3.0
+     ],
+     "horas_banda": [
+      [
+       0.8,
+       14.8
+      ],
+      [
+       0.9,
+       16.8
+      ],
+      [
+       0.8,
+       15.2
+      ]
+     ]
+    },
+    {
+     "historia": "As a store manager, I want to track sales trends, so that I can identify trends and future patterns.",
+     "votos": 1,
+     "relevancia": 0.471,
+     "tareas": [
+      "Store sales trends in the database",
+      "Display sales trends on the store manager dashboard",
+      "Generate reports on sales trends"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.512
+      },
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.5
+      }
+     ],
+     "historia_es": "Como gerente de tienda, quiero seguir las tendencias de ventas, para poder identificar tendencias y patrones futuros.",
+     "tareas_es": [
+      "Almacenar las tendencias de ventas en la base de datos",
+      "Mostrar las tendencias de ventas en el panel del administrador de tiendas",
+      "Generar informes sobre las tendencias de ventas"
+     ],
+     "horas_suma": 28.4,
+     "horas_tareas": [
+      5.25,
+      4.76,
+      5.58
+     ],
+     "horas_probables": [
+      3.0,
+      5.0,
+      2.5
+     ],
+     "horas_banda": [
+      [
+       1.2,
+       22.7
+      ],
+      [
+       1.1,
+       20.6
+      ],
+      [
+       1.3,
+       24.1
+      ]
+     ]
+    },
+    {
+     "historia": "As a seller, I want to manage multiple stores for one batch, so that I can handle multiple offerings.",
+     "votos": 1,
+     "relevancia": 0.536,
+     "tareas": [
+      "Store the batch management in the database",
+      "Allow multiple stores to be managed by one batch"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.571
+      },
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.523
+      }
+     ],
+     "historia_es": "Como vendedor, quiero administrar múltiples tiendas para un lote, de modo que pueda manejar múltiples ofertas.",
+     "tareas_es": [
+      "Guardar la gestión de lotes en la base de datos",
+      "Permitir que varios almacenes sean gestionados por un lote"
+     ],
+     "horas_suma": 16.2,
+     "horas_tareas": [
+      5.24,
+      6.0
+     ],
+     "horas_probables": [
+      5.0,
+      5.0
+     ],
+     "horas_banda": [
+      [
+       1.2,
+       22.6
+      ],
+      [
+       1.4,
+       25.9
+      ]
+     ]
+    },
+    {
+     "historia": "As a store manager, I want to monitor sales statistics, so that I can optimize resources.",
+     "votos": 4,
+     "relevancia": 0.488,
+     "tareas": [
+      "Store sales statistics in the database"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.549
+      },
+      {
+       "proyecto": "Apache:IMPALA",
+       "similitud": 0.519
+      }
+     ],
+     "historia_es": "Como gerente de tienda, quiero monitorear las estadísticas de ventas, para poder optimizar los recursos.",
+     "tareas_es": [
+      "Almacenar estadísticas de ventas en la base de datos"
+     ],
+     "horas_suma": 7.3,
+     "horas_tareas": [
+      4.77
+     ],
+     "horas_probables": [
+      3.0
+     ],
+     "horas_banda": [
+      [
+       1.1,
+       20.6
+      ]
+     ]
+    },
+    {
+     "historia": "As a store manager, I want to monitor stock levels, so that I can optimize inventory.",
+     "votos": 6,
+     "relevancia": 0.694,
+     "tareas": [
+      "Store stock levels in the database",
+      "Display stock levels on the manager's dashboard",
+      "Add documentation for the store manager",
+      "Implement a stock levels tracking feature in the store manager dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:HAWKULAR",
+       "similitud": 0.57
+      },
+      {
+       "proyecto": "RedHat:HAWKULAR",
+       "similitud": 0.498
+      }
+     ],
+     "historia_es": "Como gerente de tienda, quiero monitorear los niveles de existencias, para poder optimizar el inventario.",
+     "tareas_es": [
+      "Almacenar los niveles de existencias en la base de datos",
+      "Mostrar los niveles de stock en el panel de gerente de tienda",
+      "Añadir documentación para el administrador de la tienda",
+      "Implementar una función de seguimiento de niveles de stock en el panel del administrador de tiendas"
+     ],
+     "horas_suma": 41.9,
+     "horas_tareas": [
+      4.43,
+      4.48,
+      4.32,
+      10.03
+     ],
+     "horas_probables": [
+      3.0,
+      6.0,
+      5.0,
+      5.0
+     ],
+     "horas_banda": [
+      [
+       1.0,
+       19.1
+      ],
+      [
+       1.0,
+       19.3
+      ],
+      [
+       1.0,
+       18.7
+      ],
+      [
+       2.3,
+       43.3
+      ]
+     ]
+    },
+    {
+     "historia": "As a store manager, I want to monitor the inventory volume of stock levels, so that I can track stock levels.",
+     "votos": 6,
+     "relevancia": 0.694,
+     "tareas": [
+      "Add inventory levels to the store manager",
+      "Store inventory volume data in the database",
+      "Generate alerts for stock levels"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:HAWKULAR",
+       "similitud": 0.605
+      },
+      {
+       "proyecto": "RedHat:HAWKULAR",
+       "similitud": 0.546
+      }
+     ],
+     "historia_es": "Como gerente de tienda, quiero monitorear el volumen de inventario de los niveles de existencias, para poder rastrear los niveles de existencias.",
+     "tareas_es": [
+      "Añadir niveles de inventario al administrador de la tienda",
+      "Almacenar los datos del volumen de inventario en la base de datos",
+      "Generar alertas para los niveles de existencias"
+     ],
+     "horas_suma": 20.6,
+     "horas_tareas": [
+      4.35,
+      5.25,
+      3.32
+     ],
+     "horas_probables": [
+      4.0,
+      6.0,
+      7.0
+     ],
+     "horas_banda": [
+      [
+       1.0,
+       18.8
+      ],
+      [
+       1.2,
+       22.7
+      ],
+      [
+       0.8,
+       14.3
+      ]
+     ]
+    },
+    {
+     "historia": "As a seller, I want to set up a real-time pricing reports, so that I can offer better customer service.",
+     "votos": 1,
+     "relevancia": 0.458,
+     "tareas": [
+      "Display real-time data on the seller's dashboard",
+      "Add pricing reports",
+      "Add an additional pricing report"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.591
+      },
+      {
+       "proyecto": "RedHat:THREESCALE",
+       "similitud": 0.549
+      }
+     ],
+     "historia_es": "Como vendedor, quiero establecer un real-time informes de precios, para que pueda ofrecer un mejor servicio al cliente.",
+     "tareas_es": [
+      "Mostrar los datos real-time en el panel del vendedor",
+      "Añadir informes de precios",
+      "Añadir un informe adicional sobre precios"
+     ],
+     "horas_suma": 16.7,
+     "horas_tareas": [
+      6.64,
+      3.7,
+      2.31
+     ],
+     "horas_probables": [
+      7.0,
+      3.0,
+      3.5
+     ],
+     "horas_banda": [
+      [
+       1.5,
+       28.7
+      ],
+      [
+       0.9,
+       16.0
+      ],
+      [
+       0.5,
+       10.0
+      ]
+     ]
+    },
+    {
+     "historia": "As a store manager, I want to review stock levels of products, so that I can manage inventory efficiently.",
+     "votos": 5,
+     "relevancia": 0.693,
+     "tareas": [
+      "Add documentation for the new inventory levels"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:HAWKULAR",
+       "similitud": 0.57
+      },
+      {
+       "proyecto": "Apache:TOMEE",
+       "similitud": 0.523
+      }
+     ],
+     "historia_es": "Como gerente de tienda, quiero revisar los niveles de stock de los productos, para que pueda gestionar el inventario de manera eficiente.",
+     "tareas_es": [
+      "Añadir documentación para los nuevos niveles de inventario"
+     ],
+     "horas_suma": 5.1,
+     "horas_tareas": [
+      2.34
+     ],
+     "horas_probables": [
+      3.0
+     ],
+     "horas_banda": [
+      [
+       0.5,
+       10.1
+      ]
+     ]
+    }
+   ],
+   "tiempos": {
+    "traducir_entrada": 0.142,
+    "recuperar_arriba": 0.009,
+    "generar_historias": 4.049,
+    "deduplicar_historias": 0.197,
+    "recuperar_abajo": 0.016,
+    "generar_tareas": 4.926,
+    "deduplicar_tareas": 0.067,
+    "reasignar_tareas": 0.047,
+    "traducir": 0.383,
+    "total": 9.836
+   },
+   "vecinos_proyecto": [
+    {
+     "proyecto": "MongoDB:DOCS",
+     "similitud": 0.464
+    },
+    {
+     "proyecto": "TAWOS-Lsstcorp:DM",
+     "similitud": 0.458
+    }
+   ],
+   "n_banco": 48,
+   "n_tareas": 35,
+   "estimacion": {
+    "disponible": true,
+    "total_horas": 270.7,
+    "banda_baja": 98.3,
+    "banda_alta": 535.5,
+    "nivel": 0.8,
+    "tareas": 35,
+    "cerradas": 0,
+    "por_tarea": true,
+    "factor_estilo": 0.7273,
+    "fuente_estilo": "C:\\Users\\User\\Documents\\Programacao\\Agix-Dataset\\results\\estilo_total\\meta.json",
+    "dias_persona": 33.8,
+    "segundos": 0.54,
+    "seg_total": 0.16,
+    "seg_tareas": 0.38
+   }
+  },
+  "int8": {
+   "historias": [
+    {
+     "historia": "As a seller, I want to manage multiple store accounts, so that I can optimize stock utilization.",
+     "votos": 1,
+     "relevancia": 0.577,
+     "tareas": [
+      "Store accounts in the database",
+      "Send a notification to the seller when a new account is available",
+      "Allow multiple store accounts to be managed",
+      "Add ability to manage store accounts"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.471
+      },
+      {
+       "proyecto": "Apache:INLONG",
+       "similitud": 0.449
+      }
+     ],
+     "historia_es": "Como vendedor, quiero administrar múltiples cuentas de la tienda, para que pueda optimizar la utilización de las acciones.",
+     "tareas_es": [
+      "Almacenar cuentas en la base de datos",
+      "Enviar una notificación al vendedor cuando una nueva cuenta está disponible",
+      "Permitir que se gestionen varias cuentas de almacenamiento",
+      "Añadir capacidad para administrar cuentas de tienda"
+     ],
+     "horas_suma": 32.5,
+     "horas_tareas": [
+      4.24,
+      1.62,
+      4.97,
+      5.89
+     ],
+     "horas_probables": [
+      6.0,
+      1.75,
+      3.5,
+      4.0
+     ],
+     "horas_banda": [
+      [
+       1.0,
+       18.3
+      ],
+      [
+       0.4,
+       7.0
+      ],
+      [
+       1.2,
+       21.4
+      ],
+      [
+       1.4,
+       25.4
+      ]
+     ]
+    },
+    {
+     "historia": "As a shopper, I want to purchase a stock alert, so that I can compare prices.",
+     "votos": 1,
+     "relevancia": 0.545,
+     "tareas": [
+      "Store stock alerts in the database",
+      "Display stock alerts on the shopper's dashboard",
+      "Initial changes in the marketplace",
+      "Create a stock alert form in the shopper dashboard",
+      "Send a notification to the shopper about the stock alert"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.519
+      },
+      {
+       "proyecto": "Apache:TOMEE",
+       "similitud": 0.501
+      }
+     ],
+     "historia_es": "Como comprador, quiero comprar una alerta de acciones, para poder comparar precios.",
+     "tareas_es": [
+      "Almacenar las alertas de existencias en la base de datos",
+      "Mostrar alertas de stock en el panel de compras",
+      "Iniciar cambios en el mercado",
+      "Crear un formulario de alerta de stock en el panel de compras",
+      "Enviar una notificación al comprador sobre la alerta de stock"
+     ],
+     "horas_suma": 29.0,
+     "horas_tareas": [
+      3.72,
+      3.73,
+      4.83,
+      5.48,
+      2.67
+     ],
+     "horas_probables": [
+      4.0,
+      5.0,
+      5.0,
+      5.5,
+      2.5
+     ],
+     "horas_banda": [
+      [
+       0.9,
+       16.1
+      ],
+      [
+       0.9,
+       16.1
+      ],
+      [
+       1.1,
+       20.9
+      ],
+      [
+       1.3,
+       23.6
+      ],
+      [
+       0.6,
+       11.5
+      ]
+     ]
+    },
+    {
+     "historia": "As a store manager, I want to monitor the sales statistics, so that I can analyze customer performance.",
+     "votos": 3,
+     "relevancia": 0.472,
+     "tareas": [
+      "Store sales statistics in the database",
+      "Display sales statistics on the manager's dashboard",
+      "Add statistics to the store manager"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.562
+      },
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.488
+      }
+     ],
+     "historia_es": "Como gerente de tienda, quiero monitorear las estadísticas de ventas, para poder analizar el rendimiento del cliente.",
+     "tareas_es": [
+      "Almacenar estadísticas de ventas en la base de datos",
+      "Mostrar estadísticas de ventas en el panel de gerente de tienda",
+      "Añadir estadísticas al gestor de la tienda"
+     ],
+     "horas_suma": 29.4,
+     "horas_tareas": [
+      4.78,
+      4.47,
+      6.42
+     ],
+     "horas_probables": [
+      3.0,
+      4.5,
+      3.0
+     ],
+     "horas_banda": [
+      [
+       1.1,
+       20.6
+      ],
+      [
+       1.0,
+       19.3
+      ],
+      [
+       1.5,
+       27.7
+      ]
+     ]
+    },
+    {
+     "historia": "As a warehouse picker, I want to receive notifications about immediate picking process, so that I can manage picking effectively.",
+     "votos": 2,
+     "relevancia": 0.314,
+     "tareas": [
+      "Implement a notification system in the warehouse picker dashboard",
+      "Send notifications to the warehouse operator when a picking process is processed",
+      "Add notification about immediate picking process"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:CB",
+       "similitud": 0.425
+      },
+      {
+       "proyecto": "JiraEcosystem:AUI",
+       "similitud": 0.4
+      }
+     ],
+     "historia_es": "Como recolector de almacenes, quiero recibir notificaciones sobre el proceso de recogida inmediata, para que pueda gestionar la recogida de manera efectiva.",
+     "tareas_es": [
+      "Implementar un sistema de notificación en el panel recolector de almacenes",
+      "Enviar notificaciones al operador de almacén cuando se procesa un proceso de recolección",
+      "Añadir notificación sobre el proceso de selección inmediata"
+     ],
+     "horas_suma": 23.5,
+     "horas_tareas": [
+      8.27,
+      2.98,
+      3.02
+     ],
+     "horas_probables": [
+      8.0,
+      3.0,
+      3.0
+     ],
+     "horas_banda": [
+      [
+       1.9,
+       35.7
+      ],
+      [
+       0.7,
+       12.9
+      ],
+      [
+       0.7,
+       13.0
+      ]
+     ]
+    },
+    {
+     "historia": "As a seller, I want to set up return reports, so that I can manage delivery schedules efficiently.",
+     "votos": 1,
+     "relevancia": 0.439,
+     "tareas": [
+      "Store return reports in the database",
+      "Display return reports on the seller's dashboard",
+      "Create a list of the available reports"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.477
+      },
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.468
+      }
+     ],
+     "historia_es": "Como vendedor, quiero configurar informes de retorno, para que pueda gestionar los horarios de entrega de manera eficiente.",
+     "tareas_es": [
+      "Almacenar los informes de retorno en la base de datos",
+      "Mostrar informes de retorno en el panel del vendedor",
+      "Crear una lista de los informes disponibles"
+     ],
+     "horas_suma": 14.9,
+     "horas_tareas": [
+      2.73,
+      3.62,
+      3.67
+     ],
+     "horas_probables": [
+      4.0,
+      3.5,
+      4.0
+     ],
+     "horas_banda": [
+      [
+       0.6,
+       11.8
+      ],
+      [
+       0.8,
+       15.6
+      ],
+      [
+       0.9,
+       15.9
+      ]
+     ]
+    },
+    {
+     "historia": "As a store manager, I want to track sales trends, so that I can identify trends and future patterns.",
+     "votos": 1,
+     "relevancia": 0.471,
+     "tareas": [
+      "Store sales trends in the database",
+      "Display sales trends on the store manager dashboard",
+      "Generate reports on sales trends"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.512
+      },
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.5
+      }
+     ],
+     "historia_es": "Como gerente de tienda, quiero seguir las tendencias de ventas, para poder identificar tendencias y patrones futuros.",
+     "tareas_es": [
+      "Almacenar las tendencias de ventas en la base de datos",
+      "Mostrar las tendencias de ventas en el panel del administrador de tiendas",
+      "Generar informes sobre las tendencias de ventas"
+     ],
+     "horas_suma": 23.8,
+     "horas_tareas": [
+      5.06,
+      4.58,
+      4.9
+     ],
+     "horas_probables": [
+      3.0,
+      4.5,
+      3.5
+     ],
+     "horas_banda": [
+      [
+       1.2,
+       21.8
+      ],
+      [
+       1.1,
+       19.8
+      ],
+      [
+       1.1,
+       21.2
+      ]
+     ]
+    },
+    {
+     "historia": "As a seller, I want to manage multiple stores for one batch, so that I can handle multiple offerings.",
+     "votos": 1,
+     "relevancia": 0.536,
+     "tareas": [
+      "Store the batch management in the database",
+      "Allow multiple stores to be managed by one batch"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.571
+      },
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.523
+      }
+     ],
+     "historia_es": "Como vendedor, quiero administrar múltiples tiendas para un lote, de modo que pueda manejar múltiples ofertas.",
+     "tareas_es": [
+      "Guardar la gestión de lotes en la base de datos",
+      "Permitir que varios almacenes sean gestionados por un lote"
+     ],
+     "horas_suma": 15.8,
+     "horas_tareas": [
+      5.22,
+      5.81
+     ],
+     "horas_probables": [
+      6.0,
+      4.0
+     ],
+     "horas_banda": [
+      [
+       1.2,
+       22.5
+      ],
+      [
+       1.3,
+       25.1
+      ]
+     ]
+    },
+    {
+     "historia": "As a store manager, I want to monitor sales statistics, so that I can optimize resources.",
+     "votos": 4,
+     "relevancia": 0.488,
+     "tareas": [
+      "Store sales statistics in the database"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.549
+      },
+      {
+       "proyecto": "Apache:IMPALA",
+       "similitud": 0.519
+      }
+     ],
+     "historia_es": "Como gerente de tienda, quiero monitorear las estadísticas de ventas, para poder optimizar los recursos.",
+     "tareas_es": [
+      "Almacenar estadísticas de ventas en la base de datos"
+     ],
+     "horas_suma": 7.3,
+     "horas_tareas": [
+      4.78
+     ],
+     "horas_probables": [
+      3.0
+     ],
+     "horas_banda": [
+      [
+       1.1,
+       20.6
+      ]
+     ]
+    },
+    {
+     "historia": "As a store manager, I want to monitor stock levels, so that I can optimize inventory.",
+     "votos": 6,
+     "relevancia": 0.694,
+     "tareas": [
+      "Store stock levels in the database",
+      "Display stock levels on the manager's dashboard",
+      "Add documentation for the store manager",
+      "Implement a stock levels tracking feature in the store manager dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:HAWKULAR",
+       "similitud": 0.57
+      },
+      {
+       "proyecto": "RedHat:HAWKULAR",
+       "similitud": 0.498
+      }
+     ],
+     "historia_es": "Como gerente de tienda, quiero monitorear los niveles de existencias, para poder optimizar el inventario.",
+     "tareas_es": [
+      "Almacenar los niveles de existencias en la base de datos",
+      "Mostrar los niveles de stock en el panel de gerente de tienda",
+      "Añadir documentación para el administrador de la tienda",
+      "Implementar una función de seguimiento de niveles de stock en el panel del administrador de tiendas"
+     ],
+     "horas_suma": 47.7,
+     "horas_tareas": [
+      4.05,
+      4.37,
+      3.87,
+      10.01
+     ],
+     "horas_probables": [
+      4.0,
+      4.5,
+      4.0,
+      10.0
+     ],
+     "horas_banda": [
+      [
+       0.9,
+       17.5
+      ],
+      [
+       1.0,
+       18.9
+      ],
+      [
+       0.9,
+       16.7
+      ],
+      [
+       2.3,
+       43.2
+      ]
+     ]
+    },
+    {
+     "historia": "As a store manager, I want to monitor the inventory volume of stock levels, so that I can track stock levels.",
+     "votos": 6,
+     "relevancia": 0.694,
+     "tareas": [
+      "Add inventory levels to the store manager",
+      "Store inventory volume data in the database",
+      "Generate alerts for stock levels"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:HAWKULAR",
+       "similitud": 0.605
+      },
+      {
+       "proyecto": "RedHat:HAWKULAR",
+       "similitud": 0.546
+      }
+     ],
+     "historia_es": "Como gerente de tienda, quiero monitorear el volumen de inventario de los niveles de existencias, para poder rastrear los niveles de existencias.",
+     "tareas_es": [
+      "Añadir niveles de inventario al administrador de la tienda",
+      "Almacenar los datos del volumen de inventario en la base de datos",
+      "Generar alertas para los niveles de existencias"
+     ],
+     "horas_suma": 19.3,
+     "horas_tareas": [
+      3.68,
+      5.12,
+      3.65
+     ],
+     "horas_probables": [
+      3.5,
+      4.0,
+      7.0
+     ],
+     "horas_banda": [
+      [
+       0.9,
+       15.9
+      ],
+      [
+       1.2,
+       22.1
+      ],
+      [
+       0.8,
+       15.7
+      ]
+     ]
+    },
+    {
+     "historia": "As a seller, I want to set up a real-time pricing reports, so that I can offer better customer service.",
+     "votos": 1,
+     "relevancia": 0.458,
+     "tareas": [
+      "Display real-time data on the seller's dashboard",
+      "Add pricing reports",
+      "Add an additional pricing report"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.591
+      },
+      {
+       "proyecto": "RedHat:THREESCALE",
+       "similitud": 0.549
+      }
+     ],
+     "historia_es": "Como vendedor, quiero establecer un real-time informes de precios, para que pueda ofrecer un mejor servicio al cliente.",
+     "tareas_es": [
+      "Mostrar los datos real-time en el panel del vendedor",
+      "Añadir informes de precios",
+      "Añadir un informe adicional sobre precios"
+     ],
+     "horas_suma": 16.4,
+     "horas_tareas": [
+      6.26,
+      3.59,
+      2.27
+     ],
+     "horas_probables": [
+      6.0,
+      4.5,
+      3.5
+     ],
+     "horas_banda": [
+      [
+       1.4,
+       27.0
+      ],
+      [
+       0.8,
+       15.5
+      ],
+      [
+       0.5,
+       9.8
+      ]
+     ]
+    },
+    {
+     "historia": "As a store manager, I want to review stock levels of products, so that I can manage inventory efficiently.",
+     "votos": 5,
+     "relevancia": 0.693,
+     "tareas": [
+      "Add documentation for the new inventory levels"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:HAWKULAR",
+       "similitud": 0.57
+      },
+      {
+       "proyecto": "Apache:TOMEE",
+       "similitud": 0.523
+      }
+     ],
+     "historia_es": "Como gerente de tienda, quiero revisar los niveles de stock de los productos, para que pueda gestionar el inventario de manera eficiente.",
+     "tareas_es": [
+      "Añadir documentación para los nuevos niveles de inventario"
+     ],
+     "horas_suma": 5.1,
+     "horas_tareas": [
+      2.15
+     ],
+     "horas_probables": [
+      3.0
+     ],
+     "horas_banda": [
+      [
+       0.5,
+       9.3
+      ]
+     ]
+    }
+   ],
+   "tiempos": {
+    "traducir_entrada": 0.142,
+    "recuperar_arriba": 0.009,
+    "generar_historias": 4.049,
+    "deduplicar_historias": 0.197,
+    "recuperar_abajo": 0.016,
+    "generar_tareas": 4.926,
+    "deduplicar_tareas": 0.067,
+    "reasignar_tareas": 0.047,
+    "traducir": 0.383,
+    "total": 9.836
+   },
+   "vecinos_proyecto": [
+    {
+     "proyecto": "MongoDB:DOCS",
+     "similitud": 0.464
+    },
+    {
+     "proyecto": "TAWOS-Lsstcorp:DM",
+     "similitud": 0.458
+    }
+   ],
+   "n_banco": 48,
+   "n_tareas": 35,
+   "estimacion": {
+    "disponible": true,
+    "total_horas": 264.7,
+    "banda_baja": 96.1,
+    "banda_alta": 523.6,
+    "nivel": 0.8,
+    "tareas": 35,
+    "cerradas": 0,
+    "por_tarea": true,
+    "factor_estilo": 0.7273,
+    "fuente_estilo": "C:\\Users\\User\\Documents\\Programacao\\Agix-Dataset\\results\\estilo_total\\meta.json",
+    "dias_persona": 33.1,
+    "segundos": 2.02,
+    "seg_total": 0.63,
+    "seg_tareas": 1.39
+   }
+  }
+ },
+ {
+  "titulo": "Bolsa de trabajo",
+  "descripcion": "Portal de empleo para egresados de una universidad, donde las empresas publican ofertas y los egresados postulan con su CV.",
+  "fp32": {
+   "historias": [
+    {
+     "historia": "As a recruiter, I want to create a custom job listing, so that I can track their progress.",
+     "votos": 1,
+     "relevancia": 0.592,
+     "tareas": [
+      "Create a job listing form in the recruiter dashboard",
+      "Store job listing details in the database",
+      "Send a notification to the recruiter about the new job listing"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:HADOOP",
+       "similitud": 0.504
+      },
+      {
+       "proyecto": "Apache:REEF",
+       "similitud": 0.456
+      }
+     ],
+     "historia_es": "Como reclutador, quiero crear una lista de trabajo personalizada, para poder rastrear su progreso.",
+     "tareas_es": [
+      "Crear un formulario de listado de trabajos en el panel de reclutamiento",
+      "Almacenar los detalles de la lista de tareas en la base de datos",
+      "Enviar una notificación al reclutador sobre la nueva lista de trabajo"
+     ],
+     "horas_suma": 19.2,
+     "horas_tareas": [
+      5.58,
+      3.56,
+      1.66
+     ],
+     "horas_probables": [
+      3.0,
+      3.5,
+      3.0
+     ],
+     "horas_banda": [
+      [
+       1.3,
+       24.1
+      ],
+      [
+       0.8,
+       15.4
+      ],
+      [
+       0.4,
+       7.2
+      ]
+     ]
+    },
+    {
+     "historia": "As a candidate, I want to see the thesis overall status of my job, so that I can make informed decisions.",
+     "votos": 1,
+     "relevancia": 0.459,
+     "tareas": [
+      "Display the status on the candidate’s dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:DATAFU",
+       "similitud": 0.53
+      },
+      {
+       "proyecto": "Apache:OLINGO",
+       "similitud": 0.495
+      }
+     ],
+     "historia_es": "Como candidato, quiero ver la tesis general de mi trabajo, para poder tomar decisiones informadas.",
+     "tareas_es": [
+      "Mostrar el estado en el panel del candidato"
+     ],
+     "horas_suma": 4.4,
+     "horas_tareas": [
+      3.56
+     ],
+     "horas_probables": [
+      1.5
+     ],
+     "horas_banda": [
+      [
+       0.8,
+       15.4
+      ]
+     ]
+    },
+    {
+     "historia": "As a HR administrator, I want to monitor the number of completed jobs, so that I can manage resources efficiently.",
+     "votos": 1,
+     "relevancia": 0.375,
+     "tareas": [
+      "Store completed jobs in the database"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:KOGITO",
+       "similitud": 0.539
+      },
+      {
+       "proyecto": "Apache:OOZIE",
+       "similitud": 0.509
+      }
+     ],
+     "historia_es": "Como administrador de HR, quiero monitorear el número de trabajos completados, para que pueda administrar los recursos de manera eficiente.",
+     "tareas_es": [
+      "Almacenar trabajos completados en la base de datos"
+     ],
+     "horas_suma": 7.3,
+     "horas_tareas": [
+      4.71
+     ],
+     "horas_probables": [
+      4.0
+     ],
+     "horas_banda": [
+      [
+       1.1,
+       20.3
+      ]
+     ]
+    },
+    {
+     "historia": "As a hiring manager, I want to manage access to the candidate's results, so that I can optimize future applications.",
+     "votos": 1,
+     "relevancia": 0.415,
+     "tareas": [
+      "Store the results in the database",
+      "Display the results on the candidate’s dashboard",
+      "Notify the candidate of the results"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:HADOOP",
+       "similitud": 0.486
+      },
+      {
+       "proyecto": "RedHat:KOGITO",
+       "similitud": 0.478
+      }
+     ],
+     "historia_es": "Como gerente de contratación, quiero gestionar el acceso a los resultados del candidato, para que pueda optimizar futuras aplicaciones.",
+     "tareas_es": [
+      "Almacenar los resultados en la base de datos",
+      "Mostrar los resultados en el panel del candidato",
+      "Notificar al candidato los resultados"
+     ],
+     "horas_suma": 22.6,
+     "horas_tareas": [
+      5.22,
+      5.29,
+      2.9
+     ],
+     "horas_probables": [
+      4.0,
+      5.5,
+      3.0
+     ],
+     "horas_banda": [
+      [
+       1.2,
+       22.5
+      ],
+      [
+       1.2,
+       22.8
+      ],
+      [
+       0.7,
+       12.5
+      ]
+     ]
+    },
+    {
+     "historia": "As a candidate, I want to receive notifications about upcoming assignments, so that I can plan my day accordingly.",
+     "votos": 1,
+     "relevancia": 0.339,
+     "tareas": [
+      "Create a notification system for upcoming assignments",
+      "Add notification about upcoming assignments"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.511
+      },
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.493
+      }
+     ],
+     "historia_es": "Como candidato, quiero recibir notificaciones sobre las próximas asignaciones, para poder planificar mi día en consecuencia.",
+     "tareas_es": [
+      "Crear un sistema de notificación para las próximas asignaciones",
+      "Añadir notificación sobre las próximas asignaciones"
+     ],
+     "horas_suma": 21.8,
+     "horas_tareas": [
+      7.34,
+      3.52
+     ],
+     "horas_probables": [
+      7.0,
+      3.5
+     ],
+     "horas_banda": [
+      [
+       1.7,
+       31.7
+      ],
+      [
+       0.8,
+       15.2
+      ]
+     ]
+    },
+    {
+     "historia": "As a recruiter, I want to track the status of a job, so that I can manage the right recruitment process.",
+     "votos": 2,
+     "relevancia": 0.542,
+     "tareas": [
+      "Store job status in the database"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:HADOOP",
+       "similitud": 0.545
+      },
+      {
+       "proyecto": "Apache:FALCON",
+       "similitud": 0.469
+      }
+     ],
+     "historia_es": "Como reclutador, quiero seguir el estado de un trabajo, para poder manejar el proceso de reclutamiento adecuado.",
+     "tareas_es": [
+      "Almacenar el estado de los trabajos en la base de datos"
+     ],
+     "horas_suma": 5.2,
+     "horas_tareas": [
+      3.64
+     ],
+     "horas_probables": [
+      2.0
+     ],
+     "horas_banda": [
+      [
+       0.8,
+       15.7
+      ]
+     ]
+    },
+    {
+     "historia": "As an HR administrator, I want to generate reports on recruitment and engagement, so that I can review the recruitment process.",
+     "votos": 2,
+     "relevancia": 0.556,
+     "tareas": [
+      "generate reports on rh"
+     ],
+     "origen": [
+      {
+       "proyecto": "Qt:QTQAINFRA",
+       "similitud": 0.438
+      },
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.417
+      }
+     ],
+     "historia_es": "Como administrador de HR, quiero generar informes sobre reclutamiento y compromiso, para poder revisar el proceso de reclutamiento.",
+     "tareas_es": [
+      "Generar informes sobre rh"
+     ],
+     "horas_suma": 7.6,
+     "horas_tareas": [
+      3.54
+     ],
+     "horas_probables": [
+      5.0
+     ],
+     "horas_banda": [
+      [
+       0.8,
+       15.3
+      ]
+     ]
+    },
+    {
+     "historia": "As a HR administrator, I want to monitor the number of submitted positions, so that I can analyze trends and tasks.",
+     "votos": 1,
+     "relevancia": 0.437,
+     "tareas": [
+      "Create dashboard for submitted positions"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.56
+      },
+      {
+       "proyecto": "Apache:AIRAVATA",
+       "similitud": 0.499
+      }
+     ],
+     "historia_es": "Como administrador de HR, quiero monitorear el número de posiciones enviadas, para poder analizar tendencias y tareas.",
+     "tareas_es": [
+      "Crear panel para las posiciones presentadas"
+     ],
+     "horas_suma": 7.3,
+     "horas_tareas": [
+      7.09
+     ],
+     "horas_probables": [
+      7.0
+     ],
+     "horas_banda": [
+      [
+       1.6,
+       30.6
+      ]
+     ]
+    },
+    {
+     "historia": "As a HR administrator, I want to generate reports on pending grades, so that I can identify trends.",
+     "votos": 1,
+     "relevancia": 0.341,
+     "tareas": [
+      "generate report on pending grade",
+      "Store reports in the database",
+      "Display reports on pending grades"
+     ],
+     "origen": [
+      {
+       "proyecto": "TAWOS-Moodle:MDL",
+       "similitud": 0.571
+      },
+      {
+       "proyecto": "TAWOS-Moodle:MDL",
+       "similitud": 0.508
+      }
+     ],
+     "historia_es": "Como administrador de HR, quiero generar informes sobre las calificaciones pendientes, para que pueda identificar tendencias.",
+     "tareas_es": [
+      "Generar informe sobre la categoría pendiente",
+      "Almacenar los informes en la base de datos",
+      "Mostrar informes sobre grados pendientes"
+     ],
+     "horas_suma": 12.4,
+     "horas_tareas": [
+      2.37,
+      3.63,
+      2.95
+     ],
+     "horas_probables": [
+      1.25,
+      4.0,
+      1.75
+     ],
+     "horas_banda": [
+      [
+       0.6,
+       10.2
+      ],
+      [
+       0.8,
+       15.7
+      ],
+      [
+       0.7,
+       12.7
+      ]
+     ]
+    },
+    {
+     "historia": "As a candidate, I want to view the status of my teaching, so that I can assess my work.",
+     "votos": 1,
+     "relevancia": 0.407,
+     "tareas": [
+      "Please review the status of my teaching",
+      "Please review and discuss the status of your teaching"
+     ],
+     "origen": [
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.495
+      },
+      {
+       "proyecto": "Apache:MNEMONIC",
+       "similitud": 0.438
+      }
+     ],
+     "historia_es": "Como candidato, quiero ver el estado de mi enseñanza, para poder evaluar mi trabajo.",
+     "tareas_es": [
+      "Revisar el estado de mi enseñanza",
+      "Revisar y discuta el estado de su enseñanza"
+     ],
+     "horas_suma": 7.0,
+     "horas_tareas": [
+      2.01,
+      2.11
+     ],
+     "horas_probables": [
+      2.0,
+      2.0
+     ],
+     "horas_banda": [
+      [
+       0.5,
+       8.7
+      ],
+      [
+       0.5,
+       9.1
+      ]
+     ]
+    },
+    {
+     "historia": "As a recruiter, I want to access a candidate's recruitment status, so that I can adjust for recruiters.",
+     "votos": 2,
+     "relevancia": 0.467,
+     "tareas": [
+      "Retrieve the candidate's status from the database",
+      "Store the status data in the candidate's profile",
+      "Store candidate status in the database",
+      "Send notifications to recruiters about their status"
+     ],
+     "origen": [
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.423
+      },
+      {
+       "proyecto": "JFrog:RTFACT",
+       "similitud": 0.408
+      }
+     ],
+     "historia_es": "Como reclutador, quiero acceder al estado de reclutamiento de un candidato, para poder adaptarme a los reclutadores.",
+     "tareas_es": [
+      "Recuperar el estado del candidato de la base de datos",
+      "Almacenar los datos de estado en el perfil del candidato",
+      "Almacenar el estado de los candidatos en la base de datos",
+      "Enviar notificaciones a los reclutadores sobre su estado"
+     ],
+     "horas_suma": 20.0,
+     "horas_tareas": [
+      4.56,
+      4.81,
+      4.44,
+      3.28
+     ],
+     "horas_probables": [
+      1.0,
+      3.0,
+      4.0,
+      3.5
+     ],
+     "horas_banda": [
+      [
+       1.1,
+       19.7
+      ],
+      [
+       1.1,
+       20.8
+      ],
+      [
+       1.0,
+       19.2
+      ],
+      [
+       0.8,
+       14.1
+      ]
+     ]
+    },
+    {
+     "historia": "As a candidate, I want to receive notifications for upcoming tasks, so that I can prioritize the deadline.",
+     "votos": 1,
+     "relevancia": 0.369,
+     "tareas": [
+      "Send a notification to the candidate about the status",
+      "Send notifications to the candidate via email",
+      "Add notifications about upcoming tasks",
+      "Create UI for the submitted status",
+      "Implement a notification system for candidate submissions",
+      "Add notification for Calendar"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:JBPM",
+       "similitud": 0.484
+      },
+      {
+       "proyecto": "Sonatype:NEXUS",
+       "similitud": 0.467
+      }
+     ],
+     "historia_es": "Como candidato, quiero recibir notificaciones para las próximas tareas, para poder priorizar el plazo.",
+     "tareas_es": [
+      "Enviar una notificación al candidato sobre el estado",
+      "Enviar notificaciones al candidato por correo electrónico",
+      "Añadir notificaciones sobre las próximas tareas",
+      "Crear UI para el estado de envío",
+      "Aplicar un sistema de notificación para las presentaciones de candidatos",
+      "Añadir notificación para Calendario"
+     ],
+     "horas_suma": 42.9,
+     "horas_tareas": [
+      2.73,
+      4.68,
+      3.41,
+      5.2,
+      7.29,
+      3.12
+     ],
+     "horas_probables": [
+      2.5,
+      3.0,
+      2.5,
+      2.0,
+      4.0,
+      3.0
+     ],
+     "horas_banda": [
+      [
+       0.6,
+       11.8
+      ],
+      [
+       1.1,
+       20.2
+      ],
+      [
+       0.8,
+       14.7
+      ],
+      [
+       1.2,
+       22.5
+      ],
+      [
+       1.7,
+       31.4
+      ],
+      [
+       0.7,
+       13.5
+      ]
+     ]
+    }
+   ],
+   "tiempos": {
+    "traducir_entrada": 0.118,
+    "recuperar_arriba": 0.009,
+    "generar_historias": 4.014,
+    "deduplicar_historias": 0.386,
+    "recuperar_abajo": 0.015,
+    "generar_tareas": 5.105,
+    "deduplicar_tareas": 0.054,
+    "reasignar_tareas": 0.031,
+    "traducir": 0.213,
+    "total": 9.944
+   },
+   "vecinos_proyecto": [
+    {
+     "proyecto": "TAWOS-Lsstcorp:DM",
+     "similitud": 0.495
+    },
+    {
+     "proyecto": "TAWOS-Lsstcorp:DM",
+     "similitud": 0.491
+    }
+   ],
+   "n_banco": 48,
+   "n_tareas": 28,
+   "estimacion": {
+    "disponible": true,
+    "total_horas": 177.7,
+    "banda_baja": 64.5,
+    "banda_alta": 351.5,
+    "nivel": 0.8,
+    "tareas": 28,
+    "cerradas": 0,
+    "por_tarea": true,
+    "factor_estilo": 0.7273,
+    "fuente_estilo": "C:\\Users\\User\\Documents\\Programacao\\Agix-Dataset\\results\\estilo_total\\meta.json",
+    "dias_persona": 22.2,
+    "segundos": 0.44,
+    "seg_total": 0.13,
+    "seg_tareas": 0.31
+   }
+  },
+  "int8": {
+   "historias": [
+    {
+     "historia": "As a recruiter, I want to create a custom job listing, so that I can track their progress.",
+     "votos": 1,
+     "relevancia": 0.592,
+     "tareas": [
+      "Create a job listing form in the recruiter dashboard",
+      "Store job listing details in the database",
+      "Send a notification to the recruiter about the new job listing"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:HADOOP",
+       "similitud": 0.504
+      },
+      {
+       "proyecto": "Apache:REEF",
+       "similitud": 0.456
+      }
+     ],
+     "historia_es": "Como reclutador, quiero crear una lista de trabajo personalizada, para poder rastrear su progreso.",
+     "tareas_es": [
+      "Crear un formulario de listado de trabajos en el panel de reclutamiento",
+      "Almacenar los detalles de la lista de tareas en la base de datos",
+      "Enviar una notificación al reclutador sobre la nueva lista de trabajo"
+     ],
+     "horas_suma": 24.0,
+     "horas_tareas": [
+      5.8,
+      3.53,
+      1.89
+     ],
+     "horas_probables": [
+      2.0,
+      3.5,
+      2.5
+     ],
+     "horas_banda": [
+      [
+       1.3,
+       25.0
+      ],
+      [
+       0.8,
+       15.2
+      ],
+      [
+       0.4,
+       8.2
+      ]
+     ]
+    },
+    {
+     "historia": "As a candidate, I want to see the thesis overall status of my job, so that I can make informed decisions.",
+     "votos": 1,
+     "relevancia": 0.459,
+     "tareas": [
+      "Display the status on the candidate’s dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:DATAFU",
+       "similitud": 0.53
+      },
+      {
+       "proyecto": "Apache:OLINGO",
+       "similitud": 0.495
+      }
+     ],
+     "historia_es": "Como candidato, quiero ver la tesis general de mi trabajo, para poder tomar decisiones informadas.",
+     "tareas_es": [
+      "Mostrar el estado en el panel del candidato"
+     ],
+     "horas_suma": 5.3,
+     "horas_tareas": [
+      3.46
+     ],
+     "horas_probables": [
+      3.0
+     ],
+     "horas_banda": [
+      [
+       0.8,
+       14.9
+      ]
+     ]
+    },
+    {
+     "historia": "As a HR administrator, I want to monitor the number of completed jobs, so that I can manage resources efficiently.",
+     "votos": 1,
+     "relevancia": 0.375,
+     "tareas": [
+      "Store completed jobs in the database"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:KOGITO",
+       "similitud": 0.539
+      },
+      {
+       "proyecto": "Apache:OOZIE",
+       "similitud": 0.509
+      }
+     ],
+     "historia_es": "Como administrador de HR, quiero monitorear el número de trabajos completados, para que pueda administrar los recursos de manera eficiente.",
+     "tareas_es": [
+      "Almacenar trabajos completados en la base de datos"
+     ],
+     "horas_suma": 7.3,
+     "horas_tareas": [
+      4.37
+     ],
+     "horas_probables": [
+      3.0
+     ],
+     "horas_banda": [
+      [
+       1.0,
+       18.8
+      ]
+     ]
+    },
+    {
+     "historia": "As a hiring manager, I want to manage access to the candidate's results, so that I can optimize future applications.",
+     "votos": 1,
+     "relevancia": 0.415,
+     "tareas": [
+      "Store the results in the database",
+      "Display the results on the candidate’s dashboard",
+      "Notify the candidate of the results"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:HADOOP",
+       "similitud": 0.486
+      },
+      {
+       "proyecto": "RedHat:KOGITO",
+       "similitud": 0.478
+      }
+     ],
+     "historia_es": "Como gerente de contratación, quiero gestionar el acceso a los resultados del candidato, para que pueda optimizar futuras aplicaciones.",
+     "tareas_es": [
+      "Almacenar los resultados en la base de datos",
+      "Mostrar los resultados en el panel del candidato",
+      "Notificar al candidato los resultados"
+     ],
+     "horas_suma": 23.8,
+     "horas_tareas": [
+      5.29,
+      5.37,
+      2.79
+     ],
+     "horas_probables": [
+      5.0,
+      5.5,
+      3.0
+     ],
+     "horas_banda": [
+      [
+       1.2,
+       22.8
+      ],
+      [
+       1.2,
+       23.2
+      ],
+      [
+       0.6,
+       12.0
+      ]
+     ]
+    },
+    {
+     "historia": "As a candidate, I want to receive notifications about upcoming assignments, so that I can plan my day accordingly.",
+     "votos": 1,
+     "relevancia": 0.339,
+     "tareas": [
+      "Create a notification system for upcoming assignments",
+      "Add notification about upcoming assignments"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.511
+      },
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.493
+      }
+     ],
+     "historia_es": "Como candidato, quiero recibir notificaciones sobre las próximas asignaciones, para poder planificar mi día en consecuencia.",
+     "tareas_es": [
+      "Crear un sistema de notificación para las próximas asignaciones",
+      "Añadir notificación sobre las próximas asignaciones"
+     ],
+     "horas_suma": 21.2,
+     "horas_tareas": [
+      7.87,
+      3.57
+     ],
+     "horas_probables": [
+      8.0,
+      3.5
+     ],
+     "horas_banda": [
+      [
+       1.8,
+       34.0
+      ],
+      [
+       0.8,
+       15.4
+      ]
+     ]
+    },
+    {
+     "historia": "As a recruiter, I want to track the status of a job, so that I can manage the right recruitment process.",
+     "votos": 2,
+     "relevancia": 0.542,
+     "tareas": [
+      "Store job status in the database"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:HADOOP",
+       "similitud": 0.545
+      },
+      {
+       "proyecto": "Apache:FALCON",
+       "similitud": 0.469
+      }
+     ],
+     "historia_es": "Como reclutador, quiero seguir el estado de un trabajo, para poder manejar el proceso de reclutamiento adecuado.",
+     "tareas_es": [
+      "Almacenar el estado de los trabajos en la base de datos"
+     ],
+     "horas_suma": 5.1,
+     "horas_tareas": [
+      3.72
+     ],
+     "horas_probables": [
+      2.0
+     ],
+     "horas_banda": [
+      [
+       0.9,
+       16.1
+      ]
+     ]
+    },
+    {
+     "historia": "As an HR administrator, I want to generate reports on recruitment and engagement, so that I can review the recruitment process.",
+     "votos": 2,
+     "relevancia": 0.556,
+     "tareas": [
+      "generate reports on rh"
+     ],
+     "origen": [
+      {
+       "proyecto": "Qt:QTQAINFRA",
+       "similitud": 0.438
+      },
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.417
+      }
+     ],
+     "historia_es": "Como administrador de HR, quiero generar informes sobre reclutamiento y compromiso, para poder revisar el proceso de reclutamiento.",
+     "tareas_es": [
+      "Generar informes sobre rh"
+     ],
+     "horas_suma": 7.3,
+     "horas_tareas": [
+      3.44
+     ],
+     "horas_probables": [
+      4.5
+     ],
+     "horas_banda": [
+      [
+       0.8,
+       14.8
+      ]
+     ]
+    },
+    {
+     "historia": "As a HR administrator, I want to monitor the number of submitted positions, so that I can analyze trends and tasks.",
+     "votos": 1,
+     "relevancia": 0.437,
+     "tareas": [
+      "Create dashboard for submitted positions"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.56
+      },
+      {
+       "proyecto": "Apache:AIRAVATA",
+       "similitud": 0.499
+      }
+     ],
+     "historia_es": "Como administrador de HR, quiero monitorear el número de posiciones enviadas, para poder analizar tendencias y tareas.",
+     "tareas_es": [
+      "Crear panel para las posiciones presentadas"
+     ],
+     "horas_suma": 5.1,
+     "horas_tareas": [
+      7.06
+     ],
+     "horas_probables": [
+      7.0
+     ],
+     "horas_banda": [
+      [
+       1.6,
+       30.5
+      ]
+     ]
+    },
+    {
+     "historia": "As a HR administrator, I want to generate reports on pending grades, so that I can identify trends.",
+     "votos": 1,
+     "relevancia": 0.341,
+     "tareas": [
+      "generate report on pending grade",
+      "Store reports in the database",
+      "Display reports on pending grades"
+     ],
+     "origen": [
+      {
+       "proyecto": "TAWOS-Moodle:MDL",
+       "similitud": 0.571
+      },
+      {
+       "proyecto": "TAWOS-Moodle:MDL",
+       "similitud": 0.508
+      }
+     ],
+     "historia_es": "Como administrador de HR, quiero generar informes sobre las calificaciones pendientes, para que pueda identificar tendencias.",
+     "tareas_es": [
+      "Generar informe sobre la categoría pendiente",
+      "Almacenar los informes en la base de datos",
+      "Mostrar informes sobre grados pendientes"
+     ],
+     "horas_suma": 11.0,
+     "horas_tareas": [
+      2.84,
+      3.21,
+      2.88
+     ],
+     "horas_probables": [
+      1.75,
+      4.0,
+      1.75
+     ],
+     "horas_banda": [
+      [
+       0.7,
+       12.3
+      ],
+      [
+       0.7,
+       13.9
+      ],
+      [
+       0.7,
+       12.4
+      ]
+     ]
+    },
+    {
+     "historia": "As a candidate, I want to view the status of my teaching, so that I can assess my work.",
+     "votos": 1,
+     "relevancia": 0.407,
+     "tareas": [
+      "Please review the status of my teaching",
+      "Please review and discuss the status of your teaching"
+     ],
+     "origen": [
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.495
+      },
+      {
+       "proyecto": "Apache:MNEMONIC",
+       "similitud": 0.438
+      }
+     ],
+     "historia_es": "Como candidato, quiero ver el estado de mi enseñanza, para poder evaluar mi trabajo.",
+     "tareas_es": [
+      "Revisar el estado de mi enseñanza",
+      "Revisar y discuta el estado de su enseñanza"
+     ],
+     "horas_suma": 9.3,
+     "horas_tareas": [
+      1.83,
+      2.4
+     ],
+     "horas_probables": [
+      1.75,
+      1.75
+     ],
+     "horas_banda": [
+      [
+       0.4,
+       7.9
+      ],
+      [
+       0.6,
+       10.4
+      ]
+     ]
+    },
+    {
+     "historia": "As a recruiter, I want to access a candidate's recruitment status, so that I can adjust for recruiters.",
+     "votos": 2,
+     "relevancia": 0.467,
+     "tareas": [
+      "Retrieve the candidate's status from the database",
+      "Store the status data in the candidate's profile",
+      "Store candidate status in the database",
+      "Send notifications to recruiters about their status"
+     ],
+     "origen": [
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.423
+      },
+      {
+       "proyecto": "JFrog:RTFACT",
+       "similitud": 0.408
+      }
+     ],
+     "historia_es": "Como reclutador, quiero acceder al estado de reclutamiento de un candidato, para poder adaptarme a los reclutadores.",
+     "tareas_es": [
+      "Recuperar el estado del candidato de la base de datos",
+      "Almacenar los datos de estado en el perfil del candidato",
+      "Almacenar el estado de los candidatos en la base de datos",
+      "Enviar notificaciones a los reclutadores sobre su estado"
+     ],
+     "horas_suma": 20.2,
+     "horas_tareas": [
+      4.21,
+      4.84,
+      4.0,
+      3.0
+     ],
+     "horas_probables": [
+      4.0,
+      5.0,
+      4.0,
+      3.0
+     ],
+     "horas_banda": [
+      [
+       1.0,
+       18.2
+      ],
+      [
+       1.1,
+       20.9
+      ],
+      [
+       0.9,
+       17.3
+      ],
+      [
+       0.7,
+       12.9
+      ]
+     ]
+    },
+    {
+     "historia": "As a candidate, I want to receive notifications for upcoming tasks, so that I can prioritize the deadline.",
+     "votos": 1,
+     "relevancia": 0.369,
+     "tareas": [
+      "Send a notification to the candidate about the status",
+      "Send notifications to the candidate via email",
+      "Add notifications about upcoming tasks",
+      "Create UI for the submitted status",
+      "Implement a notification system for candidate submissions",
+      "Add notification for Calendar"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:JBPM",
+       "similitud": 0.484
+      },
+      {
+       "proyecto": "Sonatype:NEXUS",
+       "similitud": 0.467
+      }
+     ],
+     "historia_es": "Como candidato, quiero recibir notificaciones para las próximas tareas, para poder priorizar el plazo.",
+     "tareas_es": [
+      "Enviar una notificación al candidato sobre el estado",
+      "Enviar notificaciones al candidato por correo electrónico",
+      "Añadir notificaciones sobre las próximas tareas",
+      "Crear UI para el estado de envío",
+      "Aplicar un sistema de notificación para las presentaciones de candidatos",
+      "Añadir notificación para Calendario"
+     ],
+     "horas_suma": 41.8,
+     "horas_tareas": [
+      2.8,
+      4.81,
+      3.21,
+      5.44,
+      6.86,
+      2.74
+     ],
+     "horas_probables": [
+      3.0,
+      5.0,
+      2.5,
+      2.0,
+      7.0,
+      3.0
+     ],
+     "horas_banda": [
+      [
+       0.6,
+       12.1
+      ],
+      [
+       1.1,
+       20.7
+      ],
+      [
+       0.7,
+       13.9
+      ],
+      [
+       1.3,
+       23.5
+      ],
+      [
+       1.6,
+       29.6
+      ],
+      [
+       0.6,
+       11.8
+      ]
+     ]
+    }
+   ],
+   "tiempos": {
+    "traducir_entrada": 0.118,
+    "recuperar_arriba": 0.009,
+    "generar_historias": 4.014,
+    "deduplicar_historias": 0.386,
+    "recuperar_abajo": 0.015,
+    "generar_tareas": 5.105,
+    "deduplicar_tareas": 0.054,
+    "reasignar_tareas": 0.031,
+    "traducir": 0.213,
+    "total": 9.944
+   },
+   "vecinos_proyecto": [
+    {
+     "proyecto": "TAWOS-Lsstcorp:DM",
+     "similitud": 0.495
+    },
+    {
+     "proyecto": "TAWOS-Lsstcorp:DM",
+     "similitud": 0.491
+    }
+   ],
+   "n_banco": 48,
+   "n_tareas": 28,
+   "estimacion": {
+    "disponible": true,
+    "total_horas": 181.4,
+    "banda_baja": 65.9,
+    "banda_alta": 358.8,
+    "nivel": 0.8,
+    "tareas": 28,
+    "cerradas": 0,
+    "por_tarea": true,
+    "factor_estilo": 0.7273,
+    "fuente_estilo": "C:\\Users\\User\\Documents\\Programacao\\Agix-Dataset\\results\\estilo_total\\meta.json",
+    "dias_persona": 22.7,
+    "segundos": 1.74,
+    "seg_total": 0.42,
+    "seg_tareas": 1.32
+   }
+  }
+ },
+ {
+  "titulo": "Delivery app (en)",
+  "descripcion": "A food delivery app for a small city, where restaurants publish menus, customers order and pay online, and couriers get routes.",
+  "fp32": {
+   "historias": [
+    {
+     "historia": "As a courier, I want to set up a delivery route for my restaurant, so that I can manage my delivery efficiently.",
+     "votos": 3,
+     "relevancia": 0.693,
+     "tareas": [
+      "Implement a delivery route configuration feature in the courier app",
+      "Store delivery route details in the database",
+      "Send a notification to the courier about the delivery route",
+      "Add documentation for the delivery route",
+      "Create a delivery route setup form in the courier app",
+      "Display delivery route details on the courier's dashboard",
+      "Notify the courier if the route is available"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:JPERF",
+       "similitud": 0.453
+      },
+      {
+       "proyecto": "Apache:SCB",
+       "similitud": 0.445
+      }
+     ],
+     "historia_es": "Como mensajero, quiero establecer una ruta de entrega para mi restaurante, para que pueda gestionar mi entrega de manera eficiente.",
+     "tareas_es": [
+      "Implementar una función de configuración de la ruta de entrega en la aplicación de mensajería",
+      "Almacenar los detalles de la ruta de entrega en la base de datos",
+      "Enviar una notificación al mensajero sobre la ruta de entrega",
+      "Añadir documentación para la ruta de entrega",
+      "Crear un formulario de configuración de la ruta de entrega en la aplicación de mensajería",
+      "Mostrar los detalles de la ruta de entrega en el panel de mensajero",
+      "Notificar al mensajero si la ruta está disponible"
+     ],
+     "horas_suma": 36.6,
+     "horas_tareas": [
+      7.06,
+      3.72,
+      2.24,
+      2.65,
+      6.27,
+      3.9,
+      1.76
+     ],
+     "horas_probables": [
+      4.0,
+      5.0,
+      2.25,
+      4.0,
+      4.5,
+      3.0,
+      2.0
+     ],
+     "horas_banda": [
+      [
+       1.6,
+       30.4
+      ],
+      [
+       0.9,
+       16.0
+      ],
+      [
+       0.5,
+       9.7
+      ],
+      [
+       0.6,
+       11.4
+      ],
+      [
+       1.5,
+       27.1
+      ],
+      [
+       0.9,
+       16.8
+      ],
+      [
+       0.4,
+       7.6
+      ]
+     ]
+    },
+    {
+     "historia": "As a customer, I want to save my supplies online, so that I can know my orders.",
+     "votos": 1,
+     "relevancia": 0.434,
+     "tareas": [
+      "Store supplies in the customer's profile",
+      "Send a confirmation email to the customer when supplies are available",
+      "Store supplies in the database",
+      "Display supplies on the customer's dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:UPM",
+       "similitud": 0.498
+      },
+      {
+       "proyecto": "Apache:TOMEE",
+       "similitud": 0.474
+      }
+     ],
+     "historia_es": "Como cliente, quiero guardar mis suministros en línea, para que pueda conocer mis pedidos.",
+     "tareas_es": [
+      "Almacenar suministros en el perfil del cliente",
+      "Enviar un correo electrónico de confirmación al cliente cuando haya suministros disponibles",
+      "Almacenar suministros en la base de datos",
+      "Mostrar los suministros en el panel del cliente"
+     ],
+     "horas_suma": 23.1,
+     "horas_tareas": [
+      3.64,
+      2.89,
+      4.47,
+      4.76
+     ],
+     "horas_probables": [
+      4.0,
+      2.25,
+      4.5,
+      5.0
+     ],
+     "horas_banda": [
+      [
+       0.8,
+       15.7
+      ],
+      [
+       0.7,
+       12.5
+      ],
+      [
+       1.0,
+       19.3
+      ],
+      [
+       1.1,
+       20.6
+      ]
+     ]
+    },
+    {
+     "historia": "As a restaurant owner, I want to manage multiple tables of the menu items, so that I can offer different delivery orders to the restaurant.",
+     "votos": 1,
+     "relevancia": 0.536,
+     "tareas": [
+      "Develop a menu items management interface",
+      "Store the menu items in the database",
+      "Add tables for the menu items",
+      "Store the tables in the database",
+      "Display the tables on the restaurant dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:UPM",
+       "similitud": 0.465
+      },
+      {
+       "proyecto": "Apache:CLK",
+       "similitud": 0.463
+      }
+     ],
+     "historia_es": "Como propietario de un restaurante, quiero gestionar múltiples mesas de los elementos del menú, para que pueda ofrecer diferentes pedidos de entrega al restaurante.",
+     "tareas_es": [
+      "Desarrollar una interfaz de gestión de elementos de menú",
+      "Almacenar los elementos del menú en la base de datos",
+      "Añadir tablas para los elementos del menú",
+      "Almacenar las tablas en la base de datos",
+      "Mostrar las mesas en el panel del restaurante"
+     ],
+     "horas_suma": 30.5,
+     "horas_tareas": [
+      8.14,
+      4.34,
+      3.17,
+      4.41,
+      3.57
+     ],
+     "horas_probables": [
+      8.0,
+      4.5,
+      2.0,
+      4.5,
+      3.5
+     ],
+     "horas_banda": [
+      [
+       1.9,
+       35.1
+      ],
+      [
+       1.0,
+       18.7
+      ],
+      [
+       0.7,
+       13.7
+      ],
+      [
+       1.0,
+       19.0
+      ],
+      [
+       0.8,
+       15.4
+      ]
+     ]
+    },
+    {
+     "historia": "As an operations manager, I want to monitor the delivery location of orders, so that I can optimize delivery.",
+     "votos": 2,
+     "relevancia": 0.439,
+     "tareas": [
+      "Store delivery location data in the database",
+      "Display delivery location on the order dashboard",
+      "Add documentation for the delivery location of orders",
+      "Store order location data in the database"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:ENTMQMAAS",
+       "similitud": 0.473
+      },
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.462
+      }
+     ],
+     "historia_es": "Como gerente de operaciones, quiero monitorear la ubicación de entrega de pedidos, para que pueda optimizar la entrega.",
+     "tareas_es": [
+      "Almacenar los datos de la ubicación de la entrega en la base de datos",
+      "Mostrar la ubicación de la entrega en el panel de pedidos",
+      "Añadir documentación para el lugar de entrega de los pedidos",
+      "Almacenar los datos de ubicación del pedido en la base de datos"
+     ],
+     "horas_suma": 23.5,
+     "horas_tareas": [
+      4.22,
+      2.12,
+      2.0,
+      3.81
+     ],
+     "horas_probables": [
+      5.0,
+      1.5,
+      4.0,
+      2.5
+     ],
+     "horas_banda": [
+      [
+       1.0,
+       18.2
+      ],
+      [
+       0.5,
+       9.1
+      ],
+      [
+       0.5,
+       8.6
+      ],
+      [
+       0.9,
+       16.4
+      ]
+     ]
+    },
+    {
+     "historia": "As a customer, I want to receive notifications when the order is ready, so that I can plan my schedule.",
+     "votos": 3,
+     "relevancia": 0.448,
+     "tareas": [
+      "Implement a notification system in the customer dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.58
+      },
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.46
+      }
+     ],
+     "historia_es": "Como cliente, quiero recibir notificaciones cuando el pedido esté listo, para poder planificar mi horario.",
+     "tareas_es": [
+      "Implementar un sistema de notificación en el panel de clientes"
+     ],
+     "horas_suma": 15.1,
+     "horas_tareas": [
+      10.38
+     ],
+     "horas_probables": [
+      4.5
+     ],
+     "horas_banda": [
+      [
+       2.4,
+       44.8
+      ]
+     ]
+    },
+    {
+     "historia": "As a courier, I want to track the delivery time spent on pickup, so that I can plan my route.",
+     "votos": 2,
+     "relevancia": 0.508,
+     "tareas": [
+      "Display the delivery time spent on the courier's app"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:SCB",
+       "similitud": 0.4
+      },
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.386
+      }
+     ],
+     "historia_es": "Como mensajero, quiero rastrear el tiempo de entrega que paso en la recogida, para poder planificar mi ruta.",
+     "tareas_es": [
+      "Mostrar el tiempo de entrega empleado en la aplicación del mensajero"
+     ],
+     "horas_suma": 5.7,
+     "horas_tareas": [
+      3.9
+     ],
+     "horas_probables": [
+      4.0
+     ],
+     "horas_banda": [
+      [
+       0.9,
+       16.8
+      ]
+     ]
+    },
+    {
+     "historia": "As a courier, I want to set up a delivery route, so that I can manage the deliveries more efficiently.",
+     "votos": 3,
+     "relevancia": 0.539,
+     "tareas": [
+      "Create a route scheduling feature in the courier app",
+      "Store route details in the database"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:JAMES",
+       "similitud": 0.476
+      },
+      {
+       "proyecto": "Apache:SCB",
+       "similitud": 0.462
+      }
+     ],
+     "historia_es": "Como mensajero, quiero establecer una ruta de entrega, para que pueda gestionar las entregas de manera más eficiente.",
+     "tareas_es": [
+      "Crear una función de programación de rutas en la aplicación de mensajería",
+      "Almacenar los detalles de la ruta en la base de datos"
+     ],
+     "horas_suma": 14.6,
+     "horas_tareas": [
+      7.04,
+      3.73
+     ],
+     "horas_probables": [
+      3.0,
+      5.0
+     ],
+     "horas_banda": [
+      [
+       1.6,
+       30.4
+      ],
+      [
+       0.9,
+       16.1
+      ]
+     ]
+    },
+    {
+     "historia": "As an operations manager, I want to monitor the delivery status of orders, so that I can ensure timely delivery.",
+     "votos": 2,
+     "relevancia": 0.365,
+     "tareas": [
+      "Add ability to monitor the delivery status of orders",
+      "Store order status in the database",
+      "Display order status on the system dashboard",
+      "Notify the warehouse manager of the order status"
+     ],
+     "origen": [
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.515
+      },
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.48
+      }
+     ],
+     "historia_es": "Como gerente de operaciones, quiero supervisar el estado de entrega de los pedidos, para que pueda asegurar la entrega oportuna.",
+     "tareas_es": [
+      "Añadir capacidad para supervisar el estado de entrega de los pedidos",
+      "Almacenar el estado del pedido en la base de datos",
+      "Mostrar el estado del pedido en el panel del sistema",
+      "Notificar al almacén gerente de operaciones el estado del pedido"
+     ],
+     "horas_suma": 24.4,
+     "horas_tareas": [
+      5.57,
+      3.03,
+      3.04,
+      2.13
+     ],
+     "horas_probables": [
+      5.5,
+      2.5,
+      3.0,
+      3.0
+     ],
+     "horas_banda": [
+      [
+       1.3,
+       24.0
+      ],
+      [
+       0.7,
+       13.1
+      ],
+      [
+       0.7,
+       13.1
+      ],
+      [
+       0.5,
+       9.2
+      ]
+     ]
+    },
+    {
+     "historia": "As a courier, I want to select a pick-in order for a delivery, so that I can choose the best option for the delivery.",
+     "votos": 1,
+     "relevancia": 0.522,
+     "tareas": [
+      "Store pick-in delivery details in the database",
+      "Add a pick-in order to the delivery page"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:STRM",
+       "similitud": 0.48
+      },
+      {
+       "proyecto": "Apache:JAMES",
+       "similitud": 0.48
+      }
+     ],
+     "historia_es": "Como mensajero, quiero seleccionar un pedido pick-in para una entrega, de modo que pueda elegir la mejor opción para la entrega.",
+     "tareas_es": [
+      "Almacenar los detalles de entrega de pick-in en la base de datos",
+      "Añadir un pedido pick-in a la página de entrega"
+     ],
+     "horas_suma": 10.3,
+     "horas_tareas": [
+      3.85,
+      2.98
+     ],
+     "horas_probables": [
+      4.0,
+      3.0
+     ],
+     "horas_banda": [
+      [
+       0.9,
+       16.6
+      ],
+      [
+       0.7,
+       12.9
+      ]
+     ]
+    },
+    {
+     "historia": "As a restaurant owner, I want to manage delivery times, so that I can optimize availability.",
+     "votos": 2,
+     "relevancia": 0.511,
+     "tareas": [
+      "Store delivery times in the database"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:SAMZA",
+       "similitud": 0.433
+      },
+      {
+       "proyecto": "Apache:INLONG",
+       "similitud": 0.419
+      }
+     ],
+     "historia_es": "Como propietario de un restaurante, quiero gestionar los tiempos de entrega, para que pueda optimizar la disponibilidad.",
+     "tareas_es": [
+      "Almacenar los tiempos de entrega en la base de datos"
+     ],
+     "horas_suma": 5.2,
+     "horas_tareas": [
+      3.5
+     ],
+     "horas_probables": [
+      2.0
+     ],
+     "horas_banda": [
+      [
+       0.8,
+       15.1
+      ]
+     ]
+    },
+    {
+     "historia": "As a restaurant owner, I want to manage the inventory of daily orders, so that I can make informed decisions.",
+     "votos": 1,
+     "relevancia": 0.419,
+     "tareas": [
+      "Develop a daily order management interface",
+      "Store daily order details in the database",
+      "Display daily order details on the restaurant owner dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:HAWKULAR",
+       "similitud": 0.496
+      },
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.494
+      }
+     ],
+     "historia_es": "Como propietario de un restaurante, quiero gestionar el inventario de pedidos diarios, para que pueda tomar decisiones informadas.",
+     "tareas_es": [
+      "Desarrollar una interfaz diaria de gestión de pedidos",
+      "Almacenar detalles de pedidos diarios en la base de datos",
+      "Mostrar detalles de pedido diario en el panel del propietario del restaurante"
+     ],
+     "horas_suma": 18.2,
+     "horas_tareas": [
+      7.66,
+      3.97,
+      3.17
+     ],
+     "horas_probables": [
+      2.5,
+      2.5,
+      3.0
+     ],
+     "horas_banda": [
+      [
+       1.8,
+       33.1
+      ],
+      [
+       0.9,
+       17.1
+      ],
+      [
+       0.7,
+       13.7
+      ]
+     ]
+    },
+    {
+     "historia": "As a restaurant owner, I want to know when the order is due, so that I can plan accordingly.",
+     "votos": 2,
+     "relevancia": 0.447,
+     "tareas": [
+      "When the ordering is due to an additional order, I would like to be able to pick which orders are due to the certain order"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.462
+      },
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.445
+      }
+     ],
+     "historia_es": "Como propietario de un restaurante, quiero saber cuándo es el momento de el pedido, para que pueda planificar en consecuencia.",
+     "tareas_es": [
+      "Cuando el pedido se debe a un pedido adicional, me gustaría poder elegir qué pedidos se deben a el pedido determinada"
+     ],
+     "horas_suma": 4.5,
+     "horas_tareas": [
+      3.02
+     ],
+     "horas_probables": [
+      3.0
+     ],
+     "horas_banda": [
+      [
+       0.7,
+       13.0
+      ]
+     ]
+    }
+   ],
+   "tiempos": {
+    "recuperar_arriba": 0.009,
+    "generar_historias": 3.961,
+    "deduplicar_historias": 0.187,
+    "recuperar_abajo": 0.015,
+    "generar_tareas": 5.642,
+    "deduplicar_tareas": 0.091,
+    "reasignar_tareas": 0.045,
+    "traducir": 0.504,
+    "total": 10.453
+   },
+   "vecinos_proyecto": [
+    {
+     "proyecto": "RedHat:CS",
+     "similitud": 0.428
+    },
+    {
+     "proyecto": "RedHat:FH",
+     "similitud": 0.422
+    }
+   ],
+   "n_banco": 48,
+   "n_tareas": 35,
+   "estimacion": {
+    "disponible": true,
+    "total_horas": 211.5,
+    "banda_baja": 76.8,
+    "banda_alta": 418.5,
+    "nivel": 0.8,
+    "tareas": 35,
+    "cerradas": 0,
+    "por_tarea": true,
+    "factor_estilo": 0.7273,
+    "fuente_estilo": "C:\\Users\\User\\Documents\\Programacao\\Agix-Dataset\\results\\estilo_total\\meta.json",
+    "dias_persona": 26.4,
+    "segundos": 0.71,
+    "seg_total": 0.25,
+    "seg_tareas": 0.47
+   }
+  },
+  "int8": {
+   "historias": [
+    {
+     "historia": "As a courier, I want to set up a delivery route for my restaurant, so that I can manage my delivery efficiently.",
+     "votos": 3,
+     "relevancia": 0.693,
+     "tareas": [
+      "Implement a delivery route configuration feature in the courier app",
+      "Store delivery route details in the database",
+      "Send a notification to the courier about the delivery route",
+      "Add documentation for the delivery route",
+      "Create a delivery route setup form in the courier app",
+      "Display delivery route details on the courier's dashboard",
+      "Notify the courier if the route is available"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:JPERF",
+       "similitud": 0.453
+      },
+      {
+       "proyecto": "Apache:SCB",
+       "similitud": 0.445
+      }
+     ],
+     "historia_es": "Como mensajero, quiero establecer una ruta de entrega para mi restaurante, para que pueda gestionar mi entrega de manera eficiente.",
+     "tareas_es": [
+      "Implementar una función de configuración de la ruta de entrega en la aplicación de mensajería",
+      "Almacenar los detalles de la ruta de entrega en la base de datos",
+      "Enviar una notificación al mensajero sobre la ruta de entrega",
+      "Añadir documentación para la ruta de entrega",
+      "Crear un formulario de configuración de la ruta de entrega en la aplicación de mensajería",
+      "Mostrar los detalles de la ruta de entrega en el panel de mensajero",
+      "Notificar al mensajero si la ruta está disponible"
+     ],
+     "horas_suma": 35.8,
+     "horas_tareas": [
+      6.78,
+      4.29,
+      2.33,
+      2.48,
+      5.56,
+      3.49,
+      1.82
+     ],
+     "horas_probables": [
+      4.0,
+      5.0,
+      2.25,
+      3.0,
+      5.5,
+      3.5,
+      3.0
+     ],
+     "horas_banda": [
+      [
+       1.6,
+       29.3
+      ],
+      [
+       1.0,
+       18.5
+      ],
+      [
+       0.5,
+       10.0
+      ],
+      [
+       0.6,
+       10.7
+      ],
+      [
+       1.3,
+       24.0
+      ],
+      [
+       0.8,
+       15.1
+      ],
+      [
+       0.4,
+       7.9
+      ]
+     ]
+    },
+    {
+     "historia": "As a customer, I want to save my supplies online, so that I can know my orders.",
+     "votos": 1,
+     "relevancia": 0.434,
+     "tareas": [
+      "Store supplies in the customer's profile",
+      "Send a confirmation email to the customer when supplies are available",
+      "Store supplies in the database",
+      "Display supplies on the customer's dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:UPM",
+       "similitud": 0.498
+      },
+      {
+       "proyecto": "Apache:TOMEE",
+       "similitud": 0.474
+      }
+     ],
+     "historia_es": "Como cliente, quiero guardar mis suministros en línea, para que pueda conocer mis pedidos.",
+     "tareas_es": [
+      "Almacenar suministros en el perfil del cliente",
+      "Enviar un correo electrónico de confirmación al cliente cuando haya suministros disponibles",
+      "Almacenar suministros en la base de datos",
+      "Mostrar los suministros en el panel del cliente"
+     ],
+     "horas_suma": 21.5,
+     "horas_tareas": [
+      3.27,
+      3.07,
+      4.14,
+      4.42
+     ],
+     "horas_probables": [
+      3.5,
+      2.25,
+      5.0,
+      4.5
+     ],
+     "horas_banda": [
+      [
+       0.8,
+       14.1
+      ],
+      [
+       0.7,
+       13.2
+      ],
+      [
+       1.0,
+       17.9
+      ],
+      [
+       1.0,
+       19.1
+      ]
+     ]
+    },
+    {
+     "historia": "As a restaurant owner, I want to manage multiple tables of the menu items, so that I can offer different delivery orders to the restaurant.",
+     "votos": 1,
+     "relevancia": 0.536,
+     "tareas": [
+      "Develop a menu items management interface",
+      "Store the menu items in the database",
+      "Add tables for the menu items",
+      "Store the tables in the database",
+      "Display the tables on the restaurant dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:UPM",
+       "similitud": 0.465
+      },
+      {
+       "proyecto": "Apache:CLK",
+       "similitud": 0.463
+      }
+     ],
+     "historia_es": "Como propietario de un restaurante, quiero gestionar múltiples mesas de los elementos del menú, para que pueda ofrecer diferentes pedidos de entrega al restaurante.",
+     "tareas_es": [
+      "Desarrollar una interfaz de gestión de elementos de menú",
+      "Almacenar los elementos del menú en la base de datos",
+      "Añadir tablas para los elementos del menú",
+      "Almacenar las tablas en la base de datos",
+      "Mostrar las mesas en el panel del restaurante"
+     ],
+     "horas_suma": 31.6,
+     "horas_tareas": [
+      7.57,
+      4.15,
+      3.32,
+      4.01,
+      3.66
+     ],
+     "horas_probables": [
+      8.0,
+      4.0,
+      1.5,
+      4.0,
+      3.5
+     ],
+     "horas_banda": [
+      [
+       1.8,
+       32.7
+      ],
+      [
+       1.0,
+       17.9
+      ],
+      [
+       0.8,
+       14.3
+      ],
+      [
+       0.9,
+       17.3
+      ],
+      [
+       0.8,
+       15.8
+      ]
+     ]
+    },
+    {
+     "historia": "As an operations manager, I want to monitor the delivery location of orders, so that I can optimize delivery.",
+     "votos": 2,
+     "relevancia": 0.439,
+     "tareas": [
+      "Store delivery location data in the database",
+      "Display delivery location on the order dashboard",
+      "Add documentation for the delivery location of orders",
+      "Store order location data in the database"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:ENTMQMAAS",
+       "similitud": 0.473
+      },
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.462
+      }
+     ],
+     "historia_es": "Como gerente de operaciones, quiero monitorear la ubicación de entrega de pedidos, para que pueda optimizar la entrega.",
+     "tareas_es": [
+      "Almacenar los datos de la ubicación de la entrega en la base de datos",
+      "Mostrar la ubicación de la entrega en el panel de pedidos",
+      "Añadir documentación para el lugar de entrega de los pedidos",
+      "Almacenar los datos de ubicación del pedido en la base de datos"
+     ],
+     "horas_suma": 21.9,
+     "horas_tareas": [
+      4.04,
+      2.06,
+      1.94,
+      3.76
+     ],
+     "horas_probables": [
+      3.0,
+      2.0,
+      4.0,
+      2.25
+     ],
+     "horas_banda": [
+      [
+       0.9,
+       17.4
+      ],
+      [
+       0.5,
+       8.9
+      ],
+      [
+       0.5,
+       8.4
+      ],
+      [
+       0.9,
+       16.2
+      ]
+     ]
+    },
+    {
+     "historia": "As a customer, I want to receive notifications when the order is ready, so that I can plan my schedule.",
+     "votos": 3,
+     "relevancia": 0.448,
+     "tareas": [
+      "Implement a notification system in the customer dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.58
+      },
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.46
+      }
+     ],
+     "historia_es": "Como cliente, quiero recibir notificaciones cuando el pedido esté listo, para poder planificar mi horario.",
+     "tareas_es": [
+      "Implementar un sistema de notificación en el panel de clientes"
+     ],
+     "horas_suma": 12.3,
+     "horas_tareas": [
+      9.42
+     ],
+     "horas_probables": [
+      5.0
+     ],
+     "horas_banda": [
+      [
+       2.2,
+       40.7
+      ]
+     ]
+    },
+    {
+     "historia": "As a courier, I want to track the delivery time spent on pickup, so that I can plan my route.",
+     "votos": 2,
+     "relevancia": 0.508,
+     "tareas": [
+      "Display the delivery time spent on the courier's app"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:SCB",
+       "similitud": 0.4
+      },
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.386
+      }
+     ],
+     "historia_es": "Como mensajero, quiero rastrear el tiempo de entrega que paso en la recogida, para poder planificar mi ruta.",
+     "tareas_es": [
+      "Mostrar el tiempo de entrega empleado en la aplicación del mensajero"
+     ],
+     "horas_suma": 4.4,
+     "horas_tareas": [
+      3.6
+     ],
+     "horas_probables": [
+      3.5
+     ],
+     "horas_banda": [
+      [
+       0.8,
+       15.5
+      ]
+     ]
+    },
+    {
+     "historia": "As a courier, I want to set up a delivery route, so that I can manage the deliveries more efficiently.",
+     "votos": 3,
+     "relevancia": 0.539,
+     "tareas": [
+      "Create a route scheduling feature in the courier app",
+      "Store route details in the database"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:JAMES",
+       "similitud": 0.476
+      },
+      {
+       "proyecto": "Apache:SCB",
+       "similitud": 0.462
+      }
+     ],
+     "historia_es": "Como mensajero, quiero establecer una ruta de entrega, para que pueda gestionar las entregas de manera más eficiente.",
+     "tareas_es": [
+      "Crear una función de programación de rutas en la aplicación de mensajería",
+      "Almacenar los detalles de la ruta en la base de datos"
+     ],
+     "horas_suma": 13.5,
+     "horas_tareas": [
+      6.75,
+      3.78
+     ],
+     "horas_probables": [
+      4.0,
+      5.0
+     ],
+     "horas_banda": [
+      [
+       1.6,
+       29.1
+      ],
+      [
+       0.9,
+       16.3
+      ]
+     ]
+    },
+    {
+     "historia": "As an operations manager, I want to monitor the delivery status of orders, so that I can ensure timely delivery.",
+     "votos": 2,
+     "relevancia": 0.365,
+     "tareas": [
+      "Add ability to monitor the delivery status of orders",
+      "Store order status in the database",
+      "Display order status on the system dashboard",
+      "Notify the warehouse manager of the order status"
+     ],
+     "origen": [
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.515
+      },
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.48
+      }
+     ],
+     "historia_es": "Como gerente de operaciones, quiero supervisar el estado de entrega de los pedidos, para que pueda asegurar la entrega oportuna.",
+     "tareas_es": [
+      "Añadir capacidad para supervisar el estado de entrega de los pedidos",
+      "Almacenar el estado del pedido en la base de datos",
+      "Mostrar el estado del pedido en el panel del sistema",
+      "Notificar al almacén gerente de operaciones el estado del pedido"
+     ],
+     "horas_suma": 23.9,
+     "horas_tareas": [
+      4.82,
+      2.98,
+      2.7,
+      2.27
+     ],
+     "horas_probables": [
+      5.0,
+      2.0,
+      3.0,
+      2.25
+     ],
+     "horas_banda": [
+      [
+       1.1,
+       20.8
+      ],
+      [
+       0.7,
+       12.9
+      ],
+      [
+       0.6,
+       11.6
+      ],
+      [
+       0.5,
+       9.8
+      ]
+     ]
+    },
+    {
+     "historia": "As a courier, I want to select a pick-in order for a delivery, so that I can choose the best option for the delivery.",
+     "votos": 1,
+     "relevancia": 0.522,
+     "tareas": [
+      "Store pick-in delivery details in the database",
+      "Add a pick-in order to the delivery page"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:STRM",
+       "similitud": 0.48
+      },
+      {
+       "proyecto": "Apache:JAMES",
+       "similitud": 0.48
+      }
+     ],
+     "historia_es": "Como mensajero, quiero seleccionar un pedido pick-in para una entrega, de modo que pueda elegir la mejor opción para la entrega.",
+     "tareas_es": [
+      "Almacenar los detalles de entrega de pick-in en la base de datos",
+      "Añadir un pedido pick-in a la página de entrega"
+     ],
+     "horas_suma": 9.8,
+     "horas_tareas": [
+      3.93,
+      2.89
+     ],
+     "horas_probables": [
+      4.0,
+      2.0
+     ],
+     "horas_banda": [
+      [
+       0.9,
+       16.9
+      ],
+      [
+       0.7,
+       12.5
+      ]
+     ]
+    },
+    {
+     "historia": "As a restaurant owner, I want to manage delivery times, so that I can optimize availability.",
+     "votos": 2,
+     "relevancia": 0.511,
+     "tareas": [
+      "Store delivery times in the database"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:SAMZA",
+       "similitud": 0.433
+      },
+      {
+       "proyecto": "Apache:INLONG",
+       "similitud": 0.419
+      }
+     ],
+     "historia_es": "Como propietario de un restaurante, quiero gestionar los tiempos de entrega, para que pueda optimizar la disponibilidad.",
+     "tareas_es": [
+      "Almacenar los tiempos de entrega en la base de datos"
+     ],
+     "horas_suma": 5.4,
+     "horas_tareas": [
+      3.45
+     ],
+     "horas_probables": [
+      3.0
+     ],
+     "horas_banda": [
+      [
+       0.8,
+       14.9
+      ]
+     ]
+    },
+    {
+     "historia": "As a restaurant owner, I want to manage the inventory of daily orders, so that I can make informed decisions.",
+     "votos": 1,
+     "relevancia": 0.419,
+     "tareas": [
+      "Develop a daily order management interface",
+      "Store daily order details in the database",
+      "Display daily order details on the restaurant owner dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:HAWKULAR",
+       "similitud": 0.496
+      },
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.494
+      }
+     ],
+     "historia_es": "Como propietario de un restaurante, quiero gestionar el inventario de pedidos diarios, para que pueda tomar decisiones informadas.",
+     "tareas_es": [
+      "Desarrollar una interfaz diaria de gestión de pedidos",
+      "Almacenar detalles de pedidos diarios en la base de datos",
+      "Mostrar detalles de pedido diario en el panel del propietario del restaurante"
+     ],
+     "horas_suma": 16.6,
+     "horas_tareas": [
+      6.99,
+      3.95,
+      3.07
+     ],
+     "horas_probables": [
+      2.5,
+      2.5,
+      2.5
+     ],
+     "horas_banda": [
+      [
+       1.6,
+       30.1
+      ],
+      [
+       0.9,
+       17.0
+      ],
+      [
+       0.7,
+       13.2
+      ]
+     ]
+    },
+    {
+     "historia": "As a restaurant owner, I want to know when the order is due, so that I can plan accordingly.",
+     "votos": 2,
+     "relevancia": 0.447,
+     "tareas": [
+      "When the ordering is due to an additional order, I would like to be able to pick which orders are due to the certain order"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.462
+      },
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.445
+      }
+     ],
+     "historia_es": "Como propietario de un restaurante, quiero saber cuándo es el momento de el pedido, para que pueda planificar en consecuencia.",
+     "tareas_es": [
+      "Cuando el pedido se debe a un pedido adicional, me gustaría poder elegir qué pedidos se deben a el pedido determinada"
+     ],
+     "horas_suma": 4.5,
+     "horas_tareas": [
+      3.09
+     ],
+     "horas_probables": [
+      3.0
+     ],
+     "horas_banda": [
+      [
+       0.7,
+       13.4
+      ]
+     ]
+    }
+   ],
+   "tiempos": {
+    "recuperar_arriba": 0.009,
+    "generar_historias": 3.961,
+    "deduplicar_historias": 0.187,
+    "recuperar_abajo": 0.015,
+    "generar_tareas": 5.642,
+    "deduplicar_tareas": 0.091,
+    "reasignar_tareas": 0.045,
+    "traducir": 0.504,
+    "total": 10.453
+   },
+   "vecinos_proyecto": [
+    {
+     "proyecto": "RedHat:CS",
+     "similitud": 0.428
+    },
+    {
+     "proyecto": "RedHat:FH",
+     "similitud": 0.422
+    }
+   ],
+   "n_banco": 48,
+   "n_tareas": 35,
+   "estimacion": {
+    "disponible": true,
+    "total_horas": 201.2,
+    "banda_baja": 73.1,
+    "banda_alta": 398.0,
+    "nivel": 0.8,
+    "tareas": 35,
+    "cerradas": 0,
+    "por_tarea": true,
+    "factor_estilo": 0.7273,
+    "fuente_estilo": "C:\\Users\\User\\Documents\\Programacao\\Agix-Dataset\\results\\estilo_total\\meta.json",
+    "dias_persona": 25.1,
+    "segundos": 2.91,
+    "seg_total": 0.83,
+    "seg_tareas": 2.07
+   }
+  }
+ }
+]

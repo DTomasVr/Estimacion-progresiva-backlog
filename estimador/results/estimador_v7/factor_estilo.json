@@ -1,0 +1,55 @@
+{
+ "v6": {
+  "factor": [
+   0.5843371686988506,
+   {
+    "prueba SiP": 0.519337947343998,
+    "externo no Apache": 0.6574715529054536
+   }
+  ],
+  "sesgo_original": [
+   0.9134739172529667,
+   {
+    "prueba SiP": 0.8455875171140624,
+    "externo no Apache": 0.986810449082022
+   }
+  ]
+ },
+ "v7": {
+  "factor": [
+   0.5490915685078592,
+   {
+    "prueba SiP": 0.49370950039457195,
+    "externo no Apache": 0.610686143097229
+   }
+  ],
+  "sesgo_original": [
+   0.8878876616129848,
+   {
+    "prueba SiP": 0.8799068122887379,
+    "externo no Apache": 0.8959408980980614
+   }
+  ]
+ },
+ "v7 int8 podado": {
+  "factor": [
+   0.5726651072633168,
+   {
+    "prueba SiP": 0.5339863169628112,
+    "externo no Apache": 0.6141455589015503
+   }
+  ],
+  "sesgo_original": [
+   0.88337521255851,
+   {
+    "prueba SiP": 0.8674182156713098,
+    "externo no Apache": 0.8996257538341701
+   }
+  ]
+ },
+ "guardado_en_v7": {
+  "antes": 0.8313,
+  "ahora": 0.8313,
+  "motivo": "revertido: el procedimiento de E74 no reproduce el valor del v6 (0,584 contra 0,831), no sirve para recalibrar"
+ }
+}

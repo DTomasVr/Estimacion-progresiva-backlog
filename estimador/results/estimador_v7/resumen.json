@@ -1,0 +1,11 @@
+{
+ "regresion_v6_desvio_max": 0.0,
+ "generador_mediana_v7_sobre_v6": 0.8289990612815437,
+ "generador_mediana_v7int8_sobre_v6": 0.805769844185614,
+ "generador_valor_probable_igual_v6_v7": 0.7286432160804021,
+ "total_v6": 26.988329544345564,
+ "total_v7": 26.988329544345564,
+ "vocab_produccion": 90559,
+ "mb_codificador": 397.280962,
+ "ms_por_tarea_cpu_int8": 18.787099680251625
+}

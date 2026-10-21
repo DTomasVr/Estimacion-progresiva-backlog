@@ -166,19 +166,29 @@ class EstimadorV6:
                            * k / (k + LAMBDA_PERSONA))
         return off
 
+    def _canales(self, textos, Xd, Ms):
+        """Las entradas del apilado de la cabeza A.
+
+        v6: bolsa, ridge, svr y los dos codificadores ajustados. v7: solo los
+        tres primeros -E120 midio que los ajustados no aportan fuera de pliegue-
+        y entonces no se carga ningun codificador mas que el base.
+        """
+        Z = [np.mean([m.predict(Xd) for m in self.p["bolsa"]], 0),
+             self.p["ridge"].predict(Ms), self.p["svr"].predict(Ms)]
+        if "hgb_ajustado" in self.p:
+            q = ["query: " + t for t in textos]
+            aj = self._cod(self.p["codificador_ajustado"], "_aj").encode(
+                q, normalize_embeddings=False, show_progress_bar=False)
+            ac = self._cod(self.p["codificador_ajustado_C"], "_ac").encode(
+                q, normalize_embeddings=False, show_progress_bar=False)
+            Z += [self.p["hgb_ajustado"].predict(np.asarray(aj, np.float32)),
+                  self.p["hgb_ajustado_C"].predict(np.asarray(ac, np.float32))]
+        return np.column_stack(Z)
+
     def _apilado_crudo(self, textos):
         """Las horas del apilado, sin factor de estilo ni rejilla."""
         V, Xd, SV, Ms = self._vistas(textos)
-        aj = self._cod(self.p["codificador_ajustado"], "_aj").encode(
-            ["query: " + t for t in textos], normalize_embeddings=False,
-            show_progress_bar=False).astype(np.float32)
-        ac = self._cod(self.p["codificador_ajustado_C"], "_ac").encode(
-            ["query: " + t for t in textos], normalize_embeddings=False,
-            show_progress_bar=False).astype(np.float32)
-        Z = np.column_stack([np.mean([m.predict(Xd) for m in self.p["bolsa"]], 0),
-                             self.p["ridge"].predict(Ms), self.p["svr"].predict(Ms),
-                             self.p["hgb_ajustado"].predict(aj),
-                             self.p["hgb_ajustado_C"].predict(ac)])
+        Z = self._canales(textos, Xd, Ms)
         return np.exp(self.p["apilado"].predict(Z))
 
     def estimar_tareas(self, textos, estilo="persona", personas=None,
@@ -215,16 +225,7 @@ class EstimadorV6:
         """
         textos = list(textos)
         V, Xd, SV, Ms = self._vistas(textos)
-        aj = self._cod(self.p["codificador_ajustado"], "_aj").encode(
-            ["query: " + t for t in textos], normalize_embeddings=False,
-            show_progress_bar=False).astype(np.float32)
-        ac = self._cod(self.p["codificador_ajustado_C"], "_ac").encode(
-            ["query: " + t for t in textos], normalize_embeddings=False,
-            show_progress_bar=False).astype(np.float32)
-        Z = np.column_stack([np.mean([m.predict(Xd) for m in self.p["bolsa"]], 0),
-                             self.p["ridge"].predict(Ms), self.p["svr"].predict(Ms),
-                             self.p["hgb_ajustado"].predict(aj),
-                             self.p["hgb_ajustado_C"].predict(ac)])
+        Z = self._canales(textos, Xd, Ms)
         fe = self.p["factor_estilo"] if estilo == "generador" else 1.0
         h = np.exp(self.p["apilado"].predict(Z) + np.log(fe))
         # el desplazamiento de quien hara la tarea, si se sabe

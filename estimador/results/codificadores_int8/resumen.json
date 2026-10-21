@@ -1,0 +1,13 @@
+{
+ "n": 4225,
+ "desvio_horas_mediano": 0.05641939547316088,
+ "desvio_horas_p99": 0.24796482716107804,
+ "valor_probable_identico": 0.5131360946745562,
+ "mb_int8": {
+  "e5_base": 560.582337,
+  "e5_ajustado": 560.582337,
+  "e5_ajustado_C": 560.582337
+ },
+ "seg_int8_cpu": 260.58062958717346,
+ "ms_por_tarea_int8_cpu": 61.675888659686024
+}

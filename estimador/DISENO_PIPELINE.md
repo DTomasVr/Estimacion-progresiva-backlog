@@ -155,13 +155,13 @@ flowchart TB
     subgraph T2["TUBERÍA 2 · ESTIMACIÓN DEL ESFUERZO"]
         direction TB
         C1["Codificar cada tarea<br/>e5-large congelado 1024d<br/>+ TF-IDF caracteres y palabras + SVD"]
-        AN["Analogía: 25 vecinos más próximos<br/>moda sobre la rejilla de 41 valores"]
+        AN["Analogía: 25 vecinos más próximos<br/>ajuste a la rejilla de 30 valores"]
         CA[["Cabeza A · MEDIANA<br/>apilado RidgeCV de 5 canales<br/>× factor de estilo 0,831"]]
         CB[["Cabeza B · MEDIA<br/>apilado Poisson de 4 canales<br/>× factor de estilo 0,727"]]
         SU["Sumar las medias"]
         AC{"¿el equipo ya cerró<br/>alguna tarea?"}
         AK["ANCLAR: cociente de sumas<br/>contraído con James-Stein k/(k+12)"]
-        IV["Intervalo al 80 %<br/>cuantiles de los residuos: ×0,36 a ×2,01"]
+        IV["Intervalo al 80 %<br/>solo sobre lo abierto, por k y tramo"]
         E3[("16.648 vectores<br/>de entrenamiento")]
         C1 --> AN
         C1 --> CA
@@ -812,7 +812,7 @@ flowchart TB
     CER -->|no| TOT["total en frio"]
     CER -->|si, k tareas| ANC["anclaje: cociente de sumas<br/>contraido k/(k+12)"]
     ANC --> TOT
-    TOT --> INT["intervalo al 80 %<br/>x0,36 a x2,01"]
+    TOT --> INT["intervalo al 80 %<br/>x10,6 en frio, x2,6 con 10 cerradas"]
     INT --> OUT2(["total_horas · banda_baja · banda_alta"])
 
     style CA fill:#f2e9d5,stroke:#7d5a17
@@ -1023,7 +1023,7 @@ sequenceDiagram
     W->>A: estimar_tareas(titulos)
     A-->>W: horas, valor_probable y banda por tarea
     W->>A: estimar_proyecto(titulos)
-    A-->>W: total en frío + intervalo al 80 % (x0,36 a x2,01)
+    A-->>W: total en frío + intervalo al 80 % (se estrecha al cerrar tareas)
     W-->>U: Plan PROVISIONAL, marcado como tal
 
     loop Según avanza el proyecto
@@ -1134,25 +1134,48 @@ El canal lineal disperso es el que menos se espera y sí aporta: recoge señal l
 ### B.5.4 · Analogía y rejilla
 
 Para cada tarea se buscan los **25 vecinos más próximos** por coseno entre los 16.648 vectores
-de entrenamiento (guardados en `float16`) y se toma la **mediana** de sus horas reales. Ese
-número se **engancha a la rejilla** de los 41 valores que aparecen al menos 60 veces en el
-entrenamiento:
+de entrenamiento (guardados en `float16`) y se toma la **mediana** de sus horas reales.
+
+El objetivo está fuertemente cuantizado: la gente registra 1 h, 2 h, medio día. **Diez valores
+cubren el 46,8 % del corpus.** Un modelo de regresión devuelve 1,83 h y no acierta ninguno de
+los valores que la gente escribe de verdad, porque la mediana condicional cae *entre* dientes
+del peine.
+
+Por eso el `valor_probable` se **engancha siempre** a la rejilla de los **30 valores más
+frecuentes**:
 
 ```
-0,083 0,1 0,167 0,25 0,333 0,417 0,5 0,583 0,667 0,7 0,75 0,833 1 1,167 1,25 1,333
-1,5 1,75 2 2,25 2,5 2,75 3 3,5 4 4,5 5 5,5 6 6,5 7 8 9 10 11 12 14 16 24 32 40
+0,083 0,167 0,25 0,33 0,333 0,5 0,667 0,75 0,833 1 1,25 1,5 1,75 2 2,25
+2,5 3 3,5 4 4,5 5 5,5 6 7 8 9 10 12 16 24
 ```
 
-El objetivo está fuertemente cuantizado: la gente registra 1 h, 2 h, medio día. Un modelo de
-regresión devuelve 1,83 h y no acierta ninguno de los valores que la gente escribe de verdad.
-Cuando los vecinos **están de acuerdo** —desviación de `log(horas)` entre ellos ≤ **1,524**, que
-cubre el **85,3 %** de las tareas (medido sin contar la propia tarea como vecina, que es lo que
-pasa en servicio)— se muestra el valor de la rejilla como `valor_probable`; si no, la predicción
-del apilado. El umbral se eligió maximizando el ±25 % en validación.
+Dos decisiones, las dos medidas:
+
+1. **Se ajusta siempre**, también cuando los vecinos no concuerdan y se cae a la predicción del
+   apilado. Antes solo se ajustaba cuando concordaban, y eso dejaba sin ajustar a la mayoría.
+2. **30 valores, no 41.** El umbral anterior (aparecer 60 veces) daba 41 valores y rendía medio
+   punto menos: 16,59 % contra 17,11 % de ±25 %.
+
+El umbral de acuerdo entre vecinos (**1,524**, que cubre el 85,3 % de las tareas) sigue
+decidiendo si el valor base es la analogía o el apilado, pero ya no decide si se ajusta.
+
+**Lo que gana ajustar**, sobre el bloque de prueba de 4.225 tareas:
+
+| | MdMRE | ±25 % | factor 2 | MAE | SA | Spearman |
+|---|---|---|---|---|---|---|
+| sin ajustar | 0,726 | 15,5 % | 0,403 | 5,11 | 0,0267 | 0,298 |
+| **ajustado** | 0,730 | **17,0 %** | **0,424** | 5,11 | 0,0271 | 0,297 |
+
+Sube el ±25 % y el factor 2 **sin mover el MAE, el SA ni el orden entre tareas**. No es un
+modelo mejor: es la regla de decisión correcta para la métrica que se reporta.
 
 ---
 
-## B.6 · Los tres mecanismos que usan información del proyecto
+## B.6 · Los mecanismos que usan información del proyecto
+
+> **Regla que atraviesa todo este apartado:** solo se usa información **del proyecto en curso**.
+> Nada de proyectos pasados, ni del equipo, ni de la organización. No es una simplificación: se
+> midió y **empeora** (ver B.11).
 
 ### B.6.1 · Anclaje con tareas cerradas — *el mecanismo más valioso del diseño*
 
@@ -1160,57 +1183,148 @@ Cuando el equipo ya cerró tareas, sus horas son **un dato**, no una estimación
 
 ```python
 k     = número de tareas cerradas
-off   = log( Σ horas_reales(cerradas) / Σ predicción(cerradas) ) × k / (k + 12)
+off   = log( Σ horas_reales(cerradas) / Σ predicción(cerradas) ) × k / (k + λ)
 total = Σ horas_reales(cerradas)  +  Σ predicción(abiertas) × exp(off)
 ```
 
-Tres decisiones aquí, y **las tres costaron encontrarlas**:
+Cuatro decisiones, y **las cuatro costaron encontrarlas**:
 
-1. **Cociente de sumas**, no mediana de cocientes. Si se estima con la mediana de
-   `log(real/predicho)` y el estimador predice la media, esa mediana es sistemáticamente
-   negativa. Anclando así, cuantas más tareas cerradas **peor**: con 20 el sesgo llegaba a
-   −45,7 %.
+1. **Cociente de sumas**, no mediana de cocientes. Se midió contra cuatro alternativas (media de
+   logs, mediana de logs, Huber, sumas recortadas) y gana en todo `k`, con ventaja creciente:
+   **54,8 % contra 43,1 %** de Huber en `k=20`. El motivo es explicable: ponderar por tamaño es
+   lo correcto cuando el objetivo es una **suma**, y los estimadores robustos tratan igual a
+   todas las tareas, tirando justo la información que decide el total.
 2. **Las cerradas se saben, no se estiman.** Sumar la predicción de lo ya cerrado es tirar
    información.
-3. **Contracción de James-Stein con λ = 12.** Con `k` pequeño el cociente es ruidoso. Se barrió
-   λ de 0 a 24: sin contracción el MdMRE con una tarea cerrada es **0,726** en vez de **0,347**.
+3. **Contracción de James-Stein**, porque con `k` pequeño el cociente es ruidoso.
+4. **λ es condicional**, y esto es lo que más fácil se implementa mal:
 
-**Efecto medido:**
+| situación | λ | por qué |
+|---|---|---|
+| sin estimación del usuario | **12** | el residuo tiene un 11 % de varianza entre proyectos que corregir |
+| con estimación del usuario | **96** | tras la estimación solo queda un **1,9 %**, así que el anclaje casi no tiene nada que corregir y con λ bajo su ruido pesa más que su señal |
 
-| tareas cerradas | orden de la escala (Spearman) | MdMRE | ±25 % | Wilcoxon vs frío |
-|---|---|---|---|---|
-| ninguna | 0,444 | 0,355 | 36,8 % | — |
-| 3 | **0,700** | 0,319 | 40,7 % | **p = 0,0003 (100 % de sorteos)** |
-| 5 | **0,769** | 0,292 | 43,2 % | **p < 0,0001 (100 %)** |
+Con λ=12 encima de la estimación se **pierden 4–5 puntos**; con λ=96 se ganan **+1,5 puntos de
+media**, y hasta **+3,1** con 20 cerradas.
 
-**Y no depende de que el equipo cierre al azar.** Usando el **orden real** de cierre de los 82
-proyectos que tienen fecha, el sesgo es −1,6 % (frente a −0,3 % del sorteo) y la exactitud
-*mejora*. El único escenario que rompería el anclaje —despachar sistemáticamente lo más corto
-primero, −80,5 % con tres cerradas— no ocurre en este corpus y **es observable en producción**.
+> **Error fácil de cometer, y caro:** si el desplazamiento se estima comparando el real de las
+> cerradas contra la predicción **en frío**, y luego se aplica sobre la predicción **corregida**
+> por la estimación, el resultado se hunde a 49–58 % frente al 68 % de no anclar. **El ancla hay
+> que estimarla contra la misma base sobre la que se va a aplicar.**
 
-### B.6.2 · Corrección de la estimación del usuario
+**Efecto medido sobre el total** (114 proyectos, sin estimación del usuario):
 
-Si el formulario pide una estimación, se corrige con un HGB de **Poisson** sobre
+| tareas cerradas | MdMRE | ±25 % | MAE (h) |
+|---|---|---|---|
+| ninguna | 0,355 | 36,8 % | 455 |
+| 3 | 0,319 | 40,7 % | 390 |
+| 5 | 0,292 | 43,2 % | 377 |
+| 10 | 0,260 | 48,4 % | 339 |
+| 20 | 0,228 | 53,3 % | 312 |
+
+**Y no depende de que el equipo cierre al azar.** Anclando en las tareas que de verdad se
+cerraron primero (58 proyectos con fecha de cierre completa), el rendimiento es **+0,1 puntos**
+frente al sorteo aleatorio. Lo medido al azar vale como medida de producción.
+
+### B.6.2 · Corrección de la estimación del usuario — *la palanca más grande*
+
+Si el planificador estima las tareas, se corrige con un HGB de **Poisson** sobre
 `[vector e5 | log(estimación) | log(predicción en frío)]`.
 
 **Tiene que ser el de Poisson.** El corrector de error cuadrático, que es el que sirve por
-tarea, **empeora** la estimación cruda del usuario a nivel de proyecto (sesgo −35,5 %). Sobre
-los 43 proyectos con estimación en al menos el 80 % de sus tareas, el ±25 % pasa de **44,2 %**
-en frío a **65,1 %**.
+tarea, **empeora** la estimación cruda del usuario a nivel de proyecto (sesgo −35,5 %).
 
-### B.6.3 · Intervalo del total
+**Dos condiciones de producto que hay que respetar:**
 
-Cuantiles empíricos de `log(real / estimado)` sobre los 114 proyectos de evaluación. Al 80 %:
-**×0,36 a ×2,01**.
+- **Hace falta ≥80 % del backlog estimado.** Estimar 1, 3 o 5 tareas no mueve el total, y
+  tampoco sirve elegirlas bien: ni un oráculo que elija sabiendo la respuesta pasa del 57 % de
+  la ganancia con cinco tareas. Si el usuario va a estimar pocas, que sean **las de más horas
+  previstas** (71 % de la ganancia con 20, contra 52 % al azar), pero sin prometer que con cinco
+  basta.
+- **Mejora el pronóstico de lo que FALTA**, no solo la aritmética de lo ya hecho. Es la única
+  palanca de la que esto se ha comprobado:
 
-> **Limitación conocida y deliberada:** el intervalo se calcula siempre con los residuos **en
-> frío**, aunque haya tareas cerradas. Es decir, **es conservador cuando hay anclaje**: la
-> estimación puntual mejora pero la banda no se estrecha. Recalibrar por `k` requeriría más
-> proyectos de los que hay.
+| con `k` cerradas | ±25 % de lo abierto, solo anclaje | **con estimación** |
+|---|---|---|
+| 3 | 39,8 % | **66,0 %** |
+| 5 | 40,7 % | **66,4 %** |
+| 10 | 44,6 % | **70,5 %** |
+| 20 | 49,8 % | **70,3 %** |
 
----
+Esas cifras llevan el control de contaminación de B.11: evaluadas solo sobre tareas limpias y
+con el corrector reentrenado solo con filas limpias.
 
-### B.6.4 · Enganche con el generador de backlog
+### B.6.3 · Intervalo del total — *se estrecha con el avance*
+
+La incertidumbre va **solo sobre lo que queda abierto**, porque las horas cerradas se saben:
+
+```python
+banda = Σ horas_reales(cerradas) + Σ predicción(abiertas) × exp(off) × exp([q_lo, q_hi])
+```
+
+Los cuantiles `q_lo` y `q_hi` se calibran **al número de tareas cerradas y al tramo de tamaño**
+del proyecto, con el **cuantil conforme** (el estadístico de orden ⌈(m+1)(1−α)⌉, no el cuantil
+muestral) y **contrayendo el cuantil del tramo hacia el global** con peso `n/(n+M)`, porque
+calibrar cada tramo por separado con pocos datos cuesta anchura.
+
+| tareas cerradas | anchura al 80 % |
+|---|---|
+| 1 | ×5,40 |
+| 2 | ×5,02 |
+| 3 | ×4,22 |
+| 5 | ×3,65 |
+| 10 | ×2,56 |
+| 20 | ×2,14 |
+
+Antes era **×10,61 fija**, no se estrechaba nunca, y con 20 cerradas cubría el 98 % prometiendo
+el 80 %: anchura tirada.
+
+> **Al medir bandas, igualar la cobertura REAL.** Es una trampa que mordió tres veces en este
+> proyecto: una banda que cubre el 75 % parece más estrecha que una honesta del 80 %. El
+> protocolo correcto es ajustar el nivel nominal de cada método hasta que la cobertura real sea
+> 0,800 exacta, y solo entonces comparar anchuras.
+
+### B.6.4 · Ajuste por persona — *solo en equipo, solo por tarea*
+
+Opcional. Si se sabe quién hará la tarea y esa persona tiene cerradas **en este mismo
+proyecto**, se aplica su propio desplazamiento, con el mismo mecanismo y λ=8.
+
+La descomposición del residuo en tres niveles lo justifica:
+
+| | |
+|---|---|
+| entre **proyectos** | 12,4 % |
+| entre **desarrolladores** del mismo proyecto | **9,8 %** |
+| dentro del desarrollador | 77,8 % |
+
+Mejora el orden (Spearman 0,317 → 0,358), el SA (0,026 → 0,036) y el MAE (5,06 → 5,00 h).
+
+**Dos límites que hay que respetar al implementar:**
+
+- **No entra en el total.** Al sumar el proyecto entero los desplazamientos individuales se
+  cancelan y empeoran el pronóstico de lo abierto en 1,1 puntos.
+- **Solo historial del mismo proyecto.** El desplazamiento de una misma persona correlaciona
+  **+0,089** entre sus proyectos; dos personas **distintas** del **mismo** proyecto, **+0,164**.
+  El proyecto une más que la persona.
+
+En un proyecto de una sola persona este ajuste y el del proyecto son el mismo número: es una
+función de equipo.
+
+### B.6.5 · Tira de probabilidad — *salida opcional del detalle*
+
+`tira_probabilidad(textos)` devuelve la región de **densidad predictiva máxima**: los tramos de
+horas donde se concentra el 80 % de la probabilidad, cada uno con su peso.
+
+Es un **68 % más estrecha en medida** que la banda (×7,09 contra ×32) y reparte mucho mejor la
+cobertura por tamaño de tarea (0,45–0,86 contra 0,25–1,00). Pero sale **fragmentada** —43 trozos
+de mediana— y su **recorrido** es mayor, porque se queda con los dientes del peine y descarta
+los huecos.
+
+**No sustituye a la banda.** Para un «entre X e Y» la banda sigue siendo lo correcto; la tira es
+la vista de detalle. Y recortarla a cinco trozos o menos **rompe la cobertura prometida**: es una
+decisión de presentación legítima, pero hay que avisarlo.
+
+### B.6.6 · Enganche con el generador de backlog
 
 El estimador no recibe texto de Jira en produccion: recibe **lo que escribe el generador
 de historias y tareas** de Agix. Son dos repositorios distintos y los une
@@ -1223,9 +1337,30 @@ Dos detalles del enganche que no son opcionales:
 al final, asi que el adaptador usa `h["tareas"]` y nunca `h["tareas_es"]`. Pasarle el
 espanol seria salirse del contrato sin que nada fallase: solo acertaria menos.
 
-**2 · El factor de estilo del total NO es el de la mediana (E74).** La cabeza A
-multiplica por 0,8313 para compensar que el texto del generador es mas escueto que un
-titulo de Jira. La cabeza B no aplica nada, y el factor de la cabeza A no vale: son dos
+**2 · El factor de estilo es CONDICIONAL al origen del texto, y cada cabeza tiene el
+suyo.** Se midió sobre el texto del generador, que es más escueto que un título de Jira.
+Sobre texto escrito por una persona el sesgo medido era ×1,002, o sea ninguno: aplicarlo ahí
+solo encoge la predicción.
+
+```python
+est.estimar_tareas(textos, estilo="persona")     # por omisión: NO aplica factor
+est.estimar_tareas(textos, estilo="generador")   # aplica 0,8313
+```
+
+Durante un tiempo se aplicó siempre, y el artefacto mostraba un **31 % menos de horas** de las
+reales (sesgo ×0,820 en lugar de 1,0). Ninguna métrica del proyecto lo veía, porque todas se
+calculan sobre un modelo limpio y no sobre el paquete. Corregido:
+
+| 2.000 tareas reales de prueba | ±25 % | factor 2 | MAE | SA | sesgo |
+|---|---|---|---|---|---|
+| aplicando siempre el factor | 16,9 % | 45,5 % | 5,19 | 0,0625 | ×0,820 |
+| **condicional (lo correcto)** | **17,5 %** | **49,0 %** | **5,15** | **0,0700** | **×1,000** |
+
+> Dejar el sesgo dentro daba **más** ±25 % (18,9 % contra 17,5 %), porque la métrica premia
+> subestimar. Se eligió la salida insesgada: para una herramienta de planificación, mostrar un
+> 17 % menos de horas haría que los equipos planificaran corto de forma sistemática.
+
+**El de la cabeza B es otro (E74).** La cabeza B no aplica nada, y el factor de la cabeza A no vale: son dos
 modelos con perdidas distintas. Medido sobre las 800 tareas reales ya reescritas al
 estilo del generador, todas fuera del entrenamiento, con cociente de sumas:
 
@@ -1248,25 +1383,50 @@ de James-Stein hace que no se cancele solo.
 ```python
 est = EstimadorV6()                      # carga models/estimador_agix_v6.joblib
 
-est.estimar_tareas(textos)               # -> DataFrame
+est.estimar_tareas(textos,               # -> DataFrame
+                   estilo="persona",     #   o "generador" si viene de la tubería 1
+                   personas=None,        #   quién hará cada tarea; None donde no se sepa
+                   historial=None,       #   {persona: [(texto, horas_reales), ...]}
+                   estimaciones=None)    #   lo que estimó el usuario; None donde no
 #   texto · horas · valor_probable · banda_baja · banda_alta
+#   ajuste_persona · con_estimacion
 
 est.estimar_proyecto(textos,             # -> dict
                      cerradas=None,      #   horas REALES ya registradas; None donde no
                      estimaciones=None,  #   lo que estimó el usuario; None donde no
                      nivel=0.8)
-#   total_horas · banda_baja · banda_alta · nivel · tareas · cerradas
+#   total_horas · horas_cerradas · horas_abiertas
+#   banda_baja · banda_alta · nivel · tareas · cerradas
+#   con_estimacion · lambda_usada · tramo_banda · k_banda · contraccion_tramo
+
+est.tira_probabilidad(textos,            # -> lista por tarea de (desde_h, hasta_h, prob)
+                      nivel=None, max_trozos=None)
 ```
 
 Reglas del contrato, que importan:
 
-- **El texto se espera en inglés** (`idioma_esperado`), solo el **título** (`vista`), sin
-  descripción. El generador de Agix ya produce inglés internamente y traduce solo para mostrar.
-- `cerradas` y `estimaciones` son listas **de la misma longitud que `textos`**, con `None` en
-  las posiciones que no aplican.
-- `horas` es la mediana; `valor_probable` es un valor de la rejilla cuando los vecinos están de
-  acuerdo. **Ninguna de las dos es para sumar**: el total sale de `estimar_proyecto`, que usa la
-  otra cabeza.
+- **El texto se espera en inglés**, solo el **título**, sin descripción. El generador de Agix ya
+  produce inglés internamente y traduce solo para mostrar. Pasarle el español no falla: solo
+  acierta menos.
+- `cerradas`, `estimaciones` y `personas` son listas **de la misma longitud que `textos`**, con
+  `None` en las posiciones que no aplican.
+- `horas` es la mediana; `valor_probable` es un valor de la rejilla. **Ninguna de las dos es
+  para sumar**: el total sale de `estimar_proyecto`, que usa la otra cabeza.
+- `historial` solo debe traer tareas **del mismo proyecto** (ver B.6.4).
+- Los campos de diagnóstico (`lambda_usada`, `tramo_banda`, `k_banda`,
+  `contraccion_tramo`, `ajuste_persona`, `con_estimacion`) existen para que la interfaz pueda
+  explicar **de dónde sale** cada número, que es un criterio de aceptación de las historias de
+  usuario.
+
+### Lo que la interfaz debería mostrar
+
+| situación | qué enseñar |
+|---|---|
+| backlog recién creado | total con su banda, marcado como provisional |
+| el usuario estima tareas | indicar qué % lleva estimado y que el total mejora al completar |
+| hay tareas cerradas | cuántas anclan el total, y que la banda se estrecha por eso |
+| detalle de una tarea | horas, valor probable, banda, y opcionalmente la tira |
+| tarea asignada | el factor de la persona y cuántas cerradas suyas lo sostienen |
 
 ---
 
@@ -1335,38 +1495,62 @@ las incidencias: ninguno acertó la clave exacta en 450 intentos.
 
 114 proyectos, **todos predichos como si fueran nuevos**:
 
-| | MAE (h) | RMSE | MdMRE | R²log | ±25 % | factor 2 | sesgo |
-|---|---|---|---|---|---|---|---|
-| constante (no lee el texto) | 886 | 2046 | 0,694 | 0,364 | 8,8 % | 24,6 % | −203 % |
-| **en frío** | **455** | 1090 | **0,355** | **0,817** | **36,8 %** | **72,8 %** | −0,3 % |
-| **con 5 tareas cerradas** | **379** | 991 | **0,291** | **0,911** | **43,7 %** | **85,5 %** | +0,2 % |
-| con 20 tareas cerradas | 291 | 795 | 0,219 | 0,908 | 54,3 % | 87,5 % | +1,5 % |
+| | MdMRE | ±25 % | factor 2 | MAE (h) |
+|---|---|---|---|---|
+| **en frío** | **0,355** | **36,8 %** | 72,8 % | 455 |
+| con 3 tareas cerradas | 0,319 | 40,7 % | 80,8 % | 390 |
+| con 5 tareas cerradas | 0,292 | 43,2 % | 84,4 % | 377 |
+| con 10 tareas cerradas | 0,260 | 48,4 % | 87,4 % | 339 |
+| con 20 tareas cerradas | 0,228 | 53,3 % | 87,2 % | 312 |
 
-### Por tarea — prueba fija, 4.225 tareas
+**Con estimación del usuario** (43 proyectos que la traen en ≥80 % de sus tareas):
 
-| MAE (h) | SA | Δ de Glass | ζ | R²log | ±25 % | factor 2 | Spearman |
-|---|---|---|---|---|---|---|---|
-| 4,91 | 0,432 | 0,204 | 119 % | 0,202 | 16,1 % | 44,4 % | 0,421 |
+| | ±25 % |
+|---|---|
+| en frío | 46,3 % |
+| el usuario estima **todo** el backlog | 73,2 % |
+| **+ 10 cerradas con λ=96** | **87,4 %** |
 
-### Lo que gana la suma (E73)
+> **Cuidado con el 87,4 %.** Necesita **tres condiciones a la vez**: que el proyecto tenga
+> estimación del usuario, que esté estimado *todo* el backlog, y que además haya 10 tareas
+> cerradas. No es lo que da el sistema a un proyecto nuevo. La cifra de titular es **36,8 % en
+> frío**, subiendo a **53,3 % con 20 cerradas**.
+
+### Por tarea — bloque de prueba, 4.225 tareas
+
+| | MdMRE | ±25 % | MAE (h) |
+|---|---|---|---|
+| línea base (mediana por proyecto) | 0,727 | 16,4 % | 5,26 |
+| Deep-SE (LSTM) | 0,713 | 16,8 % | 5,19 |
+| GPT2SP (GPT-2 ajustado) | 0,680 | 16,9 % | 5,05 |
+| **nuestro, ajustado a la rejilla** | 0,730 | **17,0 %** | 5,11 |
+| *una constante de 2,45 h* | *0,741* | *17,8 %* | *5,33* |
+
+Dos lecturas, y las dos hay que darlas:
+
+**Estamos por encima de lo publicado**, y con un protocolo **más estricto**: nuestras
+predicciones son fuera de pliegue agrupando por **proyecto entero**, así que el modelo no vio ni
+la tarea ni su proyecto; las reimplementaciones entrenan con tareas de los mismos proyectos.
+
+**Pero una constante le gana a todo.** No es un resultado sobre el modelo sino sobre la métrica:
+PRED(25) mide la dispersión y la curtosis de estimado/real, no la capacidad de ordenar
+(Shepperd y Kitchenham). Por eso se reporta **siempre junto al SA y al Spearman**, donde esa
+constante saca −0,015 y 0,000 y el modelo no.
+
+### Lo que gana la suma
 
 Las **mismas** predicciones de la cabeza B, medidas en las dos unidades sobre los mismos 114
 proyectos:
 
-| unidad | n | MdMRE | ±25 % | factor 2 |
-|---|---|---|---|---|
-| por tarea | 24.622 | 1,370 | 12,1 % | 33,1 % |
-| **por proyecto** | 114 | **0,355** | **36,8 %** | **72,8 %** |
+| unidad | n | MdMRE | ±25 % |
+|---|---|---|---|
+| por tarea | 24.622 | 1,370 | 12,1 % |
+| **por proyecto** | 114 | **0,355** | **36,8 %** |
 
 **Sumar divide el MdMRE por 3,86.** Que la cabeza de la media salga mal por tarea no es un
 defecto: con un objetivo asimétrico la media está por encima de la mediana, así que sobreestima
-la tarea típica a propósito. Es el precio de poder sumarla, y es exactamente lo que justifica
-**dos cabezas y no una** — por eso la columna «horas por tarea» que ve el usuario sale de la
-cabeza A, no de esta.
-
-**Lectura honesta:** tarea a tarea el tamaño del efecto frente al azar es **pequeño** (Δ de
-Glass 0,204). El valor del modelo está en **el total del proyecto** y en corregir la estimación
-del usuario, no en clavar una tarea suelta.
+la tarea típica a propósito. Es el precio de poder sumarla, y es lo que justifica **dos cabezas
+y no una**.
 
 ---
 
@@ -1397,7 +1581,109 @@ sobre la escala que el texto no da la aporta **la primera tarea cerrada**.
 
 ---
 
-## B.11 · Operación
+## B.11 · Lo que se midió y se descartó
+
+Esta sección existe para que nadie gaste tiempo en vías que ya están cerradas **con medida**.
+Cada línea tiene su experimento detrás.
+
+### Para mejorar la predicción — 12 vías
+
+| vía | resultado |
+|---|---|
+| corrector de historial aprendido | pierde contra la regla fija |
+| ponderar el ajuste por similitud de texto | gana 0 de 5 comparaciones |
+| proyectos sintéticos | la dispersión de escala no se mueve |
+| repeso por densidad (DenseWeight, SMOGN) | sin ganancia |
+| preguntar al usuario la escala del equipo | no |
+| estimar unas pocas tareas | no: hace falta ≥80 % del backlog |
+| horas de proyectos del mismo equipo | de −1,8 a −3,7 puntos |
+| sesgo de estimación del equipo | 11,6 % entre organizaciones: ruido |
+| experto en tareas cortas | arregla la escala, no ordena (ρ = 0,058) |
+| tipo, prioridad y descripción como rasgos | AUC de la compuerta 0,646 → 0,659 |
+| entrenar para ordenar (learning to rank) | peor: ρ intra 0,286 contra 0,339 |
+| descomponer la tarea en pasos (WBS) | ρ(nº de pasos, horas) = +0,012 |
+
+**El denominador común.** El texto de una tarea no permite saber en qué régimen cae. Para
+distinguir «≤2 h» de «>2 h» harían falta **AUC 0,80** solo para empatar con el modelo global, y
+**seis señales independientes** convergen entre **0,644 y 0,662**: clasificador sobre el título,
+la propia predicción del modelo, las dos combinadas, tipo y prioridad, la descripción, y todas
+juntas.
+
+La única señal que cruza el umbral es la **estimación del usuario** (AUC 0,915) — pero ahí la
+mezcla de expertos tampoco hace falta: meter la estimación como una variable más del regresor da
+41,3 % contra 38,4 % de enrutar. El regresor aprende el cambio de régimen solo.
+
+### Para estrechar la banda por tarea en frío — 7 vías
+
+acuerdo de los vecinos · cuantiles aprendidos (CQR) · quintil del valor predicho · intervalo
+asimétrico · conjunto HPD contiguo · ventana más corta de la densidad condicional · desacuerdo
+del ensemble.
+
+**Todas negativas, y la causa está medida:** la correlación entre las señales de incertidumbre
+del modelo y su error real va de **0,022** (desacuerdo del ensemble) a **0,042** (dispersión de
+los vecinos). **El modelo no sabe cuándo se equivoca**, así que no hay nada sobre lo que
+condicionar. No es mala calibración: la anchura es exactamente la que implica la dispersión del
+residuo.
+
+### Sobre transferir información entre proyectos — 4 medidas
+
+| | resultado |
+|---|---|
+| horas de proyectos del mismo equipo | de −1,8 a −3,7 puntos |
+| horas de otra organización (control) | de −2,8 a −8,1 puntos |
+| sesgo de estimación del equipo | 11,6 % entre organizaciones |
+| historial de los mismos desarrolladores, otro proyecto | SA 0,0299 → 0,0287 |
+| **cerradas del propio proyecto** | **SA 0,0299 → 0,0355** |
+
+El equipo **sí lleva algo** de señal —gana claramente al control de otra organización— pero
+sigue siendo peor que no usar nada. Y el contraste que lo explica: el desplazamiento de una
+**misma persona** correlaciona **+0,089** entre sus proyectos, mientras que **dos personas
+distintas del mismo proyecto** correlacionan **+0,164**. **El proyecto une más que la persona.**
+
+Por eso el diseño no guarda nada entre proyectos: cada uno arranca en frío y se calibra solo con
+lo suyo. Simplifica el producto y evita prometer algo que no se cumple.
+
+---
+
+## B.12 · Dos trampas de medición que conviene no repetir
+
+Las dos mordieron en este proyecto y las dos son fáciles de repetir.
+
+### 1 · Comparar bandas a cobertura distinta
+
+Una banda que cubre el 75 % parece más estrecha que una honesta del 80 %. Pasó **tres veces**:
+con la banda del total, con la ventana adaptativa por tarea y con la calibración por tramo. Las
+tres veces la primera lectura fue equivocada.
+
+**Protocolo correcto:** ajustar el nivel *nominal* de cada método hasta que la cobertura *real*
+sea 0,800 exacta, y solo entonces comparar anchuras. Al corregirlo, la ventana adaptativa que
+parecía ganar un 7 % resultó perder, y la contracción del cuantil del tramo, que parecía neutra,
+resultó valer un 31 % de anchura con una tarea cerrada.
+
+### 2 · El artefacto de medición de `HoursEstimate`
+
+En el **34,7 %** de las tareas con estimación del usuario, las horas reales son **la estimación
+copiada**: la tarea se cierra imputando lo estimado en vez de lo medido. Está muy desigual por
+fuente (Spring 47,4 %, Jira 17,0 %, Sonatype 10,5 %).
+
+Hay que quitar **las dos** contaminaciones, no solo una:
+
+- **al evaluar**, porque acertar una fila copiada no mide nada;
+- **al entrenar**, porque el corrector aprende «devuelve la estimación» de esas mismas filas.
+
+Hecho bien, la palanca **aguanta**: sobre lo que queda abierto, 68,3 % contra 43,7 % del
+anclaje. El inflado era de 5,5 puntos, no más. Y aparece una inversión que conviene conocer: en
+datos limpios **el modelo gana a la estimación cruda** (23,8 % contra 21,8 %); con las filas
+contaminadas dentro la comparación se invierte y engaña.
+
+> Un detalle con el que no hay que confundirse: el brazo «en frío sobre limpias» sale *por
+> debajo* del «en frío sobre todas». Las tareas con el real copiado son también las más fáciles
+> para el modelo en frío. Quitarlas endurece el problema **para todos los brazos por igual**, así
+> que la comparación sigue siendo justa.
+
+---
+
+## B.13 · Operación
 
 **Cómo presentarlo en producto.** Mostrar la estimación en frío como **provisional** y
 recalcularla en cuanto el equipo cierre las primeras **tres** tareas. No hace falta esperar a
@@ -1418,7 +1704,7 @@ La evaluación debe mantener siempre `GroupKFold` **por proyecto entero**.
 
 ---
 
-## B.12 · Resumen de decisiones de diseño
+## B.14 · Resumen de decisiones de diseño
 
 | decisión | alternativa descartada | por qué |
 |---|---|---|
@@ -1431,5 +1717,10 @@ La evaluación debe mantener siempre `GroupKFold` **por proyecto entero**.
 | **sin Apache** en entrenamiento | corpus completo | su mediana de 0,67 h desplaza toda la escala |
 | cociente de **sumas** para anclar | mediana de cocientes | con la mediana, más tareas cerradas daba **peor** resultado |
 | corrector de **Poisson** para el usuario | corrector cuadrático | el cuadrático empeora la estimación cruda del usuario |
-| intervalo en frío siempre | recalibrar por k | no hay proyectos suficientes; se prefiere conservador |
+| **intervalo solo sobre lo abierto**, calibrado por k | multiplicar el total entero por el residuo en frío | lo cerrado se sabe; antes la banda era ×10,6 con 0 y con 20 cerradas |
+| **λ condicional**: 12 sin estimación, 96 con ella | λ=12 siempre | con estimación, λ=12 pierde 4–5 puntos sobre lo abierto |
+| **ajuste a la rejilla siempre**, 30 valores | solo cuando los vecinos concuerdan, 41 valores | +1,5 puntos de ±25 % sin mover MAE, SA ni orden |
+| **factor de estilo condicional** al origen del texto | aplicarlo siempre | aplicado a texto de persona dejaba el sesgo en ×0,82 |
+| ajuste por persona **solo en la vista por tarea** | aplicarlo también al total | al sumar se cancelan y empeoran lo abierto 1,1 puntos |
+| historial **solo del proyecto en curso** | usar proyectos pasados del equipo | medido: de −1,8 a −3,7 puntos |
 | modelo propio | LLM local en línea | gana 17 de 36 comparaciones, empata 18, y es 28–223× más rápido |

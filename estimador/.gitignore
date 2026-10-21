@@ -21,3 +21,6 @@ entrega/*
 
 # modelos serializados: los regenera src/78_costo_inferencia.py
 models/
+node_modules/
+package-lock.json
+package.json

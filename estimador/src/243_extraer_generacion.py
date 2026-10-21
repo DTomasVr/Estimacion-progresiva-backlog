@@ -48,6 +48,13 @@ generador, y **ha cambiado**.
 >    ×10,61 fija y no se estrechaba nunca. El adaptador duplicaba la regla antigua y queda
 >    alineado.
 > 3. El cuantil es el **conforme** (estadístico de orden ⌈(m+1)(1−α)⌉), no el muestral.
+> 4. **Estimador v7 (21/10/2026): un solo codificador.** Los dos codificadores ajustados del
+>    v6 no aportaban fuera de pliegue y se quitaron; el que queda va en ONNX int8 con el
+>    vocabulario podado (397 MB, dentro del estimador, sin caché de HF ni red). El adaptador
+>    carga `estimador_agix_v7.joblib` y cae al v6 si no está. El total del proyecto sale
+>    idéntico; las horas **por tarea** sobre texto del generador, ×0,81 las del v6 (abierto:
+>    falta medir con tareas del generador con horas reales). Detalle en
+>    `ESTIMADOR_V7_INTEGRADO.md` y en la Parte B del documento completo.
 
 ---
 

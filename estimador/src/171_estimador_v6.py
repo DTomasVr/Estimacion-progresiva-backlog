@@ -93,12 +93,56 @@ def poi(semilla=0, **kw):
     return HistGradientBoostingRegressor(**p)
 
 
+class CodificadorOnnx:
+    """El e5 en ONNX int8 con el vocabulario podado: lo que usa el v7.
+
+    Hace lo mismo que el SentenceTransformer del e5 -tokenizar, media de los
+    estados con la mascara, normalizar- sin torch. El vocabulario esta podado
+    (tokens del corpus + todo token de alfabeto latino, 90.559 de 250.002), asi
+    que delante del modelo va una tabla id_original -> id_podado; un token que
+    no este cae en <unk>. Medido en 253: las metricas de fp32 en el bloque de prueba.
+    """
+
+    def __init__(self, onnx, tokenizador, lut, maxlen=512, norma=True):
+        import onnxruntime as ort
+        from transformers import AutoTokenizer
+        o = ort.SessionOptions()
+        o.graph_optimization_level = ort.GraphOptimizationLevel.ORT_ENABLE_ALL
+        self.s = ort.InferenceSession(str(onnx), o, providers=["CPUExecutionProvider"])
+        self.tok = AutoTokenizer.from_pretrained(str(tokenizador))
+        self.lut = np.load(lut)
+        self.maxlen, self.norma = maxlen, norma
+
+    def encode(self, textos, batch_size=64, normalize_embeddings=False, **_):
+        out = []
+        for i in range(0, len(textos), batch_size):
+            t = self.tok(list(textos[i:i + batch_size]), padding=True, truncation=True,
+                         max_length=self.maxlen, return_tensors="np")
+            h = self.s.run(None, {
+                "input_ids": self.lut[t["input_ids"]].astype(np.int64),
+                "attention_mask": t["attention_mask"].astype(np.int64)})[0]
+            m = t["attention_mask"][..., None].astype(np.float32)
+            e = (h * m).sum(1) / np.maximum(m.sum(1), 1e-9)
+            if self.norma:
+                e /= np.maximum(np.linalg.norm(e, axis=1, keepdims=True), 1e-12)
+            out.append(e.astype(np.float32))
+        return np.vstack(out) if out else np.zeros((0, 1024), np.float32)
+
+
 class EstimadorV6:
     def __init__(self, paquete=V6, dispositivo=None):
         self.p = joblib.load(paquete)
+        # las rutas del paquete (codificador ONNX, tokenizador, tabla) van
+        # relativas a la carpeta que contiene models/, para que el mismo paquete
+        # sirva en este repositorio y en el de produccion
+        self.raiz = Path(paquete).resolve().parent.parent
         self._st, self._aj, self._ac, self._dev = None, None, None, dispositivo
 
     def _cod(self, ruta, attr, maxlen=48):
+        if getattr(self, attr) is None and str(ruta).endswith(".onnx"):
+            r = lambda k: self.raiz / self.p[k]
+            setattr(self, attr, CodificadorOnnx(self.raiz / ruta, r("tokenizador"),
+                                                r("lut_vocabulario")))
         if getattr(self, attr) is None:
             import torch
             from sentence_transformers import SentenceTransformer, models

@@ -26,6 +26,15 @@ import requests
 
 BENCH = Path("data/processed/llm_bench")
 RAW = Path("results/llm_bench/raw")
+# Las claves se leen de .env.llm (ignorado por git), una por linea, CLAVE=valor; lo que
+# ya este en el entorno manda. Nunca se imprimen.
+if Path(".env.llm").exists():
+    for _l in open(".env.llm", encoding="utf-8-sig"):
+        _l = _l.strip()
+        if "=" in _l and not _l.startswith("#"):
+            _k, _v = _l.split("=", 1)
+            os.environ.setdefault(_k.strip(), _v.strip().strip('"'))
+
 # 127.0.0.1 y no localhost: en Windows localhost resuelve primero a IPv6 (::1),
 # Ollama solo escucha en IPv4, y cada conexion nueva perdia ~2,1 s en el
 # fallback -- medido: 2,09 s frente a 0,02 s. La sesion reutiliza la conexion.
@@ -76,19 +85,35 @@ def llamar_ollama(modelo, sistema, usuario):
 
 
 def llamar_groq(modelo, sistema, usuario):
-    clave = os.environ.get("GROQ_API_KEY")
+    return _compatible_openai("https://api.groq.com/openai/v1/chat/completions",
+                              "GROQ_API_KEY", modelo, sistema, usuario,
+                              {"seed": 0, "response_format": {"type": "json_object"}})
+
+
+def llamar_gemini(modelo, sistema, usuario):
+    # El endpoint compatible con OpenAI de Google. Sin razonamiento: con el
+    # razonamiento activo los Flash recientes tardaban mas de 40 s por tarea o no
+    # respondian (medido el 29/10/2026); con reasoning_effort=none, ~9 s.
+    return _compatible_openai(
+        "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
+        "GEMINI_API_KEY", modelo, sistema, usuario, {"reasoning_effort": "none"})
+
+
+def _compatible_openai(url, var, modelo, sistema, usuario, extra):
+    clave = os.environ.get(var)
     if not clave:
-        raise SystemExit("falta GROQ_API_KEY en el entorno")
+        raise SystemExit(f"falta {var} en el entorno o en .env.llm")
     for intento in range(8):
         r = SESION.post(
-            "https://api.groq.com/openai/v1/chat/completions", timeout=120,
+            url, timeout=180,
             headers={"Authorization": f"Bearer {clave}"},
-            json={"model": modelo, "temperature": 0, "seed": 0,
-                  "response_format": {"type": "json_object"},
+            json={"model": modelo, "temperature": 0, **extra,
                   "messages": [{"role": "system", "content": sistema},
                                {"role": "user", "content": usuario}]})
-        if r.status_code == 429:
+        if r.status_code in (429, 503):
             espera = float(r.headers.get("retry-after") or 2 ** intento * 5)
+            if espera > 600:                     # cuota del DIA agotada: parar, no esperar
+                raise CuotaAgotada(f"el proveedor pide esperar {espera / 3600:.1f} h")
             print(f"    limite de tasa, esperando {espera:.0f}s", flush=True)
             time.sleep(espera)
             continue
@@ -102,7 +127,11 @@ def llamar_groq(modelo, sistema, usuario):
         u = j.get("usage", {})
         return (j["choices"][0]["message"]["content"],
                 {"entrada": u.get("prompt_tokens"), "salida": u.get("completion_tokens")})
-    raise RuntimeError("limite de tasa persistente")
+    raise CuotaAgotada("limite de tasa persistente tras 8 intentos")
+
+
+class CuotaAgotada(Exception):
+    """Sin cuota: la corrida se corta SIN registrar la tarea, y se retoma luego."""
 
 
 def _segundos(s):
@@ -112,7 +141,7 @@ def _segundos(s):
     return total or 60
 
 
-BACKENDS = {"ollama": llamar_ollama, "groq": llamar_groq}
+BACKENDS = {"ollama": llamar_ollama, "groq": llamar_groq, "gemini": llamar_gemini}
 
 
 def interpretar(texto, condicion):
@@ -170,6 +199,9 @@ def main():
             try:
                 crudo, uso = llamar(a.modelo, SISTEMA, usuario)
                 res = interpretar(crudo, a.condicion)
+            except CuotaAgotada as e:
+                print(f"cortado en {i - 1}/{len(pendientes)}: {e}; se retoma al relanzar")
+                break
             except Exception as e:                    # se registra, no se oculta
                 crudo, uso, res = f"ERROR: {e}", {}, {"valido": False}
             fh.write(json.dumps({"task_id": fila["task_id"], "backend": a.backend,

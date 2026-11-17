@@ -1,0 +1,3 @@
+conjunto,viejo,nuevo,delta,ic95_lo,ic95_hi,veredicto,n
+real: historia -> tareas,0.4738,0.4773,0.0035,-0.0083,0.0149,empate,300
+consumo: historia -> tareas,0.5263,0.6723,0.146,0.1262,0.1656,MEJORA,300

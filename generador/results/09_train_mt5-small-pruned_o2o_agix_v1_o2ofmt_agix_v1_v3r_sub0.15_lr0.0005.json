@@ -1,0 +1,26 @@
+{
+ "modelo": "models/mt5-small-pruned_o2o_agix_v1_o2ofmt_agix_v1",
+ "bs": 32,
+ "max_out": 48,
+ "lr": 0.0005,
+ "epocas": 1,
+ "hist": [
+  {
+   "epoca": 1,
+   "train_loss": 1.9810636935695525,
+   "val_loss": 2.0296804764127288,
+   "seg": 33
+  }
+ ],
+ "v0": 3.732976122581992,
+ "mejor_val": 2.0296804764127288,
+ "vram_pico": 6.11,
+ "min": 0.7,
+ "gens": [
+  "As a publisher, I want to receive notifications about a given pricing plan, so that I can plan my work.",
+  "As a anonymoususer, I want to receive notifications about a particular topic, so that I can get a sense of the type of material.",
+  "As a traveller, I want to be able to view a room, so that I can plan my day.",
+  "As a bank manager, I want to track the number of transactions, so that I can ensure compliance.",
+  "As a publisher, I want to receive notifications about a given pricing plan, so that I can plan my work."
+ ]
+}

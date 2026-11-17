@@ -1,0 +1,2189 @@
+[
+ {
+  "titulo": "Reservas de limpieza",
+  "descripcion": "Una aplicación web para reservar servicios de limpieza a domicilio, con citas recurrentes y pagos en la app.",
+  "resultado": {
+   "historias": [
+    {
+     "historia": "As a user, I want to be able to see a schedule of a separation from the app and calculate an issue in my account, so that I can answer any miscommunication or",
+     "votos": 1,
+     "relevancia": 0.518,
+     "tareas": [
+      "Add a scheduled separation from the app and display it in the UI",
+      "Add a scheduling separation to the app",
+      "Add an opportunity to calculate schedule of a separation",
+      "calculate schedule of separation",
+      "calculate schedule for separation"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:YUNIKORN",
+       "similitud": 0.554
+      },
+      {
+       "proyecto": "JiraEcosystem:CONFSTATS",
+       "similitud": 0.507
+      }
+     ],
+     "historia_es": "Como usuario, quiero poder ver un horario de separación de la aplicación y calcular un problema en mi cuenta, para que pueda responder a cualquier error de comunicación o",
+     "tareas_es": [
+      "Añade una separación programada de la aplicación y únete a la pantalla en el UI",
+      "Añadir una separación de programación a la aplicación",
+      "Añada una oportunidad para calcular el calendario de una separación",
+      "calcular el calendario de separación del servicio",
+      "calcular el calendario de separación del servicio"
+     ]
+    },
+    {
+     "historia": "As a web service user, I want to be able to easily discover certain instances on my mobile device in case of an emergency.",
+     "votos": 1,
+     "relevancia": 0.451,
+     "tareas": [
+      "Add ability to retrieve instances on mobile device",
+      "Add ability for retrieving instances in mobile device",
+      "Create a web service for discovering instances on mobile device",
+      "Create a Web Service for discovering the instances in mobile device"
+     ],
+     "origen": [
+      {
+       "proyecto": "TAWOS-Moodle:MDL",
+       "similitud": 0.491
+      },
+      {
+       "proyecto": "RedHat:MSC",
+       "similitud": 0.474
+      }
+     ],
+     "historia_es": "Como usuario de servicios web, quiero poder descubrir fácilmente ciertas instancias en mi dispositivo móvil en caso de emergencia.",
+     "tareas_es": [
+      "Añadir capacidad para recuperar instancias en el dispositivo móvil",
+      "Añadir capacidad para recuperar instancias en el dispositivo móvil",
+      "Crear un servicio web para descubrir instancias en un dispositivo móvil",
+      "Crear un servicio web para descubrir las instancias en el dispositivo móvil"
+     ]
+    },
+    {
+     "historia": "As a cluster counselor, I want to have a room to collect information about all necessary maintenance procedures, so that I can avoid any miscommunication with the service that is credited.",
+     "votos": 1,
+     "relevancia": 0.433,
+     "tareas": [
+      "Create a Room to collect information about all needed maintenance procedures",
+      "Add documentation for all needed Maintenance procedures",
+      "Add documentation for maintenance procedure",
+      "Add documentation about maintenance procedure"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:JPERF",
+       "similitud": 0.552
+      },
+      {
+       "proyecto": "Apache:CASSANDRA",
+       "similitud": 0.473
+      }
+     ],
+     "historia_es": "Como consejero de clúster, quiero tener una sala para recopilar información sobre todos los procedimientos de mantenimiento necesarios, para que pueda evitar cualquier error de comunicación con el servicio que se acredita.",
+     "tareas_es": [
+      "Crear una sala para recopilar información sobre todos los procedimientos de mantenimiento necesarios",
+      "Añadir documentación para todos los procedimientos de mantenimiento necesarios",
+      "Añadir documentación para el procedimiento de mantenimiento",
+      "Añadir documentación sobre el procedimiento de mantenimiento"
+     ]
+    },
+    {
+     "historia": "As a user, I want to be able to quickly delete a camper from my application.",
+     "votos": 1,
+     "relevancia": 0.407,
+     "tareas": [
+      "Create a quickly delete a container from the app",
+      "Add ability to retrieve a completed container from a given container",
+      "Delete a container from my application",
+      "Move a proxy from my application"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:TUSCANY",
+       "similitud": 0.461
+      },
+      {
+       "proyecto": "Apache:GERONIMODEVTOOLS",
+       "similitud": 0.447
+      }
+     ],
+     "historia_es": "Como usuario, quiero poder eliminar rápidamente una camper de mi aplicación.",
+     "tareas_es": [
+      "Crear un borrado rápido de un contenedor de la aplicación",
+      "Añadir capacidad para recuperar un contenedor completado de un contenedor dado",
+      "Eliminar un contenedor de mi aplicación",
+      "Mueva un proxy de mi aplicación"
+     ]
+    },
+    {
+     "historia": "As a developer, I want to include detailed information about the Welcome App in case of an emergency.",
+     "votos": 1,
+     "relevancia": 0.407,
+     "tareas": [
+      "Welcome App: Wireframe",
+      "WelcomeApp: Wireframe",
+      "Please add detailed information about the welcome App in case of an Emergency App",
+      "Please add description about the welcomeApp in case of a Welcome App"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:FH",
+       "similitud": 0.55
+      },
+      {
+       "proyecto": "RedHat:FH",
+       "similitud": 0.533
+      }
+     ],
+     "historia_es": "Como desarrollador, quiero incluir información detallada sobre la aplicación de bienvenida en caso de emergencia.",
+     "tareas_es": [
+      "Aplicación de bienvenida: Wireframe",
+      "Aplicación de bienvenida: Wireframe",
+      "Por favor, agregue información detallada sobre la aplicación de bienvenida en caso de aplicación de emergencia",
+      "Por favor, agregue una descripción sobre el welcomeApp en caso de una aplicación de bienvenida"
+     ]
+    },
+    {
+     "historia": "As a user, I want to be able to see the availability necessary to do so at a specific date.",
+     "votos": 1,
+     "relevancia": 0.394,
+     "tareas": [
+      "Add possibility to specify a given amount of columns",
+      "Add possibility for adding/disabling dates to the inventory",
+      "Add option to specify the availability criteria in the inventory",
+      "Please review the possibility to see if we are able to see in the same time",
+      "Please review and document the possibilities to see in this time"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.556
+      },
+      {
+       "proyecto": "JFrog:RTFACT",
+       "similitud": 0.508
+      }
+     ],
+     "historia_es": "Como usuario, quiero poder ver la disponibilidad necesaria para hacerlo en una fecha específica.",
+     "tareas_es": [
+      "Añadir posibilidad de especificar una cantidad determinada de columnas",
+      "Añadir la posibilidad de añadir/desactivar fechas al inventario",
+      "Añadir opción para especificar los criterios de disponibilidad en el inventario",
+      "Por favor revise la posibilidad de ver si somos capaces de ver en el mismo tiempo",
+      "Por favor revise y documente las posibilidades de ver en este momento"
+     ]
+    },
+    {
+     "historia": "As a user, I want to have a schedule of time, so that I can be able to easily change my schedule and",
+     "votos": 1,
+     "relevancia": 0.392,
+     "tareas": [
+      "Add a scheduler to the scheduler",
+      "Update scheduler to use the scheduler",
+      "Add scheduler to scheduler",
+      "Update scheduler documentation to reflect scheduler changes",
+      "Make scheduler aware of scheduler"
+     ],
+     "origen": [
+      {
+       "proyecto": "Sonatype:NEXUS",
+       "similitud": 0.624
+      },
+      {
+       "proyecto": "Apache:AIRFLOW",
+       "similitud": 0.58
+      }
+     ],
+     "historia_es": "Como usuario, quiero tener un horario de tiempo, para que pueda cambiar fácilmente mi horario y",
+     "tareas_es": [
+      "Añadir un planificador al planificador",
+      "Actualizar el programador para utilizar el programador",
+      "Añadir planificador al planificador",
+      "Actualizar la documentación del planificador para reflejar los cambios del planificador",
+      "Informar al planificador de lo que dice el planificador"
+     ]
+    },
+    {
+     "historia": "As a user, I want to be able to see realtime availability of my job to see how many temporary records are, so that I can read them.",
+     "votos": 1,
+     "relevancia": 0.387,
+     "tareas": [
+      "Add ability to view realtime records",
+      "Add possibility to view actualtime records",
+      "Add temporary records to the job",
+      "Add temporary record to the job"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:ASTERIXDB",
+       "similitud": 0.522
+      },
+      {
+       "proyecto": "Apache:FLINK",
+       "similitud": 0.518
+      }
+     ],
+     "historia_es": "Como usuario, quiero poder ver la disponibilidad en tiempo real de mi trabajo para ver cuántos registros temporales hay, para que pueda leerlos.",
+     "tareas_es": [
+      "Añadir capacidad para ver registros en tiempo real",
+      "Añadir posibilidad de ver registros en tiempo real",
+      "Añadir registros temporales al trabajo",
+      "Agregar registro temporal al trabajo"
+     ]
+    },
+    {
+     "historia": "As a developer, I want to have the code tonot be re-used, so that I can check out what time and how to calculate costs in my application.",
+     "votos": 1,
+     "relevancia": 0.387,
+     "tareas": [
+      "Add code to get rid of unused code",
+      "Refactor code to remove unused code",
+      "Refactor code to be re-used",
+      "Refactor code so that the code is re-used"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:COST",
+       "similitud": 0.542
+      },
+      {
+       "proyecto": "RedHat:SB",
+       "similitud": 0.483
+      }
+     ],
+     "historia_es": "Como desarrollador, quiero tener el código no ser re-used, para que pueda comprobar qué hora y cómo calcular los costos en mi aplicación.",
+     "tareas_es": [
+      "Añadir código para deshacerse del código no utilizado",
+      "Refactorizar código para eliminar el código no utilizado",
+      "Código de refactorización re-used",
+      "Refactorizar el código de modo que el código sea re-used"
+     ]
+    },
+    {
+     "historia": "As an infrastructure developer I want to be able to configure my app to examine client accounts",
+     "votos": 1,
+     "relevancia": 0.376,
+     "tareas": [
+      "Add ability to configure client accounts",
+      "Expose client accounts",
+      "Add documentation for the client side",
+      "Add documentation about the client side"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:RAVE",
+       "similitud": 0.468
+      },
+      {
+       "proyecto": "Sonatype:NEXUS",
+       "similitud": 0.465
+      }
+     ],
+     "historia_es": "Como desarrollador de infraestructuras quiero poder configurar mi aplicación para examinar cuentas de clientes",
+     "tareas_es": [
+      "Añadir capacidad para configurar cuentas de clientes",
+      "Exponer cuentas de clientes",
+      "Añadir documentación para el lado cliente",
+      "Añadir documentación sobre el lado del cliente"
+     ]
+    },
+    {
+     "historia": "As a user, I want to view a schedule setup, so that I can plan my day and/or not.",
+     "votos": 1,
+     "relevancia": 0.37,
+     "tareas": [
+      "View a scheduled setup for the scheduler",
+      "View a completed task",
+      "View the completed task"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.586
+      },
+      {
+       "proyecto": "Sonatype:NEXUS",
+       "similitud": 0.575
+      }
+     ],
+     "historia_es": "Como usuario, quiero ver una configuración de horario, para poder planificar mi día y/o no.",
+     "tareas_es": [
+      "Ver una configuración programada para el programador",
+      "Ver una tarea completada",
+      "Ver la tarea completada"
+     ]
+    },
+    {
+     "historia": "As an admin, I want to filter and collect information about my app and application, so that I can prevent spamming or destruction in case a grossly unacceptable ACLs.",
+     "votos": 1,
+     "relevancia": 0.355,
+     "tareas": [
+      "Add ability to filter and collect information about my app and application",
+      "Add ability for filtering and collecting information about my application and application",
+      "Add filter and collect information about app and application",
+      "Add filter & collect information about application and application"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:SECURITY",
+       "similitud": 0.539
+      },
+      {
+       "proyecto": "RedHat:WINDUP",
+       "similitud": 0.523
+      }
+     ],
+     "historia_es": "Como administrador, quiero filtrar y recopilar información sobre mi aplicación y aplicación, para que pueda evitar el spamming o la destrucción en caso de un ACLs gravemente inaceptable.",
+     "tareas_es": [
+      "Añade capacidad para filtrar y recopilar información sobre mi aplicación y aplicación",
+      "Añada capacidad para filtrar y recopilar información sobre mi aplicación y aplicación",
+      "Añadir filtro y recoger información sobre la aplicación y la aplicación",
+      "Añadir filtro y recopilar información sobre la aplicación y la aplicación"
+     ]
+    }
+   ],
+   "tiempos": {
+    "traducir_entrada": 9.155,
+    "recuperar_arriba": 5.417,
+    "generar_historias": 4.899,
+    "deduplicar_historias": 0.091,
+    "recuperar_abajo": 0.036,
+    "generar_tareas": 4.091,
+    "deduplicar_tareas": 0.031,
+    "traducir": 0.311,
+    "total": 24.032
+   },
+   "vecinos_proyecto": [
+    {
+     "proyecto": "dalpiaz:g04-recycling",
+     "similitud": 0.451
+    },
+    {
+     "proyecto": "RedHat:HOSTEDCP",
+     "similitud": 0.423
+    }
+   ],
+   "n_tareas": 50
+  }
+ },
+ {
+  "titulo": "Salas de estudio",
+  "descripcion": "Una aplicación móvil donde los estudiantes de una universidad encuentran y reservan salas de estudio en el campus en tiempo real.",
+  "resultado": {
+   "historias": [
+    {
+     "historia": "As a student, I want to be able to create a local app in case there is a link on the app, so that I can see if I can access the data I already.",
+     "votos": 1,
+     "relevancia": 0.659,
+     "tareas": [
+      "Create local app in case of local app",
+      "Add local app to app",
+      "Create a local app",
+      "Create local app"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:THREESCALE",
+       "similitud": 0.553
+      },
+      {
+       "proyecto": "Apache:CB",
+       "similitud": 0.481
+      }
+     ],
+     "historia_es": "Como estudiante, quiero poder crear una aplicación local en caso de que haya un enlace en la aplicación, para que pueda ver si puedo acceder a los datos que ya tengo.",
+     "tareas_es": [
+      "Crear aplicación local en caso de aplicación local",
+      "Añadir aplicación local a la aplicación",
+      "Crear una aplicación local",
+      "Crear aplicación local"
+     ]
+    },
+    {
+     "historia": "As a student, I want to be able to easily become a template based on my mobile device, so that I can keep my apps up to date.",
+     "votos": 1,
+     "relevancia": 0.596,
+     "tareas": [
+      "Allow mobile device to be able to create mobile device based on mobile device",
+      "Add documentation for mobile device",
+      "Create a template for the mobile device"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:CB",
+       "similitud": 0.552
+      },
+      {
+       "proyecto": "RedHat:FH",
+       "similitud": 0.517
+      }
+     ],
+     "historia_es": "Como estudiante, quiero ser capaz de convertirme fácilmente en una plantilla basada en mi dispositivo móvil, para poder mantener mis aplicaciones actualizadas.",
+     "tareas_es": [
+      "Permitir que el dispositivo móvil pueda crear un dispositivo móvil basado en el dispositivo móvil",
+      "Añadir documentación para dispositivo móvil",
+      "Crear una plantilla para el dispositivo móvil"
+     ]
+    },
+    {
+     "historia": "As a student, I want to see the results of a student, so that I can meet my availability.",
+     "votos": 1,
+     "relevancia": 0.498,
+     "tareas": [
+      "Evaluation of the result of a student",
+      "Evaluate the result of an assessment",
+      "[Docs] Add ability to filter the result of the student",
+      "[DOC OCP] Add possibility to filter the results of the student"
+     ],
+     "origen": [
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.495
+      },
+      {
+       "proyecto": "TAWOS-Moodle:MDL",
+       "similitud": 0.478
+      }
+     ],
+     "historia_es": "Como estudiante, quiero ver los resultados de un estudiante, para que pueda cumplir con mi disponibilidad.",
+     "tareas_es": [
+      "Evaluación del resultado de un estudiante",
+      "Evaluar el resultado de una evaluación",
+      "[Docs] Añadir capacidad para filtrar el resultado del estudiante",
+      "[DOC OCP] Añadir posibilidad de filtrar los resultados del estudiante"
+     ]
+    },
+    {
+     "historia": "As a researcher, I want to be able to create an app with an app that reads or writes an app that reads or writes a form when loading the data and a template.",
+     "votos": 1,
+     "relevancia": 0.49,
+     "tareas": [
+      "Create app that reads or writes an app that writes to a template",
+      "Create a form that writes and writes the data from the template",
+      "Create app that reads or writes a form when loading data or writes an app",
+      "Create a framework that writes and writes an application"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:CB",
+       "similitud": 0.516
+      },
+      {
+       "proyecto": "RedHat:ODC",
+       "similitud": 0.499
+      }
+     ],
+     "historia_es": "Como investigador, quiero poder crear una aplicación con una aplicación que lea o escriba una aplicación que lea o escriba un formulario al cargar los datos y una plantilla.",
+     "tareas_es": [
+      "Crear aplicación que lea o escriba una aplicación que escriba a una plantilla",
+      "Crear un formulario que escriba y escriba los datos de la plantilla",
+      "Crear aplicación que lea o escriba un formulario al cargar datos o escriba una aplicación",
+      "Crear un marco que escriba y escriba una aplicación"
+     ]
+    },
+    {
+     "historia": "As a student, I want to associate with other users, so that I can identify our areas of interest in all further steps.",
+     "votos": 1,
+     "relevancia": 0.486,
+     "tareas": [
+      "Adopt a membership in a single user",
+      "Adopt Membership in a Single User",
+      "Create Membership in AUI",
+      "Update Membership In AUI to use Membership instead of Membership",
+      "Add ability to associate with other users",
+      "Add ability for a user to be able to authenticate with other users"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:RAVE",
+       "similitud": 0.564
+      },
+      {
+       "proyecto": "SecondLife:STORM",
+       "similitud": 0.539
+      }
+     ],
+     "historia_es": "Como estudiante, quiero asociarme con otros usuarios, para poder identificar nuestras áreas de interés en todos los pasos posteriores.",
+     "tareas_es": [
+      "Adoptar una membresía en un solo usuario",
+      "Adoptar la membresía en un solo usuario",
+      "Crear membresía en AUI",
+      "Actualizar la membresía en AUI para usar la membresía en lugar de la membresía",
+      "Añadir capacidad de asociarse con otros usuarios",
+      "Añadir capacidad para que un usuario pueda autenticarse con otros usuarios"
+     ]
+    },
+    {
+     "historia": "As a user, I want to upload an older version of an existing app that allows my ringback notification when I upload an older version, so that I can see our changes in my app and send an request to the student.",
+     "votos": 1,
+     "relevancia": 0.484,
+     "tareas": [
+      "Upload older version of an existing app that uploads older version",
+      "Create a notification when I upload older version",
+      "Upload an older version of the UI",
+      "Create a snapshot for the UI"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.483
+      },
+      {
+       "proyecto": "RedHat:FH",
+       "similitud": 0.482
+      }
+     ],
+     "historia_es": "Como usuario, quiero subir una versión anterior de una aplicación existente que permita mi notificación de devolución de llamada cuando subo una versión anterior, para que pueda ver nuestros cambios en mi aplicación y enviar una solicitud al estudiante.",
+     "tareas_es": [
+      "Subir versión anterior de una aplicación existente que sube la versión anterior",
+      "Crear una notificación cuando subo la versión anterior",
+      "Cargar una versión anterior del UI",
+      "Crear una instantánea para el UI"
+     ]
+    },
+    {
+     "historia": "As a student, I want to see how many seats are left, so that I can make sure my summit I'm going to quickly and easily online.",
+     "votos": 1,
+     "relevancia": 0.461,
+     "tareas": [
+      "[mig-controller#1106]: [DOC OCP] Document how many slides are left",
+      "[DOC RHEL] Document how much slides are right",
+      "Please review how to see if we are talking to summit",
+      "Please review the way to see what we are going to see when we are connected to the summit"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:AG",
+       "similitud": 0.514
+      },
+      {
+       "proyecto": "Apache:ZOOKEEPER",
+       "similitud": 0.402
+      }
+     ],
+     "historia_es": "Como estudiante, quiero ver cuántos asientos quedan, para que pueda asegurarme de que mi cumbre voy a ir rápida y fácilmente en línea.",
+     "tareas_es": [
+      "[mig-controller#1106]: [DOC OCP] Documentar cuántas diapositivas quedan",
+      "[DOC RHEL] Documentar cuántas diapositivas son correctas",
+      "Por favor, revise cómo ver si estamos hablando con la cumbre",
+      "Por favor, revise la manera de ver lo que vamos a ver cuando estamos conectados a la cumbre"
+     ]
+    },
+    {
+     "historia": "As a student, I want to see the list of the packages needed for me, so that I can identify the necessary parties in my app.",
+     "votos": 1,
+     "relevancia": 0.453,
+     "tareas": [
+      "Vendor list of packages needed for me - app/ Application/Application/Application/App/App/ Application/App/ App/App/Apps/ Application/Apps/App/Applications/App/ Applications/App/Examples/ Application.properties",
+      "Vendor listing of packages required for me",
+      "Please review the list of packages needed for me",
+      "Please review and discuss the list of projects needed for me"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:FH",
+       "similitud": 0.614
+      },
+      {
+       "proyecto": "Qt:QTIFW",
+       "similitud": 0.472
+      }
+     ],
+     "historia_es": "Como estudiante, quiero ver la lista de los paquetes necesarios para mí, para poder identificar las fiestas necesarias en mi aplicación.",
+     "tareas_es": [
+      "Lista de proveedores de paquetes necesarios para mí - aplicación/ aplicación/ aplicación/ aplicación/ aplicación/ aplicación/ aplicación/ aplicación/ aplicación/ aplicación/ aplicación/ aplicación/ aplicaciones/ aplicaciones/ aplicación/ aplicación/ aplicación/ aplicación/ aplicación/ aplicaciones/ aplicación/ ejemplos/ Application.properties",
+      "Listado de los paquetes requeridos por el vendedor",
+      "Por favor revise la lista de paquetes necesarios para mí",
+      "Por favor revise y discuta la lista de proyectos necesarios para mí"
+     ]
+    },
+    {
+     "historia": "As a student, I want to have a flexible pick up time, so that I can keep my numbers of the items under my area.",
+     "votos": 1,
+     "relevancia": 0.45,
+     "tareas": [
+      "Flexible pick up time",
+      "Flexible pickup time",
+      "Flexible pick up time picker",
+      "Flexible pickup time picker"
+     ],
+     "origen": [
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.435
+      },
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.433
+      }
+     ],
+     "historia_es": "Como estudiante, quiero tener un tiempo de recogida flexible, para que pueda mantener mis números de los artículos bajo mi área.",
+     "tareas_es": [
+      "Tiempo de recogida flexible",
+      "Tiempo de recogida flexible",
+      "Recolector de tiempo de recogida flexible",
+      "Recolector de tiempo de recogida flexible"
+     ]
+    },
+    {
+     "historia": "As a researcher, I want to access a persistent URL from an app, so that I can adjust for the availability of the materials.",
+     "votos": 1,
+     "relevancia": 0.449,
+     "tareas": [
+      "Add persistent URL to the Application app",
+      "Add URL to Application app",
+      "Create persistent URL for app",
+      "Create persistentURL for app"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:DEVELOPER",
+       "similitud": 0.532
+      },
+      {
+       "proyecto": "RedHat:FH",
+       "similitud": 0.444
+      }
+     ],
+     "historia_es": "Como investigador, quiero acceder a un URL persistente desde una aplicación, para poder ajustar la disponibilidad de los materiales.",
+     "tareas_es": [
+      "Añadir URL persistente a la aplicación Aplicación",
+      "Añadir URL a la aplicación Aplicación",
+      "Crear URL persistente para la aplicación",
+      "Crear persistenteURL para la aplicación"
+     ]
+    },
+    {
+     "historia": "As a researcher, I want to have a platform that allows users to browse throughout the repository and see what I am doing on, so that I can identify myself and what I am doing for.",
+     "votos": 1,
+     "relevancia": 0.439,
+     "tareas": [
+      "Create a platform that allows users to browse throughout the repository",
+      "Add a platform to the repository",
+      "Create a platform that allows users to browse through the repository",
+      "Create a repository that shows users to browse via the repository"
+     ],
+     "origen": [
+      {
+       "proyecto": "Sonatype:NEXUS",
+       "similitud": 0.59
+      },
+      {
+       "proyecto": "Sonatype:NEXUS",
+       "similitud": 0.554
+      }
+     ],
+     "historia_es": "Como investigador, quiero tener una plataforma que permita a los usuarios navegar por todo el repositorio y ver en qué estoy haciendo, para poder identificarme y por qué estoy haciendo.",
+     "tareas_es": [
+      "Crear una plataforma que permita a los usuarios navegar por todo el repositorio",
+      "Añadir una plataforma al repositorio",
+      "Crear una plataforma que permita a los usuarios navegar por el repositorio",
+      "Crear un repositorio que muestre a los usuarios a navegar a través del repositorio"
+     ]
+    },
+    {
+     "historia": "As a student, I want to be able to see what educators I have signed up.",
+     "votos": 1,
+     "relevancia": 0.434,
+     "tareas": [
+      "Create signed-up enrollment page",
+      "Add signed-off registration page",
+      "Please review how to see if we are signed up",
+      "Please review what to see if I can see if we can see in this release"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.46
+      },
+      {
+       "proyecto": "Apache:RAVE",
+       "similitud": 0.447
+      }
+     ],
+     "historia_es": "Como estudiante, quiero poder ver qué educadores he inscrito.",
+     "tareas_es": [
+      "Crear página de inscripción signed-up",
+      "Añadir página de registro signed-off",
+      "Por favor, revise cómo ver si estamos inscritos",
+      "Por favor, revise lo que puedo ver si podemos ver en esta versión"
+     ]
+    }
+   ],
+   "tiempos": {
+    "traducir_entrada": 0.137,
+    "recuperar_arriba": 0.01,
+    "generar_historias": 0.934,
+    "deduplicar_historias": 0.082,
+    "recuperar_abajo": 0.022,
+    "generar_tareas": 4.762,
+    "deduplicar_tareas": 0.053,
+    "traducir": 0.456,
+    "total": 6.455
+   },
+   "vecinos_proyecto": [
+    {
+     "proyecto": "MongoDB:DOCS",
+     "similitud": 0.485
+    },
+    {
+     "proyecto": "RedHat:FH",
+     "similitud": 0.462
+    }
+   ],
+   "n_tareas": 49
+  }
+ },
+ {
+  "titulo": "Cosechas a restaurantes",
+  "descripcion": "Plataforma para que pequeños agricultores registren sus cosechas y vendan directamente a restaurantes, con seguimiento de entregas.",
+  "resultado": {
+   "historias": [
+    {
+     "historia": "As a stakeholder, I want to see an archive for my crops, so that I can read them.",
+     "votos": 1,
+     "relevancia": 0.498,
+     "tareas": [
+      "Add archive for Apache Crail",
+      "Add archive for JIRA",
+      "Create an archive for Crops",
+      "Create a archive for the Crops"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.467
+      },
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.426
+      }
+     ],
+     "historia_es": "Como parte interesada, quiero ver un archivo para mis cultivos, para poder leerlos.",
+     "tareas_es": [
+      "Añadir archivo para Apache Crail",
+      "Añadir archivo para JIRA",
+      "Crear un archivo para Crops",
+      "Crear un archivo para los Cultivos"
+     ]
+    },
+    {
+     "historia": "As a stakeholder, I want to register a tractor to connect with the stakeholders that already with a spreadsheet, so that I can easily organize my requests.",
+     "votos": 1,
+     "relevancia": 0.487,
+     "tareas": [
+      "Create a spreadsheet for the spreadsheet",
+      "Create a new spreadsheet to register spreadsheet",
+      "Create a spreadsheet for registering a tractor",
+      "Create a new tractor for registering the tractor"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.446
+      },
+      {
+       "proyecto": "Apache:WICKET",
+       "similitud": 0.416
+      }
+     ],
+     "historia_es": "Como parte interesada, quiero registrar un tractor para conectar con los interesados que ya con una hoja de cálculo, de modo que pueda organizar fácilmente mis solicitudes.",
+     "tareas_es": [
+      "Crear una hoja de cálculo para la hoja de cálculo",
+      "Crear una hoja de cálculo nueva para registrar la hoja de cálculo",
+      "Crear una hoja de cálculo para registrar un tractor",
+      "Crear un nuevo tractor para registrar el tractor"
+     ]
+    },
+    {
+     "historia": "As a platform developer I want to have availale mechanism to run long term crops in OpenShift",
+     "votos": 1,
+     "relevancia": 0.449,
+     "tareas": [
+      "Allow to run long term crops in OpenShift",
+      "OpenShift - TE Tracker",
+      "Add ability to run long term crops in OpenShift",
+      "Add support for running long term Crops in openshift"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:SWSQE",
+       "similitud": 0.492
+      },
+      {
+       "proyecto": "RedHat:CHE",
+       "similitud": 0.45
+      }
+     ],
+     "historia_es": "Como desarrollador de plataformas quiero tener un mecanismo de disponibilidad para ejecutar cultivos a largo plazo en OpenShift",
+     "tareas_es": [
+      "Permitir la explotación de cultivos a largo plazo en OpenShift",
+      "OpenShift - rastreador TE",
+      "Añadir capacidad para ejecutar cultivos a largo plazo en OpenShift",
+      "Añadir soporte para ejecutar cultivos a largo plazo en openshift"
+     ]
+    },
+    {
+     "historia": "As a stakeholder, I want to know when an advanced crop is imported or used, so that I can provide my ability to easily specify the crop.",
+     "votos": 1,
+     "relevancia": 0.42,
+     "tareas": [
+      "Add support for basic crop",
+      "Add support for custom crop",
+      "Add documentation for the latest crop",
+      "Add documentation about the new crop"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:CONTINUUM",
+       "similitud": 0.472
+      },
+      {
+       "proyecto": "Apache:SENTRY",
+       "similitud": 0.429
+      }
+     ],
+     "historia_es": "Como parte interesada, quiero saber cuándo se importa o utiliza un cultivo avanzado, de modo que pueda proporcionar mi capacidad para especificar fácilmente el cultivo.",
+     "tareas_es": [
+      "Añadir soporte para cultivos básicos",
+      "Añadir soporte para cultivos personalizados",
+      "Añadir documentación para el último cultivo",
+      "Añadir documentación sobre el nuevo cultivo"
+     ]
+    },
+    {
+     "historia": "As a developer I want to be able to collect the map sizes of each crop using OpenShift images",
+     "votos": 1,
+     "relevancia": 0.416,
+     "tareas": [
+      "Allow to collect map sizes of each crop",
+      "Add ability to collect list of thousands of crop sizes",
+      "Crop sizes of Crop",
+      "Crop dimensions of Crop"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:SWSQE",
+       "similitud": 0.5
+      },
+      {
+       "proyecto": "RedHat:JBIDE",
+       "similitud": 0.479
+      }
+     ],
+     "historia_es": "Como desarrollador quiero poder recoger los tamaños de mapa de cada cultivo usando imágenes OpenShift",
+     "tareas_es": [
+      "Permitir recoger los tamaños de mapas de cada cultivo",
+      "Añadir capacidad para recoger la lista de miles de tamaños de cultivos",
+      "Tamaños de cosechas de Cultivos",
+      "Dimensiones de los cultivos"
+     ]
+    },
+    {
+     "historia": "As a corporatesponsor, I want to be able to add to a temporary crop where I submit a temporary ringback images, so that I can easily register them.",
+     "votos": 1,
+     "relevancia": 0.403,
+     "tareas": [
+      "Submit a temporary crop",
+      "Add a basic rroll images",
+      "Add a temporary r shirt",
+      "Add a new temporary crop",
+      "Add an optional r shirt"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.435
+      },
+      {
+       "proyecto": "SecondLife:STORM",
+       "similitud": 0.423
+      }
+     ],
+     "historia_es": "Como patrocinador corporativo, quiero poder añadir a una cosecha temporal donde envío una imagen temporal de retorno, para que pueda registrarlas fácilmente.",
+     "tareas_es": [
+      "Presentar un cultivo temporal",
+      "Añadir una imagen básica de rroll",
+      "Añadir una camisa temporal r",
+      "Añadir un nuevo cultivo temporal",
+      "Añadir una camisa opcional r"
+     ]
+    },
+    {
+     "historia": "As a developer, I want to rely on the ability to manually detect crops with an older version of a rcrop.",
+     "votos": 1,
+     "relevancia": 0.391,
+     "tareas": [
+      "Add ability to manually detect crops with an older version of a rcrop",
+      "Add option to automatically detect rcrops with the latest version of the rcrop",
+      "Allow manually detect crops in rcrop",
+      "Add documentation for rcrop"
+     ],
+     "origen": [
+      {
+       "proyecto": "Qt:QTBUG",
+       "similitud": 0.406
+      },
+      {
+       "proyecto": "RedHat:MIG",
+       "similitud": 0.392
+      }
+     ],
+     "historia_es": "Como desarrollador, quiero confiar en la capacidad de detectar manualmente cultivos con una versión más antigua de un rcrop.",
+     "tareas_es": [
+      "Añadir capacidad para detectar manualmente cultivos con una versión antigua de un rcrop",
+      "Añadir opción para detectar automáticamente rcrops con la última versión del rcrop",
+      "Permitir detectar manualmente cultivos en rcrop",
+      "Añadir documentación para rcrop"
+     ]
+    },
+    {
+     "historia": "As a fabric developer, I would like to be able to reserve my images with an included list of crops and crops.",
+     "votos": 1,
+     "relevancia": 0.385,
+     "tareas": [
+      "Create a list of crops and crops for fabric",
+      "Create a set of Crops and Crops for fabric-ca",
+      "Create a basic implementation of the crops and crops",
+      "Create an infrastructure of the Crops and Crops"
+     ],
+     "origen": [
+      {
+       "proyecto": "SecondLife:STORM",
+       "similitud": 0.483
+      },
+      {
+       "proyecto": "RedHat:ODC",
+       "similitud": 0.419
+      }
+     ],
+     "historia_es": "Como desarrollador de fabric, me gustaría poder reservar mis imágenes con una lista de cultivos y cultivos incluidos.",
+     "tareas_es": [
+      "Crear una lista de cultivos y cultivos para fabric",
+      "Crear un conjunto de cultivos y cultivos para fabric-ca",
+      "Crear una implementación básica de los cultivos y cultivos",
+      "Crear una infraestructura de los cultivos y cultivos"
+     ]
+    },
+    {
+     "historia": "As a platform operator, I want to be able to export a tractor directly to the npm docker images",
+     "votos": 1,
+     "relevancia": 0.376,
+     "tareas": [
+      "Export a tractor directly to the npm docker image",
+      "Create a Docker image for exporting a container image",
+      "Export tractor directly to the npm docker image",
+      "Export a rh-operator docker image"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:HADOOP",
+       "similitud": 0.481
+      },
+      {
+       "proyecto": "RedHat:SDN",
+       "similitud": 0.479
+      }
+     ],
+     "historia_es": "Como operador de plataformas, quiero poder exportar un tractor directamente a las imágenes de docker de npm",
+     "tareas_es": [
+      "Exportar un tractor directamente a la imagen npm docker",
+      "Crear una imagen Docker para exportar una imagen contenedor",
+      "Exportar tractor directamente a la imagen de npm docker",
+      "Exportar una imagen rh-operator docker"
+     ]
+    },
+    {
+     "historia": "As a developer, I want to be able to generate basic metadata from a single org in my app.",
+     "votos": 1,
+     "relevancia": 0.37,
+     "tareas": [
+      "Create basic metadata from a single org in app",
+      "Create initial metadata format",
+      "Create basic metadata for org.apache.shindig.common.io",
+      "Create basic meta for org"
+     ],
+     "origen": [
+      {
+       "proyecto": "Sonatype:NEXUS",
+       "similitud": 0.586
+      },
+      {
+       "proyecto": "RedHat:TEIID",
+       "similitud": 0.534
+      }
+     ],
+     "historia_es": "Como desarrollador, quiero poder generar metadatos básicos a partir de una única organización en mi aplicación.",
+     "tareas_es": [
+      "Crear metadatos básicos desde una única organización en la aplicación",
+      "Crear formato de metadatos inicial",
+      "Crear metadatos básicos para org.apache.shindig.common.io",
+      "Crear meta básico para org"
+     ]
+    },
+    {
+     "historia": "As a fabric developer, I want to have easy to use the ability to create an images that use a single tractor.",
+     "votos": 1,
+     "relevancia": 0.365,
+     "tareas": [
+      "Add ability to create a single tractor image",
+      "Create a multi tractor image",
+      "Create images that use a single tractor",
+      "Create an image that use the tractor"
+     ],
+     "origen": [
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.464
+      },
+      {
+       "proyecto": "Spring:DATAGRAPH",
+       "similitud": 0.436
+      }
+     ],
+     "historia_es": "Como desarrollador fabric, quiero tener fácil de usar la capacidad de crear imágenes que utilizan un solo tractor.",
+     "tareas_es": [
+      "Añadir capacidad para crear una imagen de tractor",
+      "Crear una imagen multi tractor",
+      "Crear imágenes que utilicen un solo tractor",
+      "Crear una imagen que utilice el tractor"
+     ]
+    },
+    {
+     "historia": "As a ML scientist, I want to utilise the ability to see real time ranges of crops, so that I can see if my crops might be used.",
+     "votos": 1,
+     "relevancia": 0.364,
+     "tareas": [
+      "Add ability to set time ranges of crops",
+      "Add ability for setting time ranges for crops",
+      "Add ability to see real time ranges of crops",
+      "Add support for storing actual time ranges"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:IGNITE",
+       "similitud": 0.504
+      },
+      {
+       "proyecto": "Apache:IGNITE",
+       "similitud": 0.5
+      }
+     ],
+     "historia_es": "Como científico de ML, quiero utilizar la capacidad de ver rangos de cultivos en tiempo real, para que pueda ver si mis cultivos podrían ser utilizados.",
+     "tareas_es": [
+      "Añadir capacidad para establecer intervalos de tiempo de los cultivos",
+      "Añadir capacidad para establecer intervalos de tiempo para los cultivos",
+      "Añadir capacidad para ver rangos de cultivos en tiempo real",
+      "Añadir soporte para almacenar intervalos de tiempo reales"
+     ]
+    }
+   ],
+   "tiempos": {
+    "traducir_entrada": 0.133,
+    "recuperar_arriba": 0.01,
+    "generar_historias": 0.755,
+    "deduplicar_historias": 0.075,
+    "recuperar_abajo": 0.018,
+    "generar_tareas": 4.447,
+    "deduplicar_tareas": 0.031,
+    "traducir": 0.249,
+    "total": 5.717
+   },
+   "vecinos_proyecto": [
+    {
+     "proyecto": "RedHat:COST",
+     "similitud": 0.433
+    },
+    {
+     "proyecto": "RedHat:ORG",
+     "similitud": 0.401
+    }
+   ],
+   "n_tareas": 49
+  }
+ },
+ {
+  "titulo": "Historias clínicas",
+  "descripcion": "Sistema para que una clínica pequeña gestione historias clínicas, citas y recetas, con acceso por roles para médicos y recepción.",
+  "resultado": {
+   "historias": [
+    {
+     "historia": "As a fabric administrator, I want to be able to document medical records, so that I can ensure sufficient expertise on certain owners and their requirements for further general information.",
+     "votos": 1,
+     "relevancia": 0.626,
+     "tareas": [
+      "Add documentation on how to document and document records",
+      "Add documentation about how to document records in a fabric-ca",
+      "Add doc for known issues in the fabric-ca",
+      "Document basic documentation",
+      "Document advanced documentation"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:TEIID",
+       "similitud": 0.463
+      },
+      {
+       "proyecto": "Hyperledger:BE",
+       "similitud": 0.444
+      }
+     ],
+     "historia_es": "Como administrador de fabric, quiero poder documentar los registros médicos, de modo que pueda garantizar la suficiente experiencia en ciertos propietarios y sus requisitos para obtener más información general.",
+     "tareas_es": [
+      "Añadir documentación sobre cómo documentar y documentos",
+      "Añadir documentación sobre cómo documentar registros en un fabric-ca",
+      "Añadir doc para los problemas conocidos en el fabric-ca",
+      "Documentación básica del documento",
+      "Documentación avanzada sobre documentos"
+     ]
+    },
+    {
+     "historia": "As a stakeholder, I want to see medical records without impacting a real time.",
+     "votos": 1,
+     "relevancia": 0.621,
+     "tareas": [
+      "Add ability to filter records without impacting a real time",
+      "Add ability for filtering records",
+      "Add documentation for the health records",
+      "Add docs for the Health records"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:COST",
+       "similitud": 0.453
+      },
+      {
+       "proyecto": "RedHat:MODE",
+       "similitud": 0.45
+      }
+     ],
+     "historia_es": "Como parte interesada, quiero ver los registros médicos sin afectar en tiempo real.",
+     "tareas_es": [
+      "Añadir capacidad para filtrar registros sin afectar a tiempo real",
+      "Añadir capacidad para filtrar registros",
+      "Añadir documentación para los registros médicos",
+      "Añadir documentos para los registros de salud"
+     ]
+    },
+    {
+     "historia": "As a user, I want to have a checkbox to see medical records based on access to the HCP servers and documentation",
+     "votos": 1,
+     "relevancia": 0.597,
+     "tareas": [
+      "Add checkbox to the HCP servers",
+      "Add checkbox for the HCP Servers",
+      "Add checkbox to the HCP server",
+      "Add checkbox for the HCP Server"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:TAJO",
+       "similitud": 0.485
+      },
+      {
+       "proyecto": "Sonatype:NEXUS",
+       "similitud": 0.483
+      }
+     ],
+     "historia_es": "Como usuario, quiero tener una casilla de verificación para ver los registros médicos basados en el acceso a los servidores HCP y la documentación",
+     "tareas_es": [
+      "Añadir casilla de verificación a los servidores HCP",
+      "Añadir casilla de verificación para los servidores HCP",
+      "Añadir casilla de verificación al servidor HCP",
+      "Añadir casilla de verificación para el servidor HCP"
+     ]
+    },
+    {
+     "historia": "As a candidate I need to be able to query a certain records on the HCP servers, so that they can see medical records.",
+     "votos": 1,
+     "relevancia": 0.555,
+     "tareas": [
+      "2.12: Query certain records on the HCP Servers - Part 2 - Part 3 - Part 4 - Part 5 - Part 6 - Part 7 - Part 8 - Part 9 - Part 11 - Part 11, Part 11, Part III - Part I - Part 1, Part 1, Part IV - Part 6, Part II - Part 1 - Part III",
+      "2.12: Update documentation for new changes to describe new changes in 2.2.1 - Part IV",
+      "query certain records on HCP servers",
+      "query the certain reports on HCP Servers"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:HAWQ",
+       "similitud": 0.503
+      },
+      {
+       "proyecto": "Apache:HAWQ",
+       "similitud": 0.474
+      }
+     ],
+     "historia_es": "Como candidato necesito poder consultar ciertos registros en los servidores HCP, para que puedan ver los registros médicos.",
+     "tareas_es": [
+      "2.12: Consultar ciertos registros en los servidores HCP - Parte 2 - Parte 3 - Parte 4 - Parte 5 - Parte 6 - Parte 7 - Parte 8 - Parte 9 - Parte 11 - Parte 11, Parte 11, Parte III - Parte I - Parte ZQ",
+      "2.12: Actualización de la documentación para nuevos cambios para describir nuevos cambios en 2.2.1 - Parte IV",
+      "consulta ciertos registros en servidores HCP",
+      "consulta ciertos informes en servidores HCP"
+     ]
+    },
+    {
+     "historia": "As a Technical Staff member, I want to understand a kind of availability for an individual records, so that I can know how to designate the appropriate design.",
+     "votos": 1,
+     "relevancia": 0.547,
+     "tareas": [
+      "Initial design of the list of records",
+      "Create a preliminary design for the list of record records",
+      "Please review the availability of individual records",
+      "Please review and discuss the availability for individual records"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:MODE",
+       "similitud": 0.447
+      },
+      {
+       "proyecto": "RedHat:ISPN",
+       "similitud": 0.423
+      }
+     ],
+     "historia_es": "Como miembro del equipo técnico, quiero entender una especie de disponibilidad para un registro individual, para que pueda saber cómo designar el diseño apropiado.",
+     "tareas_es": [
+      "Diseño inicial de la lista de registros",
+      "Crear un diseño preliminar para la lista de registros",
+      "Por favor revise la disponibilidad de registros individuales",
+      "Por favor revise y discuta la disponibilidad de registros individuales"
+     ]
+    },
+    {
+     "historia": "As a stakeholder, I want to see medical records with my HCP records, so that I can ensure my submissions occurred while still having to access the data.",
+     "votos": 1,
+     "relevancia": 0.514,
+     "tareas": [
+      "Health records with my HCP records",
+      "Documentation for health records",
+      "Add HCP records to HCP",
+      "Add HCP record to HCP"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:HAWQ",
+       "similitud": 0.491
+      },
+      {
+       "proyecto": "Apache:SQOOP",
+       "similitud": 0.484
+      }
+     ],
+     "historia_es": "Como parte interesada, quiero ver los registros médicos con mis registros HCP, para poder asegurar que mis presentaciones ocurrieron mientras todavía tenía que acceder a los datos.",
+     "tareas_es": [
+      "Registros de salud con mis registros HCP",
+      "Documentación para los registros médicos",
+      "Añadir registros HCP a HCP",
+      "Añadir registro HCP a HCP"
+     ]
+    },
+    {
+     "historia": "As a system administrator, I need a ability to manage a certain identifiers and roles for each individual roles.",
+     "votos": 1,
+     "relevancia": 0.483,
+     "tareas": [
+      "Add identifiers for certain identifiers and their roles",
+      "Add support for identifiers",
+      "Add identifiers and roles for certain identifiers",
+      "Entity identifiers should be able to manage the identifiers"
+     ],
+     "origen": [
+      {
+       "proyecto": "Sonatype:NEXUS",
+       "similitud": 0.638
+      },
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.582
+      }
+     ],
+     "historia_es": "Como administrador del sistema, necesito una habilidad para administrar ciertos identificadores y roles para cada rol individual.",
+     "tareas_es": [
+      "Añadir identificadores para determinados identificadores y sus funciones",
+      "Añadir soporte para identificadores",
+      "Añadir identificadores y roles para determinados identificadores",
+      "Los identificadores de entidad deben poder gestionar los identificadores"
+     ]
+    },
+    {
+     "historia": "As a researcher, I want to assign bi-weekly or second draft of a 'person' call to an 'invocation' call in the system, so that I can adjust for the appropriately to service level availability.",
+     "votos": 1,
+     "relevancia": 0.445,
+     "tareas": [
+      "Add biweekly or second draft of a 'person' call in the system system",
+      "Add ability to assign a second draft of an 'invocation' call in System system",
+      "Add bi-weekly or second draft of a 'invocation' call in the system",
+      "Add an ability to specify a method to specify the type of a call"
+     ],
+     "origen": [
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.466
+      },
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.464
+      }
+     ],
+     "historia_es": "Como investigador, quiero asignar bi-weekly o segundo borrador de una llamada de \"persona\" a una llamada de \"invocación\" en el sistema, de modo que pueda ajustar para la disponibilidad del nivel de servicio apropiado.",
+     "tareas_es": [
+      "Añadir quincenal o segundo borrador de una llamada de \"persona\" en el sistema",
+      "Añadir capacidad para asignar un segundo borrador de una llamada de 'invocación' en el sistema de sistema",
+      "Añadir bi-weekly o segundo borrador de una llamada de \"invocación\" en el sistema",
+      "Añadir una capacidad de especificar un método para especificar el tipo de llamada"
+     ]
+    },
+    {
+     "historia": "As a simple registry client, I want to be able to query a specific records, so that I can plan long-term records.",
+     "votos": 1,
+     "relevancia": 0.444,
+     "tareas": [
+      "2.12: Create registry client for query a specific records",
+      "3.0: Add query to specific records",
+      "query a specific row",
+      "query row"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:SCB",
+       "similitud": 0.544
+      },
+      {
+       "proyecto": "Apache:SCB",
+       "similitud": 0.528
+      }
+     ],
+     "historia_es": "Como cliente de registro simple, quiero poder consultar un registro específico, de modo que pueda planificar registros long-term.",
+     "tareas_es": [
+      "2.12: Crear cliente de registro para consultar un registro específico",
+      "3.0: Añadir consulta a registros específicos",
+      "consulta una fila específica",
+      "fila de consulta"
+     ]
+    },
+    {
+     "historia": "As a Technical Staff member, I want to have a ability to manage and manage detailed documentation.",
+     "votos": 1,
+     "relevancia": 0.43,
+     "tareas": [
+      "Document detailed documentation",
+      "Add documentation on how to manage and manage the documentation",
+      "Add documentation for the documentation",
+      "Add documentation about the documentation"
+     ],
+     "origen": [
+      {
+       "proyecto": "MariaDB:MXS",
+       "similitud": 0.571
+      },
+      {
+       "proyecto": "Apache:SMX4",
+       "similitud": 0.568
+      }
+     ],
+     "historia_es": "Como miembro del personal técnico, quiero tener la capacidad de gestionar y gestionar la documentación detallada.",
+     "tareas_es": [
+      "Documentación detallada del documento",
+      "Añadir documentación sobre cómo administrar y gestionar la documentación",
+      "Añadir documentación para la documentación",
+      "Añadir documentación sobre la documentación"
+     ]
+    },
+    {
+     "historia": "As a lp-helm chart, I need to be able to collect information regarding the appropriate ROLE for each type of service.",
+     "votos": 1,
+     "relevancia": 0.426,
+     "tareas": [
+      "lp-helm chart",
+      "lp_helm chart",
+      "lp-helm chart should be able to collect information about the type of service",
+      "lsst-helm chart doesn't work for a given type of service"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:ODC",
+       "similitud": 0.523
+      },
+      {
+       "proyecto": "RedHat:ODC",
+       "similitud": 0.456
+      }
+     ],
+     "historia_es": "Como gráfico lp-helm, necesito poder recopilar información sobre el ROLE apropiado para cada tipo de servicio.",
+     "tareas_es": [
+      "Gráfico lp-helm",
+      "Gráfico lp_helm",
+      "El gráfico lp-helm debería poder recopilar información sobre el tipo de servicio",
+      "El gráfico lsst-helm no funciona para un tipo de servicio dado"
+     ]
+    },
+    {
+     "historia": "As a l Staff member, I want to retrieve detailed records from a certain date, so that I can make sure my data is available.",
+     "votos": 1,
+     "relevancia": 0.419,
+     "tareas": [
+      "retrieve detailed records from a certain date",
+      "retrieve historical records from the certain date",
+      "retrieve detailed records from certain date",
+      "retrieve additional records from the certain date"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.519
+      },
+      {
+       "proyecto": "SecondLife:STORM",
+       "similitud": 0.498
+      }
+     ],
+     "historia_es": "Como miembro del personal, quiero recuperar registros detallados de una fecha determinada, para poder asegurarme de que mis datos están disponibles.",
+     "tareas_es": [
+      "recuperar registros detallados de una fecha determinada",
+      "recuperar registros históricos de la fecha determinada",
+      "recuperar registros detallados de cierta fecha",
+      "recuperar registros adicionales de la fecha determinada"
+     ]
+    }
+   ],
+   "tiempos": {
+    "traducir_entrada": 0.16,
+    "recuperar_arriba": 0.009,
+    "generar_historias": 0.898,
+    "deduplicar_historias": 0.083,
+    "recuperar_abajo": 0.023,
+    "generar_tareas": 5.2,
+    "deduplicar_tareas": 0.067,
+    "traducir": 0.667,
+    "total": 7.106
+   },
+   "vecinos_proyecto": [
+    {
+     "proyecto": "Hyperledger:CE",
+     "similitud": 0.469
+    },
+    {
+     "proyecto": "TAWOS-Lsstcorp:DM",
+     "similitud": 0.462
+    }
+   ],
+   "n_tareas": 49
+  }
+ },
+ {
+  "titulo": "Repositorio de tesis",
+  "descripcion": "Un repositorio institucional donde los estudiantes suben sus tesis, se revisan por un comité y se publican con metadatos y búsqueda.",
+  "resultado": {
+   "historias": [
+    {
+     "historia": "As a researcher, I want to view and update published content in a repository, so that I know how the data can be accessed.",
+     "votos": 1,
+     "relevancia": 0.598,
+     "tareas": [
+      "Update content in a repository",
+      "Update the content in the repository",
+      "Repository view and update content",
+      "Create Repository View and Update content"
+     ],
+     "origen": [
+      {
+       "proyecto": "Sonatype:NEXUS",
+       "similitud": 0.511
+      },
+      {
+       "proyecto": "Apache:STANBOL",
+       "similitud": 0.462
+      }
+     ],
+     "historia_es": "Como investigador, quiero ver y actualizar el contenido publicado en un repositorio, para que sepa cómo se puede acceder a los datos.",
+     "tareas_es": [
+      "Actualizar contenido en un repositorio",
+      "Actualizar el contenido en el repositorio",
+      "Vista del repositorio y actualización del contenido",
+      "Crear repositorio Ver y actualizar el contenido"
+     ]
+    },
+    {
+     "historia": "As a DB/IR administrator, I want to be able to assign metadata or tags to a thesis paper, so that I can see how interesting or appealing to them.",
+     "votos": 1,
+     "relevancia": 0.594,
+     "tareas": [
+      "Add metadata or tags to a given dataset",
+      "Add a tag to a new dataset",
+      "Add metadata or tags to a genesis paper",
+      "Add tags to the genesis paper"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:DATALAB",
+       "similitud": 0.455
+      },
+      {
+       "proyecto": "Apache:DATAFU",
+       "similitud": 0.445
+      }
+     ],
+     "historia_es": "Como administrador de DB/IR, quiero poder asignar metadatos o etiquetas a un papel de tesis, de modo que pueda ver lo interesante o atractivo que es para ellos.",
+     "tareas_es": [
+      "Añadir metadatos o etiquetas a un conjunto de datos dado",
+      "Añadir una etiqueta a un nuevo conjunto de datos",
+      "Añadir metadatos o etiquetas a un papel de génesis",
+      "Añadir etiquetas al papel de génesis"
+     ]
+    },
+    {
+     "historia": "As a Research Centre manager, I want to be able to browse through content and content using my personal account, so that I can identify the right format for archiving.",
+     "votos": 1,
+     "relevancia": 0.584,
+     "tareas": [
+      "Document content and content using personal account",
+      "Add ability to filter out content from content",
+      "Add support for filtering through content",
+      "Add content and content to content repository",
+      "Add content for content repositories"
+     ],
+     "origen": [
+      {
+       "proyecto": "Sonatype:NEXUS",
+       "similitud": 0.534
+      },
+      {
+       "proyecto": "Apache:STANBOL",
+       "similitud": 0.517
+      }
+     ],
+     "historia_es": "Como gerente del Centro de Investigación, quiero poder navegar a través de contenido y contenido utilizando mi cuenta personal, para poder identificar el formato adecuado para archivar.",
+     "tareas_es": [
+      "Contenido del documento y contenido utilizando una cuenta personal",
+      "Añadir capacidad para filtrar el contenido del contenido",
+      "Añadir soporte para filtrar a través del contenido",
+      "Añadir contenido y contenido al repositorio de contenido",
+      "Añadir contenido para repositorios de contenido"
+     ]
+    },
+    {
+     "historia": "As a rector, I want to enhance the thesis service through the archive, so that I can make sure that compliance with my dataset more regular.",
+     "votos": 1,
+     "relevancia": 0.579,
+     "tareas": [
+      "Improve the documentation of the ChemistryService in archive",
+      "Update ChemistryService to use the new ChemistryService",
+      "enhance chemistry service",
+      "enhance the chemistry service"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.465
+      },
+      {
+       "proyecto": "Apache:DATAFU",
+       "similitud": 0.433
+      }
+     ],
+     "historia_es": "Como rector, quiero mejorar el servicio de tesis a través del archivo, para que pueda asegurarme de que el cumplimiento de mi dataset sea más regular.",
+     "tareas_es": [
+      "Mejorar la documentación del Servicio de Química en archivo",
+      "Actualizar ChemistryService para usar el nuevo ChemistryService",
+      "mejorar el servicio de química",
+      "mejorar el servicio de química"
+     ]
+    },
+    {
+     "historia": "As a researcher, I want to browse through the format, so that I can arrange my work in a single online home page.",
+     "votos": 1,
+     "relevancia": 0.575,
+     "tareas": [
+      "Create a separate page for the homepage",
+      "Create a page for the home page",
+      "Apply content to the docs page",
+      "Apply search for content"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:AMQ",
+       "similitud": 0.52
+      },
+      {
+       "proyecto": "Apache:CONCERTED",
+       "similitud": 0.5
+      }
+     ],
+     "historia_es": "Como investigador, quiero navegar a través del formato, para que pueda organizar mi trabajo en una sola página de inicio en línea.",
+     "tareas_es": [
+      "Crear una página separada para la página principal",
+      "Crear una página para la página principal",
+      "Aplicar contenido a la página de documentos",
+      "Aplicar búsqueda de contenido"
+     ]
+    },
+    {
+     "historia": "As a researcher, I want to have the metadata be stored during the institutional repository, so that I can ensure that all rights have to be considered.",
+     "votos": 1,
+     "relevancia": 0.568,
+     "tareas": [
+      "Create metadata stored in institutional repository",
+      "Create Metadata Stored in stable repository",
+      "Add metadata to the repository repository",
+      "Add metadata for the repository"
+     ],
+     "origen": [
+      {
+       "proyecto": "Sonatype:NEXUS",
+       "similitud": 0.521
+      },
+      {
+       "proyecto": "RedHat:TEIID",
+       "similitud": 0.492
+      }
+     ],
+     "historia_es": "Como investigador, quiero que los metadatos se almacenen durante el repositorio institucional, para que pueda asegurar que todos los derechos deben ser considerados.",
+     "tareas_es": [
+      "Crear metadatos almacenados en repositorios institucionales",
+      "Crear metadatos almacenados en repositorios estables",
+      "Añadir metadatos al repositorio",
+      "Añadir metadatos para el repositorio"
+     ]
+    },
+    {
+     "historia": "As a researcher, I want to have metadata in the repository that I deposit, so that the materials can be used by the system or not.",
+     "votos": 1,
+     "relevancia": 0.537,
+     "tareas": [],
+     "origen": [
+      {
+       "proyecto": "Sonatype:NEXUS",
+       "similitud": 0.553
+      },
+      {
+       "proyecto": "Sonatype:NEXUS",
+       "similitud": 0.493
+      }
+     ],
+     "historia_es": "Como investigador, quiero tener metadatos en el repositorio que deposito, para que los materiales puedan ser utilizados por el sistema o no.",
+     "tareas_es": []
+    },
+    {
+     "historia": "As a system administrator, I want to upload data from the data, so that I can have a small online search for the research.",
+     "votos": 1,
+     "relevancia": 0.536,
+     "tareas": [
+      "Upload data from the data store",
+      "Upload data to the data store",
+      "Upload data from data",
+      "Create a new repository for uploading data from data"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.56
+      },
+      {
+       "proyecto": "RedHat:KOGITO",
+       "similitud": 0.547
+      }
+     ],
+     "historia_es": "Como administrador del sistema, quiero subir datos de los datos, para que pueda tener una pequeña búsqueda en línea para la investigación.",
+     "tareas_es": [
+      "Cargar datos desde el almacén de datos",
+      "Subir datos al almacén de datos",
+      "Cargar datos de datos",
+      "Crear un nuevo repositorio para cargar datos desde datos"
+     ]
+    },
+    {
+     "historia": "As a researcher, I want to have a metadata held in repository using minimal standard data, so that I can query my data.",
+     "votos": 1,
+     "relevancia": 0.534,
+     "tareas": [
+      "Create metadata for metadata"
+     ],
+     "origen": [
+      {
+       "proyecto": "Sonatype:NEXUS",
+       "similitud": 0.62
+      },
+      {
+       "proyecto": "Apache:MRM",
+       "similitud": 0.584
+      }
+     ],
+     "historia_es": "Como investigador, quiero tener un metadatos en el repositorio usando datos mínimos estándar, para que pueda consultar mis datos.",
+     "tareas_es": [
+      "Crear metadatos para metadatos"
+     ]
+    },
+    {
+     "historia": "As a researcher, I want to see the sections on the repository, so that I can decide if I want to have the right version of the data produced by another Ethics Committee.",
+     "votos": 1,
+     "relevancia": 0.522,
+     "tareas": [
+      "Add Ephemeral section to the repository",
+      "Add documentation on the repository",
+      "Repository configurations",
+      "Documentation"
+     ],
+     "origen": [
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.466
+      },
+      {
+       "proyecto": "RedHat:FH",
+       "similitud": 0.457
+      }
+     ],
+     "historia_es": "Como investigador, quiero ver las secciones del repositorio, para que pueda decidir si quiero tener la versión correcta de los datos producidos por otro Comité de Ética.",
+     "tareas_es": [
+      "Añadir sección efímera al repositorio",
+      "Añadir documentación en el repositorio",
+      "Configuración del repositorio",
+      "Documentación"
+     ]
+    },
+    {
+     "historia": "As a repository support team member, I want to confirm the data has been uploaded, so that I can proceed with the action.",
+     "votos": 1,
+     "relevancia": 0.486,
+     "tareas": [
+      "Verify data is live",
+      "Verify data has been published",
+      "Announcement for the release",
+      "Create a notification email",
+      "Create email to hyperledger-fabric",
+      "Prepare fabric for the release",
+      "Verify data has live"
+     ],
+     "origen": [
+      {
+       "proyecto": "JFrog:RTFACT",
+       "similitud": 0.551
+      },
+      {
+       "proyecto": "JiraEcosystem:UPM",
+       "similitud": 0.523
+      }
+     ],
+     "historia_es": "Como miembro del equipo de soporte de repositorio, quiero confirmar que los datos han sido subidos, para que pueda proceder con la acción.",
+     "tareas_es": [
+      "Verificar que los datos estén en vivo",
+      "Verificar que los datos han sido publicados",
+      "Anuncio de la publicación",
+      "Crear un correo electrónico de notificación",
+      "Crear correo electrónico a hyperledger-fabric",
+      "Preparar fabric para la liberación",
+      "Verificar que los datos tengan vida"
+     ]
+    },
+    {
+     "historia": "As a researcher, I want to receive regular summary data, so that I can provide security guidelines to the institutional repository or appropriate information on the website.",
+     "votos": 1,
+     "relevancia": 0.463,
+     "tareas": [
+      "Add summary data to the website",
+      "Add summary information to the website",
+      "Add regular summary data to the website",
+      "Create summary data for the website"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:FH",
+       "similitud": 0.557
+      },
+      {
+       "proyecto": "MongoDB:DOCS",
+       "similitud": 0.488
+      }
+     ],
+     "historia_es": "Como investigador, quiero recibir datos de resumen regulares, para poder proporcionar directrices de seguridad al repositorio institucional o información apropiada en el sitio web.",
+     "tareas_es": [
+      "Añadir datos de resumen al sitio web",
+      "Añadir información resumida al sitio web",
+      "Añadir datos de resumen al sitio web",
+      "Crear datos de resumen para el sitio web"
+     ]
+    }
+   ],
+   "tiempos": {
+    "traducir_entrada": 0.129,
+    "recuperar_arriba": 0.009,
+    "generar_historias": 0.712,
+    "deduplicar_historias": 0.078,
+    "recuperar_abajo": 0.021,
+    "generar_tareas": 3.48,
+    "deduplicar_tareas": 0.025,
+    "traducir": 0.272,
+    "total": 4.726
+   },
+   "vecinos_proyecto": [
+    {
+     "proyecto": "dalpiaz:g24-unibath",
+     "similitud": 0.612
+    },
+    {
+     "proyecto": "dalpiaz:g11-nsf",
+     "similitud": 0.496
+    }
+   ],
+   "n_tareas": 45
+  }
+ },
+ {
+  "titulo": "Study room booking (en)",
+  "descripcion": "A mobile app where university students can find and book study rooms on campus in real time, with reminders and check-in.",
+  "resultado": {
+   "historias": [
+    {
+     "historia": "As a student, I want to have a dashboard that shows how many users have the already in my app, so that I can get a sense of whether I want to use a Mobile App from a particular location.",
+     "votos": 1,
+     "relevancia": 0.657,
+     "tareas": [
+      "Add documentation for the Mobile App",
+      "Add documentation about the Mobile App",
+      "Create a dashboard that shows how to use a mobile dashboard",
+      "Create a UI that shows the mobile dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "Hyperledger:CE",
+       "similitud": 0.55
+      },
+      {
+       "proyecto": "Hyperledger:CE",
+       "similitud": 0.543
+      }
+     ],
+     "historia_es": "Como estudiante, quiero tener un panel de control que muestre cuántos usuarios ya tienen la aplicación, para que pueda tener una idea de si quiero usar una aplicación móvil desde una ubicación en particular.",
+     "tareas_es": [
+      "Añadir documentación para la aplicación móvil",
+      "Añadir documentación sobre la aplicación móvil",
+      "Crear un panel de mando que muestre cómo usar un panel de mando móvil",
+      "Crear un UI que muestre el panel de mando móvil"
+     ]
+    },
+    {
+     "historia": "As a student, I want to be able to choose an app that shows a particular app that shows their circumstances and their circumstances.",
+     "votos": 1,
+     "relevancia": 0.585,
+     "tareas": [
+      "Add ability to select a given app that shows the their scenarios",
+      "Add ability for selecting a certain app that Shows the scenarios",
+      "Add app that shows their circumstances and circumstances",
+      "Add a feature that shows the circumstances and reasonces"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:WINDUP",
+       "similitud": 0.545
+      },
+      {
+       "proyecto": "RedHat:WINDUP",
+       "similitud": 0.489
+      }
+     ],
+     "historia_es": "Como estudiante, quiero poder elegir una aplicación que muestre una aplicación en particular que muestre sus circunstancias y circunstancias.",
+     "tareas_es": [
+      "Añade la capacidad de seleccionar una aplicación determinada que muestre sus escenarios",
+      "Añadir capacidad para seleccionar una aplicación determinada que Muestra los escenarios",
+      "Añadir aplicación que muestre sus circunstancias y circunstancias",
+      "Añada una función que muestre las circunstancias y razones"
+     ]
+    },
+    {
+     "historia": "As a user, I want to be able to create an app that shows my app and sign up my app and create a mobile device that is accessible to me, so that I can find the ones and their friends and with our friends.",
+     "votos": 1,
+     "relevancia": 0.576,
+     "tareas": [
+      "Create app that shows my app and sign up my app",
+      "Create a notification button for the new app",
+      "Create app that shows the app that shows the app and sign it into the app",
+      "Create a basic app that demonstrates the app"
+     ],
+     "origen": [
+      {
+       "proyecto": "Qt:QTBUG",
+       "similitud": 0.574
+      },
+      {
+       "proyecto": "RedHat:FH",
+       "similitud": 0.56
+      }
+     ],
+     "historia_es": "Como usuario, quiero poder crear una app que muestre mi app y registrar mi app y crear un dispositivo móvil al que pueda acceder, para que pueda encontrar a los que están y a sus amigos y con nuestros amigos.",
+     "tareas_es": [
+      "Crear una aplicación que muestre mi aplicación y registrar mi aplicación",
+      "Crear un botón de notificación para la nueva aplicación",
+      "Crear aplicación que muestre la aplicación que muestra la aplicación y la firme en la aplicación",
+      "Crear una aplicación básica que demuestre la aplicación"
+     ]
+    },
+    {
+     "historia": "As a user, I want to see a list of all upcoming courses, so that I can know about my app.",
+     "votos": 1,
+     "relevancia": 0.57,
+     "tareas": [
+      "Add a list of upcoming courses in the app",
+      "Show all upcoming steps in the application",
+      "Please add a list of upcoming courses",
+      "Please add an example of upcoming course"
+     ],
+     "origen": [
+      {
+       "proyecto": "TAWOS-Moodle:MDL",
+       "similitud": 0.499
+      },
+      {
+       "proyecto": "RedHat:WINDUP",
+       "similitud": 0.458
+      }
+     ],
+     "historia_es": "Como usuario, quiero ver una lista de todos los cursos que se avecinan, para que pueda saber acerca de mi aplicación.",
+     "tareas_es": [
+      "Añadir una lista de los cursos que se van a presentar en la aplicación",
+      "Mostrar todos los pasos siguientes en la aplicación",
+      "Por favor, agregue una lista de los cursos que se avecinan",
+      "Por favor, añada un ejemplo de curso futuro"
+     ]
+    },
+    {
+     "historia": "As a student, I want to be able to create an app which shows details on the neighbourhoods for my app, so that I can keep track of which conflicts with others.",
+     "votos": 1,
+     "relevancia": 0.565,
+     "tareas": [
+      "Create an app that shows details on the neighbourhoods",
+      "Create a notification for the app which show details on their neighbours",
+      "Create app that creates an app that shows the details of the neighbourhoods",
+      "Create a proxy that creates a remote app that connects to the gateways"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:WINDUP",
+       "similitud": 0.434
+      },
+      {
+       "proyecto": "SecondLife:STORM",
+       "similitud": 0.43
+      }
+     ],
+     "historia_es": "Como estudiante, quiero poder crear una app que muestre detalles sobre los barrios de mi app, para poder hacer un seguimiento de qué conflictos con otros.",
+     "tareas_es": [
+      "Crear una aplicación que muestre detalles sobre los barrios",
+      "Crear una notificación para la aplicación que muestre detalles sobre sus vecinos",
+      "Crear una aplicación que crea una aplicación que muestre los detalles de los barrios",
+      "Crear un proxy que cree una aplicación remota que se conecte a las pasarelas"
+     ]
+    },
+    {
+     "historia": "As a teacher, I want to identify a link in my mobile device, so that I can more conveniently use the data for my personal calendar.",
+     "votos": 1,
+     "relevancia": 0.559,
+     "tareas": [
+      "Add a link to mobile device",
+      "Allow users to specify a link in the mobile device",
+      "Add ability to specify the link in mobile device"
+     ],
+     "origen": [
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.498
+      },
+      {
+       "proyecto": "TAWOS-Moodle:MDL",
+       "similitud": 0.476
+      }
+     ],
+     "historia_es": "Como profesor, quiero identificar un enlace en mi dispositivo móvil, para que pueda utilizar los datos de forma más conveniente para mi calendario personal.",
+     "tareas_es": [
+      "Añadir un enlace al dispositivo móvil",
+      "Permitir a los usuarios especificar un enlace en el dispositivo móvil",
+      "Añadir capacidad para especificar el enlace en el dispositivo móvil"
+     ]
+    },
+    {
+     "historia": "As a developer, I want to get a sense of the age of the app that looks and behaves in real time, so that I can study our app in realtime.",
+     "votos": 1,
+     "relevancia": 0.483,
+     "tareas": [
+      "Apply age of app in real time",
+      "Make a bottleneck of the app in actual time",
+      "Create a new app that looks like the age of the app that has been found in real time",
+      "Create a separate project that looks for the application that has been discovered in real time"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:YUNIKORN",
+       "similitud": 0.544
+      },
+      {
+       "proyecto": "JiraEcosystem:AG",
+       "similitud": 0.518
+      }
+     ],
+     "historia_es": "Como desarrollador, quiero tener una idea de la edad de la aplicación que se ve y se comporta en tiempo real, para poder estudiar nuestra aplicación en tiempo real.",
+     "tareas_es": [
+      "Aplicar la edad de aplicación en tiempo real",
+      "Hacer un cuello de botella de la aplicación en tiempo real",
+      "Crear una nueva aplicación que se parezca a la edad de la aplicación que se ha encontrado en tiempo real",
+      "Crear un proyecto separado que busque la aplicación que se ha descubierto en tiempo real"
+     ]
+    },
+    {
+     "historia": "As a student, I want to be able to create an account on the site and have a persistent URL of the site and do not expect a customized roadmap or my name ( so that I can get a sense of what I am doing on our website.",
+     "votos": 1,
+     "relevancia": 0.469,
+     "tareas": [
+      "Create a persistent URL for the site",
+      "Create persistent URL of the site",
+      "Create persistent URL for the site",
+      "Add persistent URL to the site"
+     ],
+     "origen": [
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.537
+      },
+      {
+       "proyecto": "RedHat:ORG",
+       "similitud": 0.525
+      }
+     ],
+     "historia_es": "Como estudiante, quiero poder crear una cuenta en el sitio y tener un URL persistente del sitio y no espero una hoja de ruta personalizada o mi nombre (para que pueda tener una idea de lo que estoy haciendo en nuestro sitio web.",
+     "tareas_es": [
+      "Crear un URL persistente para el sitio",
+      "Crear URL persistente del sitio",
+      "Crear URL persistente para el sitio",
+      "Añadir URL persistente al sitio"
+     ]
+    },
+    {
+     "historia": "As a researcher, I want to create an app that matches my name and be created with my name, so that I can find the main information about my app and also use the information.",
+     "votos": 1,
+     "relevancia": 0.468,
+     "tareas": [
+      "Create app that match my name and name for my name",
+      "Create a Sample for my name",
+      "Create an app that matchs my name and its name",
+      "Create an application that matches my name with my name"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:CB",
+       "similitud": 0.468
+      },
+      {
+       "proyecto": "Apache:FLAGON",
+       "similitud": 0.458
+      }
+     ],
+     "historia_es": "Como investigador, quiero crear una aplicación que coincida con mi nombre y que se cree con mi nombre, para que pueda encontrar la información principal sobre mi aplicación y también utilizar la información.",
+     "tareas_es": [
+      "Crear aplicación que coincida con mi nombre y nombre para mi nombre",
+      "Crear una muestra para mi nombre",
+      "Crear una aplicación que coincida con mi nombre y su nombre",
+      "Crear una aplicación que coincida mi nombre con mi nombre"
+     ]
+    },
+    {
+     "historia": "As a teacher, I want to create a dashboard that shows a new one of the datasets on my mobile device, so that I can keep the platform online.",
+     "votos": 1,
+     "relevancia": 0.449,
+     "tareas": [
+      "Create mobile device for mobile device",
+      "Create dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:CLIMATE",
+       "similitud": 0.538
+      },
+      {
+       "proyecto": "Apache:FLINK",
+       "similitud": 0.509
+      }
+     ],
+     "historia_es": "Como profesor, quiero crear un panel de mando que muestre uno nuevo de los conjuntos de datos de mi dispositivo móvil, para que pueda mantener la plataforma en línea.",
+     "tareas_es": [
+      "Crear un dispositivo móvil para un dispositivo móvil",
+      "Crear tablero"
+     ]
+    },
+    {
+     "historia": "As a student, I want to be able to create a lesson activity with an intro section of a given business calendar so that I can keep improving the service on the platform.",
+     "votos": 1,
+     "relevancia": 0.439,
+     "tareas": [
+      "Create lesson activity with intro section of a given business calendar",
+      "Add lesson activity to a student page",
+      "Create a lesson activity activity",
+      "Create a project activity activity"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:JBPM",
+       "similitud": 0.513
+      },
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.507
+      }
+     ],
+     "historia_es": "Como estudiante, quiero poder crear una actividad de lección con una sección de introducción de un calendario de negocios dado para poder seguir mejorando el servicio en la plataforma.",
+     "tareas_es": [
+      "Crear actividad de la lección con la sección de introducción de un calendario de negocios dado",
+      "Agregar actividad de lección a una página de estudiante",
+      "Crear una actividad de actividad de lección",
+      "Crear una actividad de proyecto"
+     ]
+    },
+    {
+     "historia": "As a user, I want to have a persistent URL in my mobile device, so that I can start using the data for doing analysis and visualizations.",
+     "votos": 1,
+     "relevancia": 0.427,
+     "tareas": [
+      "persistent URL in mobile device",
+      "persistent URL for mobile device"
+     ],
+     "origen": [
+      {
+       "proyecto": "Qt:QTBUG",
+       "similitud": 0.522
+      },
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.505
+      }
+     ],
+     "historia_es": "Como usuario, quiero tener un URL persistente en mi dispositivo móvil, para que pueda empezar a usar los datos para hacer análisis y visualizaciones.",
+     "tareas_es": [
+      "persistente URL en dispositivo móvil",
+      "persistente URL para dispositivo móvil"
+     ]
+    }
+   ],
+   "tiempos": {
+    "recuperar_arriba": 0.009,
+    "generar_historias": 1.003,
+    "deduplicar_historias": 0.088,
+    "recuperar_abajo": 0.022,
+    "generar_tareas": 3.613,
+    "deduplicar_tareas": 0.029,
+    "traducir": 0.359,
+    "total": 5.123
+   },
+   "vecinos_proyecto": [
+    {
+     "proyecto": "MongoDB:DOCS",
+     "similitud": 0.472
+    },
+    {
+     "proyecto": "TAWOS-Moodle:MDL",
+     "similitud": 0.461
+    }
+   ],
+   "n_tareas": 43
+  }
+ }
+]

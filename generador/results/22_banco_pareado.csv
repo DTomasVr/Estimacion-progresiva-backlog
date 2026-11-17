@@ -1,0 +1,7 @@
+sistema,n,sF1_nuestro,sF1_otro,delta,ic95_lo,ic95_hi,gana_otro
+llama3.1:8b cero,64,0.3598,0.4634,0.1035,0.0782,0.1291,True
+mistral:7b cero,64,0.3598,0.4732,0.1134,0.0879,0.1405,True
+gemma2:9b cero,64,0.3598,0.4748,0.1149,0.0884,0.1432,True
+llama3.1:8b ejemplos,64,0.3598,0.4794,0.1195,0.0922,0.1487,True
+mistral:7b ejemplos,64,0.3598,0.4855,0.1257,0.0989,0.1527,True
+gemma2:9b ejemplos,64,0.3598,0.4867,0.1269,0.0988,0.1562,True

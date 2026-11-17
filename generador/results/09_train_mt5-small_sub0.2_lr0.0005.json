@@ -1,0 +1,26 @@
+{
+ "modelo": "google/mt5-small",
+ "bs": 8,
+ "max_out": 192,
+ "lr": 0.0005,
+ "epocas": 1,
+ "hist": [
+  {
+   "epoca": 1,
+   "train_loss": 5.718003408776389,
+   "val_loss": 3.7430645098488937,
+   "seg": 149
+  }
+ ],
+ "v0": 13.61556553797228,
+ "mejor_val": 3.7430645098488937,
+ "vram_pico": 5.37,
+ "min": 2.9,
+ "gens": [
+  "Implement Eclipse integration ; Implement Eclipse Integration ; Implement Spring-DM with Spring-DM for Spring-DM in Spring-DM",
+  "Create a test for nightly build ; Add a test to nightly build",
+  "Create a new version of Sawtooth Architecture Guide for Accuracy ; Update a new design of Sawtooth architecture guide for Accuracy",
+  "Create a repository for Mobile.next() ; Create a new repository for mobile.next()",
+  "Create stateful operators in continuous processing ; Create stateful operator in continuous process"
+ ]
+}

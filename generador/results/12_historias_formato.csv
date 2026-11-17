@@ -1,0 +1,131 @@
+source,issuetype,0
+Jira,Suggestion,6731
+RedHat,Story,2254
+RedHat,Epic,866
+Hyperledger,Story,658
+RedHat,Task,498
+Apache,Improvement,403
+Apache,New Feature,308
+RedHat,Feature Request,247
+Qt,User Story,239
+RedHat,Sub-task,227
+Apache,Task,183
+Mojang,Bug,177
+Jira,Bug,173
+Spring,New Feature,171
+MongoDB,Story,159
+RedHat,Enhancement,156
+Spring,Improvement,140
+Apache,Bug,124
+Apache,Story,111
+TAWOS-DNNTracker,Story,104
+MongoDB,Task,93
+Spring,Story,90
+Hyperledger,Task,89
+RedHat,Feature,89
+Hyperledger,Sub-task,88
+JiraEcosystem,Story,86
+MongoDB,Improvement,84
+MongoDB,New Feature,84
+TAWOS-Moodle,Improvement,83
+Apache,Sub-task,78
+SecondLife,Story,65
+TAWOS-Appcelerator,Story,64
+RedHat,Bug,64
+TAWOS-Mulesoft,Enhancement Request,62
+JiraEcosystem,Improvement,59
+TAWOS-Moodle,Task,58
+Hyperledger,Epic,54
+Apache,Wish,50
+JiraEcosystem,New Feature,49
+TAWOS-Moodle,New Feature,44
+TAWOS-Moodle,Bug,44
+Sonatype,Improvement,43
+Qt,Suggestion,36
+Sonatype,New Project,36
+Qt,Bug,35
+RedHat,Requirement,35
+Hyperledger,New Feature,34
+Mindville,New Feature,32
+JFrog,New Feature,31
+Qt,Technical task,24
+Qt,Task,23
+TAWOS-Mulesoft,Story,22
+JiraEcosystem,Bug,22
+Jira,Sub-task,20
+MongoDB,Bug,19
+TAWOS-Appcelerator,New Feature,19
+Spring,Bug,16
+JFrog,Improvement,16
+Sakai,Bug,16
+RedHat,New Feature,16
+JiraEcosystem,Suggestion,15
+Sakai,Feature Request,14
+TAWOS-DNNTracker,Bug,12
+TAWOS-Appcelerator,Improvement,11
+Hyperledger,Bug,11
+Qt,Epic,11
+Sonatype,Publishing Support,10
+TAWOS-DNNTracker,Improvement,10
+TAWOS-Appcelerator,Bug,8
+Sonatype,Bug,8
+Apache,Epic,7
+TAWOS-DNNTracker,Sub-task,7
+Spring,Task,7
+Qt,Change Request,7
+Sonatype,Story,6
+JFrog,Bug,6
+SecondLife,Defect,6
+Spring,Sub-task,6
+TAWOS-Mulesoft,Bug,5
+Apache,Documentation,5
+Spring,Technical task,5
+TAWOS-Appcelerator,Epic,4
+JiraEcosystem,Task,4
+RedHat,Documentation,4
+TAWOS-Appcelerator,Sub-task,4
+Jira,Support Request,4
+SecondLife,New Feature,3
+Hyperledger,Documentation,3
+Apache,Test,3
+MariaDB,Bug,3
+Hyperledger,Improvement,3
+TAWOS-Lsstcorp,Story,3
+RedHat,Sub-requirement ,2
+Hyperledger,Test Task,2
+Apache,Project,2
+MongoDB,Investigation,2
+MongoDB,Sub-task,2
+Qt,Sub-task,2
+IntelDAOS,Bug,2
+TAWOS-Lyrasis,Story,2
+Spring,Refactoring,2
+TAWOS-Moodle,Sub-task,2
+SecondLife,Sub-task,2
+Sakai,Sub-task,2
+SecondLife,Bug,2
+RedHat,Initiative,2
+RedHat,Clarification,2
+RedHat,QE Task,2
+MongoDB,Question,2
+Apache,Question,2
+Apache,Dependency upgrade,1
+Apache,Request,1
+IntelDAOS,Story,1
+JFrog,Support Ticket,1
+MongoDB,Technical Debt,1
+MariaDB,Task,1
+JiraEcosystem,Epic,1
+JiraEcosystem,Sub-task,1
+JiraEcosystem,Support Request,1
+MongoDB,Feedback,1
+MongoDB,Epic,1
+RedHat,Docs Task,1
+SecondLife,Story Defect,1
+SecondLife,Task,1
+RedHat,Dev Task,1
+RedHat,Spike,1
+Spring,Epic,1
+Sonatype,Sub-task,1
+TAWOS-Lsstcorp,Bug,1
+TAWOS-Lsstcorp,Improvement,1

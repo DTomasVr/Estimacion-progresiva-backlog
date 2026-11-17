@@ -1,0 +1,38 @@
+{
+ "modelo": "models/mt5-small-pruned_hist_agix_v1",
+ "bs": 16,
+ "max_out": 192,
+ "lr": 0.0005,
+ "epocas": 4,
+ "hist": [
+  {
+   "epoca": 1,
+   "train_loss": 2.5610074259455895,
+   "val_loss": 3.2987453792831207,
+   "seg": 787
+  },
+  {
+   "epoca": 2,
+   "train_loss": 2.35361324227672,
+   "val_loss": 3.312049555761701,
+   "seg": 790
+  },
+  {
+   "epoca": 3,
+   "train_loss": 2.252981891761026,
+   "val_loss": 3.3332826554578574,
+   "seg": 784
+  }
+ ],
+ "v0": 3.374583955549944,
+ "mejor_val": 3.2987453792831207,
+ "vram_pico": 6.16,
+ "min": 39.7,
+ "gens": [
+  "Improve performance of SparseOperator ; Improve performance for sparse operators",
+  "Retrieve and display a list of sessions on the app ; Display the list of completed sessions on a separate page ; Allow adding/removing sessions from the app",
+  "Remove unsafeRow implementation ; UnsafeRow should be able to use unsafeRow instead of unsafeRow",
+  "Refactor all benchmarks to save the result as a separate file ; Refactor the result as an optional file",
+  "Improve test coverage for pandas-on-spark ; Improve Test coverage for dataframe.to_clipboard"
+ ]
+}

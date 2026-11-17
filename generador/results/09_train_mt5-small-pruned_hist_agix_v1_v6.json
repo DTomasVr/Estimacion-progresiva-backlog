@@ -1,0 +1,40 @@
+{
+ "modelo": "models/mt5-small-pruned_hist_agix_v1",
+ "bs": 16,
+ "acum": 1,
+ "bs_efectivo": 16,
+ "max_out": 192,
+ "lr": 0.0005,
+ "epocas": 4,
+ "hist": [
+  {
+   "epoca": 1,
+   "train_loss": 2.611235364194059,
+   "val_loss": 3.335176803133605,
+   "seg": 489
+  },
+  {
+   "epoca": 2,
+   "train_loss": 2.4206919302875893,
+   "val_loss": 3.3571883009761003,
+   "seg": 485
+  },
+  {
+   "epoca": 3,
+   "train_loss": 2.3180165395254533,
+   "val_loss": 3.3793617965444844,
+   "seg": 481
+  }
+ ],
+ "v0": 3.371417296521839,
+ "mejor_val": 3.335176803133605,
+ "vram_pico": 6.15,
+ "min": 24.8,
+ "gens": [
+  "Add API that connects to the UI ; Add API that retrieves the metrics from the UI",
+  "[ML] Add support for pipelines as PMML ; [ML] Create a new module for the pipelines using PMML",
+  "FIO: Operator engagement report Response - TE Tracker ; FIO: operator engagement report",
+  "Finish web UI ; Finish web UI",
+  "Add metrics for Before and After ; Add metrics to Kafka Bridge"
+ ]
+}

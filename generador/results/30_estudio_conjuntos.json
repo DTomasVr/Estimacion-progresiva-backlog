@@ -1,0 +1,1293 @@
+[
+ {
+  "caso": "dalpiaz:g16-mis",
+  "descripcion": "is a collection of user stories that pertains a repository for researchers and archivists. The source of the dataset is a public Trello repository. Although the user stories do not have explicit links",
+  "backlogs": [
+   {
+    "letra": "B",
+    "historias": [
+     "As a archivist, I want to manage user research, so that I can support researchers and categories.",
+     "As a researcher, I want to see the repository used in my department, so that I can get track of my research.",
+     "As a user, I want to be able to search for metadata by email, so that I can find relevant information from my needs.",
+     "As an archivemanager, I want to generate reports of all metadata, so that I can inform reports of researchers and researchers.",
+     "As a student, I want to view the metadata of my researchers, so that I know how the data remains current.",
+     "As a archivist, I want to generate a report on the dataset creation process, so that I can ensure proper metadata.",
+     "As an asset manager, I want to be assured that there is no longer one deposit for the repository, so that the storage integrity of the is kept low.",
+     "As a researcher, I want to see the overall metadata of my dataset, so that I can make informed decisions."
+    ],
+    "tareas": [
+     [
+      "Develop a database for user researchers and categories",
+      "Add documentation for archivist",
+      "Implement a dashboard for user researcher and categories"
+     ],
+     [
+      "Retrieve the repository from the database",
+      "Display the repository on the dashboard",
+      "Send a notification to the scientist if the repository is used",
+      "Repository configuration"
+     ],
+     [
+      "Create a search form in the user dashboard",
+      "Store search results in the database",
+      "Implement a search feature in the user dashboard",
+      "Display search results on the user's dashboard"
+     ],
+     [
+      "Create a report generation feature in the archive manager dashboard",
+      "generate report of metadata"
+     ],
+     [
+      "Store the metadata in the database",
+      "Display the metadata on the student's dashboard"
+     ],
+     [
+      "Store the report in the database"
+     ],
+     [
+      "Allow asset manager to add a deposit for the repository",
+      "Notify asset manager if a deposit is already reached"
+     ],
+     [
+      "Retrieve the metadata from the database",
+      "Add metadata for datasets"
+     ]
+    ],
+    "historias_es": [
+     "Como archivista, quiero gestionar la investigación de los usuarios, para poder apoyar a investigadores y categorías.",
+     "Como investigador, quiero ver el repositorio utilizado en mi departamento, para que pueda obtener un seguimiento de mi investigación.",
+     "Como usuario, quiero poder buscar metadatos por correo electrónico, para poder encontrar información relevante de mis necesidades.",
+     "Como gestor de archivos, quiero generar informes de todos los metadatos, para poder informar informes de investigadores e investigadores.",
+     "Como estudiante, quiero ver los metadatos de mis investigadores, para que sepa cómo los datos siguen siendo actuales.",
+     "Como archivista, quiero generar un informe sobre el proceso de creación de conjuntos de datos, para poder garantizar metadatos adecuados.",
+     "Como gestor de activos, quiero estar seguro de que ya no hay un depósito para el repositorio, de modo que la integridad de almacenamiento de la se mantiene bajo.",
+     "Como investigador, quiero ver los metadatos generales de mi conjunto de datos, para poder tomar decisiones informadas."
+    ]
+   },
+   {
+    "letra": "C",
+    "historias": [
+     "As a Researcher, I want to be able to easily list all datasets in the repository, so that I can quickly find relevant data for my research",
+     "As a Researcher, I want to be able to view detailed information about each dataset, including metadata and descriptions, so that I can understand the context and relevance of the data",
+     "As an Archivist, I want to be able to easily add new datasets to the repository, so that I can make them available to researchers",
+     "As a Researcher, I want to be able to filter datasets by keywords, tags, or categories, so that I can narrow down my search and find specific data",
+     "As an Archivist, I want to be able to assign permissions and access controls to datasets, so that I can control who can view or edit the data",
+     "As a Researcher, I want to be able to download datasets in various formats, such as CSV or JSON, so that I can easily import the data into my analysis tools",
+     "As an Archivist, I want to be able to track changes and updates to datasets, so that I can maintain a record of revisions and edits",
+     "As a Researcher, I want to be able to leave comments and feedback on datasets, so that I can provide feedback to the archivists and other researchers"
+    ],
+    "tareas": [
+     [
+      "Here are the concrete implementation tasks:",
+      "Create Dataset Model Entity",
+      "Design Database Schema for Datasets",
+      "Implement Dataset Repository Interface"
+     ],
+     [
+      "Here are the concrete implementation tasks:",
+      "Create Dataset Model Entity",
+      "Design Database Schema for Dataset Metadata",
+      "Implement API Endpoint for Retrieving Dataset Metadata"
+     ],
+     [
+      "Add dataset upload form to repository interface",
+      "Implement dataset validation and error handling",
+      "Create database schema for storing dataset metadata",
+      "Develop API for uploading datasets to repository"
+     ],
+     [
+      "Here are the concrete implementation tasks:",
+      "Create Database Schema for Keywords, Tags, and Categories",
+      "Implement Keyword Search Functionality in Dataset Model",
+      "Develop Tag Search Functionality in Dataset Model"
+     ],
+     [
+      "Assign permissions to datasets in database schema",
+      "Create access control list (ACL) data model",
+      "Implement permission assignment UI for Archivists",
+      "Define permission levels (e.g. view, edit, admin)"
+     ],
+     [
+      "Here are the concrete implementation tasks:",
+      "Create API endpoint for dataset download",
+      "Implement CSV download functionality",
+      "Implement JSON download functionality"
+     ],
+     [
+      "Here are the concrete implementation tasks:",
+      "Create database schema to track dataset revisions",
+      "Implement versioning system for datasets",
+      "Develop data change tracking API"
+     ],
+     [
+      "Leave comment functionality on dataset details page",
+      "Create comment model with fields for text and timestamp",
+      "Implement comment display on dataset details page",
+      "Allow users to edit their own comments"
+     ]
+    ],
+    "historias_es": [
+     "Como investigador, quiero poder listar fácilmente todos los conjuntos de datos del repositorio, de modo que pueda encontrar rápidamente datos relevantes para mi investigación.",
+     "Como investigador, quiero poder ver información detallada sobre cada conjunto de datos, incluyendo metadatos y descripciones, para poder entender el contexto y la relevancia de los datos.",
+     "Como archivista, quiero poder añadir fácilmente nuevos conjuntos de datos al repositorio, de modo que pueda ponerlos a disposición de los investigadores",
+     "Como investigador, quiero poder filtrar los conjuntos de datos por palabras clave, etiquetas o categorías, de modo que pueda reducir mi búsqueda y encontrar datos específicos",
+     "Como archivista, quiero poder asignar permisos y controles de acceso a los conjuntos de datos, de modo que pueda controlar quién puede ver o editar los datos",
+     "Como investigador, quiero poder descargar conjuntos de datos en varios formatos, como CSV o JSON, de modo que pueda importar fácilmente los datos en mis herramientas de análisis",
+     "Como archivista, quiero poder rastrear cambios y actualizaciones a los conjuntos de datos, para poder mantener un registro de revisiones y ediciones",
+     "Como investigador, quiero poder dejar comentarios y comentarios en los conjuntos de datos, para poder proporcionar retroalimentación a los archivistas y otros investigadores"
+    ]
+   },
+   {
+    "letra": "A",
+    "historias": [
+     "As a Researcher, I want to be able to easily search for datasets, so that I can find relevant data for my research",
+     "As a Researcher, I want to be able to filter datasets by keywords, categories, or authors, so that I can narrow down my search results",
+     "As a Researcher, I want to be able to view detailed information about each dataset, so that I can understand its content and quality",
+     "As a Researcher, I want to be able to download datasets directly from the repository, so that I can access them easily",
+     "As an Archivist, I want to be able to upload new datasets to the repository, so that they can be easily discovered by researchers",
+     "As an Archivist, I want to be able to categorize datasets, so that they can be easily organized and searched",
+     "As an Archivist, I want to be able to add metadata to datasets, so that they can be properly indexed and searchable",
+     "As an Archivist, I want to be able to manage permissions for datasets, so that I can control who can access them"
+    ],
+    "tareas": [
+     [
+      "Define API endpoints for dataset search",
+      "Define endpoint for keyword search",
+      "Define endpoint for advanced search (filters, categories, etc.)",
+      "Implement keyword search functionality"
+     ],
+     [
+      "Implement keyword search functionality for datasets",
+      "Develop category filter for datasets",
+      "Implement author filter for datasets",
+      "Integrate filters into the search results interface"
+     ],
+     [
+      "Fetch dataset metadata from the database or API",
+      "Display dataset title and description",
+      "Show dataset creator and creation date",
+      "Display dataset size and number of records"
+     ],
+     [
+      "Implement API endpoint for dataset download",
+      "Add authentication to API endpoint for secure access",
+      "Create UI for user to select desired dataset",
+      "Implement functionality to pass selected dataset ID to API endpoint"
+     ],
+     [
+      "Implement user authentication for archivists",
+      "Design and develop the user interface for dataset upload",
+      "Create a form for dataset metadata input",
+      "Implement file validation and size limit checks for uploaded datasets"
+     ],
+     [
+      "Define dataset categorization schema",
+      "Research and document standard categorization methods",
+      "Design custom categorization schema for the system",
+      "Implement dataset categorization feature"
+     ],
+     [
+      "Define metadata schema for datasets",
+      "Research and select appropriate metadata standards",
+      "Design custom metadata schema (if necessary)",
+      "Create metadata input form"
+     ],
+     [
+      "Define user roles for dataset access (e.g., Admin, Editor, Viewer)",
+      "Implement user authentication and authorization system",
+      "Create a user management interface for archivists",
+      "Develop a dataset management interface with permission settings"
+     ]
+    ],
+    "historias_es": [
+     "Como investigador, quiero poder buscar fácilmente conjuntos de datos, de modo que pueda encontrar datos relevantes para mi investigación",
+     "Como investigador, quiero poder filtrar los conjuntos de datos por palabras clave, categorías o autores, de modo que pueda reducir mis resultados de búsqueda",
+     "Como investigador, quiero poder ver información detallada sobre cada conjunto de datos, para poder entender su contenido y calidad",
+     "Como investigador, quiero poder descargar los conjuntos de datos directamente desde el repositorio, para poder acceder a ellos fácilmente",
+     "Como archivista, quiero poder subir nuevos conjuntos de datos al repositorio, para que los investigadores puedan descubrirlos fácilmente",
+     "Como archivista, quiero ser capaz de categorizar conjuntos de datos, para que puedan organizarse y buscarse fácilmente",
+     "Como archivista, quiero poder añadir metadatos a los conjuntos de datos, para que puedan ser indexados y buscados adecuadamente",
+     "Como archivista, quiero poder administrar permisos para conjuntos de datos, para poder controlar quién puede acceder a ellos."
+    ]
+   }
+  ],
+  "n_ref": 136,
+  "descripcion_es": "es una colección de historias de usuarios que pertenecen a un repositorio para investigadores y archiveros. La fuente del conjunto de datos es un repositorio público de Trello. Aunque las historias de usuarios no tienen enlaces explícitos"
+ },
+ {
+  "caso": "dalpiaz:g25-duraspace",
+  "descripcion": "DSpace stores, preserves and disseminates digital cultural heritage content by supporting ingestion of digital objects and their metadata; management and curation of digital objects; easy access to the digital objects, by both listing and searching; long-term preservation of the digital objects.",
+  "backlogs": [
+   {
+    "letra": "A",
+    "historias": [
+     "As a publisher, I want to access digital objects, so that I can protect intellectual reusability.",
+     "As a user, I want to access data I am about to store, so that I can provide a detailed metadata for my work.",
+     "As a visitor, I want to view a list of all readers in the system, so that I can make informed decisions.",
+     "As a catalogue editor, I want to receive a digital record for all categories, so that I can process my work efficiently.",
+     "As a repository operator, I want to monitor digital objects within a document, so that I can provide accurate information.",
+     "As a rights manager, I want to monitor the usage of data I am involved, so that I can maintain evidence of the identity.",
+     "As a researcher, I want to have metadata for a visual designation, so that I can plan my usage effectively.",
+     "As an instructor, I want to book digital documents with large metadata, so that I can manage my workload efficiently."
+    ],
+    "tareas": [
+     [
+      "Create a repository for the publisher",
+      "Create an infrastructure for the publishing a given object"
+     ],
+     [
+      "Allow user to view data from the database",
+      "Display data on the user's dashboard",
+      "Send a notification to the user if a data is stored",
+      "Add documentation for store metadata"
+     ],
+     [
+      "Create a list of readers in the system",
+      "Display the list of all readers on the system dashboard",
+      "Send a notification to the visitor about the list",
+      "Add a list of all readers in the UI"
+     ],
+     [
+      "Implement a digital record for all categories",
+      "Store the digital record in the database"
+     ],
+     [],
+     [
+      "Send notifications to rights manager about data usage"
+     ],
+     [
+      "Implement a visual designation feature in the app",
+      "Store visual design information in the database",
+      "Create metadata for visual design",
+      "Display visual design information on the app"
+     ],
+     [
+      "Store digital documents in the database",
+      "Display digital documents on the instructor's dashboard",
+      "Allow instructors to edit digital documents",
+      "Send notifications to the instructor if a PDF is available"
+     ]
+    ],
+    "historias_es": [
+     "Como editor, quiero acceder a objetos digitales, para poder proteger la reutilizabilidad intelectual.",
+     "Como usuario, quiero acceder a los datos que estoy a punto de almacenar, para poder proporcionar un metadatos detallado para mi trabajo.",
+     "Como visitante, quiero ver una lista de todos los lectores del sistema, para que pueda tomar decisiones informadas.",
+     "Como editor de catálogos, quiero recibir un registro digital para todas las categorías, para poder procesar mi trabajo de manera eficiente.",
+     "Como operador de repositorio, quiero monitorear objetos digitales dentro de un documento, para poder proporcionar información precisa.",
+     "Como gestor de derechos, quiero monitorear el uso de los datos que estoy involucrado, para poder mantener evidencia de la identidad.",
+     "Como investigador, quiero tener metadatos para una designación visual, para poder planificar mi uso de manera efectiva.",
+     "Como instructor, quiero reservar documentos digitales con grandes metadatos, para poder gestionar mi carga de trabajo de manera eficiente."
+    ]
+   },
+   {
+    "letra": "C",
+    "historias": [
+     "As a curator, I want to be able to ingest digital objects and their metadata, so that they can be preserved and made accessible for future generations",
+     "As a librarian, I want to be able to manage and curate digital objects, so that they are properly organized and maintained",
+     "As a researcher, I want to be able to easily access digital objects, so that I can use them for my research",
+     "As a user, I want to be able to list and search digital objects, so that I can find the content I need",
+     "As a curator, I want to be able to assign metadata to digital objects, so that they can be properly described and understood",
+     "As a librarian, I want to be able to set access controls for digital objects, so that they can be restricted to authorized users",
+     "As a researcher, I want to be able to download digital objects, so that I can use them in my research",
+     "As a user, I want to be able to view metadata for digital objects, so that I can understand their context and significance"
+    ],
+    "tareas": [
+     [
+      "Here are the concrete implementation tasks:",
+      "Ingest Digital Object Files",
+      "Validate Digital Object Metadata",
+      "Normalize Digital Object Metadata"
+     ],
+     [
+      "Here are the concrete implementation tasks:",
+      "Create Digital Object Model",
+      "Design Database Schema for Digital Objects",
+      "Implement Object Upload and Storage"
+     ],
+     [
+      "Here are the concrete implementation tasks:",
+      "Create database schema for digital objects",
+      "Design API for retrieving digital objects",
+      "Implement API endpoint for retrieving digital objects by ID"
+     ],
+     [
+      "Here are the concrete implementation tasks:",
+      "Create database schema for digital objects",
+      "Implement search functionality using Elasticsearch",
+      "Design and implement search API endpoint"
+     ],
+     [
+      "Assign metadata fields to digital object model",
+      "Create metadata field types (e.g. text, date, image)",
+      "Implement metadata field validation rules",
+      "Develop user interface for assigning metadata to digital objects"
+     ],
+     [
+      "Set up database schema to store access control permissions",
+      "Create access control permission model",
+      "Implement user authentication and authorization system",
+      "Create API endpoint to set access control permissions"
+     ],
+     [
+      "Create database schema for digital objects",
+      "Design API endpoint for downloading digital objects",
+      "Implement authentication and authorization for API endpoint",
+      "Develop client-side code for initiating download"
+     ],
+     [
+      "Here are the concrete implementation tasks:",
+      "Create metadata schema for digital objects",
+      "Design metadata display UI component",
+      "Integrate metadata schema with digital object storage"
+     ]
+    ],
+    "historias_es": [
+     "Como curador, quiero poder ingerir objetos digitales y sus metadatos, para que puedan ser preservados y accesibles para las generaciones futuras.",
+     "Como bibliotecaria, quiero poder administrar y curar objetos digitales, de modo que estén adecuadamente organizados y mantenidos",
+     "Como investigador, quiero poder acceder fácilmente a objetos digitales, para poder usarlos para mi investigación.",
+     "Como usuario, quiero poder enumerar y buscar objetos digitales, para poder encontrar el contenido que necesito",
+     "Como curador, quiero poder asignar metadatos a objetos digitales, para que puedan ser adecuadamente descritos y entendidos",
+     "Como bibliotecario, quiero poder establecer controles de acceso para objetos digitales, de modo que puedan ser restringidos a usuarios autorizados",
+     "Como investigador, quiero poder descargar objetos digitales, para poder usarlos en mi investigación",
+     "Como usuario, quiero poder ver metadatos para objetos digitales, de modo que pueda entender su contexto y significado"
+    ]
+   },
+   {
+    "letra": "B",
+    "historias": [
+     "As a librarian, I want to easily ingest digital objects and their metadata, so that I can efficiently add new content to the DSpace store",
+     "As a curator, I want to manage and curate digital objects, so that I can ensure the quality and accuracy of the content in the DSpace store",
+     "As a researcher, I want easy access to the digital objects, both by listing and searching, so that I can quickly find the content I need for my research",
+     "As a user, I want to be able to search for digital objects using various search criteria, so that I can find the specific content I am looking for",
+     "As an administrator, I want to ensure long-term preservation of the digital objects, so that the content in the DSpace store remains accessible for future generations",
+     "As a developer, I want to integrate DSpace with other systems, so that I can easily share and exchange data with other digital repositories",
+     "As a user, I want to be able to download digital objects in various formats, so that I can access the content in a format that is most convenient for me",
+     "As a librarian, I want to be able to add descriptive metadata to digital objects, so that the content can be easily discovered and understood by users"
+    ],
+    "tareas": [
+     [
+      "Research and select a suitable digital object ingestion tool for DSpace",
+      "Configure the chosen ingestion tool for integration with DSpace",
+      "Develop a user interface for librarians to upload digital objects and their metadata",
+      "Implement validation checks for digital objects and metadata during ingestion"
+     ],
+     [
+      "Implement user authentication for curators",
+      "Create a curator dashboard for managing digital objects",
+      "Develop functionality to add new digital objects",
+      "Implement functionality to edit existing digital objects"
+     ],
+     [
+      "Implement search functionality for digital objects",
+      "Search by title, description, tags, and other metadata",
+      "Create a listing page for digital objects",
+      "Display all digital objects in a user-friendly format"
+     ],
+     [
+      "Define search API endpoints",
+      "Implement search query parsing",
+      "Create search index for digital objects",
+      "Implement full-text search functionality"
+     ],
+     [
+      "Implement data backup strategy for DSpace store",
+      "Configure daily automatic backups",
+      "Set up offsite storage for backups",
+      "Implement data archiving for inactive digital objects"
+     ],
+     [
+      "Research DSpace API documentation",
+      "Identify required endpoints for data exchange",
+      "Set up API keys or authentication methods",
+      "Create a module for DSpace integration"
+     ],
+     [
+      "Implement support for multiple file formats for digital objects",
+      "Add a download button for each digital object",
+      "Create a download function that generates the requested file format",
+      "Implement a system to track download history"
+     ],
+     [
+      "Research and select a suitable metadata standard for digital objects (e.g., Dublin Core, MARC21)",
+      "Design the user interface for adding metadata to digital objects",
+      "Implement data validation for metadata fields to ensure data integrity",
+      "Create a system for storing and retrieving metadata associated with digital objects"
+     ]
+    ],
+    "historias_es": [
+     "Como bibliotecario, quiero ingerir fácilmente objetos digitales y sus metadatos, de modo que pueda añadir de manera eficiente nuevo contenido a la tienda DSpace",
+     "Como curador, quiero gestionar y curar objetos digitales, para poder garantizar la calidad y precisión del contenido en la tienda DSpace",
+     "Como investigador, quiero un acceso fácil a los objetos digitales, tanto por listado como por búsqueda, para poder encontrar rápidamente el contenido que necesito para mi investigación.",
+     "Como usuario, quiero poder buscar objetos digitales utilizando varios criterios de búsqueda, para poder encontrar el contenido específico que estoy buscando",
+     "Como administrador, quiero garantizar la preservación long-term de los objetos digitales, de modo que el contenido en la tienda DSpace siga siendo accesible para las generaciones futuras",
+     "Como desarrollador, quiero integrar DSpace con otros sistemas, para que pueda compartir e intercambiar fácilmente datos con otros repositorios digitales",
+     "Como usuario, quiero poder descargar objetos digitales en varios formatos, para poder acceder al contenido en un formato que me resulte más conveniente",
+     "Como bibliotecario, quiero poder añadir metadatos descriptivos a los objetos digitales, de modo que el contenido pueda ser fácilmente descubierto y entendido por los usuarios."
+    ]
+   }
+  ],
+  "n_ref": 200,
+  "descripcion_es": "DSpace almacena, preserva y difunde contenidos del patrimonio cultural digital apoyando la ingestión de objetos digitales y sus metadatos; la gestión y curatela de objetos digitales; el fácil acceso a los objetos digitales, tanto mediante listados como mediante búsqueda; la preservación de los objetos digitales por long-term."
+ },
+ {
+  "caso": "dalpiaz:g19-alfred",
+  "descripcion": "One of the main system objectives is to support older people to actively participate in society and act independently.",
+  "backlogs": [
+   {
+    "letra": "A",
+    "historias": [
+     "As a moderator, I want to take a lesson to the network, so that I can manage my workload.",
+     "As a citizen, I want to be able to block volunteers by dates, so that I can volunteer their efforts.",
+     "As a network engineer, I want to monitor the performance of a volunteer group, so that I can make informed decisions.",
+     "As a community manager, I want to be able to locate and collect certain types of incoming courses, so that I can prepare and attend them.",
+     "As a member, I want to view a list of my courses by each citizen, so that I can choose the best fit for my membership.",
+     "As a visitor, I want to view my neighbourhoods, so that I can stay informed about my activities.",
+     "As a Zooniverse admin, I want to track the number of whales used in a neighbourhood, so that I can monitor the neighbourhood and ensure the community is supported.",
+     "As a parent, I want to integrate and approve a volunteer with my child’s profile, so that I can ensure they are delayed."
+    ],
+    "tareas": [
+     [
+      "Implement a lesson management feature in the moderator dashboard",
+      "Send a confirmation email to the moderator when lesson is added",
+      "Add a lesson to the network",
+      "Display lesson details on the moderator's dashboard"
+     ],
+     [
+      "Allow citizens to block volunteers by date",
+      "Store volunteers in the database",
+      "Send a notification to the citizen about their volunteers",
+      "block donations by dates"
+     ],
+     [
+      "Store volunteer performance data in the database",
+      "Display volunteer performance on the network dashboard",
+      "Generate reports on volunteer performance"
+     ],
+     [
+      "Allow the community manager to select and collect certain types",
+      "Correct types of incoming courses"
+     ],
+     [
+      "Create a list of courses by each citizen",
+      "Display a list of courses by each citizen",
+      "Display the list on the member's dashboard"
+     ],
+     [
+      "Create a visitor dashboard for viewing their neighbourhoods",
+      "Display the visitor's neighbourhood on the dashboard",
+      "View a neighbourhood",
+      "Store neighbourhood details in the database"
+     ],
+     [
+      "Implement a number of rabbits used in a neighbourhood database"
+     ],
+     [
+      "Store the volunteer profile in the database"
+     ]
+    ],
+    "historias_es": [
+     "Como moderador, quiero dar una lección a la red, para poder gestionar mi carga de trabajo.",
+     "Como ciudadano, quiero poder bloquear a los voluntarios por fechas, para poder ofrecer voluntariamente sus esfuerzos.",
+     "Como ingeniero de red, quiero monitorear el desempeño de un grupo de voluntarios, para poder tomar decisiones informadas.",
+     "Como gerente de la comunidad, quiero poder localizar y recoger ciertos tipos de cursos entrantes, para poder prepararlos y asistir a ellos.",
+     "Como miembro, quiero ver una lista de mis cursos por cada ciudadano, para que pueda elegir el mejor ajuste para mi membresía.",
+     "Como visitante, quiero ver mis barrios, para poder estar informado de mis actividades.",
+     "Como administrador de Zooniverse, quiero rastrear el número de ballenas utilizadas en un barrio, para poder monitorear el barrio y asegurar que la comunidad sea apoyada.",
+     "Como padre, quiero integrar y aprobar a un voluntario con el perfil de mi hijo, para que pueda asegurarme de que se retrasen."
+    ]
+   },
+   {
+    "letra": "B",
+    "historias": [
+     "As a Caregiver, I want to create a personalized activity plan for an older person, so that their needs and preferences are taken into account",
+     "As an Older Person, I want to be able to access a calendar of local events and activities, so that I can stay informed and engaged",
+     "As a Social Worker, I want to be able to track an older person's participation in activities, so that I can monitor their progress and provide support",
+     "As an Older Person, I want to be able to communicate with friends and family through a messaging system, so that I can stay connected",
+     "As a Caregiver, I want to be able to receive notifications about an older person's activities and events, so that I can provide timely support",
+     "As an Older Person, I want to be able to access a library of educational resources and tutorials, so that I can learn new skills",
+     "As a Social Worker, I want to be able to generate reports on an older person's participation and progress, so that I can evaluate the effectiveness of programs",
+     "As an Older Person, I want to be able to rate and review activities and events, so that I can provide feedback and help improve services"
+    ],
+    "tareas": [
+     [
+      "Create database schema for caregiver and older person profiles",
+      "Develop caregiver dashboard for creating activity plans",
+      "Implement user input forms for caregiver to gather older person's needs and preferences",
+      "Create algorithm to generate personalized activity plan based on input data"
+     ],
+     [
+      "Here are the concrete implementation tasks:",
+      "Research and identify relevant local event sources",
+      "Design database schema for event storage",
+      "Develop API for retrieving event data"
+     ],
+     [
+      "Create database schema to store activity participation data",
+      "Design API endpoint to create new activity participation records",
+      "Implement data validation for activity participation data",
+      "Develop user interface to view and filter activity participation records"
+     ],
+     [
+      "Create messaging platform for Older Persons",
+      "Design user interface for messaging system",
+      "Implement user authentication and authorization",
+      "Develop messaging functionality for sending and receiving messages"
+     ],
+     [
+      "Here are the concrete implementation tasks:",
+      "Set up API for Caregiver notifications",
+      "Define notification types (e.g. activity, event)",
+      "Create database schema for storing caregiver notifications"
+     ],
+     [
+      "Here are the concrete implementation tasks:",
+      "Create database schema for educational resources",
+      "Design user interface for resource library",
+      "Develop API for retrieving and displaying resources"
+     ],
+     [
+      "Here are the concrete implementation tasks:",
+      "Create database schema to store participation and progress data",
+      "Design report templates for participation and progress",
+      "Develop API to retrieve data for report generation"
+     ],
+     [
+      "Here are the concrete implementation tasks:",
+      "Create Activity and Event Database Tables",
+      "Design Rating and Review Form",
+      "Implement Rating and Review Form Validation"
+     ]
+    ],
+    "historias_es": [
+     "Como cuidador, quiero crear un plan de actividades personalizado para una persona mayor, de modo que sus necesidades y preferencias sean tomadas en cuenta",
+     "Como persona mayor, quiero poder acceder a un calendario de eventos y actividades locales, para poder estar informado y comprometido",
+     "Como trabajador social, quiero poder seguir la participación de una persona mayor en las actividades, para poder supervisar su progreso y proporcionar apoyo.",
+     "Como persona mayor, quiero poder comunicarme con amigos y familiares a través de un sistema de mensajería, para poder mantenerme conectado",
+     "Como cuidador, quiero poder recibir notificaciones sobre las actividades y eventos de una persona mayor, para poder brindar apoyo oportuno",
+     "Como persona mayor, quiero poder acceder a una biblioteca de recursos educativos y tutoriales, para poder aprender nuevas habilidades",
+     "Como trabajador social, quiero poder generar informes sobre la participación y el progreso de una persona mayor, para poder evaluar la efectividad de los programas",
+     "Como persona mayor, quiero poder valorar y revisar actividades y eventos, para poder proporcionar retroalimentación y ayudar a mejorar los servicios"
+    ]
+   },
+   {
+    "letra": "C",
+    "historias": [
+     "As a Senior Citizen, I want to easily access a user-friendly interface, so that I can navigate the platform with ease",
+     "As a Senior Citizen, I want to have access to resources and information relevant to my needs, so that I can find what I'm looking for quickly",
+     "As a Senior Citizen, I want to be able to connect with other seniors in my community, so that I can build social connections",
+     "As a Senior Citizen, I want to have access to educational resources, so that I can learn new skills and stay intellectually engaged",
+     "As a Senior Citizen, I want to have access to health and wellness resources, so that I can maintain my physical and mental health",
+     "As a Senior Citizen, I want to have access to transportation resources, so that I can move around independently",
+     "As a Senior Citizen, I want to have access to emergency response services, so that I can get help quickly in case of an emergency",
+     "As a Senior Citizen, I want to have access to volunteer opportunities, so that I can give back to my community"
+    ],
+    "tareas": [
+     [
+      "Design user-friendly interface for senior citizens",
+      "Research and gather design requirements for senior-friendly interface",
+      "Create wireframes for the user-friendly interface",
+      "Develop high-fidelity mockups of the user-friendly interface"
+     ],
+     [
+      "Research and gather data on common needs and interests of senior citizens",
+      "Design user-friendly interface optimized for senior users",
+      "Implement search functionality for easy navigation",
+      "Develop categories for organizing resources and information"
+     ],
+     [
+      "Research and select a suitable social platform for senior citizens",
+      "Design user-friendly interface for seniors",
+      "Implement registration and login functionality",
+      "Develop profile creation feature for users"
+     ],
+     [
+      "Research and identify suitable educational resources for senior citizens",
+      "Design a user-friendly interface for easy navigation",
+      "Implement search functionality for quick access to resources",
+      "Integrate video tutorials for visual learners"
+     ],
+     [
+      "Research and identify relevant health and wellness resources for senior citizens",
+      "Design user-friendly interface for easy navigation and access to resources",
+      "Integrate resources into the application, ensuring they are accurate and up-to-date",
+      "Develop a search functionality for users to find resources based on their specific needs"
+     ],
+     [
+      "Research and integrate third-party APIs for public transportation data",
+      "Design user-friendly interface for senior citizens",
+      "Implement search functionality for nearby transportation options",
+      "Develop real-time tracking for buses, trains, and other public transportation"
+     ],
+     [
+      "Research and integrate a reliable emergency response service API",
+      "Design user-friendly interface for senior citizens to access emergency services",
+      "Implement call or chat functionality for immediate assistance",
+      "Develop location services to provide emergency responders with the user's location"
+     ],
+     [
+      "Research and gather data on available volunteer opportunities suitable for senior citizens",
+      "Design user-friendly interface for senior citizens to browse volunteer opportunities",
+      "Implement search functionality for filtering volunteer opportunities by location, category, and accessibility",
+      "Create a profile system for senior citizens to store their preferences, skills, and interests"
+     ]
+    ],
+    "historias_es": [
+     "Como ciudadano mayor, quiero acceder fácilmente a una interfaz user-friendly, para poder navegar por la plataforma con facilidad",
+     "Como ciudadano mayor, quiero tener acceso a recursos e información relevante para mis necesidades, para poder encontrar lo que estoy buscando rápidamente",
+     "Como ciudadano mayor, quiero poder conectarme con otros ancianos de mi comunidad, para poder construir conexiones sociales",
+     "Como ciudadano de edad avanzada, quiero tener acceso a recursos educativos, para poder aprender nuevas habilidades y mantenerme comprometido intelectualmente",
+     "Como ciudadano de edad avanzada, quiero tener acceso a los recursos de salud y bienestar, para poder mantener mi salud física y mental",
+     "Como ciudadano de edad avanzada, quiero tener acceso a los recursos de transporte, para poder moverme independientemente",
+     "Como ciudadano mayor, quiero tener acceso a los servicios de respuesta de emergencia, para poder obtener ayuda rápidamente en caso de emergencia",
+     "Como ciudadano mayor, quiero tener acceso a oportunidades de voluntariado, para poder devolver a mi comunidad"
+    ]
+   }
+  ],
+  "n_ref": 274,
+  "descripcion_es": "Uno de los principales objetivos del sistema es ayudar a las personas de edad a participar activamente en la sociedad y actuar de manera independiente."
+ },
+ {
+  "caso": "RedHat:KEYCLOAK-6196",
+  "descripcion": "Performance benchmark [REVIEW SCOPE]",
+  "backlogs": [
+   {
+    "letra": "A",
+    "historias": [
+     "As a performance analyst, I want to analyze the performance trends and improvements, so that I can optimize performance.",
+     "As a performance inspector, I want to analyze performance metrics, so that I can assess performance efficiency.",
+     "As a publisher, I want to create performance reports, so that I can monitor performance.",
+     "As a ratings scientist, I want to track the performance of my courses, so that I can optimize the performance.",
+     "As a  traffic inspector, I want to log the performance of a given summary of report activity, so that I can track performance.",
+     "As a catalogue editor, I want to monitor performance reports, so that I can measure efficiency.",
+     "As a ratings analyst, I want to set up a spending flagged historical reports, so that I can analyze performance and performance.",
+     "As a buyer, I want to compare multiple threads with different ratings, so that I can measure my performance."
+    ],
+    "tareas": [
+     [
+      "Retrieve performance data from the database",
+      "Display performance data on the database",
+      "Benchmark performance improvements",
+      "Benchmark performance"
+     ],
+     [
+      "Display performance metrics on the dashboard"
+     ],
+     [
+      "Implement a performance report generation feature in the publisher dashboard",
+      "Store performance report data in the database",
+      "Create documentation for the new performance report",
+      "Send performance report to the publisher via email"
+     ],
+     [
+      "Implement a performance tracking feature in the ratings dashboard",
+      "Reduce the number of courses in the course runner",
+      "Add a benchmark for the performance of the courses",
+      "Improve the performance of all the courses"
+     ],
+     [
+      "Create a report activity log in the database",
+      "Send a notification to the inspector if the report activity exceeds a certain threshold",
+      "Create summary of report activity",
+      "Create summary report activity"
+     ],
+     [
+      "Notify the editor of performance reports",
+      "Add documentation for the catalog editor",
+      "Add documentation about the dashboard editor"
+     ],
+     [
+      "Store historical reporting data in the database",
+      "Send a notification to the ratings analyst if a report is flagged",
+      "flagged history reports",
+      "Create a spending flagged historical reports in the database"
+     ],
+     [
+      "Allow buyers to compare multiple threads with different ratings",
+      "Display multiple threads on the buyer's profile"
+     ]
+    ],
+    "historias_es": [
+     "Como analista de rendimiento, quiero analizar las tendencias y mejoras de rendimiento, para poder optimizar el rendimiento.",
+     "Como inspector de rendimiento, quiero analizar las métricas de rendimiento, para poder evaluar la eficiencia de rendimiento.",
+     "Como editor, quiero crear informes de rendimiento, para poder monitorear el rendimiento.",
+     "Como científico de calificación, quiero seguir el rendimiento de mis cursos, para poder optimizar el rendimiento.",
+     "Como inspector de tráfico, quiero registrar el rendimiento de un resumen dado de la actividad del informe, para que pueda rastrear el rendimiento.",
+     "Como editor de catálogos, quiero monitorear los informes de rendimiento, para poder medir la eficiencia.",
+     "Como analista de calificaciones, quiero establecer un gasto marcado informes históricos, para que pueda analizar el rendimiento y el rendimiento.",
+     "Como comprador, quiero comparar múltiples hilos con diferentes calificaciones, para poder medir mi rendimiento."
+    ]
+   },
+   {
+    "letra": "C",
+    "historias": [
+     "As a developer, I want to create benchmarks for development and performance regression, so that we can measure and track performance over time",
+     "As a developer, I want to evaluate buffer changes, so that I can understand their impact on performance",
+     "As a developer, I want to enhance the benchmarking tool to report missed logs, so that I can identify and fix issues",
+     "As a developer, I want to enhance the functional benchmark tool to utilize actual CRIO for rollover tests, so that I can simulate real-world scenarios",
+     "As a developer, I want to enhance the functional benchmarking tool to graph latency, so that I can visualize performance trends",
+     "As a developer, I want to measure network interaction time for endpoints, so that I can identify performance bottlenecks",
+     "As a developer, I want to measure proto messages allocation time, so that I can optimize memory usage",
+     "As a developer, I want to log transaction movement in the pipeline, so that I can track data flow and identify issues"
+    ],
+    "tareas": [
+     [
+      "Create benchmarking framework",
+      "Design benchmarking metrics",
+      "Implement benchmarking scripts",
+      "Choose benchmarking tools"
+     ],
+     [
+      "Evaluate buffer size thresholds",
+      "Implement buffer change detection logic",
+      "Create performance metrics for buffer changes",
+      "Design buffer change logging mechanism"
+     ],
+     [
+      "Enhance benchmarking tool to track log events",
+      "Implement log event storage in database",
+      "Create data model for log events",
+      "Develop query to identify missed logs"
+     ],
+     [
+      "Here are the concrete implementation tasks:",
+      "Implement CRIO integration with benchmark tool",
+      "Configure CRIO for rollover test scenarios",
+      "Update benchmark tool to utilize CRIO for rollover tests"
+     ],
+     [
+      "Here are the concrete implementation tasks:",
+      "Update benchmarking tool database schema to store latency data",
+      "Implement latency data retrieval from database",
+      "Create latency graphing library or integrate existing one"
+     ],
+     [
+      "Measure network interaction time for endpoints using system clock",
+      "Create a function to record start and end times of network requests",
+      "Implement timer for synchronous network requests",
+      "Implement timer for asynchronous network requests"
+     ],
+     [
+      "Measure proto messages allocation time using a benchmarking tool",
+      "Implement a timer to track allocation time",
+      "Create a test harness to measure allocation time",
+      "Instrument proto message allocation code to collect data"
+     ],
+     [
+      "Log transaction movement to database",
+      "Create transaction movement table schema",
+      "Implement data insertion into transaction movement table",
+      "Create API endpoint for transaction movement logging"
+     ]
+    ],
+    "historias_es": [
+     "Como desarrollador, quiero crear puntos de referencia para el desarrollo y la regresión de rendimiento, de modo que podamos medir y rastrear el rendimiento con el tiempo",
+     "Como desarrollador, quiero evaluar los cambios de buffer, para poder entender su impacto en el rendimiento",
+     "Como desarrollador, quiero mejorar la herramienta de benchmarking para reportar registros perdidos, para que pueda identificar y solucionar problemas",
+     "Como desarrollador, quiero mejorar la herramienta de referencia funcional para utilizar CRIO real para pruebas de vuelco, de modo que pueda simular escenarios real-world",
+     "Como desarrollador, quiero mejorar la herramienta de benchmarking funcional para latencia gráfica, de modo que pueda visualizar las tendencias de rendimiento",
+     "Como desarrollador, quiero medir el tiempo de interacción de la red para los puntos finales, para poder identificar los cuellos de botella de rendimiento",
+     "Como desarrollador, quiero medir el tiempo de asignación de mensajes de proto, para poder optimizar el uso de memoria",
+     "Como desarrollador, quiero registrar el movimiento de transacción en la tubería, para poder rastrear el flujo de datos e identificar problemas"
+    ]
+   },
+   {
+    "letra": "B",
+    "historias": [
+     "As a developer, I want to create benchmarks for the review scope, so that I can evaluate the impact of changes in the buffer",
+     "As a QA engineer, I want to enhance the benchmarking tool to report missed logs, so that I can identify and fix issues related to logging",
+     "As a developer, I want to enhance the functional benchmark tool to utilize actual CRIO for rollover tests, so that the results are more accurate and reliable",
+     "As a QA engineer, I want to enhance the functional benchmarking tool to graph latency, so that I can visualize and analyze the performance of the system",
+     "As a performance tester, I want to measure network interaction time for endpoints, so that I can identify bottlenecks and optimize network performance",
+     "As a performance tester, I want to measure proto messages allocation time, so that I can optimize the allocation and deallocation of proto messages for better performance",
+     "As a developer, I want to log transaction movement in the pipeline, so that I can track the performance of transactions and identify any issues",
+     "As a performance tester, I want to check the data from heap profiler, so that I can identify memory leaks and optimize memory usage for better performance"
+    ],
+    "tareas": [
+     [
+      "Research existing benchmarking techniques for code review scopes",
+      "Define key metrics for the review scope benchmarks",
+      "Design a data structure to store and manage benchmark data",
+      "Implement a function to calculate the current review scope benchmark"
+     ],
+     [
+      "Research existing logging standards and best practices",
+      "Define the criteria for identifying missed logs",
+      "Modify the benchmarking tool to capture and store log data",
+      "Implement a function to compare captured log data with expected log data"
+     ],
+     [
+      "Research and integrate CRIO API for rollover tests",
+      "Update benchmark tool to accept CRIO API as input",
+      "Implement CRIO API integration in rollover test function",
+      "Write unit tests for CRIO API integration in rollover tests"
+     ],
+     [
+      "Research and select a suitable library for creating graphs in the chosen programming language",
+      "Example: D3.js for JavaScript, Matplotlib for Python",
+      "Integrate the selected library into the functional benchmarking tool",
+      "Modify the tool to capture and store latency data during system tests"
+     ],
+     [
+      "Define network performance metrics for endpoint interaction time",
+      "Identify key endpoints for measurement",
+      "Define acceptable response time thresholds",
+      "Implement network monitoring library"
+     ],
+     [
+      "Set up testing environment for protobuf messages",
+      "Implement protobuf message generation function",
+      "Implement protobuf message allocation time measurement function",
+      "Implement protobuf message deallocation time measurement function"
+     ],
+     [
+      "Define logging structure for transaction movement",
+      "Implement transaction movement logging in pipeline",
+      "Create transaction movement log storage solution",
+      "Integrate transaction movement log with pipeline data"
+     ],
+     [
+      "Integrate heap profiler tool into the application",
+      "Configure heap profiler to collect data during testing",
+      "Implement a method to start and stop heap profiler data collection",
+      "Create a test script to run the application with heap profiler enabled"
+     ]
+    ],
+    "historias_es": [
+     "Como desarrollador, quiero crear puntos de referencia para el alcance de la revisión, de modo que pueda evaluar el impacto de los cambios en el búfer",
+     "Como ingeniero de QA, quiero mejorar la herramienta de benchmarking para reportar registros perdidos, de modo que pueda identificar y solucionar problemas relacionados con el registro",
+     "Como desarrollador, quiero mejorar la herramienta de referencia funcional para utilizar CRIO real para pruebas de vuelco, de modo que los resultados sean más precisos y fiables",
+     "Como ingeniero QA, quiero mejorar la herramienta de benchmarking funcional para latencia gráfica, de modo que pueda visualizar y analizar el rendimiento del sistema",
+     "Como probador de rendimiento, quiero medir el tiempo de interacción de red para los puntos finales, para poder identificar cuellos de botella y optimizar el rendimiento de red",
+     "Como probador de rendimiento, quiero medir el tiempo de asignación de mensajes de proto, para poder optimizar la asignación y la asignación de mensajes de proto para un mejor rendimiento",
+     "Como desarrollador, quiero registrar el movimiento de transacciones en la tubería, para poder rastrear el rendimiento de las transacciones e identificar cualquier problema",
+     "Como probador de rendimiento, quiero comprobar los datos del perfilador de pila, para poder identificar fugas de memoria y optimizar el uso de memoria para un mejor rendimiento"
+    ]
+   }
+  ],
+  "n_ref": 6,
+  "descripcion_es": "Parámetro de rendimiento [REVIEW SCOPE]"
+ },
+ {
+  "caso": "RedHat:MULTIARCH-1013",
+  "descripcion": "Support for z/VM version 7.2. We would like to note support for OpenShift with z/VM 7.2",
+  "backlogs": [
+   {
+    "letra": "A",
+    "historias": [
+     "As a user, I want to view a summary of my (v) versioning with the w/VM version 8+.",
+     "As a developer, I want to configure s/v support for new s/VM version in support of a deployment",
+     "As a user, I want to build a version for a version of an OpenShift using Zen/VM version in a way",
+     "As a user, I want to specify the e2e system for testing against a version of a shared-VM version",
+     "As a developer, I want to take a lesson with the configuration of running OpenShift with a v/VM version update",
+     "As a developer, I want to configure a versioning system to support the version in a single OpenShift using",
+     "As a developer, I want to have my work with the default versioning system for supporting a version of the OpenShift project",
+     "As a user, I want to set up versioning support for a specific OpenShift application type, so that we can customize the configuration for deployment."
+    ],
+    "tareas": [
+     [
+      "Send a notification to the user about the summary"
+     ],
+     [
+      "Implement s/v support in the deployment system",
+      "Configuration for s/v support",
+      "Validate that the new version is used for a deployment",
+      "Send an email notification to the deployment manager about the new version"
+     ],
+     [],
+     [
+      "Validate the tested version in the user's profile",
+      "Create a separate test suite for the testing system"
+     ],
+     [
+      "Validate the lesson status on the app's dashboard"
+     ],
+     [
+      "Integrate with the versioning system"
+     ],
+     [],
+     [
+      "Display versioning feature on the user's dashboard"
+     ]
+    ],
+    "historias_es": [
+     "Como usuario, quiero ver un resumen de mi (v) versión con la versión w/VM 8+.",
+     "Como desarrollador, quiero configurar el soporte s/v para la nueva versión s/VM en soporte de una implementación",
+     "Como usuario, quiero construir una versión para una versión de OpenShift usando la versión Zen/VM de una manera",
+     "Como usuario, quiero especificar el sistema e2e para probar contra una versión de una versión shared-VM",
+     "Como desarrollador, quiero tomar una lección con la configuración de ejecutar OpenShift con una actualización de versión v/VM",
+     "Como desarrollador, quiero configurar un sistema de versiones para soportar la versión en un solo OpenShift usando",
+     "Como desarrollador, quiero tener mi trabajo con el sistema de versiones predeterminado para soportar una versión del proyecto OpenShift",
+     "Como usuario, quiero configurar el soporte de versiones para un tipo de aplicación OpenShift específico, de modo que podamos personalizar la configuración para su implementación."
+    ]
+   },
+   {
+    "letra": "C",
+    "historias": [
+     "As an OpenShift user, I want to deploy applications on z/VM 7.2, so that I can leverage the latest z/VM features and improvements",
+     "As a system administrator, I want to configure OpenShift to use z/VM 7.2, so that I can manage and monitor OpenShift deployments on z/VM",
+     "As an OpenShift user, I want to use the same OpenShift interface to deploy applications on z/VM 7.2, so that I don't need to learn new tools or interfaces",
+     "As a developer, I want to use the same OpenShift APIs to deploy applications on z/VM 7.2, so that I can write applications that are portable across different platforms",
+     "As a system administrator, I want to be able to monitor and troubleshoot OpenShift deployments on z/VM 7.2, so that I can quickly identify and resolve issues",
+     "As an OpenShift user, I want to be able to use persistent storage on z/VM 7.2, so that I can store and manage data for my applications",
+     "As a system administrator, I want to be able to configure and manage network policies for OpenShift deployments on z/VM 7.2, so that I can control access to my applications",
+     "As an OpenShift user, I want to be able to use the same security features and policies on z/VM 7.2, so that I can ensure the security and integrity of my applications"
+    ],
+    "tareas": [
+     [
+      "Here are the concrete implementation tasks:",
+      "Implement z/VM 7.2 support in OpenShift installer",
+      "Update OpenShift documentation to include z/VM 7.2 deployment instructions",
+      "Integrate z/VM 7.2 with OpenShift's container runtime"
+     ],
+     [
+      "Here are the concrete implementation tasks:",
+      "Configure OpenShift to use z/VM as the underlying platform",
+      "Install and configure the z/VM 7.2 client tools on the OpenShift master node",
+      "Update the OpenShift configuration to use the z/VM 7.2 client tools"
+     ],
+     [
+      "Here are the concrete implementation tasks:",
+      "Create OpenShift interface for z/VM 7.2 support",
+      "Integrate z/VM 7.2 backend with OpenShift API",
+      "Implement z/VM 7.2 specific deployment logic"
+     ],
+     [
+      "Here are the concrete implementation tasks:",
+      "Implement OpenShift API client for z/VM 7.2",
+      "Integrate z/VM 7.2 with OpenShift API server",
+      "Update OpenShift API documentation for z/VM 7.2 support"
+     ],
+     [
+      "Here are the concrete implementation tasks:",
+      "Create OpenShift monitoring tool for z/VM 7.2",
+      "Integrate OpenShift with z/VM 7.2 monitoring system",
+      "Develop troubleshooting dashboard for OpenShift deployments"
+     ],
+     [
+      "Here are the concrete implementation tasks:",
+      "Implement z/VM 7.2 support in OpenShift installer",
+      "Configure z/VM 7.2 storage for OpenShift",
+      "Integrate z/VM 7.2 storage with OpenShift Persistent Volume (PV) API"
+     ],
+     [
+      "Here are the concrete implementation tasks:",
+      "Create OpenShift z/VM 7.2 deployment documentation",
+      "Design network policy configuration interface for z/VM 7.2",
+      "Implement OpenShift z/VM 7.2 network policy API"
+     ],
+     [
+      "Here are the concrete implementation tasks:",
+      "Implement z/VM 7.2 integration with OpenShift authentication mechanisms",
+      "Develop OpenShift policy engine to support z/VM 7.2 security features",
+      "Integrate z/VM 7.2 security policies with OpenShift application deployment"
+     ]
+    ],
+    "historias_es": [
+     "Como usuario de OpenShift, quiero implementar aplicaciones en z/VM 7.2, de modo que pueda aprovechar las últimas características y mejoras de z/VM",
+     "Como administrador del sistema, quiero configurar OpenShift para usar z/VM 7.2, de modo que pueda administrar y monitorear las implementaciones de OpenShift en z/VM",
+     "Como usuario de OpenShift, quiero usar la misma interfaz OpenShift para implementar aplicaciones en Z/VM 7.2, de modo que no necesite aprender nuevas herramientas o interfaces",
+     "Como desarrollador, quiero usar el mismo OpenShift APIs para implementar aplicaciones en z/VM 7.2, de modo que pueda escribir aplicaciones que sean portátiles en diferentes plataformas",
+     "Como administrador del sistema, quiero poder monitorear y solucionar problemas de implementación de OpenShift en z/VM 7.2, de modo que pueda identificar y resolver problemas rápidamente",
+     "Como usuario de OpenShift, quiero poder usar almacenamiento persistente en z/VM 7.2, de modo que pueda almacenar y administrar datos para mis aplicaciones",
+     "Como administrador del sistema, quiero poder configurar y administrar políticas de red para implementaciones OpenShift en z/VM 7.2, de modo que pueda controlar el acceso a mis aplicaciones",
+     "Como usuario de OpenShift, quiero poder usar las mismas características y políticas de seguridad en z/VM 7.2, de modo que pueda garantizar la seguridad e integridad de mis aplicaciones"
+    ]
+   },
+   {
+    "letra": "B",
+    "historias": [
+     "As a z/VM 7.2 user, I want to deploy OpenShift on z/VM 7.2, so that I can utilize OpenShift on my z/VM environment",
+     "As a z/VM 7.2 user, I want to configure OpenShift for z/VM 7.2, so that I can ensure compatibility and optimal performance",
+     "As a z/VM 7.2 user, I want to troubleshoot OpenShift issues on z/VM 7.2, so that I can quickly resolve any problems that may arise",
+     "As a z/VM 7.2 user, I want to manage OpenShift resources on z/VM 7.2, so that I can easily control and monitor my OpenShift environment",
+     "As a z/VM 7.2 user, I want to automate OpenShift deployment on z/VM 7.2, so that I can reduce manual intervention and improve efficiency",
+     "As a z/VM 7.2 user, I want to secure OpenShift on z/VM 7.2, so that I can protect my OpenShift environment from unauthorized access",
+     "As a z/VM 7.2 user, I want to scale OpenShift on z/VM 7.2, so that I can handle increasing workloads and ensure high availability",
+     "As a z/VM 7.2 user, I want to monitor OpenShift performance on z/VM 7.2, so that I can identify bottlenecks and optimize resource usage"
+    ],
+    "tareas": [
+     [
+      "Research and gather requirements for OpenShift on z/VM 7.2",
+      "Install prerequisites for OpenShift on z/VM 7.2 (e.g., IBM Docker, IBM Spectrum Virtualize for z/VM)",
+      "Configure z/VM 7.2 for OpenShift deployment (e.g., create partitions, set up networking)",
+      "Install OpenShift Container Storage (OCS) on z/VM 7.2"
+     ],
+     [
+      "Research and gather OpenShift for z/VM 7.2 documentation",
+      "Install prerequisites for OpenShift on z/VM 7.2 (e.g., Java, Git)",
+      "Set up a z/VM 7.2 system for OpenShift (e.g., create LPAR, install OS)",
+      "Download and install OpenShift for z/VM 7.2"
+     ],
+     [
+      "Research and gather documentation on OpenShift issues on z/VM 7.2",
+      "Set up a test environment for z/VM 7.2 and OpenShift",
+      "Install and configure OpenShift on z/VM 7.2 in the test environment",
+      "Test basic OpenShift functionality on z/VM 7.2"
+     ],
+     [
+      "Integrate OpenShift CLI with z/VM 7.2 environment",
+      "Configure OpenShift CLI for z/VM 7.2 compatibility",
+      "Develop z/VM-specific OpenShift provisioning scripts",
+      "Write scripts for creating and configuring OpenShift clusters on z/VM 7.2"
+     ],
+     [
+      "Research and select suitable OpenShift deployment tools for z/VM 7.2",
+      "Install and configure the chosen deployment tool on the development environment",
+      "Create a z/VM 7.2-specific OpenShift provisioning template",
+      "Integrate the OpenShift provisioning template with the chosen deployment tool"
+     ],
+     [
+      "Research and understand OpenShift security best practices on z/VM 7.2",
+      "Install and configure SSH key-based authentication for OpenShift nodes",
+      "Implement LDAP integration for user authentication and authorization",
+      "Configure RBAC (Role-Based Access Control) for OpenShift resources"
+     ],
+     [
+      "Research and understand OpenShift 4.x requirements on z/VM 7.2",
+      "Install and configure IBM Z Operational Networks (zON)",
+      "Install and configure IBM Z OpenShift Container Storage (ZCOS)",
+      "Install and configure IBM Z OpenShift Container Platform (OCP) 4.x"
+     ],
+     [
+      "Integrate OpenShift monitoring plugins (Prometheus, Grafana, etc.) into z/VM 7.2 environment",
+      "Configure OpenShift metrics server to collect and export metrics to the monitoring system",
+      "Set up Prometheus to scrape OpenShift metrics from the metrics server",
+      "Create custom dashboards in Grafana to visualize OpenShift performance data"
+     ]
+    ],
+    "historias_es": [
+     "Como usuario Z/VM 7.2, quiero implementar OpenShift en Z/VM 7.2, de modo que pueda utilizar OpenShift en mi entorno z/VM",
+     "Como usuario Z/VM 7.2, quiero configurar OpenShift para Z/VM 7.2, de modo que pueda garantizar la compatibilidad y el rendimiento óptimo",
+     "Como usuario z/VM 7.2, quiero solucionar problemas OpenShift en z/VM 7.2, de modo que pueda resolver rápidamente cualquier problema que pueda surgir",
+     "Como usuario Z/VM 7.2, quiero administrar los recursos OpenShift en Z/VM 7.2, de modo que pueda controlar y monitorear fácilmente mi entorno OpenShift",
+     "Como usuario Z/VM 7.2, quiero automatizar la implementación de OpenShift en Z/VM 7.2, de modo que pueda reducir la intervención manual y mejorar la eficiencia",
+     "Como usuario Z/VM 7.2, quiero asegurar OpenShift en Z/VM 7.2, de modo que pueda proteger mi entorno OpenShift de acceso no autorizado",
+     "Como usuario Z/VM 7.2, quiero escalar OpenShift en Z/VM 7.2, de modo que pueda manejar cargas de trabajo crecientes y asegurar una alta disponibilidad",
+     "Como usuario Z/VM 7.2, quiero monitorear el rendimiento de OpenShift en Z/VM 7.2, de modo que pueda identificar cuellos de botella y optimizar el uso de recursos"
+    ]
+   }
+  ],
+  "n_ref": 4,
+  "descripcion_es": "Soporte para la versión VM de 7.2. Queremos señalar el soporte para OpenShift con Z/VM 7.2"
+ },
+ {
+  "caso": "RedHat:OSSM-261",
+  "descripcion": "Maistra - Federating Service Meshes. Goal: Be able to run, manage and observe a single service mesh running across multiple OpenShift clusters Problem: Istio users may run a service mesh over multiple OpenShift clusters, as of now, they can’t have a single mesh that span multiple",
+  "backlogs": [
+   {
+    "letra": "C",
+    "historias": [
+     "As a front desk staff, I want to run a single service Mesh load, so that I can keep track of who is securely in good condition.",
+     "As a front desk agent, I want to receive notifications about upcoming releases, so that I can prepare for them.",
+     "As a shift supervisor, I want to ensure that I am notified of any changes to the cluster's usage, so that I can optimize my schedule.",
+     "As a sender, I want to receive notifications about upcoming releases, so that I can plan my schedule.",
+     "As a cluster operator, I want to receive notifications about upcoming maintenance sessions, so that I can maintain stability during peak times.",
+     "As a front desk staff, I want to log service maintenance requests, so that I can track usage and optimize resource allocation.",
+     "As a cluster operator, I want to set up a load balance for the cluster, so that I can streamline the load process.",
+     "As a sender, I want to receive notifications about new releases using my cluster, so that I can deploy them quickly."
+    ],
+    "tareas": [
+     [
+      "Implement a single service mesh load tracking feature in the front desk app",
+      "Send a notification to the staff about the new service mesh load",
+      "Add documentation for the mesh load",
+      "Allow the staff to run a single service mesh load in the backend"
+     ],
+     [
+      "Implement a notification system for upcoming releases",
+      "Store notifications in the database",
+      "Send notifications via email to the front desk"
+     ],
+     [
+      "Create a notification system for the shift supervisor",
+      "Send notifications to the supervisor if a certain amount is reached",
+      "Log the changes in the shift supervisor's usage data"
+     ],
+     [
+      "Store the notification details in the dashboard",
+      "Add notifications about upcoming releases",
+      "Store notifications in the sender's profile"
+     ],
+     [
+      "Create a notification system for upcoming maintenance session sessions",
+      "Add notification about upcoming maintenance sessions",
+      "Add notifications about upgrading Maintenance sessions",
+      "Store maintenance sessions in the database"
+     ],
+     [
+      "Allow supervisors to update their usage data in the dashboard",
+      "Store service maintenance requests in the backend database",
+      "Send a notification to the staff about service maintenance",
+      "Add log service maintenance requests"
+     ],
+     [
+      "Store load balance data in the database",
+      "Add load balance for clusters"
+     ],
+     [
+      "Add notification about new release",
+      "Add email about new release"
+     ]
+    ],
+    "historias_es": [
+     "Como personal de recepción, quiero ejecutar una sola carga de servicio de malla, para que pueda llevar un registro de quién está segura en buenas condiciones.",
+     "Como agente de recepción, quiero recibir notificaciones sobre los próximos lanzamientos, para poder prepararme para ellos.",
+     "Como supervisor de turnos, quiero asegurarme de que me notifiquen de cualquier cambio en el uso del clúster, para que pueda optimizar mi horario.",
+     "Como remitente, quiero recibir notificaciones sobre las próximas versiones, para poder planificar mi horario.",
+     "Como operador de clúster, quiero recibir notificaciones sobre las próximas sesiones de mantenimiento, para poder mantener la estabilidad durante los tiempos pico.",
+     "Como personal de recepción, quiero registrar las solicitudes de mantenimiento de servicios, para poder rastrear el uso y optimizar la asignación de recursos.",
+     "Como operador de clúster, quiero establecer un balance de carga para el clúster, de modo que pueda optimizar el proceso de carga.",
+     "Como remitente, quiero recibir notificaciones sobre nuevas versiones usando mi clúster, para poder implementarlas rápidamente."
+    ]
+   },
+   {
+    "letra": "B",
+    "historias": [
+     "As a Service Mesh Operator, I want to be able to define a single service mesh that spans multiple OpenShift clusters, so that I can manage and observe my services across all clusters",
+     "As a Service Mesh Operator, I want to be able to configure the Istio Adapter to work with 3scale, so that I can monetize my services across multiple clusters",
+     "As a Service Mesh Operator, I want to be able to configure the Istio Adapter to work with multiple services, so that I can manage and observe multiple services across multiple clusters",
+     "As a Service Mesh Operator, I want to be able to generate CR code for the Istio Adapter, so that I can easily integrate it with my existing infrastructure",
+     "As a Service Mesh Operator, I want to be able to configure the Istio Adapter to work with multiple services, so that I can manage and observe multiple services across multiple clusters",
+     "As a Service Mesh Operator, I want to be able to document the configuration of 3scale with the Istio Adapter, so that I can easily understand how to set it up",
+     "As a Service Mesh Operator, I want to be able to document the changes to generate CR code for the Istio Adapter, so that I can easily understand how to integrate it with my existing infrastructure",
+     "As a Service Mesh Operator, I want to be able to document the configuration of the Istio Adapter with multiple services, so that I can easily understand how to set it up"
+    ],
+    "tareas": [
+     [
+      "Here are the concrete implementation tasks:",
+      "Define Service Mesh Operator Role and Permissions",
+      "Create Inter-Cluster Service Mesh Configuration API",
+      "Implement Cluster-to-Cluster Service Mesh Communication"
+     ],
+     [
+      "Here are the concrete implementation tasks:",
+      "Configure Istio Adapter to support 3scale integration",
+      "Implement 3scale authentication mechanism for Istio Adapter",
+      "Integrate 3scale API with Istio Adapter configuration"
+     ],
+     [
+      "Here are the concrete implementation tasks:",
+      "Configure Istio Adapter to support multiple services",
+      "Implement service discovery for Istio Adapter",
+      "Update Istio Adapter configuration to support cluster selection"
+     ],
+     [
+      "Here are the concrete implementation tasks:",
+      "Generate Istio Adapter CRD definition",
+      "Create code generator for Istio Adapter CRD",
+      "Integrate code generator with existing infrastructure"
+     ],
+     [
+      "Here are the concrete implementation tasks:",
+      "Configure Istio Adapter to support multiple services",
+      "Implement service discovery for Istio Adapter",
+      "Update Istio Adapter configuration to support cluster selection"
+     ],
+     [
+      "Here are the concrete implementation tasks:",
+      "Create Istio Adapter documentation template",
+      "Define configuration options for 3scale with Istio Adapter",
+      "Develop Istio Adapter configuration example"
+     ],
+     [
+      "Here are the concrete implementation tasks:",
+      "Generate Istio Adapter CRD schema",
+      "Create API to generate CR code from schema",
+      "Implement schema to code generation logic"
+     ],
+     [
+      "Here are the concrete implementation tasks:",
+      "Create Istio Adapter Configuration Documentation Template",
+      "Define Istio Adapter Configuration Parameters",
+      "Develop Istio Adapter Configuration YAML Schema"
+     ]
+    ],
+    "historias_es": [
+     "Como operador de malla de servicio, quiero poder definir una malla de servicio única que abarque múltiples clusters OpenShift, de modo que pueda administrar y observar mis servicios en todos los clusters",
+     "Como operador de malla de servicio, quiero poder configurar el adaptador Istio para trabajar con 3scale, de modo que pueda monetizar mis servicios a través de múltiples clústeres",
+     "Como operador de malla de servicio, quiero poder configurar el adaptador Istio para trabajar con múltiples servicios, de modo que pueda administrar y observar múltiples servicios en múltiples clústeres",
+     "Como operador de malla de servicio, quiero poder generar código CR para el adaptador Istio, de modo que pueda integrarlo fácilmente con mi infraestructura existente",
+     "Como operador de malla de servicio, quiero poder configurar el adaptador Istio para trabajar con múltiples servicios, de modo que pueda administrar y observar múltiples servicios en múltiples clústeres",
+     "Como operador de malla de servicio, quiero poder documentar la configuración de 3scale con el adaptador Istio, de modo que pueda entender fácilmente cómo configurarlo",
+     "Como operador de malla de servicio, quiero poder documentar los cambios para generar código CR para el adaptador Istio, de modo que pueda entender fácilmente cómo integrarlo con mi infraestructura existente",
+     "Como operador de malla de servicio, quiero poder documentar la configuración del adaptador Istio con múltiples servicios, de modo que pueda entender fácilmente cómo configurarlo"
+    ]
+   },
+   {
+    "letra": "A",
+    "historias": [
+     "As a Maistra user, I want to create a single service mesh that spans multiple OpenShift clusters, so that I can manage and observe my service mesh more efficiently",
+     "As a Maistra user, I want to add multiple OpenShift clusters to my service mesh, so that I can expand my service mesh across multiple clusters",
+     "As a Maistra user, I want to configure the communication between clusters in my service mesh, so that I can ensure seamless communication between services across clusters",
+     "As a Maistra user, I want to automate the deployment of my service mesh across multiple OpenShift clusters, so that I can save time and reduce errors",
+     "As a Maistra user, I want to monitor the performance of my service mesh across multiple OpenShift clusters, so that I can identify and resolve issues quickly",
+     "As a Maistra user, I want to set up policies for my service mesh that apply across multiple OpenShift clusters, so that I can enforce consistent security and governance",
+     "As a Maistra user, I want to manage the authentication and authorization of my service mesh across multiple OpenShift clusters, so that I can ensure secure access to my services",
+     "As a Maistra user, I want to troubleshoot issues in my service mesh that span multiple OpenShift clusters, so that I can quickly identify and resolve problems"
+    ],
+    "tareas": [
+     [
+      "Research and select a suitable service mesh solution compatible with OpenShift",
+      "Integrate the chosen service mesh solution into the OpenShift cluster environment",
+      "Configure the service mesh to support multi-cluster management",
+      "Develop a method for discovering and registering services across multiple OpenShift clusters"
+     ],
+     [
+      "Implement API for adding OpenShift clusters to service mesh",
+      "Create API endpoint for cluster registration",
+      "Validate input data for cluster registration",
+      "Implement authentication and authorization for cluster registration"
+     ],
+     [
+      "Implement cluster discovery for service mesh",
+      "Develop API for configuring communication between clusters",
+      "Implement cluster-to-cluster communication protocol",
+      "Create UI for configuring communication settings between clusters"
+     ],
+     [
+      "Integrate OpenShift SDK for cluster management",
+      "Develop service mesh deployment script for OpenShift",
+      "Implement cluster discovery and selection logic",
+      "Create deployment validation checks for service mesh"
+     ],
+     [
+      "Implement service mesh integration with OpenShift clusters",
+      "Develop a dashboard for monitoring service mesh performance",
+      "Create a data collection module for gathering performance metrics from service meshes",
+      "Implement a data processing module to analyze collected performance data"
+     ],
+     [
+      "Integrate service mesh with OpenShift API",
+      "Develop a mechanism to discover multiple OpenShift clusters",
+      "Implement policy creation interface",
+      "Create policy management API"
+     ],
+     [
+      "Implement OpenID Connect (OIDC) for user authentication across OpenShift clusters",
+      "Develop an API for service mesh authentication and authorization",
+      "Integrate the API with OpenID Connect for user authentication",
+      "Implement role-based access control (RBAC) for authorization"
+     ],
+     [
+      "Integrate service mesh monitoring API with OpenShift API",
+      "Develop a cross-cluster discovery mechanism for service mesh components",
+      "Implement a data aggregation system for monitoring data from multiple OpenShift clusters",
+      "Create an alerting system for critical issues across multiple clusters"
+     ]
+    ],
+    "historias_es": [
+     "Como usuario de Maistra, quiero crear una malla de servicio única que abarque múltiples clusters OpenShift, de modo que pueda administrar y observar mi malla de servicio de manera más eficiente",
+     "Como usuario de Maistra, quiero añadir múltiples clusters OpenShift a mi malla de servicio, de modo que pueda expandir mi shell de servicio a través de múltiples clusters",
+     "Como usuario de Maistra, quiero configurar la comunicación entre clusters en mi malla de servicio, de modo que pueda garantizar una comunicación sin fisuras entre servicios a través de clusters",
+     "Como usuario de Maistra, quiero automatizar la implementación de mi malla de servicio en múltiples clusters OpenShift, de modo que pueda ahorrar tiempo y reducir errores",
+     "Como usuario de Maistra, quiero monitorear el rendimiento de mi malla de servicio en múltiples clústeres OpenShift, de modo que pueda identificar y resolver problemas rápidamente",
+     "Como usuario de Maistra, quiero establecer políticas para mi malla de servicio que se aplican en múltiples clusters OpenShift, de modo que pueda hacer cumplir una seguridad y gobernanza consistentes",
+     "Como usuario de Maistra, quiero gestionar la autenticación y autorización de mi malla de servicio en múltiples clusters OpenShift, de modo que pueda garantizar un acceso seguro a mis servicios",
+     "Como usuario de Maistra, quiero solucionar problemas en mi malla de servicio que abarcan múltiples clusters OpenShift, de modo que pueda identificar y resolver problemas rápidamente"
+    ]
+   }
+  ],
+  "n_ref": 7,
+  "descripcion_es": "Meta: Ser capaz de ejecutar, gestionar y observar una sola malla de servicio que se ejecuta en múltiples grupos OpenShift Problema: Los usuarios de Istio pueden ejecutar una malla de servicio en múltiples grupos OpenShift, a partir de ahora, no pueden tener una sola malla que abarque múltiples"
+ }
+]

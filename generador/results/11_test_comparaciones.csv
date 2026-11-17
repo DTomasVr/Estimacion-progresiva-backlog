@@ -1,0 +1,4 @@
+a,b,delta_sF1,ic95_lo,ic95_hi
+mt5-small-pruned_hist_agix_v1_v6_agix_v1,solo_recuperacion,0.1463,0.1394,0.153
+mt5-small-pruned_hist_agix_v1_v5_agix_v1,solo_recuperacion,0.1515,0.1449,0.1582
+mt5-small-pruned_hist_agix_v1_v5_agix_v1,mt5-small-pruned_hist_agix_v1_v6_agix_v1,0.0052,0.0018,0.0087

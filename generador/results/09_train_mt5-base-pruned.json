@@ -1,0 +1,50 @@
+{
+ "modelo": "F:/Software Task generation Model/models/mt5-base-pruned",
+ "bs": 4,
+ "max_out": 192,
+ "lr": 0.0007,
+ "epocas": 12,
+ "hist": [
+  {
+   "epoca": 1,
+   "train_loss": 4.250993565090722,
+   "val_loss": 3.415201807397609,
+   "seg": 1107
+  },
+  {
+   "epoca": 2,
+   "train_loss": 3.231613242692448,
+   "val_loss": 3.290884138365696,
+   "seg": 1103
+  },
+  {
+   "epoca": 3,
+   "train_loss": 2.8612668028359285,
+   "val_loss": 3.2545544773059034,
+   "seg": 1101
+  },
+  {
+   "epoca": 4,
+   "train_loss": 2.549244101536721,
+   "val_loss": 3.255652371968703,
+   "seg": 1100
+  },
+  {
+   "epoca": 5,
+   "train_loss": 2.25735044034889,
+   "val_loss": 3.3172038296070876,
+   "seg": 1099
+  }
+ ],
+ "v0": 13.547004426659672,
+ "mejor_val": 3.2545544773059034,
+ "vram_pico": 4.61,
+ "min": 92.5,
+ "gens": [
+  "Eclipse PDE integration ; Spring-DM integration",
+  "Detect failures in nightly build ; Investigate failures on nightly build",
+  "Remove outdated design sections from the architecture guide ; Update documentation with accuracy and relevant aspects of the architecture guide",
+  "Setup OpenShift 3.11 with pipelines, and upgrade from 3.11 to 3.11 ; Install Mobile.next on 3.11 on 3.11",
+  "Add stateful operators in continuous processing ; Stateful operators for continuous processing"
+ ]
+}

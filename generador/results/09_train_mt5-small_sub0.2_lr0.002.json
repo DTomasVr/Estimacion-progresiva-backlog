@@ -1,0 +1,26 @@
+{
+ "modelo": "google/mt5-small",
+ "bs": 8,
+ "max_out": 192,
+ "lr": 0.002,
+ "epocas": 1,
+ "hist": [
+  {
+   "epoca": 1,
+   "train_loss": 5.065865758392546,
+   "val_loss": 3.7887125444664274,
+   "seg": 144
+  }
+ ],
+ "v0": 13.61556553797228,
+ "mejor_val": 3.7887125444664274,
+ "vram_pico": 5.37,
+ "min": 2.8,
+ "gens": [
+  "Add Eclipse integration for Spring-DM ; Add Eclipse Integration to Spring-DM with Spring-DM in Spring-DM",
+  "Create a default test failures in nightly build ; Create a new test for nightly build",
+  "Create a new documentation for accuracy ; Add a new version of accuracy",
+  "Create a repository for OpenShift 3.11 ; Create a new repository for openshift 3.11",
+  "Add stateful operators in continuous processing ; Add Stateful operators to continuous processing"
+ ]
+}

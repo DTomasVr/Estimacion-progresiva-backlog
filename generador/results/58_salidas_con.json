@@ -1,0 +1,1139 @@
+[
+ {
+  "sector": "consumo",
+  "descripcion": "A supermarket app where customers browse the catalogue, build a basket and book a delivery slot.",
+  "historias": [
+   {
+    "h": "As a shopper, I want to view the delivery slot by another ordering service, so that I can organize the delivery schedule.",
+    "t": [
+     "Store the delivery slot in the database",
+     "Display the slot on the shopper's dashboard",
+     "Notify the shopper of the slot"
+    ]
+   },
+   {
+    "h": "As a shopper, I want to see a list of the shoppers on the subscriber's delivery items, so that I can track the remaining areas.",
+    "t": [
+     "Create a list of shoppers on the subscriber's dashboard",
+     "Display the list of sellers on the app",
+     "Send a notification to the shopper if the list is available"
+    ]
+   },
+   {
+    "h": "As a warehouse operator, I want to know what catalog is supported for each picker, so that I can plan my order.",
+    "t": [
+     "Store the catalog information in the database",
+     "Send a confirmation email to the warehouse operator when a catalog is supported"
+    ]
+   },
+   {
+    "h": "As a warehouse operator, I want to assign a shopper to order based on the service, so that I can quickly provide a detailed delivery to the order.",
+    "t": [
+     "Store the order details in the database",
+     "Display the order details on the warehouse operator dashboard",
+     "Send a confirmation email to the customer when the order is added"
+    ]
+   },
+   {
+    "h": "As a store manager, I want to set up orders, so that I can generate the stock in the store.",
+    "t": [
+     "Display the order details on the store manager's dashboard",
+     "Notify the store manager of the order details"
+    ]
+   },
+   {
+    "h": "As a delivery driver, I want to add a new box to a catalogue, so that I can offer a reminder.",
+    "t": [
+     "Store the new box in the database",
+     "Notify the driver of the new box"
+    ]
+   },
+   {
+    "h": "As a store manager, I want to view the book's usage history of my inventory, so that I can prioritize the service.",
+    "t": [
+     "Store the usage history in the database",
+     "Provide a summary of usage history on the store manager's dashboard",
+     "Send a notification to the store manager if their usage history exceeds a certain threshold"
+    ]
+   },
+   {
+    "h": "As a store manager, I want to set up orders for store items, so that I can handle clients to keep the safe delivery system in the order.",
+    "t": [
+     "Create a order form in the store manager app"
+    ]
+   },
+   {
+    "h": "As a customer, I want to manage inventory levels, so that I can ensure which products are stored.",
+    "t": [
+     "Store inventory levels in the database",
+     "Provide a dashboard to display inventory level levels on the customer portal",
+     "Send a notification to the customer if a inventory level exceeds a certain threshold"
+    ]
+   },
+   {
+    "h": "As a stock inspector, I want to indicate which delivery products are based on the expected service, so that I can inform customers about the purchase.",
+    "t": [
+     "Store the expected delivery data in the database",
+     "Send a confirmation email to the inspector if the product is available"
+    ]
+   },
+   {
+    "h": "As a warehouse operator, I want to receive the delivery deadlines, so that I can order its product until ready.",
+    "t": [
+     "Store the delivery deadlines in the database",
+     "Send a notification to the warehouse operator if the delivery is ready"
+    ]
+   },
+   {
+    "h": "As a support agent, I want to receive notifications for each item, so that I can manage inventory.",
+    "t": [
+     "Implement a notification system for each item",
+     "Store the notification in the support agent's profile",
+     "Notify the support agent if a item is updated"
+    ]
+   }
+  ]
+ },
+ {
+  "sector": "consumo",
+  "descripcion": "An online store for selling audiobooks and ebooks, with a library and offline listening.",
+  "historias": [
+   {
+    "h": "As a library staff, I want to enhance the audiobooks to include on the music store, so that I can ensure they are maintained efficiently.",
+    "t": [
+     "Store audiobooks in the database",
+     "Display audiobooks on the library staff dashboard",
+     "Send a notification to the library staff if the audiobook is added"
+    ]
+   },
+   {
+    "h": "As a reader, I want to receive notifications about upcoming audiobooks, so that I can offer better pricing.",
+    "t": [
+     "Implement a notification system for audiobooks",
+     "Store audiobooks in the reader's profile",
+     "Notify the reader if a audiobook fails"
+    ]
+   },
+   {
+    "h": "As a music teacher, I want to view the audiobooks offline, so that I can manage the content process.",
+    "t": [
+     "Display audiobooks on the teacher's dashboard",
+     "Send a notification to the teacher if the audiobook is offline"
+    ]
+   },
+   {
+    "h": "As an independent seller, I want to receive notifications when new audiobooks are different between my readings, so that I can understand the quality.",
+    "t": [
+     "Send an email notification to the seller when new audiobooks are different",
+     "Log the notification in the seller's profile"
+    ]
+   },
+   {
+    "h": "As a reader, I want to receive notifications when my listening is offline, so that I can make informed decisions about the selling.",
+    "t": [
+     "Implement a notification system for offline listening",
+     "Store the notification in the reader's profile",
+     "Notify the reader if the notification is offline"
+    ]
+   },
+   {
+    "h": "As a library staff, I want to update the audiobooks on the catalogue, so that I can resolve problems when the library has a good audiobook.",
+    "t": []
+   },
+   {
+    "h": "As a reader, I want to receive feedback on streaming offline promotions, so that I can share content in the audiobooks.",
+    "t": [
+     "Create a feedback form in the reader app",
+     "Store feedback in the database",
+     "Send a confirmation email to the reader when a feedback is received"
+    ]
+   },
+   {
+    "h": "As a music reader, I want to approve or reschedule my books, so that I can prepare offline.",
+    "t": [
+     "Store the approved or reschedule records in the database"
+    ]
+   },
+   {
+    "h": "As a reader, I want to receive notifications when an audiobooks are subscriber, so that I can manage the audiobooks efficiently.",
+    "t": []
+   },
+   {
+    "h": "As an underwriter, I want to receive notifications when the audiobooks are played, so that I can prepare for a school.",
+    "t": [
+     "Send notifications to the underwriter when the audiobook is played"
+    ]
+   },
+   {
+    "h": "As a library staff, I want to recommend high-level audiobooks for audiobooks, so that I can provide accurate content.",
+    "t": [
+     "Implement a high-level audiobook review feature in the library staff app",
+     "Store audiobook reviews in the database",
+     "Send a summary of audiobook reviews to the library staff"
+    ]
+   },
+   {
+    "h": "As a moviegoer, I want to assign audiobooks to a different order, so that I can ensure they will drive the correct music.",
+    "t": [
+     "Allow the moviegoer to assign a different order",
+     "Store the assignment details in the audiobook record",
+     "Notify the audiobook manager of the assignment"
+    ]
+   }
+  ]
+ },
+ {
+  "sector": "consumo",
+  "descripcion": "A gym management app with memberships, class booking and a check-in kiosk.",
+  "historias": [
+   {
+    "h": "As a gym manager, I want to set up a branch for client availability, so that they can provide better service.",
+    "t": []
+   },
+   {
+    "h": "As a gym manager, I want to check the upcoming courses, so that I can monitor coverage and manage sharing.",
+    "t": [
+     "Store the courses in the database",
+     "Display the courses on the gym manager's dashboard",
+     "Send a notification to the manager if the course is upcoming"
+    ]
+   },
+   {
+    "h": "As a gym manager, I want to set up account times for a shared entry, so that I can manage and manage timely bookings.",
+    "t": [
+     "Store account times in the database",
+     "Display account times on the gym management screen",
+     "Notify the gym manager if a shared entry is added"
+    ]
+   },
+   {
+    "h": "As a gym manager, I want to be able to set up scheduled courses, so that I can plan my day.",
+    "t": [
+     "Implement a scheduling feature in the gym management system",
+     "Notify the gym manager if a course is scheduled"
+    ]
+   },
+   {
+    "h": "As a member, I want to update my enrollment records, so that I can check in appropriate membership options.",
+    "t": [
+     "Allow the member to update enrollment records in the database",
+     "Store the enrollment record in the member's profile",
+     "Send a notification to the member when a enrollment is updated"
+    ]
+   },
+   {
+    "h": "As a household member, I want to receive notifications about my memberships, so that I can plan my schedule.",
+    "t": [
+     "Store the membership status in the database",
+     "Send a notification to the household member when a membership is approved"
+    ]
+   },
+   {
+    "h": "As a member, I want to view the appropriate gym rate, so that I can find the latest trends for cleaning.",
+    "t": [
+     "Store the gym rate data in the member's profile",
+     "Display the average gym rate on the member’s profile page",
+     "Send a notification to the member if a gym rate is low"
+    ]
+   },
+   {
+    "h": "As a front desk agent, I want to set the availability of memberships, so that the categories are not available.",
+    "t": [
+     "Display the availability on the front desk agent's dashboard"
+    ]
+   },
+   {
+    "h": "As a member, I want to book my child's class schedule, so that I can plan my schedule.",
+    "t": [
+     "Create a booking form in the member portal",
+     "Store the booking details in the member's profile",
+     "Notify the member of the booking"
+    ]
+   },
+   {
+    "h": "As a warehouse operator, I want to be able to manage my sessions, so that I can organize my enrollments.",
+    "t": [
+     "Create a session management form in the warehouse operator app",
+     "Store the session details in the database",
+     "Send a notification to the warehouse manager if the session is added"
+    ]
+   },
+   {
+    "h": "As a parent, I want to book a new member's class, so that I can ensure a nurse can be prepared by them.",
+    "t": [
+     "Store the new member's class in the database",
+     "Send a confirmation email to the parent when a new member is booked"
+    ]
+   },
+   {
+    "h": "As a courier, I want to receive feedback on my workouts, so that I can provide better understandings.",
+    "t": [
+     "Create a feedback form in the courier app",
+     "Send a notification to the courier if a workout is completed"
+    ]
+   }
+  ]
+ },
+ {
+  "sector": "consumo",
+  "descripcion": "A veterinary clinic system for appointments, vaccination records and reminders.",
+  "historias": [
+   {
+    "h": "As a vet, I want to receive notifications for vaccination records, so that I can ensure the clinic is relied on.",
+    "t": [
+     "Store vaccination records in the database",
+     "Send a notification to the vet when a vaccination is detected"
+    ]
+   },
+   {
+    "h": "As a clinic receptionist, I want to track appointment records, so that I can monitor the appointment's pet's maintenance.",
+    "t": [
+     "Store the appointment records in the database",
+     "Display the appointment history on the receptionist's dashboard",
+     "Send a notification to the pet owner if the appointment is updated"
+    ]
+   },
+   {
+    "h": "As a vet, I want to receive notifications about appointments, so that I can verify their clinic's needs.",
+    "t": [
+     "Send a notification to the vet when a appointment is updated"
+    ]
+   },
+   {
+    "h": "As a pet owner, I want to add a new pet's vaccination to an appointment, so that I can prevent a pet's vaccination.",
+    "t": [
+     "Create a new pet's vaccination form in the admin panel",
+     "Send a notification to the pet owner when a new vaccination is added"
+    ]
+   },
+   {
+    "h": "As a vet, I want to receive notifications about upcoming pet visits, so that I can prevent fraud of unnecessary appointments.",
+    "t": [
+     "Store pet visits in the database",
+     "Send a notification to the vet if a pet visit is flagged"
+    ]
+   },
+   {
+    "h": "As a vet, I want to generate a doctor appointment to be members, so that I can access the appointment.",
+    "t": [
+     "Send a confirmation email to the patient when a appointment is created"
+    ]
+   },
+   {
+    "h": "As a vet, I want to see my schedule and schedule appointments, so that I can ensure they are coming up quickly.",
+    "t": []
+   },
+   {
+    "h": "As a vet, I want to assign a grooming appointment to my department, so that I can easily address medical records.",
+    "t": [
+     "Create a grooming appointment form in the vet app"
+    ]
+   },
+   {
+    "h": "As a pet owner, I want to view the appointment history for each visit, so that I can track my pet's medical history.",
+    "t": [
+     "Store the appointment history in the pet owner's profile",
+     "Provide a summary of appointment history on the pet owner dashboard"
+    ]
+   },
+   {
+    "h": "As a pet owner, I want to log the appointments, so that I can get a quick answer.",
+    "t": []
+   },
+   {
+    "h": "As a vet, I want to receive medical notes when a patient visits a pet, so that I can make informed decisions to a pet.",
+    "t": [
+     "Implement a medical note tracking feature in the pet app",
+     "Store the patient's medical notes in the database"
+    ]
+   },
+   {
+    "h": "As a vet, I want to receive notifications when a reminder is being reported, so that I can plan their visits.",
+    "t": [
+     "Store the reminder status in the database",
+     "Send a notification to the vet when a reminder is reported",
+     "Log the reminder in the database"
+    ]
+   }
+  ]
+ },
+ {
+  "sector": "consumo",
+  "descripcion": "A hotel booking platform with room availability, seasonal rates and guest reviews.",
+  "historias": [
+   {
+    "h": "As a guest, I want to review my room bookings and ratings, so that I can ensure which rooms are managed.",
+    "t": [
+     "Create a booking review form in the guest app",
+     "Store the booking details in the guest's profile",
+     "Send a notification to the guest if the booking is approved"
+    ]
+   },
+   {
+    "h": "As a guest, I want to be able to update room status of the booking availability, so that I can improve the bookings.",
+    "t": [
+     "Allow guests to update room status in the guest's profile",
+     "Send a notification to the guest if a room status is updated"
+    ]
+   },
+   {
+    "h": "As a guest, I want to report the hotel booking patterns of a room, so that I can monitor the period of each room.",
+    "t": [
+     "Implement a booking patterns report feature in the guest dashboard",
+     "Store booking patterns in the database",
+     "Send a summary of booking patterns to the guest",
+     "Notify the guest if the booking patterns exceeds a threshold"
+    ]
+   },
+   {
+    "h": "As a hotel manager, I want to track and manage availability of room bookings, so that I can quickly manage bookings.",
+    "t": [
+     "Store booking details in the database",
+     "Display booking details on the hotel manager's dashboard",
+     "Send a notification to the hotel manager if a booking is unavailable"
+    ]
+   },
+   {
+    "h": "As a host, I want to analyze room price, so that I can provide guests efficiently.",
+    "t": [
+     "Store room price data in the database",
+     "Display room price data on the host's dashboard",
+     "Notify the host if a room price is low"
+    ]
+   },
+   {
+    "h": "As a hotel manager, I want to see the availability of room availability, so that I can ensure all rooms are consistent.",
+    "t": [
+     "Store the availability data in the database",
+     "Display the availability on the hotel manager's dashboard",
+     "Send a notification to the hotel manager if the availability exceeds a certain threshold"
+    ]
+   },
+   {
+    "h": "As a traveller, I want to see the booking results and times of special rates, so that I can manage my workload efficiently.",
+    "t": [
+     "Display the booking results on the traveller's dashboard",
+     "Send a notification to the traveller if the booking results are low"
+    ]
+   },
+   {
+    "h": "As a guest, I want to see a way that can make a preliminary report of a room availability, so that I can plan my rent effectively.",
+    "t": [
+     "Store the preliminary report in the guest's profile",
+     "Send a confirmation email to the guest when the report is ready"
+    ]
+   },
+   {
+    "h": "As a member, I want to view photos of room bookings, so that I can manage rooms effectively.",
+    "t": [
+     "Store the photos in the member's profile",
+     "Display the photos on the member’s dashboard",
+     "Send a notification to the member if the photos are added"
+    ]
+   },
+   {
+    "h": "As a hotel manager, I want to view and audit rooms for guests, so that I can ensure compliance with customer levels.",
+    "t": [
+     "Store audit rooms in the database",
+     "Display audit rooms on the hotel manager's dashboard",
+     "Notify the hotel manager if a guest is audited"
+    ]
+   },
+   {
+    "h": "As a receptionist, I want to set room bookings, so that I can set up inventory.",
+    "t": [
+     "Create a booking form in the receptionist app",
+     "Display booking details on the receptionist's dashboard",
+     "Notify the receptionist if a booking is added"
+    ]
+   },
+   {
+    "h": "As a guest, I want to view a summary of my bookings, so that I can increase the availability.",
+    "t": [
+     "Display the summary on the guest’s dashboard",
+     "Send a notification to the guest about the summary"
+    ]
+   }
+  ]
+ },
+ {
+  "sector": "consumo",
+  "descripcion": "A food delivery app connecting restaurants, couriers and customers with live tracking.",
+  "historias": [
+   {
+    "h": "As a courier, I want to receive notifications when a customer joins the order, so that I can follow up with the  restaurant.",
+    "t": [
+     "Implement a notification system in the courier app",
+     "Store the notification details in the order record",
+     "Send an email notification to the courier if a customer joins the order"
+    ]
+   },
+   {
+    "h": "As a cook, I want to request an delivery tracking for my child's orders, so that the restaurant can be updated.",
+    "t": [
+     "Create a delivery request form in the kitchen app",
+     "Store the delivery request in the restaurant's profile",
+     "Send a notification to the restaurant if the order is received"
+    ]
+   },
+   {
+    "h": "As a cook, I want to update a delivery route, so that I can ensure all customer their deliveries are correctly managed.",
+    "t": [
+     "Store the delivery route in the order record",
+     "Send a notification to the restaurant if the delivery route is updated"
+    ]
+   },
+   {
+    "h": "As a cooking agent, I want to provide notifications when my meal is processed, so that I can plan my route effectively.",
+    "t": [
+     "Implement a notification system in the cooking agent app",
+     "Store the notification details in the database",
+     "Notify the cook agent if the notification is processed"
+    ]
+   },
+   {
+    "h": "As a cook, I want to receive notifications when my delivery progress is in the stock, so that I can plan my work.",
+    "t": [
+     "Store the delivery progress in the kitchen database",
+     "Send a notification to the kitchen manager when the delivery progress is in the stock",
+     "Notify the kitchen manager of the delivery progress"
+    ]
+   },
+   {
+    "h": "As a courier, I want to monitor the pricing of the restaurant, so that I can ensure they are correct.",
+    "t": [
+     "Store the pricing data in the database",
+     "Display the pricing on the courier's dashboard",
+     "Send a notification to the courier about the pricing"
+    ]
+   },
+   {
+    "h": "As a customer, I want to request service completion for my delivery, so that I can stay informed of the cook's delivery.",
+    "t": [
+     "Create a service completion form in the customer app",
+     "Store the service completion details in the database",
+     "Send a confirmation email to the customer when the service is received"
+    ]
+   },
+   {
+    "h": "As a restaurant owner, I want to add a customer's reception history, so that I can access their delivery status.",
+    "t": [
+     "Store the reception history in the database",
+     "Display the reception history on the restaurant owner's dashboard",
+     "Send a notification to the restaurant owner if the reception history is added"
+    ]
+   },
+   {
+    "h": "As a customer, I want to receive notifications when a deliveries are up, so that I can stay informed.",
+    "t": [
+     "Implement a notification system for deliveries",
+     "Store deliveries in the customer profile database",
+     "Send push notifications to the customer when a deliveries are up"
+    ]
+   },
+   {
+    "h": "As a restaurant owner, I want to track delivery history, so that I can manage clients efficiently.",
+    "t": [
+     "Store the delivery history in the database",
+     "Display the delivery history on the restaurant owner's dashboard",
+     "Send a notification to the restaurant owner about the delivery history"
+    ]
+   },
+   {
+    "h": "As a client, I want to access a pickup timer, so that I can provide service for the  food.",
+    "t": [
+     "Create a pickup timer in the client app",
+     "Store the pickup timer data in the client's profile",
+     "Send a confirmation email to the client if the timer exceeds the pickup time"
+    ]
+   },
+   {
+    "h": "As a restaurant owner, I want to track the total size of products, so that I can ensure compliance with the delivery plan.",
+    "t": [
+     "Store the total size of products in the database",
+     "Display the total size on the restaurant owner's dashboard",
+     "Notify the restaurant owner of the total size"
+    ]
+   }
+  ]
+ },
+ {
+  "sector": "consumo",
+  "descripcion": "A school platform where teachers publish assignments and parents follow grades.",
+  "historias": [
+   {
+    "h": "As a teacher, I want to see my child's grade, so that I can assign them to the student.",
+    "t": [
+     "Store the student's grade in the database",
+     "Display the grade on the teacher's dashboard",
+     "Send a notification to the teacher about the grade"
+    ]
+   },
+   {
+    "h": "As a teacher, I want to receive real-time feedback about my school grades, so that I can ensure the school has added to students.",
+    "t": [
+     "Create a real-time feedback form in the teacher app",
+     "Store the feedback in the student's profile",
+     "Send a notification to the teacher if the feedback is added"
+    ]
+   },
+   {
+    "h": "As a teacher, I want to analyze grades by parent, so that I can improve my practice.",
+    "t": [
+     "Store grades in the database",
+     "Send a summary of grades by parent"
+    ]
+   },
+   {
+    "h": "As a teacher, I want to view summary report of student grades, so that I can inform students.",
+    "t": [
+     "Send a summary report to the teacher when a student grades are added"
+    ]
+   },
+   {
+    "h": "As a teacher, I want to review the school's progress, so that I can track my school progress.",
+    "t": [
+     "Allow the teacher to view their progress in the database",
+     "Display the progress on the teacher's dashboard",
+     "Notify the teacher if the progress is taken"
+    ]
+   },
+   {
+    "h": "As a teacher, I want to view my previous assignments, so that I can manage students' feedback.",
+    "t": [
+     "Store the assignment details in the teacher's profile",
+     "Display the assignment status on the teacher’s dashboard",
+     "Send a notification to the teacher if the assignment is added"
+    ]
+   },
+   {
+    "h": "As a school coordinator, I want to manage school assignments, so that I can ensure that the school is delivered efficiently.",
+    "t": [
+     "Create a assignment management interface in the coordinator dashboard",
+     "Store assignment details in the database",
+     "Send a notification to the school coordinator if a student is successful"
+    ]
+   },
+   {
+    "h": "As a school coordinator, I want to monitor the student’s progress, so that I can resolve school issues.",
+    "t": [
+     "Implement a progress tracking feature in the coordinator dashboard",
+     "Store the progress data in the database",
+     "Send a notification to the coordinator if the progress is reported"
+    ]
+   },
+   {
+    "h": "As a parent, I want to see how lessons are, so that I can determine which students are behind.",
+    "t": [
+     "Store lessons in the database",
+     "Display lessons on the parent's dashboard",
+     "Send a notification to the parent if lessons are added"
+    ]
+   },
+   {
+    "h": "As a school coordinator, I want to report admission based on responsibilities, so that I can provide seamless assignments for schoolers.",
+    "t": [
+     "Create a report form in the coordinator dashboard",
+     "Store the report in the database",
+     "Send a notification to the coordinator if the report is added"
+    ]
+   },
+   {
+    "h": "As a teacher, I want to know when a school is in progress, so that I can correct any unnecessary questions.",
+    "t": [
+     "Implement a notification system for the teacher",
+     "Store the notification in the teacher's profile",
+     "Notify the teacher if the notification is flagged"
+    ]
+   },
+   {
+    "h": "As a school secretary, I want to monitor student progress, so that I can optimize access to students.",
+    "t": [
+     "Store student progress data in the database",
+     "Display student progress on the dashboard"
+    ]
+   }
+  ]
+ },
+ {
+  "sector": "consumo",
+  "descripcion": "A car workshop system for service appointments, repair quotes and spare part stock.",
+  "historias": [
+   {
+    "h": "As a car owner, I want to request a parts for repairs, so that I can pay for better service quality.",
+    "t": [
+     "Create a parts request form in the car owner app",
+     "Store parts request details in the database",
+     "Send a confirmation email to the car owner about the parts request"
+    ]
+   },
+   {
+    "h": "As a parts clerk, I want to schedule maintenance tasks, so that I can avoid starting the car.",
+    "t": [
+     "Create a maintenance task scheduling feature in the parts clerk app",
+     "Store the maintenance task details in the system database",
+     "Send a notification to the clerk if a task is scheduled"
+    ]
+   },
+   {
+    "h": "As a car owner, I want to generate service appointments for the car, so that I can access the service.",
+    "t": [
+     "Create a service assignment form in the car owner app",
+     "Store the appointment details in the database",
+     "Send a confirmation email to the car owner about the appointment"
+    ]
+   },
+   {
+    "h": "As a parts clerk, I want to schedule maintenance for parts, so that I can ensure the service quality can be ensured as assigned.",
+    "t": [
+     "Store the maintenance schedule in the parts database",
+     "Send a notification to the clerk if the maintenance is scheduled"
+    ]
+   },
+   {
+    "h": "As a mechanic, I want to create a service appointment, so that I can follow up with the customers.",
+    "t": [
+     "Create a service appointment form in the mechanic dashboard",
+     "Send a confirmation email to the customer when a service is created"
+    ]
+   },
+   {
+    "h": "As a car owner, I want to view the status of the service appointments, so that I can follow up with the repair.",
+    "t": [
+     "Store the service appointment status in the database",
+     "Display the appointment status on the car owner's dashboard"
+    ]
+   },
+   {
+    "h": "As a car owner, I want to receive instructions about parts, so that the service can take care.",
+    "t": [
+     "Store parts in the car owner's profile"
+    ]
+   },
+   {
+    "h": "As a car owner, I want to see a part of the repair appointment, so that I can ensure proper safety.",
+    "t": [
+     "Display the part of the repair appointment on the car owner's dashboard",
+     "Send a notification to the car owner if the part is complete"
+    ]
+   },
+   {
+    "h": "As a parts clerk, I want to approve maintenance cases, so that the repairs are handled by the service.",
+    "t": [
+     "Send a notification to the clerk when a maintenance is approved"
+    ]
+   },
+   {
+    "h": "As a car owner, I want to receive notifications about a car's maintenance schedule, so that I can schedule maintenance tasks.",
+    "t": [
+     "Store the maintenance schedule in the database",
+     "Send a notification to the car owner when a maintenance is scheduled"
+    ]
+   },
+   {
+    "h": "As a parts clerk, I want to update the repair times before they are over-loaded, so that I can inform parts.",
+    "t": [
+     "Create a repair time update feature in the parts clerk app",
+     "Store the repair time in the parts database",
+     "Send a notification to the parts owner if the repair time is over-loaded"
+    ]
+   },
+   {
+    "h": "As a service adviser, I want to set up service appointments, so that the service can enforce maintenance or maintenance.",
+    "t": []
+   }
+  ]
+ },
+ {
+  "sector": "consumo",
+  "descripcion": "A recycling collection service with household pickup scheduling and weight reports.",
+  "historias": [
+   {
+    "h": "As a recyclingfacility officer, I want to receive notifications when a pickup is out, so that I can avoid overwaste.",
+    "t": [
+     "Store the pickup status in the database",
+     "Send a notification to the recycling facility officer when a pickup is out"
+    ]
+   },
+   {
+    "h": "As a recyclingfacility worker, I want to schedule recycling centers, so that I can prepare for regular pickups.",
+    "t": [
+     "Create a recycling center scheduling feature in the app",
+     "Store the recycling center schedule in the database",
+     "Send a notification to the worker if the center is scheduled"
+    ]
+   },
+   {
+    "h": "As a collection driver, I want to view the weight of recycling items, so that I can offer the right delivery time.",
+    "t": [
+     "Store the weight of recycling items in the database",
+     "Display the weight on the driver's dashboard",
+     "Send a notification to the driver if the weight is low"
+    ]
+   },
+   {
+    "h": "As a household member, I want to see the recycling facility early, so that I can plan the delivery process.",
+    "t": [
+     "Store the recycling facility in the household member's profile",
+     "Send a confirmation email to the household members about the cleaning facility"
+    ]
+   },
+   {
+    "h": "As a household member, I want to receive notifications when my recycling is complete, so that I can verify the performance of the recycled materials.",
+    "t": [
+     "Create a notification system for the household member",
+     "Store the notification in the database",
+     "Generate a report of the notification"
+    ]
+   },
+   {
+    "h": "As a recyclingfacility analyst, I want to update the recycling schedule, so that I can monitor the efficiency and the operations.",
+    "t": [
+     "Create a recycling schedule update form in the app",
+     "Store the updated recycling schedule in the database"
+    ]
+   },
+   {
+    "h": "As a recyclingfacility analyst, I want to schedule orders, so that I can organize collection bookings.",
+    "t": [
+     "Create a order scheduling feature in the app",
+     "Store order details in the database",
+     "Send a confirmation email to the recycling facility analyst when a order is scheduled"
+    ]
+   },
+   {
+    "h": "As a collection driver, I want to set up a fresh collection pickup, so that I can control the quality of my recyclables.",
+    "t": [
+     "Display the pickup status on the driver's dashboard",
+     "Send a notification to the driver if the pickup is ready"
+    ]
+   },
+   {
+    "h": "As a recycling center operator, I want to receive an alert for cleaning, so that I can increase the quality of the recyclables.",
+    "t": [
+     "Create a alert form in the recycling center operator app",
+     "Store the alert status in the database",
+     "Send a notification to the cleaner when a cleaning is detected"
+    ]
+   },
+   {
+    "h": "As a weight picker, I want to see my recyclables for the special orders, so that I can avoid exposing the quality.",
+    "t": [
+     "Store the recyclables in the database",
+     "Display the recyclables on the weight picker's dashboard",
+     "Send a notification to the picker if the recyclables are low"
+    ]
+   },
+   {
+    "h": "As a household member, I want to set the collection scheduling period, so that I can plan the shift's pickup.",
+    "t": [
+     "Store the scheduling period in the database",
+     "Send a confirmation email to the household members about the scheduling"
+    ]
+   },
+   {
+    "h": "As a household member, I want to be able to bulk distribute my items, so that I can keep my recycled materials efficiently.",
+    "t": [
+     "Implement a bulk distribute feature in the household member app",
+     "Store the bulk data in the database",
+     "Send a notification to the household members if the bulk is processed"
+    ]
+   }
+  ]
+ },
+ {
+  "sector": "consumo",
+  "descripcion": "A microloan platform where borrowers apply and analysts review credit risk.",
+  "historias": [
+   {
+    "h": "As a mortgage adjuster, I want to monitor the expenses of pending transactions, so that I can monitor compliance with trends.",
+    "t": [
+     "Store the pending expenses in the database",
+     "Display the expenses on the mortgage adjuster's dashboard",
+     "Generate a report of pending transactions"
+    ]
+   },
+   {
+    "h": "As a branch manager, I want to track the accuracy of a credit report, so that I can track my budget.",
+    "t": []
+   },
+   {
+    "h": "As a pharmacy manager, I want to monitor the average number of client’s payments and risks, so that I can ensure the project has the most recent coverage.",
+    "t": [
+     "Store the average number of client’s payments and risks in the database",
+     "Display the average rate on the pharmacy manager's dashboard",
+     "Send a summary of average rate for each client"
+    ]
+   },
+   {
+    "h": "As a support agent, I want to check the performance of my mortgage by being spent on my pricing.",
+    "t": [
+     "Store the performance data in the support database",
+     "Display the performance data on the support agent's dashboard",
+     "Send a confirmation email to the support agent about the performance"
+    ]
+   },
+   {
+    "h": "As a mortgage adviser, I want to manage my account's service accounts, so that I can improve their service.",
+    "t": [
+     "Create a service account management interface",
+     "Store the account details in the database",
+     "Send a notification to the mortgage adviser if the account is added"
+    ]
+   },
+   {
+    "h": "As a moderator, I want to check a mistake, so that I can plan my finances.",
+    "t": [
+     "Create a mistake check form in the moderator dashboard",
+     "Store the mistake check in the database",
+     "Notify the moderator if the mistake exceeds a certain threshold"
+    ]
+   },
+   {
+    "h": "As a mortgage adviser, I want to view notifications of real-time of disputes, so that I can prepare for high traffic.",
+    "t": [
+     "Implement a notification system for disputes",
+     "Store the notification in the database",
+     "Display the notification on the adviser's dashboard",
+     "Notify the adviser if the notification is updated"
+    ]
+   },
+   {
+    "h": "As a member, I want to set up a per-mortgage appointment, so that I can track damage.",
+    "t": [
+     "Create a per-mortgage appointment form in the member app",
+     "Store the per-mortgage details in the member's profile",
+     "Send a notification to the member if the appointment exceeds a certain threshold"
+    ]
+   },
+   {
+    "h": "As a household member, I want to check out the coverage of my current cash, so that I can provide the ability to check their costs.",
+    "t": [
+     "Store the coverage data in the database",
+     "Display the coverage on the household member's dashboard",
+     "Send a confirmation email to the household members if the coverage is low"
+    ]
+   },
+   {
+    "h": "As a pharmacy manager, I want to track the credit records, so that I can ensure they are consistent and effectively charged.",
+    "t": [
+     "Store credit records in the database",
+     "Display the credit records on the pharmacy manager's dashboard",
+     "Send a notification to the manager if a credit records exceeds a certain threshold"
+    ]
+   },
+   {
+    "h": "As a buyer, I want to track my rent process, so that I can track my timely charges.",
+    "t": [
+     "Store the rent process in the database",
+     "Display the rent process on the buyer's dashboard",
+     "Send a notification to the buyer if the rent process exceeds a threshold"
+    ]
+   },
+   {
+    "h": "As a branch manager, I want to manage financial levels, so that I can ensure they are accurate.",
+    "t": [
+     "Store the financial level data in the database"
+    ]
+   }
+  ]
+ },
+ {
+  "sector": "consumo",
+  "descripcion": "An app to find and pay for street parking, with a timer and monthly invoices.",
+  "historias": [
+   {
+    "h": "As a city operator, I want to track the time of parking invoices, so that I can offer a uniform coverage.",
+    "t": [
+     "Store the average amount of invoices in the database",
+     "Generate a report of invoices on the city operator dashboard",
+     "Send a notification to the city operator if the invoices exceed a threshold"
+    ]
+   },
+   {
+    "h": "As a parking inspector, I want to schedule a parking bill for my cars, so that I can track the route.",
+    "t": [
+     "Create a parking bill scheduling feature in the inspector dashboard",
+     "Store the parking bill details in the database",
+     "Send a notification to the driver if the bill is added"
+    ]
+   },
+   {
+    "h": "As a city operator, I want to monitor parking rates, so that I can optimize the service.",
+    "t": [
+     "Store the rates in the database",
+     "Display the rates on the city operator's dashboard",
+     "Send a notification to the city operator about the rates"
+    ]
+   },
+   {
+    "h": "As a city operator, I want to generate monthly parking rates, so that I can manage billing policies.",
+    "t": [
+     "Create a monthly rate generation feature in the city operator dashboard",
+     "Store monthly rates in the database"
+    ]
+   },
+   {
+    "h": "As a city operator, I want to monitor invoices and hazards for arrival, so that I can manage parking efficiently.",
+    "t": [
+     "Store invoices and hazards in the database",
+     "Notify the city operator if a hazard is flagged"
+    ]
+   },
+   {
+    "h": "As a city operator, I want to set up and maintain parking a bill, so that I can efficiently manage inventory and costs.",
+    "t": [
+     "Create a bill management interface in the city operator app",
+     "Store bill details in the database",
+     "Send a notification to the city operator if the bill is added"
+    ]
+   },
+   {
+    "h": "As a cashier, I want to be able to track the weight of a parking bill, so that I can increase the maintenance.",
+    "t": [
+     "Implement a weight tracking feature in the cashier app",
+     "Store the weight data in the database",
+     "Display the weight on the cashier's dashboard",
+     "Send a notification to the cashier about the weight"
+    ]
+   },
+   {
+    "h": "As a resident, I want to track my parking, so that I can manage my schedule.",
+    "t": [
+     "Store the resident's parking data in the database",
+     "Display the parking status on the resident'd dashboard",
+     "Send a notification to the resident about the parking status"
+    ]
+   },
+   {
+    "h": "As a mechanic, I want to track a parking session, so that I can track the parking delay.",
+    "t": [
+     "Implement a parking session tracking feature in the mechanic dashboard",
+     "Store the session details in the database",
+     "Send a notification to the mechanic if the session is taken"
+    ]
+   },
+   {
+    "h": "As a driver, I want to update a parking capacity, so that I can monitor parking capacity.",
+    "t": [
+     "Create a capacity update form in the driver app",
+     "Store the capacity update in the driver's profile",
+     "Send a notification to the driver if the capacity is updated"
+    ]
+   },
+   {
+    "h": "As a city operator, I want to assign a parking spot to my city, so that I can manage my rent effectively.",
+    "t": [
+     "Store the assignment details in the database",
+     "Notify the city operator of the assignment"
+    ]
+   },
+   {
+    "h": "As a household member, I want to easily update my parking status, so that I can ensure compliance during the parking.",
+    "t": [
+     "Store the updated status in the database",
+     "Send a notification to the household member about the new status"
+    ]
+   }
+  ]
+ },
+ {
+  "sector": "consumo",
+  "descripcion": "A wedding planning tool to manage the guest list, seating chart and vendor payments.",
+  "historias": [
+   {
+    "h": "As a guest, I want to view a booking chart, so that I can get my service quickly.",
+    "t": [
+     "Store the booking chart in the guest's profile",
+     "Display the booking chart on the guest dashboard",
+     "Send a notification to the guest if the booking chart exceeds a threshold"
+    ]
+   },
+   {
+    "h": "As a groomer, I want to view a list of all buyers, so that I can decide to which next and future payments.",
+    "t": [
+     "Store the list of all buyers in the database",
+     "Display the list of buyers on the groomer's dashboard",
+     "Send a confirmation email to the groomers about the list"
+    ]
+   },
+   {
+    "h": "As a stylist, I want to schedule a meeting with guests, so that I can earn revenue and keep financial.",
+    "t": [
+     "Create a meeting scheduling feature in the stylist app",
+     "Store the meeting details in the database",
+     "Send a confirmation email to the guest when a meeting is scheduled"
+    ]
+   },
+   {
+    "h": "As a revenue manager, I want to upload a pricing plan, so that I can adjust pricing.",
+    "t": [
+     "Implement a pricing plan upload feature in the revenue manager dashboard",
+     "Store the pricing plan in the database",
+     "Send a notification to the financial manager if an pricing plan fails"
+    ]
+   },
+   {
+    "h": "As a shopper, I want to view the total cost of my rentals, so that I can review and manage my appointments.",
+    "t": [
+     "Store the total cost data in the database",
+     "Display the total cost on the shopper's dashboard",
+     "Notify the shopper if the total cost is low"
+    ]
+   },
+   {
+    "h": "As a stylist, I want to add a new stylist to the summit, so that I can address the guest's finances.",
+    "t": [
+     "Add a new stylist to the summit dashboard",
+     "Store the new stylist in the database"
+    ]
+   },
+   {
+    "h": "As a hotel manager, I want to track the number of recipients at the front desk, so that I can be accounted for members.",
+    "t": [
+     "Store the number of recipients in the database",
+     "Generate a report of volunteers on the front desk dashboard",
+     "Send a notification to the hotel manager if a recipient exceeds a certain threshold"
+    ]
+   },
+   {
+    "h": "As a stylist, I want to update the details of each returned by a customer, so that I can manage timely costs.",
+    "t": [
+     "Store the updated details in the customer's profile",
+     "Send a notification to the customer if they are updated"
+    ]
+   },
+   {
+    "h": "As a revenue manager, I want to make a card directly from my clients, so that I can manage my sales.",
+    "t": [
+     "Store the card details in the revenue manager's profile",
+     "Display the card details on the client's dashboard",
+     "Send a notification to the client if the card is added"
+    ]
+   },
+   {
+    "h": "As a front desk agent, I want to track the cancellation of attendees, so that I can manage financial activities.",
+    "t": [
+     "Store the cancellation data in the database",
+     "Display the cancellation status on the front desk agent's dashboard",
+     "Send a notification if the cancellation is cancelled"
+    ]
+   },
+   {
+    "h": "As a groomer, I want to receive notifications when I get payments, so that I can manage my own household payments.",
+    "t": [
+     "Store payment details in the database",
+     "Send a notification to the groomer if the payment is received"
+    ]
+   },
+   {
+    "h": "As a customer, I want to receive notifications when a meeting is returned, so that I can check my earnings if I am ready for the rent.",
+    "t": [
+     "Implement a notification system in the customer portal",
+     "Store the notification details in the database",
+     "Notify the customer if the notification is returned"
+    ]
+   }
+  ]
+ }
+]

@@ -1,0 +1,4 @@
+split,proyectos,aristas,issues,aristas_%
+test,164,26709,545037,10.9
+train,1003,195286,2067017,79.8
+val,122,22682,233012,9.3

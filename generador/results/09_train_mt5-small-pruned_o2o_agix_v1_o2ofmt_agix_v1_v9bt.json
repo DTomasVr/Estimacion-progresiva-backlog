@@ -1,0 +1,46 @@
+{
+ "modelo": "models/mt5-small-pruned_o2o_agix_v1_o2ofmt_agix_v1",
+ "bs": 32,
+ "acum": 1,
+ "bs_efectivo": 32,
+ "max_out": 48,
+ "lr": 0.0005,
+ "epocas": 4,
+ "hist": [
+  {
+   "epoca": 1,
+   "train_loss": 1.4577240002434586,
+   "val_loss": 1.7946856821192219,
+   "seg": 180
+  },
+  {
+   "epoca": 2,
+   "train_loss": 1.0604832839730636,
+   "val_loss": 1.8016751176323724,
+   "seg": 182
+  },
+  {
+   "epoca": 3,
+   "train_loss": 0.9365897462341554,
+   "val_loss": 1.789703231781884,
+   "seg": 177
+  },
+  {
+   "epoca": 4,
+   "train_loss": 0.8736226094930298,
+   "val_loss": 1.8207538103869672,
+   "seg": 184
+  }
+ ],
+ "v0": 3.6784178441029596,
+ "mejor_val": 1.789703231781884,
+ "vram_pico": 6.14,
+ "min": 12.4,
+ "gens": [
+  "As a family member, I want to receive notifications about upcoming shifts, so that I can plan my schedule.",
+  "As a cinema manager, I want to view the showtimes for each showtime, so that I can manage staff effectively.",
+  "As a clinic manager, I want to generate monthly reports on clinic performance, so that I can optimize staffing.",
+  "As a citizen, I want to request a digital signature for my documents, so that I can manage my workload.",
+  "As a stylist, I want to see my rental history, so that I can track my performance."
+ ]
+}

@@ -1,0 +1,200 @@
+{
+ "modelo": "F:/Software Task generation Model/models/mt5-base-pruned",
+ "bs": 4,
+ "max_out": 192,
+ "lr": 0.0007,
+ "epocas": 30,
+ "hist": [
+  {
+   "epoca": 1,
+   "train_loss": 11.075592927932739,
+   "val_loss": 6.131742678971003,
+   "seg": 16
+  },
+  {
+   "epoca": 2,
+   "train_loss": 5.1090818119049075,
+   "val_loss": 3.658455202700389,
+   "seg": 14
+  },
+  {
+   "epoca": 3,
+   "train_loss": 4.412027878761291,
+   "val_loss": 3.2888492429758314,
+   "seg": 14
+  },
+  {
+   "epoca": 4,
+   "train_loss": 4.036097669601441,
+   "val_loss": 2.9298707070378436,
+   "seg": 14
+  },
+  {
+   "epoca": 5,
+   "train_loss": 3.5659641361236574,
+   "val_loss": 2.557897295218707,
+   "seg": 14
+  },
+  {
+   "epoca": 6,
+   "train_loss": 3.141485538482666,
+   "val_loss": 2.3605477705830795,
+   "seg": 14
+  },
+  {
+   "epoca": 7,
+   "train_loss": 2.850471727848053,
+   "val_loss": 2.0189853008325422,
+   "seg": 14
+  },
+  {
+   "epoca": 8,
+   "train_loss": 2.3963844561576844,
+   "val_loss": 1.5707417568715853,
+   "seg": 15
+  },
+  {
+   "epoca": 9,
+   "train_loss": 1.9664488244056701,
+   "val_loss": 1.2647891408198215,
+   "seg": 14
+  },
+  {
+   "epoca": 10,
+   "train_loss": 1.6705237579345704,
+   "val_loss": 1.0327180142603527,
+   "seg": 14
+  },
+  {
+   "epoca": 11,
+   "train_loss": 1.4230726540088654,
+   "val_loss": 0.8340333670639055,
+   "seg": 14
+  },
+  {
+   "epoca": 12,
+   "train_loss": 1.1688342344760896,
+   "val_loss": 0.710755399715653,
+   "seg": 14
+  },
+  {
+   "epoca": 13,
+   "train_loss": 0.9731548672914505,
+   "val_loss": 0.5352992405786758,
+   "seg": 14
+  },
+  {
+   "epoca": 14,
+   "train_loss": 0.8625200474262238,
+   "val_loss": 0.44082411296045226,
+   "seg": 14
+  },
+  {
+   "epoca": 15,
+   "train_loss": 0.7116830766201019,
+   "val_loss": 0.3745656113076019,
+   "seg": 14
+  },
+  {
+   "epoca": 16,
+   "train_loss": 0.6285549974441529,
+   "val_loss": 0.32268542466350103,
+   "seg": 14
+  },
+  {
+   "epoca": 17,
+   "train_loss": 0.5411334598064422,
+   "val_loss": 0.2728824895631059,
+   "seg": 14
+  },
+  {
+   "epoca": 18,
+   "train_loss": 0.49573983013629913,
+   "val_loss": 0.2377470150406529,
+   "seg": 14
+  },
+  {
+   "epoca": 19,
+   "train_loss": 0.44361583024263385,
+   "val_loss": 0.21352028908825513,
+   "seg": 15
+  },
+  {
+   "epoca": 20,
+   "train_loss": 0.3972523471713066,
+   "val_loss": 0.18932613613646274,
+   "seg": 15
+  },
+  {
+   "epoca": 21,
+   "train_loss": 0.35538195610046386,
+   "val_loss": 0.17621760297765282,
+   "seg": 15
+  },
+  {
+   "epoca": 22,
+   "train_loss": 0.3232336363196373,
+   "val_loss": 0.15859600577991803,
+   "seg": 15
+  },
+  {
+   "epoca": 23,
+   "train_loss": 0.29660832822322847,
+   "val_loss": 0.14420293326768654,
+   "seg": 15
+  },
+  {
+   "epoca": 24,
+   "train_loss": 0.27229984298348425,
+   "val_loss": 0.131136622192842,
+   "seg": 14
+  },
+  {
+   "epoca": 25,
+   "train_loss": 0.2608534276485443,
+   "val_loss": 0.12091451441743042,
+   "seg": 15
+  },
+  {
+   "epoca": 26,
+   "train_loss": 0.2446720667183399,
+   "val_loss": 0.10816470079822327,
+   "seg": 14
+  },
+  {
+   "epoca": 27,
+   "train_loss": 0.220001872330904,
+   "val_loss": 0.1004335068265267,
+   "seg": 14
+  },
+  {
+   "epoca": 28,
+   "train_loss": 0.21051909014582634,
+   "val_loss": 0.09665382996625152,
+   "seg": 14
+  },
+  {
+   "epoca": 29,
+   "train_loss": 0.20242834225296974,
+   "val_loss": 0.09194520881808237,
+   "seg": 14
+  },
+  {
+   "epoca": 30,
+   "train_loss": 0.19465690061450006,
+   "val_loss": 0.09068727914225068,
+   "seg": 14
+  }
+ ],
+ "v0": 13.959694494940631,
+ "mejor_val": 0.09068727914225068,
+ "vram_pico": 4.61,
+ "min": 7.7,
+ "gens": [
+  "Create obs_base and make obs_test work with it ; Merge obs_monocam tests into obs_base ; Delete daf_butlerUtils and move obs_base into lsst ; Cleanup repository move wording in DMTN-027",
+  "Create New Web Service mod_page_view_page ; Create webservice: mod_url_view_url ; Update documentation to reflect new webservice chapter in chapter 2 ; Add webservice mod_resource_view_resource ; Modify and restructure Web Service chapter",
+  "DefaultMessageId smtpFrom property ; The value of the preferred values should be unique ; Profile2 should use UUID as a First Class Resource ; Ability to send a message to a found person, see if a deployment client is incorrectly trying to return the status data, since hadoop 0.20.2 sometimes lies about the success of a given a path to an additional option, when there is missing a different option, pipeProtocol, that is used to block a number of requests, xd-singleton",
+  "Create a web form to modify a backup model ; Update a web page to document full backups ; Backport DOCS-14541 to v4.4",
+  "Add code coverage for hyperledger/fabric/orderer ; Improve code coverage of hyperledgery/fabric/ orderer/ledger/ram ; Remove code coverage from hyperledger\\fabric/orderor/ledger_ram ; Add code  cover hyperledger-fabric/orderers/common/deliver ; improve code coverage and coverage of orderer/common/broadcast ; checkers/kafka package ; disable link coverage for orderer/multichain pkg ; disabled enrolment methods ; enable code coverage exception when determining if a deployment supports doesn't match any values in orderer/json ; Disable pagination in orderer.json ; remove code coverage after orderer's first operation ; Delete code coverage before orderer.xml ; remove"
+ ]
+}

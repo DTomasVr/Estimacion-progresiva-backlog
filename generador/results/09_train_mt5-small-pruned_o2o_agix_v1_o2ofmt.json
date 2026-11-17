@@ -1,0 +1,38 @@
+{
+ "modelo": "F:/Software Task generation Model/models/mt5-small-pruned_o2o_agix_v1",
+ "bs": 32,
+ "max_out": 48,
+ "lr": 0.0005,
+ "epocas": 8,
+ "hist": [
+  {
+   "epoca": 1,
+   "train_loss": 1.2350935859210563,
+   "val_loss": 3.6005156472184767,
+   "seg": 77
+  },
+  {
+   "epoca": 2,
+   "train_loss": 0.9713223204016685,
+   "val_loss": 3.9410596851830615,
+   "seg": 75
+  },
+  {
+   "epoca": 3,
+   "train_loss": 0.8053682958989432,
+   "val_loss": 4.249748875016346,
+   "seg": 75
+  }
+ ],
+ "v0": 3.4188150301225315,
+ "mejor_val": 3.6005156472184767,
+ "vram_pico": 6.14,
+ "min": 4.0,
+ "gens": [
+  "As an infrastructure developer, I want to be able to create a dashboard that shows all datasets I have created.",
+  "As a developer, I want to have a preservation strategy, so that I can easily designate the preservation.",
+  "As a developer, I want to have a preservation strategy, so that I can easily designate the preservation.",
+  "As a developer, I want to have a preservation strategy, so that I can easily designate the preservation.",
+  "As a developer, I want to have a preservation strategy, so that I can easily designate the preservation."
+ ]
+}

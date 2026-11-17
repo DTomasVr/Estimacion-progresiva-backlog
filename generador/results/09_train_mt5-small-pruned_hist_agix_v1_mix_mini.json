@@ -1,0 +1,200 @@
+{
+ "modelo": "models/mt5-small-pruned_hist_agix_v1",
+ "bs": 8,
+ "max_out": 192,
+ "lr": 0.0005,
+ "epocas": 30,
+ "hist": [
+  {
+   "epoca": 1,
+   "train_loss": 2.7306707429885866,
+   "val_loss": 2.2756331618917187,
+   "seg": 7
+  },
+  {
+   "epoca": 2,
+   "train_loss": 2.576695427894592,
+   "val_loss": 2.0554999205071276,
+   "seg": 5
+  },
+  {
+   "epoca": 3,
+   "train_loss": 2.3368739223480226,
+   "val_loss": 1.8689055086278386,
+   "seg": 5
+  },
+  {
+   "epoca": 4,
+   "train_loss": 2.139453272819519,
+   "val_loss": 1.6996688902527564,
+   "seg": 5
+  },
+  {
+   "epoca": 5,
+   "train_loss": 1.9433365774154663,
+   "val_loss": 1.5524483484115243,
+   "seg": 5
+  },
+  {
+   "epoca": 6,
+   "train_loss": 1.787791349887848,
+   "val_loss": 1.4218144406230417,
+   "seg": 5
+  },
+  {
+   "epoca": 7,
+   "train_loss": 1.6685715913772583,
+   "val_loss": 1.2877443410711544,
+   "seg": 5
+  },
+  {
+   "epoca": 8,
+   "train_loss": 1.5559783005714416,
+   "val_loss": 1.1830878633792343,
+   "seg": 5
+  },
+  {
+   "epoca": 9,
+   "train_loss": 1.4432070231437684,
+   "val_loss": 1.096014338676956,
+   "seg": 5
+  },
+  {
+   "epoca": 10,
+   "train_loss": 1.3371994137763976,
+   "val_loss": 0.9989304768660469,
+   "seg": 5
+  },
+  {
+   "epoca": 11,
+   "train_loss": 1.2587726068496705,
+   "val_loss": 0.9331025247956831,
+   "seg": 5
+  },
+  {
+   "epoca": 12,
+   "train_loss": 1.1716238117218019,
+   "val_loss": 0.8655448388882017,
+   "seg": 5
+  },
+  {
+   "epoca": 13,
+   "train_loss": 1.1086051523685456,
+   "val_loss": 0.8077563643733386,
+   "seg": 5
+  },
+  {
+   "epoca": 14,
+   "train_loss": 1.0613618743419648,
+   "val_loss": 0.7472788464635156,
+   "seg": 5
+  },
+  {
+   "epoca": 15,
+   "train_loss": 0.994605746269226,
+   "val_loss": 0.695245898718175,
+   "seg": 5
+  },
+  {
+   "epoca": 16,
+   "train_loss": 0.9742215156555176,
+   "val_loss": 0.6708207051887458,
+   "seg": 5
+  },
+  {
+   "epoca": 17,
+   "train_loss": 0.9184498405456543,
+   "val_loss": 0.627673253362397,
+   "seg": 5
+  },
+  {
+   "epoca": 18,
+   "train_loss": 0.8843980395793914,
+   "val_loss": 0.6023289571280196,
+   "seg": 5
+  },
+  {
+   "epoca": 19,
+   "train_loss": 0.8549848711490631,
+   "val_loss": 0.5721817301166693,
+   "seg": 5
+  },
+  {
+   "epoca": 20,
+   "train_loss": 0.827478551864624,
+   "val_loss": 0.5503958104870977,
+   "seg": 5
+  },
+  {
+   "epoca": 21,
+   "train_loss": 0.7795258820056915,
+   "val_loss": 0.5220098064604024,
+   "seg": 5
+  },
+  {
+   "epoca": 22,
+   "train_loss": 0.7671479463577271,
+   "val_loss": 0.5056624382678723,
+   "seg": 5
+  },
+  {
+   "epoca": 23,
+   "train_loss": 0.7493288505077362,
+   "val_loss": 0.4863165720409001,
+   "seg": 5
+  },
+  {
+   "epoca": 24,
+   "train_loss": 0.7271448880434036,
+   "val_loss": 0.4750968758688771,
+   "seg": 5
+  },
+  {
+   "epoca": 25,
+   "train_loss": 0.719332308769226,
+   "val_loss": 0.46370778555203446,
+   "seg": 5
+  },
+  {
+   "epoca": 26,
+   "train_loss": 0.6995560824871063,
+   "val_loss": 0.45646437594244144,
+   "seg": 5
+  },
+  {
+   "epoca": 27,
+   "train_loss": 0.6732198202610016,
+   "val_loss": 0.4452478147688138,
+   "seg": 5
+  },
+  {
+   "epoca": 28,
+   "train_loss": 0.6767579931020736,
+   "val_loss": 0.43823093365374566,
+   "seg": 5
+  },
+  {
+   "epoca": 29,
+   "train_loss": 0.6850590598583222,
+   "val_loss": 0.43667713210439923,
+   "seg": 5
+  },
+  {
+   "epoca": 30,
+   "train_loss": 0.6747620034217835,
+   "val_loss": 0.43590557839788274,
+   "seg": 5
+  }
+ ],
+ "v0": 2.3931211328806965,
+ "mejor_val": 0.43590557839788274,
+ "vram_pico": 3.39,
+ "min": 2.9,
+ "gens": [
+  "Implement a return label generation service. ; Display the return label on the backend. ; Provide an option to download and print the return label.",
+  "Restoring or creating a workspace for a given state ; Saving and restoring working context ; Exploring posibility of creating workspace creation API ; Presentation of working context (From Platform to Che Workspace) ; Provide assistance for adding/removing working data from ALM",
+  "Create a PDTransparencyGroup for added code clarity ; Rename PDGroup to PDTransparency GroupAttributes ; Ensure all PDGroups are cleaned up in PDGroupAttributes",
+  "Design a charting system to display clients' progress. ; Implement data collection for various workout metrics. ; Create an option to customize chart display settings.",
+  "Create a connectivity test for LDAP & localhost with default port ; Add connectivity tests for scenarios using external servers"
+ ]
+}

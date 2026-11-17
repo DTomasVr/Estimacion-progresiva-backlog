@@ -1,0 +1,50 @@
+{
+ "out128_bs4": {
+  "s_paso": 0.267,
+  "ej_s": 15.0,
+  "pico_GB": 3.25,
+  "ok": true
+ },
+ "out128_bs8": {
+  "s_paso": 0.298,
+  "ej_s": 26.9,
+  "pico_GB": 5.04,
+  "ok": true
+ },
+ "out128_bs12": {
+  "s_paso": 1.019,
+  "ej_s": 11.8,
+  "pico_GB": 6.84,
+  "ok": false
+ },
+ "out192_bs4": {
+  "s_paso": 0.332,
+  "ej_s": 12.0,
+  "pico_GB": 3.96,
+  "ok": true
+ },
+ "out192_bs8": {
+  "s_paso": 0.494,
+  "ej_s": 16.2,
+  "pico_GB": 6.46,
+  "ok": true
+ },
+ "out192_bs12": {
+  "s_paso": 1.225,
+  "ej_s": 9.8,
+  "pico_GB": 8.94,
+  "ok": false
+ },
+ "out256_bs4": {
+  "s_paso": 0.377,
+  "ej_s": 10.6,
+  "pico_GB": 4.67,
+  "ok": true
+ },
+ "out256_bs8": {
+  "s_paso": 0.721,
+  "ej_s": 11.1,
+  "pico_GB": 7.87,
+  "ok": false
+ }
+}

@@ -1,0 +1,2976 @@
+[
+ {
+  "titulo": "Tienda de audiolibros",
+  "descripcion": "Una plataforma de comercio electrónico para vender audiolibros y ebooks, con muestras de los primeros capítulos, biblioteca personal y pagos en la app.",
+  "resultado": {
+   "historias": [
+    {
+     "historia": "As a reader, I want to view the samples of audiobooks, so that I can track my earnings.",
+     "votos": 1,
+     "relevancia": 0.68,
+     "tareas": [
+      "Store audiobooks in the database",
+      "Display audiobooks on the reader's dashboard",
+      "Embed audiobooks",
+      "Upload audiobook"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:TOMEE",
+       "similitud": 0.475
+      },
+      {
+       "proyecto": "RedHat:AF",
+       "similitud": 0.417
+      }
+     ],
+     "historia_es": "Como lector, quiero ver las muestras de audiolibros, para poder rastrear mis ganancias.",
+     "tareas_es": [
+      "Almacenar audiolibros en la base de datos",
+      "Mostrar audiolibros en el panel del lector",
+      "Insertar audiolibros",
+      "Subir audiolibro"
+     ]
+    },
+    {
+     "historia": "As a publisher, I want to receive payment for my listeners, so that I can easily start playing in the future.",
+     "votos": 1,
+     "relevancia": 0.541,
+     "tareas": [
+      "Store payment details in the database",
+      "Display payment details on the publisher's dashboard",
+      "Send a notification to the editor if a subscription is available"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.501
+      },
+      {
+       "proyecto": "RedHat:ISPN",
+       "similitud": 0.435
+      }
+     ],
+     "historia_es": "Como editor, quiero recibir el pago de mis oyentes, para que pueda empezar a tocar fácilmente en el futuro.",
+     "tareas_es": [
+      "Almacenar los datos de pago en la base de datos",
+      "Mostrar los detalles de pago en el panel de la editorial",
+      "Enviar una notificación al editor si hay una suscripción disponible"
+     ]
+    },
+    {
+     "historia": "As a narrator, I want to review my samples before my audiobooks are available, so that I can prepare for them.",
+     "votos": 1,
+     "relevancia": 0.481,
+     "tareas": [
+      "Create a audiobook review form in the narrator app",
+      "Send a notification to narrator if the audiobook is available",
+      "Please review samples for audiobook",
+      "Please review sample examples for audiobook",
+      "Store audiobooks in the narrator's profile",
+      "Display audiobooks on the narrator’s dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:TOMEE",
+       "similitud": 0.5
+      },
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.481
+      }
+     ],
+     "historia_es": "Como narrador, quiero revisar mis muestras antes de que mis audiolibros estén disponibles, para que pueda prepararme para ellos.",
+     "tareas_es": [
+      "Crear un formulario de revisión de audiolibro en la aplicación narrador",
+      "Enviar una notificación al narrador si el audiolibro está disponible",
+      "Revisar muestras para audiolibro",
+      "Revisar ejemplos de audiolibro",
+      "Almacenar audiolibros en el perfil del narrador",
+      "Mostrar audiolibros en el panel del narrador"
+     ]
+    },
+    {
+     "historia": "As a catalogue editor, I want to analyze the popularity of readers, so that I can ensure they are being used accurately.",
+     "votos": 1,
+     "relevancia": 0.297,
+     "tareas": [
+      "Retrieve the popularity data from the database",
+      "analyze the usage of collections in the catalog editor",
+      "Display popularity data on the catalogue editor dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:IMPALA",
+       "similitud": 0.45
+      },
+      {
+       "proyecto": "RedHat:ODC",
+       "similitud": 0.439
+      }
+     ],
+     "historia_es": "Como editor de catálogos, quiero analizar la popularidad de los lectores, para poder asegurar que se utilizan con precisión.",
+     "tareas_es": [
+      "Recuperar los datos de popularidad de la base de datos",
+      "Analizar el uso de colecciones en el editor de catálogo",
+      "Mostrar datos de popularidad en el panel del editor de catálogo"
+     ]
+    },
+    {
+     "historia": "As a narrator, I want to track the number of audiobooks available for specific next chapters, so that I can prepare for an appropriate content.",
+     "votos": 1,
+     "relevancia": 0.57,
+     "tareas": [
+      "Complete the number of audiobooks available in the audiobook chapters",
+      "Create a separate chapter for the audiobook"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AF",
+       "similitud": 0.489
+      },
+      {
+       "proyecto": "Apache:TOMEE",
+       "similitud": 0.441
+      }
+     ],
+     "historia_es": "Como narrador, quiero rastrear el número de audiolibros disponibles para capítulos siguientes específicos, de modo que pueda prepararme para un contenido apropiado.",
+     "tareas_es": [
+      "Completar el número de audiolibros disponibles en los capítulos de audiolibro",
+      "Crear un capítulo separado para el audiolibro"
+     ]
+    },
+    {
+     "historia": "As a narrator, I want to receive notifications when an item is ready to listen to, so that I can continue reading and using them promptly.",
+     "votos": 1,
+     "relevancia": 0.372,
+     "tareas": [
+      "Add a notification email to the listener",
+      "Add a new notification email for the listeners",
+      "Implement a notification system for narrator notifications",
+      "Store the notification in the narrator's profile",
+      "Send notifications to narrators when an item is ready to listen",
+      "Add notifications when notification is ready"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:CB",
+       "similitud": 0.499
+      },
+      {
+       "proyecto": "Qt:QTBUG",
+       "similitud": 0.493
+      }
+     ],
+     "historia_es": "Como narrador, quiero recibir notificaciones cuando un artículo está listo para escuchar, para que pueda seguir leyendo y usándolas rápidamente.",
+     "tareas_es": [
+      "Añadir un correo electrónico de notificación al oyente",
+      "Añadir un nuevo correo electrónico de notificación para los oyentes",
+      "Implementar un sistema de notificación para las notificaciones de narrador",
+      "Almacenar la notificación en el perfil del narrador",
+      "Enviar notificaciones a narradores cuando un elemento está listo para escuchar",
+      "Añadir notificaciones cuando la notificación esté lista"
+     ]
+    },
+    {
+     "historia": "As a narrator, I want to review my audiobook recordings, so that I can maintain a high quality content.",
+     "votos": 1,
+     "relevancia": 0.51,
+     "tareas": [
+      "Review the audio book recordings"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AF",
+       "similitud": 0.488
+      },
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.447
+      }
+     ],
+     "historia_es": "Como narrador, quiero revisar mis grabaciones de audiolibros, para poder mantener un contenido de alta calidad.",
+     "tareas_es": [
+      "Revisar las grabaciones de audiolibros"
+     ]
+    },
+    {
+     "historia": "As a publisher, I want to view my own recordings, so that I can prepare and promote them.",
+     "votos": 1,
+     "relevancia": 0.449,
+     "tareas": [
+      "Store recording data in the database",
+      "Display recording data on the publisher's dashboard",
+      "Embed recordings",
+      "Upload recordings"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:DEVELOPER",
+       "similitud": 0.441
+      },
+      {
+       "proyecto": "Apache:SCB",
+       "similitud": 0.438
+      }
+     ],
+     "historia_es": "Como editor, quiero ver mis propias grabaciones, para poder prepararlas y promoverlas.",
+     "tareas_es": [
+      "Almacenar los datos de registro en la base de datos",
+      "Mostrar los datos de grabación en el panel de la editorial",
+      "Insertar grabaciones",
+      "Subir grabaciones"
+     ]
+    },
+    {
+     "historia": "As a reader, I want to download books by category, so that I can easily listen to the appropriate content.",
+     "votos": 1,
+     "relevancia": 0.523,
+     "tareas": [
+      "Implement a category download feature in the reader app",
+      "Store category download information in the database",
+      "Add categories for the category page",
+      "Allow the reader to download books by category in the database",
+      "Send notifications to the reader when a book is downloaded"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:WOOKIE",
+       "similitud": 0.485
+      },
+      {
+       "proyecto": "Apache:CAMEL",
+       "similitud": 0.45
+      }
+     ],
+     "historia_es": "Como lector, quiero descargar libros por categoría, para poder escuchar fácilmente el contenido apropiado.",
+     "tareas_es": [
+      "Implementar una función de descarga de categoría en la aplicación lectora",
+      "Almacenar información de descarga de categoría en la base de datos",
+      "Añadir categorías para la página de categoría",
+      "Permitir al lector descargar libros por categoría en la base de datos",
+      "Enviar notificaciones al lector cuando se descarga un libro"
+     ]
+    },
+    {
+     "historia": "As a reader, I want to easily find a book by name, so that I can quickly find the next chapter.",
+     "votos": 1,
+     "relevancia": 0.461,
+     "tareas": [
+      "Store book by name in the database",
+      "Display book by name on the reader's dashboard",
+      "Notify the reader of new book by name"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:JBESB",
+       "similitud": 0.493
+      },
+      {
+       "proyecto": "Apache:CAMEL",
+       "similitud": 0.465
+      }
+     ],
+     "historia_es": "Como lector, quiero encontrar fácilmente un libro por nombre, para que pueda encontrar rápidamente el siguiente capítulo.",
+     "tareas_es": [
+      "Almacenar libro por nombre en la base de datos",
+      "Mostrar libro por nombre en el panel del lector",
+      "Notificar al lector de nuevo libro por nombre"
+     ]
+    },
+    {
+     "historia": "As a narrator, I want to track the number of published recordings, so that I can manage my schedule.",
+     "votos": 1,
+     "relevancia": 0.289,
+     "tareas": [
+      "Store the number of published recordings in the narrator's profile",
+      "Display the number of recorded recordings on the narrator’s dashboard",
+      "Initial recording of recordings",
+      "Notify narrator if a recording exceeds a threshold"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:FLINK",
+       "similitud": 0.501
+      },
+      {
+       "proyecto": "SecondLife:STORM",
+       "similitud": 0.415
+      }
+     ],
+     "historia_es": "Como narrador, quiero rastrear el número de grabaciones publicadas, para poder administrar mi horario.",
+     "tareas_es": [
+      "Almacenar el número de grabaciones publicadas en el perfil del narrador",
+      "Mostrar el número de grabaciones grabadas en el panel del narrador",
+      "Iniciar la grabación de las grabaciones",
+      "Notificar al narrador si una grabación supera un umbral"
+     ]
+    }
+   ],
+   "tiempos": {
+    "traducir_entrada": 15.284,
+    "recuperar_arriba": 0.081,
+    "generar_historias": 3.283,
+    "deduplicar_historias": 0.237,
+    "recuperar_abajo": 0.017,
+    "generar_tareas": 5.52,
+    "deduplicar_tareas": 0.05,
+    "reasignar_tareas": 0.048,
+    "traducir": 0.295,
+    "total": 24.815
+   },
+   "vecinos_proyecto": [
+    {
+     "proyecto": "Hyperledger:BE",
+     "similitud": 0.415
+    },
+    {
+     "proyecto": "RedHat:FH",
+     "similitud": 0.399
+    }
+   ],
+   "n_banco": 48,
+   "n_tareas": 41
+  }
+ },
+ {
+  "titulo": "Reservas de limpieza",
+  "descripcion": "Una aplicación web para reservar servicios de limpieza a domicilio, con citas recurrentes, calificación de los trabajadores y pagos en la app.",
+  "resultado": {
+   "historias": [
+    {
+     "historia": "As a guest, I want to view my payment history, so that I can plan my next payment.",
+     "votos": 2,
+     "relevancia": 0.373,
+     "tareas": [
+      "Store payment history data in the database",
+      "Display payment history on the guest's dashboard",
+      "Delete the \"Paid\" page",
+      "Create a \"Paid\" Page",
+      "Create \"Paid Sites\" page"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:THREESCALE",
+       "similitud": 0.538
+      },
+      {
+       "proyecto": "JFrog:RTFACT",
+       "similitud": 0.467
+      }
+     ],
+     "historia_es": "Como invitado, quiero ver mi historial de pagos, para poder planificar mi próximo pago.",
+     "tareas_es": [
+      "Almacenar datos del historial de pagos en la base de datos",
+      "Mostrar el historial de pagos en el panel del invitado",
+      "Eliminar la página \"Pagado\"",
+      "Crear una página \"Pagada\"",
+      "Crear página de \"Sitios pagados\""
+     ]
+    },
+    {
+     "historia": "As a trust and safety agent, I want to report and schedule upcoming appointments, so that I can manage the workload.",
+     "votos": 2,
+     "relevancia": 0.361,
+     "tareas": [
+      "Create a report and scheduling feature in the trust and safety agent dashboard",
+      "Store appointment details in the database",
+      "Send a confirmation email to the trust or safety agent",
+      "Store the report and scheduled appointments in the database"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.535
+      },
+      {
+       "proyecto": "Apache:INLONG",
+       "similitud": 0.451
+      }
+     ],
+     "historia_es": "Como agente de confianza y seguridad, quiero informar y programar las próximas citas, para poder manejar la carga de trabajo.",
+     "tareas_es": [
+      "Crear un informe y una función de programación en el panel de agentes de confianza y seguridad",
+      "Almacenar los detalles de la cita en la base de datos",
+      "Enviar un correo electrónico de confirmación al agente de confianza o seguridad",
+      "Almacenar el informe y las citas programadas en la base de datos"
+     ]
+    },
+    {
+     "historia": "As a cleaner, I want to view my appointment history, so that I can track my progress.",
+     "votos": 2,
+     "relevancia": 0.511,
+     "tareas": [
+      "Store appointment history data in the database",
+      "Display appointment history on the cleaner's dashboard",
+      "Add history page",
+      "Retrieve appointment history from the database"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:MAPREDUCE",
+       "similitud": 0.52
+      },
+      {
+       "proyecto": "RedHat:MODE",
+       "similitud": 0.444
+      }
+     ],
+     "historia_es": "Como limpiador, quiero ver mi historial de citas, para poder seguir mi progreso.",
+     "tareas_es": [
+      "Almacenar datos del historial de citas en la base de datos",
+      "Mostrar el historial de citas en el panel de limpiador",
+      "Añadir página del histórico",
+      "Recuperar el historial de citas de la base de datos"
+     ]
+    },
+    {
+     "historia": "As a host, I want to manage my schedule, so that I can track availability and availability.",
+     "votos": 2,
+     "relevancia": 0.395,
+     "tareas": [
+      "Implement a scheduling feature in the host app",
+      "Send a notification to the host if a schedule is unavailable",
+      "Send notifications to the host when a new schedule is added"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:DATALAB",
+       "similitud": 0.543
+      },
+      {
+       "proyecto": "RedHat:PD",
+       "similitud": 0.526
+      }
+     ],
+     "historia_es": "Como anfitrión, quiero administrar mi horario, para poder rastrear la disponibilidad y la disponibilidad.",
+     "tareas_es": [
+      "Implementar una función de programación en la aplicación anfitrión",
+      "Enviar una notificación al anfitrión si no hay una agenda disponible",
+      "Enviar notificaciones al anfitrión cuando se agregue un nuevo horario"
+     ]
+    },
+    {
+     "historia": "As a guest, I want to submit my visit, so that I can make financially informed decisions.",
+     "votos": 1,
+     "relevancia": 0.272,
+     "tareas": [
+      "Prepare upcoming a meeting",
+      "Prepare the announcement",
+      "Store the visit details in the database"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.462
+      },
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.457
+      }
+     ],
+     "historia_es": "Como invitado, quiero presentar mi visita, para que pueda tomar decisiones financieramente informadas.",
+     "tareas_es": [
+      "Preparar una próxima reunión",
+      "Preparar el anuncio",
+      "Almacenar los detalles de la visita en la base de datos"
+     ]
+    },
+    {
+     "historia": "As a guest, I want to view my loved one's payment history, so that I can make informed decisions.",
+     "votos": 2,
+     "relevancia": 0.34,
+     "tareas": [
+      "Add a way to view the preferred one's history",
+      "Add an ability to show the preferred two's history"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:THREESCALE",
+       "similitud": 0.495
+      },
+      {
+       "proyecto": "JFrog:RTFACT",
+       "similitud": 0.428
+      }
+     ],
+     "historia_es": "Como invitado, quiero ver el historial de pagos de mi ser querido, para poder tomar decisiones informadas.",
+     "tareas_es": [
+      "Añadir una manera de ver la historia de la persona preferida",
+      "Añadir una capacidad de mostrar la historia de los dos preferidos"
+     ]
+    },
+    {
+     "historia": "As a cleaner, I want to track the number of bookings completed, so that I can manage my schedule.",
+     "votos": 3,
+     "relevancia": 0.512,
+     "tareas": [
+      "Store booking details in the database",
+      "Display booking details on the cleaner's dashboard",
+      "Improve the number of reservations completed in the scheduler",
+      "Make the number of Reservations completed for the scheduler",
+      "Store booking counts in the database",
+      "Display booking counts on the cleaner's dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:YUNIKORN",
+       "similitud": 0.472
+      },
+      {
+       "proyecto": "Apache:DATALAB",
+       "similitud": 0.47
+      }
+     ],
+     "historia_es": "Como limpiador, quiero rastrear el número de reservas completadas, para poder administrar mi horario.",
+     "tareas_es": [
+      "Almacenar los detalles de la reserva en la base de datos",
+      "Mostrar los detalles de la reserva en el panel de limpiador",
+      "Mejorar el número de reservas realizadas en el programador",
+      "Realizar el número de Reservas completadas para el programador",
+      "Almacenar los recuentos de reservas en la base de datos",
+      "Mostrar las cuentas de reserva en el panel de limpieza"
+     ]
+    },
+    {
+     "historia": "As a guest, I want to view my personal information on my preferred bookings, so that I can manage my schedule and schedule.",
+     "votos": 1,
+     "relevancia": 0.346,
+     "tareas": [
+      "Display the preferred booking details on the guest's dashboard",
+      "Add ability to view preferred reservations"
+     ],
+     "origen": [
+      {
+       "proyecto": "JFrog:RTFACT",
+       "similitud": 0.571
+      },
+      {
+       "proyecto": "SecondLife:STORM",
+       "similitud": 0.547
+      }
+     ],
+     "historia_es": "Como invitado, quiero ver mi información personal en mis reservas preferidas, para poder administrar mi horario y horario.",
+     "tareas_es": [
+      "Mostrar los detalles de reserva preferidos en el panel del invitado",
+      "Añadir capacidad para ver las reservas preferidas"
+     ]
+    },
+    {
+     "historia": "As a host, I want to update my availability, so that I can keep my past information updated.",
+     "votos": 1,
+     "relevancia": 0.378,
+     "tareas": [
+      "Store availability data in the database",
+      "Update the host status page",
+      "Display availability data on the host's dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:PD",
+       "similitud": 0.592
+      },
+      {
+       "proyecto": "Sonatype:NEXUS",
+       "similitud": 0.543
+      }
+     ],
+     "historia_es": "Como anfitrión, quiero actualizar mi disponibilidad, para poder mantener mi información pasada actualizada.",
+     "tareas_es": [
+      "Almacenar datos de disponibilidad en la base de datos",
+      "Actualizar la página de estado de anfitrión",
+      "Mostrar datos de disponibilidad en el panel de anfitrión"
+     ]
+    },
+    {
+     "historia": "As a cleaner, I want to receive notifications when a cleaning service is ready for a day, so that I can prepare for my work.",
+     "votos": 1,
+     "relevancia": 0.577,
+     "tareas": [
+      "Implement a notification system for cleaning services",
+      "Add notification when cleaning service is ready"
+     ],
+     "origen": [
+      {
+       "proyecto": "Spring:STS",
+       "similitud": 0.469
+      },
+      {
+       "proyecto": "Sonatype:NEXUS",
+       "similitud": 0.444
+      }
+     ],
+     "historia_es": "Como limpiador, quiero recibir notificaciones cuando un servicio de limpieza está listo para un día, para que pueda prepararme para mi trabajo.",
+     "tareas_es": [
+      "Implementar un sistema de notificación para los servicios de limpieza",
+      "Añadir notificación cuando el servicio de limpieza está listo"
+     ]
+    },
+    {
+     "historia": "As a guest, I want to view the availability of my loved one, so that I can plan my maintenance efficiently.",
+     "votos": 1,
+     "relevancia": 0.415,
+     "tareas": [
+      "Display the availability on the guest’s dashboard",
+      "Add ability to view the availability of my preferred one",
+      "Show the capacity of the preferred one"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:JPERF",
+       "similitud": 0.568
+      },
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.505
+      }
+     ],
+     "historia_es": "Como invitado, quiero ver la disponibilidad de mi ser querido, para poder planificar mi mantenimiento de manera eficiente.",
+     "tareas_es": [
+      "Mostrar la disponibilidad en el panel de mando del invitado",
+      "Añadir capacidad para ver la disponibilidad de mi preferido",
+      "Mostrar la capacidad de la preferida"
+     ]
+    }
+   ],
+   "tiempos": {
+    "traducir_entrada": 0.127,
+    "recuperar_arriba": 0.012,
+    "generar_historias": 2.488,
+    "deduplicar_historias": 0.218,
+    "recuperar_abajo": 0.018,
+    "generar_tareas": 5.337,
+    "deduplicar_tareas": 0.041,
+    "reasignar_tareas": 0.045,
+    "traducir": 0.458,
+    "total": 8.743
+   },
+   "vecinos_proyecto": [
+    {
+     "proyecto": "RedHat:KOGITO",
+     "similitud": 0.459
+    },
+    {
+     "proyecto": "dalpiaz:g04-recycling",
+     "similitud": 0.429
+    }
+   ],
+   "n_banco": 48,
+   "n_tareas": 37
+  }
+ },
+ {
+  "titulo": "Restaurante",
+  "descripcion": "Un sistema de pedidos para un restaurante, donde la cocina ve los pedidos y su estado, el personal atiende peticiones especiales y el dueño consulta los ingresos del día.",
+  "resultado": {
+   "historias": [
+    {
+     "historia": "As a waiter, I want to see the current order status, so that I can ensure the customer's deliveries.",
+     "votos": 2,
+     "relevancia": 0.695,
+     "tareas": [
+      "Display the order status on the waiter's dashboard",
+      "Send a notification to the waiter about the order status"
+     ],
+     "origen": [
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.45
+      },
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.45
+      }
+     ],
+     "historia_es": "Como camarero, quiero ver el estado actual del pedido, para que pueda asegurar las entregas del cliente.",
+     "tareas_es": [
+      "Mostrar el estado de el pedido en el panel del camarero",
+      "Enviar una notificación al camarero sobre el estado del pedido"
+     ]
+    },
+    {
+     "historia": "As a staff member, I want to access special requests, so that I can offer a reason to the customer.",
+     "votos": 1,
+     "relevancia": 0.452,
+     "tareas": [
+      "Store special requests in the database",
+      "Display special requests on the staff dashboard",
+      "Send a confirmation email to the staff about special requests",
+      "Support special request requests",
+      "Create a special request form in the staff member dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "Sonatype:NEXUS",
+       "similitud": 0.489
+      },
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.474
+      }
+     ],
+     "historia_es": "Como miembro del personal, quiero acceder a peticiones especiales, para poder ofrecer una razón al cliente.",
+     "tareas_es": [
+      "Almacenar las solicitudes especiales en la base de datos",
+      "Mostrar peticiones especiales en el panel de mando",
+      "Enviar un correo electrónico de confirmación al personal sobre solicitudes especiales",
+      "Apoyar solicitudes especiales",
+      "Crear un formulario de solicitud especial en el panel de mando miembro del personal"
+     ]
+    },
+    {
+     "historia": "As a owner, I want to view the usage of the day, so that I can manage the process efficiently.",
+     "votos": 1,
+     "relevancia": 0.414,
+     "tareas": [
+      "Display the day usage on the owner's dashboard",
+      "Add documentation for the usage of the day",
+      "Add documentation about the time of the day",
+      "Store the day usage data in the database",
+      "Display usage data on the owner's dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:KOGITO",
+       "similitud": 0.478
+      },
+      {
+       "proyecto": "RedHat:RIFTSAW",
+       "similitud": 0.432
+      }
+     ],
+     "historia_es": "Como propietario, quiero ver el uso del día, para que pueda gestionar el proceso de manera eficiente.",
+     "tareas_es": [
+      "Mostrar el uso del día en el panel del propietario",
+      "Añadir documentación para el uso del día",
+      "Añadir documentación sobre la hora del día",
+      "Almacenar los datos de uso diario en la base de datos",
+      "Mostrar los datos de uso en el panel del propietario"
+     ]
+    },
+    {
+     "historia": "As a cook, I want to know the order status, so that I can plan the preparation time.",
+     "votos": 2,
+     "relevancia": 0.649,
+     "tareas": [
+      "Store order status data in the kitchen database",
+      "Display order status on the kitchen dashboard",
+      "Create a order status form in the kitchen app",
+      "Notify the cook if the order status is ready"
+     ],
+     "origen": [
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.446
+      },
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.439
+      }
+     ],
+     "historia_es": "Como cocinero, quiero saber el estado del pedido, para poder planificar el tiempo de preparación.",
+     "tareas_es": [
+      "Almacenar datos de estado de pedido en la base de datos de cocina",
+      "Mostrar el estado del pedido en el panel de cocina",
+      "Crear un formulario de estado de pedido en la aplicación de cocina",
+      "Notificar al cocinero si el estado del pedido está listo"
+     ]
+    },
+    {
+     "historia": "As a staff, I want to easily see a list of orders in advance, so that I can plan my day efficiently.",
+     "votos": 2,
+     "relevancia": 0.583,
+     "tareas": [
+      "Display order details on the staff dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.5
+      },
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.458
+      }
+     ],
+     "historia_es": "Como personal, quiero ver fácilmente una lista de pedidos por adelantado, para poder planificar mi día de manera eficiente.",
+     "tareas_es": [
+      "Mostrar detalles del pedido en el panel de personal"
+     ]
+    },
+    {
+     "historia": "As a waiter, I want to view the status of a customer, so that I can assist them better.",
+     "votos": 1,
+     "relevancia": 0.548,
+     "tareas": [
+      "Show the status of an a customer",
+      "Store customer status data in the waiter's profile"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AAH",
+       "similitud": 0.45
+      },
+      {
+       "proyecto": "RedHat:MODE",
+       "similitud": 0.449
+      }
+     ],
+     "historia_es": "Como camarero, quiero ver el estado de un cliente, para que pueda ayudarles mejor.",
+     "tareas_es": [
+      "Mostrar el estado de un cliente",
+      "Almacenar los datos de estado del cliente en el perfil del camarero"
+     ]
+    },
+    {
+     "historia": "As a staff member, I want to receive notifications about upcoming orders, so that I can plan my day.",
+     "votos": 1,
+     "relevancia": 0.554,
+     "tareas": [
+      "Implement a notification system for upcoming orders",
+      "Send notifications via email to staff members",
+      "Send push notifications via SMS to staff members",
+      "Add notification about upcoming orders"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.534
+      },
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.514
+      }
+     ],
+     "historia_es": "Como miembro del personal, quiero recibir notificaciones sobre las próximas pedidos, para poder planificar mi día.",
+     "tareas_es": [
+      "Implementar un sistema de notificación para pedidos futuros",
+      "Enviar notificaciones por correo electrónico al personal miembro del personal",
+      "Enviar notificaciones push vía SMS a los miembros del personal",
+      "Añadir notificación sobre los pedidos futuros"
+     ]
+    },
+    {
+     "historia": "As a cook, I want to know which orders are scheduled, so that I can plan my order efficiently.",
+     "votos": 2,
+     "relevancia": 0.642,
+     "tareas": [
+      "Implement a scheduling feature in the kitchen app",
+      "Store scheduled orders in the kitchen database",
+      "Allow orders to be scheduled",
+      "Add orders to scheduler",
+      "Notify the cook if a order is scheduled"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.463
+      },
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.452
+      }
+     ],
+     "historia_es": "Como cocinero, quiero saber qué pedidos están programados, para que pueda planificar mi pedido de manera eficiente.",
+     "tareas_es": [
+      "Implementar una función de programación en la aplicación de cocina",
+      "Almacenar los pedidos programados en la base de datos de cocina",
+      "Permitir que los pedidos sean programados",
+      "Añadir pedidos al programador",
+      "Notificar al cocinero si se ha programado un pedido"
+     ]
+    },
+    {
+     "historia": "As a staff member, I want to update the hours and timing of the order, so that I can keep the accurate information clearly.",
+     "votos": 1,
+     "relevancia": 0.563,
+     "tareas": [
+      "Store hours and timestamps in the order record",
+      "Update the timestamp of the order",
+      "Allow staff members to update hours and timestamps in the order record",
+      "Send notifications to staff members about hours and date changes"
+     ],
+     "origen": [
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.478
+      },
+      {
+       "proyecto": "Apache:HBASE",
+       "similitud": 0.46
+      }
+     ],
+     "historia_es": "Como miembro del personal, quiero actualizar las horas y el momento de el pedido, para que pueda mantener la información precisa claramente.",
+     "tareas_es": [
+      "Almacenar las horas y las marcas de tiempo en el registro de pedidos",
+      "Actualizar la marca de tiempo del pedido",
+      "Permitir al personal miembro del personal actualizar las horas y las marcas de tiempo en el registro de pedidos",
+      "Enviar notificaciones al personal miembro del personal sobre horas y cambios de fecha"
+     ]
+    },
+    {
+     "historia": "As a staff member, I want to receive notifications when a order has been received, so that I can get my requests.",
+     "votos": 1,
+     "relevancia": 0.587,
+     "tareas": [
+      "Send an email notification to the staff about the list",
+      "Log the notification in the staff member's profile"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.525
+      },
+      {
+       "proyecto": "JiraEcosystem:UPM",
+       "similitud": 0.475
+      }
+     ],
+     "historia_es": "Como miembro del personal, quiero recibir notificaciones cuando se ha recibido un pedido, para poder recibir mis solicitudes.",
+     "tareas_es": [
+      "Enviar una notificación por correo electrónico al personal sobre la lista",
+      "Registrar la notificación en el perfil del personal de miembro del personal"
+     ]
+    },
+    {
+     "historia": "As a owner, I want to schedule an order, so that I can plan my day and prepare for the next arrival.",
+     "votos": 1,
+     "relevancia": 0.621,
+     "tareas": [
+      "Prepare the Preparation of the Planning Order",
+      "Prepare the Approval Order"
+     ],
+     "origen": [
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.513
+      },
+      {
+       "proyecto": "RedHat:PD",
+       "similitud": 0.512
+      }
+     ],
+     "historia_es": "Como propietario, quiero programar un pedido, para poder planificar mi día y prepararme para la próxima llegada.",
+     "tareas_es": [
+      "Preparar la preparación de la Orden de Planificación",
+      "Preparar el pedido de homologación"
+     ]
+    },
+    {
+     "historia": "As a waiter, I want to see the ordering history of the orders, so that I can accurately document the order.",
+     "votos": 1,
+     "relevancia": 0.584,
+     "tareas": [
+      "Store order details in the database"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:MAPREDUCE",
+       "similitud": 0.48
+      },
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.47
+      }
+     ],
+     "historia_es": "Como camarero, quiero ver el historial de pedidos de los pedidos, para que pueda documentar con precisión el pedido.",
+     "tareas_es": [
+      "Almacenar los detalles de los pedidos en la base de datos"
+     ]
+    }
+   ],
+   "tiempos": {
+    "traducir_entrada": 0.226,
+    "recuperar_arriba": 0.013,
+    "generar_historias": 2.56,
+    "deduplicar_historias": 0.205,
+    "recuperar_abajo": 0.016,
+    "generar_tareas": 5.131,
+    "deduplicar_tareas": 0.047,
+    "reasignar_tareas": 0.043,
+    "traducir": 0.494,
+    "total": 8.736
+   },
+   "vecinos_proyecto": [
+    {
+     "proyecto": "Hyperledger:FAB",
+     "similitud": 0.446
+    },
+    {
+     "proyecto": "Hyperledger:FAB",
+     "similitud": 0.431
+    }
+   ],
+   "n_banco": 48,
+   "n_tareas": 37
+  }
+ },
+ {
+  "titulo": "Supermercado en línea",
+  "descripcion": "Una app de compra en línea de un supermercado donde los clientes buscan productos, repiten un pedido anterior y reciben avisos de descuentos, y los empleados confirman las entregas.",
+  "resultado": {
+   "historias": [
+    {
+     "historia": "As a shopper, I want to receive notifications about upcoming orders, so that I can prepare for the next order.",
+     "votos": 3,
+     "relevancia": 0.601,
+     "tareas": [
+      "Implement a notification system for upcoming orders",
+      "Send push notifications to the shopper's app",
+      "Add notification about upcoming orders"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:TOMEE",
+       "similitud": 0.544
+      },
+      {
+       "proyecto": "JiraEcosystem:UPM",
+       "similitud": 0.509
+      }
+     ],
+     "historia_es": "Como comprador, quiero recibir notificaciones sobre los pedidos futuros, para que pueda prepararme para el siguiente pedido.",
+     "tareas_es": [
+      "Implementar un sistema de notificación para pedidos futuros",
+      "Enviar notificaciones push a la aplicación del comprador",
+      "Añadir notificación sobre los pedidos futuros"
+     ]
+    },
+    {
+     "historia": "As a customer, I want to receive notifications about upcoming delivery deadlines, so that I can prepare the next order.",
+     "votos": 2,
+     "relevancia": 0.535,
+     "tareas": [
+      "Implement a notification system for upcoming delivery deadlines",
+      "Send notifications to the customer via email",
+      "Add notifications about upcoming deliver deadlines",
+      "Store delivery deadlines in the customer's profile",
+      "Send push notifications to the customer via email",
+      "Send a notification to the customer about the delivery status"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:UPM",
+       "similitud": 0.475
+      },
+      {
+       "proyecto": "JiraEcosystem:UPM",
+       "similitud": 0.461
+      }
+     ],
+     "historia_es": "Como cliente, quiero recibir notificaciones sobre los próximos plazos de entrega, para que pueda preparar el siguiente pedido.",
+     "tareas_es": [
+      "Aplicar un sistema de notificación para los próximos plazos de entrega",
+      "Enviar notificaciones al cliente por correo electrónico",
+      "Añadir notificaciones sobre los próximos plazos de entrega",
+      "Almacenar los plazos de entrega en el perfil del cliente",
+      "Enviar notificaciones push al cliente por correo electrónico",
+      "Enviar una notificación al cliente sobre el estado de entrega"
+     ]
+    },
+    {
+     "historia": "As a picker, I want to receive order updates, so that I can plan my next order efficiently.",
+     "votos": 4,
+     "relevancia": 0.303,
+     "tareas": [
+      "Display order updates on the picker's dashboard",
+      "Send a notification to the picker if a order is updated"
+     ],
+     "origen": [
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.557
+      },
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.538
+      }
+     ],
+     "historia_es": "Como selector, quiero recibir actualizaciones de pedidos, para poder planificar mi siguiente pedido de manera eficiente.",
+     "tareas_es": [
+      "Mostrar actualizaciones de pedidos en el panel del selector",
+      "Enviar una notificación al selector si se actualiza un pedido"
+     ]
+    },
+    {
+     "historia": "As a employee, I want to receive real-time updates on the delivery status of my orders, so that I can plan my day.",
+     "votos": 1,
+     "relevancia": 0.446,
+     "tareas": [
+      "Store delivery status in the database",
+      "Display delivery status on the customer's dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.533
+      },
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.461
+      }
+     ],
+     "historia_es": "Como empleado, quiero recibir actualizaciones de real-time sobre el estado de entrega de mis pedidos, para que pueda planificar mi día.",
+     "tareas_es": [
+      "Almacenar el estado de entrega en la base de datos",
+      "Mostrar el estado de entrega en el panel del cliente"
+     ]
+    },
+    {
+     "historia": "As a customer, I want to easily browse products by price range, so that I can quickly find items.",
+     "votos": 2,
+     "relevancia": 0.527,
+     "tareas": [
+      "Create a marketplace that searches prices",
+      "Add marketplace that displays prices",
+      "Store price range data in the database",
+      "Display price range data on the customer's dashboard",
+      "Notify the customer if a price range is available"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:TOMEE",
+       "similitud": 0.615
+      },
+      {
+       "proyecto": "JiraEcosystem:UPM",
+       "similitud": 0.552
+      }
+     ],
+     "historia_es": "Como cliente, quiero navegar fácilmente por productos por rango de precios, para que pueda encontrar rápidamente artículos.",
+     "tareas_es": [
+      "Crear un mercado que busque precios",
+      "Añadir mercado que muestra los precios",
+      "Almacenar datos de rango de precios en la base de datos",
+      "Mostrar los datos de la gama de precios en el panel del cliente",
+      "Notificar al cliente si existe una gama de precios"
+     ]
+    },
+    {
+     "historia": "As a picker, I want to receive real-time delivery updates, so that I can plan my deliveries efficiently.",
+     "votos": 1,
+     "relevancia": 0.411,
+     "tareas": [
+      "Create a picker for real-time delivery",
+      "Display delivery updates on the picker’s dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.474
+      },
+      {
+       "proyecto": "Qt:QTBUG",
+       "similitud": 0.393
+      }
+     ],
+     "historia_es": "Como selector, quiero recibir actualizaciones de entrega real-time, para poder planificar mis entregas de manera eficiente.",
+     "tareas_es": [
+      "Crear un selector para la entrega real-time",
+      "Mostrar actualizaciones de entrega en el panel del selector"
+     ]
+    },
+    {
+     "historia": "As a picker, I want to receive alerts for my order changes, so that I can make informed decisions.",
+     "votos": 3,
+     "relevancia": 0.319,
+     "tareas": [
+      "Send alerts to the picker's app",
+      "Add alerts to the picker",
+      "Develop a alert system for order changes",
+      "Store alerts in the picker's profile",
+      "Send alerts to the picker via email"
+     ],
+     "origen": [
+      {
+       "proyecto": "SecondLife:STORM",
+       "similitud": 0.512
+      },
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.502
+      }
+     ],
+     "historia_es": "Como selector, quiero recibir alertas para los cambios de mi pedido, para que pueda tomar decisiones informadas.",
+     "tareas_es": [
+      "Enviar alertas a la aplicación del selector",
+      "Agregar alertas al selector",
+      "Desarrollar un sistema de alerta para cambios de pedido",
+      "Almacenar alertas en el perfil del selector",
+      "Enviar alertas al selector por correo electrónico"
+     ]
+    },
+    {
+     "historia": "As a shopper, I want to view the delivery history, so that I can ensure the deliveries are delivered correctly.",
+     "votos": 2,
+     "relevancia": 0.503,
+     "tareas": [
+      "Add documentation for the delivery history"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:RIFTSAW",
+       "similitud": 0.439
+      },
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.438
+      }
+     ],
+     "historia_es": "Como comprador, quiero ver el historial de entregas, para poder asegurar que las entregas se entreguen correctamente.",
+     "tareas_es": [
+      "Añadir documentación para el historial de entrega"
+     ]
+    },
+    {
+     "historia": "As a picker, I want to receive notifications when my ordered order is ready for pickup, so that I can plan my route efficiently.",
+     "votos": 2,
+     "relevancia": 0.375,
+     "tareas": [
+      "Add notification when order is ready",
+      "Store order details in the picker's app"
+     ],
+     "origen": [
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.486
+      },
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.483
+      }
+     ],
+     "historia_es": "Como selector, quiero recibir notificaciones cuando mi pedido está listo para la recogida, de modo que pueda planificar mi ruta de manera eficiente.",
+     "tareas_es": [
+      "Añadir notificación cuando el pedido esté listo",
+      "Almacenar los detalles de los pedidos en la aplicación del selector"
+     ]
+    },
+    {
+     "historia": "As a employee, I want to provide feedback on the order progress, so that I can improve the service quality.",
+     "votos": 1,
+     "relevancia": 0.37,
+     "tareas": [
+      "Store feedback data in the database"
+     ],
+     "origen": [
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.584
+      },
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.571
+      }
+     ],
+     "historia_es": "Como empleado, quiero proporcionar retroalimentación sobre el progreso del pedido, para que pueda mejorar la calidad del servicio.",
+     "tareas_es": [
+      "Almacenar los datos de retroalimentación en la base de datos"
+     ]
+    },
+    {
+     "historia": "As a customer, I want to view the status of my order, so that I can manage my schedule effectively.",
+     "votos": 2,
+     "relevancia": 0.415,
+     "tareas": [
+      "Display the order status on the customer's dashboard",
+      "Add ability to view the status of the order",
+      "Add ability for showing the status of an order",
+      "Show the status of a order"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.539
+      },
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.471
+      }
+     ],
+     "historia_es": "Como cliente, quiero ver el estado de mi pedido, para poder administrar mi horario de manera efectiva.",
+     "tareas_es": [
+      "Mostrar el estado del pedido en el panel del cliente",
+      "Añadir capacidad para ver el estado del pedido",
+      "Añadir capacidad para mostrar el estado de un pedido",
+      "Mostrar el estado de un pedido"
+     ]
+    },
+    {
+     "historia": "As a employee, I want to view the status of my order, so that I can track the progress.",
+     "votos": 2,
+     "relevancia": 0.407,
+     "tareas": [
+      "Store order details in the database",
+      "Display order status on the dashboard",
+      "Please review the status of my order",
+      "Please review and vote on the status of your order"
+     ],
+     "origen": [
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.535
+      },
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.526
+      }
+     ],
+     "historia_es": "Como empleado, quiero ver el estado de mi pedido, para poder seguir el progreso.",
+     "tareas_es": [
+      "Almacenar los detalles de los pedidos en la base de datos",
+      "Mostrar el estado del pedido en el panel",
+      "Revisar el estado de mi pedido",
+      "Revisar y vote sobre el estado de su pedido"
+     ]
+    }
+   ],
+   "tiempos": {
+    "traducir_entrada": 0.167,
+    "recuperar_arriba": 0.008,
+    "generar_historias": 2.213,
+    "deduplicar_historias": 0.192,
+    "recuperar_abajo": 0.017,
+    "generar_tareas": 4.848,
+    "deduplicar_tareas": 0.046,
+    "reasignar_tareas": 0.04,
+    "traducir": 0.219,
+    "total": 7.75
+   },
+   "vecinos_proyecto": [
+    {
+     "proyecto": "RedHat:THREESCALE",
+     "similitud": 0.425
+    },
+    {
+     "proyecto": "RedHat:THREESCALE",
+     "similitud": 0.422
+    }
+   ],
+   "n_banco": 48,
+   "n_tareas": 37
+  }
+ },
+ {
+  "titulo": "Gimnasio",
+  "descripcion": "Un sistema de membresías de gimnasio donde los clientes abren una cuenta, eligen y renuevan su plan, y los entrenadores programan clases en las salas disponibles.",
+  "resultado": {
+   "historias": [
+    {
+     "historia": "As a member, I want to view the renewal schedule of my past membership, so that I can plan my workout strategy.",
+     "votos": 1,
+     "relevancia": 0.685,
+     "tareas": [
+      "Implement a renewal scheduling feature in the member dashboard",
+      "Display the renewal schedule on the member's dashboard",
+      "Add membership scheduler to the website",
+      "Store the renewal schedule in the member's profile",
+      "Display the past membership status on the member’s dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.525
+      },
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.387
+      }
+     ],
+     "historia_es": "Como miembro, quiero ver el calendario de renovación de mi pasado miembro, para que pueda planificar mi estrategia de entrenamiento.",
+     "tareas_es": [
+      "Implementar una función de programación de renovación en el panel de miembro",
+      "Mostrar el calendario de renovación en el panel del miembro",
+      "Agregar el planificador de membresías al sitio web",
+      "Almacenar el horario de renovación en el perfil del miembro",
+      "Mostrar el estado de membresía en el panel del miembro"
+     ]
+    },
+    {
+     "historia": "As a customer, I want to change my scheduled plan, so that I can choose new plan for future shifts.",
+     "votos": 1,
+     "relevancia": 0.408,
+     "tareas": [
+      "Implement a scheduled plan change feature in the customer dashboard",
+      "Send a notification to the customer about the new plan change",
+      "Change plan for next shifts",
+      "Allow the customer to change plan changes in the database",
+      "Display plan changes on the customer's dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.64
+      },
+      {
+       "proyecto": "Apache:FLINK",
+       "similitud": 0.542
+      }
+     ],
+     "historia_es": "Como cliente, quiero cambiar mi plan programado, para poder elegir un nuevo plan para futuros turnos.",
+     "tareas_es": [
+      "Implementar una función de cambio de plan programado en el panel de clientes",
+      "Enviar una notificación al cliente sobre el cambio de plan",
+      "Cambiar el plan para los próximos turnos",
+      "Permitir al cliente cambiar los cambios de plan en la base de datos",
+      "Mostrar los cambios de plan en el panel del cliente"
+     ]
+    },
+    {
+     "historia": "As a trainer, I want to view and update the scheduled courses I have provided, so that I can manage my availability and availability.",
+     "votos": 1,
+     "relevancia": 0.522,
+     "tareas": [
+      "Retrieve and update the scheduled courses from the trainer's profile",
+      "Send a notification to the trainer if the scheduled course is available",
+      "Add ability to view and update the scheduled courses",
+      "Update the course categories page"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.46
+      },
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.438
+      }
+     ],
+     "historia_es": "Como entrenador, quiero ver y actualizar los cursos programados que he proporcionado, para poder gestionar mi disponibilidad y disponibilidad.",
+     "tareas_es": [
+      "Recuperar y actualizar los cursos programados del perfil del entrenador",
+      "Enviar una notificación al entrenador si el curso está disponible",
+      "Añadir capacidad para ver y actualizar los cursos programados",
+      "Actualizar la página de categorías de cursos"
+     ]
+    },
+    {
+     "historia": "As a gym manager, I want to review a payment status, so that I can ensure all payments are processed.",
+     "votos": 1,
+     "relevancia": 0.49,
+     "tareas": [
+      "Store payment status data in the database",
+      "Review approval of a given amount of transactions",
+      "Review a known way of a transaction is processed",
+      "Display payment status on the gym manager's dashboard",
+      "Notify the manager of new payment status"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:THREESCALE",
+       "similitud": 0.386
+      },
+      {
+       "proyecto": "Apache:DATALAB",
+       "similitud": 0.367
+      }
+     ],
+     "historia_es": "Como gerente de gimnasio, quiero revisar un estado de pago, para que pueda asegurar que todos los pagos se procesan.",
+     "tareas_es": [
+      "Almacenar datos de estado de pago en la base de datos",
+      "Revisar la aprobación de una cantidad determinada de transacciones",
+      "Revisar una forma conocida de una transacción se procesa",
+      "Mostrar el estado de pago en el panel del gerente del gimnasio",
+      "Notificar al gerente de gimnasio el nuevo estado de pago"
+     ]
+    },
+    {
+     "historia": "As a coaching head, I want to monitor the usage of my products, so that I can manage the campaign's schedule.",
+     "votos": 1,
+     "relevancia": 0.322,
+     "tareas": [
+      "Store usage data in the database",
+      "Display usage data on the coaching head dashboard",
+      "Monitoring of product usage"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:STRM",
+       "similitud": 0.452
+      },
+      {
+       "proyecto": "Spring:STS",
+       "similitud": 0.445
+      }
+     ],
+     "historia_es": "Como jefe de entrenamiento, quiero monitorear el uso de mis productos, para poder manejar el horario de la campaña.",
+     "tareas_es": [
+      "Almacenar los datos de uso en la base de datos",
+      "Mostrar los datos de uso en el panels de entrenamiento",
+      "Supervisar el uso del producto"
+     ]
+    },
+    {
+     "historia": "As a customer, I want to see the renewal schedule, so that I can plan my stay efficiently.",
+     "votos": 1,
+     "relevancia": 0.461,
+     "tareas": [
+      "Planning for renewal schedule",
+      "Store the renewal schedule in the customer's profile"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.615
+      },
+      {
+       "proyecto": "Sonatype:NEXUS",
+       "similitud": 0.46
+      }
+     ],
+     "historia_es": "Como cliente, quiero ver el horario de renovación, para poder planificar mi estancia de manera eficiente.",
+     "tareas_es": [
+      "Planificar para el horario de renovación",
+      "Almacenar el horario de renovación en el perfil del cliente"
+     ]
+    },
+    {
+     "historia": "As a member, I want to view my payment history, so that I can choose my options.",
+     "votos": 3,
+     "relevancia": 0.28,
+     "tareas": [
+      "Store payment history in the database",
+      "Display payment history on the member's dashboard",
+      "Add a way to view the details page",
+      "Show the details page"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:THREESCALE",
+       "similitud": 0.537
+      },
+      {
+       "proyecto": "RedHat:THREESCALE",
+       "similitud": 0.486
+      }
+     ],
+     "historia_es": "Como miembro, quiero ver mi historial de pagos, para poder elegir mis opciones.",
+     "tareas_es": [
+      "Almacenar el historial de pagos en la base de datos",
+      "Mostrar el historial de pagos en el panel del miembro",
+      "Añadir una forma de ver la página de detalles",
+      "Mostrar los detalles de la página"
+     ]
+    },
+    {
+     "historia": "As a trainer, I want to view the progress of my courses, so that I can prepare accordingly.",
+     "votos": 1,
+     "relevancia": 0.382,
+     "tareas": [
+      "Create a preliminary draft of the course",
+      "Create a tutorial for the course"
+     ],
+     "origen": [
+      {
+       "proyecto": "TAWOS-Moodle:MDL",
+       "similitud": 0.426
+      },
+      {
+       "proyecto": "RedHat:MODE",
+       "similitud": 0.414
+      }
+     ],
+     "historia_es": "Como entrenador, quiero ver el progreso de mis cursos, para que pueda prepararme en consecuencia.",
+     "tareas_es": [
+      "Crear un anteproyecto del curso",
+      "Crear un tutorial para el curso"
+     ]
+    },
+    {
+     "historia": "As a member, I want to view my upcoming appointments, so that I can plan my schedule.",
+     "votos": 3,
+     "relevancia": 0.484,
+     "tareas": [
+      "Store appointment details in the database",
+      "Display appointment details on the member's dashboard",
+      "Send notifications to members about upcoming appointments"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.621
+      },
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.538
+      }
+     ],
+     "historia_es": "Como miembro, quiero ver mis próximas citas, para poder planificar mi horario.",
+     "tareas_es": [
+      "Almacenar los detalles de la cita en la base de datos",
+      "Mostrar los detalles de la cita en el panel del miembro",
+      "Enviar notificaciones a los miembros sobre las próximas citas"
+     ]
+    },
+    {
+     "historia": "As a trainer, I want to generate reports on my activity, so that I can make informed decisions about schedule changes.",
+     "votos": 1,
+     "relevancia": 0.428,
+     "tareas": [
+      "Generate reports on the trainer's activity history"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.476
+      },
+      {
+       "proyecto": "RedHat:ENTESB",
+       "similitud": 0.425
+      }
+     ],
+     "historia_es": "Como entrenador, quiero generar informes sobre mi actividad, para poder tomar decisiones informadas sobre los cambios de horario.",
+     "tareas_es": [
+      "Generar informes sobre el historial de actividad del entrenador"
+     ]
+    },
+    {
+     "historia": "As a member, I want to see the profiles of the my assigned classes, so that I can track my success.",
+     "votos": 1,
+     "relevancia": 0.409,
+     "tareas": [
+      "Store profiles in the member's profile",
+      "Display profiles on the member dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.531
+      },
+      {
+       "proyecto": "Apache:RAVE",
+       "similitud": 0.508
+      }
+     ],
+     "historia_es": "Como miembro, quiero ver los perfiles de las clases que me han sido asignadas, para poder seguir mi éxito.",
+     "tareas_es": [
+      "Almacenar perfiles en el perfil del miembro",
+      "Mostrar perfiles en el panel de miembros"
+     ]
+    }
+   ],
+   "tiempos": {
+    "traducir_entrada": 0.165,
+    "recuperar_arriba": 0.009,
+    "generar_historias": 2.205,
+    "deduplicar_historias": 0.187,
+    "recuperar_abajo": 0.018,
+    "generar_tareas": 5.176,
+    "deduplicar_tareas": 0.038,
+    "reasignar_tareas": 0.04,
+    "traducir": 0.441,
+    "total": 8.278
+   },
+   "vecinos_proyecto": [
+    {
+     "proyecto": "TAWOS-Moodle:MDL",
+     "similitud": 0.426
+    },
+    {
+     "proyecto": "TAWOS-Moodle:MDL",
+     "similitud": 0.426
+    }
+   ],
+   "n_banco": 48,
+   "n_tareas": 36
+  }
+ },
+ {
+  "titulo": "Colegio",
+  "descripcion": "Un sistema de gestión escolar con cuentas para estudiantes, profesores, apoderados y administración, con horarios, mensajería con el tutor y reporte de inasistencias.",
+  "resultado": {
+   "historias": [
+    {
+     "historia": "As a teacher, I want to view the status of my contact information, so that I can get informed about my responsibilities.",
+     "votos": 1,
+     "relevancia": 0.604,
+     "tareas": [
+      "Display the status on the teacher's dashboard",
+      "Send a notification to the teacher about the status",
+      "Please review the status of my contact information",
+      "Please review and discuss the status of your contact information"
+     ],
+     "origen": [
+      {
+       "proyecto": "JFrog:RTFACT",
+       "similitud": 0.477
+      },
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.45
+      }
+     ],
+     "historia_es": "Como profesor, quiero ver el estado de mi información de contacto, para poder estar informado sobre mis responsabilidades.",
+     "tareas_es": [
+      "Mostrar el estado en el panel del profesor",
+      "Enviar una notificación al profesor sobre el estado",
+      "Revisar el estado de mi información de contacto",
+      "Revisar y discuta el estado de su información de contacto"
+     ]
+    },
+    {
+     "historia": "As a agent, I want to view the student's schedule, so that I can plan my activities.",
+     "votos": 1,
+     "relevancia": 0.514,
+     "tareas": [
+      "Implement a scheduling feature in the system",
+      "Send a notification to the student about the schedule",
+      "Create a student's calendar page"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.447
+      },
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.435
+      }
+     ],
+     "historia_es": "Como agente, quiero ver el horario del estudiante, para poder planificar mis actividades.",
+     "tareas_es": [
+      "Implementar una función de programación en el sistema",
+      "Enviar una notificación al estudiante sobre el horario",
+      "Crear la página de calendario de un estudiante"
+     ]
+    },
+    {
+     "historia": "As a teacher, I want to view the school's absences, so that I can provide accurate information.",
+     "votos": 1,
+     "relevancia": 0.689,
+     "tareas": [
+      "Implement a teacher's absence tracking feature",
+      "Display absence status on the teacher's dashboard",
+      "Store absence details in the database"
+     ],
+     "origen": [
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.435
+      },
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.413
+      }
+     ],
+     "historia_es": "Como profesor, quiero ver las ausencias de la escuela, para poder proporcionar información precisa.",
+     "tareas_es": [
+      "Implementar una función de seguimiento de ausencias de profesor",
+      "Mostrar el estado de ausencia en el panel del profesor",
+      "Almacenar los detalles de ausencia en la base de datos"
+     ]
+    },
+    {
+     "historia": "As a teacher, I want to receive feedback on my teaching, so that I can improve my teaching.",
+     "votos": 3,
+     "relevancia": 0.444,
+     "tareas": [
+      "Store feedback in the teacher's profile",
+      "Add feedback on teachers"
+     ],
+     "origen": [
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.524
+      },
+      {
+       "proyecto": "TAWOS-Moodle:MDL",
+       "similitud": 0.456
+      }
+     ],
+     "historia_es": "Como profesor, quiero recibir comentarios sobre mi enseñanza, para poder mejorar mi enseñanza.",
+     "tareas_es": [
+      "Almacenar los comentarios en el perfil del profesor",
+      "Añadir comentarios sobre los profesores"
+     ]
+    },
+    {
+     "historia": "As a student, I want to view my contact information, so that I can receive notifications.",
+     "votos": 1,
+     "relevancia": 0.482,
+     "tareas": [
+      "Store contact information in the database",
+      "Display contact information on the student's dashboard",
+      "Send notifications to students about contact information",
+      "Add contact information"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:RAVE",
+       "similitud": 0.526
+      },
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.524
+      }
+     ],
+     "historia_es": "Como estudiante, quiero ver mi información de contacto, para poder recibir notificaciones.",
+     "tareas_es": [
+      "Almacenar información de contacto en la base de datos",
+      "Mostrar información de contacto en el panel del estudiante",
+      "Enviar notificaciones a los estudiantes sobre información de contacto",
+      "Añadir información de contacto"
+     ]
+    },
+    {
+     "historia": "As a agent, I want to view the status of a school, so that I can provide accurate updates to the student.",
+     "votos": 1,
+     "relevancia": 0.67,
+     "tareas": [
+      "Store the status in the database",
+      "Add ability to view the status of a student",
+      "Show the status of the student"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:ENTMQMAAS",
+       "similitud": 0.47
+      },
+      {
+       "proyecto": "Apache:MNEMONIC",
+       "similitud": 0.439
+      }
+     ],
+     "historia_es": "Como agente, quiero ver el estado de una escuela, para poder proporcionar actualizaciones precisas al estudiante.",
+     "tareas_es": [
+      "Almacenar el estado en la base de datos",
+      "Añadir capacidad para ver el estado de un estudiante",
+      "Mostrar el estado del estudiante"
+     ]
+    },
+    {
+     "historia": "As a agent, I want to update my contact information for teachers, so that I can manage my own schedule.",
+     "votos": 1,
+     "relevancia": 0.597,
+     "tareas": [
+      "Update contact info for teachers"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:INLONG",
+       "similitud": 0.468
+      },
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.432
+      }
+     ],
+     "historia_es": "Como agente, quiero actualizar mi información de contacto para profesores, para poder administrar mi propio horario.",
+     "tareas_es": [
+      "Actualizar la información de contacto para los profesores"
+     ]
+    },
+    {
+     "historia": "As a teacher, I want to provide feedback on the student's upcoming lessons, so that I can improve the school needs.",
+     "votos": 2,
+     "relevancia": 0.506,
+     "tareas": [
+      "Add feedback on student lessons"
+     ],
+     "origen": [
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.543
+      },
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.484
+      }
+     ],
+     "historia_es": "Como profesor, quiero proporcionar retroalimentación sobre las próximas lecciones del estudiante, para que pueda mejorar las necesidades de la escuela.",
+     "tareas_es": [
+      "Agregar comentarios sobre las lecciones de los estudiantes"
+     ]
+    },
+    {
+     "historia": "As a agent, I want to view notifications about student activity, so that I can manage my schedule efficiently.",
+     "votos": 1,
+     "relevancia": 0.559,
+     "tareas": [
+      "Create a notification page for student's schedule",
+      "Store student activity data in the database",
+      "Display student activity on the dashboard",
+      "Add notifications about student activity"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.471
+      },
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.456
+      }
+     ],
+     "historia_es": "Como agente, quiero ver notificaciones sobre la actividad de los estudiantes, para poder administrar mi horario de manera eficiente.",
+     "tareas_es": [
+      "Crear una página de notificación para el horario del estudiante",
+      "Almacenar datos de actividad de los estudiantes en la base de datos",
+      "Mostrar la actividad del estudiante en el panel",
+      "Añadir notificaciones sobre la actividad de los estudiantes"
+     ]
+    },
+    {
+     "historia": "As a agent, I want to view a summary of my scheduled activity, so that I can manage my schedule effectively.",
+     "votos": 1,
+     "relevancia": 0.367,
+     "tareas": [
+      "Display the schedule on the agent's dashboard",
+      "Store the summary data in the database"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:MODE",
+       "similitud": 0.508
+      },
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.473
+      }
+     ],
+     "historia_es": "Como agente, quiero ver un resumen de mi actividad programada, para poder administrar mi horario de manera efectiva.",
+     "tareas_es": [
+      "Mostrar el horario en el panel del agente",
+      "Almacenar los datos resumidos en la base de datos"
+     ]
+    },
+    {
+     "historia": "As a teacher, I want to review student absences, so that I can make informed decisions.",
+     "votos": 1,
+     "relevancia": 0.562,
+     "tareas": [
+      "Implement an absence review feature in the teacher dashboard",
+      "Store absence details in the teacher's profile",
+      "Notify the teacher if their absence is rejected"
+     ],
+     "origen": [
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.434
+      },
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.432
+      }
+     ],
+     "historia_es": "Como profesor, quiero revisar las ausencias de estudiantes, para poder tomar decisiones informadas.",
+     "tareas_es": [
+      "Implementar una función de revisión de ausencias en el panel de profesores",
+      "Almacenar los detalles de ausencia en el perfil del profesor",
+      "Notificar al profesor si su ausencia es rechazada"
+     ]
+    },
+    {
+     "historia": "As a agent, I want to provide feedback on student status, so that I can improve service.",
+     "votos": 1,
+     "relevancia": 0.494,
+     "tareas": [
+      "Store feedback data in the database",
+      "Send feedback notifications to the agent"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:MNEMONIC",
+       "similitud": 0.45
+      },
+      {
+       "proyecto": "Apache:INLONG",
+       "similitud": 0.431
+      }
+     ],
+     "historia_es": "Como agente, quiero proporcionar retroalimentación sobre el estatus de estudiante, para que pueda mejorar el servicio.",
+     "tareas_es": [
+      "Almacenar los datos de retroalimentación en la base de datos",
+      "Enviar notificaciones de retroalimentación al agente"
+     ]
+    }
+   ],
+   "tiempos": {
+    "traducir_entrada": 0.176,
+    "recuperar_arriba": 0.009,
+    "generar_historias": 2.052,
+    "deduplicar_historias": 0.175,
+    "recuperar_abajo": 0.016,
+    "generar_tareas": 4.409,
+    "deduplicar_tareas": 0.035,
+    "reasignar_tareas": 0.03,
+    "traducir": 0.294,
+    "total": 7.195
+   },
+   "vecinos_proyecto": [
+    {
+     "proyecto": "Apache:DATALAB",
+     "similitud": 0.429
+    },
+    {
+     "proyecto": "TAWOS-Moodle:MDL",
+     "similitud": 0.419
+    }
+   ],
+   "n_banco": 48,
+   "n_tareas": 32
+  }
+ },
+ {
+  "titulo": "Ticketera de eventos",
+  "descripcion": "Una plataforma de venta de entradas donde los asistentes compran y ven sus eventos, los artistas gestionan su página, y la empresa valida las entradas.",
+  "resultado": {
+   "historias": [
+    {
+     "historia": "As a promoter, I want to receive notifications when a tickets are being submitted to my sponsor, so that I can manage my availability.",
+     "votos": 1,
+     "relevancia": 0.59,
+     "tareas": [
+      "Implement a notification system in the promoter's dashboard",
+      "Send notifications to the promoter when a ticket is being submitted",
+      "Add notifications to the marketplace",
+      "Implement a notification system in the promoter's app"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.462
+      },
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.432
+      }
+     ],
+     "historia_es": "Como promotor, quiero recibir notificaciones cuando se están enviando entradas a mi patrocinador, para que pueda gestionar mi disponibilidad.",
+     "tareas_es": [
+      "Implementar un sistema de notificación en el panel de promotor",
+      "Enviar notificaciones al promotor cuando se envía un billete",
+      "Añadir notificaciones al mercado",
+      "Implementar un sistema de notificación en la aplicación del promotor"
+     ]
+    },
+    {
+     "historia": "As an attendee, I want to see the progress of my event, so that I can make informed decisions.",
+     "votos": 1,
+     "relevancia": 0.506,
+     "tareas": [
+      "Retrieve the progress from the attendee's dashboard",
+      "Display the progress on the event dashboard",
+      "Attend the event",
+      "Prepare the Activity",
+      "Display the progress on the attendee's dashboard",
+      "Send notifications to attendee about the progress"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.547
+      },
+      {
+       "proyecto": "Apache:FLAGON",
+       "similitud": 0.484
+      }
+     ],
+     "historia_es": "Como asistente, quiero ver el progreso de mi evento, para poder tomar decisiones informadas.",
+     "tareas_es": [
+      "Recuperar el progreso del panel de asistencia",
+      "Mostrar el progreso en el panel de eventos",
+      "Asistir al evento",
+      "Preparar la actividad",
+      "Mostrar el progreso en el panel de asistencia",
+      "Enviar notificaciones al asistente sobre el progreso"
+     ]
+    },
+    {
+     "historia": "As an event organiser, I want to generate reports on event availability, so that I can analyze performance and research.",
+     "votos": 1,
+     "relevancia": 0.36,
+     "tareas": [
+      "Create a report generation feature in the event organiser dashboard",
+      "Send a notification to the organiser when a report is ready",
+      "generate reports on event tracker",
+      "generate report on event planner"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.562
+      },
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.493
+      }
+     ],
+     "historia_es": "Como organizador de eventos, quiero generar informes sobre la disponibilidad de eventos, para poder analizar el rendimiento y la investigación.",
+     "tareas_es": [
+      "Crear una función de generación de informes en el panel de mando del organizador de eventos",
+      "Enviar una notificación al organizador de eventos cuando un informe esté listo",
+      "Generar informes sobre el seguimiento de eventos",
+      "Generar informe sobre el planificador de eventos"
+     ]
+    },
+    {
+     "historia": "As an attendee, I want to access my ticket details, so that I can offer a reason to where to spend on the next item.",
+     "votos": 1,
+     "relevancia": 0.579,
+     "tareas": [
+      "Store ticket details in the database",
+      "Display ticket details on the attendee's dashboard",
+      "Add tickets to the website",
+      "Add ticket details to the website"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.439
+      },
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.427
+      }
+     ],
+     "historia_es": "Como asistente, quiero acceder a los detalles de mi entrada, para que pueda ofrecer una razón para gastar en el siguiente artículo.",
+     "tareas_es": [
+      "Almacenar los detalles de los tickets en la base de datos",
+      "Mostrar detalles del ticket en el panel de asistencia",
+      "Añadir entradas al sitio web",
+      "Añadir detalles de ticket al sitio web"
+     ]
+    },
+    {
+     "historia": "As an event organiser, I want to track the total number of attendees each day, so that I can understand the availability of my event.",
+     "votos": 1,
+     "relevancia": 0.47,
+     "tareas": [
+      "Store the total number of attendees each day in the database",
+      "Attend the event tracker"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.519
+      },
+      {
+       "proyecto": "Sakai:SAK",
+       "similitud": 0.47
+      }
+     ],
+     "historia_es": "Como organizador de eventos, quiero seguir el número total de asistentes cada día, para poder entender la disponibilidad de mi evento.",
+     "tareas_es": [
+      "Almacenar el número total de asistentes cada día en la base de datos",
+      "Asistir al rastreador del evento"
+     ]
+    },
+    {
+     "historia": "As an attendee, I want to mark my upcoming appointments with my availability, so that I can keep my schedule up-to-date.",
+     "votos": 1,
+     "relevancia": 0.371,
+     "tareas": [
+      "Store appointment details in the database",
+      "Display appointment details on the attendee's dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.583
+      },
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.499
+      }
+     ],
+     "historia_es": "Como asistente, quiero marcar mis próximas citas con mi disponibilidad, para que pueda mantener mi horario up-to-fecha.",
+     "tareas_es": [
+      "Almacenar los detalles de la cita en la base de datos",
+      "Mostrar los detalles de la cita en el panel de asistencia"
+     ]
+    },
+    {
+     "historia": "As an attendee, I want to receive notifications about upcoming changes, so that I can plan my day for my visits.",
+     "votos": 1,
+     "relevancia": 0.337,
+     "tareas": [
+      "Create a notification system for upcoming changes",
+      "Add notifications about upcoming changes",
+      "Update notifications about changes"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.651
+      },
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.557
+      }
+     ],
+     "historia_es": "Como asistente, quiero recibir notificaciones sobre los cambios que se avecinan, para poder planificar mi día para mis visitas.",
+     "tareas_es": [
+      "Crear un sistema de notificación para los cambios que se avecinan",
+      "Añadir notificaciones sobre los cambios que se avecinan",
+      "Actualizar las notificaciones sobre cambios"
+     ]
+    },
+    {
+     "historia": "As a promoter, I want to generate monthly reports on the event schedule, so that I can track attendance and revenue.",
+     "votos": 1,
+     "relevancia": 0.46,
+     "tareas": [
+      "Send a notification to the promoter if the report is updated",
+      "Create weekly report for the event schedule",
+      "Create onthly report for the Event Schedule",
+      "Generate reports on the promoter's dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.587
+      },
+      {
+       "proyecto": "RedHat:ORG",
+       "similitud": 0.464
+      }
+     ],
+     "historia_es": "Como promotor, quiero generar informes mensuales sobre el calendario del evento, para poder rastrear la asistencia y los ingresos.",
+     "tareas_es": [
+      "Enviar una notificación al promotor si el informe se actualiza",
+      "Crear un informe semanal para el calendario de eventos",
+      "Crear un informe onthly para la programación de eventos",
+      "Generar informes sobre el panel de promotor"
+     ]
+    },
+    {
+     "historia": "As an event organiser, I want to see all the remaining details of my courses, so that I can manage my finances efficiently.",
+     "votos": 1,
+     "relevancia": 0.37,
+     "tareas": [
+      "Display remaining courses on the event organiser dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.439
+      },
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.434
+      }
+     ],
+     "historia_es": "Como organizador de eventos, quiero ver todos los detalles restantes de mis cursos, para poder gestionar mis finanzas de manera eficiente.",
+     "tareas_es": [
+      "Mostrar los cursos restantes en el panel de mando del organizador del evento"
+     ]
+    },
+    {
+     "historia": "As an event organiser, I want to add new adjustments plan, so that I can accommodate potential events.",
+     "votos": 1,
+     "relevancia": 0.292,
+     "tareas": [
+      "Add new adjustments plan to the event planner",
+      "Add a changes plan to the Event planner",
+      "Allow organisers to add new adjustments plan in the database",
+      "Store adjustment plan details in the database"
+     ],
+     "origen": [
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.54
+      },
+      {
+       "proyecto": "Apache:PLUTO",
+       "similitud": 0.534
+      }
+     ],
+     "historia_es": "Como organizador de eventos, quiero añadir un nuevo plan de ajustes, para poder acomodar eventos potenciales.",
+     "tareas_es": [
+      "Añadir un nuevo plan de ajustes al planificador de eventos",
+      "Añadir un plan de cambios al planificador de eventos",
+      "Permitir que organizador de eventos añada un nuevo plan de ajustes en la base de datos",
+      "Almacenar los detalles del plan de ajuste en la base de datos"
+     ]
+    },
+    {
+     "historia": "As a promoter, I want to manage the availability of sponsors, so that I can ensure fair decisions.",
+     "votos": 1,
+     "relevancia": 0.407,
+     "tareas": [
+      "Store availability data in the promoter's profile",
+      "Display availability data on the promoter’s dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:JCLOUDS",
+       "similitud": 0.426
+      },
+      {
+       "proyecto": "RedHat:ODC",
+       "similitud": 0.426
+      }
+     ],
+     "historia_es": "Como promotor, quiero gestionar la disponibilidad de patrocinadores, para poder garantizar decisiones justas.",
+     "tareas_es": [
+      "Almacenar datos de disponibilidad en el perfil del promotor",
+      "Mostrar datos de disponibilidad en el panel del promotor"
+     ]
+    },
+    {
+     "historia": "As a promoter, I want to monitor the number of attendees a given session, so that I can ensure compliance with my team's success.",
+     "votos": 1,
+     "relevancia": 0.467,
+     "tareas": [
+      "Display attendees on the promoter's dashboard",
+      "Attend a given session",
+      "Store attendees in the database"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.483
+      },
+      {
+       "proyecto": "Apache:ACCUMULO",
+       "similitud": 0.476
+      }
+     ],
+     "historia_es": "Como promotor, quiero monitorear el número de asistentes en una sesión dada, para poder asegurar el cumplimiento con el éxito de mi equipo.",
+     "tareas_es": [
+      "Mostrar asistentes en el panel del promotor",
+      "Asistir a una sesión determinada",
+      "Almacenar asistentes en la base de datos"
+     ]
+    }
+   ],
+   "tiempos": {
+    "traducir_entrada": 0.147,
+    "recuperar_arriba": 0.01,
+    "generar_historias": 2.562,
+    "deduplicar_historias": 0.197,
+    "recuperar_abajo": 0.018,
+    "generar_tareas": 5.104,
+    "deduplicar_tareas": 0.034,
+    "reasignar_tareas": 0.041,
+    "traducir": 0.347,
+    "total": 8.46
+   },
+   "vecinos_proyecto": [
+    {
+     "proyecto": "dalpiaz:g21-badcamp",
+     "similitud": 0.533
+    },
+    {
+     "proyecto": "RedHat:DESIGN",
+     "similitud": 0.502
+    }
+   ],
+   "n_banco": 36,
+   "n_tareas": 39
+  }
+ },
+ {
+  "titulo": "Bookstore (en)",
+  "descripcion": "An e-commerce platform for selling audiobooks and ebooks, with chapter previews, a personal library and in-app payments.",
+  "resultado": {
+   "historias": [
+    {
+     "historia": "As a narrator, I want to receive notifications when a audiobook is out of stock, so that I can plan for an earnings.",
+     "votos": 3,
+     "relevancia": 0.644,
+     "tareas": [
+      "Send notifications to narrators when a audiobook is out of stock",
+      "Add notifications to the audiobook",
+      "Store notifications in the narrator's profile",
+      "Send notifications to narrators when a notification is out of stock"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AF",
+       "similitud": 0.505
+      },
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.431
+      }
+     ],
+     "historia_es": "Como narrador, quiero recibir notificaciones cuando un audiolibro está agotado, para poder planificar unas ganancias.",
+     "tareas_es": [
+      "Enviar notificaciones a narradores cuando un audiolibro esté agotado",
+      "Añadir notificaciones al audiolibro",
+      "Almacenar notificaciones en el perfil del narrador",
+      "Enviar notificaciones a narradores cuando una notificación esté agotada"
+     ]
+    },
+    {
+     "historia": "As a publisher, I want to receive notifications when a chapter is updated, so that I can prepare.",
+     "votos": 2,
+     "relevancia": 0.508,
+     "tareas": [
+      "Implement a notification system in the publisher's dashboard",
+      "Add notifications when chapter is updated",
+      "Update chapter details page"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AF",
+       "similitud": 0.491
+      },
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.476
+      }
+     ],
+     "historia_es": "Como editor, quiero recibir notificaciones cuando se actualice un capítulo, para que pueda prepararlo.",
+     "tareas_es": [
+      "Implementar un sistema de notificación en el panel de la editorial",
+      "Añadir notificaciones cuando se actualice el capítulo",
+      "Actualizar los detalles del capítulo página"
+     ]
+    },
+    {
+     "historia": "As a catalogue editor, I want to categorize book categories, so that I can make informed decisions.",
+     "votos": 1,
+     "relevancia": 0.348,
+     "tareas": [
+      "Store category categories in the database",
+      "Display category categories on the catalogue dashboard",
+      "Create a category classification system"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:WOOKIE",
+       "similitud": 0.513
+      },
+      {
+       "proyecto": "RedHat:ODC",
+       "similitud": 0.498
+      }
+     ],
+     "historia_es": "Como editor de catálogos, quiero categorizar categorías de libros, para poder tomar decisiones informadas.",
+     "tareas_es": [
+      "Almacenar categorías en la base de datos",
+      "Mostrar categorías de categorías en el panel de catalogo",
+      "Crear un sistema de clasificación de categorías"
+     ]
+    },
+    {
+     "historia": "As a reader, I want to download books by location, so that I can watch the books and deliver the appropriate content.",
+     "votos": 1,
+     "relevancia": 0.588,
+     "tareas": [
+      "Allow the reader to download books by location in the database",
+      "Send a notification to the reader if a book is available",
+      "Add a download page to the website"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AF",
+       "similitud": 0.472
+      },
+      {
+       "proyecto": "JiraEcosystem:UPM",
+       "similitud": 0.452
+      }
+     ],
+     "historia_es": "Como lector, quiero descargar libros por ubicación, para poder ver los libros y entregar el contenido apropiado.",
+     "tareas_es": [
+      "Permitir al lector descargar libros por ubicación en la base de datos",
+      "Enviar una notificación al lector si un libro está disponible",
+      "Añadir una página de descarga al sitio web"
+     ]
+    },
+    {
+     "historia": "As a narrator, I want to receive notifications about the financial status of my audiobooks, so that I can keep track of the service.",
+     "votos": 2,
+     "relevancia": 0.61,
+     "tareas": [
+      "Store financial status data in the narrator's profile",
+      "Send a notification to narrator about the financial status",
+      "Display financial status on the narrator’s dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AF",
+       "similitud": 0.489
+      },
+      {
+       "proyecto": "RedHat:APPAI",
+       "similitud": 0.42
+      }
+     ],
+     "historia_es": "Como narrador, quiero recibir notificaciones sobre el estado financiero de mis audiolibros, para poder seguir el rastro del servicio.",
+     "tareas_es": [
+      "Almacenar datos de estado financiero en el perfil del narrador",
+      "Enviar una notificación al narrador sobre el estado financiero",
+      "Mostrar el estado financiero en el panel del narrador"
+     ]
+    },
+    {
+     "historia": "As a narrator, I want to receive notifications when an audiobooks are available, so that I can assist them efficiently.",
+     "votos": 2,
+     "relevancia": 0.556,
+     "tareas": [
+      "Implement a notification system in the narrator's dashboard",
+      "Store audiobooks in the narrator's profile",
+      "Add documentation for the audiobook editor"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AF",
+       "similitud": 0.519
+      },
+      {
+       "proyecto": "Qt:QTBUG",
+       "similitud": 0.481
+      }
+     ],
+     "historia_es": "Como narrador, quiero recibir notificaciones cuando hay un audiolibros disponibles, para que pueda ayudarlos de manera eficiente.",
+     "tareas_es": [
+      "Implementar un sistema de notificación en el panel del narrador",
+      "Almacenar audiolibros en el perfil del narrador",
+      "Añadir documentación para el editor de audiolibros"
+     ]
+    },
+    {
+     "historia": "As a catalogue editor, I want to generate reports on audiobooks, so that I can analyze the performance of my content.",
+     "votos": 1,
+     "relevancia": 0.475,
+     "tareas": [
+      "Create a report generation feature in the catalogue editor dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:IMPALA",
+       "similitud": 0.441
+      },
+      {
+       "proyecto": "RedHat:ODC",
+       "similitud": 0.432
+      }
+     ],
+     "historia_es": "Como editor de catálogos, quiero generar informes sobre audiolibros, para poder analizar el rendimiento de mi contenido.",
+     "tareas_es": [
+      "Crear una función de generación de informes en el panel del editor de catálogos"
+     ]
+    },
+    {
+     "historia": "As a catalogue editor, I want to update chapter details, so that I can assist readers with the appropriate information.",
+     "votos": 1,
+     "relevancia": 0.363,
+     "tareas": [
+      "Store chapter details in the database",
+      "Display chapter details on the editor's dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:TAJO",
+       "similitud": 0.508
+      },
+      {
+       "proyecto": "Apache:HIVE",
+       "similitud": 0.489
+      }
+     ],
+     "historia_es": "Como editor de catálogos, quiero actualizar los detalles del capítulo, para poder ayudar a los lectores con la información apropiada.",
+     "tareas_es": [
+      "Almacenar los detalles del capítulo en la base de datos",
+      "Mostrar detalles del capítulo en el panel de editor de catálogos"
+     ]
+    },
+    {
+     "historia": "As a catalogue editor, I want to set up custom videobooks, so that the booker can easily find the item best fit.",
+     "votos": 1,
+     "relevancia": 0.469,
+     "tareas": [
+      "Store custom videobooks in the database",
+      "Display custom videobooks on the booker dashboard",
+      "Add documentation for the booker",
+      "Display custom videobooks on the catalogue editor dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AF",
+       "similitud": 0.442
+      },
+      {
+       "proyecto": "Qt:QTBUG",
+       "similitud": 0.427
+      }
+     ],
+     "historia_es": "Como editor de catálogos, quiero configurar videolibros personalizados, de modo que el corredor de apuestas pueda encontrar fácilmente el artículo que mejor se ajuste.",
+     "tareas_es": [
+      "Almacenar los videolibros personalizados en la base de datos",
+      "Mostrar videolibros personalizados en el panel de juegos",
+      "Añadir documentación para el contador",
+      "Mostrar los videolibros personalizados en el panel del editor de catálogo"
+     ]
+    },
+    {
+     "historia": "As a publisher, I want to manage the availability of audiobooks, so that I can restock content.",
+     "votos": 1,
+     "relevancia": 0.642,
+     "tareas": [
+      "Store audiobooks in the database",
+      "Display audiobooks on the publisher's dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:AMKT",
+       "similitud": 0.536
+      },
+      {
+       "proyecto": "RedHat:AF",
+       "similitud": 0.536
+      }
+     ],
+     "historia_es": "Como editor, quiero gestionar la disponibilidad de audiolibros, para que pueda reabastecer el contenido.",
+     "tareas_es": [
+      "Almacenar audiolibros en la base de datos",
+      "Mostrar audiolibros en el panel de la editorial"
+     ]
+    }
+   ],
+   "tiempos": {
+    "recuperar_arriba": 0.009,
+    "generar_historias": 2.411,
+    "deduplicar_historias": 0.182,
+    "recuperar_abajo": 0.016,
+    "generar_tareas": 5.118,
+    "deduplicar_tareas": 0.039,
+    "reasignar_tareas": 0.031,
+    "traducir": 0.33,
+    "total": 8.136
+   },
+   "vecinos_proyecto": [
+    {
+     "proyecto": "Hyperledger:BE",
+     "similitud": 0.411
+    },
+    {
+     "proyecto": "RedHat:DESIGN",
+     "similitud": 0.387
+    }
+   ],
+   "n_banco": 48,
+   "n_tareas": 28
+  }
+ },
+ {
+  "titulo": "Clinic booking (en)",
+  "descripcion": "A clinic system to manage medical records, appointments and prescriptions, with role-based access for doctors and reception.",
+  "resultado": {
+   "historias": [
+    {
+     "historia": "As a doctor, I want to view patient contact information, so that I can receive immediate treatment.",
+     "votos": 1,
+     "relevancia": 0.626,
+     "tareas": [
+      "Store patient contact information in the database",
+      "Display patient contact information on the doctor's dashboard",
+      "Add documentation on how to view a given query",
+      "Add documentation for the query"
+     ],
+     "origen": [
+      {
+       "proyecto": "JFrog:RTFACT",
+       "similitud": 0.432
+      },
+      {
+       "proyecto": "Apache:RAVE",
+       "similitud": 0.424
+      }
+     ],
+     "historia_es": "Como médico, quiero ver la información de contacto del paciente, para que pueda recibir tratamiento inmediato.",
+     "tareas_es": [
+      "Almacenar la información de contacto del paciente en la base de datos",
+      "Mostrar información de contacto del paciente en el panel del médico",
+      "Añadir documentación sobre cómo ver una consulta dada",
+      "Añadir documentación para la consulta"
+     ]
+    },
+    {
+     "historia": "As a clinic manager, I want to monitor the reception duration, so that I can ensure transparency.",
+     "votos": 1,
+     "relevancia": 0.595,
+     "tareas": [
+      "Store reception duration data in the database",
+      "Send a notification to the clinic manager about the reception duration",
+      "Add ability to monitor the confirmation duration",
+      "Display reception duration on the dashboard",
+      "Notify the clinic manager if a reception duration exceeds a threshold"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:SLING",
+       "similitud": 0.488
+      },
+      {
+       "proyecto": "RedHat:ENTMQMAAS",
+       "similitud": 0.474
+      }
+     ],
+     "historia_es": "Como gerente de clínica, quiero monitorear la duración de la recepción, para poder garantizar la transparencia.",
+     "tareas_es": [
+      "Almacenar los datos de la duración de la recepción en la base de datos",
+      "Enviar una notificación al gerente de la clínica sobre la duración de la recepción",
+      "Añadir capacidad para monitorear la duración de la confirmación",
+      "Mostrar la duración de la recepción en el panel",
+      "Notificar al gerente de la clínica si la duración de la recepción supera un umbral"
+     ]
+    },
+    {
+     "historia": "As a receptionist, I want to manage appointment history, so that I can optimize service interface.",
+     "votos": 1,
+     "relevancia": 0.483,
+     "tareas": [
+      "Store appointment history in the database",
+      "Display appointment history on the receptionist's dashboard",
+      "Send a notification to the receptionist about the appointment history",
+      "Procedure for Reservation History",
+      "Procedure for Canceling a Reservation History",
+      "Implement a history management interface in the receptionist dashboard"
+     ],
+     "origen": [
+      {
+       "proyecto": "Apache:MAPREDUCE",
+       "similitud": 0.541
+      },
+      {
+       "proyecto": "Apache:LENS",
+       "similitud": 0.452
+      }
+     ],
+     "historia_es": "Como recepcionista, quiero gestionar el historial de citas, para poder optimizar la interfaz de servicio.",
+     "tareas_es": [
+      "Almacenar el historial de citas en la base de datos",
+      "Mostrar el historial de citas en el panel de la recepcionista",
+      "Enviar una notificación a la recepcionista sobre el historial de citas",
+      "Realizar el procedimiento para el Historial de reservas",
+      "Realizar un procedimiento para cancelar un historial de reservas",
+      "Implementar una interfaz de gestión de historia en el panel de recepcionistas"
+     ]
+    },
+    {
+     "historia": "As a patient, I want to receive notifications for upcoming appointments, so that I can plan my visits.",
+     "votos": 3,
+     "relevancia": 0.518,
+     "tareas": [
+      "Create a notification system for upcoming appointments",
+      "Send notifications to patients via email",
+      "Add notifications for upcoming requests",
+      "Add notification for upcoming tasks",
+      "Prepare a preliminary planning meeting"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.572
+      },
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.553
+      }
+     ],
+     "historia_es": "Como paciente, quiero recibir notificaciones para las próximas citas, para poder planificar mis visitas.",
+     "tareas_es": [
+      "Crear un sistema de notificación para las próximas citas",
+      "Enviar notificaciones a los pacientes por correo electrónico",
+      "Añadir notificaciones para las próximas solicitudes",
+      "Añadir notificación para las próximas tareas",
+      "Preparar una reunión preliminar de planificación"
+     ]
+    },
+    {
+     "historia": "As a doctor, I want to see appointment progress, so that I can manage my schedule efficiently.",
+     "votos": 1,
+     "relevancia": 0.51,
+     "tareas": [
+      "Store appointment progress in the database",
+      "Display appointment progress on the doctor's dashboard",
+      "Prepare the planning meeting",
+      "Send notifications to doctors about appointment progress"
+     ],
+     "origen": [
+      {
+       "proyecto": "IntelDAOS:DAOS",
+       "similitud": 0.487
+      },
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.482
+      }
+     ],
+     "historia_es": "Como médico, quiero ver el progreso de la cita, para poder manejar mi horario de manera eficiente.",
+     "tareas_es": [
+      "Almacenar el progreso de las citas en la base de datos",
+      "Mostrar el progreso de la cita en el panel del médico",
+      "Preparar la reunión de planificación",
+      "Enviar notificaciones a los médicos sobre el progreso de la cita"
+     ]
+    },
+    {
+     "historia": "As a patient, I want to receive notifications about appointments, so that I can stay informed.",
+     "votos": 2,
+     "relevancia": 0.549,
+     "tareas": [
+      "Add notifications about admission"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:AA",
+       "similitud": 0.555
+      },
+      {
+       "proyecto": "JiraEcosystem:PLE",
+       "similitud": 0.486
+      }
+     ],
+     "historia_es": "Como paciente, quiero recibir notificaciones sobre las citas, para poder estar informado.",
+     "tareas_es": [
+      "Añadir notificaciones sobre admisión"
+     ]
+    },
+    {
+     "historia": "As a receptionist, I want to manage appointment cancellations, so that I can ensure proper communication.",
+     "votos": 1,
+     "relevancia": 0.364,
+     "tareas": [
+      "Create a cancellation form in the receptionist app",
+      "Store cancellation details in the database",
+      "Notify the receptionist if the cancellation is cancelled"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:UPM",
+       "similitud": 0.475
+      },
+      {
+       "proyecto": "Apache:HIVE",
+       "similitud": 0.474
+      }
+     ],
+     "historia_es": "Como recepcionista, quiero gestionar cancelaciones de citas, para poder asegurar una comunicación adecuada.",
+     "tareas_es": [
+      "Crear un formulario de cancelación en la aplicación de recepcionista",
+      "Almacenar los detalles de cancelación en la base de datos",
+      "Notificar a la recepcionista si la cancelación es cancelada"
+     ]
+    },
+    {
+     "historia": "As a doctor, I want to provide additional credentials, so that I can offerpersonalized treatment.",
+     "votos": 1,
+     "relevancia": 0.558,
+     "tareas": [
+      "Implement a credential validation feature in the doctor dashboard",
+      "Store credential information in the doctor's profile",
+      "Add credentials to the client side",
+      "Provide credentials for the client side",
+      "Notify doctors of additional credentials"
+     ],
+     "origen": [
+      {
+       "proyecto": "Sonatype:NEXUS",
+       "similitud": 0.462
+      },
+      {
+       "proyecto": "Apache:RAVE",
+       "similitud": 0.451
+      }
+     ],
+     "historia_es": "Como médico, quiero proporcionar credenciales adicionales, para poder ofrecer un tratamiento personalizado.",
+     "tareas_es": [
+      "Implementar una función de validación de credenciales en el panels médicos",
+      "Almacenar la información de credenciales en el perfil del médico",
+      "Añadir credenciales al lado del cliente",
+      "Proporcionar credenciales para el cliente",
+      "Notificar a los médicos de credenciales adicionales"
+     ]
+    },
+    {
+     "historia": "As a patient, I want to view my medical history, so that I can manage my workload.",
+     "votos": 2,
+     "relevancia": 0.587,
+     "tareas": [
+      "Store patient medical history in the database"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:RIFTSAW",
+       "similitud": 0.561
+      },
+      {
+       "proyecto": "Apache:MAPREDUCE",
+       "similitud": 0.554
+      }
+     ],
+     "historia_es": "Como paciente, quiero ver mi historial médico, para poder manejar mi carga de trabajo.",
+     "tareas_es": [
+      "Almacenar la historia clínica del paciente en la base de datos"
+     ]
+    },
+    {
+     "historia": "As a clinic manager, I want to monitor clinic performance, so that I can assess overall health performance.",
+     "votos": 1,
+     "relevancia": 0.522,
+     "tareas": [
+      "Store clinic performance data in the database",
+      "Generate a report of clinic performance data"
+     ],
+     "origen": [
+      {
+       "proyecto": "RedHat:ODC",
+       "similitud": 0.488
+      },
+      {
+       "proyecto": "Hyperledger:FAB",
+       "similitud": 0.479
+      }
+     ],
+     "historia_es": "Como gerente de clínica, quiero monitorear el desempeño de la clínica, para poder evaluar el desempeño general de la salud.",
+     "tareas_es": [
+      "Almacenar los datos de desempeño de la clínica en la base de datos",
+      "Generar un informe de los datos de desempeño de la clínica"
+     ]
+    },
+    {
+     "historia": "As a clinic manager, I want to review and approve appointment cancellations, so that I can manage staff effectively.",
+     "votos": 1,
+     "relevancia": 0.472,
+     "tareas": [
+      "Review and approve a notification email"
+     ],
+     "origen": [
+      {
+       "proyecto": "JiraEcosystem:UPM",
+       "similitud": 0.477
+      },
+      {
+       "proyecto": "Apache:HIVE",
+       "similitud": 0.446
+      }
+     ],
+     "historia_es": "Como gerente de clínica, quiero revisar y aprobar las cancelaciones de citas, para que pueda administrar el personal de manera eficaz.",
+     "tareas_es": [
+      "Revisar y aprobar un correo electrónico de notificación"
+     ]
+    }
+   ],
+   "tiempos": {
+    "recuperar_arriba": 0.009,
+    "generar_historias": 2.145,
+    "deduplicar_historias": 0.173,
+    "recuperar_abajo": 0.015,
+    "generar_tareas": 4.956,
+    "deduplicar_tareas": 0.04,
+    "reasignar_tareas": 0.043,
+    "traducir": 0.269,
+    "total": 7.649
+   },
+   "vecinos_proyecto": [
+    {
+     "proyecto": "RedHat:RHSSO",
+     "similitud": 0.486
+    },
+    {
+     "proyecto": "Hyperledger:CE",
+     "similitud": 0.467
+    }
+   ],
+   "n_banco": 48,
+   "n_tareas": 37
+  }
+ }
+]

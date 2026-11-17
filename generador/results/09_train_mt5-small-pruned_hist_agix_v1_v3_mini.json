@@ -1,0 +1,200 @@
+{
+ "modelo": "models/mt5-small-pruned_hist_agix_v1",
+ "bs": 8,
+ "max_out": 192,
+ "lr": 0.0005,
+ "epocas": 30,
+ "hist": [
+  {
+   "epoca": 1,
+   "train_loss": 2.943801050186157,
+   "val_loss": 2.538191933108052,
+   "seg": 9
+  },
+  {
+   "epoca": 2,
+   "train_loss": 2.766196837425232,
+   "val_loss": 2.30299520395773,
+   "seg": 5
+  },
+  {
+   "epoca": 3,
+   "train_loss": 2.51779061794281,
+   "val_loss": 2.0923159401364546,
+   "seg": 5
+  },
+  {
+   "epoca": 4,
+   "train_loss": 2.2949697303771974,
+   "val_loss": 1.9077249975548578,
+   "seg": 5
+  },
+  {
+   "epoca": 5,
+   "train_loss": 2.0904597282409667,
+   "val_loss": 1.7361851206145336,
+   "seg": 5
+  },
+  {
+   "epoca": 6,
+   "train_loss": 1.9567381143569946,
+   "val_loss": 1.5912124924707352,
+   "seg": 5
+  },
+  {
+   "epoca": 7,
+   "train_loss": 1.8029471635818481,
+   "val_loss": 1.4566202034655304,
+   "seg": 5
+  },
+  {
+   "epoca": 8,
+   "train_loss": 1.648995382785797,
+   "val_loss": 1.3504880841936646,
+   "seg": 5
+  },
+  {
+   "epoca": 9,
+   "train_loss": 1.5667161393165587,
+   "val_loss": 1.2471497343872318,
+   "seg": 5
+  },
+  {
+   "epoca": 10,
+   "train_loss": 1.465254044532776,
+   "val_loss": 1.1454028461205283,
+   "seg": 5
+  },
+  {
+   "epoca": 11,
+   "train_loss": 1.3682927465438843,
+   "val_loss": 1.0718252173788154,
+   "seg": 5
+  },
+  {
+   "epoca": 12,
+   "train_loss": 1.2966802024841309,
+   "val_loss": 0.9913510288851163,
+   "seg": 5
+  },
+  {
+   "epoca": 13,
+   "train_loss": 1.2207051396369935,
+   "val_loss": 0.9433621502279774,
+   "seg": 5
+  },
+  {
+   "epoca": 14,
+   "train_loss": 1.1711377382278443,
+   "val_loss": 0.8793398085482341,
+   "seg": 5
+  },
+  {
+   "epoca": 15,
+   "train_loss": 1.0977224934101104,
+   "val_loss": 0.8244245956181404,
+   "seg": 5
+  },
+  {
+   "epoca": 16,
+   "train_loss": 1.0608188581466675,
+   "val_loss": 0.784897612198496,
+   "seg": 5
+  },
+  {
+   "epoca": 17,
+   "train_loss": 1.0163535320758819,
+   "val_loss": 0.7466962370579852,
+   "seg": 5
+  },
+  {
+   "epoca": 18,
+   "train_loss": 0.966352264881134,
+   "val_loss": 0.6995807162073162,
+   "seg": 5
+  },
+  {
+   "epoca": 19,
+   "train_loss": 0.9456355667114258,
+   "val_loss": 0.6751607656248452,
+   "seg": 5
+  },
+  {
+   "epoca": 20,
+   "train_loss": 0.8954177856445312,
+   "val_loss": 0.6389793194331151,
+   "seg": 5
+  },
+  {
+   "epoca": 21,
+   "train_loss": 0.8818173968791961,
+   "val_loss": 0.6152736066139697,
+   "seg": 5
+  },
+  {
+   "epoca": 22,
+   "train_loss": 0.8683320832252502,
+   "val_loss": 0.5999446068592753,
+   "seg": 5
+  },
+  {
+   "epoca": 23,
+   "train_loss": 0.8349901425838471,
+   "val_loss": 0.5818050154696036,
+   "seg": 5
+  },
+  {
+   "epoca": 24,
+   "train_loss": 0.8154584014415741,
+   "val_loss": 0.5636549198942393,
+   "seg": 5
+  },
+  {
+   "epoca": 25,
+   "train_loss": 0.7883373761177063,
+   "val_loss": 0.5530438691742487,
+   "seg": 5
+  },
+  {
+   "epoca": 26,
+   "train_loss": 0.8022262907028198,
+   "val_loss": 0.5409445912999667,
+   "seg": 5
+  },
+  {
+   "epoca": 27,
+   "train_loss": 0.7656370115280151,
+   "val_loss": 0.525783384917784,
+   "seg": 5
+  },
+  {
+   "epoca": 28,
+   "train_loss": 0.7685548913478851,
+   "val_loss": 0.5250538911737656,
+   "seg": 5
+  },
+  {
+   "epoca": 29,
+   "train_loss": 0.7611501753330231,
+   "val_loss": 0.5211741765682615,
+   "seg": 5
+  },
+  {
+   "epoca": 30,
+   "train_loss": 0.7456064009666443,
+   "val_loss": 0.5196128679746665,
+   "seg": 5
+  }
+ ],
+ "v0": 2.673442858196411,
+ "mejor_val": 0.5196128679746665,
+ "vram_pico": 3.4,
+ "min": 2.9,
+ "gens": [
+  "[MAPREDUCE-3902] TaskHeartbeatHandler should extends HeartbeatHandler's own class ; Create a new queue for reuse container on the MR AM app ; Add MapReduce related classes to the AMContainerManager ; Implement a new mapreduce container for users to track the number of requests that are being swapped to the AM app",
+  "Add a property activation for sakai-release profile ; Clean up plugins in kernel pom, add updated source plugin to master ; Missing artifact sakai-rsf-web-templates is not deployed in maven central",
+  "Create JPA Group Repository ; Create MongoDB Group Service",
+  "Add support for querable sources ; Expand native-query support",
+  "Hibernate usage in JBoss Messaging ; isolating Hibernate as an internal impl"
+ ]
+}

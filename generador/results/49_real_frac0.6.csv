@@ -1,0 +1,13 @@
+variante,proyecto,n_ref,n_gen,sF1,precision,cobertura,segundos,votos_max,relevancia
+viejo,fish_chips,50,12,0.7076,0.7582,0.6634,4.7,2,0.0
+viejo,ticket,54,12,0.6325,0.693,0.5816,4.8,1,0.0
+viejo,grocery,49,12,0.6149,0.7187,0.5372,2.8,2,0.0
+viejo,school,61,12,0.643,0.7006,0.5941,4.5,2,0.0
+viejo,sports,63,12,0.611,0.6785,0.5558,4.9,3,0.0
+viejo,supermarket,51,12,0.6793,0.7579,0.6155,4.7,2,0.0
+nuevo,fish_chips,50,12,0.612,0.6666,0.5657,2.8,1,0.0
+nuevo,ticket,54,12,0.6238,0.6882,0.5704,5.4,1,0.0
+nuevo,grocery,49,12,0.602,0.6951,0.531,2.7,3,0.0
+nuevo,school,61,12,0.6181,0.6741,0.5707,5.2,3,0.0
+nuevo,sports,63,12,0.63,0.6897,0.5799,5.1,1,0.0
+nuevo,supermarket,51,12,0.66,0.7237,0.6066,4.9,1,0.0

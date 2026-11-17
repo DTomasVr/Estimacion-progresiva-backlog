@@ -1,0 +1,44 @@
+{
+ "modelo": "models/mt5-small-pruned_hist_agix_v1",
+ "bs": 16,
+ "max_out": 192,
+ "lr": 0.0005,
+ "epocas": 4,
+ "hist": [
+  {
+   "epoca": 1,
+   "train_loss": 2.484244944075861,
+   "val_loss": 1.9320275466399979,
+   "seg": 70
+  },
+  {
+   "epoca": 2,
+   "train_loss": 1.8831026106191104,
+   "val_loss": 1.791190949487672,
+   "seg": 58
+  },
+  {
+   "epoca": 3,
+   "train_loss": 1.7234163111483558,
+   "val_loss": 1.7260547275481763,
+   "seg": 58
+  },
+  {
+   "epoca": 4,
+   "train_loss": 1.6415415194612988,
+   "val_loss": 1.7032834783168809,
+   "seg": 57
+  }
+ ],
+ "v0": 3.8858659416393504,
+ "mejor_val": 1.7032834783168809,
+ "vram_pico": 2.62,
+ "min": 4.3,
+ "gens": [
+  "Create a quote generation feature in the broker dashboard ; Store the quote data in the database ; Validate the quote format before saving",
+  "Store absences in the database ; Display absences on the secretary's dashboard",
+  "Create a product purchase form in the client app ; Store product purchase details in the database ; Send a confirmation email to the client when a product is purchased",
+  "Store seat sales data in the database ; Display seat sales on the box office staff dashboard ; Send a notification to the staff if seat sales exceeds a threshold",
+  "Create a report generation feature in the HR admin panel ; Generate reports on hiring trends ; Send reports via email to HR administrators"
+ ]
+}

@@ -1,0 +1,5 @@
+sistema,sF1,precision,cobertura,tareas
+"modelo 1 (bs16, lr1.4e-3)",0.4487,0.5048,0.416,2.08
+"modelo 2 (bs8, lr9.2e-4)",0.4342,0.491,0.4006,2.07
+union semantica 0.90,0.4601,0.4936,0.4452,2.86
+concatenacion sin dedup,0.4657,0.4972,0.4512,4.15

@@ -1,0 +1,4 @@
+modelo,sF1,hF1,rouge1,ratio,sPrec,sCob
+solo_recuperacion,0.2866,0.0,0.0183,0.0777,0.3462,0.2471
+mt5-small-pruned_agix_v1,0.33,0.0023,0.0093,0.0351,0.4629,0.2637
+mt5-base-pruned_agix_v1,0.3233,0.0009,0.0128,0.0403,0.4608,0.2579

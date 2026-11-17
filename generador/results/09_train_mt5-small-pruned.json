@@ -1,0 +1,68 @@
+{
+ "modelo": "F:/Software Task generation Model/models/mt5-small-pruned",
+ "bs": 16,
+ "max_out": 192,
+ "lr": 0.0014,
+ "epocas": 12,
+ "hist": [
+  {
+   "epoca": 1,
+   "train_loss": 5.041983356740739,
+   "val_loss": 3.608517754548696,
+   "seg": 414
+  },
+  {
+   "epoca": 2,
+   "train_loss": 3.53804141636248,
+   "val_loss": 3.4128109973437075,
+   "seg": 486
+  },
+  {
+   "epoca": 3,
+   "train_loss": 3.233621053121708,
+   "val_loss": 3.3480279393850525,
+   "seg": 472
+  },
+  {
+   "epoca": 4,
+   "train_loss": 3.02329231566853,
+   "val_loss": 3.341843988262027,
+   "seg": 436
+  },
+  {
+   "epoca": 5,
+   "train_loss": 2.857202053732342,
+   "val_loss": 3.3295041175703455,
+   "seg": 361
+  },
+  {
+   "epoca": 6,
+   "train_loss": 2.7122747441132864,
+   "val_loss": 3.322254751684625,
+   "seg": 364
+  },
+  {
+   "epoca": 7,
+   "train_loss": 2.592568627993266,
+   "val_loss": 3.3306874373979882,
+   "seg": 359
+  },
+  {
+   "epoca": 8,
+   "train_loss": 2.480980157521036,
+   "val_loss": 3.3579081268466218,
+   "seg": 356
+  }
+ ],
+ "v0": 13.30268950257428,
+ "mejor_val": 3.322254751684625,
+ "vram_pico": 6.14,
+ "min": 54.5,
+ "gens": [
+  "Eclipse PDE integration ; Spring-DM integration",
+  "Investigate failures in nightly build ; Investigate failsafe-reports archive",
+  "Update Architecture Guide for accuracy and accuracy ; Update Architecture Guide to include accuracy & accuracy",
+  "Testing of Mobile.next() on Ubuntu 3.11 ; Testing of Ubuntu 3.10 on Windows 3.11",
+  "Create a basic implementation of stateful operators ; Create a new implementation of Stateful operators"
+ ]
+}

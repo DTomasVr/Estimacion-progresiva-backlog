@@ -1,0 +1,46 @@
+{
+ "modelo": "google/mt5-small",
+ "bs": 4,
+ "acum": 4,
+ "bs_efectivo": 16,
+ "max_out": 192,
+ "lr": 0.0005,
+ "epocas": 4,
+ "hist": [
+  {
+   "epoca": 1,
+   "train_loss": 4.519303336661546,
+   "val_loss": 3.427555125766494,
+   "seg": 1184
+  },
+  {
+   "epoca": 2,
+   "train_loss": 3.222773305427777,
+   "val_loss": 3.3310400016707984,
+   "seg": 1133
+  },
+  {
+   "epoca": 3,
+   "train_loss": 3.0257857905400156,
+   "val_loss": 3.2870924412948157,
+   "seg": 1073
+  },
+  {
+   "epoca": 4,
+   "train_loss": 2.9167786866978753,
+   "val_loss": 3.274267355525345,
+   "seg": 1055
+  }
+ ],
+ "v0": 13.752072522474633,
+ "mejor_val": 3.274267355525345,
+ "vram_pico": 5.25,
+ "min": 75.2,
+ "gens": [
+  "Create a basic API for creating a project ; Create a project for creating the project ; Add a project to the project",
+  "Add support for CORS in REST API ; Add support for cORS in the REST API",
+  "Prometheus monitoring ; Prometheus Monitoring",
+  "Create a new documentation for the revision control ; Create a dashboard for the Revision control ; Add a summary of the changes in the revision control",
+  "Improve the coverage of expression functions in SQL/DataFrame ; Add support for expression functions"
+ ]
+}

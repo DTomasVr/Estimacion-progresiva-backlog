@@ -1,0 +1,461 @@
+================================================================================================
+[banca] 12 historias, 36 tareas, 4 roles, atribucion 86 %, 25.9s
+  roles: compliance officer x3 > account holder x3 > customer x3 > support agent x3
+Una app de banca digital donde los clientes abren una cuenta con verificacion de identidad, programan transferencias, congelan su tarjeta y reciben alertas de fraude.
+
+  1. Como oficial de cumplimiento, quiero asegurarme de que todas las cuentas han sido procesadas por el sistema, para que pueda evitar comportamientos fraudulentos.
+       - Almacenar información sobre el cumplimiento en la base de datos
+       - Realizar el procedimiento para enviar cuentas al sistema
+       - Realizar el procedimiento para generar cuentas desde el sistema
+
+  2. Como titular de una cuenta, quiero generar informes sobre cheques de identidad, para poder entender la actividad que se está realizando.
+       - Crear una función de generación de informes en el panel del titular de la cuenta
+
+  3. Como cliente, quiero recibir alertas de descuento sobre la asistencia a mi tarjeta, para que pueda evitar casos fraudulentos.
+       - Almacenar alertas de descuento en el perfil del cliente
+       - Enviar un correo electrónico de confirmación al cliente cuando se aplique el descuento
+       - Añadir capacidad para recibir alertas sobre la asistencia a la tarjeta
+
+  4. Como agente de soporte, quiero ver los informes de compromiso con el cliente, para poder resolver mejor los problemas.
+       - Almacenar datos de compromiso de clientes en la base de datos
+       - Mostrar informes de compromiso de clientes en el panel
+       - Informar de los contactos con los proveedores
+       - Informar de la interacción con el proveedor
+
+  5. Como oficial de cumplimiento, quiero poder manejar alertas de fraude, para poder asegurar el cumplimiento.
+       - Implementar un panel de oficiales de cumplimiento
+       - Almacenar las alertas de cumplimiento en la base de datos
+       - Añadir capacidad para manejar alertas falsas
+       - Añadir documentación para las alertas falsas
+       - Permitir que los oficiales de cumplimiento muestren alertas sospechosas
+       - Almacenar información de alerta sospechosa en la base de datos
+
+  6. Como titular de una cuenta, quiero comprobar mis próximos pagos, para que pueda administrar mis finanzas de manera eficiente.
+       - Almacenar los datos de pago en la base de datos
+       - Mostrar los detalles de pago en el panel del titular de la cuenta
+
+  7. Como cliente, quiero recibir notificaciones sobre mis transacciones fiscales, para poder mantenerme informado sobre un cambio.
+       - Aplicar un sistema de notificación de las transacciones fiscales
+       - Enviar notificaciones al cliente por correo electrónico
+       - Añadir notificaciones sobre las transacciones pendientes
+       - Añadir notificación sobre las transacciones adicionales
+
+  8. Como cliente, quiero recibir notificaciones para el manejo de impuestos, para poder planificar mi horario.
+       - Añadir notificación para las notificaciones
+
+  9. Como oficial de cumplimiento, quiero monitorear la actividad sospechosa, para poder evaluar el cumplimiento.
+       - Almacenar datos de actividades sospechosas en la base de datos
+       - Mostrar actividad sospechosa en el panel del oficial de cumplimiento
+       - Monitorear la actividad
+
+ 10. Como agente de soporte, quiero recibir notificaciones sobre transacciones marcadas, para poder manejar transacciones en servicios futuros apropiados.
+       - Almacenar los detalles de transacción marcados en la base de datos
+       - Enviar notificaciones por correo electrónico al agente de soporte cuando se marca una transacción
+
+ 11. Como titular de una cuenta, quiero seguir mi actividad financiera, para poder administrar mis finanzas de manera efectiva.
+       - Almacenar datos de actividad financiera en la base de datos
+       - Mostrar el estado de actividad financiera en el panel del titular de la cuenta
+       - Añadir una forma de rastrear el número de transacciones activas
+
+ 12. Como agente de soporte, quiero recibir notificaciones cuando una cuenta puede emitir una disputa, de modo que pueda ayudarles.
+       - Almacenar los detalles de la notificación en la base de datos
+       - Enviar una notificación por correo electrónico al agente de soporte
+       - Crear un formulario de notificación de disputas en el panel del agente de soporte
+       - Enviar una notificación al agente de soporte si se emite la controversia
+
+================================================================================================
+[bodas] 12 historias, 36 tareas, 3 roles, atribucion 86 %, 10.8s
+  roles: guest x5 > vendor x4 > couple x3
+Una plataforma para organizar bodas donde los novios contratan proveedores, arman la lista de invitados con sus restricciones de comida y controlan el presupuesto.
+
+  1. Como vendedor, quiero recibir notificaciones de las restricciones alimentarias de mi ser querido, para poder administrar mi presupuesto.
+       - Enviar notificaciones al estilista cuando se realice una nueva restricción
+
+  2. Como invitado, quiero ver mi disponibilidad de mis productos, para poder administrar mi horario de manera efectiva.
+       - Almacenar datos de disponibilidad en la base de datos
+       - Mostrar datos de disponibilidad en el panel de invitado
+       - Enviar una notificación al invitado sobre la disponibilidad
+       - Revisar la disponibilidad del producto
+
+  3. Como pareja, quiero saber la disponibilidad de la comida preferida de un miembro, para que pueda asegurar una planificación adecuada.
+       - Desarrollar un sistema de disponibilidad de comidas preferido
+       - Conservar los detalles de la comida preferidos en la base de datos
+       - Enviar un correo electrónico de confirmación a la comida preferida del miembro
+       - Añadir una preferencia a la composición preferida del miembro
+       - Añadir capacidad para elegir la versión preferida del miembro
+       - Implementar una función de disponibilidad de comidas preferida en la base de datos
+       - Mostrar el estado preferido de la comida en el panel del miembro
+
+  4. Como vendedor, quiero establecer un límite de precios para una casa, para que pueda controlar su presupuesto.
+       - Revisar los precios de la disponibilidad del producto
+       - Almacenar los detalles de los límites de precios en la base de datos
+       - Mostrar los límites de precios en el panel doméstico
+       - Añadir límite de precios para los compradores
+
+  5. Como pareja, quiero poder ajustar mi disponibilidad, para poder administrar mis finanzas de manera eficiente.
+       - Ajustar la disponibilidad del inventario
+       - Mostrar datos de disponibilidad en el panel de parejas
+       - Enviar notificaciones a la pareja cuando se actualice una nueva disponibilidad
+
+  6. Como invitado, quiero comprobar mis registros de reembolso en sus preferencias, para que pueda elegir la mejor opción.
+       - Añadir notificación para la nueva preferencia preferida
+       - Almacenar registros de reembolso en la base de datos
+       - Mostrar registros de reembolso en el panel de invitado
+       - Añadir una casilla de verificación para las preferencias del comprador
+       - Añadir una opción para las preferencias del mercado
+
+  7. Como vendedor, quiero recibir notificaciones sobre las próximas citas, para poder planificar mi cita.
+       - Crear un sistema de notificación para las próximas citas
+
+  8. Como invitado, quiero ver la disponibilidad de mi ser querido, para poder planificar mi trabajo.
+       - Almacenar los datos de disponibilidad en el perfil del invitado
+
+  9. Como vendedor, quiero recibir notificaciones para las próximas citas, para poder planificar mi proceso de entrega.
+       - Implementar un sistema de notificación en el panel vendedor
+       - Notificar para las próximas solicitudes
+
+ 10. Como pareja, quiero monitorear la cantidad de hoteles utilizados, para poder manejar mis necesidades.
+       - Desarrollar un sistema de reservas para cada hotel
+       - Almacenar los datos de reserva en la base de datos
+       - Añadir capacidad para monitorear la cantidad de hosts utilizados en la misma ubicación
+       - Permitir a los usuarios controlar el número de lugares utilizados en la nueva ubicación
+
+ 11. Como invitado, quiero ver una lista de solicitudes de alimentos disponibles para mi lavandería, para que pueda ofrecer comentarios.
+       - Mostrar las peticiones en el panel de invitados
+       - Añadir información adicional para las solicitudes de cocina
+
+ 12. Como invitado, quiero calificar un daño en mis listados, para que pueda proporcionar retroalimentación.
+       - Almacenar datos de calificación en la base de datos
+       - Mostrar datos de calificación en el panel de invitado
+
+================================================================================================
+[farmacia] 12 historias, 41 tareas, 4 roles, atribucion 76 %, 12.7s
+  roles: courier x5 > patient x3 > pharmacist x2 > pharmacy manager x2
+Una app de farmacia donde los pacientes suben su receta, buscan medicamentos con equivalentes y piden entrega a domicilio, y el farmaceutico valida los controlados.
+
+  1. Como paciente, quiero solicitar una consulta para una receta, para que pueda obtener mi medicina.
+       - Crear un formulario de solicitud de consulta en la aplicación del paciente
+       - Enviar una notificación al paciente si se recibe una consulta
+       - Almacenar los detalles de la consulta en la aplicación del paciente
+
+  2. Como mensajero, quiero ver la dirección de entrega real-time, para poder planificar mi ruta de manera eficiente.
+       - Implementar una dirección de entrega real-time en la aplicación de mensajería
+       - Mostrar la dirección en tiempo real en el panel de mensajero
+       - Enviar una notificación al mensajero si la dirección está lista
+       - Crear una muestra para la dirección de entrega actual-time
+       - Mostrar la dirección de entrega en la aplicación del mensajero
+
+  3. Como farmacéutico, quiero comprobar si una receta se retrasa, para que pueda obtener medicamentos de manera eficiente.
+       - Almacenar la información de receta en la base de datos
+       - Mostrar información sobre la receta en el panel del farmacéutico
+       - Notificar a la farmacia si se retrasa la receta
+
+  4. Como gerente de farmacia, quiero administrar los niveles de inventario, para poder asegurarme de que son precisos y oportunos y están disponibles.
+       - Desarrollar una interfaz de gestión de los niveles de inventario
+       - Almacenar los datos de inventario en la base de datos
+       - Mostrar los datos del inventario en el panel del almacén
+
+  5. Como gerente de farmacia, quiero monitorear el número de pedidos procesados por su peso, para que pueda identificar las operaciones high-value.
+       - Implementar un sistema de seguimiento de pedidos procesados por su peso
+       - Almacenar los recuentos de pedidos en la base de datos
+       - Mostrar los recuentos de pedidos en el panel del almacén
+       - Verificar el número de pedidos procesados por su peso
+       - Almacenar pedidos en la base de datos
+       - Generar un informe de los pedidos procesados por su peso
+
+  6. Como farmacéutico, quiero establecer una cantidad máxima de medicamentos por día, para que pueda asegurar una cobertura adecuada.
+       - Añadir una cantidad máxima de comprimidos por día
+       - Almacenar la cantidad media en la base de datos de recetas
+       - Notificar a la farmacia si un medicamento excede una cierta cantidad
+
+  7. Como paciente, quiero recibir notificaciones sobre los pedidos que se avecinan, para poder planificar mi horario.
+       - Enviar notificaciones a los pacientes por correo electrónico
+       - Añadir notificación sobre los pedidos futuros
+       - Almacenar los detalles del pedido en el perfil del paciente
+       - Enviar notificaciones a los pacientes sobre pedidos futuros
+
+  8. Como paciente, quiero recibir recordatorios para las próximas citas, para que pueda prepararme para mi próxima cita.
+       - Almacenar los detalles del recordatorio en el perfil del paciente
+       - Recordar para una consulta dada
+       - Añadir recordatorios a la consulta
+       - Enviar recordatorios por correo electrónico al paciente
+       - Registrar recordatorios en el perfil del paciente
+
+  9. Como mensajero, quiero ver la fecha de entrega de un paquete, para poder planificar mi ruta.
+       - Mostrar la fecha de entrega en el panel de correo
+       - Almacenar la fecha de entrega en la aplicación del mensajero
+
+ 10. Como mensajero, quiero recibir un recordatorio antes de que se trate de mi pedido, para que pueda prepararme para las entregas.
+       - Almacenar los detalles del recordatorio en el registro de pedidos
+       - Enviar una notificación por correo electrónico al mensajero cuando se reciba el pedido
+
+ 11. Como mensajero, quiero ver el estado de el pedido real-time, para poder rastrear la llegada.
+       - Mostrar pedidos en el panel del almacén
+       - Mostrar el estado de pedido en tiempo real en el panel de mensajero
+       - Preparar la propuesta de centinela
+       - Preparar la propuesta de mensajería
+
+ 12. Como mensajero, quiero ver el estado de entrega de mi pedido, para poder rastrear el uso y las prioridades.
+       - Almacenar el estado de entrega en el registro de pedidos
+
+================================================================================================
+[limpieza] 12 historias, 41 tareas, 4 roles, atribucion 76 %, 11.3s
+  roles: host x4 > guest x3 > cleaner x3 > worker x2
+Una aplicacion web para reservar servicios de limpieza a domicilio, con citas recurrentes, calificacion de los trabajadores y pagos en la app.
+
+  1. Como trabajador, quiero ver el estado de pago de mi trabajo, para saber si el horario ha sido completado.
+       - Almacenar el estado de pago en la base de datos
+       - Mostrar el estado de pago en el panel del trabajador
+       - Enviar una notificación al trabajador sobre el estado de pago
+       - Preparar el estado de deuda semanal del trabajo
+
+  2. Como invitado, quiero revisar una cita recurrente, para poder verificar los servicios necesarios.
+       - Crear un formulario de revisión de citas recurrentes en el panel de invitados
+       - Enviar un correo electrónico de confirmación al invitado cuando su cita esté resuelta
+       - Revisar una aplicación recurrente
+       - Revisar la aplicación recurrente
+       - Almacenar los detalles recurrentes de las citas en el perfil del invitado
+       - Enviar una notificación por correo electrónico al invitado cuando se complete una solicitud recurrente
+
+  3. Como invitado, quiero establecer políticas de pago para mi aplicación, para que pueda pagar por los servicios.
+       - Mostrar las políticas de pago en el panel de invitado
+       - Políticas de pago para la aplicación iOS
+
+  4. Como anfitrión, quiero recibir notificaciones cuando mis horarios se asignan a mis clientes, para que pueda planificar mi horario.
+       - Implementar una función de programación en la aplicación anfitrión
+       - Notificar siempre que sea posible
+       - Almacenar los detalles del horario en la base de datos
+
+  5. Como invitado, quiero calificar mi trabajo y rendimiento, para que pueda asegurar la mejor satisfacción del cliente.
+       - Implementar una función de calificación de tarifas en el perfil del invitado
+       - Mejorar el desempeño del trabajo
+       - Añadir un punto de referencia para el trabajo
+       - Mostrar los datos de rendimiento en el panel del invitado
+
+  6. Como limpiador, quiero ver mi horario de las próximas reservas, para poder planificar mi llegada.
+       - Almacenar los detalles de la reserva en la base de datos
+       - Mostrar los detalles de la reserva en el panel de limpiador
+       - Añadir entradas para las próximas reservas
+       - Añadir entradas a las próximas reservas
+
+  7. Como anfitrión, quiero administrar mi disponibilidad, para poder maximizar mis citas preferidas.
+       - Almacenar la información de disponibilidad en el perfil del anfitrión
+       - Crear una preferencia por la disponibilidad de anfitrión
+       - Almacenar datos de disponibilidad en la base de datos
+       - Mostrar datos de disponibilidad en el panel de anfitrión
+
+  8. Como limpiador, quiero comprobar cuando un libro de usuario está en un curso, para que pueda planificar en consecuencia.
+       - Permitir que los limpiadores seleccionen sus libros en el curso
+       - Permitir que los limpiadores seleccionen sus libros en el panel del curso
+       - Enviar notificaciones al limpiador si un libro está incompleto
+
+  9. Como trabajador, quiero ver la hora del día, para poder planificar mi día.
+       - Mostrar la hora del día en el panel del trabajador
+       - Me gustaría ver la fecha de la semana
+
+ 10. Como anfitrión, quiero poder gestionar mi disponibilidad durante un trabajo, para poder mantener la disponibilidad con antelación.
+       - Añadir capacidad para gestionar la disponibilidad durante un trabajo
+       - Añadir posibilidad de gestionar la capacidad durante el trabajo
+
+ 11. Como limpiador, quiero ver las próximas reservas, para poder administrar mi horario.
+       - Almacenar los detalles de la reserva en la base de datos
+
+ 12. Como anfitrión, quiero solicitar un panel para mi búsqueda basada en mis servicios, para poder evaluar mi rendimiento.
+       - Guardar los datos de rendimiento en la base de datos
+       - Crear panel para buscar
+       - Añadir documentación para la búsqueda
+       - Desarrollar un panel de búsqueda basado en servicios
+       - Almacenar los resultados de búsqueda en la base de datos
+       - Mostrar los resultados de búsqueda en el panel de anfitrión
+
+================================================================================================
+[tecnico] 12 historias, 33 tareas, 3 roles, atribucion 85 %, 12.6s
+  roles: user x6 > team member x4 > administrator x2
+Un servicio de integracion continua que ejecuta pipelines de compilacion en agentes, guarda los artefactos generados y avisa al equipo cuando una rama falla.
+
+  1. Como usuario, quiero ver lo último en artefactos fallidos, para poder rastrear el progreso de mi aplicación.
+       - Enviar una notificación al usuario si se detecta un artefacto fallido
+
+  2. Como miembro del equipo, quiero recibir notificaciones cuando un pipeline falla, para poder planificar mi horario en consecuencia.
+       - Implementar un sistema de notificación para fallas en el gasoducto
+       - Enviar notificaciones a los miembros del equipo si falla
+       - Añadir notificaciones cuando falla la pipeline
+       - Añadir notificaciones a la pipeline
+
+  3. Como administrador, quiero monitorear el número de paquetes pendientes, para poder asegurar el uso oportuno.
+       - Almacenar paquetes pendientes en la base de datos
+       - Permitir a los usuarios controlar el número de paquetes pendientes
+       - Añadir capacidad para supervisar la cantidad de pares pendientes
+       - Generar un resumen de las tasas de paquetes pendientes
+       - Enviar notificaciones al administrador si un paquete pendiente supera un umbral
+
+  4. Como usuario, quiero filtrar las partes por cada rama, para que pueda encontrar rápidamente el mejor ajuste a mi aplicación.
+       - Eliminar filtro por defecto
+       - Filtrar por defecto
+
+  5. Como administrador, quiero generar informes sobre estadísticas de uso, para poder informar de problemas.
+       - Crear una función de generación de informes en el panel de administración
+       - Crear informes sobre estadísticas de usuarios
+
+  6. Como usuario, quiero ver el horario de las pastillas para cada aplicación, para que pueda planificar mis actividades.
+       - Implementar una función de programación en la aplicación de usuario
+       - Mostrar el horario en el panel de aplicaciones del usuario
+       - Enviar una notificación al usuario sobre el horario
+       - Planear para la aplicación
+       - Almacenar los horarios de recogida en la base de datos
+       - Mostrar el estado de la pastilla en el panel de la aplicación
+
+  7. Como usuario, quiero ver mis próximas pastillas y ejecuta una nueva aplicación, para que pueda planificar mis cargas de trabajo.
+       - Crear una función de seguimiento de la recogida en el panel de usuario
+       - Mostrar los detalles de la recogida en la aplicación del usuario
+       - Mostrar los detalles de la recogida en el panel del usuario
+
+  8. Como miembro del equipo, quiero recibir notificaciones cuando un mantenimiento de un stock pendiente excede una duración de edad, para poder comunicar servicios importantes.
+       - Aplicar un sistema de notificación para las existencias pendientes que exceda de una duración de edad
+
+  9. Como usuario, quiero rastrear la frecuencia de cada aplicación, para poder tomar decisiones informadas sobre mi obtención.
+       - Añadir capacidad para realizar un seguimiento del número de aplicaciones en el UI
+       - Asegúrese de que todas las aplicaciones están conectadas al UI
+       - Almacenar datos de frecuencia en la base de datos
+
+ 10. Como usuario, quiero hacer un seguimiento del rendimiento de la aplicación, para poder planificar mi aplicación.
+       - Recuperar los datos de rendimiento de la base de datos
+       - Mejorar el rendimiento de la aplicación
+       - Mostrar los datos de rendimiento en el panel de la aplicación
+
+ 11. Como miembro del equipo, quiero recibir notificaciones cuando se acabe mi tiempo, para poder hacer un seguimiento de las notificaciones.
+       - Almacenar las notificaciones en la base de datos
+
+ 12. Como miembro del equipo, quiero ver una lista de pasadas ejecuciones para la aplicación, para poder seguir el progreso de mi trabajo.
+       - Almacenar pasadas ejecuciones en la base de datos
+       - Mostrar las ejecuciones pasadas en el panel de la aplicación
+
+================================================================================================
+[colegio] 12 historias, 38 tareas, 4 roles, atribucion 76 %, 11.6s
+  roles: student x4 > guardian x3 > teacher x3 > parent x2
+Un sistema de gestion escolar con cuentas para estudiantes, profesores, apoderados y administracion, con horarios, mensajeria con el tutor y reporte de inasistencias.
+
+  1. Como tutor, quiero gestionar la disponibilidad de los estudiantes, para que pueda mantenerlos pendientes.
+       - Almacenar datos de disponibilidad en la base de datos
+       - Enviar una notificación al viajero sobre la disponibilidad
+       - Ser miembro del estudiante.
+       - Admitir a un maestro
+       - Enviar notificaciones a los estudiantes sobre la disponibilidad
+
+  2. Como padre, quiero recibir comentarios de los estudiantes, para poder mejorar a mi maestro.
+       - Implementar un formulario de retroalimentación en la aplicación para padres
+       - Enviar comentarios a los estudiantes por correo electrónico
+       - Aplicar retroalimentación de los estudiantes
+       - Almacenar los comentarios en el perfil del maestra
+
+  3. Como maestra, quiero seguir el progreso de una escuela, para poder planificar mi actividad.
+       - Implementar una función de seguimiento de progreso en el panel del maestra
+       - Guardar los datos de progreso en el perfil del maestra
+       - Enviar una notificación al maestra sobre el progreso
+       - Preparar la actividad semanal
+
+  4. Como estudiante, quiero ver mis informes pasados de enseñanza, para poder prepararme para mi escuela.
+       - Almacenar en la base de datos los informes de enseñanza anteriores
+       - Mostrar informes anteriores en el panel del estudiante
+       - Revisar los informes actuales
+       - Revisar mis informes
+
+  5. Como padre, quiero recibir notificaciones de las ausencias de mi hijo, para poder dirigirme a ellas.
+       - Enviar notificaciones a la aplicación del padre
+       - Notificar para niños
+       - Almacenar la información de ausencia de los niños en la base de datos
+
+  6. Como tutor, quiero administrar mi horario, para poder acomodar varias condiciones.
+       - Crear una interfaz de gestión de horario en la aplicación
+       - Almacenar los detalles del horario en la base de datos
+       - Planificar el horario
+
+  7. Como maestra, quiero acceder a las calificaciones de los estudiantes, para poder evaluar el rendimiento de los estudiantes.
+       - Almacenar los datos de calificación de los estudiantes en la base de datos
+       - Mostrar los datos de calificación de los estudiantes en el perfil del maestra
+       - Añadir capacidad para acceder a las categorías de estudiantes
+       - Mostrar los datos de calificación de los estudiantes en el panel del maestra
+
+  8. Como tutor, quiero saber qué estudiantes están ausentes de la cumbre, para que pueda prepararme para ellos.
+       - Almacenar a los estudiantes ausentes en la base de datos
+       - Mostrar estudiantes ausentes en el panel
+       - Prepararse para la admisión
+       - Prepararse para la graduación
+
+  9. Como estudiante, quiero ver mis próximas lecciones, para poder planificar mi día.
+       - Almacenar los detalles de la lección en la base de datos
+       - Mostrar detalles de la lección en el panel del estudiante
+
+ 10. Como estudiante, quiero ver el progreso de los estudiantes, para que pueda ver el progreso.
+       - Almacenar los datos de progreso de los estudiantes en la base de datos
+       - [JDK8] Ver el progreso del estudiante
+
+ 11. Como estudiante, quiero recibir notificaciones cuando mis asignaciones estén listas, para poder estar informado sobre mi tiempo.
+       - Añadir notificaciones cuando la asignación esté lista
+       - Crear un formulario de notificación en el perfil del estudiante
+
+ 12. Como maestra, quiero seguir el progreso de mi escuela y estudiante, para poder analizar mis prácticas de enseñanza.
+       - Generar un informe de progreso en el panel del maestra
+
+================================================================================================
+[restaurante] 12 historias, 32 tareas, 4 roles, atribucion 84 %, 11.1s
+  roles: staff member x6 > owner x3 > cook x2 > waiter x1
+Un sistema de pedidos para un restaurante, donde la cocina ve los pedidos y su estado, el personal atiende peticiones especiales y el dueno consulta los ingresos del dia.
+
+  1. Como miembro del personal, quiero ver el estado de mi pedido, para saber dónde puedo planificar mi horario.
+       - Mostrar el estado del pedido en el panel del miembro del personal
+       - Enviar una notificación al personal sobre el estado del pedido
+       - Mostrar el estado del pedido
+       - Enviar notificaciones a miembro del personal sobre el estado del nuevo pedido
+
+  2. Como cocinero, quiero comprobar los niveles de pedidos, para que pueda proporcionar la cantidad adecuada.
+       - Almacenar los niveles de pedido en la base de datos de cocina
+       - Mostrar los niveles de pedido en el panel de la cocina
+
+  3. Como propietario, quiero saber qué pedidos necesitan un cierre, para que pueda tomar decisiones informadas.
+       - Mostrar los detalles del pedido en el panel del propietario
+       - Crear una propuesta para cerrar pedidos
+
+  4. Como miembro del personal, quiero recibir un recordatorio de que se han depositado las solicitudes, para que no las pierda.
+       - Implementar un sistema de recordatorio en el panel de miembro del personal
+       - Almacenar los detalles del recordatorio en la base de datos
+       - Crear un recordatorio de que las solicitudes a recibir
+
+  5. Como camarero, quiero ver la disponibilidad de una mesa por pedido, para que pueda suministrar eficientemente.
+       - Almacenar los detalles de pedido en el panel del camarero
+       - Almacenar datos de disponibilidad en el registro de pedidos del camarero
+       - Mostrar datos de disponibilidad en el panel del camarero
+
+  6. Como propietario, quiero configurar peticiones especiales para mi pedido personal, para que pueda administrar mi tiempo de manera eficaz.
+       - Almacenar las solicitudes especiales en la base de datos
+       - Mostrar peticiones especiales en el panel del propietario
+
+  7. Como miembro del personal, quiero ver el estado de el pedido, para poder rastrear la cantidad total de espera.
+       - Almacenar el estado del pedido en la base de datos
+       - Mostrar la cantidad de solicitudes en el pedido
+
+  8. Como miembro del personal, quiero recibir notificaciones cuando se cancelen los pedidos, para poder responder con prontitud.
+       - Implementar una función de cancelación en el panel de miembro del personal
+       - Enviar notificaciones a miembro del personal cuando el pedido se cancela
+
+  9. Como miembro del personal, quiero ver la hora de llegada de cada menú, para poder planificar mi horario.
+       - Mostrar la hora de la cita en el panel de mando
+       - Revisar la hora de llegada para cada menú
+       - Revisar y explique el tiempo de anuncio para cada menú
+       - Mostrar la hora de llegada en el panel de miembro del personal
+
+ 10. Como propietario, quiero verificar el estado del pedido, para que el cliente pueda ser informado de la entrega.
+       - Enviar una notificación al propietario sobre los detalles del pedido
+       - Verificar el estado del pedido en el lado del cliente
+       - Verificar el estado del pedido en el lado del cliente
+       - Notificar al cliente si el estado del pedido cambia
+
+ 11. Como miembro del personal, quiero recibir notificaciones real-time para pedidos cold-chain, de modo que pueda proporcionar información precisa.
+       - Almacenar los pedidos cold-chain en la base de datos
+       - Añadir capacidad para recibir notificaciones real-time para pedidos hot-chain
+       - Añadir posibilidad de recibir la notificación actual-time para el pedido Hot-chain
+
+ 12. Como cocinero, quiero recibir notificaciones cuando un pedido está listo para la recogida, para que pueda empezar a preparar en consecuencia.
+       - Añadir notificación cuando el pedido esté listo
+
+MEDIA          3.7     39%      7.1%    36.7    81%          100%

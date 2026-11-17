@@ -1,0 +1,97 @@
+{
+ "items": {
+  "i000": "agix",
+  "i001": "mistral:7b",
+  "i002": "agix",
+  "i003": "mistral:7b",
+  "i004": "agix",
+  "i005": "mistral:7b",
+  "i006": "mistral:7b",
+  "i007": "llama3.1:8b",
+  "i008": "agix",
+  "i009": "llama3.1:8b",
+  "i010": "mistral:7b",
+  "i011": "agix",
+  "i012": "mistral:7b",
+  "i013": "mistral:7b",
+  "i014": "agix",
+  "i015": "llama3.1:8b",
+  "i016": "llama3.1:8b",
+  "i017": "llama3.1:8b",
+  "i018": "agix",
+  "i019": "mistral:7b",
+  "i020": "mistral:7b",
+  "i021": "llama3.1:8b",
+  "i022": "mistral:7b",
+  "i023": "llama3.1:8b",
+  "i024": "agix",
+  "i025": "llama3.1:8b",
+  "i026": "mistral:7b",
+  "i027": "agix",
+  "i028": "llama3.1:8b",
+  "i029": "llama3.1:8b",
+  "i030": "mistral:7b",
+  "i031": "agix",
+  "i032": "agix",
+  "i033": "agix",
+  "i034": "agix",
+  "i035": "agix",
+  "i036": "mistral:7b",
+  "i037": "llama3.1:8b",
+  "i038": "llama3.1:8b",
+  "i039": "llama3.1:8b",
+  "i040": "agix",
+  "i041": "llama3.1:8b",
+  "i042": "agix",
+  "i043": "mistral:7b",
+  "i044": "llama3.1:8b",
+  "i045": "llama3.1:8b",
+  "i046": "agix",
+  "i047": "llama3.1:8b",
+  "i048": "mistral:7b",
+  "i049": "mistral:7b",
+  "i050": "mistral:7b",
+  "i051": "mistral:7b",
+  "i052": "mistral:7b",
+  "i053": "llama3.1:8b",
+  "i054": "agix",
+  "i055": "llama3.1:8b",
+  "i056": "llama3.1:8b",
+  "i057": "mistral:7b",
+  "i058": "agix",
+  "i059": "agix"
+ },
+ "conjuntos": {
+  "dalpiaz:g16-mis": {
+   "B": "agix",
+   "C": "llama3.1:8b",
+   "A": "mistral:7b"
+  },
+  "dalpiaz:g25-duraspace": {
+   "A": "agix",
+   "C": "llama3.1:8b",
+   "B": "mistral:7b"
+  },
+  "dalpiaz:g19-alfred": {
+   "A": "agix",
+   "B": "llama3.1:8b",
+   "C": "mistral:7b"
+  },
+  "RedHat:KEYCLOAK-6196": {
+   "A": "agix",
+   "C": "llama3.1:8b",
+   "B": "mistral:7b"
+  },
+  "RedHat:MULTIARCH-1013": {
+   "A": "agix",
+   "C": "llama3.1:8b",
+   "B": "mistral:7b"
+  },
+  "RedHat:OSSM-261": {
+   "C": "agix",
+   "B": "llama3.1:8b",
+   "A": "mistral:7b"
+  }
+ },
+ "semilla": 20260924
+}

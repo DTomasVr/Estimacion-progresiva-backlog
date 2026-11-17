@@ -1,0 +1,1000 @@
+[
+ {
+  "caso": "RedHat:OSSM-261",
+  "historia": "As a cluster operator, I want to set up a load balance for the cluster, so that I can streamline the load process.",
+  "tareas": [
+   "Store load balance data in the database",
+   "Add load balance for clusters"
+  ],
+  "id": "i000",
+  "historia_es": "Como operador de clúster, quiero establecer un balance de carga para el clúster, de modo que pueda optimizar el proceso de carga.",
+  "tareas_es": [
+   "Almacenar datos del saldo de carga en la base de datos",
+   "Añadir saldo de carga para los grupos"
+  ]
+ },
+ {
+  "caso": "dalpiaz:g16-mis",
+  "historia": "As an Archivist, I want to be able to categorize datasets, so that they can be easily organized and searched",
+  "tareas": [
+   "Define dataset categorization schema",
+   "Research and document standard categorization methods",
+   "Design custom categorization schema for the system",
+   "Implement dataset categorization feature"
+  ],
+  "id": "i001",
+  "historia_es": "Como archivista, quiero ser capaz de categorizar conjuntos de datos, para que puedan organizarse y buscarse fácilmente",
+  "tareas_es": [
+   "Definir esquema de categorización del conjunto de datos",
+   "Métodos de clasificación estándar de investigación y documentación",
+   "Diseñar un esquema de categorización personalizado para el sistema",
+   "Implementar la función de categorización de conjuntos de datos"
+  ]
+ },
+ {
+  "caso": "dalpiaz:g25-duraspace",
+  "historia": "As a repository operator, I want to monitor digital objects within a document, so that I can provide accurate information.",
+  "tareas": [],
+  "id": "i002",
+  "historia_es": "Como operador de repositorio, quiero monitorear objetos digitales dentro de un documento, para poder proporcionar información precisa.",
+  "tareas_es": []
+ },
+ {
+  "caso": "dalpiaz:g19-alfred",
+  "historia": "As a Senior Citizen, I want to have access to transportation resources, so that I can move around independently",
+  "tareas": [
+   "Research and integrate third-party APIs for public transportation data",
+   "Design user-friendly interface for senior citizens",
+   "Implement search functionality for nearby transportation options",
+   "Develop real-time tracking for buses, trains, and other public transportation"
+  ],
+  "id": "i003",
+  "historia_es": "Como ciudadano de edad avanzada, quiero tener acceso a los recursos de transporte, para poder moverme independientemente",
+  "tareas_es": [
+   "Investigación e integración de third-party APIs para datos de transporte público",
+   "Diseño de interfaz user-friendly para personas mayores",
+   "Implementar funcionalidad de búsqueda para opciones de transporte cercanas",
+   "Desarrollar el seguimiento real-time para autobuses, trenes y otros medios de transporte público"
+  ]
+ },
+ {
+  "caso": "RedHat:KEYCLOAK-6196",
+  "historia": "As a performance analyst, I want to analyze the performance trends and improvements, so that I can optimize performance.",
+  "tareas": [
+   "Retrieve performance data from the database",
+   "Display performance data on the database",
+   "Benchmark performance improvements",
+   "Benchmark performance"
+  ],
+  "id": "i004",
+  "historia_es": "Como analista de rendimiento, quiero analizar las tendencias y mejoras de rendimiento, para poder optimizar el rendimiento.",
+  "tareas_es": [
+   "Recuperar datos de rendimiento de la base de datos",
+   "Mostrar datos de rendimiento en la base de datos",
+   "Mejoras de la evaluación comparativa del desempeño",
+   "Resultados de los parámetros de referencia"
+  ]
+ },
+ {
+  "caso": "RedHat:OSSM-261",
+  "historia": "As a Maistra user, I want to automate the deployment of my service mesh across multiple OpenShift clusters, so that I can save time and reduce errors",
+  "tareas": [
+   "Integrate OpenShift SDK for cluster management",
+   "Develop service mesh deployment script for OpenShift",
+   "Implement cluster discovery and selection logic",
+   "Create deployment validation checks for service mesh"
+  ],
+  "id": "i005",
+  "historia_es": "Como usuario de Maistra, quiero automatizar la implementación de mi malla de servicio en múltiples clusters OpenShift, de modo que pueda ahorrar tiempo y reducir errores",
+  "tareas_es": [
+   "Integrar OpenShift SDK para la gestión de clústeres",
+   "Desarrollar script de implementación de malla de servicio para OpenShift",
+   "Implementar lógica de descubrimiento y selección de clústeres",
+   "Crear controles de validación de despliegue para malla de servicio"
+  ]
+ },
+ {
+  "caso": "RedHat:OSSM-261",
+  "historia": "As a Maistra user, I want to monitor the performance of my service mesh across multiple OpenShift clusters, so that I can identify and resolve issues quickly",
+  "tareas": [
+   "Implement service mesh integration with OpenShift clusters",
+   "Develop a dashboard for monitoring service mesh performance",
+   "Create a data collection module for gathering performance metrics from service meshes",
+   "Implement a data processing module to analyze collected performance data"
+  ],
+  "id": "i006",
+  "historia_es": "Como usuario de Maistra, quiero monitorear el rendimiento de mi malla de servicio en múltiples clústeres OpenShift, de modo que pueda identificar y resolver problemas rápidamente",
+  "tareas_es": [
+   "Implementar la integración de malla de servicio con los clústeres OpenShift",
+   "Desarrollar un panel de control para monitorizar el rendimiento de la malla de servicio",
+   "Crear un módulo de recolección de datos para recopilar métricas de rendimiento de mallas de servicio",
+   "Implementar un módulo de procesamiento de datos para analizar los datos de rendimiento recopilados"
+  ]
+ },
+ {
+  "caso": "RedHat:MULTIARCH-1013",
+  "historia": "As an OpenShift user, I want to be able to use the same security features and policies on z/VM 7.2, so that I can ensure the security and integrity of my applications",
+  "tareas": [
+   "Here are the concrete implementation tasks:",
+   "Implement z/VM 7.2 integration with OpenShift authentication mechanisms",
+   "Develop OpenShift policy engine to support z/VM 7.2 security features",
+   "Integrate z/VM 7.2 security policies with OpenShift application deployment"
+  ],
+  "id": "i007",
+  "historia_es": "Como usuario de OpenShift, quiero poder usar las mismas características y políticas de seguridad en z/VM 7.2, de modo que pueda garantizar la seguridad e integridad de mis aplicaciones",
+  "tareas_es": [
+   "Estas son las tareas concretas de aplicación:",
+   "Implementar integración z/VM 7.2 con mecanismos de autenticación OpenShift",
+   "Desarrollar motor de política OpenShift para soportar las características de seguridad Z/VM 7.2",
+   "Integrar las políticas de seguridad Z/VM 7.2 con la implementación de aplicaciones OpenShift"
+  ]
+ },
+ {
+  "caso": "RedHat:OSSM-261",
+  "historia": "As a cluster operator, I want to receive notifications about upcoming maintenance sessions, so that I can maintain stability during peak times.",
+  "tareas": [
+   "Create a notification system for upcoming maintenance session sessions",
+   "Add notification about upcoming maintenance sessions",
+   "Add notifications about upgrading Maintenance sessions",
+   "Store maintenance sessions in the database"
+  ],
+  "id": "i008",
+  "historia_es": "Como operador de clúster, quiero recibir notificaciones sobre las próximas sesiones de mantenimiento, para poder mantener la estabilidad durante los tiempos pico.",
+  "tareas_es": [
+   "Crear un sistema de notificación para las próximas sesiones de mantenimiento",
+   "Añadir notificación sobre las próximas sesiones de mantenimiento",
+   "Añadir notificaciones sobre la actualización de las sesiones de mantenimiento",
+   "Almacenar las sesiones de mantenimiento en la base de datos"
+  ]
+ },
+ {
+  "caso": "RedHat:KEYCLOAK-6196",
+  "historia": "As a developer, I want to create benchmarks for development and performance regression, so that we can measure and track performance over time",
+  "tareas": [
+   "Create benchmarking framework",
+   "Design benchmarking metrics",
+   "Implement benchmarking scripts",
+   "Choose benchmarking tools"
+  ],
+  "id": "i009",
+  "historia_es": "Como desarrollador, quiero crear puntos de referencia para el desarrollo y la regresión de rendimiento, de modo que podamos medir y rastrear el rendimiento con el tiempo",
+  "tareas_es": [
+   "Crear un marco de referencia",
+   "métricas de referencia de diseño",
+   "Implementar scripts de benchmarking",
+   "Elija herramientas de evaluación comparativa"
+  ]
+ },
+ {
+  "caso": "RedHat:KEYCLOAK-6196",
+  "historia": "As a developer, I want to enhance the functional benchmark tool to utilize actual CRIO for rollover tests, so that the results are more accurate and reliable",
+  "tareas": [
+   "Research and integrate CRIO API for rollover tests",
+   "Update benchmark tool to accept CRIO API as input",
+   "Implement CRIO API integration in rollover test function",
+   "Write unit tests for CRIO API integration in rollover tests"
+  ],
+  "id": "i010",
+  "historia_es": "Como desarrollador, quiero mejorar la herramienta de referencia funcional para utilizar CRIO real para pruebas de vuelco, de modo que los resultados sean más precisos y fiables",
+  "tareas_es": [
+   "Investigación e integración CRIO API para pruebas de vuelco",
+   "Actualizar la herramienta de referencia para aceptar CRIO API como entrada",
+   "Implementar integración CRIO API en la función de prueba de vuelco",
+   "Ensayos de unidades de escritura para integración CRIO API en pruebas de vuelco"
+  ]
+ },
+ {
+  "caso": "RedHat:MULTIARCH-1013",
+  "historia": "As a user, I want to build a version for a version of an OpenShift using Zen/VM version in a way",
+  "tareas": [],
+  "id": "i011",
+  "historia_es": "Como usuario, quiero construir una versión para una versión de OpenShift usando la versión Zen/VM de una manera",
+  "tareas_es": []
+ },
+ {
+  "caso": "RedHat:KEYCLOAK-6196",
+  "historia": "As a developer, I want to create benchmarks for the review scope, so that I can evaluate the impact of changes in the buffer",
+  "tareas": [
+   "Research existing benchmarking techniques for code review scopes",
+   "Define key metrics for the review scope benchmarks",
+   "Design a data structure to store and manage benchmark data",
+   "Implement a function to calculate the current review scope benchmark"
+  ],
+  "id": "i012",
+  "historia_es": "Como desarrollador, quiero crear puntos de referencia para el alcance de la revisión, de modo que pueda evaluar el impacto de los cambios en el búfer",
+  "tareas_es": [
+   "Investigación de las técnicas de evaluación comparativa existentes para los alcances de revisión de códigos",
+   "Definir las métricas clave para los parámetros de referencia del alcance del examen",
+   "Diseñar una estructura de datos para almacenar y gestionar datos de referencia",
+   "Aplicar una función para calcular el actual índice de referencia del alcance del examen"
+  ]
+ },
+ {
+  "caso": "RedHat:MULTIARCH-1013",
+  "historia": "As a z/VM 7.2 user, I want to monitor OpenShift performance on z/VM 7.2, so that I can identify bottlenecks and optimize resource usage",
+  "tareas": [
+   "Integrate OpenShift monitoring plugins (Prometheus, Grafana, etc.) into z/VM 7.2 environment",
+   "Configure OpenShift metrics server to collect and export metrics to the monitoring system",
+   "Set up Prometheus to scrape OpenShift metrics from the metrics server",
+   "Create custom dashboards in Grafana to visualize OpenShift performance data"
+  ],
+  "id": "i013",
+  "historia_es": "Como usuario Z/VM 7.2, quiero monitorear el rendimiento de OpenShift en Z/VM 7.2, de modo que pueda identificar cuellos de botella y optimizar el uso de recursos",
+  "tareas_es": [
+   "Integrar complementos de monitoreo OpenShift (Prometheus, Grafana, etc.) en el entorno Z/VM 7.2",
+   "Configurar el servidor de métricas OpenShift para recopilar y exportar métricas al sistema de monitoreo",
+   "Configurar Prometheus para raspar las métricas OpenShift desde el servidor de métricas",
+   "Crear paneles personalizados en Grafana para visualizar los datos de rendimiento de OpenShift"
+  ]
+ },
+ {
+  "caso": "RedHat:KEYCLOAK-6196",
+  "historia": "As a publisher, I want to create performance reports, so that I can monitor performance.",
+  "tareas": [
+   "Implement a performance report generation feature in the publisher dashboard",
+   "Store performance report data in the database",
+   "Create documentation for the new performance report",
+   "Send performance report to the publisher via email"
+  ],
+  "id": "i014",
+  "historia_es": "Como editor, quiero crear informes de rendimiento, para poder monitorear el rendimiento.",
+  "tareas_es": [
+   "Implementar una función de generación de informes de rendimiento en el tablero de edición",
+   "Almacenar los datos del informe de ejecución en la base de datos",
+   "Crear documentación para el nuevo informe de rendimiento",
+   "Enviar informe de rendimiento al editor por correo electrónico"
+  ]
+ },
+ {
+  "caso": "RedHat:MULTIARCH-1013",
+  "historia": "As a system administrator, I want to be able to configure and manage network policies for OpenShift deployments on z/VM 7.2, so that I can control access to my applications",
+  "tareas": [
+   "Here are the concrete implementation tasks:",
+   "Create OpenShift z/VM 7.2 deployment documentation",
+   "Design network policy configuration interface for z/VM 7.2",
+   "Implement OpenShift z/VM 7.2 network policy API"
+  ],
+  "id": "i015",
+  "historia_es": "Como administrador del sistema, quiero poder configurar y administrar políticas de red para implementaciones OpenShift en z/VM 7.2, de modo que pueda controlar el acceso a mis aplicaciones",
+  "tareas_es": [
+   "Estas son las tareas concretas de aplicación:",
+   "Crear documentación de implementación OpenShift z/VM 7.2",
+   "Diseñar interfaz de configuración de política de red para z/VM 7.2",
+   "Implementar la política de red OpenShift z/VM 7.2 API"
+  ]
+ },
+ {
+  "caso": "dalpiaz:g16-mis",
+  "historia": "As a Researcher, I want to be able to download datasets in various formats, such as CSV or JSON, so that I can easily import the data into my analysis tools",
+  "tareas": [
+   "Here are the concrete implementation tasks:",
+   "Create API endpoint for dataset download",
+   "Implement CSV download functionality",
+   "Implement JSON download functionality"
+  ],
+  "id": "i016",
+  "historia_es": "Como investigador, quiero poder descargar conjuntos de datos en varios formatos, como CSV o JSON, de modo que pueda importar fácilmente los datos en mis herramientas de análisis",
+  "tareas_es": [
+   "Estas son las tareas concretas de aplicación:",
+   "Crear el punto final de API para la descarga del dataset",
+   "Implementar la funcionalidad de descarga CSV",
+   "Implementar la funcionalidad de descarga JSON"
+  ]
+ },
+ {
+  "caso": "RedHat:OSSM-261",
+  "historia": "As a Service Mesh Operator, I want to be able to configure the Istio Adapter to work with multiple services, so that I can manage and observe multiple services across multiple clusters",
+  "tareas": [
+   "Here are the concrete implementation tasks:",
+   "Configure Istio Adapter to support multiple services",
+   "Implement service discovery for Istio Adapter",
+   "Update Istio Adapter configuration to support cluster selection"
+  ],
+  "id": "i017",
+  "historia_es": "Como operador de malla de servicio, quiero poder configurar el adaptador Istio para trabajar con múltiples servicios, de modo que pueda administrar y observar múltiples servicios en múltiples clústeres",
+  "tareas_es": [
+   "Estas son las tareas concretas de aplicación:",
+   "Configurar el adaptador Istio para soportar múltiples servicios",
+   "Implementar el descubrimiento de servicios para Istio Adapter",
+   "Actualizar la configuración del adaptador Istio para soportar la selección de clústers"
+  ]
+ },
+ {
+  "caso": "dalpiaz:g16-mis",
+  "historia": "As a archivist, I want to generate a report on the dataset creation process, so that I can ensure proper metadata.",
+  "tareas": [
+   "Store the report in the database"
+  ],
+  "id": "i018",
+  "historia_es": "Como archivista, quiero generar un informe sobre el proceso de creación de conjuntos de datos, para poder garantizar metadatos adecuados.",
+  "tareas_es": [
+   "Almacenar el informe en la base de datos"
+  ]
+ },
+ {
+  "caso": "RedHat:MULTIARCH-1013",
+  "historia": "As a z/VM 7.2 user, I want to automate OpenShift deployment on z/VM 7.2, so that I can reduce manual intervention and improve efficiency",
+  "tareas": [
+   "Research and select suitable OpenShift deployment tools for z/VM 7.2",
+   "Install and configure the chosen deployment tool on the development environment",
+   "Create a z/VM 7.2-specific OpenShift provisioning template",
+   "Integrate the OpenShift provisioning template with the chosen deployment tool"
+  ],
+  "id": "i019",
+  "historia_es": "Como usuario Z/VM 7.2, quiero automatizar la implementación de OpenShift en Z/VM 7.2, de modo que pueda reducir la intervención manual y mejorar la eficiencia",
+  "tareas_es": [
+   "Investigar y seleccionar herramientas de implementación OpenShift adecuadas para Z/VM 7.2",
+   "Instalar y configurar la herramienta de implementación elegida en el entorno de desarrollo",
+   "Crear una plantilla de aprovisionamiento OpenShift 7.2 específica para VM",
+   "Integrar la plantilla de aprovisionamiento OpenShift con la herramienta de despliegue elegida"
+  ]
+ },
+ {
+  "caso": "dalpiaz:g19-alfred",
+  "historia": "As a Senior Citizen, I want to have access to volunteer opportunities, so that I can give back to my community",
+  "tareas": [
+   "Research and gather data on available volunteer opportunities suitable for senior citizens",
+   "Design user-friendly interface for senior citizens to browse volunteer opportunities",
+   "Implement search functionality for filtering volunteer opportunities by location, category, and accessibility",
+   "Create a profile system for senior citizens to store their preferences, skills, and interests"
+  ],
+  "id": "i020",
+  "historia_es": "Como ciudadano mayor, quiero tener acceso a oportunidades de voluntariado, para poder devolver a mi comunidad",
+  "tareas_es": [
+   "Investigación y recopilación de datos sobre las oportunidades disponibles de voluntarios adecuados para las personas de edad",
+   "Diseñar interfaz user-friendly para personas mayores para explorar oportunidades de voluntariado",
+   "Implementar funcionalidad de búsqueda para filtrar oportunidades de voluntariado por ubicación, categoría y accesibilidad",
+   "Crear un sistema de perfil para que los ciudadanos mayores almacenen sus preferencias, habilidades e intereses"
+  ]
+ },
+ {
+  "caso": "RedHat:KEYCLOAK-6196",
+  "historia": "As a developer, I want to enhance the benchmarking tool to report missed logs, so that I can identify and fix issues",
+  "tareas": [
+   "Enhance benchmarking tool to track log events",
+   "Implement log event storage in database",
+   "Create data model for log events",
+   "Develop query to identify missed logs"
+  ],
+  "id": "i021",
+  "historia_es": "Como desarrollador, quiero mejorar la herramienta de benchmarking para reportar registros perdidos, para que pueda identificar y solucionar problemas",
+  "tareas_es": [
+   "Mejorar la herramienta de evaluación comparativa para rastrear eventos de registro",
+   "Implementar almacenamiento de eventos de registro en la base de datos",
+   "Crear un modelo de datos para eventos de registro",
+   "Desarrollar consulta para identificar registros perdidos"
+  ]
+ },
+ {
+  "caso": "dalpiaz:g16-mis",
+  "historia": "As a Researcher, I want to be able to view detailed information about each dataset, so that I can understand its content and quality",
+  "tareas": [
+   "Fetch dataset metadata from the database or API",
+   "Display dataset title and description",
+   "Show dataset creator and creation date",
+   "Display dataset size and number of records"
+  ],
+  "id": "i022",
+  "historia_es": "Como investigador, quiero poder ver información detallada sobre cada conjunto de datos, para poder entender su contenido y calidad",
+  "tareas_es": [
+   "Obtener metadatos del conjunto de datos de la base de datos o API",
+   "Mostrar el título y la descripción del conjunto de datos",
+   "Mostrar el creador y la fecha de creación del dataset",
+   "Mostrar el tamaño y el número de registros del dataset"
+  ]
+ },
+ {
+  "caso": "RedHat:MULTIARCH-1013",
+  "historia": "As a system administrator, I want to be able to monitor and troubleshoot OpenShift deployments on z/VM 7.2, so that I can quickly identify and resolve issues",
+  "tareas": [
+   "Here are the concrete implementation tasks:",
+   "Create OpenShift monitoring tool for z/VM 7.2",
+   "Integrate OpenShift with z/VM 7.2 monitoring system",
+   "Develop troubleshooting dashboard for OpenShift deployments"
+  ],
+  "id": "i023",
+  "historia_es": "Como administrador del sistema, quiero poder monitorear y solucionar problemas de implementación de OpenShift en z/VM 7.2, de modo que pueda identificar y resolver problemas rápidamente",
+  "tareas_es": [
+   "Estas son las tareas concretas de aplicación:",
+   "Crear herramienta de monitoreo OpenShift para Z/VM 7.2",
+   "Integrar OpenShift con el sistema de monitorización Z/VM 7.2",
+   "Desarrollar panel de resolución de problemas para despliegues OpenShift"
+  ]
+ },
+ {
+  "caso": "dalpiaz:g16-mis",
+  "historia": "As an asset manager, I want to be assured that there is no longer one deposit for the repository, so that the storage integrity of the is kept low.",
+  "tareas": [
+   "Allow asset manager to add a deposit for the repository",
+   "Notify asset manager if a deposit is already reached"
+  ],
+  "id": "i024",
+  "historia_es": "Como gestor de activos, quiero estar seguro de que ya no hay un depósito para el repositorio, de modo que la integridad de almacenamiento de la se mantiene bajo.",
+  "tareas_es": [
+   "Permitir que el gestor de activos añada un depósito para el repositorio",
+   "Notificar al administrador de activos si ya se ha alcanzado un depósito"
+  ]
+ },
+ {
+  "caso": "RedHat:OSSM-261",
+  "historia": "As a Service Mesh Operator, I want to be able to document the configuration of the Istio Adapter with multiple services, so that I can easily understand how to set it up",
+  "tareas": [
+   "Here are the concrete implementation tasks:",
+   "Create Istio Adapter Configuration Documentation Template",
+   "Define Istio Adapter Configuration Parameters",
+   "Develop Istio Adapter Configuration YAML Schema"
+  ],
+  "id": "i025",
+  "historia_es": "Como operador de malla de servicio, quiero poder documentar la configuración del adaptador Istio con múltiples servicios, de modo que pueda entender fácilmente cómo configurarlo",
+  "tareas_es": [
+   "Estas son las tareas concretas de aplicación:",
+   "Crear plantilla de documentación de configuración del adaptador Istio",
+   "Definir parámetros de configuración del adaptador Istio",
+   "Desarrollar la configuración del adaptador Istio"
+  ]
+ },
+ {
+  "caso": "dalpiaz:g25-duraspace",
+  "historia": "As an administrator, I want to ensure long-term preservation of the digital objects, so that the content in the DSpace store remains accessible for future generations",
+  "tareas": [
+   "Implement data backup strategy for DSpace store",
+   "Configure daily automatic backups",
+   "Set up offsite storage for backups",
+   "Implement data archiving for inactive digital objects"
+  ],
+  "id": "i026",
+  "historia_es": "Como administrador, quiero garantizar la preservación long-term de los objetos digitales, de modo que el contenido en la tienda DSpace siga siendo accesible para las generaciones futuras",
+  "tareas_es": [
+   "Implementar estrategia de copia de seguridad de datos para la tienda DSpace",
+   "Configurar copias de seguridad automáticas diarias",
+   "Configurar almacenamiento fuera del sitio para copias de seguridad",
+   "Implementar el archivo de datos para objetos digitales inactivos"
+  ]
+ },
+ {
+  "caso": "dalpiaz:g25-duraspace",
+  "historia": "As an instructor, I want to book digital documents with large metadata, so that I can manage my workload efficiently.",
+  "tareas": [
+   "Store digital documents in the database",
+   "Display digital documents on the instructor's dashboard",
+   "Allow instructors to edit digital documents",
+   "Send notifications to the instructor if a PDF is available"
+  ],
+  "id": "i027",
+  "historia_es": "Como instructor, quiero reservar documentos digitales con grandes metadatos, para poder gestionar mi carga de trabajo de manera eficiente.",
+  "tareas_es": [
+   "Almacenar documentos digitales en la base de datos",
+   "Mostrar documentos digitales en el tablero del instructor",
+   "Permitir a los instructores editar documentos digitales",
+   "Enviar notificaciones al instructor si hay un PDF disponible"
+  ]
+ },
+ {
+  "caso": "RedHat:MULTIARCH-1013",
+  "historia": "As an OpenShift user, I want to be able to use persistent storage on z/VM 7.2, so that I can store and manage data for my applications",
+  "tareas": [
+   "Here are the concrete implementation tasks:",
+   "Implement z/VM 7.2 support in OpenShift installer",
+   "Configure z/VM 7.2 storage for OpenShift",
+   "Integrate z/VM 7.2 storage with OpenShift Persistent Volume (PV) API"
+  ],
+  "id": "i028",
+  "historia_es": "Como usuario de OpenShift, quiero poder usar almacenamiento persistente en z/VM 7.2, de modo que pueda almacenar y administrar datos para mis aplicaciones",
+  "tareas_es": [
+   "Estas son las tareas concretas de aplicación:",
+   "Implementar soporte Z/VM 7.2 en el instalador OpenShift",
+   "Configurar el almacenamiento Z/VM 7.2 para OpenShift",
+   "Integrar el almacenamiento Z/VM 7.2 con el volumen persistente OpenShift (PV) API"
+  ]
+ },
+ {
+  "caso": "dalpiaz:g16-mis",
+  "historia": "As an Archivist, I want to be able to easily add new datasets to the repository, so that I can make them available to researchers",
+  "tareas": [
+   "Add dataset upload form to repository interface",
+   "Implement dataset validation and error handling",
+   "Create database schema for storing dataset metadata",
+   "Develop API for uploading datasets to repository"
+  ],
+  "id": "i029",
+  "historia_es": "Como archivista, quiero poder añadir fácilmente nuevos conjuntos de datos al repositorio, de modo que pueda ponerlos a disposición de los investigadores",
+  "tareas_es": [
+   "Añadir formulario de carga de dataset a la interfaz del repositorio",
+   "Implementar validación de conjuntos de datos y manejo de errores",
+   "Crear esquema de base de datos para almacenar metadatos de conjuntos de datos",
+   "Desarrollar API para cargar conjuntos de datos en el repositorio"
+  ]
+ },
+ {
+  "caso": "dalpiaz:g25-duraspace",
+  "historia": "As a librarian, I want to be able to add descriptive metadata to digital objects, so that the content can be easily discovered and understood by users",
+  "tareas": [
+   "Research and select a suitable metadata standard for digital objects (e.g., Dublin Core, MARC21)",
+   "Design the user interface for adding metadata to digital objects",
+   "Implement data validation for metadata fields to ensure data integrity",
+   "Create a system for storing and retrieving metadata associated with digital objects"
+  ],
+  "id": "i030",
+  "historia_es": "Como bibliotecario, quiero poder añadir metadatos descriptivos a los objetos digitales, de modo que el contenido pueda ser fácilmente descubierto y entendido por los usuarios.",
+  "tareas_es": [
+   "Investigar y seleccionar un estándar de metadatos adecuado para objetos digitales (e.g., Dublin Core, MARC21)",
+   "Diseñar la interfaz de usuario para añadir metadatos a objetos digitales",
+   "Implementar validación de datos para campos de metadatos para garantizar la integridad de los datos",
+   "Crear un sistema para almacenar y recuperar metadatos asociados con objetos digitales"
+  ]
+ },
+ {
+  "caso": "RedHat:OSSM-261",
+  "historia": "As a sender, I want to receive notifications about upcoming releases, so that I can plan my schedule.",
+  "tareas": [
+   "Store the notification details in the dashboard",
+   "Add notifications about upcoming releases",
+   "Store notifications in the sender's profile"
+  ],
+  "id": "i031",
+  "historia_es": "Como remitente, quiero recibir notificaciones sobre las próximas versiones, para poder planificar mi horario.",
+  "tareas_es": [
+   "Almacenar los detalles de la notificación en el tablero de mando",
+   "Añadir notificaciones sobre las próximas versiones",
+   "Almacenar notificaciones en el perfil del remitente"
+  ]
+ },
+ {
+  "caso": "RedHat:MULTIARCH-1013",
+  "historia": "As a developer, I want to configure a versioning system to support the version in a single OpenShift using",
+  "tareas": [
+   "Integrate with the versioning system"
+  ],
+  "id": "i032",
+  "historia_es": "Como desarrollador, quiero configurar un sistema de versiones para soportar la versión en un solo OpenShift usando",
+  "tareas_es": [
+   "Integrar con el sistema de versiones"
+  ]
+ },
+ {
+  "caso": "RedHat:MULTIARCH-1013",
+  "historia": "As a developer, I want to have my work with the default versioning system for supporting a version of the OpenShift project",
+  "tareas": [],
+  "id": "i033",
+  "historia_es": "Como desarrollador, quiero tener mi trabajo con el sistema de versiones predeterminado para soportar una versión del proyecto OpenShift",
+  "tareas_es": []
+ },
+ {
+  "caso": "dalpiaz:g16-mis",
+  "historia": "As a user, I want to be able to search for metadata by email, so that I can find relevant information from my needs.",
+  "tareas": [
+   "Create a search form in the user dashboard",
+   "Store search results in the database",
+   "Implement a search feature in the user dashboard",
+   "Display search results on the user's dashboard"
+  ],
+  "id": "i034",
+  "historia_es": "Como usuario, quiero poder buscar metadatos por correo electrónico, para poder encontrar información relevante de mis necesidades.",
+  "tareas_es": [
+   "Crear un formulario de búsqueda en el panel de control de usuario",
+   "Almacenar los resultados de búsqueda en la base de datos",
+   "Implementar una función de búsqueda en el panel de usuario",
+   "Mostrar los resultados de búsqueda en el panel de control del usuario"
+  ]
+ },
+ {
+  "caso": "RedHat:MULTIARCH-1013",
+  "historia": "As a developer, I want to take a lesson with the configuration of running OpenShift with a v/VM version update",
+  "tareas": [
+   "Validate the lesson status on the app's dashboard"
+  ],
+  "id": "i035",
+  "historia_es": "Como desarrollador, quiero tomar una lección con la configuración de ejecutar OpenShift con una actualización de versión v/VM",
+  "tareas_es": [
+   "Validar el estado de la lección en el panel de control de la aplicación"
+  ]
+ },
+ {
+  "caso": "RedHat:OSSM-261",
+  "historia": "As a Maistra user, I want to troubleshoot issues in my service mesh that span multiple OpenShift clusters, so that I can quickly identify and resolve problems",
+  "tareas": [
+   "Integrate service mesh monitoring API with OpenShift API",
+   "Develop a cross-cluster discovery mechanism for service mesh components",
+   "Implement a data aggregation system for monitoring data from multiple OpenShift clusters",
+   "Create an alerting system for critical issues across multiple clusters"
+  ],
+  "id": "i036",
+  "historia_es": "Como usuario de Maistra, quiero solucionar problemas en mi malla de servicio que abarcan múltiples clusters OpenShift, de modo que pueda identificar y resolver problemas rápidamente",
+  "tareas_es": [
+   "Integrar la malla de servicio de monitoreo API con OpenShift API",
+   "Desarrollar un mecanismo de descubrimiento cross-cluster para componentes de malla de servicio",
+   "Implementar un sistema de agregación de datos para monitorear los datos de múltiples grupos OpenShift",
+   "Crear un sistema de alerta para problemas críticos en múltiples grupos"
+  ]
+ },
+ {
+  "caso": "RedHat:OSSM-261",
+  "historia": "As a Service Mesh Operator, I want to be able to document the changes to generate CR code for the Istio Adapter, so that I can easily understand how to integrate it with my existing infrastructure",
+  "tareas": [
+   "Here are the concrete implementation tasks:",
+   "Generate Istio Adapter CRD schema",
+   "Create API to generate CR code from schema",
+   "Implement schema to code generation logic"
+  ],
+  "id": "i037",
+  "historia_es": "Como operador de malla de servicio, quiero poder documentar los cambios para generar código CR para el adaptador Istio, de modo que pueda entender fácilmente cómo integrarlo con mi infraestructura existente",
+  "tareas_es": [
+   "Estas son las tareas concretas de aplicación:",
+   "Generar Istio Adaptador CRD esquema",
+   "Crear API para generar código CR desde el esquema",
+   "Implementar esquema a la lógica de generación de código"
+  ]
+ },
+ {
+  "caso": "dalpiaz:g25-duraspace",
+  "historia": "As a curator, I want to be able to assign metadata to digital objects, so that they can be properly described and understood",
+  "tareas": [
+   "Assign metadata fields to digital object model",
+   "Create metadata field types (e.g. text, date, image)",
+   "Implement metadata field validation rules",
+   "Develop user interface for assigning metadata to digital objects"
+  ],
+  "id": "i038",
+  "historia_es": "Como curador, quiero poder asignar metadatos a objetos digitales, para que puedan ser adecuadamente descritos y entendidos",
+  "tareas_es": [
+   "Asignar campos de metadatos al modelo de objeto digital",
+   "Crear tipos de campos de metadatos (e.g. texto, fecha, imagen)",
+   "Implementar reglas de validación de campos de metadatos",
+   "Desarrollar interfaz de usuario para asignar metadatos a objetos digitales"
+  ]
+ },
+ {
+  "caso": "dalpiaz:g19-alfred",
+  "historia": "As an Older Person, I want to be able to access a library of educational resources and tutorials, so that I can learn new skills",
+  "tareas": [
+   "Here are the concrete implementation tasks:",
+   "Create database schema for educational resources",
+   "Design user interface for resource library",
+   "Develop API for retrieving and displaying resources"
+  ],
+  "id": "i039",
+  "historia_es": "Como persona mayor, quiero poder acceder a una biblioteca de recursos educativos y tutoriales, para poder aprender nuevas habilidades",
+  "tareas_es": [
+   "Estas son las tareas concretas de aplicación:",
+   "Crear un esquema de base de datos para recursos educativos",
+   "Diseñar interfaz de usuario para la biblioteca de recursos",
+   "Desarrollar API para recuperar y mostrar recursos"
+  ]
+ },
+ {
+  "caso": "RedHat:MULTIARCH-1013",
+  "historia": "As a user, I want to set up versioning support for a specific OpenShift application type, so that we can customize the configuration for deployment.",
+  "tareas": [
+   "Display versioning feature on the user's dashboard"
+  ],
+  "id": "i040",
+  "historia_es": "Como usuario, quiero configurar el soporte de versiones para un tipo de aplicación OpenShift específico, de modo que podamos personalizar la configuración para su implementación.",
+  "tareas_es": [
+   "Función de visualización de visualización en el panel de control del usuario"
+  ]
+ },
+ {
+  "caso": "RedHat:MULTIARCH-1013",
+  "historia": "As an OpenShift user, I want to use the same OpenShift interface to deploy applications on z/VM 7.2, so that I don't need to learn new tools or interfaces",
+  "tareas": [
+   "Here are the concrete implementation tasks:",
+   "Create OpenShift interface for z/VM 7.2 support",
+   "Integrate z/VM 7.2 backend with OpenShift API",
+   "Implement z/VM 7.2 specific deployment logic"
+  ],
+  "id": "i041",
+  "historia_es": "Como usuario de OpenShift, quiero usar la misma interfaz OpenShift para implementar aplicaciones en Z/VM 7.2, de modo que no necesite aprender nuevas herramientas o interfaces",
+  "tareas_es": [
+   "Estas son las tareas concretas de aplicación:",
+   "Crear interfaz OpenShift para el soporte VM 7.2",
+   "Integrar el motor z/VM 7.2 con OpenShift API",
+   "Implementar lógica de implementación específica Z/VM 7.2"
+  ]
+ },
+ {
+  "caso": "dalpiaz:g19-alfred",
+  "historia": "As a visitor, I want to view my neighbourhoods, so that I can stay informed about my activities.",
+  "tareas": [
+   "Create a visitor dashboard for viewing their neighbourhoods",
+   "Display the visitor's neighbourhood on the dashboard",
+   "View a neighbourhood",
+   "Store neighbourhood details in the database"
+  ],
+  "id": "i042",
+  "historia_es": "Como visitante, quiero ver mis barrios, para poder estar informado de mis actividades.",
+  "tareas_es": [
+   "Crear un panel de visitantes para ver sus barrios",
+   "Mostrar el barrio del visitante en el tablero de instrumentos",
+   "Ver un barrio",
+   "Almacenar los detalles de la vecindad en la base de datos"
+  ]
+ },
+ {
+  "caso": "RedHat:MULTIARCH-1013",
+  "historia": "As a z/VM 7.2 user, I want to secure OpenShift on z/VM 7.2, so that I can protect my OpenShift environment from unauthorized access",
+  "tareas": [
+   "Research and understand OpenShift security best practices on z/VM 7.2",
+   "Install and configure SSH key-based authentication for OpenShift nodes",
+   "Implement LDAP integration for user authentication and authorization",
+   "Configure RBAC (Role-Based Access Control) for OpenShift resources"
+  ],
+  "id": "i043",
+  "historia_es": "Como usuario Z/VM 7.2, quiero asegurar OpenShift en Z/VM 7.2, de modo que pueda proteger mi entorno OpenShift de acceso no autorizado",
+  "tareas_es": [
+   "Investigar y comprender las mejores prácticas de seguridad de OpenShift en z/VM 7.2",
+   "Instalar y configurar la autenticación SSH key-based para los nodos OpenShift",
+   "Implementar integración LDAP para autenticación y autorización de usuarios",
+   "Configurar RBAC (Control de acceso Role-Based) para recursos OpenShift"
+  ]
+ },
+ {
+  "caso": "dalpiaz:g16-mis",
+  "historia": "As a Researcher, I want to be able to leave comments and feedback on datasets, so that I can provide feedback to the archivists and other researchers",
+  "tareas": [
+   "Leave comment functionality on dataset details page",
+   "Create comment model with fields for text and timestamp",
+   "Implement comment display on dataset details page",
+   "Allow users to edit their own comments"
+  ],
+  "id": "i044",
+  "historia_es": "Como investigador, quiero poder dejar comentarios y comentarios en los conjuntos de datos, para poder proporcionar retroalimentación a los archivistas y otros investigadores",
+  "tareas_es": [
+   "Deja funcionalidad de comentario en la página de detalles del dataset",
+   "Crear un modelo de comentario con campos para texto y marca de tiempo",
+   "Implementar visualización de comentarios en la página de detalles del dataset",
+   "Permitir a los usuarios editar sus propios comentarios"
+  ]
+ },
+ {
+  "caso": "dalpiaz:g16-mis",
+  "historia": "As an Archivist, I want to be able to track changes and updates to datasets, so that I can maintain a record of revisions and edits",
+  "tareas": [
+   "Here are the concrete implementation tasks:",
+   "Create database schema to track dataset revisions",
+   "Implement versioning system for datasets",
+   "Develop data change tracking API"
+  ],
+  "id": "i045",
+  "historia_es": "Como archivista, quiero poder rastrear cambios y actualizaciones a los conjuntos de datos, para poder mantener un registro de revisiones y ediciones",
+  "tareas_es": [
+   "Estas son las tareas concretas de aplicación:",
+   "Crear esquema de base de datos para rastrear las revisiones del conjunto de datos",
+   "Implementar sistema de versiones para conjuntos de datos",
+   "Desarrollar el seguimiento de cambios de datos API"
+  ]
+ },
+ {
+  "caso": "dalpiaz:g19-alfred",
+  "historia": "As a parent, I want to integrate and approve a volunteer with my child’s profile, so that I can ensure they are delayed.",
+  "tareas": [
+   "Store the volunteer profile in the database"
+  ],
+  "id": "i046",
+  "historia_es": "Como padre, quiero integrar y aprobar a un voluntario con el perfil de mi hijo, para que pueda asegurarme de que se retrasen.",
+  "tareas_es": [
+   "Almacenar el perfil de los voluntarios en la base de datos"
+  ]
+ },
+ {
+  "caso": "dalpiaz:g19-alfred",
+  "historia": "As an Older Person, I want to be able to communicate with friends and family through a messaging system, so that I can stay connected",
+  "tareas": [
+   "Create messaging platform for Older Persons",
+   "Design user interface for messaging system",
+   "Implement user authentication and authorization",
+   "Develop messaging functionality for sending and receiving messages"
+  ],
+  "id": "i047",
+  "historia_es": "Como persona mayor, quiero poder comunicarme con amigos y familiares a través de un sistema de mensajería, para poder mantenerme conectado",
+  "tareas_es": [
+   "Crear una plataforma de mensajería para personas mayores",
+   "Diseñar interfaz de usuario para el sistema de mensajería",
+   "Implementar autenticación y autorización de usuario",
+   "Desarrollar la funcionalidad de mensajería para enviar y recibir mensajes"
+  ]
+ },
+ {
+  "caso": "dalpiaz:g16-mis",
+  "historia": "As an Archivist, I want to be able to add metadata to datasets, so that they can be properly indexed and searchable",
+  "tareas": [
+   "Define metadata schema for datasets",
+   "Research and select appropriate metadata standards",
+   "Design custom metadata schema (if necessary)",
+   "Create metadata input form"
+  ],
+  "id": "i048",
+  "historia_es": "Como archivista, quiero poder añadir metadatos a los conjuntos de datos, para que puedan ser indexados y buscados adecuadamente",
+  "tareas_es": [
+   "Definir esquema de metadatos para conjuntos de datos",
+   "Investigación y selección de normas de metadatos apropiadas",
+   "Diseñar un esquema de metadatos personalizado (si es necesario)",
+   "Crear formulario de entrada de metadatos"
+  ]
+ },
+ {
+  "caso": "RedHat:MULTIARCH-1013",
+  "historia": "As a z/VM 7.2 user, I want to scale OpenShift on z/VM 7.2, so that I can handle increasing workloads and ensure high availability",
+  "tareas": [
+   "Research and understand OpenShift 4.x requirements on z/VM 7.2",
+   "Install and configure IBM Z Operational Networks (zON)",
+   "Install and configure IBM Z OpenShift Container Storage (ZCOS)",
+   "Install and configure IBM Z OpenShift Container Platform (OCP) 4.x"
+  ],
+  "id": "i049",
+  "historia_es": "Como usuario Z/VM 7.2, quiero escalar OpenShift en Z/VM 7.2, de modo que pueda manejar cargas de trabajo crecientes y asegurar una alta disponibilidad",
+  "tareas_es": [
+   "Investigación y comprensión de los requisitos OpenShift 4.x en z/VM 7.2",
+   "Instalar y configurar redes operacionales IBM Z (zON)",
+   "Instalar y configurar IBM Z OpenShift Container Storage (ZCOS)",
+   "Instalar y configurar IBM Z OpenShift Container Platform (OCP) 4.x"
+  ]
+ },
+ {
+  "caso": "dalpiaz:g19-alfred",
+  "historia": "As a Senior Citizen, I want to have access to educational resources, so that I can learn new skills and stay intellectually engaged",
+  "tareas": [
+   "Research and identify suitable educational resources for senior citizens",
+   "Design a user-friendly interface for easy navigation",
+   "Implement search functionality for quick access to resources",
+   "Integrate video tutorials for visual learners"
+  ],
+  "id": "i050",
+  "historia_es": "Como ciudadano de edad avanzada, quiero tener acceso a recursos educativos, para poder aprender nuevas habilidades y mantenerme comprometido intelectualmente",
+  "tareas_es": [
+   "Investigación y determinación de recursos educativos adecuados para las personas de edad",
+   "Diseñar una interfaz user-friendly para una navegación fácil",
+   "Implementar funcionalidad de búsqueda para un acceso rápido a los recursos",
+   "Integrar tutoriales de vídeo para los alumnos visuales"
+  ]
+ },
+ {
+  "caso": "RedHat:MULTIARCH-1013",
+  "historia": "As a z/VM 7.2 user, I want to troubleshoot OpenShift issues on z/VM 7.2, so that I can quickly resolve any problems that may arise",
+  "tareas": [
+   "Research and gather documentation on OpenShift issues on z/VM 7.2",
+   "Set up a test environment for z/VM 7.2 and OpenShift",
+   "Install and configure OpenShift on z/VM 7.2 in the test environment",
+   "Test basic OpenShift functionality on z/VM 7.2"
+  ],
+  "id": "i051",
+  "historia_es": "Como usuario z/VM 7.2, quiero solucionar problemas OpenShift en z/VM 7.2, de modo que pueda resolver rápidamente cualquier problema que pueda surgir",
+  "tareas_es": [
+   "Investigación y recopilación de documentación sobre cuestiones OpenShift sobre z/VM 7.2",
+   "Establecer un entorno de prueba para z/VM 7.2 y OpenShift",
+   "Instalar y configurar OpenShift en z/VM 7.2 en el entorno de prueba",
+   "Comprobar la funcionalidad básica OpenShift en z/VM 7.2"
+  ]
+ },
+ {
+  "caso": "RedHat:OSSM-261",
+  "historia": "As a Maistra user, I want to manage the authentication and authorization of my service mesh across multiple OpenShift clusters, so that I can ensure secure access to my services",
+  "tareas": [
+   "Implement OpenID Connect (OIDC) for user authentication across OpenShift clusters",
+   "Develop an API for service mesh authentication and authorization",
+   "Integrate the API with OpenID Connect for user authentication",
+   "Implement role-based access control (RBAC) for authorization"
+  ],
+  "id": "i052",
+  "historia_es": "Como usuario de Maistra, quiero gestionar la autenticación y autorización de mi malla de servicio en múltiples clusters OpenShift, de modo que pueda garantizar un acceso seguro a mis servicios",
+  "tareas_es": [
+   "Implementar OpenID Connect (OIDC) para la autenticación de usuarios en los clusters OpenShift",
+   "Desarrollar un API para autenticación y autorización de malla de servicio",
+   "Integrar el API con OpenID Connect para la autenticación de usuario",
+   "Implementar el control de acceso role-based (RBAC) para su autorización"
+  ]
+ },
+ {
+  "caso": "dalpiaz:g19-alfred",
+  "historia": "As an Older Person, I want to be able to rate and review activities and events, so that I can provide feedback and help improve services",
+  "tareas": [
+   "Here are the concrete implementation tasks:",
+   "Create Activity and Event Database Tables",
+   "Design Rating and Review Form",
+   "Implement Rating and Review Form Validation"
+  ],
+  "id": "i053",
+  "historia_es": "Como persona mayor, quiero poder valorar y revisar actividades y eventos, para poder proporcionar retroalimentación y ayudar a mejorar los servicios",
+  "tareas_es": [
+   "Estas son las tareas concretas de aplicación:",
+   "Crear tablas de base de datos de actividades y eventos",
+   "Formulario de clasificación y revisión del diseño",
+   "Implementar la validación de la calificación y el formulario de revisión"
+  ]
+ },
+ {
+  "caso": "dalpiaz:g16-mis",
+  "historia": "As a researcher, I want to see the overall metadata of my dataset, so that I can make informed decisions.",
+  "tareas": [
+   "Retrieve the metadata from the database",
+   "Add metadata for datasets"
+  ],
+  "id": "i054",
+  "historia_es": "Como investigador, quiero ver los metadatos generales de mi conjunto de datos, para poder tomar decisiones informadas.",
+  "tareas_es": [
+   "Recuperar los metadatos de la base de datos",
+   "Añadir metadatos para conjuntos de datos"
+  ]
+ },
+ {
+  "caso": "dalpiaz:g25-duraspace",
+  "historia": "As a user, I want to be able to view metadata for digital objects, so that I can understand their context and significance",
+  "tareas": [
+   "Here are the concrete implementation tasks:",
+   "Create metadata schema for digital objects",
+   "Design metadata display UI component",
+   "Integrate metadata schema with digital object storage"
+  ],
+  "id": "i055",
+  "historia_es": "Como usuario, quiero poder ver metadatos para objetos digitales, de modo que pueda entender su contexto y significado",
+  "tareas_es": [
+   "Estas son las tareas concretas de aplicación:",
+   "Crear esquema de metadatos para objetos digitales",
+   "Diseño de metadatos de pantalla UI componente",
+   "Integrar esquema de metadatos con almacenamiento de objetos digitales"
+  ]
+ },
+ {
+  "caso": "RedHat:OSSM-261",
+  "historia": "As a Service Mesh Operator, I want to be able to generate CR code for the Istio Adapter, so that I can easily integrate it with my existing infrastructure",
+  "tareas": [
+   "Here are the concrete implementation tasks:",
+   "Generate Istio Adapter CRD definition",
+   "Create code generator for Istio Adapter CRD",
+   "Integrate code generator with existing infrastructure"
+  ],
+  "id": "i056",
+  "historia_es": "Como operador de malla de servicio, quiero poder generar código CR para el adaptador Istio, de modo que pueda integrarlo fácilmente con mi infraestructura existente",
+  "tareas_es": [
+   "Estas son las tareas concretas de aplicación:",
+   "Generar la definición Istio Adaptador CRD",
+   "Crear generador de código para Istio Adaptador CRD",
+   "Integrar el generador de código con la infraestructura existente"
+  ]
+ },
+ {
+  "caso": "dalpiaz:g16-mis",
+  "historia": "As an Archivist, I want to be able to manage permissions for datasets, so that I can control who can access them",
+  "tareas": [
+   "Define user roles for dataset access (e.g., Admin, Editor, Viewer)",
+   "Implement user authentication and authorization system",
+   "Create a user management interface for archivists",
+   "Develop a dataset management interface with permission settings"
+  ],
+  "id": "i057",
+  "historia_es": "Como archivista, quiero poder administrar permisos para conjuntos de datos, para poder controlar quién puede acceder a ellos.",
+  "tareas_es": [
+   "Definir roles de usuario para el acceso al conjunto de datos (e.g., Administrador, Editor, Visor)",
+   "Implementar sistema de autenticación y autorización de usuarios",
+   "Crear una interfaz de gestión de usuario para archiveros",
+   "Desarrollar una interfaz de gestión de conjuntos de datos con configuración de permisos"
+  ]
+ },
+ {
+  "caso": "dalpiaz:g19-alfred",
+  "historia": "As a community manager, I want to be able to locate and collect certain types of incoming courses, so that I can prepare and attend them.",
+  "tareas": [
+   "Allow the community manager to select and collect certain types",
+   "Correct types of incoming courses"
+  ],
+  "id": "i058",
+  "historia_es": "Como gerente de la comunidad, quiero poder localizar y recoger ciertos tipos de cursos entrantes, para poder prepararlos y asistir a ellos.",
+  "tareas_es": [
+   "Permitir que el administrador de la comunidad seleccione y recoja ciertos tipos",
+   "Tipos correctos de cursos entrantes"
+  ]
+ },
+ {
+  "caso": "RedHat:OSSM-261",
+  "historia": "As a sender, I want to receive notifications about new releases using my cluster, so that I can deploy them quickly.",
+  "tareas": [
+   "Add notification about new release",
+   "Add email about new release"
+  ],
+  "id": "i059",
+  "historia_es": "Como remitente, quiero recibir notificaciones sobre nuevas versiones usando mi clúster, para poder implementarlas rápidamente.",
+  "tareas_es": [
+   "Añadir notificación sobre la nueva versión",
+   "Añadir correo electrónico sobre la nueva versión"
+  ]
+ }
+]

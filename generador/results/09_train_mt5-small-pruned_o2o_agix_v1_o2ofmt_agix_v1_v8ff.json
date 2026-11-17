@@ -1,0 +1,46 @@
+{
+ "modelo": "models/mt5-small-pruned_o2o_agix_v1_o2ofmt_agix_v1",
+ "bs": 32,
+ "acum": 1,
+ "bs_efectivo": 32,
+ "max_out": 48,
+ "lr": 0.0005,
+ "epocas": 4,
+ "hist": [
+  {
+   "epoca": 1,
+   "train_loss": 1.4712216878733309,
+   "val_loss": 2.0369194435847633,
+   "seg": 148
+  },
+  {
+   "epoca": 2,
+   "train_loss": 1.095886616903951,
+   "val_loss": 2.0242599700899375,
+   "seg": 143
+  },
+  {
+   "epoca": 3,
+   "train_loss": 0.9779468932572533,
+   "val_loss": 2.097094660129997,
+   "seg": 143
+  },
+  {
+   "epoca": 4,
+   "train_loss": 0.9212722747996804,
+   "val_loss": 2.132416594227868,
+   "seg": 144
+  }
+ ],
+ "v0": 3.661197758650426,
+ "mejor_val": 2.0242599700899375,
+ "vram_pico": 6.13,
+ "min": 9.7,
+ "gens": [
+  "As a care coordinator, I want to generate reports on recurring appointments, so that I can analyze trends.",
+  "As an account holder, I want to view my monthly reports, so that I can manage my finances effectively.",
+  "As an account holder, I want to receive notifications about upcoming transactions, so that I can plan my day.",
+  "As a site manager, I want to schedule material requests, so that I can manage resources effectively.",
+  "As an infrastructure developer, I want to be able to deploy a new version of an app that generates reports/datasets."
+ ]
+}

@@ -1,0 +1,9 @@
+sistema,n,s_mediana,s_p90,tareas,carga_s,ram_modelos_GB,ram_pico_GB,etapa_tareas,etapa_historias
+nuestro_cpu_completo_6h,6,10.41,12.06,39.83,4.6,1.05,3.01,5.53,3.59
+nuestro_cpu_ligero_6h,6,6.26,6.7,31.67,4.3,0.69,2.67,1.45,3.17
+nuestro_cpu_completo_4h,6,11.35,12.21,47.5,4.3,0.69,3.19,6.14,3.28
+nuestro_cpu_ligero_4h,6,6.98,7.5,30.67,4.2,0.57,3.01,1.63,3.58
+llama3.1:8b_cpu,1,181.89,181.89,135.0,,,,,
+nuestro_gpu,64,3.99,4.64,51.55,,,,,
+llama3.1:8b_gpu,64,21.63,25.22,122.06,,,,,
+mistral:7b_gpu,64,39.44,43.34,203.3,,,,,

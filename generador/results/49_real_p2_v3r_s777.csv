@@ -1,0 +1,7 @@
+variante,proyecto,n_ref,n_gen,sF1,precision,cobertura,segundos,votos_max,relevancia
+viejo,fish_chips,50,12,0.6006,0.6299,0.574,27.1,2,0.486
+viejo,ticket,54,12,0.6549,0.7345,0.5909,25.8,5,0.496
+viejo,grocery,49,12,0.6477,0.7402,0.5757,25.3,2,0.491
+viejo,school,61,12,0.6245,0.6818,0.5762,25.1,1,0.493
+viejo,sports,63,12,0.6012,0.6708,0.5446,24.6,2,0.449
+viejo,supermarket,51,12,0.6218,0.6744,0.5768,23.1,5,0.442

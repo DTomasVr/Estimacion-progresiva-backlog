@@ -1,0 +1,5 @@
+etiqueta,sF1,hF1,rouge1,ratio,sPrec,sCob,formato,n_gen
+dalpiaz_test(4 proyectos) [solo recuperacion],0.2241,0.0,0.0242,0.0314,0.3039,0.179,0.25,3.0
+dalpiaz_test(4 proyectos) [modelo],0.4436,0.0,0.2692,0.2127,0.4795,0.4136,1.0,20.0
+o2o_test_historias [solo recuperacion],0.2937,0.0122,0.0705,1.8724,0.2959,0.304,0.039,3.5
+o2o_test_historias [modelo],0.4013,0.0216,0.0858,8.8803,0.3655,0.4616,0.924,17.2

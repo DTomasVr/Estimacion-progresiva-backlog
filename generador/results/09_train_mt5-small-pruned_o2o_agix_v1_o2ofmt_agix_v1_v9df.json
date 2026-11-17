@@ -1,0 +1,40 @@
+{
+ "modelo": "models/mt5-small-pruned_o2o_agix_v1_o2ofmt_agix_v1",
+ "bs": 32,
+ "acum": 1,
+ "bs_efectivo": 32,
+ "max_out": 48,
+ "lr": 0.0005,
+ "epocas": 4,
+ "hist": [
+  {
+   "epoca": 1,
+   "train_loss": 1.4672274525985964,
+   "val_loss": 2.0818373849299774,
+   "seg": 139
+  },
+  {
+   "epoca": 2,
+   "train_loss": 1.0956627019772816,
+   "val_loss": 2.1006921477855243,
+   "seg": 127
+  },
+  {
+   "epoca": 3,
+   "train_loss": 0.9795062596848015,
+   "val_loss": 2.1386570321849936,
+   "seg": 127
+  }
+ ],
+ "v0": 3.6590615292615256,
+ "mejor_val": 2.0818373849299774,
+ "vram_pico": 6.11,
+ "min": 6.7,
+ "gens": [
+  "As a front desk staff, I want to view members' workout plans, so that I can plan my day.",
+  "As a support agent, I want to view a customer's budget alert, so that I can provide feedback.",
+  "As an HR administrator, I want to manage job postings, so that I can ensure they are accurate.",
+  "As a warehouse operator, I want to monitor the status of returned items, so that I can ensure they are accurate.",
+  "As a developer, I want to have a preservation system for managing the data, so that I can fulfill the preservation process."
+ ]
+}

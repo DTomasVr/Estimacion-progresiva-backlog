@@ -1,0 +1,12 @@
+medida,valor,nota
+incidencias cosechadas,1402,"45 repos de producto de consumo, 25 paginas por repo"
+items con sintaxis de lista,7394,'- [ ]' en el cuerpo
+items que son plantilla de issue,749,"'I have searched...', 'I'm a real person'"
+items que son declaracion del reportante,235,primera persona
+items que no son trabajo,3320,"criterios de aceptacion MUST/SHOULD, rutas, fragmentos"
+incidencias de bug o soporte,643,por etiqueta
+incidencias con menos de 3 items utiles,704,
+incidencias utiles finales,19,1.4 % de lo cosechado
+tareas utiles finales,100,
+"de esas, descomposicion de PRODUCTO",0,"todas son ingenieria: migraciones, deuda tecnica, releases"
+incidencias abiertas que usan sub-issues,1 de 478 (0.2 %),GraphQL sobre 8 repos de producto

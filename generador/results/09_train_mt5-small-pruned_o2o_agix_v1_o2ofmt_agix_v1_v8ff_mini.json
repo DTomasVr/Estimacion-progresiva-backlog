@@ -1,0 +1,202 @@
+{
+ "modelo": "models/mt5-small-pruned_o2o_agix_v1_o2ofmt_agix_v1",
+ "bs": 8,
+ "acum": 1,
+ "bs_efectivo": 8,
+ "max_out": 48,
+ "lr": 0.0005,
+ "epocas": 30,
+ "hist": [
+  {
+   "epoca": 1,
+   "train_loss": 2.633062815666199,
+   "val_loss": 1.8052940869241163,
+   "seg": 17
+  },
+  {
+   "epoca": 2,
+   "train_loss": 1.9912391638755798,
+   "val_loss": 1.3540103061578013,
+   "seg": 5
+  },
+  {
+   "epoca": 3,
+   "train_loss": 1.6175251030921936,
+   "val_loss": 1.1007938188973998,
+   "seg": 6
+  },
+  {
+   "epoca": 4,
+   "train_loss": 1.4250808477401733,
+   "val_loss": 0.9288090338970418,
+   "seg": 5
+  },
+  {
+   "epoca": 5,
+   "train_loss": 1.2450593876838685,
+   "val_loss": 0.7751885929472585,
+   "seg": 5
+  },
+  {
+   "epoca": 6,
+   "train_loss": 1.094889371395111,
+   "val_loss": 0.661930697583705,
+   "seg": 5
+  },
+  {
+   "epoca": 7,
+   "train_loss": 0.9920176720619202,
+   "val_loss": 0.5429072530064051,
+   "seg": 5
+  },
+  {
+   "epoca": 8,
+   "train_loss": 0.8995135360956192,
+   "val_loss": 0.4576519475803531,
+   "seg": 5
+  },
+  {
+   "epoca": 9,
+   "train_loss": 0.8229943364858627,
+   "val_loss": 0.3997988840682528,
+   "seg": 6
+  },
+  {
+   "epoca": 10,
+   "train_loss": 0.7262799191474915,
+   "val_loss": 0.3389036851849355,
+   "seg": 5
+  },
+  {
+   "epoca": 11,
+   "train_loss": 0.6593028652667999,
+   "val_loss": 0.2820887668293162,
+   "seg": 5
+  },
+  {
+   "epoca": 12,
+   "train_loss": 0.5846622639894485,
+   "val_loss": 0.23259901920331155,
+   "seg": 5
+  },
+  {
+   "epoca": 13,
+   "train_loss": 0.5601503533124924,
+   "val_loss": 0.20717965489697335,
+   "seg": 5
+  },
+  {
+   "epoca": 14,
+   "train_loss": 0.51253233730793,
+   "val_loss": 0.17584921492082814,
+   "seg": 5
+  },
+  {
+   "epoca": 15,
+   "train_loss": 0.4703435653448105,
+   "val_loss": 0.15726430561689456,
+   "seg": 5
+  },
+  {
+   "epoca": 16,
+   "train_loss": 0.44346861481666566,
+   "val_loss": 0.14058114914752046,
+   "seg": 5
+  },
+  {
+   "epoca": 17,
+   "train_loss": 0.42754672408103944,
+   "val_loss": 0.12752099365435193,
+   "seg": 5
+  },
+  {
+   "epoca": 18,
+   "train_loss": 0.37288152128458024,
+   "val_loss": 0.10879850044933442,
+   "seg": 5
+  },
+  {
+   "epoca": 19,
+   "train_loss": 0.3654048627614975,
+   "val_loss": 0.09511457772192652,
+   "seg": 5
+  },
+  {
+   "epoca": 20,
+   "train_loss": 0.3252468129992485,
+   "val_loss": 0.08547889114114424,
+   "seg": 5
+  },
+  {
+   "epoca": 21,
+   "train_loss": 0.3118699154257774,
+   "val_loss": 0.08003353303495658,
+   "seg": 5
+  },
+  {
+   "epoca": 22,
+   "train_loss": 0.31514878183603284,
+   "val_loss": 0.07389776168501505,
+   "seg": 5
+  },
+  {
+   "epoca": 23,
+   "train_loss": 0.294236812889576,
+   "val_loss": 0.06819578709754938,
+   "seg": 5
+  },
+  {
+   "epoca": 24,
+   "train_loss": 0.2845328962802887,
+   "val_loss": 0.06498368593487151,
+   "seg": 5
+  },
+  {
+   "epoca": 25,
+   "train_loss": 0.2748176071047783,
+   "val_loss": 0.06187597642010278,
+   "seg": 5
+  },
+  {
+   "epoca": 26,
+   "train_loss": 0.2781581771373749,
+   "val_loss": 0.059113271519762534,
+   "seg": 5
+  },
+  {
+   "epoca": 27,
+   "train_loss": 0.2613240659236908,
+   "val_loss": 0.056415727914899384,
+   "seg": 5
+  },
+  {
+   "epoca": 28,
+   "train_loss": 0.25406275123357774,
+   "val_loss": 0.05321825909414205,
+   "seg": 5
+  },
+  {
+   "epoca": 29,
+   "train_loss": 0.25477676957845685,
+   "val_loss": 0.05259528820676562,
+   "seg": 5
+  },
+  {
+   "epoca": 30,
+   "train_loss": 0.24617102652788161,
+   "val_loss": 0.05267676838097007,
+   "seg": 5
+  }
+ ],
+ "v0": 2.5879819405653888,
+ "mejor_val": 0.05259528820676562,
+ "vram_pico": 2.0,
+ "min": 3.0,
+ "gens": [
+  "As a pharmacist, I want to be able to search for patients by name or ID, so that I can quickly find their prescription history.",
+  "As a support agent, I want to be able to view the history of a return, so that I can understand the return process.",
+  "As a community manager, I want to monitor active bookings, so that I can manage space utilization.",
+  "As a collection driver, I want to receive notifications for the next pickup route, so that I can prepare for the day.",
+  "As a hiring manager, I want to receive candidate assessments, so that I can evaluate them before interviews."
+ ]
+}

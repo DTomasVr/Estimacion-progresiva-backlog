@@ -1,0 +1,38 @@
+{
+ "modelo": "models/mt5-small-pruned_hist_agix_v1",
+ "bs": 16,
+ "max_out": 192,
+ "lr": 0.0005,
+ "epocas": 4,
+ "hist": [
+  {
+   "epoca": 1,
+   "train_loss": 2.434930522940052,
+   "val_loss": 3.311972937763189,
+   "seg": 527
+  },
+  {
+   "epoca": 2,
+   "train_loss": 2.1602608264194916,
+   "val_loss": 3.3274854664454256,
+   "seg": 526
+  },
+  {
+   "epoca": 3,
+   "train_loss": 2.0500034346696623,
+   "val_loss": 3.364378625952498,
+   "seg": 526
+  }
+ ],
+ "v0": 3.362286318941023,
+ "mejor_val": 3.311972937763189,
+ "vram_pico": 6.16,
+ "min": 26.7,
+ "gens": [
+  "Revert as-* deployable datasources for Openshift ; Migrate to 1.0.0.M2b release",
+  "Create a custom build for Aerogear.js builds ; Create a basic maven build for AeroGear.js",
+  "Add header processing for sender client ; Add Header processing for CURL do user agent checks",
+  "Create release branch for 1.0.0.M2 ; Release the released artifacts ; Update the website for the release ; Create a binary snapshot for the release",
+  "Add context based tool-side functionality to the app ; Create a new context based user icon for the app"
+ ]
+}

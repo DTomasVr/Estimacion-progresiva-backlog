@@ -1,0 +1,26 @@
+{
+ "modelo": "models/mt5-small-pruned_o2o_agix_v1_o2ofmt_agix_v1",
+ "bs": 32,
+ "max_out": 48,
+ "lr": 0.0005,
+ "epocas": 1,
+ "hist": [
+  {
+   "epoca": 1,
+   "train_loss": 1.6125684489693788,
+   "val_loss": 1.784047086161948,
+   "seg": 139
+  }
+ ],
+ "v0": 3.732976122581992,
+ "mejor_val": 1.784047086161948,
+ "vram_pico": 6.12,
+ "min": 2.5,
+ "gens": [
+  "As a publisher, I want to receive notifications about upcoming records, so that I can prepare for my work.",
+  "As an infrastructure developer, I want to be able to generate reports on a recycling facility, so that I can ensure that I am notified of changes to their recyclable materials.",
+  "As a traveller, I want to receive notifications about guest bookings, so that I can stay informed.",
+  "As a finance officer, I want to receive notifications when a bank account is expired, so that I can prepare for my account.",
+  "As a publisher, I want to receive notifications about upcoming records, so that I can prepare for my work."
+ ]
+}

@@ -1,0 +1,333 @@
+[
+ {
+  "descripcion": "Una app para reservar canchas deportivas donde los socios ven la disponibilidad, pagan en linea y el administrador gestiona los horarios.",
+  "historias": [
+   {
+    "historia": "As a member, I want to pay online, so that I can receive a convenient payment for my work.",
+    "votos": 1,
+    "relevancia": 0.432,
+    "tareas": [
+     "Store payment details in the member's profile",
+     "Send a confirmation email to the member when a payment is received",
+     "Apply a membership to the marketplace",
+     "Apply offline approval proposal",
+     "Display payment details on the member’s dashboard"
+    ],
+    "origen": [
+     {
+      "proyecto": "RedHat:THREESCALE",
+      "similitud": 0.456
+     },
+     {
+      "proyecto": "RedHat:WFK2",
+      "similitud": 0.425
+     }
+    ],
+    "historia_es": "Como miembro, quiero pagar en línea, para que pueda recibir un pago conveniente por mi trabajo.",
+    "tareas_es": [
+     "Almacenar los datos de pago en el perfil del miembro",
+     "Enviar un correo electrónico de confirmación al miembro cuando se reciba un pago",
+     "Aplicar una membresía al mercado",
+     "Aplicar la propuesta de aprobación fuera de línea",
+     "Mostrar los detalles de pago en el panel del miembro"
+    ]
+   },
+   {
+    "historia": "As a administrator, I want to set up rules for bookings, so that I can manage inventory of work.",
+    "votos": 1,
+    "relevancia": 0.346,
+    "tareas": [
+     "Add a confirmation proposal for the marketplace",
+     "Implement rules for bookings in the admin panel",
+     "Store rules in the database",
+     "Send a notification to the administrator about the rules",
+     "Rules for Reservations",
+     "Display rules on the admin panel"
+    ],
+    "origen": [
+     {
+      "proyecto": "Hyperledger:FAB",
+      "similitud": 0.485
+     },
+     {
+      "proyecto": "RedHat:TEIID",
+      "similitud": 0.474
+     }
+    ],
+    "historia_es": "Como administrador, quiero establecer reglas para las reservas, para que pueda gestionar el inventario de trabajo.",
+    "tareas_es": [
+     "Añadir una propuesta de confirmación para el mercado",
+     "Implementar reglas para reservas en el panel de administración",
+     "Almacenar reglas en la base de datos",
+     "Enviar una notificación al administrador sobre las reglas",
+     "Normas para las reservas",
+     "Mostrar las reglas en el panel de administración"
+    ]
+   },
+   {
+    "historia": "As a member, I want to view the availability of my courses, so that I can manage my schedule.",
+    "votos": 1,
+    "relevancia": 0.456,
+    "tareas": [
+     "Please review and vote on course categories"
+    ],
+    "origen": [
+     {
+      "proyecto": "TAWOS-Moodle:MDL",
+      "similitud": 0.508
+     },
+     {
+      "proyecto": "Sakai:SAK",
+      "similitud": 0.48
+     }
+    ],
+    "historia_es": "Como miembro, quiero ver la disponibilidad de mis cursos, para poder administrar mi horario.",
+    "tareas_es": [
+     "Revisar y votar sobre las categorías de cursos"
+    ]
+   },
+   {
+    "historia": "As an administrator, I want to monitor the number of visitors who are submitted, so that I can manage resources efficiently.",
+    "votos": 1,
+    "relevancia": 0.272,
+    "tareas": [
+     "Store the number of visitors who are submitted in the database",
+     "Allow users to monitor the number of visitors whose are submitted",
+     "Add ability to monitor number of Users whose is submitted"
+    ],
+    "origen": [
+     {
+      "proyecto": "Apache:DATALAB",
+      "similitud": 0.527
+     },
+     {
+      "proyecto": "Apache:AIRAVATA",
+      "similitud": 0.509
+     }
+    ],
+    "historia_es": "Como administrador, quiero monitorear el número de visitantes que se envían, para que pueda administrar los recursos de manera eficiente.",
+    "tareas_es": [
+     "Almacenar el número de visitantes que se envían en la base de datos",
+     "Permitir a los usuarios controlar el número de visitantes que se envían",
+     "Añadir capacidad de controlar el número de usuarios que se envía"
+    ]
+   },
+   {
+    "historia": "As a member, I want to receive notifications when my availability is full, so that I can ensure accuracy.",
+    "votos": 1,
+    "relevancia": 0.449,
+    "tareas": [
+     "Store the availability data in the member's profile",
+     "Display the availability on the member’s dashboard",
+     "Implement a notification system in the member's profile"
+    ],
+    "origen": [
+     {
+      "proyecto": "RedHat:AA",
+      "similitud": 0.461
+     },
+     {
+      "proyecto": "JiraEcosystem:AMKT",
+      "similitud": 0.458
+     }
+    ],
+    "historia_es": "Como miembro, quiero recibir notificaciones cuando mi disponibilidad esté llena, para poder garantizar la exactitud.",
+    "tareas_es": [
+     "Almacenar los datos de disponibilidad en el perfil del miembro",
+     "Mostrar la disponibilidad en el panel del miembro",
+     "Aplicar un sistema de notificación en el perfil del miembro"
+    ]
+   },
+   {
+    "historia": "As a member, I want to view my upcoming appointments, so that I can plan my day efficiently.",
+    "votos": 3,
+    "relevancia": 0.35,
+    "tareas": [
+     "Store appointment details in the database",
+     "Display appointment details on the member's dashboard",
+     "Send notifications to members about upcoming appointments"
+    ],
+    "origen": [
+     {
+      "proyecto": "JiraEcosystem:PLE",
+      "similitud": 0.6
+     },
+     {
+      "proyecto": "RedHat:AA",
+      "similitud": 0.514
+     }
+    ],
+    "historia_es": "Como miembro, quiero ver mis próximas citas, para poder planificar mi día de manera eficiente.",
+    "tareas_es": [
+     "Almacenar los detalles de la cita en la base de datos",
+     "Mostrar los detalles de la cita en el panel del miembro",
+     "Enviar notificaciones a los miembros sobre las próximas citas"
+    ]
+   },
+   {
+    "historia": "As a member, I want to view my upcoming appointments, so that I can plan my schedule.",
+    "votos": 3,
+    "relevancia": 0.403,
+    "tareas": [
+     "Store appointment details in the database"
+    ],
+    "origen": [
+     {
+      "proyecto": "JiraEcosystem:PLE",
+      "similitud": 0.621
+     },
+     {
+      "proyecto": "RedHat:AA",
+      "similitud": 0.538
+     }
+    ],
+    "historia_es": "Como miembro, quiero ver mis próximas citas, para poder planificar mi horario.",
+    "tareas_es": [
+     "Almacenar los detalles de la cita en la base de datos"
+    ]
+   },
+   {
+    "historia": "As a member, I want to see the upcoming appointments, so that I can plan my day accordingly.",
+    "votos": 3,
+    "relevancia": 0.322,
+    "tareas": [
+     "Store appointment details in the database"
+    ],
+    "origen": [
+     {
+      "proyecto": "JiraEcosystem:PLE",
+      "similitud": 0.599
+     },
+     {
+      "proyecto": "RedHat:AA",
+      "similitud": 0.552
+     }
+    ],
+    "historia_es": "Como miembro, quiero ver las próximas citas, para poder planificar mi día en consecuencia.",
+    "tareas_es": [
+     "Almacenar los detalles de la cita en la base de datos"
+    ]
+   },
+   {
+    "historia": "As an administrator, I want to approve or reject a dashboard, so that I can provide a better service.",
+    "votos": 1,
+    "relevancia": 0.228,
+    "tareas": [
+     "Allow admins to approve or reject dashboards",
+     "Store dashboard details in the database"
+    ],
+    "origen": [
+     {
+      "proyecto": "Hyperledger:CE",
+      "similitud": 0.691
+     },
+     {
+      "proyecto": "Hyperledger:CE",
+      "similitud": 0.658
+     }
+    ],
+    "historia_es": "Como administrador, quiero aprobar o rechazar un panel, para poder ofrecer un mejor servicio.",
+    "tareas_es": [
+     "Permitir que los administradores aprueben o rechacen paneless",
+     "Almacenar los detalles del panel en la base de datos"
+    ]
+   },
+   {
+    "historia": "As a administrator, I want to set up multiple book categories, so that I can manage multiple providers efficiently.",
+    "votos": 1,
+    "relevancia": 0.283,
+    "tareas": [
+     "Create a list of book categories in the admin panel",
+     "Create a Book category",
+     "Display categories on the admin panel"
+    ],
+    "origen": [
+     {
+      "proyecto": "RedHat:AF",
+      "similitud": 0.519
+     },
+     {
+      "proyecto": "RedHat:APPAI",
+      "similitud": 0.498
+     }
+    ],
+    "historia_es": "Como administrador, quiero configurar múltiples categorías de libros, de modo que pueda administrar múltiples proveedores de manera eficiente.",
+    "tareas_es": [
+     "Crear una lista de categorías de libros en el panel de administración",
+     "Crear una categoría de libro",
+     "Mostrar categorías en el panel de administración"
+    ]
+   },
+   {
+    "historia": "As an administrator, I want to generate reports on account status, so that I can manage the availability of sessions.",
+    "votos": 1,
+    "relevancia": 0.367,
+    "tareas": [
+     "generate reports on account status page",
+     "Generate reports on account status updates"
+    ],
+    "origen": [
+     {
+      "proyecto": "Apache:LENS",
+      "similitud": 0.548
+     },
+     {
+      "proyecto": "RedHat:HAWKULAR",
+      "similitud": 0.53
+     }
+    ],
+    "historia_es": "Como administrador, quiero generar informes sobre el estado de la cuenta, para poder gestionar la disponibilidad de sesiones.",
+    "tareas_es": [
+     "Generar informes en la página de estado de la cuenta",
+     "Generar informes sobre las actualizaciones de estado de la cuenta"
+    ]
+   },
+   {
+    "historia": "As a member, I want to receive notifications when my loved one is over, so that I can help me choose.",
+    "votos": 1,
+    "relevancia": 0.302,
+    "tareas": [
+     "Send notifications to the member when a new notification is over"
+    ],
+    "origen": [
+     {
+      "proyecto": "JiraEcosystem:AMKT",
+      "similitud": 0.454
+     },
+     {
+      "proyecto": "RedHat:AA",
+      "similitud": 0.441
+     }
+    ],
+    "historia_es": "Como miembro, quiero recibir notificaciones cuando mi ser querido haya terminado, para que pueda ayudarme a elegir.",
+    "tareas_es": [
+     "Enviar notificaciones al miembro cuando una nueva notificación haya terminado"
+    ]
+   }
+  ],
+  "tiempos": {
+   "traducir_entrada": 16.09,
+   "recuperar_arriba": 0.207,
+   "generar_historias": 3.293,
+   "deduplicar_historias": 0.172,
+   "recuperar_abajo": 0.016,
+   "generar_tareas": 6.114,
+   "deduplicar_tareas": 0.068,
+   "reasignar_tareas": 0.041,
+   "traducir": 0.256,
+   "total": 26.256
+  },
+  "vecinos_proyecto": [
+   {
+    "proyecto": "Hyperledger:IR",
+    "similitud": 0.387
+   },
+   {
+    "proyecto": "IntelDAOS:DAOS",
+    "similitud": 0.385
+   }
+  ],
+  "n_banco": 28,
+  "n_tareas": 31
+ }
+]

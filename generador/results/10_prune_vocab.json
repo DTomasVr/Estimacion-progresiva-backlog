@@ -1,0 +1,7 @@
+{
+ "identicos_en_corpus": 1.0,
+ "unk_es_reservado": 0.0,
+ "inflacion_tokens_es_reservado": 1.0005,
+ "vocab": 75260,
+ "hf_igual_a_sentencepiece": 1.0
+}

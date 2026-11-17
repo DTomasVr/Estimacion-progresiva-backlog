@@ -1,0 +1,68 @@
+[
+ {
+  "dominio": 2,
+  "conjunto": "fuera",
+  "n": 350,
+  "sF1": 0.4569,
+  "precision": 0.5308,
+  "cobertura": 0.4119,
+  "sim_vecino": 0.5555,
+  "val_loss": 3.3555,
+  "corr_sim_sF1": 0.0801
+ },
+ {
+  "dominio": 2,
+  "conjunto": "dentro",
+  "n": 350,
+  "sF1": 0.4463,
+  "precision": 0.4954,
+  "cobertura": 0.4175,
+  "sim_vecino": 0.529,
+  "val_loss": 3.3555,
+  "corr_sim_sF1": 0.1758
+ },
+ {
+  "dominio": 3,
+  "conjunto": "fuera",
+  "n": 205,
+  "sF1": 0.4811,
+  "precision": 0.5534,
+  "cobertura": 0.4371,
+  "sim_vecino": 0.552,
+  "val_loss": 3.3481,
+  "corr_sim_sF1": 0.0956
+ },
+ {
+  "dominio": 3,
+  "conjunto": "dentro",
+  "n": 350,
+  "sF1": 0.4584,
+  "precision": 0.5046,
+  "cobertura": 0.4305,
+  "sim_vecino": 0.5415,
+  "val_loss": 3.3481,
+  "corr_sim_sF1": 0.1335
+ },
+ {
+  "dominio": 4,
+  "conjunto": "fuera",
+  "n": 300,
+  "sF1": 0.4591,
+  "precision": 0.5337,
+  "cobertura": 0.4114,
+  "sim_vecino": 0.559,
+  "val_loss": 3.3974,
+  "corr_sim_sF1": 0.0797
+ },
+ {
+  "dominio": 4,
+  "conjunto": "dentro",
+  "n": 350,
+  "sF1": 0.4521,
+  "precision": 0.5063,
+  "cobertura": 0.4188,
+  "sim_vecino": 0.531,
+  "val_loss": 3.3974,
+  "corr_sim_sF1": 0.2011
+ }
+]

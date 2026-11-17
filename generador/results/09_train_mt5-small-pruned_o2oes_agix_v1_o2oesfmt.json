@@ -1,0 +1,38 @@
+{
+ "modelo": "F:/Software Task generation Model/models/mt5-small-pruned_o2oes_agix_v1",
+ "bs": 32,
+ "max_out": 48,
+ "lr": 0.0005,
+ "epocas": 8,
+ "hist": [
+  {
+   "epoca": 1,
+   "train_loss": 1.160741845066061,
+   "val_loss": 3.8791608823683337,
+   "seg": 81
+  },
+  {
+   "epoca": 2,
+   "train_loss": 0.8163503097647083,
+   "val_loss": 4.236721727389207,
+   "seg": 73
+  },
+  {
+   "epoca": 3,
+   "train_loss": 0.6245653076796448,
+   "val_loss": 4.595658198118579,
+   "seg": 73
+  }
+ ],
+ "v0": 3.386390350141207,
+ "mejor_val": 3.8791608823683337,
+ "vram_pico": 6.12,
+ "min": 4.0,
+ "gens": [
+  "As a developer, I want to have a platform that is easy to use, so that I can integrate data-packaged data with pipelines that use OpenSpending.",
+  "As a fabric administrator, I want to be able to create and modify reports of research related to a particular topic, so that I can share data with others.",
+  "As a data librarian, I want to be able to create a persistent web socket protocol for each file.",
+  "As a fabric administrator, I want to be able to create and modify a collection, so that I can generate a collection owner's information.",
+  "As a fabric administrator, I want to be able to create and modify reports of research related to a particular topic, so that I can share data with others."
+ ]
+}

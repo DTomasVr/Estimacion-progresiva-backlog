@@ -1,0 +1,46 @@
+{
+ "modelo": "models/mt5-small-pruned",
+ "bs": 4,
+ "acum": 4,
+ "bs_efectivo": 16,
+ "max_out": 192,
+ "lr": 0.0005,
+ "epocas": 4,
+ "hist": [
+  {
+   "epoca": 1,
+   "train_loss": 4.433314463191397,
+   "val_loss": 3.427154700294319,
+   "seg": 912
+  },
+  {
+   "epoca": 2,
+   "train_loss": 3.2261504544144657,
+   "val_loss": 3.3358191858262356,
+   "seg": 877
+  },
+  {
+   "epoca": 3,
+   "train_loss": 3.0296032727565705,
+   "val_loss": 3.2849110435004194,
+   "seg": 1021
+  },
+  {
+   "epoca": 4,
+   "train_loss": 2.9191083648211884,
+   "val_loss": 3.2738122608407987,
+   "seg": 884
+  }
+ ],
+ "v0": 13.311875179084888,
+ "mejor_val": 3.2738122608407987,
+ "vram_pico": 2.5,
+ "min": 62.8,
+ "gens": [
+  "Create a new API ; Create a basic API ; Add a separate API ; Implement a simple API ; Improve the API ; Refactor the API",
+  "Add support for Comprehensive REST Support ; Add support for comprehensive REST support",
+  "Prometheus Monitoring ; Prometheus monitoring",
+  "Create a new version of the revision control ; Create a separate version of the revisions control ; Add a basic version of the Revision control ; Update the documentation for the revision control",
+  "Improve the coverage of expression functions in SQL/DataFrame ; Improve the support of expression expressions in Python/DataFrame"
+ ]
+}

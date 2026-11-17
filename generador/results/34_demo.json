@@ -1,0 +1,624 @@
+{
+ "historias": [
+  {
+   "historia": "As a caregiver, I want to access a recurring appointment, so that I can quickly detect the payment deadlines.",
+   "votos": 1,
+   "relevancia": 0.529,
+   "tareas": [
+    "Store recurring appointment details in the caregiver's profile",
+    "Send a notification to the caregiver if a recurring request is rejected",
+    "Procedure for recurring requests"
+   ],
+   "origen": [
+    {
+     "proyecto": "JiraEcosystem:PLE",
+     "similitud": 0.423
+    },
+    {
+     "proyecto": "RedHat:AA",
+     "similitud": 0.402
+    }
+   ],
+   "historia_es": "Como cuidador, quiero acceder a una cita recurrente, para poder detectar rápidamente los plazos de pago.",
+   "tareas_es": [
+    "Almacenar los detalles recurrentes de la cita en el perfil del cuidador",
+    "Enviar una notificación al cuidador si se rechaza una solicitud recurrente",
+    "Proceder para solicitudes recurrentes"
+   ],
+   "horas_suma": 9.6,
+   "horas_tareas": [
+    3.2,
+    1.82,
+    2.57
+   ],
+   "horas_probables": [
+    3.0,
+    1.25,
+    2.0
+   ],
+   "horas_banda": [
+    [
+     0.7,
+     13.8
+    ],
+    [
+     0.4,
+     7.8
+    ],
+    [
+     0.6,
+     11.1
+    ]
+   ]
+  },
+  {
+   "historia": "As a family member, I want to view my completed payment history, so that I can inform them.",
+   "votos": 1,
+   "relevancia": 0.389,
+   "tareas": [
+    "Store payment history data in the database",
+    "Display payment history on the family member's dashboard",
+    "Add documentation for the completed approval history",
+    "Add documentation about the completed payment history"
+   ],
+   "origen": [
+    {
+     "proyecto": "RedHat:THREESCALE",
+     "similitud": 0.484
+    },
+    {
+     "proyecto": "JFrog:RTFACT",
+     "similitud": 0.435
+    }
+   ],
+   "historia_es": "Como miembro de la familia, quiero ver mi historial de pagos completado, para poder informarles.",
+   "tareas_es": [
+    "Almacenar datos del historial de pagos en la base de datos",
+    "Mostrar el historial de pago en el panel del miembro de la familia",
+    "Añadir documentación para el historial de aprobación completado",
+    "Añadir documentación sobre el historial de pagos completado"
+   ],
+   "horas_suma": 28.9,
+   "horas_tareas": [
+    5.03,
+    3.56,
+    2.16,
+    2.08
+   ],
+   "horas_probables": [
+    5.0,
+    1.5,
+    7.0,
+    2.0
+   ],
+   "horas_banda": [
+    [
+     1.2,
+     21.7
+    ],
+    [
+     0.8,
+     15.4
+    ],
+    [
+     0.5,
+     9.3
+    ],
+    [
+     0.5,
+     9.0
+    ]
+   ]
+  },
+  {
+   "historia": "As a care coordinator, I want to review recurring appointments, so that I can ensure coverage.",
+   "votos": 1,
+   "relevancia": 0.38,
+   "tareas": [
+    "Create a recurring appointment review form in the care coordinator dashboard",
+    "Review recurring assignments",
+    "Review recurring schedules",
+    "Send an email notification to care coordinator about recurring prescriptions"
+   ],
+   "origen": [
+    {
+     "proyecto": "JiraEcosystem:PLE",
+     "similitud": 0.465
+    },
+    {
+     "proyecto": "RedHat:AA",
+     "similitud": 0.453
+    }
+   ],
+   "historia_es": "Como coordinador de cuidados, quiero revisar citas recurrentes, para poder asegurar la cobertura.",
+   "tareas_es": [
+    "Crear un formulario de revisión de citas recurrentes en el panel de coordinación de cuidados",
+    "Examinar las asignaciones recurrentes",
+    "Revisar los horarios recurrentes",
+    "Enviar una notificación por correo electrónico al coordinador de cuidados sobre recetas recurrentes"
+   ],
+   "horas_suma": 18.1,
+   "horas_tareas": [
+    4.7,
+    1.48,
+    1.79,
+    2.15
+   ],
+   "horas_probables": [
+    4.5,
+    2.0,
+    2.5,
+    3.5
+   ],
+   "horas_banda": [
+    [
+     1.1,
+     20.3
+    ],
+    [
+     0.3,
+     6.4
+    ],
+    [
+     0.4,
+     7.7
+    ],
+    [
+     0.5,
+     9.3
+    ]
+   ]
+  },
+  {
+   "historia": "As a nurse, I want to receive notifications when a recurring appointment is in a digital space, so that I can manage my schedule.",
+   "votos": 1,
+   "relevancia": 0.498,
+   "tareas": [
+    "Create a recurring appointment form in the nurse app",
+    "Store recurring appointment information in the database",
+    "Add a notification request to the scheduler"
+   ],
+   "origen": [
+    {
+     "proyecto": "RedHat:AA",
+     "similitud": 0.529
+    },
+    {
+     "proyecto": "JiraEcosystem:PLE",
+     "similitud": 0.471
+    }
+   ],
+   "historia_es": "Como enfermera, quiero recibir notificaciones cuando una cita recurrente está en un espacio digital, para que pueda manejar mi horario.",
+   "tareas_es": [
+    "Crear un formulario de cita recurrente en la aplicación de enfermería",
+    "Almacenar información sobre citas recurrentes en la base de datos",
+    "Añadir una solicitud de notificación al planificador"
+   ],
+   "horas_suma": 15.9,
+   "horas_tareas": [
+    5.49,
+    4.57,
+    2.27
+   ],
+   "horas_probables": [
+    5.5,
+    4.0,
+    3.0
+   ],
+   "horas_banda": [
+    [
+     1.3,
+     23.7
+    ],
+    [
+     1.1,
+     19.7
+    ],
+    [
+     0.5,
+     9.8
+    ]
+   ]
+  },
+  {
+   "historia": "As a caregiver, I want to manage my availability for upcoming appointments, so that I can plan my schedule.",
+   "votos": 2,
+   "relevancia": 0.413,
+   "tareas": [
+    "Display appointment details on the caregiver’s dashboard"
+   ],
+   "origen": [
+    {
+     "proyecto": "JiraEcosystem:PLE",
+     "similitud": 0.546
+    },
+    {
+     "proyecto": "Apache:YUNIKORN",
+     "similitud": 0.459
+    }
+   ],
+   "historia_es": "Como cuidador, quiero administrar mi disponibilidad para las próximas citas, para poder planificar mi horario.",
+   "tareas_es": [
+    "Mostrar los detalles de la cita en el panel de la cuidadora"
+   ],
+   "horas_suma": 5.7,
+   "horas_tareas": [
+    3.76
+   ],
+   "horas_probables": [
+    4.0
+   ],
+   "horas_banda": [
+    [
+     0.9,
+     16.2
+    ]
+   ]
+  },
+  {
+   "historia": "As a care coordinator, I want to approve or reject cleaning services, so that I can manage care schedules.",
+   "votos": 2,
+   "relevancia": 0.448,
+   "tareas": [
+    "Allow care coordinators to approve or reject cleaning services",
+    "approve or remove cleaning services",
+    "Store approval status in the care coordinator's profile"
+   ],
+   "origen": [
+    {
+     "proyecto": "Sonatype:NEXUS",
+     "similitud": 0.453
+    },
+    {
+     "proyecto": "RedHat:JBPM",
+     "similitud": 0.41
+    }
+   ],
+   "historia_es": "Como coordinador de cuidados, quiero aprobar o rechazar los servicios de limpieza, para poder gestionar los horarios de atención.",
+   "tareas_es": [
+    "Permitir que los coordinadores de cuidados aprueben o rechacen los servicios de limpieza",
+    "Aprobar o eliminar los servicios de limpieza",
+    "Almacenar el estado de aprobación en el perfil del coordinador de cuidados"
+   ],
+   "horas_suma": 7.6,
+   "horas_tareas": [
+    2.31,
+    1.92,
+    1.16
+   ],
+   "horas_probables": [
+    1.25,
+    2.0,
+    1.0
+   ],
+   "horas_banda": [
+    [
+     0.5,
+     10.0
+    ],
+    [
+     0.4,
+     8.3
+    ],
+    [
+     0.3,
+     5.0
+    ]
+   ]
+  },
+  {
+   "historia": "As a care coordinator, I want to track the availability of supplies, so that I can make informed decisions.",
+   "votos": 1,
+   "relevancia": 0.286,
+   "tareas": [
+    "Store availability data in the care coordinator's profile",
+    "Send notifications to care coordinators about availability"
+   ],
+   "origen": [
+    {
+     "proyecto": "RedHat:ISPN",
+     "similitud": 0.417
+    },
+    {
+     "proyecto": "RedHat:KATA",
+     "similitud": 0.394
+    }
+   ],
+   "historia_es": "Como coordinador de cuidados, quiero seguir la disponibilidad de suministros, para poder tomar decisiones informadas.",
+   "tareas_es": [
+    "Almacenar datos de disponibilidad en el perfil del coordinador de cuidados",
+    "Enviar notificaciones a coordinador de cuidados sobre disponibilidad"
+   ],
+   "horas_suma": 9.2,
+   "horas_tareas": [
+    3.63,
+    2.6
+   ],
+   "horas_probables": [
+    4.5,
+    3.0
+   ],
+   "horas_banda": [
+    [
+     0.8,
+     15.7
+    ],
+    [
+     0.6,
+     11.2
+    ]
+   ]
+  },
+  {
+   "historia": "As a caregiver, I want to set up a recurring appointment for my staff, so that I can process appointments more effectively.",
+   "votos": 2,
+   "relevancia": 0.419,
+   "tareas": [
+    "Send a confirmation email to the caregiver about recurring visits",
+    "Implement a recurring appointment scheduling feature in the caregiver dashboard",
+    "Send notifications to caregivers about recurring consultations"
+   ],
+   "origen": [
+    {
+     "proyecto": "RedHat:AA",
+     "similitud": 0.467
+    },
+    {
+     "proyecto": "Apache:YARN",
+     "similitud": 0.403
+    }
+   ],
+   "historia_es": "Como cuidador, quiero establecer una cita recurrente para mi personal, para que pueda procesar las citas de manera más efectiva.",
+   "tareas_es": [
+    "Enviar un correo electrónico de confirmación al cuidador sobre visitas recurrentes",
+    "Implementar una función de programación de citas recurrentes en el panel de cuidador",
+    "Enviar notificaciones a los cuidadores sobre consultas recurrentes"
+   ],
+   "horas_suma": 19.9,
+   "horas_tareas": [
+    2.43,
+    8.01,
+    2.34
+   ],
+   "horas_probables": [
+    1.5,
+    8.0,
+    3.0
+   ],
+   "horas_banda": [
+    [
+     0.6,
+     10.5
+    ],
+    [
+     1.9,
+     34.6
+    ],
+    [
+     0.5,
+     10.1
+    ]
+   ]
+  },
+  {
+   "historia": "As a nurse, I want to log the appointment status, so that I can track the progress.",
+   "votos": 1,
+   "relevancia": 0.424,
+   "tareas": [
+    "Display appointment status on the nurse's dashboard",
+    "Procedure to log admission status"
+   ],
+   "origen": [
+    {
+     "proyecto": "RedHat:AA",
+     "similitud": 0.5
+    },
+    {
+     "proyecto": "RedHat:MODE",
+     "similitud": 0.48
+    }
+   ],
+   "historia_es": "Como enfermera, quiero registrar el estado de la cita, para poder rastrear el progreso.",
+   "tareas_es": [
+    "Mostrar el estado de la cita en el panel de la enfermera",
+    "Realizar el procedimiento para registrar el estado de admisión"
+   ],
+   "horas_suma": 6.5,
+   "horas_tareas": [
+    3.1,
+    2.3
+   ],
+   "horas_probables": [
+    3.0,
+    2.25
+   ],
+   "horas_banda": [
+    [
+     0.7,
+     13.4
+    ],
+    [
+     0.5,
+     9.9
+    ]
+   ]
+  },
+  {
+   "historia": "As a nurse, I want to schedule a booking for a recurring appointment, so that I can prepare for the work.",
+   "votos": 1,
+   "relevancia": 0.416,
+   "tareas": [
+    "Prepare for recurring admission",
+    "prepare for recurring reservation",
+    "Implement a recurring booking scheduling feature in the nurse app"
+   ],
+   "origen": [
+    {
+     "proyecto": "Apache:YARN",
+     "similitud": 0.412
+    },
+    {
+     "proyecto": "RedHat:AA",
+     "similitud": 0.397
+    }
+   ],
+   "historia_es": "Como enfermera, quiero programar una reserva para una cita recurrente, para que pueda prepararme para el trabajo.",
+   "tareas_es": [
+    "Preparar para la admisión recurrente",
+    "Preparar para reservas recurrentes",
+    "Implementar una función de programación de reservas recurrentes en la aplicación de enfermería"
+   ],
+   "horas_suma": 24.2,
+   "horas_tareas": [
+    2.57,
+    2.49,
+    7.68
+   ],
+   "horas_probables": [
+    2.25,
+    3.0,
+    8.0
+   ],
+   "horas_banda": [
+    [
+     0.6,
+     11.1
+    ],
+    [
+     0.6,
+     10.8
+    ],
+    [
+     1.8,
+     33.2
+    ]
+   ]
+  },
+  {
+   "historia": "As a care coordinator, I want to review appointment availability, so that I can evaluate the care needs.",
+   "votos": 1,
+   "relevancia": 0.387,
+   "tareas": [
+    "Allow care coordinators to review appointment availability",
+    "Please review the availability of a given candidate",
+    "Please review availability of the preferred candidate"
+   ],
+   "origen": [
+    {
+     "proyecto": "JiraEcosystem:PLE",
+     "similitud": 0.423
+    },
+    {
+     "proyecto": "Apache:LENS",
+     "similitud": 0.415
+    }
+   ],
+   "historia_es": "Como coordinador de cuidados, quiero revisar la disponibilidad de las citas, para poder evaluar las necesidades de atención.",
+   "tareas_es": [
+    "Permitir que coordinador de cuidados revise la disponibilidad de las citas",
+    "Revisar la disponibilidad de un candidato dado",
+    "Revisar la disponibilidad del candidato preferido"
+   ],
+   "horas_suma": 14.3,
+   "horas_tareas": [
+    1.9,
+    1.89,
+    2.12
+   ],
+   "horas_probables": [
+    2.0,
+    1.5,
+    1.5
+   ],
+   "horas_banda": [
+    [
+     0.4,
+     8.2
+    ],
+    [
+     0.4,
+     8.2
+    ],
+    [
+     0.5,
+     9.1
+    ]
+   ]
+  },
+  {
+   "historia": "As a caregiver, I want to customize my schedule for the care day, so that I can adjust my schedule.",
+   "votos": 1,
+   "relevancia": 0.266,
+   "tareas": [
+    "Store the schedule details in the database"
+   ],
+   "origen": [
+    {
+     "proyecto": "Sonatype:NEXUS",
+     "similitud": 0.496
+    },
+    {
+     "proyecto": "JiraEcosystem:PLE",
+     "similitud": 0.46
+    }
+   ],
+   "historia_es": "Como cuidador, quiero personalizar mi horario para el día de atención, para poder ajustar mi horario.",
+   "tareas_es": [
+    "Almacenar los detalles del horario en la base de datos"
+   ],
+   "horas_suma": 4.5,
+   "horas_tareas": [
+    5.02
+   ],
+   "horas_probables": [
+    4.0
+   ],
+   "horas_banda": [
+    [
+     1.2,
+     21.6
+    ]
+   ]
+  }
+ ],
+ "tiempos": {
+  "traducir_entrada": 15.896,
+  "recuperar_arriba": 0.141,
+  "generar_historias": 5.639,
+  "deduplicar_historias": 0.393,
+  "recuperar_abajo": 0.018,
+  "generar_tareas": 6.994,
+  "deduplicar_tareas": 0.076,
+  "reasignar_tareas": 0.042,
+  "traducir": 0.433,
+  "total": 29.631
+ },
+ "vecinos_proyecto": [
+  {
+   "proyecto": "dalpiaz:g04-recycling",
+   "similitud": 0.451
+  },
+  {
+   "proyecto": "RedHat:HOSTEDCP",
+   "similitud": 0.423
+  }
+ ],
+ "n_banco": 48,
+ "n_tareas": 32,
+ "estimacion": {
+  "disponible": true,
+  "total_horas": 164.5,
+  "banda_baja": 59.8,
+  "banda_alta": 325.5,
+  "nivel": 0.8,
+  "tareas": 32,
+  "cerradas": 0,
+  "por_tarea": true,
+  "factor_estilo": 0.7273,
+  "fuente_estilo": "C:\\Users\\User\\Documents\\Programacao\\Agix-Dataset\\results\\estilo_total\\meta.json",
+  "dias_persona": 20.6,
+  "segundos": 35.95,
+  "seg_total": 15.24,
+  "seg_tareas": 20.7
+ }
+}

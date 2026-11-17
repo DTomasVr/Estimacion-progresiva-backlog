@@ -1,0 +1,84 @@
+=== Sakai:QNA-12
+ORIGINAL: Test Version. Test Version for UNISA
+HISTORIA: As a UNISA user, I want to have a Test Version of the software, so that I can test the software without affecting the live system.
+REF: Check in directory structure in subversion ; Create project directory structure mockup ; Create the api for this tool ; JUnit logic tests ; JUnit DAO Tests ; JUnit Stubs
+GEN(original): Test Version for UniSA
+GEN(historia): As a UNISA user, I want to be able to test the test version of the software ; As a UniSA user I want to test the Test Version of the software
+
+=== RedHat:BXMSDOC-5458
+ORIGINAL: Update RH-SSO doc per changes in RHDM/RHPAM 7.7
+HISTORIA: As a RH-SSO documentation owner, I want the RH-SSO documentation to be updated per changes in RHDM/RHPAM 7.7, so that users have accurate information about RH-SSO integration.
+REF: SME review: Update RH-SSO doc per changes in RHDM/RHPAM 7.7 ; Peer review: Update RH-SSO doc per changes in RHDM/RHPAM 7.7
+GEN(original): Update RH-SSO doc for RHPAM/RHPAM 7.7 ; Update the RH-SSO docs for RHPAM 7.7
+GEN(historia): As a RH-SSO documentation developer, I want to be updated for RH-SSO 7.0.0.GA ; Update RH-SSO version in RH-SSO
+
+=== RedHat:KEYCLOAK-10287
+ORIGINAL: Add DB tests to the pipeline. The DB tests needs to be added to the server-test-pipeline-universal to make sure that all required DBs are tested either with docker container or with dballocator or bot
+HISTORIA: As a DevOps engineer, I want to add DB tests to the server-test-pipeline-universal, so that all required DBs are thoroughly tested.
+REF: MySQL 5.7 ; PostgreSQL 10.1 ; EDB 10.1 ; MariaDB 10.1.19 ; MariaDB Galera 10.1.19 ; MSSQL 2016 SP1
+GEN(original): Add DB tests to the server-test-pipeline-universal ; Add DB test to the pipeline-universal
+GEN(historia): As a DevOps developer, I want to add DB tests to the server-test-pipeline-universal ; As an DevOps developer I want to allow DB tests to be used in the pipeline-universal
+
+=== JiraEcosystem:CE-642
+ORIGINAL: Better Link Pastes. To track work required for making this a system add-on in Confluence Cloud.
+HISTORIA: As a Confluence Cloud administrator, I want to be able to paste links directly into Confluence pages, so that I can easily track work required for making this a system add-on.
+REF: Write unit tests for link type resolution ; Set up builds for link pastes add-on ; Get link paste add-on reviewed (code review and quality review) ; Solve rate limiting for Github API calls for bundling ; Set up production version of link pastes add-on ; Add analytics to link pastes add-on
+GEN(original): Better Link Pastes ; Improve Link Pastes
+GEN(historia): As a Cloud administrator, I want to be able to paste links directly into Confluence pages ; As a cloud administrator, I need to have a way to copy links directly from Confluence pages
+
+=== RedHat:DROOLS-3782
+ORIGINAL: Enable top-level collection support. Enable top-level collection support for dmn scenarios.
+HISTORIA: As a developer, I want to enable top-level collection support for dmn scenarios, so that we can support complex decision models.
+REF: Wrong behavior with top level collection in DMN scenario ; Extends editing support inside CollectionEditor ; Fix runner for top-level collection
+GEN(original): Enable top-level collection support for dmn scenarios ; Enable Top-Level Collection Support for Dmn cenarios
+GEN(historia): As a developer, I want to enable top-level collection support for dmn scenarios ; As an application developer I want to be able to leverage top-level collections ; As a fabric developer I want the ability to leverage high-level collection functionality
+
+=== Apache:OFBIZ-7655
+ORIGINAL: Use 'conditionFields' instead of 'andCondition' in Lookup screen. In order to improve a little the readibility, we can replace the use of direct call of groovy in Lookup screen for the autocompletion 
+HISTORIA: As a developer, I want to use 'conditionFields' instead of 'andCondition' in the Lookup screen, so that the readability of the code is improved.
+REF: Use 'conditionField' in LookupCustomerName ; Use 'conditionFields' in LookupContact ; Use 'conditionFields' in LookupInternalOrganization ; Use 'conditionFields' in LookupVirtualProduct
+GEN(original): Use 'conditionFields' instead of 'andCondition' in Lookup screen ; Use `conditionFields` instead of `andCondition` in Lookup Screen
+GEN(historia): As a developer I want to use conditionFields instead of 'andCondition' in Lookup screen ; As a Developer I want to implement conditions instead of conditionFields in Lookup Screen
+
+=== Apache:OAK-8398
+ORIGINAL: Add nullable/notnull annotations for jackrabbit security API extensions. due to the missing nullable/notnull annotations and unspecific javadoc it's not always clear, if null params are allow and if n
+HISTORIA: As a developer, I want nullable/notnull annotations to be added for jackrabbit security API extensions, so that the API contract is clarified.
+REF: Nullable/Notnull Annotations for Authentication API ; Nullable/Notnull Annotations for Authorization API ; Nullable/Notnull Annotations for User Management API ; Nullable/Notnull Annotations for Principal Management API
+GEN(original): Add nullable/notnull annotations for jackrabbit security API extensions ; Add missing annotations to jackrabbit security extensions
+GEN(historia): As a developer, I want to add nullable/notnull annotations to jackrabbit security API extension ; As a Developer, I want the ability to add a non-authenticated annotations for jackrabbit security extensions
+
+=== Apache:SUBMARINE-570
+ORIGINAL: Support run experiment/notebook with synced code. In Submarine Experiment, there're needs to sync up code from Git/S3 to run experiment. For example, Experiment can be defined to: And once the experim
+HISTORIA: As a Submarine Experiment user, I want to run an experiment with synced code from Git/S3, so that I can launch an experiment with the correct code.
+REF: Support for "ssh" based git sync mode ; Support for git private repositories
+GEN(original): Support run experiment/notebook with synced code ; Support running experiment/notebook in submarine
+GEN(historia): As a Submarine experiment user, I want to run an experiment with synced code from Git/S3 ; As a submarine experiment user I want to be able to run the experiment with S3
+
+=== RedHat:OSDK-2039
+ORIGINAL: Unplanned tracker - Sprint 66
+HISTORIA: As a Product Owner, I want the Unplanned tracker to be updated automatically at the end of each sprint, so that I can easily track and prioritize new work items.
+REF: bugzilla: updating CVEs ; customer: retrospective on customer meeting from last sprint ; bugzilla: help with customer bug ; support: user in kube slack has problem with pkgman-to-bundle ; Updating Scorecard Spec test to Warning ; support: customer case on operator sdk markers
+GEN(original): Add metrics for trackers ; Add metrics to trackers
+GEN(historia): As a Product Owner, I want to be able to update the metrics ; As a product Owner I want to implement the metrics
+
+=== Qt:QT3DS-1740
+ORIGINAL: Enhanced blending support in Runtime 2.x. This user story collects further optimisations (some of which existed in Runtime 1.1) that were left out from 2.0 due to not having enablers in Qt3D by Qt 5.1
+HISTORIA: As a Runtime developer, I want to include enhanced blending support in Runtime 2.x, so that we can leverage optimizations that were previously excluded due to Qt3D enabler limitations in Qt 5.11 timeframe.
+REF: Layers: Non-standard blend modes via extensions ; Add Qt 3D support for extra blend modes via extension ; Materials: Non-standard blend modes via extension
+GEN(original): Enhance blending support in Qt 5.11 ; Enhance boosting support in Runtime 1.1
+GEN(historia): As a Runtime developer, I want to be able to enable blending support in Qt 5.11 ; As a user I want to have enhanced blending support for Qt 5.12
+
+=== Qt:QT3DS-1948
+ORIGINAL: [Research] Low end hardware and optimization of content and runtime. Investigation activities around how low can we scale the engine with content and what things could we do in the engine to take us t
+HISTORIA: As a developer, I want to investigate the minimum hardware requirements for the engine with varying content, so that we can optimize the engine for low-end devices with limited RAM, CPU, and GPU power.
+REF: Research Design of Low End HW Optimised 3D Cluster ; Implement comparison benchmark with Qt 3D and Qt 3D Studio ; Create a cluster demo for R-Car D3 Hardware ; Run PVRTrace on D3 cluster demo ; Enable lvds output in D3 Draak image ; Random tasks
+GEN(original): [Research] High-Level Exploration ; [Research] T-Shirt Sizing ; [Investigate] Construct AC
+GEN(historia): As a developer, I want to implement the engine with varying CPU and CPU requirements ; As an infrastructure developer I want to be able to implement the Engine with varying memory and memory requirements
+
+=== JiraEcosystem:PL-1537
+ORIGINAL: Refactor CfgManager. Currently cfgManager holds all information about configured servers. cfgManger is a application component and knows nothing about default credentials defined in the workspace and 
+HISTORIA: As a CfgManager developer, I want CfgManager to be refactored to not hold all information about configured servers, so that CfgManager can be unaware of default credentials defined in the workspace and project configuration.
+REF: Test new version checker and Statistics Generator ; Remove all dependencies to the cfgManager (except projectCfgManager) ; Move content of CfgManager to the ProjectCfgManager (remove cfgManager from projectCfgManager)
+GEN(original): Refactor CfgManager
+GEN(historia): As a CfgManager developer, I want to be able to hold all information about configured servers in workspace and project configuration ; As a CLI user I want to have a cfg manager to be refactored
+

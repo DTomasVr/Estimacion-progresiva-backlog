@@ -1,0 +1,200 @@
+{
+ "modelo": "F:/Software Task generation Model/models/mt5-small-pruned",
+ "bs": 16,
+ "max_out": 192,
+ "lr": 0.0014,
+ "epocas": 30,
+ "hist": [
+  {
+   "epoca": 1,
+   "train_loss": 17.336947734539326,
+   "val_loss": 5.530330826530958,
+   "seg": 6
+  },
+  {
+   "epoca": 2,
+   "train_loss": 8.128953236799974,
+   "val_loss": 5.333656414811709,
+   "seg": 6
+  },
+  {
+   "epoca": 3,
+   "train_loss": 5.612580372737004,
+   "val_loss": 3.8753054658543746,
+   "seg": 9
+  },
+  {
+   "epoca": 4,
+   "train_loss": 4.684075869046724,
+   "val_loss": 3.391794738073013,
+   "seg": 10
+  },
+  {
+   "epoca": 5,
+   "train_loss": 4.1719614542447605,
+   "val_loss": 3.163764942770761,
+   "seg": 10
+  },
+  {
+   "epoca": 6,
+   "train_loss": 3.8055759209852953,
+   "val_loss": 2.8761670472711383,
+   "seg": 10
+  },
+  {
+   "epoca": 7,
+   "train_loss": 3.4884202113518348,
+   "val_loss": 2.648775296496654,
+   "seg": 10
+  },
+  {
+   "epoca": 8,
+   "train_loss": 3.2312177327963023,
+   "val_loss": 2.449862548205258,
+   "seg": 10
+  },
+  {
+   "epoca": 9,
+   "train_loss": 3.011363487977248,
+   "val_loss": 2.2808823861247878,
+   "seg": 10
+  },
+  {
+   "epoca": 10,
+   "train_loss": 2.810554339335515,
+   "val_loss": 2.087004206310553,
+   "seg": 10
+  },
+  {
+   "epoca": 11,
+   "train_loss": 2.6014691499563365,
+   "val_loss": 1.9376969673321804,
+   "seg": 10
+  },
+  {
+   "epoca": 12,
+   "train_loss": 2.4166861864236684,
+   "val_loss": 1.7803784766674275,
+   "seg": 10
+  },
+  {
+   "epoca": 13,
+   "train_loss": 2.2459108646099386,
+   "val_loss": 1.626696509279643,
+   "seg": 10
+  },
+  {
+   "epoca": 14,
+   "train_loss": 2.100877495912405,
+   "val_loss": 1.509232680406467,
+   "seg": 10
+  },
+  {
+   "epoca": 15,
+   "train_loss": 1.992464276460501,
+   "val_loss": 1.395115329955867,
+   "seg": 10
+  },
+  {
+   "epoca": 16,
+   "train_loss": 1.8262211680412292,
+   "val_loss": 1.2461906374588323,
+   "seg": 10
+  },
+  {
+   "epoca": 17,
+   "train_loss": 1.707650670638451,
+   "val_loss": 1.1727862909828213,
+   "seg": 10
+  },
+  {
+   "epoca": 18,
+   "train_loss": 1.5961526127961965,
+   "val_loss": 1.0767788698334857,
+   "seg": 10
+  },
+  {
+   "epoca": 19,
+   "train_loss": 1.4835968155127306,
+   "val_loss": 0.9552485393637711,
+   "seg": 10
+  },
+  {
+   "epoca": 20,
+   "train_loss": 1.4015177763425386,
+   "val_loss": 0.8882314871192583,
+   "seg": 10
+  },
+  {
+   "epoca": 21,
+   "train_loss": 1.3651358576921315,
+   "val_loss": 0.8509202848943995,
+   "seg": 10
+  },
+  {
+   "epoca": 22,
+   "train_loss": 1.2829718177135174,
+   "val_loss": 0.7833957419900696,
+   "seg": 10
+  },
+  {
+   "epoca": 23,
+   "train_loss": 1.197225341430077,
+   "val_loss": 0.7455216362966081,
+   "seg": 10
+  },
+  {
+   "epoca": 24,
+   "train_loss": 1.161547486598675,
+   "val_loss": 0.7063786368071465,
+   "seg": 10
+  },
+  {
+   "epoca": 25,
+   "train_loss": 1.1155815628858714,
+   "val_loss": 0.6583165105966485,
+   "seg": 10
+  },
+  {
+   "epoca": 26,
+   "train_loss": 1.077205628156662,
+   "val_loss": 0.6298336993293638,
+   "seg": 10
+  },
+  {
+   "epoca": 27,
+   "train_loss": 1.0581237238187056,
+   "val_loss": 0.6101720850058717,
+   "seg": 10
+  },
+  {
+   "epoca": 28,
+   "train_loss": 1.027013714496906,
+   "val_loss": 0.5950224172003576,
+   "seg": 10
+  },
+  {
+   "epoca": 29,
+   "train_loss": 0.9972190673534687,
+   "val_loss": 0.587750383708694,
+   "seg": 10
+  },
+  {
+   "epoca": 30,
+   "train_loss": 0.9853024528576777,
+   "val_loss": 0.5830129523658654,
+   "seg": 10
+  }
+ ],
+ "v0": 13.4382047256375,
+ "mejor_val": 0.5830129523658654,
+ "vram_pico": 6.15,
+ "min": 5.1,
+ "gens": [
+  "Create obs_base and make obs_base into obs_base ; Rename daf_butlerUtils to obs_base",
+  "[web] Modularize: Create Web Service Applications - Chapter 1 ; Create Web Service API implementation ; Create webservice framework for deploying Web Service Applications",
+  "Add smtpFrom property ; Profile2 should have a client command to be unique",
+  "[OM] Backport DOCS-14541 to v4.2",
+  "Create code coverage for hyperledger/fabric/orderer/ledger/ram ; Improve code coverage of hyperledger\\fabric/orderers/common/configtx"
+ ]
+}

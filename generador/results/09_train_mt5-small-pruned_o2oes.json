@@ -1,0 +1,44 @@
+{
+ "modelo": "F:/Software Task generation Model/models/mt5-small-pruned",
+ "bs": 32,
+ "max_out": 48,
+ "lr": 0.002,
+ "epocas": 12,
+ "hist": [
+  {
+   "epoca": 1,
+   "train_loss": 4.760134121767661,
+   "val_loss": 4.310235718897752,
+   "seg": 658
+  },
+  {
+   "epoca": 2,
+   "train_loss": 3.2168538302740783,
+   "val_loss": 4.264748668291087,
+   "seg": 646
+  },
+  {
+   "epoca": 3,
+   "train_loss": 2.705928205735683,
+   "val_loss": 4.374356327604348,
+   "seg": 623
+  },
+  {
+   "epoca": 4,
+   "train_loss": 2.354428340215374,
+   "val_loss": 4.470144124657024,
+   "seg": 614
+  }
+ ],
+ "v0": 16.794714854498675,
+ "mejor_val": 4.264748668291087,
+ "vram_pico": 6.12,
+ "min": 43.0,
+ "gens": [
+  "APB testing - part 2",
+  "Deprecate geoHaystack and geoSearch",
+  "As a user, I want to have the ability to attach detailed meta data to a dataset, so that I can deploy a data catalogue.",
+  "Cypress Automation - Push notifications",
+  "[GCP]: Add support for large partitions"
+ ]
+}

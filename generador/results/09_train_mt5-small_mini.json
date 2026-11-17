@@ -1,0 +1,200 @@
+{
+ "modelo": "google/mt5-small",
+ "bs": 8,
+ "max_out": 192,
+ "lr": 0.0005,
+ "epocas": 30,
+ "hist": [
+  {
+   "epoca": 1,
+   "train_loss": 18.46540954589844,
+   "val_loss": 7.078479062028114,
+   "seg": 10
+  },
+  {
+   "epoca": 2,
+   "train_loss": 7.088752479553222,
+   "val_loss": 4.200920465433054,
+   "seg": 9
+  },
+  {
+   "epoca": 3,
+   "train_loss": 5.046259422302246,
+   "val_loss": 3.5878536113880486,
+   "seg": 9
+  },
+  {
+   "epoca": 4,
+   "train_loss": 4.4588220500946045,
+   "val_loss": 3.3198950372995766,
+   "seg": 9
+  },
+  {
+   "epoca": 5,
+   "train_loss": 4.069544563293457,
+   "val_loss": 3.054892033094025,
+   "seg": 9
+  },
+  {
+   "epoca": 6,
+   "train_loss": 3.8131023025512696,
+   "val_loss": 2.8739245578113604,
+   "seg": 9
+  },
+  {
+   "epoca": 7,
+   "train_loss": 3.6075932025909423,
+   "val_loss": 2.6922375819547706,
+   "seg": 9
+  },
+  {
+   "epoca": 8,
+   "train_loss": 3.4279858589172365,
+   "val_loss": 2.568133059368002,
+   "seg": 9
+  },
+  {
+   "epoca": 9,
+   "train_loss": 3.263470630645752,
+   "val_loss": 2.450371984469918,
+   "seg": 12
+  },
+  {
+   "epoca": 10,
+   "train_loss": 3.130370063781738,
+   "val_loss": 2.3294295106279996,
+   "seg": 11
+  },
+  {
+   "epoca": 11,
+   "train_loss": 2.999327926635742,
+   "val_loss": 2.2197718075075263,
+   "seg": 11
+  },
+  {
+   "epoca": 12,
+   "train_loss": 2.853083248138428,
+   "val_loss": 2.101561116061134,
+   "seg": 11
+  },
+  {
+   "epoca": 13,
+   "train_loss": 2.7793098735809325,
+   "val_loss": 2.007073453953902,
+   "seg": 11
+  },
+  {
+   "epoca": 14,
+   "train_loss": 2.677395248413086,
+   "val_loss": 1.920570342345906,
+   "seg": 11
+  },
+  {
+   "epoca": 15,
+   "train_loss": 2.5868921852111817,
+   "val_loss": 1.8574136975479,
+   "seg": 11
+  },
+  {
+   "epoca": 16,
+   "train_loss": 2.4700153779983522,
+   "val_loss": 1.725567480224369,
+   "seg": 11
+  },
+  {
+   "epoca": 17,
+   "train_loss": 2.4129747438430784,
+   "val_loss": 1.6640080764718552,
+   "seg": 11
+  },
+  {
+   "epoca": 18,
+   "train_loss": 2.334915266036987,
+   "val_loss": 1.5834640836418359,
+   "seg": 11
+  },
+  {
+   "epoca": 19,
+   "train_loss": 2.262669768333435,
+   "val_loss": 1.5229954102487693,
+   "seg": 10
+  },
+  {
+   "epoca": 20,
+   "train_loss": 2.175477604866028,
+   "val_loss": 1.474260614307192,
+   "seg": 9
+  },
+  {
+   "epoca": 21,
+   "train_loss": 2.1504210567474367,
+   "val_loss": 1.4085002498936567,
+   "seg": 9
+  },
+  {
+   "epoca": 22,
+   "train_loss": 2.0990049266815185,
+   "val_loss": 1.3609375729653184,
+   "seg": 10
+  },
+  {
+   "epoca": 23,
+   "train_loss": 2.0227682971954346,
+   "val_loss": 1.3181114684490833,
+   "seg": 9
+  },
+  {
+   "epoca": 24,
+   "train_loss": 2.000517282485962,
+   "val_loss": 1.2873971953210497,
+   "seg": 9
+  },
+  {
+   "epoca": 25,
+   "train_loss": 1.9597424173355102,
+   "val_loss": 1.2541686392745934,
+   "seg": 9
+  },
+  {
+   "epoca": 26,
+   "train_loss": 1.918999924659729,
+   "val_loss": 1.214724996733908,
+   "seg": 9
+  },
+  {
+   "epoca": 27,
+   "train_loss": 1.895493564605713,
+   "val_loss": 1.1934176136049084,
+   "seg": 9
+  },
+  {
+   "epoca": 28,
+   "train_loss": 1.868903741836548,
+   "val_loss": 1.176409541872004,
+   "seg": 9
+  },
+  {
+   "epoca": 29,
+   "train_loss": 1.881257538795471,
+   "val_loss": 1.1691370210962135,
+   "seg": 9
+  },
+  {
+   "epoca": 30,
+   "train_loss": 1.8401724672317505,
+   "val_loss": 1.1647261877039592,
+   "seg": 9
+  }
+ ],
+ "v0": 13.552917123474682,
+ "mejor_val": 1.1647261877039592,
+ "vram_pico": 5.37,
+ "min": 5.3,
+ "gens": [
+  "Create obs-base framework for obs-base ; Create obs-base framework for obs-base ; Create obs-base framework for obs-base ; Create obs-base framework for obs-base ; Create obs-base framework for obs-base ; Create obs-base framework for obs-base ; Create obs-base framework for obs-base ; Create obs-base framework for obs-base ; Create obs-base framework for obs-base ; Create obs-base framework for obs-base",
+  "Create Web Service chapter ; Create Web Service chapter ; Create Web Service chapter ; Create Web Service chapter ; Create Web Service chapter ; Create Web Service chapter ; Create Web Service chapter ; Create Web Service chapter ; Create Web Service chapter ; Create Web Service chapter ; Create Web Service chapter ; Create Web Service chapter ; Create Web Service chapter ; Create Web Service chapter ; Create Web Service chapter ; Create Web Service chapter ; Create Web Service chapter",
+  "Create a client's message object ; Create a client's message object ; Create a client's message object ; Create a client's message object ; Create a client's message object ; Create a client's message object ; Create a client's message object ; Create a client's message object ; Create a client's message object ; Create a client's message object ; Create a client's message object ; Create a client's message object",
+  "Create new backup model for 2TB ; Create new backup model for 2TB ; Create new backup model for 2TB ; Create new backup model for 2TB ; Create new backup model for 2TB ; Create new backup model for 2TB ; Create new backup model for 2TB ; Create new backup model for 2TB ; Create new backup model for 2TB ; Create new backup model for 2TB ; Create new backup model for 2TB ; Create new backup model for 2TB ; Create new backup model for 2TB ; Create new backup model for 2TB ; Create new backup model for 2TB ; Create new backup model for 2TB ; Create new backup model for 2TB ; Create new backup model for 2TB ; Create new backup model for 2TB ; Create new",
+  "Create hyperledger/fabric/orderer/ledger/json ; Improve code coverage for hyperledger/fabric/orderer/ledger/json ; Improve code coverage for hyperledger/fabric/orderer/ledger/json ; Improve code coverage for hyperledger/fabric/orderer/ledger/json ; Improve code coverage for hyperledger/fabric/orderer/ledger/json ; Improve code coverage for hyperledger/fabric/orderer/ledger/json"
+ ]
+}

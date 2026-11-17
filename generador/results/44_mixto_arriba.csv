@@ -1,0 +1,4 @@
+conjunto,viejo,nuevo,delta,ic95_lo,ic95_hi,veredicto,n
+real: o2o test,0.2619,0.2888,0.0269,0.0188,0.0348,MEJORA,300
+real: Dalpiaz reservado,0.2335,0.2662,0.0327,0.0264,0.0389,MEJORA,300
+consumo: descripcion -> historia,0.3593,0.5795,0.2203,0.1967,0.244,MEJORA,300

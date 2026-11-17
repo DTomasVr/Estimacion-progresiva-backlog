@@ -1,0 +1,50 @@
+{
+ "modelo": "F:/Software Task generation Model/models/mt5-small-pruned",
+ "bs": 8,
+ "max_out": 192,
+ "lr": 0.0009218,
+ "epocas": 12,
+ "hist": [
+  {
+   "epoca": 1,
+   "train_loss": 4.731252976671388,
+   "val_loss": 3.495846562036537,
+   "seg": 509
+  },
+  {
+   "epoca": 2,
+   "train_loss": 3.3734351219352035,
+   "val_loss": 3.3888252441409756,
+   "seg": 507
+  },
+  {
+   "epoca": 3,
+   "train_loss": 3.0524136162004343,
+   "val_loss": 3.3602991751864315,
+   "seg": 508
+  },
+  {
+   "epoca": 4,
+   "train_loss": 2.8269376566711113,
+   "val_loss": 3.3615419474483175,
+   "seg": 510
+  },
+  {
+   "epoca": 5,
+   "train_loss": 2.63876867256785,
+   "val_loss": 3.3749884806924006,
+   "seg": 510
+  }
+ ],
+ "v0": 13.28187825301433,
+ "mejor_val": 3.3602991751864315,
+ "vram_pico": 3.39,
+ "min": 43.0,
+ "gens": [
+  "Refactor Mixin Issues ; Refactor Mixins Issues",
+  "Add support for subexpression elimination ; Add support for GROUP BY and HAVING clauses",
+  "Implement Application Request Concept ; Implement Application Request concept ; Implement application request concept",
+  "Add a command to the cli commands ; Add a function to the CLI commands",
+  "Add ability to disable workload-aware compression planning ; Add support for long running workload aware compression"
+ ]
+}

@@ -1,0 +1,54 @@
+=== 8 al azar
+EN: As a developer I want to run a multi-cluster registration on OpenShift
+ES: Como desarrollador quiero ejecutar un registro multi-cluster en OpenShift
+  fidelidad 0.931
+
+EN: As a podman I want to be able to hide an instance from a podman
+ES: Como podman quiero poder ocultar una instancia de un podman
+  fidelidad 0.818
+
+EN: As a site visitor, I want to see which basic metadata fields are used, so that I can correct my identity and identity to make sure it's possible.
+ES: Como visitante del sitio, quiero ver qué campos de metadatos básicos se utilizan, de modo que pueda corregir mi identidad y para asegurarse de que es posible.
+  fidelidad 0.923
+
+EN: As a Podman user, I want to configure the podman and Mac integration, so that I can configure my podman and Mac workspace
+ES: Como usuario de Podman, quiero configurar la integración podman y Mac, de modo que pueda configurar mi espacio de trabajo podman y Mac
+  fidelidad 0.963
+
+EN: As a fabric e2e mixer, I would like idemixer to expose idemixer to compatibility between idemix and use identitymixer and use the idemixer
+ES: Como mezclador fabric e2e, me gustaría que idemixer expusiera a idemixer a la compatibilidad entre idemix y utilizar el mezclador identitario y utilizar el idemixer
+  fidelidad 0.962
+
+EN: As a user of the up on the content quickstart display, I want to do not delete content items and display the URL of the title of the content items in the start up timeline
+ES: Como usuario del up en la pantalla de inicio rápido de contenido, quiero no borrar elementos de contenido y mostrar el URL del título de los elementos de contenido en la línea de tiempo de inicio
+  fidelidad 0.863
+
+EN: As a user I would like to see how many keys will be created and how to use the
+ES: Como usuario me gustaría ver cuántas claves se crearán y cómo utilizar el
+  fidelidad 0.952
+
+EN: As a fabric-ca-server I want to utilize a deletion API
+ES: Como servidor fabric-ca-quiero utilizar una eliminación API
+  fidelidad 0.880
+
+=== 5 peores
+EN: As a user, I would like to interact with other trace types in the Duplicate Trace Context
+ES: Como usuario, me gustaría interactuar con otros tipos de trazas en el contexto de trazas duplicadas
+  fidelidad 0.625
+
+EN: As a simple fits designer, I want to search for indexes running in the ledger state database, so that I can find useful search
+ES: Como diseñador de ajustes simples, quiero buscar índices que se ejecutan en la base de datos de estado del libro mayor, para que pueda encontrar búsqueda útil
+  fidelidad 0.649
+
+EN: As a user, I would like to know how searching the ledger state results
+ES: Como usuario, me gustaría saber cómo buscar los resultados del estado del libro mayor
+  fidelidad 0.673
+
+EN: As a user, I would like to see the weekly tag(s) on a puppet repo.
+ES: Como usuario, me gustaría ver las etiquetas semanales en una repo de títeres.
+  fidelidad 0.680
+
+EN: As a stakeholder, I want to easily change the charts for new features in the charts repo
+ES: Como parte interesada, quiero cambiar fácilmente los gráficos para nuevas características en los gráficos repo
+  fidelidad 0.683
+

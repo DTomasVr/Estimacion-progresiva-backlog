@@ -1,0 +1,26 @@
+{
+ "modelo": "google/mt5-small",
+ "bs": 8,
+ "max_out": 192,
+ "lr": 0.001,
+ "epocas": 1,
+ "hist": [
+  {
+   "epoca": 1,
+   "train_loss": 5.285305163926548,
+   "val_loss": 3.730277693859163,
+   "seg": 147
+  }
+ ],
+ "v0": 13.61556553797228,
+ "mejor_val": 3.730277693859163,
+ "vram_pico": 5.37,
+ "min": 2.9,
+ "gens": [
+  "Create Eclipse PDE integration ; Create Eclipse pDE integration",
+  "Create a documentation for failures in nightly build ; Create a new documentation for nightly build",
+  "Create a new version of the latest version of the architecture guide for accuracy ; Add a new documentation for accurateness ; Update a new design guide for accurateity ; Update the new version of accurateness and accurateness in the architecture guide ; Update New version of the Architecture Guide for Accuracy ; Update updating sections ; Update new version of an architecture guide for Accuracy",
+  "Create a new version of OpenShift 3.11 ; Create a New version of Openshift 3.11",
+  "Add stateful operators in continuous processing ; Add stateful operator in Continuous processing"
+ ]
+}

@@ -1,0 +1,202 @@
+{
+ "modelo": "google/mt5-small",
+ "bs": 8,
+ "acum": 2,
+ "bs_efectivo": 16,
+ "max_out": 192,
+ "lr": 0.0005,
+ "epocas": 30,
+ "hist": [
+  {
+   "epoca": 1,
+   "train_loss": 21.68238151550293,
+   "val_loss": 10.445504749108807,
+   "seg": 28
+  },
+  {
+   "epoca": 2,
+   "train_loss": 10.248950691223145,
+   "val_loss": 5.199615149527562,
+   "seg": 25
+  },
+  {
+   "epoca": 3,
+   "train_loss": 5.778536243438721,
+   "val_loss": 4.124740404527324,
+   "seg": 25
+  },
+  {
+   "epoca": 4,
+   "train_loss": 4.945353832244873,
+   "val_loss": 3.7430583287074106,
+   "seg": 25
+  },
+  {
+   "epoca": 5,
+   "train_loss": 4.569475593566895,
+   "val_loss": 3.468835852509281,
+   "seg": 26
+  },
+  {
+   "epoca": 6,
+   "train_loss": 4.186472520828247,
+   "val_loss": 3.2988410725912334,
+   "seg": 25
+  },
+  {
+   "epoca": 7,
+   "train_loss": 3.9545014476776124,
+   "val_loss": 3.1419046923014973,
+   "seg": 24
+  },
+  {
+   "epoca": 8,
+   "train_loss": 3.795820589065552,
+   "val_loss": 3.0421261833340116,
+   "seg": 25
+  },
+  {
+   "epoca": 9,
+   "train_loss": 3.608798456192017,
+   "val_loss": 2.91221483734704,
+   "seg": 25
+  },
+  {
+   "epoca": 10,
+   "train_loss": 3.474193325042725,
+   "val_loss": 2.8332170220919926,
+   "seg": 25
+  },
+  {
+   "epoca": 11,
+   "train_loss": 3.349065065383911,
+   "val_loss": 2.713723735649942,
+   "seg": 25
+  },
+  {
+   "epoca": 12,
+   "train_loss": 3.2436033058166505,
+   "val_loss": 2.6390730993654055,
+   "seg": 25
+  },
+  {
+   "epoca": 13,
+   "train_loss": 3.13038010597229,
+   "val_loss": 2.550121680627109,
+   "seg": 25
+  },
+  {
+   "epoca": 14,
+   "train_loss": 3.0338971757888795,
+   "val_loss": 2.471652875884823,
+   "seg": 25
+  },
+  {
+   "epoca": 15,
+   "train_loss": 2.9576768255233765,
+   "val_loss": 2.4132702745461283,
+   "seg": 24
+  },
+  {
+   "epoca": 16,
+   "train_loss": 2.8744138956069945,
+   "val_loss": 2.3497115717847787,
+   "seg": 22
+  },
+  {
+   "epoca": 17,
+   "train_loss": 2.805101737976074,
+   "val_loss": 2.27992494863777,
+   "seg": 19
+  },
+  {
+   "epoca": 18,
+   "train_loss": 2.747989149093628,
+   "val_loss": 2.249409610903896,
+   "seg": 19
+  },
+  {
+   "epoca": 19,
+   "train_loss": 2.6792411470413207,
+   "val_loss": 2.1728829686967033,
+   "seg": 20
+  },
+  {
+   "epoca": 20,
+   "train_loss": 2.634727468490601,
+   "val_loss": 2.135634614216057,
+   "seg": 20
+  },
+  {
+   "epoca": 21,
+   "train_loss": 2.581249222755432,
+   "val_loss": 2.087415337587208,
+   "seg": 18
+  },
+  {
+   "epoca": 22,
+   "train_loss": 2.5301897859573366,
+   "val_loss": 2.049840670335219,
+   "seg": 20
+  },
+  {
+   "epoca": 23,
+   "train_loss": 2.4942115497589112,
+   "val_loss": 2.012518047887978,
+   "seg": 19
+  },
+  {
+   "epoca": 24,
+   "train_loss": 2.4588056945800782,
+   "val_loss": 1.9863594153476205,
+   "seg": 19
+  },
+  {
+   "epoca": 25,
+   "train_loss": 2.4144098377227783,
+   "val_loss": 1.9611319246619097,
+   "seg": 19
+  },
+  {
+   "epoca": 26,
+   "train_loss": 2.383111433982849,
+   "val_loss": 1.9399485260474114,
+   "seg": 19
+  },
+  {
+   "epoca": 27,
+   "train_loss": 2.3662971591949464,
+   "val_loss": 1.9282043655110916,
+   "seg": 19
+  },
+  {
+   "epoca": 28,
+   "train_loss": 2.369627904891968,
+   "val_loss": 1.9112793736380598,
+   "seg": 20
+  },
+  {
+   "epoca": 29,
+   "train_loss": 2.340197367668152,
+   "val_loss": 1.9026224157425717,
+   "seg": 19
+  },
+  {
+   "epoca": 30,
+   "train_loss": 2.346952576637268,
+   "val_loss": 1.9000850073310278,
+   "seg": 20
+  }
+ ],
+ "v0": 14.18552693854029,
+ "mejor_val": 1.9000850073310278,
+ "vram_pico": 7.87,
+ "min": 11.4,
+ "gens": [
+  "Create openshift resources from a template project wizard ; Create Openshift resources from the template wizard",
+  "Create a QueryId for Phoenix QueryId ; Create QueryId in Phoenix Query Id",
+  "Implement SRP Server ; Support SRP Server",
+  "Implement a blocking checklist for 4.8 ; Verify the release of all the upstream repositories ; Update repositories for 4.8",
+  "Create an appointment schedule in the clinic management system ; Notify patients if their appointments are completed"
+ ]
+}

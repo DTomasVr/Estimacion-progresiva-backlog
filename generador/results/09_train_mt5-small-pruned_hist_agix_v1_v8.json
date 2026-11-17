@@ -1,0 +1,44 @@
+{
+ "modelo": "models/mt5-small-pruned_hist_agix_v1",
+ "bs": 16,
+ "max_out": 192,
+ "lr": 0.0005,
+ "epocas": 4,
+ "hist": [
+  {
+   "epoca": 1,
+   "train_loss": 2.5646632012178205,
+   "val_loss": 2.9330529979207607,
+   "seg": 254
+  },
+  {
+   "epoca": 2,
+   "train_loss": 2.214060741416096,
+   "val_loss": 2.897328038712722,
+   "seg": 253
+  },
+  {
+   "epoca": 3,
+   "train_loss": 2.0831724297718184,
+   "val_loss": 2.8970039396560856,
+   "seg": 271
+  },
+  {
+   "epoca": 4,
+   "train_loss": 2.0106632799439175,
+   "val_loss": 2.9106042629169293,
+   "seg": 260
+  }
+ ],
+ "v0": 3.555759793337302,
+ "mejor_val": 2.8970039396560856,
+ "vram_pico": 6.16,
+ "min": 17.7,
+ "gens": [
+  "Allow the manager to set loyalty point rules in the admin panel ; Display the loyalty point rule on the manager's dashboard ; Notify the manager when a loyalty point is detected",
+  "Allow the site manager to review and approve material requests ; Store the approval status in the database ; Send a notification to the site manager when a request is approved",
+  "Create a report generation feature in the app ; Store the report data in the database ; Send a notification to the quantity surveyor when a report is ready",
+  "Move the content editor to widget-based QML editor ; Move the binding editor to widgets-based content editor",
+  "Store the reservation details in the database ; Display the reservation details on the waiter's dashboard ; Send a confirmation email to the waiter with the reservation details"
+ ]
+}

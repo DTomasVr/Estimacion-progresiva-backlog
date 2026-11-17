@@ -1,0 +1,38 @@
+{
+ "modelo": "models/mt5-small-pruned_hist_agix_v1",
+ "bs": 16,
+ "max_out": 192,
+ "lr": 0.0005,
+ "epocas": 4,
+ "hist": [
+  {
+   "epoca": 1,
+   "train_loss": 2.5881362107679315,
+   "val_loss": 3.320972586713775,
+   "seg": 499
+  },
+  {
+   "epoca": 2,
+   "train_loss": 2.38749946532476,
+   "val_loss": 3.3393330887835337,
+   "seg": 474
+  },
+  {
+   "epoca": 3,
+   "train_loss": 2.2853193564247762,
+   "val_loss": 3.356457624522473,
+   "seg": 480
+  }
+ ],
+ "v0": 3.3741745170124773,
+ "mejor_val": 3.320972586713775,
+ "vram_pico": 6.16,
+ "min": 24.6,
+ "gens": [
+  "[AM] Investigate the possibility of creating a new project ; [AM] Create a POC of the project",
+  "Add support for REST endpoints ; Add support for Comprehensive REST Support",
+  "Native Prometheus metrics: basic metrics ; Native prometheus metrics : add ability to execute a given Prometheus client ; Create dashboard for prometheus monitoring ; Create prometheus client proxy ; Create grafana proxy proxy",
+  "Initial implementation of the Revision control ; Create a document for the Revision Control ; Add documentation for the Revision control",
+  "Improve expression coverage for org.apache.spark.sql.cassandra.Expressions ; Add documentation for expression coverage"
+ ]
+}

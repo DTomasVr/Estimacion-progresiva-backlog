@@ -1,0 +1,1097 @@
+{
+ "banca": {
+  "descripcion": "Una app de banca digital donde los clientes abren una cuenta con verificacion de identidad, programan transferencias, congelan su tarjeta y reciben alertas de fraude.",
+  "historias": [
+   "Como oficial de cumplimiento, quiero asegurarme de que todas las cuentas han sido procesadas por el sistema, para que pueda evitar comportamientos fraudulentos.",
+   "Como titular de una cuenta, quiero generar informes sobre cheques de identidad, para poder entender la actividad que se está realizando.",
+   "Como cliente, quiero recibir alertas de descuento sobre la asistencia a mi tarjeta, para que pueda evitar casos fraudulentos.",
+   "Como agente de soporte, quiero ver los informes de compromiso con el cliente, para poder resolver mejor los problemas.",
+   "Como oficial de cumplimiento, quiero poder manejar alertas de fraude, para poder asegurar el cumplimiento.",
+   "Como titular de una cuenta, quiero comprobar mis próximos pagos, para que pueda administrar mis finanzas de manera eficiente.",
+   "Como cliente, quiero recibir notificaciones sobre mis transacciones fiscales, para poder mantenerme informado sobre un cambio.",
+   "Como cliente, quiero recibir notificaciones para el manejo de impuestos, para poder planificar mi horario.",
+   "Como oficial de cumplimiento, quiero monitorear la actividad sospechosa, para poder evaluar el cumplimiento.",
+   "Como agente de soporte, quiero recibir notificaciones sobre transacciones marcadas, para poder manejar transacciones en servicios futuros apropiados.",
+   "Como titular de una cuenta, quiero seguir mi actividad financiera, para poder administrar mis finanzas de manera efectiva.",
+   "Como agente de soporte, quiero recibir notificaciones cuando una cuenta puede emitir una disputa, de modo que pueda ayudarles."
+  ],
+  "historias_en": [
+   "As a compliance officer, I want to ensure that all accounts have been processed by the system, so that I can prevent fraudulent behavior.",
+   "As an account holder, I want to generate reports on identity checks, so that I can understand the activity being performed.",
+   "As a customer, I want to receive discount alerts about my card attendance, so that I can prevent fraudulent cases.",
+   "As a support agent, I want to view customer engagement reports, so that I can resolve issues better.",
+   "As a compliance officer, I want to be able to handle fraud alerts, so that I can ensure compliance.",
+   "As an account holder, I want to check my upcoming payments, so that I can manage my finances efficiently.",
+   "As a customer, I want to receive notifications about my tax transactions, so that I can stay informed about a change.",
+   "As a customer, I want to receive notifications for tax handling, so that I can plan my schedule.",
+   "As a compliance officer, I want to monitor suspicious activity, so that I can assess compliance.",
+   "As a support agent, I want to receive notifications about flagged transactions, so that I can handle transactions in appropriate future services.",
+   "As an account holder, I want to track my financial activity, so that I can manage my finances effectively.",
+   "As a support agent, I want to receive notifications when a account can issue adispute, so that I can assist them."
+  ],
+  "tareas": [
+   [
+    "Almacenar información sobre el cumplimiento en la base de datos",
+    "Realizar el procedimiento para enviar cuentas al sistema",
+    "Realizar el procedimiento para generar cuentas desde el sistema"
+   ],
+   [
+    "Crear una función de generación de informes en el panel del titular de la cuenta"
+   ],
+   [
+    "Almacenar alertas de descuento en el perfil del cliente",
+    "Enviar un correo electrónico de confirmación al cliente cuando se aplique el descuento",
+    "Añadir capacidad para recibir alertas sobre la asistencia a la tarjeta"
+   ],
+   [
+    "Almacenar datos de compromiso de clientes en la base de datos",
+    "Mostrar informes de compromiso de clientes en el panel",
+    "Informar de los contactos con los proveedores",
+    "Informar de la interacción con el proveedor"
+   ],
+   [
+    "Implementar un panel de oficiales de cumplimiento",
+    "Almacenar las alertas de cumplimiento en la base de datos",
+    "Añadir capacidad para manejar alertas falsas",
+    "Añadir documentación para las alertas falsas",
+    "Permitir que los oficiales de cumplimiento muestren alertas sospechosas",
+    "Almacenar información de alerta sospechosa en la base de datos"
+   ],
+   [
+    "Almacenar los datos de pago en la base de datos",
+    "Mostrar los detalles de pago en el panel del titular de la cuenta"
+   ],
+   [
+    "Aplicar un sistema de notificación de las transacciones fiscales",
+    "Enviar notificaciones al cliente por correo electrónico",
+    "Añadir notificaciones sobre las transacciones pendientes",
+    "Añadir notificación sobre las transacciones adicionales"
+   ],
+   [
+    "Añadir notificación para las notificaciones"
+   ],
+   [
+    "Almacenar datos de actividades sospechosas en la base de datos",
+    "Mostrar actividad sospechosa en el panel del oficial de cumplimiento",
+    "Monitorear la actividad"
+   ],
+   [
+    "Almacenar los detalles de transacción marcados en la base de datos",
+    "Enviar notificaciones por correo electrónico al agente de soporte cuando se marca una transacción"
+   ],
+   [
+    "Almacenar datos de actividad financiera en la base de datos",
+    "Mostrar el estado de actividad financiera en el panel del titular de la cuenta",
+    "Añadir una forma de rastrear el número de transacciones activas"
+   ],
+   [
+    "Almacenar los detalles de la notificación en la base de datos",
+    "Enviar una notificación por correo electrónico al agente de soporte",
+    "Crear un formulario de notificación de disputas en el panel del agente de soporte",
+    "Enviar una notificación al agente de soporte si se emite la controversia"
+   ]
+  ],
+  "tareas_en": [
+   [
+    "Store compliance information in the database",
+    "Procedure for sending accounts to the system",
+    "Procedure for generating accounts from the system"
+   ],
+   [
+    "Create a report generation feature in the account holder dashboard"
+   ],
+   [
+    "Store discount alerts in the customer's profile",
+    "Send a confirmation email to the customer when the discount is applied",
+    "Add ability to receive alerts about card attendance"
+   ],
+   [
+    "Store customer engagement data in the database",
+    "Display customer engagement reports on the dashboard",
+    "Vendor engagement reports",
+    "Vendor interaction reports"
+   ],
+   [
+    "Implement a compliance officer dashboard",
+    "Store compliance alerts in the database",
+    "Add ability to handle fake alerts",
+    "Add documentation for fake alerts",
+    "Allow compliance officers to display suspicious alerts",
+    "Store suspicious alert information in the database"
+   ],
+   [
+    "Store payment details in the database",
+    "Display payment details on the account holder's dashboard"
+   ],
+   [
+    "Implement a notification system for tax transactions",
+    "Send notifications to the customer via email",
+    "Add notifications about the pending transactions",
+    "Add notification about the additional transactions"
+   ],
+   [
+    "Add notification for notifications"
+   ],
+   [
+    "Store suspicious activity data in the database",
+    "Display suspicious activity on the compliance officer's dashboard",
+    "Monitoring activity"
+   ],
+   [
+    "Store flagged transaction details in the database",
+    "Send notifications via email to the support agent when a transaction is flagged"
+   ],
+   [
+    "Store financial activity data in the database",
+    "Display financial activity status on the account holder's dashboard",
+    "Add a way to track the number of active transactions"
+   ],
+   [
+    "Store the notification details in the database",
+    "Send an email notification to the support agent",
+    "Create a dispute notification form in the support agent dashboard",
+    "Send a notification to the support agent if the dispute is issued"
+   ]
+  ]
+ },
+ "bodas": {
+  "descripcion": "Una plataforma para organizar bodas donde los novios contratan proveedores, arman la lista de invitados con sus restricciones de comida y controlan el presupuesto.",
+  "historias": [
+   "Como vendedor, quiero recibir notificaciones de las restricciones alimentarias de mi ser querido, para poder administrar mi presupuesto.",
+   "Como invitado, quiero ver mi disponibilidad de mis productos, para poder administrar mi horario de manera efectiva.",
+   "Como pareja, quiero saber la disponibilidad de la comida preferida de un miembro, para que pueda asegurar una planificación adecuada.",
+   "Como vendedor, quiero establecer un límite de precios para una casa, para que pueda controlar su presupuesto.",
+   "Como pareja, quiero poder ajustar mi disponibilidad, para poder administrar mis finanzas de manera eficiente.",
+   "Como invitado, quiero comprobar mis registros de reembolso en sus preferencias, para que pueda elegir la mejor opción.",
+   "Como vendedor, quiero recibir notificaciones sobre las próximas citas, para poder planificar mi cita.",
+   "Como invitado, quiero ver la disponibilidad de mi ser querido, para poder planificar mi trabajo.",
+   "Como vendedor, quiero recibir notificaciones para las próximas citas, para poder planificar mi proceso de entrega.",
+   "Como pareja, quiero monitorear la cantidad de hoteles utilizados, para poder manejar mis necesidades.",
+   "Como invitado, quiero ver una lista de solicitudes de alimentos disponibles para mi lavandería, para que pueda ofrecer comentarios.",
+   "Como invitado, quiero calificar un daño en mis listados, para que pueda proporcionar retroalimentación."
+  ],
+  "historias_en": [
+   "As a vendor, I want to receive notifications for my loved one's food restrictions, so that I can manage my budget.",
+   "As a guest, I want to view my availability of my products, so that I can manage my schedule effectively.",
+   "As a couple, I want to know the availability of a member's preferred meal, so that I can ensure proper planning.",
+   "As a vendor, I want to set up a pricing limit for one household, so that I can control their budget.",
+   "As a couple, I want to be able to adjust my availability, so that I can manage my finances efficiently.",
+   "As a guest, I want to check my refund records on their preferences, so that I can choose the best option.",
+   "As a vendor, I want to receive notifications about upcoming appointments, so that I can plan my appointment.",
+   "As a guest, I want to view the availability of my loved one's, so that I can plan my work.",
+   "As a vendor, I want to receive notifications for upcoming appointments, so that I can plan my delivery process.",
+   "As a couple, I want to monitor the amount of hotels used, so that I can manage my needs.",
+   "As a guest, I want to see a list of available food requests for my laundry, so that I can offer feedback.",
+   "As a guest, I want to rate a damage in my listings, so that I can provide feedback."
+  ],
+  "tareas": [
+   [
+    "Enviar notificaciones al estilista cuando se realice una nueva restricción"
+   ],
+   [
+    "Almacenar datos de disponibilidad en la base de datos",
+    "Mostrar datos de disponibilidad en el panel de invitado",
+    "Enviar una notificación al invitado sobre la disponibilidad",
+    "Revisar la disponibilidad del producto"
+   ],
+   [
+    "Desarrollar un sistema de disponibilidad de comidas preferido",
+    "Conservar los detalles de la comida preferidos en la base de datos",
+    "Enviar un correo electrónico de confirmación a la comida preferida del miembro",
+    "Añadir una preferencia a la composición preferida del miembro",
+    "Añadir capacidad para elegir la versión preferida del miembro",
+    "Implementar una función de disponibilidad de comidas preferida en la base de datos",
+    "Mostrar el estado preferido de la comida en el panel del miembro"
+   ],
+   [
+    "Revisar los precios de la disponibilidad del producto",
+    "Almacenar los detalles de los límites de precios en la base de datos",
+    "Mostrar los límites de precios en el panel doméstico",
+    "Añadir límite de precios para los compradores"
+   ],
+   [
+    "Ajustar la disponibilidad del inventario",
+    "Mostrar datos de disponibilidad en el panel de parejas",
+    "Enviar notificaciones a la pareja cuando se actualice una nueva disponibilidad"
+   ],
+   [
+    "Añadir notificación para la nueva preferencia preferida",
+    "Almacenar registros de reembolso en la base de datos",
+    "Mostrar registros de reembolso en el panel de invitado",
+    "Añadir una casilla de verificación para las preferencias del comprador",
+    "Añadir una opción para las preferencias del mercado"
+   ],
+   [
+    "Crear un sistema de notificación para las próximas citas"
+   ],
+   [
+    "Almacenar los datos de disponibilidad en el perfil del invitado"
+   ],
+   [
+    "Implementar un sistema de notificación en el panel vendedor",
+    "Notificar para las próximas solicitudes"
+   ],
+   [
+    "Desarrollar un sistema de reservas para cada hotel",
+    "Almacenar los datos de reserva en la base de datos",
+    "Añadir capacidad para monitorear la cantidad de hosts utilizados en la misma ubicación",
+    "Permitir a los usuarios controlar el número de lugares utilizados en la nueva ubicación"
+   ],
+   [
+    "Mostrar las peticiones en el panel de invitados",
+    "Añadir información adicional para las solicitudes de cocina"
+   ],
+   [
+    "Almacenar datos de calificación en la base de datos",
+    "Mostrar datos de calificación en el panel de invitado"
+   ]
+  ],
+  "tareas_en": [
+   [
+    "Send notifications to the stylist when a new restriction is made"
+   ],
+   [
+    "Store availability data in the database",
+    "Display availability data on the guest's dashboard",
+    "Send a notification to the guest about the availability",
+    "Please review product availability"
+   ],
+   [
+    "Develop a preferred meal availability system",
+    "Store the preferred meal details in the database",
+    "Send a confirmation email to the member's preferred meal",
+    "Add a preference to the preferred membership of the member",
+    "Add ability to choose the preferred version of the member",
+    "Implement a preferred meal availability feature in the database",
+    "Display the preferred meal status on the member's dashboard"
+   ],
+   [
+    "Please review pricing of product availability",
+    "Store pricing limit details in the database",
+    "Display pricing limits on the household dashboard",
+    "Add pricing limit for buyers"
+   ],
+   [
+    "Adjust the availability of the inventory",
+    "Display availability data on the couple dashboard",
+    "Send notifications to the couple when a new availability is updated"
+   ],
+   [
+    "Add notification for the new preferred one's preference",
+    "Store refund records in the database",
+    "Display refund records on the guest's dashboard",
+    "Add a checkbox for the buyer preferences",
+    "Add an option for the marketplace preferences"
+   ],
+   [
+    "Create a notification system for upcoming appointments"
+   ],
+   [
+    "Store the availability data in the guest's profile"
+   ],
+   [
+    "Implement a notification system in the vendor dashboard",
+    "Notifications for upcoming requests"
+   ],
+   [
+    "Develop a booking system for each hotel",
+    "Store booking data in the database",
+    "Add ability to monitor the amount of hosts used in the same location",
+    "Allow users to monitor the number of places used in the new location"
+   ],
+   [
+    "Display the requests on the guest dashboard",
+    "Add additional information for the Kitchen requests"
+   ],
+   [
+    "Store rating data in the database",
+    "Display rating data on the guest's dashboard"
+   ]
+  ]
+ },
+ "farmacia": {
+  "descripcion": "Una app de farmacia donde los pacientes suben su receta, buscan medicamentos con equivalentes y piden entrega a domicilio, y el farmaceutico valida los controlados.",
+  "historias": [
+   "Como paciente, quiero solicitar una consulta para una receta, para que pueda obtener mi medicina.",
+   "Como mensajero, quiero ver la dirección de entrega real-time, para poder planificar mi ruta de manera eficiente.",
+   "Como farmacéutico, quiero comprobar si una receta se retrasa, para que pueda obtener medicamentos de manera eficiente.",
+   "Como gerente de farmacia, quiero administrar los niveles de inventario, para poder asegurarme de que son precisos y oportunos y están disponibles.",
+   "Como gerente de farmacia, quiero monitorear el número de pedidos procesados por su peso, para que pueda identificar las operaciones high-value.",
+   "Como farmacéutico, quiero establecer una cantidad máxima de medicamentos por día, para que pueda asegurar una cobertura adecuada.",
+   "Como paciente, quiero recibir notificaciones sobre los pedidos que se avecinan, para poder planificar mi horario.",
+   "Como paciente, quiero recibir recordatorios para las próximas citas, para que pueda prepararme para mi próxima cita.",
+   "Como mensajero, quiero ver la fecha de entrega de un paquete, para poder planificar mi ruta.",
+   "Como mensajero, quiero recibir un recordatorio antes de que se trate de mi pedido, para que pueda prepararme para las entregas.",
+   "Como mensajero, quiero ver el estado de el pedido real-time, para poder rastrear la llegada.",
+   "Como mensajero, quiero ver el estado de entrega de mi pedido, para poder rastrear el uso y las prioridades."
+  ],
+  "historias_en": [
+   "As a patient, I want to request an inquiry for a prescription, so that I can get my medicine.",
+   "As a courier, I want to see the real-time delivery address, so that I can plan my route efficiently.",
+   "As a pharmacist, I want to check if a prescription is delayed, so that I can get medicines efficiently.",
+   "As a pharmacy manager, I want to manage inventory levels, so that I can ensure they are accurate and timely and available.",
+   "As a pharmacy manager, I want to monitor the number of orders processed by their weight, so that I can identify high-value operations.",
+   "As a pharmacist, I want to set up a maximum amount of medications per day, so that I can ensure proper coverage.",
+   "As a patient, I want to receive notifications about upcoming orders, so that I can plan my schedule.",
+   "As a patient, I want to receive reminders for upcoming appointments, so that I can prepare for my next appointment.",
+   "As a courier, I want to see the delivery date for a package, so that I can plan my route.",
+   "As a courier, I want to receive a reminder before it comes to my order, so that I can prepare for the deliveries.",
+   "As a courier, I want to see real-time order status, so that I can track arrival.",
+   "As a courier, I want to see the delivery status of my order, so that I can track usage and priorities."
+  ],
+  "tareas": [
+   [
+    "Crear un formulario de solicitud de consulta en la aplicación del paciente",
+    "Enviar una notificación al paciente si se recibe una consulta",
+    "Almacenar los detalles de la consulta en la aplicación del paciente"
+   ],
+   [
+    "Implementar una dirección de entrega real-time en la aplicación de mensajería",
+    "Mostrar la dirección en tiempo real en el panel de mensajero",
+    "Enviar una notificación al mensajero si la dirección está lista",
+    "Crear una muestra para la dirección de entrega actual-time",
+    "Mostrar la dirección de entrega en la aplicación del mensajero"
+   ],
+   [
+    "Almacenar la información de receta en la base de datos",
+    "Mostrar información sobre la receta en el panel del farmacéutico",
+    "Notificar a la farmacia si se retrasa la receta"
+   ],
+   [
+    "Desarrollar una interfaz de gestión de los niveles de inventario",
+    "Almacenar los datos de inventario en la base de datos",
+    "Mostrar los datos del inventario en el panel del almacén"
+   ],
+   [
+    "Implementar un sistema de seguimiento de pedidos procesados por su peso",
+    "Almacenar los recuentos de pedidos en la base de datos",
+    "Mostrar los recuentos de pedidos en el panel del almacén",
+    "Verificar el número de pedidos procesados por su peso",
+    "Almacenar pedidos en la base de datos",
+    "Generar un informe de los pedidos procesados por su peso"
+   ],
+   [
+    "Añadir una cantidad máxima de comprimidos por día",
+    "Almacenar la cantidad media en la base de datos de recetas",
+    "Notificar a la farmacia si un medicamento excede una cierta cantidad"
+   ],
+   [
+    "Enviar notificaciones a los pacientes por correo electrónico",
+    "Añadir notificación sobre los pedidos futuros",
+    "Almacenar los detalles del pedido en el perfil del paciente",
+    "Enviar notificaciones a los pacientes sobre pedidos futuros"
+   ],
+   [
+    "Almacenar los detalles del recordatorio en el perfil del paciente",
+    "Recordar para una consulta dada",
+    "Añadir recordatorios a la consulta",
+    "Enviar recordatorios por correo electrónico al paciente",
+    "Registrar recordatorios en el perfil del paciente"
+   ],
+   [
+    "Mostrar la fecha de entrega en el panel de correo",
+    "Almacenar la fecha de entrega en la aplicación del mensajero"
+   ],
+   [
+    "Almacenar los detalles del recordatorio en el registro de pedidos",
+    "Enviar una notificación por correo electrónico al mensajero cuando se reciba el pedido"
+   ],
+   [
+    "Mostrar pedidos en el panel del almacén",
+    "Mostrar el estado de pedido en tiempo real en el panel de mensajero",
+    "Preparar la propuesta de centinela",
+    "Preparar la propuesta de mensajería"
+   ],
+   [
+    "Almacenar el estado de entrega en el registro de pedidos"
+   ]
+  ],
+  "tareas_en": [
+   [
+    "Create a inquiry request form in the patient's app",
+    "Send a notification to the patient if an inquiry is received",
+    "Store inquiry details in the patient's app"
+   ],
+   [
+    "Implement a real-time delivery address in the courier app",
+    "Display the real-time address on the courier's dashboard",
+    "Send a notification to the courier if the address is ready",
+    "Create a Sample for the actual-time delivery address",
+    "Display the delivery address on the courier’s app"
+   ],
+   [
+    "Store prescription information in the database",
+    "Display prescription information on the pharmacist's dashboard",
+    "Notify the pharmacy if a prescription is delayed"
+   ],
+   [
+    "Develop a inventory levels management interface",
+    "Store inventory data in the database",
+    "Display inventory data on the warehouse dashboard"
+   ],
+   [
+    "Implement a tracking system for orders processed by their weight",
+    "Store order counts in the database",
+    "Display order counts on the warehouse dashboard",
+    "Verify the number of orders processed by their weight",
+    "Store orders in the database",
+    "Generate a report of orders processed by their weight"
+   ],
+   [
+    "Add a maximum amount of tablets per day",
+    "Store the average amount in the prescription database",
+    "Notify the pharmacy if a medication exceeds a certain amount"
+   ],
+   [
+    "Send notifications to patients via email",
+    "Add notification about upcoming orders",
+    "Store order details in the patient's profile",
+    "Send notifications to patients about upcoming orders"
+   ],
+   [
+    "Store reminder details in the patient's profile",
+    "Reminders for upcoming a given query",
+    "Add reminders to the query",
+    "Send reminders via email to the patient",
+    "Log reminders in the patient's profile"
+   ],
+   [
+    "Display delivery date on the courier's dashboard",
+    "Store delivery date in the courier's app"
+   ],
+   [
+    "Store the reminder details in the order record",
+    "Send an email notification to the courier when the order is received"
+   ],
+   [
+    "Display orders on the warehouse dashboard",
+    "Display real-time order status on the courier's dashboard",
+    "Prepare the sentry proposal",
+    "Prepare the courier proposal"
+   ],
+   [
+    "Store delivery status in the order record"
+   ]
+  ]
+ },
+ "limpieza": {
+  "descripcion": "Una aplicacion web para reservar servicios de limpieza a domicilio, con citas recurrentes, calificacion de los trabajadores y pagos en la app.",
+  "historias": [
+   "Como trabajador, quiero ver el estado de pago de mi trabajo, para saber si el horario ha sido completado.",
+   "Como invitado, quiero revisar una cita recurrente, para poder verificar los servicios necesarios.",
+   "Como invitado, quiero establecer políticas de pago para mi aplicación, para que pueda pagar por los servicios.",
+   "Como anfitrión, quiero recibir notificaciones cuando mis horarios se asignan a mis clientes, para que pueda planificar mi horario.",
+   "Como invitado, quiero calificar mi trabajo y rendimiento, para que pueda asegurar la mejor satisfacción del cliente.",
+   "Como limpiador, quiero ver mi horario de las próximas reservas, para poder planificar mi llegada.",
+   "Como anfitrión, quiero administrar mi disponibilidad, para poder maximizar mis citas preferidas.",
+   "Como limpiador, quiero comprobar cuando un libro de usuario está en un curso, para que pueda planificar en consecuencia.",
+   "Como trabajador, quiero ver la hora del día, para poder planificar mi día.",
+   "Como anfitrión, quiero poder gestionar mi disponibilidad durante un trabajo, para poder mantener la disponibilidad con antelación.",
+   "Como limpiador, quiero ver las próximas reservas, para poder administrar mi horario.",
+   "Como anfitrión, quiero solicitar un panel para mi búsqueda basada en mis servicios, para poder evaluar mi rendimiento."
+  ],
+  "historias_en": [
+   "As a worker, I want to see the payment status of my work, so that I know if the schedule has been completed.",
+   "As a guest, I want to review a recurring appointment, so that I can verify the necessary services.",
+   "As a guest, I want to set up payment policies for my app, so that I can pay for the services.",
+   "As a host, I want to receive notifications when my schedules are assigned to my clients, so that I can plan my schedule.",
+   "As a guest, I want to rate my job and performance, so that I can ensure the best customer satisfaction.",
+   "As a cleaner, I want to view my schedule of upcoming bookings, so that I can plan my arrival.",
+   "As a host, I want to manage my availability, so that I can maximize my preferred appointments.",
+   "As a cleaner, I want to check when a user books is in a course, so that I can plan accordingly.",
+   "As a worker, I want to see the time of the day, so that I can plan my day.",
+   "As a host, I want to be able to manage my availability during a job, so that I can keep the availability in advance.",
+   "As a cleaner, I want to see the upcoming bookings, so that I can manage my schedule.",
+   "As a host, I want to request a dashboard for my search based on my services, so that I can assess my performance."
+  ],
+  "tareas": [
+   [
+    "Almacenar el estado de pago en la base de datos",
+    "Mostrar el estado de pago en el panel del trabajador",
+    "Enviar una notificación al trabajador sobre el estado de pago",
+    "Preparar el estado de deuda semanal del trabajo"
+   ],
+   [
+    "Crear un formulario de revisión de citas recurrentes en el panel de invitados",
+    "Enviar un correo electrónico de confirmación al invitado cuando su cita esté resuelta",
+    "Revisar una aplicación recurrente",
+    "Revisar la aplicación recurrente",
+    "Almacenar los detalles recurrentes de las citas en el perfil del invitado",
+    "Enviar una notificación por correo electrónico al invitado cuando se complete una solicitud recurrente"
+   ],
+   [
+    "Mostrar las políticas de pago en el panel de invitado",
+    "Políticas de pago para la aplicación iOS"
+   ],
+   [
+    "Implementar una función de programación en la aplicación anfitrión",
+    "Notificar siempre que sea posible",
+    "Almacenar los detalles del horario en la base de datos"
+   ],
+   [
+    "Implementar una función de calificación de tarifas en el perfil del invitado",
+    "Mejorar el desempeño del trabajo",
+    "Añadir un punto de referencia para el trabajo",
+    "Mostrar los datos de rendimiento en el panel del invitado"
+   ],
+   [
+    "Almacenar los detalles de la reserva en la base de datos",
+    "Mostrar los detalles de la reserva en el panel de limpiador",
+    "Añadir entradas para las próximas reservas",
+    "Añadir entradas a las próximas reservas"
+   ],
+   [
+    "Almacenar la información de disponibilidad en el perfil del anfitrión",
+    "Crear una preferencia por la disponibilidad de anfitrión",
+    "Almacenar datos de disponibilidad en la base de datos",
+    "Mostrar datos de disponibilidad en el panel de anfitrión"
+   ],
+   [
+    "Permitir que los limpiadores seleccionen sus libros en el curso",
+    "Permitir que los limpiadores seleccionen sus libros en el panel del curso",
+    "Enviar notificaciones al limpiador si un libro está incompleto"
+   ],
+   [
+    "Mostrar la hora del día en el panel del trabajador",
+    "Me gustaría ver la fecha de la semana"
+   ],
+   [
+    "Añadir capacidad para gestionar la disponibilidad durante un trabajo",
+    "Añadir posibilidad de gestionar la capacidad durante el trabajo"
+   ],
+   [
+    "Almacenar los detalles de la reserva en la base de datos"
+   ],
+   [
+    "Guardar los datos de rendimiento en la base de datos",
+    "Crear panel para buscar",
+    "Añadir documentación para la búsqueda",
+    "Desarrollar un panel de búsqueda basado en servicios",
+    "Almacenar los resultados de búsqueda en la base de datos",
+    "Mostrar los resultados de búsqueda en el panel de anfitrión"
+   ]
+  ],
+  "tareas_en": [
+   [
+    "Store payment status in the database",
+    "Display payment status on the worker's dashboard",
+    "Send a notification to the worker about the payment status",
+    "Prepare the weekly debt status of the job"
+   ],
+   [
+    "Create a recurring appointment review form in the guest dashboard",
+    "Send a confirmation email to the guest when their appointment is resolved",
+    "Please review a recurring app",
+    "Please review the recurring application",
+    "Store recurring appointment details in the guest's profile",
+    "Send an email notification to the guest when a recurring request is completed"
+   ],
+   [
+    "Display payment policies on the guest's dashboard",
+    "Payment policies for iOS app"
+   ],
+   [
+    "Implement a scheduling feature in the host app",
+    "Notifications whenever possible",
+    "Store the schedule details in the database"
+   ],
+   [
+    "Implement a rate rating feature in the guest's profile",
+    "Improve the performance of the job",
+    "Add a benchmark for the job",
+    "Display the performance data on the guest's dashboard"
+   ],
+   [
+    "Store booking details in the database",
+    "Display booking details on the cleaner's dashboard",
+    "Add tickets for upcoming bookings",
+    "Add tickets to upcoming reservations"
+   ],
+   [
+    "Store availability information in the host's profile",
+    "Create a preference for the host availability",
+    "Store availability data in the database",
+    "Display availability data on the host's dashboard"
+   ],
+   [
+    "Allow cleaners to select their books in the course",
+    "Allow cleaners to select their books in the course dashboard",
+    "Send notifications to the cleaner if a book is incomplete"
+   ],
+   [
+    "Display the day time on the worker's dashboard",
+    "I would like to see the date of the week"
+   ],
+   [
+    "Add ability to manage availability during a job",
+    "Add possibility to manage capacity during job"
+   ],
+   [
+    "Store booking details in the database"
+   ],
+   [
+    "Store the performance data in the database",
+    "Create dashboard for search",
+    "Add documentation for search",
+    "Develop a dashboard for search based on services",
+    "Store search results in the database",
+    "Display search results on the host's dashboard"
+   ]
+  ]
+ },
+ "tecnico": {
+  "descripcion": "Un servicio de integracion continua que ejecuta pipelines de compilacion en agentes, guarda los artefactos generados y avisa al equipo cuando una rama falla.",
+  "historias": [
+   "Como usuario, quiero ver lo último en artefactos fallidos, para poder rastrear el progreso de mi aplicación.",
+   "Como miembro del equipo, quiero recibir notificaciones cuando un pipeline falla, para poder planificar mi horario en consecuencia.",
+   "Como administrador, quiero monitorear el número de paquetes pendientes, para poder asegurar el uso oportuno.",
+   "Como usuario, quiero filtrar las partes por cada rama, para que pueda encontrar rápidamente el mejor ajuste a mi aplicación.",
+   "Como administrador, quiero generar informes sobre estadísticas de uso, para poder informar de problemas.",
+   "Como usuario, quiero ver el horario de las pastillas para cada aplicación, para que pueda planificar mis actividades.",
+   "Como usuario, quiero ver mis próximas pastillas y ejecuta una nueva aplicación, para que pueda planificar mis cargas de trabajo.",
+   "Como miembro del equipo, quiero recibir notificaciones cuando un mantenimiento de un stock pendiente excede una duración de edad, para poder comunicar servicios importantes.",
+   "Como usuario, quiero rastrear la frecuencia de cada aplicación, para poder tomar decisiones informadas sobre mi obtención.",
+   "Como usuario, quiero hacer un seguimiento del rendimiento de la aplicación, para poder planificar mi aplicación.",
+   "Como miembro del equipo, quiero recibir notificaciones cuando se acabe mi tiempo, para poder hacer un seguimiento de las notificaciones.",
+   "Como miembro del equipo, quiero ver una lista de pasadas ejecuciones para la aplicación, para poder seguir el progreso de mi trabajo."
+  ],
+  "historias_en": [
+   "As a user, I want to view the latest a failed artifacts, so that I can track the progress of my app.",
+   "As a team member, I want to receive notifications when a pipeline fails, so that I can plan my schedule accordingly.",
+   "As a administrator, I want to monitor the number of pending packages, so that I can ensure timely usage.",
+   "As a user, I want to filter parts by each branch, so that I can quickly find the best fit to my app.",
+   "As a administrator, I want to generate reports on usage statistics, so that I can report issues.",
+   "As a user, I want to see the schedule of pickups for each app, so that I can plan my activities.",
+   "As a user, I want to view my upcoming pickups and runs a new application, so that I can plan my workloads.",
+   "As a team member, I want to receive notifications when a maintaining a pending stock exceeds an age duration, so that I can communicate important services.",
+   "As a user, I want to track the frequency of each app, so that I can make informed decisions about my getting.",
+   "As a user, I want to track the performance of the app, so that I can plan my app.",
+   "As a team member, I want to receive notifications when my runs out, so that I can follow up with notifications.",
+   "As a team member, I want to see a list of past runs for the app, so that I can track the progress of my work."
+  ],
+  "tareas": [
+   [
+    "Enviar una notificación al usuario si se detecta un artefacto fallido"
+   ],
+   [
+    "Implementar un sistema de notificación para fallas en el gasoducto",
+    "Enviar notificaciones a los miembros del equipo si falla",
+    "Añadir notificaciones cuando falla la pipeline",
+    "Añadir notificaciones a la pipeline"
+   ],
+   [
+    "Almacenar paquetes pendientes en la base de datos",
+    "Permitir a los usuarios controlar el número de paquetes pendientes",
+    "Añadir capacidad para supervisar la cantidad de pares pendientes",
+    "Generar un resumen de las tasas de paquetes pendientes",
+    "Enviar notificaciones al administrador si un paquete pendiente supera un umbral"
+   ],
+   [
+    "Eliminar filtro por defecto",
+    "Filtrar por defecto"
+   ],
+   [
+    "Crear una función de generación de informes en el panel de administración",
+    "Crear informes sobre estadísticas de usuarios"
+   ],
+   [
+    "Implementar una función de programación en la aplicación de usuario",
+    "Mostrar el horario en el panel de aplicaciones del usuario",
+    "Enviar una notificación al usuario sobre el horario",
+    "Planear para la aplicación",
+    "Almacenar los horarios de recogida en la base de datos",
+    "Mostrar el estado de la pastilla en el panel de la aplicación"
+   ],
+   [
+    "Crear una función de seguimiento de la recogida en el panel de usuario",
+    "Mostrar los detalles de la recogida en la aplicación del usuario",
+    "Mostrar los detalles de la recogida en el panel del usuario"
+   ],
+   [
+    "Aplicar un sistema de notificación para las existencias pendientes que exceda de una duración de edad"
+   ],
+   [
+    "Añadir capacidad para realizar un seguimiento del número de aplicaciones en el UI",
+    "Asegúrese de que todas las aplicaciones están conectadas al UI",
+    "Almacenar datos de frecuencia en la base de datos"
+   ],
+   [
+    "Recuperar los datos de rendimiento de la base de datos",
+    "Mejorar el rendimiento de la aplicación",
+    "Mostrar los datos de rendimiento en el panel de la aplicación"
+   ],
+   [
+    "Almacenar las notificaciones en la base de datos"
+   ],
+   [
+    "Almacenar pasadas ejecuciones en la base de datos",
+    "Mostrar las ejecuciones pasadas en el panel de la aplicación"
+   ]
+  ],
+  "tareas_en": [
+   [
+    "Send a notification to the user if a failed artifact is detected"
+   ],
+   [
+    "Implement a notification system for pipeline fails",
+    "Send notifications to the team members if a fails",
+    "Add notifications when pipeline fails",
+    "Add notifications to pipeline"
+   ],
+   [
+    "Store pending packages in the database",
+    "Allow users to monitor the number of pending packages",
+    "Add ability to monitor amount of pending peers",
+    "Generate a summary of pending package rates",
+    "Send notifications to the admin if a pending package exceeds a threshold"
+   ],
+   [
+    "Delete filter by default",
+    "Filter by default"
+   ],
+   [
+    "Create a report generation feature in the admin panel",
+    "create reports on user statistics"
+   ],
+   [
+    "Implement a scheduling feature in the user app",
+    "Display the schedule on the user's app dashboard",
+    "Send a notification to the user about the schedule",
+    "Planning for app",
+    "Store pickup schedules in the database",
+    "Display pickup status on the app dashboard"
+   ],
+   [
+    "Create a pickup tracking feature in the user dashboard",
+    "Display the pickup details on the user's app",
+    "Display pickup details on the user's dashboard"
+   ],
+   [
+    "Implement a notification system for pending stock exceeds an age duration"
+   ],
+   [
+    "Add ability to track the number of apps in the UI",
+    "Make sure all apps are connected to the UI",
+    "Store frequency data in the database"
+   ],
+   [
+    "Retrieve the performance data from the database",
+    "Improve the performance of the application app",
+    "Display performance data on the app dashboard"
+   ],
+   [
+    "Store notifications in the database"
+   ],
+   [
+    "Store past runs in the database",
+    "Display past runs on the app dashboard"
+   ]
+  ]
+ },
+ "colegio": {
+  "descripcion": "Un sistema de gestion escolar con cuentas para estudiantes, profesores, apoderados y administracion, con horarios, mensajeria con el tutor y reporte de inasistencias.",
+  "historias": [
+   "Como tutor, quiero gestionar la disponibilidad de los estudiantes, para que pueda mantenerlos pendientes.",
+   "Como padre, quiero recibir comentarios de los estudiantes, para poder mejorar a mi maestro.",
+   "Como maestra, quiero seguir el progreso de una escuela, para poder planificar mi actividad.",
+   "Como estudiante, quiero ver mis informes pasados de enseñanza, para poder prepararme para mi escuela.",
+   "Como padre, quiero recibir notificaciones de las ausencias de mi hijo, para poder dirigirme a ellas.",
+   "Como tutor, quiero administrar mi horario, para poder acomodar varias condiciones.",
+   "Como maestra, quiero acceder a las calificaciones de los estudiantes, para poder evaluar el rendimiento de los estudiantes.",
+   "Como tutor, quiero saber qué estudiantes están ausentes de la cumbre, para que pueda prepararme para ellos.",
+   "Como estudiante, quiero ver mis próximas lecciones, para poder planificar mi día.",
+   "Como estudiante, quiero ver el progreso de los estudiantes, para que pueda ver el progreso.",
+   "Como estudiante, quiero recibir notificaciones cuando mis asignaciones estén listas, para poder estar informado sobre mi tiempo.",
+   "Como maestra, quiero seguir el progreso de mi escuela y estudiante, para poder analizar mis prácticas de enseñanza."
+  ],
+  "historias_en": [
+   "As a guardian, I want to manage students’ availability, so that I can keep them pending.",
+   "As a parent, I want to receive feedback from students, so that I can improve my teacher.",
+   "As a teacher, I want to track the progress of a school, so that I can plan my activity.",
+   "As a student, I want to view my teaching past reports, so that I can prepare for my school.",
+   "As a parent, I want to receive notifications for my child's absences, so that I can address them.",
+   "As a guardian, I want to manage my schedule, so that I can accommodate various conditions.",
+   "As a teacher, I want to access student ratings, so that I can assess student performance.",
+   "As a guardian, I want to know which students are absent from the summit, so that I can prepare for them.",
+   "As a student, I want to view my upcoming lessons, so that I can plan my day.",
+   "As a student, I want to view student progress, so that I can see the progress.",
+   "As a student, I want to receive notifications when my assignments are ready, so that I can stay informed about my time.",
+   "As a teacher, I want to track the progress of my school and student, so that I can analyze my teaching practices."
+  ],
+  "tareas": [
+   [
+    "Almacenar datos de disponibilidad en la base de datos",
+    "Enviar una notificación al viajero sobre la disponibilidad",
+    "Ser miembro del estudiante.",
+    "Admitir a un maestro",
+    "Enviar notificaciones a los estudiantes sobre la disponibilidad"
+   ],
+   [
+    "Implementar un formulario de retroalimentación en la aplicación para padres",
+    "Enviar comentarios a los estudiantes por correo electrónico",
+    "Aplicar retroalimentación de los estudiantes",
+    "Almacenar los comentarios en el perfil del maestra"
+   ],
+   [
+    "Implementar una función de seguimiento de progreso en el panel del maestra",
+    "Guardar los datos de progreso en el perfil del maestra",
+    "Enviar una notificación al maestra sobre el progreso",
+    "Preparar la actividad semanal"
+   ],
+   [
+    "Almacenar en la base de datos los informes de enseñanza anteriores",
+    "Mostrar informes anteriores en el panel del estudiante",
+    "Revisar los informes actuales",
+    "Revisar mis informes"
+   ],
+   [
+    "Enviar notificaciones a la aplicación del padre",
+    "Notificar para niños",
+    "Almacenar la información de ausencia de los niños en la base de datos"
+   ],
+   [
+    "Crear una interfaz de gestión de horario en la aplicación",
+    "Almacenar los detalles del horario en la base de datos",
+    "Planificar el horario"
+   ],
+   [
+    "Almacenar los datos de calificación de los estudiantes en la base de datos",
+    "Mostrar los datos de calificación de los estudiantes en el perfil del maestra",
+    "Añadir capacidad para acceder a las categorías de estudiantes",
+    "Mostrar los datos de calificación de los estudiantes en el panel del maestra"
+   ],
+   [
+    "Almacenar a los estudiantes ausentes en la base de datos",
+    "Mostrar estudiantes ausentes en el panel",
+    "Prepararse para la admisión",
+    "Prepararse para la graduación"
+   ],
+   [
+    "Almacenar los detalles de la lección en la base de datos",
+    "Mostrar detalles de la lección en el panel del estudiante"
+   ],
+   [
+    "Almacenar los datos de progreso de los estudiantes en la base de datos",
+    "[JDK8] Ver el progreso del estudiante"
+   ],
+   [
+    "Añadir notificaciones cuando la asignación esté lista",
+    "Crear un formulario de notificación en el perfil del estudiante"
+   ],
+   [
+    "Generar un informe de progreso en el panel del maestra"
+   ]
+  ],
+  "tareas_en": [
+   [
+    "Store availability data in the database",
+    "Send a notification to the traveller about the availability",
+    "Membership of student",
+    "Admission of a teacher",
+    "Send notifications to students about availability"
+   ],
+   [
+    "Implement a feedback form in the parent app",
+    "Send feedback to students via email",
+    "Apply feedback from students",
+    "Store feedback in the teacher's profile"
+   ],
+   [
+    "Implement a progress tracking feature in the teacher dashboard",
+    "Store the progress data in the teacher's profile",
+    "Send a notification to the teacher about the progress",
+    "Prepare the weekly activity"
+   ],
+   [
+    "Store teaching past reports in the database",
+    "Display past reports on the student's dashboard",
+    "Please review the current reports",
+    "Please review my reports"
+   ],
+   [
+    "Send notifications to the parent's app",
+    "Notification for children's",
+    "Store child's absence information in the database"
+   ],
+   [
+    "Create a schedule management interface in the app",
+    "Store schedule details in the database",
+    "Planning schedule"
+   ],
+   [
+    "Store student rating data in the database",
+    "Display student rating data on the teacher's profile",
+    "Add ability to access student categories",
+    "Display student rating data on the teacher's dashboard"
+   ],
+   [
+    "Store absent students in the database",
+    "Display absent students on the dashboard",
+    "Prepare for admission",
+    "Prepare for graduation"
+   ],
+   [
+    "Store lesson details in the database",
+    "Display lesson details on the student's dashboard"
+   ],
+   [
+    "Store student progress data in the database",
+    "[JDK8] View student progress"
+   ],
+   [
+    "Add notifications when assignment is ready",
+    "Create a notification form in the student's profile"
+   ],
+   [
+    "Generate a progress report on the teacher's dashboard"
+   ]
+  ]
+ },
+ "restaurante": {
+  "descripcion": "Un sistema de pedidos para un restaurante, donde la cocina ve los pedidos y su estado, el personal atiende peticiones especiales y el dueno consulta los ingresos del dia.",
+  "historias": [
+   "Como miembro del personal, quiero ver el estado de mi pedido, para saber dónde puedo planificar mi horario.",
+   "Como cocinero, quiero comprobar los niveles de pedidos, para que pueda proporcionar la cantidad adecuada.",
+   "Como propietario, quiero saber qué pedidos necesitan un cierre, para que pueda tomar decisiones informadas.",
+   "Como miembro del personal, quiero recibir un recordatorio de que se han depositado las solicitudes, para que no las pierda.",
+   "Como camarero, quiero ver la disponibilidad de una mesa por pedido, para que pueda suministrar eficientemente.",
+   "Como propietario, quiero configurar peticiones especiales para mi pedido personal, para que pueda administrar mi tiempo de manera eficaz.",
+   "Como miembro del personal, quiero ver el estado de el pedido, para poder rastrear la cantidad total de espera.",
+   "Como miembro del personal, quiero recibir notificaciones cuando se cancelen los pedidos, para poder responder con prontitud.",
+   "Como miembro del personal, quiero ver la hora de llegada de cada menú, para poder planificar mi horario.",
+   "Como propietario, quiero verificar el estado del pedido, para que el cliente pueda ser informado de la entrega.",
+   "Como miembro del personal, quiero recibir notificaciones real-time para pedidos cold-chain, de modo que pueda proporcionar información precisa.",
+   "Como cocinero, quiero recibir notificaciones cuando un pedido está listo para la recogida, para que pueda empezar a preparar en consecuencia."
+  ],
+  "historias_en": [
+   "As a staff member, I want to view the status of my order, so that I know where I can plan my schedule.",
+   "As a cook, I want to check the levels of orders, so that I can provide the right quantity.",
+   "As a owner, I want to know which orders need for a closing, so that I can make informed decisions.",
+   "As a staff member, I want to receive a reminder that requests be deposited, so that I do not miss them.",
+   "As a waiter, I want to see the availability of a table by an order, so that I can efficiently supply.",
+   "As a owner, I want to set up special requests for my personal order, so that I can manage my time effectively.",
+   "As a staff member, I want to view the status of the order, so that I can track the total amount of wait.",
+   "As a staff member, I want to receive notifications when the orders are cancelled, so that I can respond promptly.",
+   "As a staff member, I want to see the arrival time for each menu, so that I can plan my schedule.",
+   "As a owner, I want to verify the order status, so that the customer can be informed of the delivery.",
+   "As a staff member, I want to receive real-time notifications for cold-chain orders, so that I can provide accurate information.",
+   "As a cook, I want to receive notifications when an order is ready for pickup, so that I can start preparing accordingly."
+  ],
+  "tareas": [
+   [
+    "Mostrar el estado del pedido en el panel del miembro del personal",
+    "Enviar una notificación al personal sobre el estado del pedido",
+    "Mostrar el estado del pedido",
+    "Enviar notificaciones a miembro del personal sobre el estado del nuevo pedido"
+   ],
+   [
+    "Almacenar los niveles de pedido en la base de datos de cocina",
+    "Mostrar los niveles de pedido en el panel de la cocina"
+   ],
+   [
+    "Mostrar los detalles del pedido en el panel del propietario",
+    "Crear una propuesta para cerrar pedidos"
+   ],
+   [
+    "Implementar un sistema de recordatorio en el panel de miembro del personal",
+    "Almacenar los detalles del recordatorio en la base de datos",
+    "Crear un recordatorio de que las solicitudes a recibir"
+   ],
+   [
+    "Almacenar los detalles de pedido en el panel del camarero",
+    "Almacenar datos de disponibilidad en el registro de pedidos del camarero",
+    "Mostrar datos de disponibilidad en el panel del camarero"
+   ],
+   [
+    "Almacenar las solicitudes especiales en la base de datos",
+    "Mostrar peticiones especiales en el panel del propietario"
+   ],
+   [
+    "Almacenar el estado del pedido en la base de datos",
+    "Mostrar la cantidad de solicitudes en el pedido"
+   ],
+   [
+    "Implementar una función de cancelación en el panel de miembro del personal",
+    "Enviar notificaciones a miembro del personal cuando el pedido se cancela"
+   ],
+   [
+    "Mostrar la hora de la cita en el panel de mando",
+    "Revisar la hora de llegada para cada menú",
+    "Revisar y explique el tiempo de anuncio para cada menú",
+    "Mostrar la hora de llegada en el panel de miembro del personal"
+   ],
+   [
+    "Enviar una notificación al propietario sobre los detalles del pedido",
+    "Verificar el estado del pedido en el lado del cliente",
+    "Verificar el estado del pedido en el lado del cliente",
+    "Notificar al cliente si el estado del pedido cambia"
+   ],
+   [
+    "Almacenar los pedidos cold-chain en la base de datos",
+    "Añadir capacidad para recibir notificaciones real-time para pedidos hot-chain",
+    "Añadir posibilidad de recibir la notificación actual-time para el pedido Hot-chain"
+   ],
+   [
+    "Añadir notificación cuando el pedido esté listo"
+   ]
+  ],
+  "tareas_en": [
+   [
+    "Display the order status on the staff member's dashboard",
+    "Send a notification to the staff about the order status",
+    "Show status of order",
+    "Send notifications to staff members about new order status"
+   ],
+   [
+    "Store order levels in the kitchen database",
+    "Display order levels on the kitchen dashboard"
+   ],
+   [
+    "Display order details on the owner's dashboard",
+    "Create a proposal for closing orders"
+   ],
+   [
+    "Implement a reminder system in the staff member dashboard",
+    "Store reminder details in the database",
+    "Create a reminder that requests to be received"
+   ],
+   [
+    "Store the order details in the waiter dashboard",
+    "Store availability data in the waiter's order record",
+    "Display availability data on the waiter’s dashboard"
+   ],
+   [
+    "Store special requests in the database",
+    "Display special requests on the owner's dashboard"
+   ],
+   [
+    "Store the order status in the database",
+    "Show the amount of requests in the order"
+   ],
+   [
+    "Implement a cancellation feature in the staff member dashboard",
+    "Send notifications to staff members when the order is cancelled"
+   ],
+   [
+    "Display the appointment time on the staff dashboard",
+    "Please review the arrival time for each menu",
+    "Please review and explain the announcement time for the each menu",
+    "Display arrival time on the staff member's dashboard"
+   ],
+   [
+    "Send a notification to the owner about the order details",
+    "Verify the order status on the customer side",
+    "Verify the ordering status on the client side",
+    "Notify the customer if the order status changes"
+   ],
+   [
+    "Store cold-chain orders in the database",
+    "Add ability to receive real-time notifications for hot-chain orders",
+    "Add possibility to receive actual-time notification for Hot-chain order"
+   ],
+   [
+    "Add notification when order is ready"
+   ]
+  ]
+ }
+}

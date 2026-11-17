@@ -1,0 +1,130 @@
+================================================================================================
+[colegio] 12 historias, 38 tareas, 4 roles, atribucion 76 %, 29.0s
+  roles: student x4 > guardian x3 > teacher x3 > parent x2
+Un sistema de gestion escolar con cuentas para estudiantes, profesores, apoderados y administracion, con horarios, mensajeria con el tutor y reporte de inasistencias.
+
+  1. Como tutor, quiero gestionar la disponibilidad de los estudiantes, para que pueda mantenerlos pendientes.
+       - Almacenar datos de disponibilidad en la base de datos
+       - Enviar una notificación al viajero sobre la disponibilidad
+       - Ser miembro del estudiante.
+       - Admitir a un maestro
+       - Enviar notificaciones a los estudiantes sobre la disponibilidad
+
+  2. Como padre, quiero recibir comentarios de los estudiantes, para poder mejorar a mi maestro.
+       - Implementar un formulario de retroalimentación en la aplicación para padres
+       - Enviar comentarios a los estudiantes por correo electrónico
+       - Aplicar retroalimentación de los estudiantes
+       - Almacenar los comentarios en el perfil del maestra
+
+  3. Como maestra, quiero seguir el progreso de una escuela, para poder planificar mi actividad.
+       - Implementar una función de seguimiento de progreso en el panel del maestra
+       - Guardar los datos de progreso en el perfil del maestra
+       - Enviar una notificación al maestra sobre el progreso
+       - Preparar la actividad semanal
+
+  4. Como estudiante, quiero ver mis informes pasados de enseñanza, para poder prepararme para mi escuela.
+       - Almacenar en la base de datos los informes de enseñanza anteriores
+       - Mostrar informes anteriores en el panel del estudiante
+       - Revisar los informes actuales
+       - Revisar mis informes
+
+  5. Como padre, quiero recibir notificaciones de las ausencias de mi hijo, para poder dirigirme a ellas.
+       - Enviar notificaciones a la aplicación del padre
+       - Notificar para niños
+       - Almacenar la información de ausencia de los niños en la base de datos
+
+  6. Como tutor, quiero administrar mi horario, para poder acomodar varias condiciones.
+       - Crear una interfaz de gestión de horario en la aplicación
+       - Almacenar los detalles del horario en la base de datos
+       - Planificar el horario
+
+  7. Como maestra, quiero acceder a las calificaciones de los estudiantes, para poder evaluar el rendimiento de los estudiantes.
+       - Almacenar los datos de calificación de los estudiantes en la base de datos
+       - Mostrar los datos de calificación de los estudiantes en el perfil del maestra
+       - Añadir capacidad para acceder a las categorías de estudiantes
+       - Mostrar los datos de calificación de los estudiantes en el panel del maestra
+
+  8. Como tutor, quiero saber qué estudiantes están ausentes de la cumbre, para que pueda prepararme para ellos.
+       - Almacenar a los estudiantes ausentes en la base de datos
+       - Mostrar estudiantes ausentes en el panel
+       - Prepararse para la admisión
+       - Prepararse para la graduación
+
+  9. Como estudiante, quiero ver mis próximas lecciones, para poder planificar mi día.
+       - Almacenar los detalles de la lección en la base de datos
+       - Mostrar detalles de la lección en el panel del estudiante
+
+ 10. Como estudiante, quiero ver el progreso de los estudiantes, para que pueda ver el progreso.
+       - Almacenar los datos de progreso de los estudiantes en la base de datos
+       - [JDK8] Ver el progreso del estudiante
+
+ 11. Como estudiante, quiero recibir notificaciones cuando mis asignaciones estén listas, para poder estar informado sobre mi tiempo.
+       - Añadir notificaciones cuando la asignación esté lista
+       - Crear un formulario de notificación en el perfil del estudiante
+
+ 12. Como maestra, quiero seguir el progreso de mi escuela y estudiante, para poder analizar mis prácticas de enseñanza.
+       - Generar un informe de progreso en el panel del maestra
+
+================================================================================================
+[tecnico] 12 historias, 33 tareas, 3 roles, atribucion 85 %, 12.1s
+  roles: user x6 > team member x4 > administrator x2
+Un servicio de integracion continua que ejecuta pipelines de compilacion en agentes, guarda los artefactos generados y avisa al equipo cuando una rama falla.
+
+  1. Como usuario, quiero ver lo último en artefactos fallidos, para poder rastrear el progreso de mi aplicación.
+       - Enviar una notificación al usuario si se detecta un artefacto fallido
+
+  2. Como miembro del equipo, quiero recibir notificaciones cuando un pipeline falla, para poder planificar mi horario en consecuencia.
+       - Implementar un sistema de notificación para fallas en el gasoducto
+       - Enviar notificaciones a los miembros del equipo si falla
+       - Añadir notificaciones cuando falla la pipeline
+       - Añadir notificaciones a la pipeline
+
+  3. Como administrador, quiero monitorear el número de paquetes pendientes, para poder asegurar el uso oportuno.
+       - Almacenar paquetes pendientes en la base de datos
+       - Permitir a los usuarios controlar el número de paquetes pendientes
+       - Añadir capacidad para supervisar la cantidad de pares pendientes
+       - Generar un resumen de las tasas de paquetes pendientes
+       - Enviar notificaciones al administrador si un paquete pendiente supera un umbral
+
+  4. Como usuario, quiero filtrar las partes por cada rama, para que pueda encontrar rápidamente el mejor ajuste a mi aplicación.
+       - Eliminar filtro por defecto
+       - Filtrar por defecto
+
+  5. Como administrador, quiero generar informes sobre estadísticas de uso, para poder informar de problemas.
+       - Crear una función de generación de informes en el panel de administración
+       - Crear informes sobre estadísticas de usuarios
+
+  6. Como usuario, quiero ver el horario de las pastillas para cada aplicación, para que pueda planificar mis actividades.
+       - Implementar una función de programación en la aplicación de usuario
+       - Mostrar el horario en el panel de aplicaciones del usuario
+       - Enviar una notificación al usuario sobre el horario
+       - Planear para la aplicación
+       - Almacenar los horarios de recogida en la base de datos
+       - Mostrar el estado de la pastilla en el panel de la aplicación
+
+  7. Como usuario, quiero ver mis próximas pastillas y ejecuta una nueva aplicación, para que pueda planificar mis cargas de trabajo.
+       - Crear una función de seguimiento de la recogida en el panel de usuario
+       - Mostrar los detalles de la recogida en la aplicación del usuario
+       - Mostrar los detalles de la recogida en el panel del usuario
+
+  8. Como miembro del equipo, quiero recibir notificaciones cuando un mantenimiento de un stock pendiente excede una duración de edad, para poder comunicar servicios importantes.
+       - Aplicar un sistema de notificación para las existencias pendientes que exceda de una duración de edad
+
+  9. Como usuario, quiero rastrear la frecuencia de cada aplicación, para poder tomar decisiones informadas sobre mi obtención.
+       - Añadir capacidad para realizar un seguimiento del número de aplicaciones en el UI
+       - Asegúrese de que todas las aplicaciones están conectadas al UI
+       - Almacenar datos de frecuencia en la base de datos
+
+ 10. Como usuario, quiero hacer un seguimiento del rendimiento de la aplicación, para poder planificar mi aplicación.
+       - Recuperar los datos de rendimiento de la base de datos
+       - Mejorar el rendimiento de la aplicación
+       - Mostrar los datos de rendimiento en el panel de la aplicación
+
+ 11. Como miembro del equipo, quiero recibir notificaciones cuando se acabe mi tiempo, para poder hacer un seguimiento de las notificaciones.
+       - Almacenar las notificaciones en la base de datos
+
+ 12. Como miembro del equipo, quiero ver una lista de pasadas ejecuciones para la aplicación, para poder seguir el progreso de mi trabajo.
+       - Almacenar pasadas ejecuciones en la base de datos
+       - Mostrar las ejecuciones pasadas en el panel de la aplicación
+
+MEDIA          3.5     42%      8.3%    35.5    81%          100%

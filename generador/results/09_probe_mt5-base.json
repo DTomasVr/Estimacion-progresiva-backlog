@@ -1,0 +1,26 @@
+{
+ "out128_bs4": {
+  "s_paso": 4.859,
+  "ej_s": 0.8,
+  "pico_GB": 5.84,
+  "ok": true
+ },
+ "out128_bs8": {
+  "s_paso": 7.044,
+  "ej_s": 1.1,
+  "pico_GB": 8.7,
+  "ok": false
+ },
+ "out192_bs4": {
+  "s_paso": 4.269,
+  "ej_s": 0.9,
+  "pico_GB": 6.73,
+  "ok": false
+ },
+ "out256_bs4": {
+  "s_paso": 5.249,
+  "ej_s": 0.8,
+  "pico_GB": 7.67,
+  "ok": false
+ }
+}

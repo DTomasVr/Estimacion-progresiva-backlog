@@ -1,0 +1,26 @@
+{
+ "modelo": "models/mt5-small-pruned_o2o_agix_v1_o2ofmt_agix_v1",
+ "bs": 32,
+ "max_out": 48,
+ "lr": 0.0005,
+ "epocas": 1,
+ "hist": [
+  {
+   "epoca": 1,
+   "train_loss": 1.7469575198160276,
+   "val_loss": 1.8760233299738878,
+   "seg": 80
+  }
+ ],
+ "v0": 3.732976122581992,
+ "mejor_val": 1.8760233299738878,
+ "vram_pico": 6.13,
+ "min": 1.5,
+ "gens": [
+  "As a publisher, I want to receive notifications when a preservation is completed, so that I can plan my work.",
+  "As a user, I want to be able to create a summary of my recycling centers, so that I can maintain accurate information.",
+  "As a traveller, I want to set up a room for a room, so that I can plan my day.",
+  "As a finance officer, I want to track the availability of a bank account, so that I can ensure compliance.",
+  "As a publisher, I want to receive notifications when a preservation is completed, so that I can plan my work."
+ ]
+}

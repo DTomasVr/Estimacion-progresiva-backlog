@@ -1,0 +1,34 @@
+{
+ "tiempos": {
+  "P1 ejemplos": 11.5,
+  "P2 embeddings+dedup": 65.4,
+  "P3 recuperacion": 4.2,
+  "P4 espanol": 0.1,
+  "P5 tokenizacion": 7.4,
+  "P6 escritura": 0.6
+ },
+ "max_in": 256,
+ "max_out": 192,
+ "cuantiles": {
+  "p50": [
+   191,
+   63
+  ],
+  "p90": [
+   268,
+   269
+  ],
+  "p95": [
+   293,
+   406
+  ],
+  "p99": [
+   344,
+   939
+  ]
+ },
+ "sep": " ; ",
+ "k_vecinos": 2,
+ "p_es": 0.3,
+ "total_s": 89
+}

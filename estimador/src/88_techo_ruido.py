@@ -31,7 +31,7 @@ import pandas as pd
 sys.path.insert(0, "src")
 warnings.filterwarnings("ignore")
 pd.set_option("display.width", 200)
-DATA = "data/processed/agix_effort_v4.parquet"
+DATA = "data/processed/pbe_effort_v4.parquet"
 SEP = "=" * 110
 
 

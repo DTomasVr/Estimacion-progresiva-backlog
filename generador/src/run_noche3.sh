@@ -4,7 +4,7 @@
 # are skipped.
 set -u
 BASE="/f/Software Task generation Model"
-PY="/c/Users/User/Documents/Programacao/Agix-Dataset/.venv/Scripts/python.exe"
+PY="/c/Users/User/Documents/Programacao/PBE-Dataset/.venv/Scripts/python.exe"
 LOG="$BASE/logs/noche3.log"
 export PYTHONWARNINGS=ignore PYTHONIOENCODING=utf-8
 cd "$BASE"

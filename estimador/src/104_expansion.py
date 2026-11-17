@@ -13,7 +13,7 @@ Aqui se hace de la forma mas barata posible, en la salida y no en la perdida:
 
     log p' = media_proyecto(log p) + s x (log p - media_proyecto(log p))
 
-con s > 1. Agix genera el backlog entero de golpe, asi que la media del proyecto
+con s > 1. PBE genera el backlog entero de golpe, asi que la media del proyecto
 sobre las predicciones esta disponible sin coste y sin fuga: no usa ninguna hora
 real, solo las predicciones del propio lote.
 
@@ -40,7 +40,7 @@ import exp_common as E  # noqa: E402
 
 warnings.filterwarnings("ignore")
 pd.set_option("display.width", 210)
-DATA = "data/processed/agix_effort_v4.parquet"
+DATA = "data/processed/pbe_effort_v4.parquet"
 CACHE = Path("data/processed/embeddings/codificadores")
 OUT = Path("results/expansion")
 SEP = "=" * 116

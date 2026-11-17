@@ -26,7 +26,7 @@ import numpy as np
 import pandas as pd
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-os.environ.setdefault("AGIX_BASE", BASE)
+os.environ.setdefault("PBE_BASE", BASE)
 sys.stdout.reconfigure(encoding="utf-8")
 SEMILLAS = (11, 22, 33)
 

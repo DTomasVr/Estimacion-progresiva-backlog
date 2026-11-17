@@ -82,8 +82,8 @@ def mt(real, pred):
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
-    f = joblib.load("models/estimador_agix_v3.joblib")
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    f = joblib.load("models/estimador_pbe_v3.joblib")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     todo = df[df.is_software_task == 1].reset_index(drop=True)
     V = np.load(CACHE / "e5-large-todo.npy")
     ap = todo.fuente_jira.eq("Apache").to_numpy()

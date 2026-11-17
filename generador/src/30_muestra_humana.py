@@ -10,7 +10,7 @@ Two rating tasks come out of this file:
   conjuntos  per project, the three backlogs side by side as A/B/C: which is
            best overall, which repeats itself most
 
-Everything the raters see is in Spanish (that is the language of Agix and of
+Everything the raters see is in Spanish (that is the language of PBE and of
 the people rating), translated with the same protected-term translation the
 product uses. The A/B/C -> system key is written to a SEPARATE file so the
 ratings stay blind until analysis.
@@ -32,11 +32,11 @@ SEED = 20260924
 N_PROY = 6
 N_HIST_CONJ = 8          # stories shown per backlog in the set-level task
 N_ITEMS = 60             # individual stories to rate
-SISTEMAS = ["agix", "llama3.1:8b", "mistral:7b"]
+SISTEMAS = ["pbe", "llama3.1:8b", "mistral:7b"]
 rng = np.random.default_rng(SEED)
 
 R = pd.DataFrame([json.loads(l) for l in open(f"{BASE}/results/20_banco.jsonl", encoding="utf-8")])
-R = R[(R.sistema == "agix") | (R.condicion == "ejemplos")]      # the LLMs' strongest condition
+R = R[(R.sistema == "pbe") | (R.condicion == "ejemplos")]      # the LLMs' strongest condition
 R = R[R.sistema.isin(SISTEMAS)]
 completos = R.groupby("caso").sistema.nunique()
 casos = completos[completos == len(SISTEMAS)].index

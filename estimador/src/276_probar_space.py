@@ -2,7 +2,7 @@
 
     python src/276_probar_space.py
 
-Lee AGIX_API_KEY de .env.llm (nunca la imprime) y comprueba:
+Lee PBE_API_KEY de .env.llm (nunca la imprime) y comprueba:
 
   1 /salud dice listo
   2 /backlog con una descripcion en espanol: historias en espanol, tareas en ingles,
@@ -21,7 +21,7 @@ from pathlib import Path
 
 import requests
 
-URL = "https://agixapp-agix-app.hf.space"
+URL = "https://pbeapp-pbe-app.hf.space"
 DESC = ("Una aplicación web para que los vecinos de un edificio reserven las áreas comunes "
         "(gimnasio, parrilla y sala de reuniones), paguen la cuota de mantenimiento y reciban "
         "avisos de la administración.")
@@ -30,9 +30,9 @@ OUT = Path("results/probar_space")
 
 def clave():
     for l in open(".env.llm", encoding="utf-8-sig"):
-        if l.strip().startswith("AGIX_API_KEY="):
+        if l.strip().startswith("PBE_API_KEY="):
             return l.split("=", 1)[1].strip().strip('"')
-    sys.exit("falta AGIX_API_KEY en .env.llm")
+    sys.exit("falta PBE_API_KEY en .env.llm")
 
 
 def main():

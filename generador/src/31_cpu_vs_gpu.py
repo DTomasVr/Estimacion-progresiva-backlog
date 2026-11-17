@@ -59,7 +59,7 @@ def main():
     C = casos(max(n_nuestro, n_llm))
     filas = []
 
-    os.environ["AGIX_DEVICE"] = "cpu"
+    os.environ["PBE_DEVICE"] = "cpu"
     import torch
     torch.set_num_threads(6)                      # i5-12400: 6 performance cores
     spec = importlib.util.spec_from_file_location("pl", f"{BASE}/src/19_pipeline.py")
@@ -121,7 +121,7 @@ def main():
 
     # the GPU number comes from the bench, same projects family
     B = pd.DataFrame([json.loads(l) for l in open(f"{BASE}/results/20_banco.jsonl", encoding="utf-8")])
-    for sis, etq in [("agix", "nuestro_gpu"), ("llama3.1:8b", "llama3.1:8b_gpu"),
+    for sis, etq in [("pbe", "nuestro_gpu"), ("llama3.1:8b", "llama3.1:8b_gpu"),
                      ("mistral:7b", "mistral:7b_gpu")]:
         sub = B[(B.sistema == sis) & ((B.condicion == "-") | (B.condicion == "cero"))]
         if len(sub):

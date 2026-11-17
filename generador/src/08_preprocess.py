@@ -7,7 +7,7 @@
 Phases (each prints its wall time):
   P1 build examples   clean text, drop reactive work, >= 2 children, creation order,
                       within-target dedup
-  P2 embeddings       sbert_agix_v1, float16 on disk; near-duplicate inputs
+  P2 embeddings       sbert_pbe_v1, float16 on disk; near-duplicate inputs
                       (cos >= 0.97, same project, same half) collapsed
   P3 retrieval aug    k=2 neighbours from TRAIN examples of OTHER projects
   P4 spanish inputs   30 % of train inputs use the translated parent title
@@ -29,7 +29,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from textclean import limpiar, texto_issue  # noqa: E402
 
 BASE = r"F:\Software Task generation Model"
-SBERT = f"{BASE}/models/sbert_agix_v1"
+SBERT = f"{BASE}/models/sbert_pbe_v1"
 MT5 = "google/mt5-small"
 CACHE = f"{BASE}/models/hf_cache"
 SEED = 20260922

@@ -23,8 +23,8 @@ ev = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(ev)
 CFG = "beam4_actual"
 SEED = 20260922
-MODELOS = {"antes": f"{BASE}/models/mt5-small-pruned_agix_v1",
-           "despues": f"{BASE}/models/mt5-small-pruned_hist_agix_v1"}
+MODELOS = {"antes": f"{BASE}/models/mt5-small-pruned_pbe_v1",
+           "despues": f"{BASE}/models/mt5-small-pruned_hist_pbe_v1"}
 
 
 def main():

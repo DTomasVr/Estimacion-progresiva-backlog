@@ -20,7 +20,7 @@ import re
 import numpy as np
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-os.environ.setdefault("AGIX_DEVICE", "cuda")
+os.environ.setdefault("PBE_DEVICE", "cuda")
 spec = importlib.util.spec_from_file_location("pl", f"{BASE}/src/19_pipeline.py")
 pl = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(pl)

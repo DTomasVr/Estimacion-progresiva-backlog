@@ -41,7 +41,7 @@ def main():
     P.portada(prs, "El factor de anclaje",
               "Cómo se calcula, qué le hace a la estimación y de dónde tienen que "
               "salir las horas",
-              "Agix · componente de estimación de esfuerzo")
+              "PBE · componente de estimación de esfuerzo")
 
     # ---------------------------------------------------------------- 1
     s, y0 = P.lamina(prs, "El modelo no cambia; cambia un número",

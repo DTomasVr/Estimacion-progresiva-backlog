@@ -39,7 +39,7 @@ import features as F  # noqa: E402
 
 warnings.filterwarnings("ignore")
 pd.set_option("display.width", 250)
-E.DATA = "data/processed/agix_effort_v2.parquet"
+E.DATA = "data/processed/pbe_effort_v2.parquet"
 
 
 def base_learners():

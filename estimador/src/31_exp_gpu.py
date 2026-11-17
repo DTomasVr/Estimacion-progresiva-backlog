@@ -15,7 +15,7 @@ import exp_common as E  # noqa: E402
 import features as F  # noqa: E402
 
 pd.set_option("display.width", 250)
-E.DATA = "data/processed/agix_effort_v2.parquet"
+E.DATA = "data/processed/pbe_effort_v2.parquet"
 
 
 def torch_mlp(Xtr, ytr, Xva, Xte, epochs=120, seed=0):

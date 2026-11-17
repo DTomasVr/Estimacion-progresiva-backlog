@@ -8,7 +8,7 @@ un error COMUN a todo el proyecto: el modelo lo situa entero demasiado alto o
 demasiado bajo. Es el mismo desplazamiento que E30 midio valiendo 0,115 de R2.
 
 Un desplazamiento comun no se arregla con mas texto. Se arregla con UN dato del
-proyecto. Y en Agix ese dato aparece solo: en cuanto el equipo cierra las
+proyecto. Y en PBE ese dato aparece solo: en cuanto el equipo cierra las
 primeras tareas, el cronometro da horas reales. Asi que la pregunta util para el
 producto no es "cuanto acierta en frio" sino CUANTAS TAREAS CERRADAS HACEN FALTA
 para que el total sea fiable.
@@ -68,7 +68,7 @@ def mt(real, pred):
 
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     sw = df[df.is_software_task == 1].copy()
     sw = sw[~sw.fuente_jira.eq("Apache")].reset_index(drop=True)
     y = sw.effort_hours.to_numpy()

@@ -1,9 +1,9 @@
 """E-266 - ¿Que techo tiene el +-25 % del total en un backlog GENERADO?
 
 E-264 midio que, aun con la escala exacta, un proyecto de 16 a 40 tareas solo cae
-dentro de +-25 % el 60 % de las veces. Un backlog de Agix tiene unas 12 historias
+dentro de +-25 % el 60 % de las veces. Un backlog de PBE tiene unas 12 historias
 con sus tareas, asi que cae justo ahi. Aqui se comprueba con el generador actual
-(F:/Agix-produccion, tuberia del 07/11/2026):
+(F:/PBE-produccion, tuberia del 07/11/2026):
 
   1 se generan backlogs para descripciones de prueba (GPU) y se guarda el JSON;
   2 el v7 les pone la media por tarea (CPU, la cabeza que se suma);
@@ -28,7 +28,7 @@ import numpy as np
 import pandas as pd
 
 OUT = Path("results/techo_backlog_generado")
-PROD = Path("F:/Agix-produccion/generacion")
+PROD = Path("F:/PBE-produccion/generacion")
 SIMS = 20000
 NS = (12, 24, 36, 60, 100, 150, 250)
 
@@ -46,7 +46,7 @@ def descripciones():
 
 def generar():
     t0 = time.time()
-    os.environ.setdefault("AGIX_BASE", str(PROD))
+    os.environ.setdefault("PBE_BASE", str(PROD))
     s = importlib.util.spec_from_file_location("pl", PROD / "src" / "19_pipeline.py")
     pl = importlib.util.module_from_spec(s)
     s.loader.exec_module(pl)
@@ -72,7 +72,7 @@ def estimar(sal):
     s = importlib.util.spec_from_file_location("e6", "src/171_estimador_v6.py")
     e6 = importlib.util.module_from_spec(s)
     s.loader.exec_module(e6)
-    est = e6.EstimadorV6(paquete=Path("models/estimador_agix_v7.joblib"), dispositivo="cpu")
+    est = e6.EstimadorV6(paquete=Path("models/estimador_pbe_v7.joblib"), dispositivo="cpu")
     for b in sal:
         b["media_h"] = [float(x) for x in est._media_tarea(b["tareas"])]
     json.dump(sal, open(OUT / "backlogs.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
@@ -83,7 +83,7 @@ def estimar(sal):
 
 def corpus():
     """Residuos por tarea sin la escala del proyecto, y error de escala en frio."""
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     sw = df[df.is_software_task == 1].copy()
     sw = sw[~sw.fuente_jira.eq("Apache")].reset_index(drop=True)
     d = pd.DataFrame({"p": sw.project.to_numpy(), "real": sw.effort_hours.to_numpy(),

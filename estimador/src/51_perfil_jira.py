@@ -76,7 +76,7 @@ def main():
           f"PRED25 {float((mre <= .25).mean()):.4f}")
 
     print("\n--- solape con TAWOS ---")
-    v3 = pd.read_parquet("data/processed/agix_effort_v3.parquet",
+    v3 = pd.read_parquet("data/processed/pbe_effort_v3.parquet",
                          columns=["task_id", "source", "text_hash"])
     claves = set(v3[v3.source == "TAWOS"].task_id.str.replace("TAWOS-", "", regex=False))
     dup = df.key.isin(claves)

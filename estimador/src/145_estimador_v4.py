@@ -37,8 +37,8 @@ sys.path.insert(0, "src")
 warnings.filterwarnings("ignore")
 pd.set_option("display.width", 220)
 CACHE = Path("data/processed/embeddings/codificadores")
-V3 = Path("models/estimador_agix_v3.joblib")
-V4 = Path("models/estimador_agix_v4.joblib")
+V3 = Path("models/estimador_pbe_v3.joblib")
+V4 = Path("models/estimador_pbe_v4.joblib")
 OUT = Path("results/estimador_v4")
 S = "=" * 120
 K_VEC = 25
@@ -166,7 +166,7 @@ class EstimadorV4:
 def construir():
     t0 = time.time()
     p = joblib.load(V3)
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     sw = df[df.is_software_task == 1].copy()
     sw = sw[~sw.fuente_jira.eq("Apache")].reset_index(drop=True)
     y = sw.effort_hours.to_numpy()

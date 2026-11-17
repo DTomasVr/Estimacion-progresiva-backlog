@@ -102,12 +102,12 @@ pero medido en `24_calidad_arriba.py` los ejemplos recuperados no ayudan: arriba
 corriendo para la procedencia (`vecinos_proyecto`) y para ordenar, no para el prompt.""")
 
     # ---- A.7
-    s = cambia(s, '    S0["all-MiniLM-L6-v2"] --> S1["SBERT propio<br/>src/06_finetune_sbert.py<br/>sbert_agix_v1"]',
-               '    S0["paraphrase-multilingual-<br/>mpnet-base-v2"] --> S1["SBERT propio<br/>src/06_finetune_sbert.py<br/>sbert_agix_v1"]')
+    s = cambia(s, '    S0["all-MiniLM-L6-v2"] --> S1["SBERT propio<br/>src/06_finetune_sbert.py<br/>sbert_pbe_v1"]',
+               '    S0["paraphrase-multilingual-<br/>mpnet-base-v2"] --> S1["SBERT propio<br/>src/06_finetune_sbert.py<br/>sbert_pbe_v1"]')
     s = cambia(s, """Hiperparámetros de las dos etapas finales, que son las que hay que repetir:""",
                """Hiperparámetros de los tres modelos desplegados, que son los que hay que repetir:""")
-    s = cambia(s, "| abajo (`v5`) | `_hist_agix_v1` | 16 × 1 | 192 | 5e-4 | 4 | **3,3210** · 3,3393 · 3,3565 |",
-               "| abajo (`v5`) | `_hist_agix_v1` | 16 × 1 | 192 | 5e-4 | 4 | **3,3210** · 3,3393 · 3,3565 |\n"
+    s = cambia(s, "| abajo (`v5`) | `_hist_pbe_v1` | 16 × 1 | 192 | 5e-4 | 4 | **3,3210** · 3,3393 · 3,3565 |",
+               "| abajo (`v5`) | `_hist_pbe_v1` | 16 × 1 | 192 | 5e-4 | 4 | **3,3210** · 3,3393 · 3,3565 |\n"
                "| abajo, 2.º del conjunto (`_hist_bs8_lr9.2e-4`) | datos: solo `s2s_hist`, 22.871 ejemplos, sin profesor | 8 × 1 | — | 9,2e-4 | parada en la 5.ª | mejor la 3.ª |")
     s = cambia(s, "Se guarda la **mejor época por pérdida de validación**, no la última.",
                "Se guarda la **mejor época por pérdida de validación**, no la última. Datos y épocas leídos de\n"

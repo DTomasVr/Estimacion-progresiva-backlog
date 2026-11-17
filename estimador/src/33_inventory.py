@@ -14,9 +14,9 @@ pd.set_option("display.width", 260)
 pd.set_option("display.max_rows", 300)
 
 VERSIONS = {
-    "data/processed/agix_effort_dataset.parquet": "v0 (sin limpiar)",
-    "data/processed/agix_effort_clean.parquet": "v1 (limpieza D1-D10)",
-    "data/processed/agix_effort_v2.parquet": "v2 (por desarrollador)",
+    "data/processed/pbe_effort_dataset.parquet": "v0 (sin limpiar)",
+    "data/processed/pbe_effort_clean.parquet": "v1 (limpieza D1-D10)",
+    "data/processed/pbe_effort_v2.parquet": "v2 (por desarrollador)",
 }
 
 

@@ -39,7 +39,7 @@ spec.loader.exec_module(M71)
 
 warnings.filterwarnings("ignore")
 pd.set_option("display.width", 215)
-DATA = "data/processed/agix_effort_v4.parquet"
+DATA = "data/processed/pbe_effort_v4.parquet"
 CACHE = Path("data/processed/embeddings/codificadores")
 OUT = Path("results/palancas_cv")
 SEP = "=" * 124

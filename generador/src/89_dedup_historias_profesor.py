@@ -32,11 +32,11 @@ import numpy as np
 import pandas as pd
 
 BASE = r"F:\Software Task generation Model"
-ENTRADA = os.environ.get("AGIX_SYNTH_IN", "backlogs_v3_qwen2.5_7b.jsonl")
-SALIDA = os.environ.get("AGIX_SYNTH_OUT", "backlogs_v9dd_qwen2.5_7b.jsonl")
+ENTRADA = os.environ.get("PBE_SYNTH_IN", "backlogs_v3_qwen2.5_7b.jsonl")
+SALIDA = os.environ.get("PBE_SYNTH_OUT", "backlogs_v9dd_qwen2.5_7b.jsonl")
 UM = float(sys.argv[1]) if len(sys.argv) > 1 else 0.85
 MIN_H = int(sys.argv[2]) if len(sys.argv) > 2 else 6
-SBERT = f"{BASE}/models/sbert_agix_v1"
+SBERT = f"{BASE}/models/sbert_pbe_v1"
 
 
 def texto(h):

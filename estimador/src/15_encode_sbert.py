@@ -3,7 +3,7 @@
 Embeddings are cached to disk keyed by model name, so the encoding cost is paid
 once and every downstream experiment reuses it.
 
-Model choice rationale: the corpus is English but Agix serves Spanish, so the
+Model choice rationale: the corpus is English but PBE serves Spanish, so the
 encoder must place a sentence and its translation at (nearly) the same point.
 `paraphrase-multilingual-*` are distilled with exactly that objective
 (Reimers & Gurevych, 2020), which a Spanish-only encoder cannot provide since
@@ -16,7 +16,7 @@ import time
 import numpy as np
 import pandas as pd
 
-DATA = "data/processed/agix_effort_clean.parquet"
+DATA = "data/processed/pbe_effort_clean.parquet"
 CACHE = "data/processed/embeddings"
 DEFAULT = "sentence-transformers/paraphrase-multilingual-mpnet-base-v2"
 

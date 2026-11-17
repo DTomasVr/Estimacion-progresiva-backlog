@@ -2,10 +2,10 @@
 import json
 import os
 
-DEST = r"F:\Agix-asesoria\notebooks"
+DEST = r"F:\PBE-asesoria\notebooks"
 os.makedirs(DEST, exist_ok=True)
 BASE = r"F:\\Software Task generation Model"
-PY = r"C:\\Users\\User\\Documents\\Programacao\\Agix-Dataset\\.venv\\Scripts\\python.exe"
+PY = r"C:\\Users\\User\\Documents\\Programacao\\PBE-Dataset\\.venv\\Scripts\\python.exe"
 
 CABECERA = f'''import os, subprocess, sys, json
 import pandas as pd
@@ -97,7 +97,7 @@ mismo padre; sin padres casi idénticos dentro de un proyecto (coseno ≥ 0,97).
     code('correr("08_preprocess.py")\ntabla("results/08_preprocess_resumen.csv")'),
     md("""## 1.4 La destilación de dominio · **lo nuevo de esta versión**
 
-El corpus es software técnico, pero Agix recibe descripciones de producto. Para «una tienda de
+El corpus es software técnico, pero PBE recibe descripciones de producto. Para «una tienda de
 audiolibros» el modelo respondía con vocabulario de Hyperledger.
 
 Se comprobó primero que el dato no existiera publicado:
@@ -175,8 +175,8 @@ basta**: en las dos mitades la mejor fue la primera y la segunda ya empeora.
 
 Arriba es donde vive el efecto: es la mitad que tiene que saber *qué funcionalidades lleva un
 producto*."""),
-    code('''# os.environ["DATOS"]="mix";  correr("09_train_mt5.py", "models/mt5-small-pruned_hist_agix_v1", 16, 192, "5e-4", 4)
-# os.environ["DATOS"]="mixa"; correr("09_train_mt5.py", "models/mt5-small-pruned_o2o_agix_v1_o2ofmt_agix_v1", 32, 48, "5e-4", 4)
+    code('''# os.environ["DATOS"]="mix";  correr("09_train_mt5.py", "models/mt5-small-pruned_hist_pbe_v1", 16, 192, "5e-4", 4)
+# os.environ["DATOS"]="mixa"; correr("09_train_mt5.py", "models/mt5-small-pruned_o2o_pbe_v1_o2ofmt_pbe_v1", 32, 48, "5e-4", 4)
 print("los modelos en produccion son:")
 print("  arriba: mt5-small-pruned_o2ofmt_30sec")
 print("  abajo : mt5-small-pruned_hist_30sec (+ ..._bs8_lr9.2e-4 como segundo del conjunto)")'''),
@@ -220,7 +220,7 @@ eso la medición decisiva usa **328 historias escritas por personas**, publicada
 De sus 9 proyectos se comprobó el solapamiento con nuestro Dalpiaz y **se descartaron 3** por
 repetirse. Quedan 6 proyectos de consumo."""),
     code('correr("48_test_real.py")'),
-    code('''# AGIX_DEVICE=cpu python src/49_eval_real.py ambos   -> compara produccion contra destilado
+    code('''# PBE_DEVICE=cpu python src/49_eval_real.py ambos   -> compara produccion contra destilado
 tabla("results/49_real.csv")'''),
     md("""| | F1 suave | precisión | cobertura |
 |---|---|---|---|
@@ -256,7 +256,7 @@ Este sí conviene ejecutarlo: carga los modelos y genera un backlog delante de q
 Cuatro etapas. El 95 % del tiempo está en los dos generadores."""),
     code(CABECERA),
     code('''import importlib.util
-os.environ["AGIX_DEVICE"] = "cuda"          # "cpu" para medir el despliegue sin grafica
+os.environ["PBE_DEVICE"] = "cuda"          # "cpu" para medir el despliegue sin grafica
 spec = importlib.util.spec_from_file_location("pl", f"{BASE}/src/19_pipeline.py")
 pl = importlib.util.module_from_spec(spec); spec.loader.exec_module(pl)
 P = pl.Pipeline(traducir=True)
@@ -281,7 +281,7 @@ for h in r["historias"][:6]:
   no da."""),
     code('''import time
 for disp in ["cuda", "cpu"]:
-    pass  # cambiar AGIX_DEVICE y reinstanciar para comparar; medido: 4,18 s en GPU, 11,4 s en CPU
+    pass  # cambiar PBE_DEVICE y reinstanciar para comparar; medido: 4,18 s en GPU, 11,4 s en CPU
 print("GPU  4,18 s por backlog   (52 tareas)")
 print("CPU  11,4 s con 4 hilos y 3,2 GB de RAM")
 print("llama3.1:8b en la MISMA CPU: 181,9 s  ->  16 veces mas lento")'''),

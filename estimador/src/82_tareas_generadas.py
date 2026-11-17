@@ -23,7 +23,7 @@ import pandas as pd
 sys.path.insert(0, "src")
 warnings.filterwarnings("ignore")
 GEN = Path("F:/Software Task generation Model/salida_gen.json")
-DATA = "data/processed/agix_effort_v4.parquet"
+DATA = "data/processed/pbe_effort_v4.parquet"
 EMB = "data/processed/embeddings/v4_mpnet_congelado"
 MODELO = "sentence-transformers/paraphrase-multilingual-mpnet-base-v2"
 NUM = ["n_links", "n_links_estructurales", "n_componentes", "tiene_asignado"]
@@ -72,7 +72,7 @@ def main():
     art = joblib.load("models/frio_v4.joblib")
     reg, oh, sc = art["regresor"], art["onehot"], art["escalador"]
 
-    def predecir(X, task_kind="task", source="Agix"):
+    def predecir(X, task_kind="task", source="PBE"):
         """Lo que responderia el modelo desplegado: fuente desconocida, numericas a cero."""
         n = len(X)
         cat = oh.transform(pd.DataFrame({"task_kind": [task_kind] * n,

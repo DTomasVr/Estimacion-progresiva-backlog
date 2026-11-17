@@ -33,7 +33,7 @@ def corre(script, que, *args):
 
 def main():
     if "--todo" in sys.argv:
-        datos = EST / "data/processed/agix_effort_v4.parquet"
+        datos = EST / "data/processed/pbe_effort_v4.parquet"
         if not datos.exists():
             sys.exit(f"falta {datos}: constrúyelo desde las fuentes públicas (ver README, «Datos»)")
         for script, que in EXPERIMENTOS:

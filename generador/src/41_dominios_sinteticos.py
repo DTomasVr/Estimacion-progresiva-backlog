@@ -1,5 +1,5 @@
 """Phase 1 of the distillation pilot: build varied PRODUCT descriptions, the kind
-Agix actually receives, which is exactly what the Jira corpus lacks.
+PBE actually receives, which is exactly what the Jira corpus lacks.
 
 They are built from a seeded taxonomy instead of asked from the LLM, so the
 coverage of sectors is controlled rather than whatever the model feels like
@@ -143,7 +143,7 @@ for sector, (articulo, publicos, feats) in SECTORES.items():
 import numpy as np  # noqa: E402
 from sentence_transformers import SentenceTransformer  # noqa: E402
 
-sb = SentenceTransformer(f"{BASE}/models/sbert_agix_v1", device="cuda")
+sb = SentenceTransformer(f"{BASE}/models/sbert_pbe_v1", device="cuda")
 E = sb.encode([c["descripcion"] for c in casos], convert_to_tensor=True,
               normalize_embeddings=True, show_progress_bar=False)
 S = (E @ E.T).float().cpu().numpy()

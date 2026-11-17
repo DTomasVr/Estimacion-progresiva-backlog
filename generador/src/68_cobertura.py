@@ -1,7 +1,7 @@
 """COBERTURA DEL ALCANCE, sin referencia.
 
 El hueco que faltaba. Todo lo que mediamos compara contra un backlog de
-referencia, asi que no sirve sobre una descripcion nueva de Agix, que es el caso
+referencia, asi que no sirve sobre una descripcion nueva de PBE, que es el caso
 real. Y para la cadena de estimacion importa de forma directa: si un rasgo que la
 descripcion menciona no queda cubierto por ninguna tarea, ese trabajo NO esta en
 el backlog, y su esfuerzo falta entero.
@@ -18,7 +18,7 @@ Se reporta por historias y por TAREAS aparte: un rasgo puede quedar cubierto por
 una tarea aunque ninguna historia lo nombre, y para el esfuerzo lo que cuenta son
 las tareas.
 
-  AGIX_SUBMODULAR=1 python src/68_cobertura.py [N]
+  PBE_SUBMODULAR=1 python src/68_cobertura.py [N]
 
 out: results/68_cobertura.csv
 """
@@ -34,11 +34,11 @@ BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 UMBRAL = 0.5
 N = int(next((a for a in sys.argv[1:] if a.isdigit()), 30))
 
-os.environ.setdefault("AGIX_DEVICE", "cuda")
+os.environ.setdefault("PBE_DEVICE", "cuda")
 spec = importlib.util.spec_from_file_location("pl", f"{BASE}/src/19_pipeline.py")
 pl = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(pl)
-for v, at in [("AGIX_ARRIBA", "M_ARRIBA"), ("AGIX_ABAJO", "M_ABAJO")]:
+for v, at in [("PBE_ARRIBA", "M_ARRIBA"), ("PBE_ABAJO", "M_ABAJO")]:
     if os.environ.get(v):
         setattr(pl, at, os.environ[v])
 
@@ -49,7 +49,7 @@ t = pd.read_parquet(f"{BASE}/data/processed/s2s_v3a_test.parquet", columns=["par
 ids = [i for i in dict.fromkeys(str(x).split("#")[0] for x in t.parent_uid.dropna())
        if i in D][:N]
 print(f"{len(ids)} descripciones reservadas | submodular="
-      f"{os.environ.get('AGIX_SUBMODULAR', 'no')} tau={os.environ.get('AGIX_TAU', '0')}",
+      f"{os.environ.get('PBE_SUBMODULAR', 'no')} tau={os.environ.get('PBE_TAU', '0')}",
       flush=True)
 
 P = pl.Pipeline(traducir=False)
@@ -74,7 +74,7 @@ for n, i in enumerate(ids):
         print(f"  {n+1}/{len(ids)}", flush=True)
 
 F = pd.DataFrame(filas)
-suf = "_sub" if os.environ.get("AGIX_SUBMODULAR") == "1" else ""
+suf = "_sub" if os.environ.get("PBE_SUBMODULAR") == "1" else ""
 F.to_csv(f"{BASE}/results/68_cobertura{suf}.csv", index=False)
 
 print("\n" + "=" * 66)

@@ -9,8 +9,8 @@ Hay dos fuentes de escala disponibles EN EL MOMENTO DE CREAR el proyecto, antes
 de que se cierre ninguna tarea, y ninguna se ha probado:
 
   DESCRIPCION   TAWOS trae descripcion para sus 26 proyectos (19 palabras de
-                mediana). Es exactamente lo que Agix recibe como entrada.
-  EL PROPIO     Agix genera el backlog entero de golpe. Cuando estima una tarea
+                mediana). Es exactamente lo que PBE recibe como entrada.
+  EL PROPIO     PBE genera el backlog entero de golpe. Cuando estima una tarea
   BACKLOG       tiene delante las otras 114. El conjunto de textos del proyecto
                 es una descripcion implicita, mucho mas rica que una frase, y
                 esta disponible sin coste. Se usa dejando fuera la tarea que se
@@ -44,7 +44,7 @@ import exp_common as E  # noqa: E402
 
 warnings.filterwarnings("ignore")
 pd.set_option("display.width", 220)
-DATA = "data/processed/agix_effort_v4.parquet"
+DATA = "data/processed/pbe_effort_v4.parquet"
 EMB_TIT = "data/processed/embeddings/v4_mpnet_titulos"
 MODELO = "sentence-transformers/paraphrase-multilingual-mpnet-base-v2"
 OUT = Path("results/escala_proyecto")

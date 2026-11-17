@@ -107,7 +107,7 @@ def main():
     OUT.mkdir(parents=True, exist_ok=True)
     DIR.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     q = lambda s: ["query: " + t for t in s.fillna("").astype(str)]
     tok = AutoTokenizer.from_pretrained(i8.COD[0][1])
     V = len(tok)

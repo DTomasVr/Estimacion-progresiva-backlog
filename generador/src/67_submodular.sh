@@ -13,14 +13,14 @@
 #     producto; uno con datos v5 deberia dar las tareas extra sin ese ruido.
 set -u
 BASE="/f/Software Task generation Model"
-PY="/c/Users/User/Documents/Programacao/Agix-Dataset/.venv/Scripts/python.exe"
+PY="/c/Users/User/Documents/Programacao/PBE-Dataset/.venv/Scripts/python.exe"
 LOG="$BASE/logs/67_submodular.log"
 export PYTHONWARNINGS=ignore PYTHONIOENCODING=utf-8 HF_HUB_OFFLINE=1
-export AGIX_DEVICE=cuda AGIX_SEED=20260926 AGIX_CONJUNTO=dos_modelos
-export AGIX_ARRIBA="$BASE/models/mt5-small-pruned_o2o_agix_v1_o2ofmt_agix_v1_v3r_agix_v1"
-export AGIX_ABAJO="$BASE/models/mt5-small-pruned_hist_agix_v1_v5_agix_v1"
-REAL="$BASE/models/mt5-small-pruned_hist_agix_v1"
-NUEVO="$BASE/models/mt5-small-pruned_hist_agix_v1_v5_agix_v1"   # placeholder, se fija abajo
+export PBE_DEVICE=cuda PBE_SEED=20260926 PBE_CONJUNTO=dos_modelos
+export PBE_ARRIBA="$BASE/models/mt5-small-pruned_o2o_pbe_v1_o2ofmt_pbe_v1_v3r_pbe_v1"
+export PBE_ABAJO="$BASE/models/mt5-small-pruned_hist_pbe_v1_v5_pbe_v1"
+REAL="$BASE/models/mt5-small-pruned_hist_pbe_v1"
+NUEVO="$BASE/models/mt5-small-pruned_hist_pbe_v1_v5_pbe_v1"   # placeholder, se fija abajo
 cd "$BASE"
 : > "$LOG"
 
@@ -33,27 +33,27 @@ mide() {   # etiqueta
 }
 
 echo "########## A. seleccion submodular" | tee -a "$LOG"
-export AGIX_ABAJO3="$REAL"
+export PBE_ABAJO3="$REAL"
 for cfg in "actual|0|" "sub_k|0|1" "sub_t15|0.15|1" "sub_t25|0.25|1"; do
   etq="${cfg%%|*}"; resto="${cfg#*|}"; tau="${resto%%|*}"; sub="${resto##*|}"
   echo "=== $etq  (submodular=${sub:-no}, tau=$tau)" | tee -a "$LOG"
-  if [ -n "$sub" ]; then export AGIX_SUBMODULAR=1; else unset AGIX_SUBMODULAR; fi
-  AGIX_TAU="$tau" mide "$etq"
+  if [ -n "$sub" ]; then export PBE_SUBMODULAR=1; else unset PBE_SUBMODULAR; fi
+  PBE_TAU="$tau" mide "$etq"
 done
-unset AGIX_SUBMODULAR
+unset PBE_SUBMODULAR
 
 echo "########## B. tercer miembro del conjunto" | tee -a "$LOG"
-# el nombre del modelo nuevo lo pone 09_train_mt5.py como <base>_<DATOS>_agix_v1,
+# el nombre del modelo nuevo lo pone 09_train_mt5.py como <base>_<DATOS>_pbe_v1,
 # y al repetir DATOS=v5 sobre la misma base colisiona con el que ya existe, asi
 # que se busca el mas reciente que contenga v5 y no sea el actual
 for cand in $(ls -dt models/*v5* 2>/dev/null); do
-  if [ "$BASE/$cand" != "$AGIX_ABAJO" ]; then NUEVO="$BASE/$cand"; break; fi
+  if [ "$BASE/$cand" != "$PBE_ABAJO" ]; then NUEVO="$BASE/$cand"; break; fi
 done
 echo "   tercer miembro nuevo: $(basename "$NUEVO")" | tee -a "$LOG"
 for par in "t_real|$REAL" "t_nuevo|$NUEVO"; do
   etq="${par%%|*}"; m3="${par#*|}"
   echo "=== $etq  ($(basename "$m3"))" | tee -a "$LOG"
-  AGIX_ABAJO3="$m3" mide "$etq"
+  PBE_ABAJO3="$m3" mide "$etq"
 done
 
 echo "SUBMODULAR TERMINADO" | tee -a "$LOG"

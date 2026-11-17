@@ -72,7 +72,7 @@ Cada cifra con su archivo de origen. Generado por src/32_registro_resultados.py
 | medida | valor | fuente | nota |
 |---|---|---|---|
 | proyectos medidos | 64 | `results/20_banco.jsonl` | con los 4 sistemas presentes |
-| agix - | 4.17 s (p90 4.6) | `results/20_banco.jsonl` | n=64, tareas 49 |
+| pbe - | 4.17 s (p90 4.6) | `results/20_banco.jsonl` | n=64, tareas 49 |
 | gemma2:9b cero | 35.73 s (p90 45.3) | `results/20_banco.jsonl` | n=64, tareas 110 |
 | gemma2:9b ejemplos | 34.40 s (p90 45.0) | `results/20_banco.jsonl` | n=64, tareas 108 |
 | llama3.1:8b cero | 21.63 s (p90 25.2) | `results/20_banco.jsonl` | n=64, tareas 122 |

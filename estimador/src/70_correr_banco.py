@@ -18,7 +18,7 @@ MODELOS = ["llama3.1:8b", "qwen2.5:7b", "gemma2:9b", "mistral:7b"]
 TAREAS = ([("muestra", c) for c in ("A", "B", "C")]
           + [("calibracion", c) for c in ("A", "B", "C")]
           + [("muestra", "P")])
-OLLAMA = os.environ.get("OLLAMA_EXE", r"F:\Agix\Ollama\ollama.exe")
+OLLAMA = os.environ.get("OLLAMA_EXE", r"F:\PBE\Ollama\ollama.exe")
 PY = sys.executable
 LOG = "results/llm_bench/log.txt"
 

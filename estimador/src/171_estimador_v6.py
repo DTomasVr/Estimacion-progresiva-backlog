@@ -1,4 +1,4 @@
-"""E64 - El estimador v6: el que se integra en Agix.
+"""E64 - El estimador v6: el que se integra en PBE.
 
 Junta en un objeto todo lo que sobrevivio a su medicion, y separa con claridad las
 dos preguntas que el producto hace, porque NO tienen la misma respuesta:
@@ -45,8 +45,8 @@ sys.path.insert(0, "src")
 warnings.filterwarnings("ignore")
 pd.set_option("display.width", 215)
 CACHE = Path("data/processed/embeddings/codificadores")
-V5 = Path("models/estimador_agix_v5.joblib")
-V6 = Path("models/estimador_agix_v6.joblib")
+V5 = Path("models/estimador_pbe_v5.joblib")
+V6 = Path("models/estimador_pbe_v6.joblib")
 OUT = Path("results/estimador_v6")
 S = "=" * 116
 N_BOLSA, K_VEC, LAMBDA = 5, 25, 12
@@ -498,7 +498,7 @@ class EstimadorV6:
 def construir():
     t0 = time.time()
     p = dict(joblib.load(V5))
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     sw = df[df.is_software_task == 1].copy()
     sw = sw[~sw.fuente_jira.eq("Apache")].reset_index(drop=True)
     tit = sw.title.fillna("").astype(str)

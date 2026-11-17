@@ -8,7 +8,7 @@ kept mT5-base from fitting in 6.5 GB.
 Vocabulary sources (TRAIN projects only, so val/test text never shapes it):
   en: summaries of every issue in train projects + text of hierarchy nodes
       + the seq2seq train sources/targets
-  es: parent titles translated for train (sbert_pairs) + Agix-Dataset
+  es: parent titles translated for train (sbert_pairs) + PBE-Dataset
       text_es.parquet (90 %; the other 10 % is held out to measure coverage)
 Always kept: pad/eos/unk and every single-character piece of Latin scripts,
 so an unseen word still decomposes into kept pieces instead of <unk>.
@@ -37,7 +37,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from textclean import limpiar  # noqa: E402
 
 BASE = r"F:\Software Task generation Model"
-AGIX = r"C:\Users\User\Documents\Programacao\Agix-Dataset"
+PBE = r"C:\Users\User\Documents\Programacao\PBE-Dataset"
 CACHE = f"{BASE}/models/hf_cache"
 SP_MODEL = f"{CACHE}/models--google--mt5-small/snapshots/73fb5dbe4756edadc8fbe8c769b0a109493acf7a/spiece.model"
 t0 = time.time()
@@ -72,7 +72,7 @@ SP = pd.read_parquet(f"{BASE}/data/processed/sbert_pairs.parquet",
 SPt = SP[SP.split == "train"]
 en += SPt.anchor_en.unique().tolist() + SPt.positive.unique().tolist()
 es = SP[SP.split == "train"].anchor_es.dropna().unique().tolist()
-TE = pd.read_parquet(f"{AGIX}/data/processed/text_es.parquet")
+TE = pd.read_parquet(f"{PBE}/data/processed/text_es.parquet")
 hold = TE.task_id.map(lambda s: zlib.crc32(s.encode()) % 10 == 0)
 es += TE.text_es[~hold].dropna().tolist()
 es_hold = TE.text_es[hold].dropna().tolist()

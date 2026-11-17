@@ -24,7 +24,7 @@ sys.path.insert(0, "src")
 warnings.filterwarnings("ignore")
 pd.set_option("display.width", 240)
 pd.set_option("display.max_colwidth", 88)
-DATA = "data/processed/agix_effort_v4.parquet"
+DATA = "data/processed/pbe_effort_v4.parquet"
 EMB_TIT = "data/processed/embeddings/v4_mpnet_titulos"
 ART = "models/candidato_titulos.joblib"
 GEN = Path("F:/Software Task generation Model/salida_gen.json")

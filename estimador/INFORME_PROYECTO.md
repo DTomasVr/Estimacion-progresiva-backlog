@@ -316,7 +316,7 @@ frío publicada (MAE 455,30 · MdMRE 0,3552 · ±25 % 36,84 %).
 
 | corpus | proyectos | ±25 % en frío → corregido | McNemar | error en log | Wilcoxon |
 |---|---|---|---|---|---|
-| el corpus de Agix (E72) | 114 | 36,0 % → 36,8 % | p = 1,00 (12-11) | 0,394 → **0,397** | p = 0,083 |
+| el corpus de PBE (E72) | 114 | 36,0 % → 36,8 % | p = 1,00 (12-11) | 0,394 → **0,397** | p = 0,083 |
 | Apache, independiente (E71) | 186 | 23,7 % → 26,9 % | p = 0,31 (15-9) | 0,541 → **0,590** | p = 0,77 |
 | **las dos juntas, con Fisher** | **300** | | **p = 0,67** | | **p = 0,24** |
 
@@ -419,7 +419,7 @@ elegidos dejando fuera cada proyecto:
 **Supuesto que hay que declarar:** la descendente usa los totales **reales** de otros
 proyectos. Es realista para una organización con historial, pero el corpus mezcla
 organizaciones, así que es una cota optimista de lo que daría dentro de una sola
-empresa. En el arranque de Agix, sin proyectos entregados, solo vale la ascendente.
+empresa. En el arranque de PBE, sin proyectos entregados, solo vale la ascendente.
 
 ---
 

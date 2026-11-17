@@ -33,11 +33,11 @@ FORMA = re.compile(r"^as\s+(?:an?|the)\s+[^,]{2,60},?\s+i\s+want\b.*", re.I)
 MODELO = "qwen2.5_7b"
 # la tanda v3 del profesor usa exactamente este mismo codigo de mezcla, solo
 # cambia el fichero de entrada y el prefijo de salida:
-#   AGIX_SYNTH=backlogs_v3_qwen2.5_7b.jsonl  AGIX_PREF=v3  python src/43_datos_mixtos.py
-SYNTH = os.environ.get("AGIX_SYNTH", f"backlogs_{MODELO}.jsonl")
+#   PBE_SYNTH=backlogs_v3_qwen2.5_7b.jsonl  PBE_PREF=v3  python src/43_datos_mixtos.py
+SYNTH = os.environ.get("PBE_SYNTH", f"backlogs_{MODELO}.jsonl")
 # 0 = sin tope (como antes); 2 = como maximo dos tareas por arranque y backlog
-TOPE_ARRANQUE = int(os.environ.get("AGIX_TOPE_ARRANQUE", 0))
-PREF = os.environ.get("AGIX_PREF", "mix")
+TOPE_ARRANQUE = int(os.environ.get("PBE_TOPE_ARRANQUE", 0))
+PREF = os.environ.get("PBE_PREF", "mix")
 
 sp = spm.SentencePieceProcessor(model_file=f"{BASE}/models/pruned_tok/spiece.model")
 sep = sp.encode(";")
@@ -117,8 +117,8 @@ for b in B:
 # still a useful example.
 from sentence_transformers import SentenceTransformer  # noqa: E402
 
-_disp = "cuda" if os.environ.get("AGIX_SBERT_GPU") == "1" else "cpu"
-_sb = SentenceTransformer(f"{BASE}/models/sbert_agix_v1", device=_disp)
+_disp = "cuda" if os.environ.get("PBE_SBERT_GPU") == "1" else "cpu"
+_sb = SentenceTransformer(f"{BASE}/models/sbert_pbe_v1", device=_disp)
 _txt = [f["objetivo"] for f in filas_arriba]
 _E = _sb.encode(_txt, convert_to_tensor=True, normalize_embeddings=True,
                 batch_size=128, show_progress_bar=False)
@@ -144,7 +144,7 @@ filas_abajo = [f for f in filas_abajo
                if f["src"][len(PREF_TAREAS):].split(" | examples:")[0] not in _claves]
 
 # --- variante de la descripcion SIN nombrar al publico (solo tanda v3) -------
-# Las descripciones que llegan a Agix muchas veces no dicen para quien es el
+# Las descripciones que llegan a PBE muchas veces no dicen para quien es el
 # producto. Si todos los ejemplos lo dicen, la mitad de arriba aprende a copiar
 # un sustantivo de la entrada al hueco del rol ("As a service appointment, ...")
 # en lugar de elegir un actor plausible del dominio. Se duplica cada ejemplo con

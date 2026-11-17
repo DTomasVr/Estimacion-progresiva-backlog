@@ -2,7 +2,7 @@
 
 Todo el trabajo sobre la estimacion del usuario esta medido tarea a tarea, donde
 es la palanca mas grande del proyecto (R2 0,063 -> 0,340 en proyectos nunca
-vistos). Pero la decision de producto -- si el formulario de Agix pide o no una
+vistos). Pero la decision de producto -- si el formulario de PBE pide o no una
 estimacion al crear cada tarea -- se toma mirando lo que cambia en el TOTAL del
 proyecto, que es lo que el usuario ve.
 
@@ -68,7 +68,7 @@ def mt(real, pred):
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     sw = df[df.is_software_task == 1].copy()
     sw = sw[~sw.fuente_jira.eq("Apache")].reset_index(drop=True)
     y = sw.effort_hours.to_numpy()

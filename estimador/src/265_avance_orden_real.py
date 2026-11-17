@@ -7,7 +7,7 @@ equipo: «tras el primer sprint».
 
 Solo entran las tareas con fecha y los proyectos que conservan 8 o mas. Se
 supone que el backlog entero se conoce desde el principio, que es como trabaja
-Agix (el backlog se genera al arrancar); en estos proyectos reales parte de las
+PBE (el backlog se genera al arrancar); en estos proyectos reales parte de las
 tareas se crearon despues, asi que la curva es algo optimista en ese punto.
 Anclaje: el desplegado (cociente de sumas, lambda 12).
 """
@@ -28,7 +28,7 @@ ETIQ = ["8-15", "16-40", "41-120", "121-400", "mas de 400"]
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     sw = df[df.is_software_task == 1].copy()
     sw = sw[~sw.fuente_jira.eq("Apache")].reset_index(drop=True)
     est = np.clip(np.load("results/modelo_total/pred_total.npy"), 1e-6, None)

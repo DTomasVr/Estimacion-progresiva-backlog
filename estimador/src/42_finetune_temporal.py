@@ -13,7 +13,7 @@ import time
 import numpy as np
 import pandas as pd
 
-DATA = "data/processed/agix_effort_v3.parquet"
+DATA = "data/processed/pbe_effort_v3.parquet"
 MODEL = "sentence-transformers/paraphrase-multilingual-mpnet-base-v2"
 CACHE = "data/processed/embeddings/mpnet_ft_temporal.npy"
 IDS = "data/processed/embeddings/mpnet_ft_temporal.ids.npy"

@@ -1,4 +1,4 @@
-"""Local demo server for the Agix generation pipeline. No extra dependencies:
+"""Local demo server for the PBE generation pipeline. No extra dependencies:
 the standard library serves the page, the pipeline runs in this same process.
 
     python src/33_servidor.py            # CPU (what the presentation laptop has)
@@ -11,7 +11,7 @@ Precomputed examples (results/33_ejemplos.json) answer instantly, so a demo
 never depends on waiting or on having a GPU; typing a new description runs the
 real pipeline and reports the time each stage took.
 
-El estimador de esfuerzo (estimador_agix_v6, el otro repositorio) se engancha por
+El estimador de esfuerzo (estimador_pbe_v6, el otro repositorio) se engancha por
 src/34_estimacion.py y le pone horas a cada tarea, un subtotal a cada historia y un
 total con intervalo al proyecto. Si no esta disponible, la pagina sigue funcionando
 igual y lo dice; el backlog nunca depende de que haya estimador.
@@ -24,15 +24,15 @@ import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlparse
 
-BASE = os.environ.get("AGIX_BASE") or os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE = os.environ.get("PBE_BASE") or os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # la raiz del proyecto: la carpeta que contiene src/, models/, data/ y results/.
-# Se deduce de la ubicacion de este archivo; AGIX_BASE la sobreescribe si hace falta.
+# Se deduce de la ubicacion de este archivo; PBE_BASE la sobreescribe si hace falta.
 PUERTO = 8123
 if "--puerto" in sys.argv:
     PUERTO = int(sys.argv[sys.argv.index("--puerto") + 1])
-os.environ.setdefault("AGIX_DEVICE", "cuda" if "--gpu" in sys.argv else "cpu")
+os.environ.setdefault("PBE_DEVICE", "cuda" if "--gpu" in sys.argv else "cpu")
 if "--ligero" in sys.argv:
-    os.environ["AGIX_BEAMS"] = "1"
+    os.environ["PBE_BEAMS"] = "1"
 
 import importlib.util  # noqa: E402
 
@@ -70,7 +70,7 @@ if "--sin-estimador" not in sys.argv:
         # y tarda ~6 s para 40 tareas; en GPU son ~0,5 s. Los dos a la vez en GPU no
         # caben en 8 GB (3 x 2,24 GB del estimador + los del generador), asi que lo
         # normal es generador en CPU y estimador en GPU.
-        dev_est = os.environ.get("AGIX_EST_DEVICE") or (
+        dev_est = os.environ.get("PBE_EST_DEVICE") or (
             "cuda" if "--gpu-estimador" in sys.argv else pl.DISPOSITIVO)
         EST = _e.Estimacion(por_tarea="--total-solo" not in sys.argv,
                             dispositivo=dev_est)
@@ -113,7 +113,7 @@ if "--abrir" in sys.argv:
 PAGINA = """<!DOCTYPE html>
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Agix · generador de backlog</title>
+<title>PBE · generador de backlog</title>
 <style>
 :root{--fondo:#faf9f7;--papel:#fff;--tinta:#1d1c1a;--suave:#6b6762;--linea:#e6e2dc;
 --acento:#2f6f5e;--acento2:#8a5a2b;--radio:10px}

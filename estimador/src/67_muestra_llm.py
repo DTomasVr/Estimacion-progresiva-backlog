@@ -31,7 +31,7 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 sys.path.insert(0, "src")
 warnings.filterwarnings("ignore")
 
-DATA = "data/processed/agix_effort_v4.parquet"
+DATA = "data/processed/pbe_effort_v4.parquet"
 EMB = "data/processed/embeddings/v4_mpnet_congelado"
 OUT = Path("data/processed/llm_bench")
 NUM = ["n_links", "n_links_estructurales", "n_componentes", "tiene_asignado"]

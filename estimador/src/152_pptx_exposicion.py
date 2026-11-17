@@ -45,7 +45,7 @@ def main():
     cte = tot.loc["0 · constante (n x mediana)"]
     prs = P.nueva()
 
-    P.portada(prs, "Estimación de esfuerzo en Agix",
+    P.portada(prs, "Estimación de esfuerzo en PBE",
               "Cuánto acierta el modelo el total de horas de un proyecto",
               "Modelo de predicción · evaluación sobre 114 proyectos nunca vistos")
 
@@ -141,7 +141,7 @@ def main():
         "En contra: hay un error COMÚN a todo el proyecto —el modelo lo sitúa entero "
         "alto o bajo— que ninguna suma cancela. Por eso los proyectos de más de 400 "
         "tareas se quedan en MdMRE " + n(float(tam.MdMRE.iloc[-1])) + " y no en cero.",
-        "Ese error común se corrige con UN dato real, y en Agix aparece solo: en cuanto "
+        "Ese error común se corrige con UN dato real, y en PBE aparece solo: en cuanto "
         "el equipo cierra las primeras tareas, el cronómetro da horas reales.",
     ], salto=Inches(0.92))
     P.figura_ajustada(s, f"{FIG}/8_total_proyecto.png", y0 + Inches(2.5), Inches(2.5))
@@ -361,7 +361,7 @@ def main():
                      "reales e independientes con el mismo procedimiento.")
     y = P.tabla(s, y0, ["", "proyectos", "en frío", "corregido", "Wilcoxon",
                         "McNemar"],
-                [["el corpus de Agix", f"{int(cp.proyectos)}", pc(cp.pred25_frio),
+                [["el corpus de PBE", f"{int(cp.proyectos)}", pc(cp.pred25_frio),
                   pc(cp.pred25_corregido),
                   f"p = {cp.p_wilcoxon:.3f}".replace(".", ","),
                   f"p = {cp.p_mcnemar:.2f}".replace(".", ",")],

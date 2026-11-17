@@ -26,7 +26,7 @@ D = pd.concat([H, V, T], ignore_index=True)
 D = D[D.mitad == "tasks"].drop_duplicates(["proj", "entrada_en"])
 print(f"{D.proj.nunique():,} proyectos, {len(D):,} textos")
 
-sb = SentenceTransformer(f"{BASE}/models/sbert_agix_v1", device="cuda")
+sb = SentenceTransformer(f"{BASE}/models/sbert_pbe_v1", device="cuda")
 sb.max_seq_length = 128
 E = sb.encode(D.entrada_en.tolist(), batch_size=256, convert_to_tensor=True,
               normalize_embeddings=True, show_progress_bar=False)

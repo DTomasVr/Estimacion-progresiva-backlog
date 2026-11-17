@@ -1,7 +1,7 @@
 """How much does the model lose when the input is a real user story?
 
 The lower half was trained on Jira-style parents ("Command line parser"), but
-in Agix the input will be "As a <role>, I want <goal>, so that <benefit>".
+in PBE the input will be "As a <role>, I want <goal>, so that <benefit>".
 To measure that mismatch without confounders, the SAME test examples are
 rewritten into user-story form with a local LLM (llama3.1:8b, temperature 0)
 and the reference tasks are left untouched. Any drop is the format mismatch.
@@ -33,7 +33,7 @@ LLM = "llama3.1:8b"
 N = int(sys.argv[1]) if len(sys.argv) > 1 else 150
 SEED = 20260922
 CFG = "beam4_actual"
-MODELO = f"{BASE}/models/mt5-small-pruned_agix_v1"
+MODELO = f"{BASE}/models/mt5-small-pruned_pbe_v1"
 PROMPT = ("Rewrite this software backlog item as ONE user story, in exactly this form:\n"
           "As a <role>, I want <goal>, so that <benefit>.\n"
           "Keep the same scope and the same technical terms. Do not add new features. "

@@ -1,7 +1,7 @@
 # Estimador v7 integrado en producción
 
-Aviso del chat del estimador (Agix-Dataset), 21/10/2026. Cambia el estimador que va dentro de
-`F:\Agix-produccion` y el adaptador `src/34_estimacion.py` de **este** repositorio. La tubería de
+Aviso del chat del estimador (PBE-Dataset), 21/10/2026. Cambia el estimador que va dentro de
+`F:\PBE-produccion` y el adaptador `src/34_estimacion.py` de **este** repositorio. La tubería de
 generación no se ha tocado.
 
 ## Qué cambió
@@ -14,19 +14,19 @@ no hace falta `cache_hf` ni `HF_HOME`.
 proyecto nuevo— los dos codificadores ajustados del v6 no aportaban; quitarlos **mejora** el orden
 (Spearman 0,302 → 0,320) y el SA (0,0233 → 0,0268). En el bloque de prueba fijo el v6 parecía mejor
 porque esos codificadores habían visto tareas de los mismos proyectos (la fuga ya conocida de E54).
-int8 y poda no mueven las métricas del bloque de prueba. Detalle: `Agix-Dataset/src/246`–`254`.
+int8 y poda no mueven las métricas del bloque de prueba. Detalle: `PBE-Dataset/src/246`–`254`.
 
 ## Archivos tocados
 
 **En este repositorio**
-- `src/34_estimacion.py`: busca `estimador_agix_v7.joblib` y cae al v6 si no está;
+- `src/34_estimacion.py`: busca `estimador_pbe_v7.joblib` y cae al v6 si no está;
   `hay_codificador_base()` mira el ONNX del estimador; docstrings al día. **Es el mismo archivo que
-  el de producción**, copiado tal cual. Sin el paquete al lado, sigue tirando de Agix-Dataset, que
+  el de producción**, copiado tal cual. Sin el paquete al lado, sigue tirando de PBE-Dataset, que
   ya tiene el v7.
 
-**En `F:\Agix-produccion`**
-- `generacion/estimador/models/`: fuera `e5_ajustado`, `e5_ajustado_C` y `estimador_agix_v6.joblib`;
-  dentro `estimador_agix_v7.joblib` y `e5_v7/` (ONNX, tokenizador, tabla del vocabulario).
+**En `F:\PBE-produccion`**
+- `generacion/estimador/models/`: fuera `e5_ajustado`, `e5_ajustado_C` y `estimador_pbe_v6.joblib`;
+  dentro `estimador_pbe_v7.joblib` y `e5_v7/` (ONNX, tokenizador, tabla del vocabulario).
 - `generacion/estimador/src/171_estimador_v6.py`: la clase sabe cargar el ONNX (sin torch ni red)
   y no carga los codificadores ajustados si el paquete no los trae. Con el v6 da **exactamente** lo
   mismo que antes (comprobado, desvío 0).
@@ -37,7 +37,7 @@ int8 y poda no mueven las métricas del bloque de prueba. Detalle: `Agix-Dataset
 - `INTEGRACION.md`: sin `HF_HOME`, tamaños y RAM nuevos, y una sección «El estimador v7» al final.
 
 **Respaldo:** todo lo que salió del paquete —el v6, los dos codificadores, `cache_hf`, el
-adaptador y los documentos anteriores— está en `F:\Agix-produccion_respaldo_v6`. Para volver al v6
+adaptador y los documentos anteriores— está en `F:\PBE-produccion_respaldo_v6`. Para volver al v6
 basta con devolver esas carpetas a su sitio y el adaptador anterior.
 
 ## Verificado
@@ -73,6 +73,6 @@ basta con devolver esas carpetas a su sitio y el adaptador anterior.
 
 ## Si alguien reconstruye el paquete
 
-Copiar desde Agix-Dataset: `models/estimador_agix_v7.joblib`, `models/e5_v7/` entero y
+Copiar desde PBE-Dataset: `models/estimador_pbe_v7.joblib`, `models/e5_v7/` entero y
 `src/171_estimador_v6.py`. Las rutas del ONNX van **relativas al paquete** (la clase las resuelve
 desde la carpeta que contiene `models/`), así que no hay que tocar nada más.

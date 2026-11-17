@@ -2,7 +2,7 @@
 
 La recomendacion de la noche es pedirle la estimacion al usuario: multiplica el
 R² por cinco en proyectos nunca vistos. Pero esa cifra se midio con las
-estimaciones que hay en el corpus, y no sabemos si los usuarios de Agix estimaran
+estimaciones que hay en el corpus, y no sabemos si los usuarios de PBE estimaran
 igual de bien. En SiP la razon real/estimacion tiene sd 0,77 en log; en el bloque
 publico de Jira, 1,37. Casi el doble de ruido.
 
@@ -39,7 +39,7 @@ spec.loader.exec_module(M71)
 
 warnings.filterwarnings("ignore")
 pd.set_option("display.width", 200)
-DATA = "data/processed/agix_effort_v4.parquet"
+DATA = "data/processed/pbe_effort_v4.parquet"
 CACHE = Path("data/processed/embeddings/codificadores")
 CV = Path("results/palancas_cv/predicciones.npy")
 OUT = Path("results/sensibilidad")

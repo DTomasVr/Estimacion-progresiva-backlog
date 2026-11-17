@@ -19,15 +19,15 @@
 # NO EDITAR MIENTRAS CORRE.
 set -u
 BASE="/f/Software Task generation Model"
-PY="/c/Users/User/Documents/Programacao/Agix-Dataset/.venv/Scripts/python.exe"
+PY="/c/Users/User/Documents/Programacao/PBE-Dataset/.venv/Scripts/python.exe"
 LOG="$BASE/logs/sin_podar.log"
 export PYTHONWARNINGS=ignore PYTHONIOENCODING=utf-8 HF_HUB_OFFLINE=1
 cd "$BASE"
 : > "$LOG"
 di() { echo "[$(date '+%F %T')] $*" | tee -a "$LOG"; }
 
-P_OUT="$BASE/models/mt5-small-pruned_v5_agix_v1"
-U_OUT="$BASE/models/mt5-small_v5nb_agix_v1"
+P_OUT="$BASE/models/mt5-small-pruned_v5_pbe_v1"
+U_OUT="$BASE/models/mt5-small_v5nb_pbe_v1"
 for d in "$P_OUT" "$U_OUT"; do
   [ -d "$d" ] && { di "ABORTA: $d ya existe, no se sobreescribe"; exit 1; }
 done
@@ -51,12 +51,12 @@ di "VRAM U: $(grep -oE 'VRAM [0-9.]+ GB' logs/09_poda_U.log | sort -k2 -n | tail
 di "evaluacion: cada brazo con SU parquet de test (~8 min cada uno)"
 "$PY" -u src/11_eval_gen.py --test "$P_OUT" beam4_actual > logs/11_poda_P.log 2>&1
 grep -E "sF1" logs/11_poda_P.log | tail -4 | tee -a "$LOG"
-AGIX_TEST_PARQUET="$BASE/data/processed/s2s_nb_test.parquet" \
+PBE_TEST_PARQUET="$BASE/data/processed/s2s_nb_test.parquet" \
   "$PY" -u src/11_eval_gen.py --test "$U_OUT" beam4_actual > logs/11_poda_U.log 2>&1
 grep -E "sF1" logs/11_poda_U.log | tail -4 | tee -a "$LOG"
 
 di "comparacion pareada"
-"$PY" -u src/79_pareado_poda.py mt5-small-pruned_v5_agix_v1 mt5-small_v5nb_agix_v1 \
+"$PY" -u src/79_pareado_poda.py mt5-small-pruned_v5_pbe_v1 mt5-small_v5nb_pbe_v1 \
   2>&1 | tee -a "$LOG"
 
 di "PODA TERMINADA"

@@ -34,7 +34,7 @@ def main():
     y2 = y + Inches(2.5)
     y2 = P.vinetas(s, y2, [
         ("1", "El texto pasa por un SBERT multilingüe congelado. Multilingüe "
-              "porque el corpus es inglés y Agix opera en español."),
+              "porque el corpus es inglés y PBE opera en español."),
         ("2", "Al vector se le añaden la categoría de la tarea, la fuente y "
               "cuatro variables numéricas (enlaces, componentes, asignación)."),
         ("3", "Un HistGradientBoosting predice el logaritmo de las horas."),
@@ -248,9 +248,9 @@ def main():
                  ["Corregir la estimación de la persona en vez de sustituirla", "que el formulario pida una estimación", "en SiP el experto da 0,2500; corregido por desarrollador, 0,2500 → mejor", "bajo"],
                  ["Calibración en línea por proyecto", "ya está: usar las tareas cerradas", "el error baja de 0,860 a 0,566 con 50 tareas", "hecho"],
                  ["Añadir señal fuera del texto", "tamaño del cambio, ficheros tocados, historial del desarrollador", "el texto solo explica hasta 0,68; la escala del proyecto aporta más", "medio"],
-                 ["Recoger datos propios de Agix", "el cronómetro del producto en clientes reales", "misma cultura de registro que el objetivo, sin desplazamiento", "alto · continuo"]],
+                 ["Recoger datos propios de PBE", "el cronómetro del producto en clientes reales", "misma cultura de registro que el objetivo, sin desplazamiento", "alto · continuo"]],
                 anchos=[3.4, 3.4, 4.4, 1.1], tam=12, alto_fila=Inches(0.62))
-    P.nota(s, "La primera vía es la más barata y la que mejor encaja: Agix ya "
+    P.nota(s, "La primera vía es la más barata y la que mejor encaja: PBE ya "
               "usa un LLM para generar las tareas, así que la estimación del "
               "LLM está disponible sin coste adicional.")
 

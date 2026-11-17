@@ -1,9 +1,9 @@
 """Genera los backlogs del conjunto de calibracion con una configuracion dada.
 
 La configuracion se fija por variables de entorno ANTES de importar el pipeline, porque
-19_pipeline.py las lee al cargarse (AGIX_TAXONOMIA, AGIX_SPRINT0, AGIX_SEED).
+19_pipeline.py las lee al cargarse (PBE_TAXONOMIA, PBE_SPRINT0, PBE_SEED).
 
-  AGIX_TAXONOMIA=descripciones_v4.json AGIX_SPRINT0=1 AGIX_SEED=11 \\
+  PBE_TAXONOMIA=descripciones_v4.json PBE_SPRINT0=1 PBE_SEED=11 \\
       python src/94_generar_calibracion.py data/calibracion/salidas_v4.json [ids...]
 
 Sin ids genera las 64. Guarda, por backlog, lo necesario para etiquetar con la rubrica y
@@ -22,7 +22,7 @@ import numpy as np
 import torch
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-os.environ.setdefault("HF_HOME", r"F:\Agix-produccion\cache_hf")
+os.environ.setdefault("HF_HOME", r"F:\PBE-produccion\cache_hf")
 sys.stdout.reconfigure(encoding="utf-8")
 
 spec = importlib.util.spec_from_file_location("pl", f"{BASE}/src/19_pipeline.py")

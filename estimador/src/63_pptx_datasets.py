@@ -27,7 +27,7 @@ def main():
 
     # ------------------------------------------------------------------ 2
     s, y = P.lamina(prs, "Qué tiene que predecir el modelo",
-                    "Agix genera las tareas de un proyecto con un LLM. En ese "
+                    "PBE genera las tareas de un proyecto con un LLM. En ese "
                     "momento, sin que nadie haya trabajado todavía, el modelo "
                     "debe decir cuántas horas llevará cada tarea.")
     y = P.vinetas(s, y, [
@@ -97,7 +97,7 @@ def main():
 
     # ------------------------------------------------------------------ 6
     s, y = P.lamina(prs, "Dataset 1 · segunda limpieza",
-                    "El cronómetro de Agix mide una persona trabajando en una "
+                    "El cronómetro de PBE mide una persona trabajando en una "
                     "tarea. Una fila que signifique otra cosa enseña una "
                     "magnitud que nunca se va a pedir.")
     y = P.tabla(s, y,
@@ -129,7 +129,7 @@ def main():
     P.veredicto(s, y2 + Inches(1.5), "el límite del Dataset 1",
                 "Dos organizaciones. Bastan para entrenar, pero no para saber "
                 "si el modelo funciona en una empresa que no ha visto nunca "
-                "— que es justo lo que le pasa a Agix con cada cliente nuevo.")
+                "— que es justo lo que le pasa a PBE con cada cliente nuevo.")
 
     # ------------------------------------------------------------------ 8
     P.seccion(prs, "2", "Dataset 2",
@@ -247,7 +247,7 @@ def main():
     # ------------------------------------------------------------------ 16
     s, y = P.lamina(prs, "Recomendación")
     y = P.veredicto(s, y, "para el entrenamiento final: Dataset 2",
-                    "El escenario real de Agix es un cliente nuevo con un "
+                    "El escenario real de PBE es un cliente nuevo con un "
                     "proyecto nuevo. Ahí un modelo entrenado solo con el "
                     "Dataset 1 no transfiere: se equivoca más que una "
                     "constante. Con el Dataset 2, el error mediano baja un 48 % "
@@ -290,7 +290,7 @@ def main():
     P.veredicto(s, y + Inches(0.25), "en una frase",
                 "El Dataset 2 es el Dataset 1 más 72 501 tareas de diez "
                 "organizaciones nuevas, fusionadas sin tocar una sola fila del "
-                "examen, y es el que conviene para entrenar el modelo que Agix "
+                "examen, y es el que conviene para entrenar el modelo que PBE "
                 "va a desplegar.")
 
     P.numerar(prs)

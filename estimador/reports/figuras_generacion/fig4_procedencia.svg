@@ -398,7 +398,7 @@ z
    <g id="text_12">
     <text style="font-size: 6.9px; font-family: 'DejaVu Sans'; fill: #1a1a1a" transform="translate(255.913312 337.066266)">ABAJO 1  _hist_v5</text>
     <text style="font-size: 6.9px; font-family: 'DejaVu Sans'; fill: #1a1a1a" transform="translate(235.790648 346.960219)">bs 16 · lr 5e-4 · mejor ép. 1/4</text>
-    <text style="font-size: 6.9px; font-family: 'DejaVu Sans'; fill: #1a1a1a" transform="translate(249.626227 356.386266)">sigue a _hist_agix_v1</text>
+    <text style="font-size: 6.9px; font-family: 'DejaVu Sans'; fill: #1a1a1a" transform="translate(249.626227 356.386266)">sigue a _hist_pbe_v1</text>
    </g>
    <g id="text_13">
     <text style="font-size: 6.9px; font-family: 'DejaVu Sans'; fill: #1a1a1a" transform="translate(413.416945 337.066266)">ABAJO 2  _hist_bs8_lr9.2e-4</text>
@@ -406,7 +406,7 @@ z
     <text style="font-size: 6.9px; font-family: 'DejaVu Sans'; fill: #1a1a1a" transform="translate(408.516867 356.620219)">búsqueda de hiperparámetros</text>
    </g>
    <g id="text_14">
-    <text style="font-size: 7.1px; font-family: 'DejaVu Sans'; fill: #1a1a1a" transform="translate(97.434094 393.434922)">SBERT propio   sbert_agix_v1</text>
+    <text style="font-size: 7.1px; font-family: 'DejaVu Sans'; fill: #1a1a1a" transform="translate(97.434094 393.434922)">SBERT propio   sbert_pbe_v1</text>
     <text style="font-size: 7.1px; font-family: 'DejaVu Sans'; fill: #1a1a1a" transform="translate(66.602898 403.473656)">desde paraphrase-multilingual-mpnet-base-v2</text>
    </g>
    <g id="text_15">

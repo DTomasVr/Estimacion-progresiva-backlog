@@ -14,7 +14,7 @@ Splits:
     can never straddle train and test.
   * `split_project` -- whole projects held out, to measure how the model
     generalises to an organisation it has never seen. This is the setting that
-    matters for Agix's cold start.
+    matters for PBE's cold start.
 """
 import hashlib
 import re
@@ -205,11 +205,11 @@ def main():
             "effort_hours", "log_effort", "story_point", "created",
             "title_words", "has_desc", "has_code", "effort_gt_calendar",
             "is_software_task", "split", "split_project"]
-    df[cols].to_parquet(f"{OUT}/agix_effort_dataset.parquet",
+    df[cols].to_parquet(f"{OUT}/pbe_effort_dataset.parquet",
                         compression="zstd", index=False)
-    df[cols].to_csv(f"{OUT}/agix_effort_dataset.csv", index=False)
-    print(f"\nwrote {OUT}/agix_effort_dataset.parquet  ({len(df):,} rows)")
-    print(f"wrote {OUT}/agix_effort_dataset.csv")
+    df[cols].to_csv(f"{OUT}/pbe_effort_dataset.csv", index=False)
+    print(f"\nwrote {OUT}/pbe_effort_dataset.parquet  ({len(df):,} rows)")
+    print(f"wrote {OUT}/pbe_effort_dataset.csv")
     print(f"  software tasks with a split: {sw.sum():,}")
 
 

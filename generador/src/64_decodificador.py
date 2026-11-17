@@ -31,18 +31,18 @@ import numpy as np
 import pandas as pd
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-os.environ.setdefault("AGIX_DEVICE", "cuda")
-os.environ.setdefault("AGIX_CONJUNTO", "no")
-os.environ.setdefault("AGIX_SEED", "20260926")
-os.environ.setdefault("AGIX_ARRIBA",
-                      f"{BASE}/models/mt5-small-pruned_o2o_agix_v1_o2ofmt_agix_v1_v3r_agix_v1")
-os.environ.setdefault("AGIX_ABAJO",
-                      f"{BASE}/models/mt5-small-pruned_hist_agix_v1_v3_agix_v1")
+os.environ.setdefault("PBE_DEVICE", "cuda")
+os.environ.setdefault("PBE_CONJUNTO", "no")
+os.environ.setdefault("PBE_SEED", "20260926")
+os.environ.setdefault("PBE_ARRIBA",
+                      f"{BASE}/models/mt5-small-pruned_o2o_pbe_v1_o2ofmt_pbe_v1_v3r_pbe_v1")
+os.environ.setdefault("PBE_ABAJO",
+                      f"{BASE}/models/mt5-small-pruned_hist_pbe_v1_v3_pbe_v1")
 
 spec = importlib.util.spec_from_file_location("pl", f"{BASE}/src/19_pipeline.py")
 pl = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(pl)
-pl.M_ARRIBA, pl.M_ABAJO = os.environ["AGIX_ARRIBA"], os.environ["AGIX_ABAJO"]
+pl.M_ARRIBA, pl.M_ABAJO = os.environ["PBE_ARRIBA"], os.environ["PBE_ABAJO"]
 
 PARADA = {"a", "an", "the", "to", "for", "of", "in", "on", "and", "with", "by",
           "from", "at", "as", "their", "its", "my", "all", "new", "each", "per",

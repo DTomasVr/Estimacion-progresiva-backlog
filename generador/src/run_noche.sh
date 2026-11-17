@@ -4,7 +4,7 @@
 # Gate (fixed up front): final mini val loss finite and < 50 % of the initial one.
 set -u
 BASE="/f/Software Task generation Model"
-PY="/c/Users/User/Documents/Programacao/Agix-Dataset/.venv/Scripts/python.exe"
+PY="/c/Users/User/Documents/Programacao/PBE-Dataset/.venv/Scripts/python.exe"
 MODEL="F:/Software Task generation Model/models/mt5-base-pruned"
 LOG="$BASE/logs/noche.log"
 export PYTHONWARNINGS=ignore PYTHONIOENCODING=utf-8

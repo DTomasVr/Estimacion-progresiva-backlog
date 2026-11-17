@@ -9,7 +9,7 @@ import json
 import os
 
 BASE = r"F:\Software Task generation Model"
-os.environ.setdefault("AGIX_DEVICE", "cuda")
+os.environ.setdefault("PBE_DEVICE", "cuda")
 spec = importlib.util.spec_from_file_location("pl", f"{BASE}/src/19_pipeline.py")
 pl = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(pl)

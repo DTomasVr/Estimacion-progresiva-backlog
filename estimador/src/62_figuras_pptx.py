@@ -118,7 +118,7 @@ def merge():
 
 # ------------------------------------------------------------ distribuciones
 def distribuciones():
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     sw = df[df.is_software_task == 1]
     fig, ax = plt.subplots(1, 2, figsize=(13, 4.3))
     for nombre, etiqueta, color in [

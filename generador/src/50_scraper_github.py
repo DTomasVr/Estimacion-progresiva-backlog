@@ -47,7 +47,7 @@ def leer_token():
 
 TOKEN = leer_token()
 PAUSA = 1.0 if TOKEN else 2.0          # cortesia entre peticiones
-PAGINAS = int(os.environ.get("AGIX_PAGINAS", 5))   # 100 incidencias por pagina
+PAGINAS = int(os.environ.get("PBE_PAGINAS", 5))   # 100 incidencias por pagina
 
 # consumer/product repos: the domains the Jira corpus does not have.
 REPOS = [
@@ -81,7 +81,7 @@ ses = requests.Session()
 ses.headers.update({
     "Accept": "application/vnd.github+json",
     "X-GitHub-Api-Version": "2022-11-28",
-    "User-Agent": "agix-thesis-backlog-research/1.0 (academic use; contact via repo)",
+    "User-Agent": "pbe-thesis-backlog-research/1.0 (academic use; contact via repo)",
 })
 if TOKEN:
     ses.headers["Authorization"] = f"Bearer {TOKEN}"

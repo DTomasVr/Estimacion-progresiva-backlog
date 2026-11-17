@@ -261,7 +261,7 @@ def main():
     # ------------------------------------------------------------------ 18
     s, y = P.lamina(prs, "Recomendación para el producto")
     y = P.tabla(s, y,
-                ["_Situación en Agix", "_Qué usar", "_Error esperado"],
+                ["_Situación en PBE", "_Qué usar", "_Error esperado"],
                 [["Tarea recién generada, proyecto nuevo", "modelo en frío (HistGradientBoosting sobre el vector)", "MdMRE ~0,72"],
                  ["Proyecto con tareas cerradas", "razón × mediana del proyecto, y combinar con el LLM que ya genera las tareas", "~0,57"],
                  ["El usuario escribe su estimación", "M1: estimación + categoría (HistGradientBoosting)", "0,25 misma empresa · 0,44 cliente nuevo"]],

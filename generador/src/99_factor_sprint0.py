@@ -8,7 +8,7 @@ import numpy as np, pandas as pd
 sys.stdout.reconfigure(encoding="utf-8")
 s = importlib.util.spec_from_file_location("e6", "src/171_estimador_v6.py")
 e6 = importlib.util.module_from_spec(s); s.loader.exec_module(e6)
-est = e6.EstimadorV6(paquete=Path("models/estimador_agix_v7.joblib"), dispositivo="cpu")
+est = e6.EstimadorV6(paquete=Path("models/estimador_pbe_v7.joblib"), dispositivo="cpu")
 sys.path.insert(0, r"F:\Software Task generation Model\src")
 spec = importlib.util.spec_from_file_location("pl", r"F:\Software Task generation Model\src\19_pipeline.py")
 pl = importlib.util.module_from_spec(spec); spec.loader.exec_module(pl)
@@ -16,11 +16,11 @@ plantillas = [a for h in pl._HABILITADORES for a, _ in h["tareas"]]
 F = re.compile(r"\b(set ?up|setup|bootstrap|scaffold|configure|integrate)\b|\b(ci|cd|deploy|deployment|docker|pipeline|staging)\b"
                r"|\bdatabase\b|\bschema\b|\bmigrations?\b|\b(authentication|login|sign ?up|registration|password|oauth|jwt|permissions?)\b"
                r"|\b(payment|gateway|notification|push|email service|storage|upload|map|geolocation|real.?time|websocket|report)\b", re.I)
-df = pd.read_parquet("data/processed/agix_effort_v4.parquet", columns=["title", "effort_hours", "split"])
+df = pd.read_parquet("data/processed/pbe_effort_v4.parquet", columns=["title", "effort_hours", "split"])
 df = df[df.split.isin(["test", "val"]) & df.title.map(lambda t: bool(F.search(str(t))))].reset_index(drop=True)
 print(f"tareas reales de base tecnica no vistas: {len(df)}")
 from sentence_transformers import SentenceTransformer
-sb = SentenceTransformer(r"F:\Software Task generation Model\models\sbert_agix_v1", device="cpu")
+sb = SentenceTransformer(r"F:\Software Task generation Model\models\sbert_pbe_v1", device="cpu")
 Ep = sb.encode(plantillas, normalize_embeddings=True, show_progress_bar=False)
 Er = sb.encode(df.title.astype(str).tolist(), normalize_embeddings=True, show_progress_bar=False)
 S = Ep @ Er.T

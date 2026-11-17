@@ -73,7 +73,7 @@ def main():
     z = np.load(ENT / "predicciones.npz")
     y, corto = z["y"], z["corto"].astype(bool)
     p_glob, p_cor, p_lar, p_gate = z["p_glob"], z["p_cor"], z["p_lar"], z["p_gate"]
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     todo = df[df.is_software_task == 1].reset_index(drop=True)
     sw = todo[~todo.fuente_jira.eq("Apache")].reset_index(drop=True)
     proy = sw.project.to_numpy()

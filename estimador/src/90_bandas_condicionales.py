@@ -33,7 +33,7 @@ from sklearn.ensemble import HistGradientBoostingRegressor
 sys.path.insert(0, "src")
 warnings.filterwarnings("ignore")
 pd.set_option("display.width", 230)
-DATA = "data/processed/agix_effort_v4.parquet"
+DATA = "data/processed/pbe_effort_v4.parquet"
 EMB_TIT = "data/processed/embeddings/v4_mpnet_titulos"
 ART = "models/candidato_titulos.joblib"
 TRAMOS = [(0, 1, "<1 h"), (1, 4, "1-4 h"), (4, 16, "4-16 h"), (16, 1e9, ">16 h")]

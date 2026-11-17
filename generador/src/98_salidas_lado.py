@@ -1,8 +1,8 @@
 import json,sys,ast,pandas as pd
 sys.stdout.reconfigure(encoding="utf-8")
-A="C:/Users/User/Documents/Programacao/Agix-Dataset/results/banco_generacion/"
+A="C:/Users/User/Documents/Programacao/PBE-Dataset/results/banco_generacion/"
 L=[json.loads(l) for l in open("F:/Software Task generation Model/results/20_banco.jsonl",encoding="utf-8")]
-L+=[json.loads(l) for f in ("agix_actual.jsonl","groq__openai_gpt-oss-120b.jsonl") for l in open(A+f,encoding="utf-8")]
+L+=[json.loads(l) for f in ("pbe_actual.jsonl","groq__openai_gpt-oss-120b.jsonl") for l in open(A+f,encoding="utf-8")]
 caso=sys.argv[1]
 d=pd.read_csv(A+"por_proyecto.csv"); d=d[d.caso==caso].set_index("sistema")
 for r in L:

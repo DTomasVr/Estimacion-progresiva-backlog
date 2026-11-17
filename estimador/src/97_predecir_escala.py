@@ -41,7 +41,7 @@ import exp_common as E  # noqa: E402
 
 warnings.filterwarnings("ignore")
 pd.set_option("display.width", 210)
-DATA = "data/processed/agix_effort_v4.parquet"
+DATA = "data/processed/pbe_effort_v4.parquet"
 EMB_TIT = "data/processed/embeddings/v4_mpnet_titulos"
 MODELO = "sentence-transformers/paraphrase-multilingual-mpnet-base-v2"
 OUT = Path("results/escala_proyecto")

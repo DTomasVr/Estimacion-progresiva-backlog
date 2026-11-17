@@ -10,26 +10,26 @@
    121-400         23 0.261                0.946             0.941
 mas de 400         13 0.538                0.998             0.998
      todos        114 0.368                0.761             0.757
-C:\Users\User\Documents\Programacao\Agix-Dataset\src\264_techo_del_total.py:135: Pandas4Warning: Starting with pandas version 4.0 all arguments of mean will be keyword-only.
+C:\Users\User\Documents\Programacao\PBE-Dataset\src\264_techo_del_total.py:135: Pandas4Warning: Starting with pandas version 4.0 all arguments of mean will be keyword-only.
   fila.update({f"tramo {c}": float(v) for c, v in pd.concat(por_tramo, axis=1).mean(1).items()})
-C:\Users\User\Documents\Programacao\Agix-Dataset\src\264_techo_del_total.py:135: Pandas4Warning: Starting with pandas version 4.0 all arguments of mean will be keyword-only.
+C:\Users\User\Documents\Programacao\PBE-Dataset\src\264_techo_del_total.py:135: Pandas4Warning: Starting with pandas version 4.0 all arguments of mean will be keyword-only.
   fila.update({f"tramo {c}": float(v) for c, v in pd.concat(por_tramo, axis=1).mean(1).items()})
-C:\Users\User\Documents\Programacao\Agix-Dataset\src\264_techo_del_total.py:135: Pandas4Warning: Starting with pandas version 4.0 all arguments of mean will be keyword-only.
+C:\Users\User\Documents\Programacao\PBE-Dataset\src\264_techo_del_total.py:135: Pandas4Warning: Starting with pandas version 4.0 all arguments of mean will be keyword-only.
   fila.update({f"tramo {c}": float(v) for c, v in pd.concat(por_tramo, axis=1).mean(1).items()})
   cortes por k listos · 4 s
-C:\Users\User\Documents\Programacao\Agix-Dataset\src\264_techo_del_total.py:135: Pandas4Warning: Starting with pandas version 4.0 all arguments of mean will be keyword-only.
+C:\Users\User\Documents\Programacao\PBE-Dataset\src\264_techo_del_total.py:135: Pandas4Warning: Starting with pandas version 4.0 all arguments of mean will be keyword-only.
   fila.update({f"tramo {c}": float(v) for c, v in pd.concat(por_tramo, axis=1).mean(1).items()})
-C:\Users\User\Documents\Programacao\Agix-Dataset\src\264_techo_del_total.py:135: Pandas4Warning: Starting with pandas version 4.0 all arguments of mean will be keyword-only.
+C:\Users\User\Documents\Programacao\PBE-Dataset\src\264_techo_del_total.py:135: Pandas4Warning: Starting with pandas version 4.0 all arguments of mean will be keyword-only.
   fila.update({f"tramo {c}": float(v) for c, v in pd.concat(por_tramo, axis=1).mean(1).items()})
-C:\Users\User\Documents\Programacao\Agix-Dataset\src\264_techo_del_total.py:135: Pandas4Warning: Starting with pandas version 4.0 all arguments of mean will be keyword-only.
+C:\Users\User\Documents\Programacao\PBE-Dataset\src\264_techo_del_total.py:135: Pandas4Warning: Starting with pandas version 4.0 all arguments of mean will be keyword-only.
   fila.update({f"tramo {c}": float(v) for c, v in pd.concat(por_tramo, axis=1).mean(1).items()})
-C:\Users\User\Documents\Programacao\Agix-Dataset\src\264_techo_del_total.py:135: Pandas4Warning: Starting with pandas version 4.0 all arguments of mean will be keyword-only.
+C:\Users\User\Documents\Programacao\PBE-Dataset\src\264_techo_del_total.py:135: Pandas4Warning: Starting with pandas version 4.0 all arguments of mean will be keyword-only.
   fila.update({f"tramo {c}": float(v) for c, v in pd.concat(por_tramo, axis=1).mean(1).items()})
-C:\Users\User\Documents\Programacao\Agix-Dataset\src\264_techo_del_total.py:135: Pandas4Warning: Starting with pandas version 4.0 all arguments of mean will be keyword-only.
+C:\Users\User\Documents\Programacao\PBE-Dataset\src\264_techo_del_total.py:135: Pandas4Warning: Starting with pandas version 4.0 all arguments of mean will be keyword-only.
   fila.update({f"tramo {c}": float(v) for c, v in pd.concat(por_tramo, axis=1).mean(1).items()})
-C:\Users\User\Documents\Programacao\Agix-Dataset\src\264_techo_del_total.py:135: Pandas4Warning: Starting with pandas version 4.0 all arguments of mean will be keyword-only.
+C:\Users\User\Documents\Programacao\PBE-Dataset\src\264_techo_del_total.py:135: Pandas4Warning: Starting with pandas version 4.0 all arguments of mean will be keyword-only.
   fila.update({f"tramo {c}": float(v) for c, v in pd.concat(por_tramo, axis=1).mean(1).items()})
-C:\Users\User\Documents\Programacao\Agix-Dataset\src\264_techo_del_total.py:135: Pandas4Warning: Starting with pandas version 4.0 all arguments of mean will be keyword-only.
+C:\Users\User\Documents\Programacao\PBE-Dataset\src\264_techo_del_total.py:135: Pandas4Warning: Starting with pandas version 4.0 all arguments of mean will be keyword-only.
   fila.update({f"tramo {c}": float(v) for c, v in pd.concat(por_tramo, axis=1).mean(1).items()})
 
 ==============================================================================================================

@@ -15,7 +15,7 @@ import time
 import numpy as np
 import pandas as pd
 
-V4 = "data/processed/agix_effort_v4.parquet"
+V4 = "data/processed/pbe_effort_v4.parquet"
 CACHE = "data/processed/embeddings"
 MODELO = "sentence-transformers/paraphrase-multilingual-mpnet-base-v2"
 SALIDA = f"{CACHE}/v4_mpnet_congelado"

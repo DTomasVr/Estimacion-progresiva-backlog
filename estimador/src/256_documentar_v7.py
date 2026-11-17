@@ -67,14 +67,14 @@ def diseno(s, K):
         "v6 (3 codificadores)", "v7 fp32 (1 codificador)", "v7 int8 podado"))
     ratio = rs["generador_mediana_v7int8_sobre_v6"]
 
-    s = cambia(s, "| e5-large congelado + 2 ajustados + dos apilados | `estimador_agix_v6`, 29/09/2026 |",
-               f"| e5-large congelado (ONNX int8, {mb} MB) + dos apilados | `estimador_agix_v7`, 21/10/2026 |")
+    s = cambia(s, "| e5-large congelado + 2 ajustados + dos apilados | `estimador_pbe_v6`, 29/09/2026 |",
+               f"| e5-large congelado (ONNX int8, {mb} MB) + dos apilados | `estimador_pbe_v7`, 21/10/2026 |")
     s = cambia(s, "[B.11 operación](#b11--operación) · [B.12 decisiones](#b12--resumen-de-decisiones-de-diseño)",
                "[B.11 descartes](#b11--lo-que-se-midió-y-se-descartó) · "
                "[B.12 trampas](#b12--dos-trampas-de-medición-que-conviene-no-repetir) · "
                "[B.13 operación](#b13--operación) · [B.14 decisiones](#b14--resumen-de-decisiones-de-diseño)")
-    s = cambia(s, "> `estimador_agix_v6`, corpus v4 sin Apache, construido el 29/09/2026. Los experimentos",
-               f"> `estimador_agix_v7`, corpus v4 sin Apache, construido el 21/10/2026 sobre el v6 del\n"
+    s = cambia(s, "> `estimador_pbe_v6`, corpus v4 sin Apache, construido el 29/09/2026. Los experimentos",
+               f"> `estimador_pbe_v7`, corpus v4 sin Apache, construido el 21/10/2026 sobre el v6 del\n"
                f"> 29/09/2026: el mismo diseño con **un solo codificador** (ver B.5.1). Los experimentos")
     s = cambia(s, "**el servidor v6 no lo usa**.", "**el servidor no lo usa**.")
 
@@ -110,8 +110,8 @@ def diseno(s, K):
     s = cambia(s, 'Container(encaj, "Codificadores ajustados A y C", "PyTorch · e5-large reajustado", "Solo para la ruta por tarea. 2,2 GB cada uno")\n', "")
     s = cambia(s, '"scikit-learn · apilado RidgeCV de 5 canales", "Horas de UNA tarea, con banda x4,32")',
                f'"scikit-learn · apilado RidgeCV de 3 canales", "Horas de UNA tarea, con banda x{k80}")')
-    s = cambia(s, '"estimador_agix_v6.joblib de 221 MB, mas models/e5_ajustado y _C")',
-               f'"estimador_agix_v7.joblib de {n(c["mb"], 0)} MB, mas models/e5_v7 (ONNX, tokenizador, tabla del vocabulario)")')
+    s = cambia(s, '"estimador_pbe_v6.joblib de 221 MB, mas models/e5_ajustado y _C")',
+               f'"estimador_pbe_v7.joblib de {n(c["mb"], 0)} MB, mas models/e5_v7 (ONNX, tokenizador, tabla del vocabulario)")')
     s = cambia(s, 'Rel(api, encaj, "Solo en la ruta por tarea", "en proceso")\n', "")
     s = cambia(s, 'Rel(encbase, cabB, "Vectores", "numpy")',
                'Rel(encbase, cabA, "Vectores", "numpy")\nRel(encbase, cabB, "Vectores", "numpy")')
@@ -217,8 +217,8 @@ ajustado por pliegues dentro de validación para no medirla sobre lo que ajustó
                f"El umbral de acuerdo entre vecinos (**{n(sv['umbral_dispersion'], 3)}**, que cubre el {acu} de las tareas) sigue")
 
     # B.7
-    s = cambia(s, "est = EstimadorV6()                      # carga models/estimador_agix_v6.joblib",
-               "est = EstimadorV6(paquete=\"models/estimador_agix_v7.joblib\")   # la clase sirve v6 y v7")
+    s = cambia(s, "est = EstimadorV6()                      # carga models/estimador_pbe_v6.joblib",
+               "est = EstimadorV6(paquete=\"models/estimador_pbe_v7.joblib\")   # la clase sirve v6 y v7")
     s = cambia(s, "- `historial` solo debe traer tareas **del mismo proyecto** (ver B.6.4).",
                "- `historial` solo debe traer tareas **del mismo proyecto** (ver B.6.4).\n"
                "- Las rutas del ONNX, del tokenizador y de la tabla van **relativas al paquete**: la clase las\n"
@@ -231,7 +231,7 @@ ajustado por pliegues dentro de validación para no medirla sobre lo que ajustó
 flowchart TB
     subgraph SRV["Proceso de servicio"]
         API["EstimadorV6<br/>proceso Python"]
-        PKG[("estimador_agix_v7.joblib<br/>{n(c["mb"], 0)} MB")]
+        PKG[("estimador_pbe_v7.joblib<br/>{n(c["mb"], 0)} MB")]
         B[("models/e5_v7<br/>ONNX int8 · {mb} MB<br/>+ tokenizador + tabla")]
         API --> PKG
         API --> B
@@ -303,8 +303,8 @@ def estado(s, K):
     v6h, v8h = fila("v6 (3 codificadores)", "horas"), fila("v7 int8 podado", "horas")
     v8p = fila("v7 int8 podado", "valor_probable")
     s = cambia(s, "Fecha: 15 de octubre de 2026.", "Fecha: 21 de octubre de 2026 (estimador v7).")
-    s = cambia(s, "`models/estimador_agix_v6.joblib`, con respaldos por cada cambio.",
-               f"`models/estimador_agix_v7.joblib` + `models/e5_v7/` (el codificador, {mb} MB). El v6\n"
+    s = cambia(s, "`models/estimador_pbe_v6.joblib`, con respaldos por cada cambio.",
+               f"`models/estimador_pbe_v7.joblib` + `models/e5_v7/` (el codificador, {mb} MB). El v6\n"
                "sigue en `models/` y la clase sirve los dos.\n\n"
                f"- **Un solo codificador**, el e5-large base, en ONNX int8 con el vocabulario podado: {mb} MB\n"
                "  en lugar de los tres de 2,2 GB del v6. Detalle en la sección 6b.")

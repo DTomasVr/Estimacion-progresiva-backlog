@@ -14,7 +14,7 @@ RATIO instead: target log(hours) - log(median of that project), and multiply the
 median back in at the end. The text then only has to say "bigger or smaller than
 usual here", which is the question it can actually answer.
 
-For a project Agix has never seen there is no median yet, so the arm is reported
+For a project PBE has never seen there is no median yet, so the arm is reported
 in both regimes: with the project median available (steady state, after a
 handful of finished tasks) and without it (cold start, falling back to the
 global median).
@@ -33,7 +33,7 @@ import exp_common as E  # noqa: E402
 
 warnings.filterwarnings("ignore")
 pd.set_option("display.width", 250)
-DATA = "data/processed/agix_effort_v4.parquet"
+DATA = "data/processed/pbe_effort_v4.parquet"
 EMB = "data/processed/embeddings/v4_mpnet_congelado"
 NUM = ["n_links", "n_links_estructurales", "n_componentes", "tiene_asignado"]
 CAT = ["task_kind", "source"]

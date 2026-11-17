@@ -38,12 +38,12 @@ import torch
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.stdout.reconfigure(encoding="utf-8")
-UMBRAL_FUNCION = float(os.environ.get("AGIX_U_FUNCION", 0.55))
-UMBRAL_ACTOR = float(os.environ.get("AGIX_U_ACTOR", 0.60))      # calibrados el 07/11
-UMBRAL_ROL_DESC_SEGURO = float(os.environ.get("AGIX_U_ROL_DESC", 0.22))
+UMBRAL_FUNCION = float(os.environ.get("PBE_U_FUNCION", 0.55))
+UMBRAL_ACTOR = float(os.environ.get("PBE_U_ACTOR", 0.60))      # calibrados el 07/11
+UMBRAL_ROL_DESC_SEGURO = float(os.environ.get("PBE_U_ROL_DESC", 0.22))
 # 0,22 y no 0,30: leidas 20 historias marcadas al azar en backlogs con buen plan, con 0,30
 # solo la mitad eran deriva real («scooter» en una app de taxis); por debajo de 0,22, 5 de 6
-UMBRAL_DERIVA = float(os.environ.get("AGIX_U_DERIVA", 0.22))
+UMBRAL_DERIVA = float(os.environ.get("PBE_U_DERIVA", 0.22))
 GENERICOS = ["administrador", "usuario", "gerente", "agente de soporte", "desarrollador"]
 # Roles de gestion: encajan sin forzar en casi cualquier negocio, asi que no son «ajenos»
 # aunque la descripcion no los nombre (rubrica, C2). Sin esto, «dueno de salon» en una
@@ -58,9 +58,9 @@ pl = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(pl)
 from sentence_transformers import SentenceTransformer  # noqa: E402
 
-torch.set_num_threads(int(os.environ.get("AGIX_HILOS", 4)))
-sb = SentenceTransformer(f"{BASE}/models/sbert_agix_v1",
-                         device=os.environ.get("AGIX_DEVICE", "cpu"))
+torch.set_num_threads(int(os.environ.get("PBE_HILOS", 4)))
+sb = SentenceTransformer(f"{BASE}/models/sbert_pbe_v1",
+                         device=os.environ.get("PBE_DEVICE", "cpu"))
 enc = lambda xs: sb.encode(xs, normalize_embeddings=True, show_progress_bar=False)
 
 

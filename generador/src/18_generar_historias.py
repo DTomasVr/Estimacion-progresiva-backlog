@@ -26,7 +26,7 @@ SEED = 20260922
 # same pattern as 12_buscar_historias.py: real stories also say "I would like" / "I need"
 PAT = ev.re.compile(r"as\s+(?:an?|the)\s+[^,.]{2,60}[,;]?\s+i\s*(?:'d|\s+would)?\s*"
                     r"(?:want|would\s+like|need|wish|should|must|am\s+able)", ev.re.I)
-MODELO = f"{BASE}/models/mt5-small-pruned_o2o_agix_v1"
+MODELO = f"{BASE}/models/mt5-small-pruned_o2o_pbe_v1"
 
 
 @torch.no_grad()

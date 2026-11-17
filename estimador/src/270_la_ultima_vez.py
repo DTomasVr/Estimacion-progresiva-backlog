@@ -46,7 +46,7 @@ s.loader.exec_module(e267)
 
 
 def carga():
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     sw = df[df.is_software_task == 1].copy()
     sw = sw[~sw.fuente_jira.eq("Apache")].reset_index(drop=True)
     d = pd.DataFrame({"id": sw.task_id.to_numpy(), "p": sw.project.to_numpy(),

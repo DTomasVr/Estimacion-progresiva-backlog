@@ -14,7 +14,7 @@
 #   fase 5  metodo B (construir): arriba con ficha + planificador de roles
 #   fase 6  ablacion de los filtros
 #
-# Todas las pasadas usan UN SOLO generador abajo (AGIX_CONJUNTO=no). Con el
+# Todas las pasadas usan UN SOLO generador abajo (PBE_CONJUNTO=no). Con el
 # conjunto de dos se mezclaria el modelo nuevo con el viejo y la comparacion no
 # seria limpia.
 #
@@ -26,18 +26,18 @@
 # NO EDITAR MIENTRAS CORRE: bash relee el fichero por desplazamiento de bytes.
 set -u
 BASE="/f/Software Task generation Model"
-PY="/c/Users/User/Documents/Programacao/Agix-Dataset/.venv/Scripts/python.exe"
+PY="/c/Users/User/Documents/Programacao/PBE-Dataset/.venv/Scripts/python.exe"
 LOG="$BASE/logs/v3.log"
 export PYTHONWARNINGS=ignore PYTHONIOENCODING=utf-8
 cd "$BASE"
 
-ARRIBA_BASE="models/mt5-small-pruned_o2o_agix_v1_o2ofmt_agix_v1"
-ABAJO_BASE="models/mt5-small-pruned_hist_agix_v1"
+ARRIBA_BASE="models/mt5-small-pruned_o2o_pbe_v1_o2ofmt_pbe_v1"
+ABAJO_BASE="models/mt5-small-pruned_hist_pbe_v1"
 A_PROD="$BASE/models/mt5-small-pruned_o2ofmt_30sec"
 B_PROD="$BASE/models/mt5-small-pruned_hist_30sec"
-A_SIN="$BASE/models/mt5-small-pruned_o2o_agix_v1_o2ofmt_agix_v1_v3a_agix_v1"
-A_CON="$BASE/models/mt5-small-pruned_o2o_agix_v1_o2ofmt_agix_v1_v3r_agix_v1"
-ABAJO="$BASE/models/mt5-small-pruned_hist_agix_v1_v3_agix_v1"
+A_SIN="$BASE/models/mt5-small-pruned_o2o_pbe_v1_o2ofmt_pbe_v1_v3a_pbe_v1"
+A_CON="$BASE/models/mt5-small-pruned_o2o_pbe_v1_o2ofmt_pbe_v1_v3r_pbe_v1"
+ABAJO="$BASE/models/mt5-small-pruned_hist_pbe_v1_v3_pbe_v1"
 
 di() { echo "[$(date '+%F %T')] $*" | tee -a "$LOG"; }
 vram() { nvidia-smi --query-gpu=memory.used --format=csv,noheader; }
@@ -55,7 +55,7 @@ di "VRAM tras descargar Ollama: $(vram)"
 
 # ---------------------------------------------------------------- fase 1
 di "fase 1: mezclando datos v3"
-AGIX_SYNTH=backlogs_v3_qwen2.5_7b.jsonl AGIX_PREF=v3 \
+PBE_SYNTH=backlogs_v3_qwen2.5_7b.jsonl PBE_PREF=v3 \
   "$PY" -u src/43_datos_mixtos.py > logs/43_mezcla_v3.log 2>&1 \
   || { di "FALLO la mezcla"; tail -20 logs/43_mezcla_v3.log | tee -a "$LOG"; exit 1; }
 grep -E "backlogs del profesor|casi duplicadas|sinteticos utiles|variante|ficha de rol|s2s_v3" \
@@ -89,12 +89,12 @@ done
 di "modelos listos. VRAM: $(vram)"
 
 # ------------------------------------------------------- medidas, iguales para todos
-export AGIX_DEVICE=cuda AGIX_CONJUNTO=no
+export PBE_DEVICE=cuda PBE_CONJUNTO=no
 
 medir() {          # etiqueta, modelo_arriba, modelo_abajo
   local etq="$1" arriba="$2" abajo="$3"
   di "--- midiendo $etq"
-  export AGIX_ARRIBA="$arriba" AGIX_ABAJO="$abajo" AGIX_SUFIJO="_$etq"
+  export PBE_ARRIBA="$arriba" PBE_ABAJO="$abajo" PBE_SUFIJO="_$etq"
   "$PY" -u src/52_coherencia.py modelo > "logs/52_$etq.log" 2>&1 \
     && grep -E "ROLES|TAREAS|ATRIB|^ +(cuota|sin |roles dist|top|eco|ancladas|margen|acierto)" \
        "logs/52_$etq.log" | tee -a "$LOG" \
@@ -102,7 +102,7 @@ medir() {          # etiqueta, modelo_arriba, modelo_abajo
   "$PY" -u src/57_f1_arista.py --modelo > "logs/57_$etq.log" 2>&1 \
     && tail -7 "logs/57_$etq.log" | tee -a "$LOG" \
     || di "  fallo 57 en $etq"
-  unset AGIX_SUFIJO
+  unset PBE_SUFIJO
 }
 
 di "fase 3: linea base = modelo de produccion (30sec)"
@@ -113,22 +113,22 @@ medir "v3a" "$A_SIN" "$ABAJO"
 # 'ambos' compara contra los modelos de produccion en el mismo proceso y da el
 # intervalo pareado sobre las 328 historias HUMANAS: el unico test que no viene
 # del profesor
-AGIX_ARRIBA="$A_SIN" AGIX_ABAJO="$ABAJO" AGIX_SUFIJO="_v3a" \
+PBE_ARRIBA="$A_SIN" PBE_ABAJO="$ABAJO" PBE_SUFIJO="_v3a" \
   "$PY" -u src/49_eval_real.py ambos > logs/49_v3a.log 2>&1
 grep -E "^##### |nuevo - viejo|gana el nuevo" logs/49_v3a.log | tee -a "$LOG"
-AGIX_ARRIBA="$A_SIN" AGIX_ABAJO="$ABAJO" "$PY" -u src/45_leer_salidas.py nuevo \
+PBE_ARRIBA="$A_SIN" PBE_ABAJO="$ABAJO" "$PY" -u src/45_leer_salidas.py nuevo \
   > logs/45_v3a.log 2>&1
 
 di "fase 5: metodo B, con ficha + planificador de roles"
 medir "v3r" "$A_CON" "$ABAJO"
-AGIX_ARRIBA="$A_CON" AGIX_ABAJO="$ABAJO" AGIX_SUFIJO="_v3r" \
+PBE_ARRIBA="$A_CON" PBE_ABAJO="$ABAJO" PBE_SUFIJO="_v3r" \
   "$PY" -u src/49_eval_real.py ambos > logs/49_v3r.log 2>&1
 grep -E "^##### |nuevo - viejo|gana el nuevo" logs/49_v3r.log | tee -a "$LOG"
-AGIX_ARRIBA="$A_CON" AGIX_ABAJO="$ABAJO" \
+PBE_ARRIBA="$A_CON" PBE_ABAJO="$ABAJO" \
   "$PY" -u src/45_leer_salidas.py nuevo > logs/45_v3r.log 2>&1
 
 di "fase 6: ablacion de los filtros (metodo A) sobre descripciones de consumo"
-AGIX_ARRIBA="$A_SIN" AGIX_ABAJO="$ABAJO" AGIX_POB=consumo \
+PBE_ARRIBA="$A_SIN" PBE_ABAJO="$ABAJO" PBE_POB=consumo \
   "$PY" -u src/58_ablacion_filtros.py 12 > logs/58_v3.log 2>&1
 tail -10 logs/58_v3.log | tee -a "$LOG"
 

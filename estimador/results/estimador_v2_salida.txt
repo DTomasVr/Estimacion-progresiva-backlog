@@ -7,7 +7,7 @@ vista (24848, 1536) · train 16,648 · val 3,183
   bolsa 6/7
   bolsa 7/7
   cuantiles y clasificador de tramo ajustados
-escrito models\estimador_agix_v2.joblib (162 MB) en 303 s
+escrito models\estimador_pbe_v2.joblib (162 MB) en 303 s
   banda 80 % ×4.70 · smearing 1.568 · suma residual 0.672 · umbral 0.9766
 
 ================================================================================================================================

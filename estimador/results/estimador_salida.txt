@@ -3,7 +3,7 @@ reajustados regresor, cuantiles y clasificador sobre solo texto
 estimador de riesgo ajustado en 3,183 filas de validación · umbral al 50% de cobertura = 0.9943
   pesos: anchura +0.2291 · confianza -0.8712 · cercanía -0.3232
   smearing S = 1.9472 · con él la suma en validación sigue siendo el 80.2% de la real
-escrito models\estimador_agix.joblib (51.9 MB)
+escrito models\estimador_pbe.joblib (51.9 MB)
 
 ==============================================================================================================================
 VERIFICACIÓN SOBRE LOS BLOQUES CONGELADOS
@@ -18,7 +18,7 @@ externo no Apache solo las respondidas  210     0.2652 0.6461   0.7713  0.1667  
 Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 9407.13it/s]
 
 ==============================================================================================================================
-LO QUE MOSTRARÍA AGIX PARA UN BACKLOG GENERADO
+LO QUE MOSTRARÍA PBE PARA UN BACKLOG GENERADO
 ==============================================================================================================================
 
   umbral absoluto: responde el 15% de las tareas

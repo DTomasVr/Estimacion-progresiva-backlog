@@ -30,7 +30,7 @@ import joblib
 import numpy as np
 
 sys.path.insert(0, "src")
-V6 = Path("models/estimador_agix_v6.joblib")
+V6 = Path("models/estimador_pbe_v6.joblib")
 TOL = 1e-4
 TEXTOS = [
     "Add a filter to the search bar", "Fix login redirect loop",

@@ -38,7 +38,7 @@ _s.loader.exec_module(ev)
 
 def tareas_banco():
     d = pd.read_parquet(BENCH / "muestra.parquet")[["task_id"]]
-    t = pd.read_parquet("data/processed/agix_effort_v4.parquet", columns=["task_id", "title"])
+    t = pd.read_parquet("data/processed/pbe_effort_v4.parquet", columns=["task_id", "title"])
     return d.merge(t.drop_duplicates("task_id"), on="task_id", how="left")
 
 

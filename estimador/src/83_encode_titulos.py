@@ -16,7 +16,7 @@ import numpy as np
 import pandas as pd
 
 sys.path.insert(0, "src")
-DATA = "data/processed/agix_effort_v4.parquet"
+DATA = "data/processed/pbe_effort_v4.parquet"
 MODELO = "sentence-transformers/paraphrase-multilingual-mpnet-base-v2"
 SALIDA = "data/processed/embeddings/v4_mpnet_titulos"
 

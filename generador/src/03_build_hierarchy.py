@@ -20,7 +20,7 @@ import time
 
 import pandas as pd
 
-AGIX = r"C:\Users\User\Documents\Programacao\Agix-Dataset\data\interim"
+PBE = r"C:\Users\User\Documents\Programacao\PBE-Dataset\data\interim"
 BASE = r"F:\Software Task generation Model"
 REPO_A_JIRA = {"Spring": "Spring", "Sonatype": "Sonatype", "Apache": "Apache",
                "Atlassian": "Jira", "Hyperledger": "Hyperledger", "MongoDB": "MongoDB"}
@@ -60,8 +60,8 @@ EJ = pd.concat(ej, ignore_index=True)
 EJ["dataset"] = "jira"
 
 # ---------------------------------------------------------------------- TAWOS
-P = pd.read_parquet(f"{AGIX}/Project.parquet")
-R = pd.read_parquet(f"{AGIX}/Repository.parquet")[["ID", "Name"]].rename(
+P = pd.read_parquet(f"{PBE}/Project.parquet")
+R = pd.read_parquet(f"{PBE}/Repository.parquet")[["ID", "Name"]].rename(
     columns={"ID": "Repository_ID", "Name": "repo"})
 P = P.merge(R, on="Repository_ID", how="left")
 P["jira_source"] = P.repo.map(REPO_A_JIRA)
@@ -69,7 +69,7 @@ jira_keys = set(zip(J.source, J.project_key))
 P["overlap"] = [(s, k) in jira_keys for s, k in zip(P.jira_source, P.Project_Key)]
 fase(f"TAWOS proyectos solapados con Jira: {int(P.overlap.sum())} de {len(P)}")
 
-T = pd.read_parquet(f"{AGIX}/Issue.parquet",
+T = pd.read_parquet(f"{PBE}/Issue.parquet",
                     columns=["ID", "Issue_Key", "Title", "Description_Text", "Type",
                              "Status", "Resolution", "Creation_Date", "Project_ID"])
 T = T.merge(P[["ID", "Project_Key", "Name", "repo", "overlap"]].rename(columns={"ID": "Project_ID"}),

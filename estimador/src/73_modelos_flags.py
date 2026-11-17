@@ -1,6 +1,6 @@
 """Train many algorithms on the flags dataset alone and compare with the vector.
 
-Input is ONLY data/processed/flags/agix_flags.parquet: hours and binary flags.
+Input is ONLY data/processed/flags/pbe_flags.parquet: hours and binary flags.
 The 768-d vectors are loaded solely to build the two reference models the flags
 must be compared against:
   vector 768 · HGB         the text vector alone, no source, no numeric features
@@ -42,8 +42,8 @@ import exp_common as E  # noqa: E402
 
 warnings.filterwarnings("ignore")
 pd.set_option("display.width", 260)
-FLAGS = "data/processed/flags/agix_flags.parquet"
-V4 = "data/processed/agix_effort_v4.parquet"
+FLAGS = "data/processed/flags/pbe_flags.parquet"
+V4 = "data/processed/pbe_effort_v4.parquet"
 EMB = "data/processed/embeddings/v4_mpnet_congelado"
 RES = Path("results/flags")
 NUM = ["n_links", "n_links_estructurales", "n_componentes", "tiene_asignado"]

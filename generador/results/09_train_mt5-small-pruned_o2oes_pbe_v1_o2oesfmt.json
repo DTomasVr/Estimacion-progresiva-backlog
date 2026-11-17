@@ -1,5 +1,5 @@
 {
- "modelo": "F:/Software Task generation Model/models/mt5-small-pruned_o2oes_agix_v1",
+ "modelo": "F:/Software Task generation Model/models/mt5-small-pruned_o2oes_pbe_v1",
  "bs": 32,
  "max_out": 48,
  "lr": 0.0005,

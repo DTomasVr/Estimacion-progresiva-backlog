@@ -5,8 +5,8 @@ WALL-CLOCK TIME TO A COMPLETE BACKLOG (stories + their tasks), measured per
 project, plus the story-set quality under the same metric.
 
 LLM arms (Ollama, same machine): one call for the stories, then one call per
-story for its tasks -- exactly what Agix does today. Two conditions:
-  cero      zero-shot, what Agix does now
+story for its tasks -- exactly what PBE does today. Two conditions:
+  cero      zero-shot, what PBE does now
   ejemplos  same retrieved neighbours our model gets (the hard baseline)
 
 Contamination probe: public Jira/Dalpiaz text may be in the LLMs' training
@@ -123,14 +123,14 @@ def main():
     print(f"pipeline cargado en {p.carga_s}s", flush=True)
     p(C.entrada.iloc[0], k_historias=4)      # warm-up: CUDA init must not land on case 1
     for _, c in C.iterrows():
-        if ("agix", "-", c.parent_uid) in hechos:
+        if ("pbe", "-", c.parent_uid) in hechos:
             continue
         torch.cuda.synchronize()
         t = time.time()
         r = p(c.entrada, k_historias=K_HISTORIAS)
         torch.cuda.synchronize()
         dt = time.time() - t
-        fh.write(json.dumps(dict(sistema="agix", condicion="-", caso=c.parent_uid, fuente=c.fuente,
+        fh.write(json.dumps(dict(sistema="pbe", condicion="-", caso=c.parent_uid, fuente=c.fuente,
                                  segundos=round(dt, 2), historias=[h["historia"] for h in r["historias"]],
                                  tareas=[h["tareas"] for h in r["historias"]],
                                  n_tareas=r["n_tareas"], tiempos=r["tiempos"]), ensure_ascii=False) + "\n")
@@ -139,7 +139,7 @@ def main():
     # already in memory (re-loading SBERT after freeing the pipeline crashes the process)
     ctx, _ = p._vecinos(C.entrada.tolist(), p.EA, p.A, "hijos")
     ctxs = dict(zip(C.parent_uid, ctx))
-    print(f"[{time.strftime('%H:%M')}] brazo agix listo; contextos para los LLM listos", flush=True)
+    print(f"[{time.strftime('%H:%M')}] brazo pbe listo; contextos para los LLM listos", flush=True)
     del p
     torch.cuda.empty_cache()
 

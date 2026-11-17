@@ -1,5 +1,5 @@
 {
- "modelo": "models/mt5-small-pruned_o2o_agix_v1_o2ofmt_agix_v1",
+ "modelo": "models/mt5-small-pruned_o2o_pbe_v1_o2ofmt_pbe_v1",
  "bs": 32,
  "max_out": 48,
  "lr": 0.0005,

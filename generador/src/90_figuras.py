@@ -353,7 +353,7 @@ def figura4():
               "sigue a _o2o_o2ofmt", "modelo", tam=6.9)
     a2 = caja(ax, 2.68, 1.98, 2.35,
               "ABAJO 1  _hist_v5\nbs 16 · lr 5e-4 · mejor ép. 1/4\n"
-              "sigue a _hist_agix_v1", "modelo", tam=6.9)
+              "sigue a _hist_pbe_v1", "modelo", tam=6.9)
     a3 = caja(ax, 5.16, 1.98, 2.24,
               "ABAJO 2  _hist_bs8_lr9.2e-4\nbs 8 · lr 9,2e-4 · mejor ép. 3\n"
               "búsqueda de hiperparámetros", "modelo", tam=6.9)
@@ -376,7 +376,7 @@ def figura4():
     etiqueta(ax, 7.40, yc - 0.13, "solo datos reales, sin profesor", tam=6.6, ha="right")
 
     caja(ax, 0.30, 1.20, 3.30,
-         "SBERT propio   sbert_agix_v1\ndesde paraphrase-multilingual-mpnet-base-v2",
+         "SBERT propio   sbert_pbe_v1\ndesde paraphrase-multilingual-mpnet-base-v2",
          "modelo", tam=7.1)
     etiqueta(ax, 3.80, 0.97,
              "recupera, selecciona el backlog y deduplica,\nen todo el pipeline",

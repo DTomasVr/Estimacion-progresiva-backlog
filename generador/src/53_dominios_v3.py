@@ -132,7 +132,7 @@ PLANTILLAS = [
     "{articulo} with {f1} and {f2}. Both {p1} and {p2} use it daily; {p3} need {f3}.",
 ]
 # Misma plantilla con el publico QUITADO, en el mismo orden. Las descripciones
-# que llegan a Agix muchas veces no dicen para quien es el producto, y si todos
+# que llegan a PBE muchas veces no dicen para quien es el producto, y si todos
 # los ejemplos de entrenamiento lo dicen, el modelo aprende a COPIAR un
 # sustantivo de la entrada al hueco del rol en vez de elegir un actor plausible
 # del dominio. Cada descripcion genera tambien su variante sin publico, con las
@@ -192,8 +192,8 @@ for sector, (articulo, _pub, feats) in SECTORES.items():
 import numpy as np  # noqa: E402
 from sentence_transformers import SentenceTransformer  # noqa: E402
 
-sb = SentenceTransformer(f"{BASE}/models/sbert_agix_v1",
-                         device=os.environ.get("AGIX_DEVICE", "cuda"))
+sb = SentenceTransformer(f"{BASE}/models/sbert_pbe_v1",
+                         device=os.environ.get("PBE_DEVICE", "cuda"))
 E = sb.encode([c["descripcion"] for c in casos], convert_to_tensor=True,
               normalize_embeddings=True, show_progress_bar=False)
 S = (E @ E.T).float().cpu().numpy()

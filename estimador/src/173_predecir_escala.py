@@ -61,7 +61,7 @@ def mide(real, pred, etq):
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     sw = df[df.is_software_task == 1].copy()
     sw = sw[~sw.fuente_jira.eq("Apache")].reset_index(drop=True)
     y = sw.effort_hours.to_numpy()
@@ -177,7 +177,7 @@ def al_total():
     calculado dejando fuera el proyecto que se evalua. Es la quinta vez que
     aparece este mismo desajuste.
     """
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     sw = df[df.is_software_task == 1].copy()
     sw = sw[~sw.fuente_jira.eq("Apache")].reset_index(drop=True)
     y = sw.effort_hours.to_numpy()
@@ -235,7 +235,7 @@ if __name__ == "__main__":
 def significancia():
     """Con 114 proyectos, cualquier mejora hay que contrastarla antes de creersela."""
     from scipy.stats import wilcoxon, binomtest
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     sw = df[df.is_software_task == 1].copy()
     sw = sw[~sw.fuente_jira.eq("Apache")].reset_index(drop=True)
     y = sw.effort_hours.to_numpy()

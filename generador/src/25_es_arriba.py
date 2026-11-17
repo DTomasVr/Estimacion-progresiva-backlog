@@ -1,6 +1,6 @@
 """Spanish inputs for the upper half.
 
-Agix sends a Spanish kickoff description, but the One2One upper model only ever
+PBE sends a Spanish kickoff description, but the One2One upper model only ever
 saw English inputs, so it drifts off topic ("As a fabric developer..." for a
 cleaning-services app). The lower half does not have this problem because 30 %
 of its training inputs were translated.

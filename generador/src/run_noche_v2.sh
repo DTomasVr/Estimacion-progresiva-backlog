@@ -11,7 +11,7 @@
 # Al final espera a que el scraper acabe y deja la senal para dormir la PC.
 set -u
 BASE="/f/Software Task generation Model"
-PY="/c/Users/User/Documents/Programacao/Agix-Dataset/.venv/Scripts/python.exe"
+PY="/c/Users/User/Documents/Programacao/PBE-Dataset/.venv/Scripts/python.exe"
 LOG="$BASE/logs/noche_v2.log"
 export PYTHONWARNINGS=ignore PYTHONIOENCODING=utf-8
 cd "$BASE"
@@ -34,12 +34,12 @@ di "fase 3: mezclando"
 grep -E "duplicadas|utiles|s2s_mix" logs/43_mezcla_v2.log >> "$LOG"
 
 di "fase 4a: entrenando abajo (mix v2)"
-DATOS=mix "$PY" -u src/09_train_mt5.py models/mt5-small-pruned_hist_agix_v1 16 192 5e-4 4 \
+DATOS=mix "$PY" -u src/09_train_mt5.py models/mt5-small-pruned_hist_pbe_v1 16 192 5e-4 4 \
   > logs/44_train_abajo_v2.log 2>&1
 grep -E "^  epoca|parada|val loss inicial" logs/44_train_abajo_v2.log >> "$LOG"
 
 di "fase 4b: entrenando arriba (mixa v2)"
-DATOS=mixa "$PY" -u src/09_train_mt5.py models/mt5-small-pruned_o2o_agix_v1_o2ofmt_agix_v1 32 48 5e-4 4 \
+DATOS=mixa "$PY" -u src/09_train_mt5.py models/mt5-small-pruned_o2o_pbe_v1_o2ofmt_pbe_v1 32 48 5e-4 4 \
   > logs/44_train_arriba_v2.log 2>&1
 grep -E "^  epoca|parada|val loss inicial" logs/44_train_arriba_v2.log >> "$LOG"
 
@@ -49,13 +49,13 @@ di "fase 5a: no-regresion y acuerdo con el profesor"
 grep -hE "real:|consumo:" logs/44_eval_abajo_v2.log logs/44_eval_arriba_v2.log >> "$LOG"
 
 di "fase 5b: LA PRUEBA QUE IMPORTA - historias humanas reales (v2)"
-AGIX_DEVICE=cpu "$PY" src/49_eval_real.py ambos > logs/49_real_v2.log 2>&1
+PBE_DEVICE=cpu "$PY" src/49_eval_real.py ambos > logs/49_real_v2.log 2>&1
 grep -E "^##### (viejo|nuevo):|nuevo - viejo|gana el nuevo" logs/49_real_v2.log >> "$LOG"
 
 di "fase 5c: la misma prueba con la v1 de 30 sectores, para aislar el efecto de la amplitud"
-AGIX_DEVICE=cpu AGIX_SUFIJO=_30sec \
-  AGIX_ARRIBA="$BASE/models/mt5-small-pruned_o2ofmt_30sec" \
-  AGIX_ABAJO="$BASE/models/mt5-small-pruned_hist_30sec" \
+PBE_DEVICE=cpu PBE_SUFIJO=_30sec \
+  PBE_ARRIBA="$BASE/models/mt5-small-pruned_o2ofmt_30sec" \
+  PBE_ABAJO="$BASE/models/mt5-small-pruned_hist_30sec" \
   "$PY" src/49_eval_real.py nuevo > logs/49_real_30sec.log 2>&1
 grep -E "^##### nuevo:" logs/49_real_30sec.log >> "$LOG"
 

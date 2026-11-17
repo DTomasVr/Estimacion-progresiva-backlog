@@ -33,7 +33,7 @@ from sentence_transformers import SentenceTransformer
 from transformers import AutoTokenizer, MT5ForConditionalGeneration
 
 BASE = r"F:\Software Task generation Model"
-SBERT = f"{BASE}/models/sbert_agix_v1"
+SBERT = f"{BASE}/models/sbert_pbe_v1"
 SEED = 20260922
 BS = 16
 
@@ -194,7 +194,7 @@ def barrido(ruta, n=250):
 def test(rutas, cfg_nombre):
     t0 = time.time()
     sb = SentenceTransformer(SBERT, device="cuda")
-    d = pd.read_parquet(os.environ.get("AGIX_TEST_PARQUET")
+    d = pd.read_parquet(os.environ.get("PBE_TEST_PARQUET")
                        or f"{BASE}/data/processed/s2s_pruned_test.parquet").reset_index(drop=True)
     refs = [list(x) for x in d.tareas]
     res = {}

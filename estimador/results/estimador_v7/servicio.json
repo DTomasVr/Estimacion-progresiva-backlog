@@ -10,5 +10,5 @@
  "acuerdo_vecinos": 0.9472794591113973,
  "umbral_dispersion": 1.6555590748786926,
  "ram_pico_pipeline_completa_cpu_gb": 5.21,
- "nota_pipeline": "medida en la integracion del 21/10/2026: generador + estimador v7 en CPU, tres backlogs, paquete F:/Agix-produccion"
+ "nota_pipeline": "medida en la integracion del 21/10/2026: generador + estimador v7 en CPU, tres backlogs, paquete F:/PBE-produccion"
 }

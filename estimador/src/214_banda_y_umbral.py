@@ -57,7 +57,7 @@ def main():
     m = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(m)
 
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     sw = df[df.is_software_task == 1]
     sw = sw[~sw.fuente_jira.eq("Apache")]
     rng = np.random.default_rng(SEMILLA)

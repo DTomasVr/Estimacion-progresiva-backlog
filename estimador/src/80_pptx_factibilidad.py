@@ -82,7 +82,7 @@ def main():
 
     # ------------------------------------------------------------------ 2
     s, y = P.lamina(prs, "Las dos decisiones",
-                    "Agix ya usa un LLM para generar las tareas. La pregunta es quién "
+                    "PBE ya usa un LLM para generar las tareas. La pregunta es quién "
                     "pone las horas y con qué información.")
     y = P.vinetas(s, y, [
         ("DECISIÓN 1", "¿El estimador es nuestro modelo entrenado, o le pedimos las "
@@ -220,7 +220,7 @@ def main():
                     "La conclusión no es “el LLM no sirve”, sino “el LLM "
                     "no es el estimador”.")
     y = P.vinetas(s, y, [
-        "Generar y descomponer las tareas: es lo que ya hace en Agix y es donde no "
+        "Generar y descomponer las tareas: es lo que ya hace en PBE y es donde no "
         "tiene competencia.",
         f"Como segunda opinión opcional: gemma2 combinado con nuestro modelo y con "
         f"el historial del proyecto baja el MdMRE a "
@@ -390,7 +390,7 @@ def main():
         f"apenas mueve el MdMRE ({n(ec(TAW, 'R0', 'MdMRE'))} en frío frente a "
         f"{n(ec(TAW, GANADOR[:2], 'MdMRE'))} corregido).",
         "Y el corpus no contiene tareas escritas en español ni proyectos del tamaño de "
-        "los de Agix; la validación real tiene que hacerse con datos del producto.",
+        "los de PBE; la validación real tiene que hacerse con datos del producto.",
     ], tam=15, salto=Inches(0.62))
 
     P.numerar(prs)

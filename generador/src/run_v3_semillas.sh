@@ -7,22 +7,22 @@
 # midiendo son -0,0276 y -0,0155, asi que sin fijar la semilla no se puede
 # distinguir un metodo del otro.
 #
-# Con AGIX_SEED la generacion es determinista, y las dos ramas de cada corrida
+# Con PBE_SEED la generacion es determinista, y las dos ramas de cada corrida
 # (produccion y candidato) comparten semilla, asi que la comparacion es pareada y
 # reproducible. Se repite con tres semillas para no depender de un solo sorteo.
 #
 # Espera a que run_v3b.sh termine. NO EDITAR MIENTRAS CORRE.
 set -u
 BASE="/f/Software Task generation Model"
-PY="/c/Users/User/Documents/Programacao/Agix-Dataset/.venv/Scripts/python.exe"
+PY="/c/Users/User/Documents/Programacao/PBE-Dataset/.venv/Scripts/python.exe"
 LOG="$BASE/logs/v3.log"
-export PYTHONWARNINGS=ignore PYTHONIOENCODING=utf-8 AGIX_DEVICE=cuda AGIX_CONJUNTO=no
+export PYTHONWARNINGS=ignore PYTHONIOENCODING=utf-8 PBE_DEVICE=cuda PBE_CONJUNTO=no
 cd "$BASE"
 di() { echo "[$(date '+%F %T')] $*" | tee -a "$LOG"; }
 
-A_CON="$BASE/models/mt5-small-pruned_o2o_agix_v1_o2ofmt_agix_v1_v3r_agix_v1"
-A_B="$BASE/models/mt5-small-pruned_o2o_agix_v1_o2ofmt_agix_v1_v3b_agix_v1"
-ABAJO="$BASE/models/mt5-small-pruned_hist_agix_v1_v3_agix_v1"
+A_CON="$BASE/models/mt5-small-pruned_o2o_pbe_v1_o2ofmt_pbe_v1_v3r_pbe_v1"
+A_B="$BASE/models/mt5-small-pruned_o2o_pbe_v1_o2ofmt_pbe_v1_v3b_pbe_v1"
+ABAJO="$BASE/models/mt5-small-pruned_hist_pbe_v1_v3_pbe_v1"
 
 di "esperando a que termine run_v3b.sh"
 while ! grep -qE "SEGUIMIENTO TERMINADO|FALLO" "$LOG"; do sleep 45; done
@@ -33,7 +33,7 @@ for s in 20260926 777 31337; do
   for par in "v3r|$A_CON" "v3b|$A_B"; do
     etq="${par%%|*}"; arriba="${par#*|}"
     [ -d "$arriba" ] || { di "  no existe $arriba, salto $etq"; continue; }
-    AGIX_SEED="$s" AGIX_ARRIBA="$arriba" AGIX_ABAJO="$ABAJO" AGIX_SUFIJO="_${etq}_s$s" \
+    PBE_SEED="$s" PBE_ARRIBA="$arriba" PBE_ABAJO="$ABAJO" PBE_SUFIJO="_${etq}_s$s" \
       "$PY" -u src/49_eval_real.py ambos > "logs/49_${etq}_s$s.log" 2>&1
     linea=$(grep -E "nuevo - viejo" "logs/49_${etq}_s$s.log" | head -1)
     viejo=$(grep -oE "viejo: sF1 conjunto [0-9.]+" "logs/49_${etq}_s$s.log" | tail -1)

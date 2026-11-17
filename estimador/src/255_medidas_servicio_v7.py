@@ -26,7 +26,7 @@ def main():
     s = importlib.util.spec_from_file_location("e6", "src/171_estimador_v6.py")
     e6 = importlib.util.module_from_spec(s)
     s.loader.exec_module(e6)
-    est = e6.EstimadorV6(paquete=Path("models/estimador_agix_v7.joblib"), dispositivo="cpu")
+    est = e6.EstimadorV6(paquete=Path("models/estimador_pbe_v7.joblib"), dispositivo="cpu")
     carga = time.time() - t0
     gen = json.load(open("results/prueba_extremo/salidas.json", encoding="utf-8"))
     tg = [t for c in gen for h in c["fp32"]["historias"] for t in h["tareas"]][:42]
@@ -41,7 +41,7 @@ def main():
     proyecto = time.time() - t
     mi = pr.memory_info()
 
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     sw = df[(df.is_software_task == 1) & ~df.fuente_jira.eq("Apache")]
     E5 = np.load("data/processed/embeddings/codificadores/e5-large.npy")
     Vn = E5 / np.maximum(np.linalg.norm(E5, axis=1, keepdims=True), 1e-9)
@@ -60,7 +60,7 @@ def main():
            "umbral_dispersion": float(est.p["umbral_dispersion"]),
            "ram_pico_pipeline_completa_cpu_gb": 5.21,
            "nota_pipeline": "medida en la integracion del 21/10/2026: generador + estimador v7 "
-                            "en CPU, tres backlogs, paquete F:/Agix-produccion"}
+                            "en CPU, tres backlogs, paquete F:/PBE-produccion"}
     json.dump(res, open(OUT / "servicio.json", "w"), indent=1)
     print(json.dumps(res, indent=1))
 

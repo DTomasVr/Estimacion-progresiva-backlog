@@ -25,7 +25,7 @@ import sys
 import numpy as np
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SBERT = f"{BASE}/models/sbert_agix_v1"
+SBERT = f"{BASE}/models/sbert_pbe_v1"
 
 RE_ROL = re.compile(r"^\s*as\s+(?:an?|the)\s+([^,]{2,40}?)\s*,", re.I)
 
@@ -37,7 +37,7 @@ def rol(h):
 
 def cargar_sbert():
     from sentence_transformers import SentenceTransformer
-    return SentenceTransformer(SBERT, device=os.environ.get("AGIX_DEVICE", "cuda"))
+    return SentenceTransformer(SBERT, device=os.environ.get("PBE_DEVICE", "cuda"))
 
 
 def atribucion(modelo, backlogs):
@@ -258,15 +258,15 @@ DESCRIPCIONES = [
 
 
 def modelo_salida(k=12):
-    os.environ.setdefault("AGIX_DEVICE", "cuda")
+    os.environ.setdefault("PBE_DEVICE", "cuda")
     spec = importlib.util.spec_from_file_location("pl", f"{BASE}/src/19_pipeline.py")
     pl = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(pl)
-    if os.environ.get("AGIX_ARRIBA"):        # medir otra version sin editar nada
-        pl.M_ARRIBA = os.environ["AGIX_ARRIBA"]
-    if os.environ.get("AGIX_ABAJO"):
-        pl.M_ABAJO = os.environ["AGIX_ABAJO"]
-        pl.M_ABAJO2 = os.environ.get("AGIX_ABAJO2", pl.M_ABAJO2)
+    if os.environ.get("PBE_ARRIBA"):        # medir otra version sin editar nada
+        pl.M_ARRIBA = os.environ["PBE_ARRIBA"]
+    if os.environ.get("PBE_ABAJO"):
+        pl.M_ABAJO = os.environ["PBE_ABAJO"]
+        pl.M_ABAJO2 = os.environ.get("PBE_ABAJO2", pl.M_ABAJO2)
     print(f"  arriba: {os.path.basename(pl.M_ARRIBA)}\n  abajo : {os.path.basename(pl.M_ABAJO)}")
     P = pl.Pipeline(traducir=False)
     out = []

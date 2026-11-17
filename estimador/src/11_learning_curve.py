@@ -33,7 +33,7 @@ def scores(true_h, pred_h):
 
 
 def main():
-    df = pd.read_parquet("data/processed/agix_effort_dataset.parquet")
+    df = pd.read_parquet("data/processed/pbe_effort_dataset.parquet")
     sw = df[df.is_software_task == 1]
     tr_all = sw[sw.split == "train"]
     te = sw[sw.split == "test"]

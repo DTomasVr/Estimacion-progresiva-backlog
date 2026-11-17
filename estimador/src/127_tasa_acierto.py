@@ -50,9 +50,9 @@ import exp_common as E  # noqa: E402
 
 warnings.filterwarnings("ignore")
 pd.set_option("display.width", 220)
-DATA = "data/processed/agix_effort_v4.parquet"
+DATA = "data/processed/pbe_effort_v4.parquet"
 CACHE = Path("data/processed/embeddings/codificadores")
-ART = Path("models/estimador_agix_v3.joblib")
+ART = Path("models/estimador_pbe_v3.joblib")
 OUT = Path("results/tasa_acierto")
 SEP = "=" * 124
 MIN_CUENTA = 60          # un valor entra en la rejilla con al menos estas apariciones

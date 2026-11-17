@@ -22,7 +22,7 @@ import numpy as np
 import pandas as pd
 
 sys.path.insert(0, "src")
-V6 = Path("models/estimador_agix_v6.joblib")
+V6 = Path("models/estimador_pbe_v6.joblib")
 MIN_TAREAS, LAMBDA, SORTEOS = 8, 12, 20
 KS = (0, 3, 5, 10, 20)
 CORTES = [20, 60, 200]
@@ -34,7 +34,7 @@ def main():
     if not resp.exists():
         shutil.copy2(V6, resp)
         print(f"respaldo en {resp.name}")
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     sw = df[df.is_software_task == 1]
     sw = sw[~sw.fuente_jira.eq("Apache")].reset_index(drop=True)
     pred = np.clip(np.load("results/modelo_total/pred_total.npy"), 1e-6, None)

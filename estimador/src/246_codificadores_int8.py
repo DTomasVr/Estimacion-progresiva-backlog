@@ -119,7 +119,7 @@ def main():
     OUT.mkdir(parents=True, exist_ok=True)
     DIR.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     sw = df[(df.is_software_task == 1) & ~df.fuente_jira.eq("Apache")
             & (df.split_t3 == "test")].reset_index(drop=True)
     tit = sw.title.fillna("").astype(str).tolist()

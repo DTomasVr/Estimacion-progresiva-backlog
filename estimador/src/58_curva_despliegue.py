@@ -1,7 +1,7 @@
-"""The deployment curve: what Agix can promise on day 1, day 30 and day 90.
+"""The deployment curve: what PBE can promise on day 1, day 30 and day 90.
 
 The external block is 150 projects no model has ever seen, which is exactly the
-position Agix is in when a customer creates their first project. Tasks arrive in
+position PBE is in when a customer creates their first project. Tasks arrive in
 order; each finished one is a label the system did not have before. So the
 honest way to describe the product is not a single MdMRE but a curve: accuracy
 as a function of how many tasks that project has already completed.
@@ -27,7 +27,7 @@ import exp_common as E  # noqa: E402
 
 warnings.filterwarnings("ignore")
 pd.set_option("display.width", 250)
-DATA = "data/processed/agix_effort_v4.parquet"
+DATA = "data/processed/pbe_effort_v4.parquet"
 EMB = "data/processed/embeddings/v4_mpnet_congelado"
 NUM = ["n_links", "n_links_estructurales", "n_componentes", "tiene_asignado"]
 CAT = ["task_kind", "source"]

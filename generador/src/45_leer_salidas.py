@@ -16,19 +16,19 @@ import os
 import sys
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-os.environ.setdefault("AGIX_DEVICE", "cuda")
+os.environ.setdefault("PBE_DEVICE", "cuda")
 spec = importlib.util.spec_from_file_location("pl", f"{BASE}/src/19_pipeline.py")
 pl = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(pl)
 
-NUEVO_ABAJO = os.environ.get("AGIX_ABAJO",
-    f"{BASE}/models/mt5-small-pruned_hist_agix_v1_mix_agix_v1")
-NUEVO_ARRIBA = os.environ.get("AGIX_ARRIBA",
-    f"{BASE}/models/mt5-small-pruned_o2o_agix_v1_o2ofmt_agix_v1_mixa_agix_v1")
+NUEVO_ABAJO = os.environ.get("PBE_ABAJO",
+    f"{BASE}/models/mt5-small-pruned_hist_pbe_v1_mix_pbe_v1")
+NUEVO_ARRIBA = os.environ.get("PBE_ARRIBA",
+    f"{BASE}/models/mt5-small-pruned_o2o_pbe_v1_o2ofmt_pbe_v1_mixa_pbe_v1")
 
 CASOS = [
-    ("A · caso real de Agix", "An e-commerce platform for selling audiobooks and ebooks."),
-    ("A · caso real de Agix", "A web application to book home cleaning services, with recurring "
+    ("A · caso real de PBE", "An e-commerce platform for selling audiobooks and ebooks."),
+    ("A · caso real de PBE", "A web application to book home cleaning services, with recurring "
                               "appointments and in-app payments."),
     ("B · sector NO entrenado", "An app to find and pay for street parking, with a timer, "
                                 "reminders before the meter expires and monthly invoices."),

@@ -51,10 +51,10 @@ import exp_common as E  # noqa: E402
 
 warnings.filterwarnings("ignore")
 pd.set_option("display.width", 225)
-DATA = "data/processed/agix_effort_v4.parquet"
+DATA = "data/processed/pbe_effort_v4.parquet"
 CACHE = Path("data/processed/embeddings/codificadores")
 BASE_COD = "intfloat/multilingual-e5-large"
-PAQUETE = Path("models/estimador_agix_v2.joblib")
+PAQUETE = Path("models/estimador_pbe_v2.joblib")
 OUT = Path("results/estimador_v2")
 LAMBDA, N_BOLSA, COBERTURA = 12.0, 7, 0.5
 SEP = "=" * 128

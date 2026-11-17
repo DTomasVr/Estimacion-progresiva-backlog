@@ -23,7 +23,7 @@ Apache esta lleno de ellos.
 Se evalua SIEMPRE sobre los mismos 114 proyectos sin Apache, dejando fuera el que
 se mide, con Apache siempre en el entrenamiento. El SVD se ajusta dentro del
 pliegue. No se usa ningun rasgo que diga si el proyecto es de Apache, porque en
-un proyecto nuevo de Agix eso no se sabe.
+un proyecto nuevo de PBE eso no se sabe.
 """
 import json
 import os
@@ -63,8 +63,8 @@ def mide(real, pred, etq):
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
-    f = joblib.load("models/estimador_agix_v3.joblib")
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    f = joblib.load("models/estimador_pbe_v3.joblib")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     sw = df[df.is_software_task == 1].copy().reset_index(drop=True)
     sw["ap"] = sw.fuente_jira.eq("Apache")
     tit = sw.title.fillna("").astype(str)

@@ -13,7 +13,7 @@ Why this shape:
 
     pip install modal && modal setup
     modal deploy src/34_modal_app.py          # CPU (cheapest)
-    AGIX_GPU=1 modal deploy src/34_modal_app.py   # with an L4
+    PBE_GPU=1 modal deploy src/34_modal_app.py   # with an L4
 
 Only the model folders and the retrieval tables are added to the image; the
 training data and the corpora stay out.
@@ -22,21 +22,21 @@ import os
 
 import modal
 
-USA_GPU = os.environ.get("AGIX_GPU") == "1"
+USA_GPU = os.environ.get("PBE_GPU") == "1"
 LOCAL = "F:/Software Task generation Model"
 imagen = (
     modal.Image.debian_slim(python_version="3.12")
     .pip_install("torch==2.11.0", "transformers==5.16.1", "sentence-transformers==6.0.1",
                  "pandas", "pyarrow", "sentencepiece", "protobuf")
-    .add_local_dir(f"{LOCAL}/models/sbert_agix_v1", "/modelos/sbert_agix_v1", copy=True)
-    .add_local_dir(f"{LOCAL}/models/mt5-small-pruned_hist_agix_v1", "/modelos/abajo", copy=True)
-    .add_local_dir(f"{LOCAL}/models/mt5-small-pruned_o2o_agix_v1_o2ofmt_agix_v1", "/modelos/arriba", copy=True)
+    .add_local_dir(f"{LOCAL}/models/sbert_pbe_v1", "/modelos/sbert_pbe_v1", copy=True)
+    .add_local_dir(f"{LOCAL}/models/mt5-small-pruned_hist_pbe_v1", "/modelos/abajo", copy=True)
+    .add_local_dir(f"{LOCAL}/models/mt5-small-pruned_o2o_pbe_v1_o2ofmt_pbe_v1", "/modelos/arriba", copy=True)
     .add_local_file(f"{LOCAL}/src/19_pipeline.py", "/app/pipeline.py", copy=True)
     .add_local_file(f"{LOCAL}/data/processed/pipeline_emb.npz", "/datos/pipeline_emb.npz", copy=True)
     .add_local_file(f"{LOCAL}/data/processed/s2s_o2o_train.parquet", "/datos/s2s_o2o_train.parquet", copy=True)
     .add_local_file(f"{LOCAL}/data/processed/s2s_hist_train.parquet", "/datos/s2s_hist_train.parquet", copy=True)
 )
-app = modal.App("agix-generador", image=imagen)
+app = modal.App("pbe-generador", image=imagen)
 
 
 @app.cls(gpu="L4" if USA_GPU else None, cpu=4, memory=8192,
@@ -47,16 +47,16 @@ class Generador:
     def cargar(self):
         import importlib.util
         import sys
-        os.environ["AGIX_DEVICE"] = "cuda" if USA_GPU else "cpu"
+        os.environ["PBE_DEVICE"] = "cuda" if USA_GPU else "cpu"
         sys.path.insert(0, "/app")
         spec = importlib.util.spec_from_file_location("pl", "/app/pipeline.py")
         pl = importlib.util.module_from_spec(spec)
         # the paths inside the image differ from the local ones
         codigo = open("/app/pipeline.py", encoding="utf-8").read()
         codigo = (codigo.replace(r'BASE = r"F:\Software Task generation Model"', 'BASE = "/app"')
-                  .replace('f"{BASE}/models/sbert_agix_v1"', '"/modelos/sbert_agix_v1"')
-                  .replace('f"{BASE}/models/mt5-small-pruned_hist_agix_v1"', '"/modelos/abajo"')
-                  .replace('f"{BASE}/models/mt5-small-pruned_o2o_agix_v1_o2ofmt_agix_v1"', '"/modelos/arriba"')
+                  .replace('f"{BASE}/models/sbert_pbe_v1"', '"/modelos/sbert_pbe_v1"')
+                  .replace('f"{BASE}/models/mt5-small-pruned_hist_pbe_v1"', '"/modelos/abajo"')
+                  .replace('f"{BASE}/models/mt5-small-pruned_o2o_pbe_v1_o2ofmt_pbe_v1"', '"/modelos/arriba"')
                   .replace('f"{BASE}/data/processed/pipeline_emb.npz"', '"/datos/pipeline_emb.npz"')
                   .replace('f"{BASE}/data/processed/s2s_o2o_train.parquet"', '"/datos/s2s_o2o_train.parquet"')
                   .replace('f"{BASE}/data/processed/s2s_hist_train.parquet"', '"/datos/s2s_hist_train.parquet"')

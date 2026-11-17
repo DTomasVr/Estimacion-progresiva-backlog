@@ -37,8 +37,8 @@ from sklearn.model_selection import KFold
 
 sys.path.insert(0, "src")
 CACHE = Path("data/processed/embeddings/codificadores")
-V6 = Path("models/estimador_agix_v6.joblib")
-V7 = Path("models/estimador_agix_v7.joblib")
+V6 = Path("models/estimador_pbe_v6.joblib")
+V7 = Path("models/estimador_pbe_v7.joblib")
 OUT = Path("results/estimador_v7")
 K_VEC = 25
 ALFAS = np.logspace(-2, 3, 20)
@@ -52,7 +52,7 @@ def main():
     OUT.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
     p = dict(joblib.load(V6))
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     sw = df[df.is_software_task == 1]
     sw = sw[~sw.fuente_jira.eq("Apache")].reset_index(drop=True)
     tit = sw.title.fillna("").astype(str)

@@ -11,7 +11,7 @@ import numpy as np
 import pandas as pd
 
 pd.set_option("display.width", 250)
-PATH = "data/processed/agix_effort_v3.parquet"
+PATH = "data/processed/pbe_effort_v3.parquet"
 TR, VA = 0.60, 0.15
 MIN_PROJ = 80
 

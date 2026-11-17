@@ -6,7 +6,7 @@
 [transformers] The tied weights mapping and config for this model specifies to tie shared.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
 Loading weights:   0%|          | 0/190 [00:00<?, ?it/s]Loading weights:  72%|#######1  | 136/190 [00:00<00:00, 1335.30it/s]Loading weights: 100%|##########| 190/190 [00:00<00:00, 1668.85it/s]
 [transformers] The tied weights mapping and config for this model specifies to tie shared.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
-C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\transformers\models\marian\tokenization_marian.py:176: UserWarning: Recommended: pip install sacremoses.
+C:\Users\User\Documents\Programacao\PBE-Dataset\.venv\Lib\site-packages\transformers\models\marian\tokenization_marian.py:176: UserWarning: Recommended: pip install sacremoses.
   warnings.warn("Recommended: pip install sacremoses.")
 Loading weights:   0%|          | 0/254 [00:00<?, ?it/s]Loading weights:  15%|#5        | 39/254 [00:00<00:00, 285.82it/s]Loading weights:  36%|###5      | 91/254 [00:00<00:00, 341.14it/s]Loading weights:  56%|#####6    | 143/254 [00:00<00:00, 376.09it/s]Loading weights:  71%|#######1  | 181/254 [00:00<00:00, 370.21it/s]Loading weights:  88%|########7 | 223/254 [00:00<00:00, 357.37it/s]Loading weights: 100%|##########| 254/254 [00:01<00:00, 221.05it/s]
 tuberia cargada y caliente en cuda · 36 s

@@ -35,7 +35,7 @@ dominio,dominio 2 fuera,fuera 0.4569 vs dentro 0.4463,results/29_lodo_v2.csv,dif
 dominio,dominio 3 fuera,fuera 0.4811 vs dentro 0.4584,results/29_lodo_v2.csv,diferencia 0.0227
 dominio,dominio 4 fuera,fuera 0.4591 vs dentro 0.4521,results/29_lodo_v2.csv,diferencia 0.007
 banco,proyectos medidos,64,results/20_banco.jsonl,con los 4 sistemas presentes
-banco,agix -,4.17 s (p90 4.6),results/20_banco.jsonl,"n=64, tareas 49"
+banco,pbe -,4.17 s (p90 4.6),results/20_banco.jsonl,"n=64, tareas 49"
 banco,gemma2:9b cero,35.73 s (p90 45.3),results/20_banco.jsonl,"n=64, tareas 110"
 banco,gemma2:9b ejemplos,34.40 s (p90 45.0),results/20_banco.jsonl,"n=64, tareas 108"
 banco,llama3.1:8b cero,21.63 s (p90 25.2),results/20_banco.jsonl,"n=64, tareas 122"

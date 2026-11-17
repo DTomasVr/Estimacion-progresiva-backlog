@@ -2,7 +2,7 @@
 
 The estimate is the dominant signal, and its bias differs per developer
 (0.89x to 1.95x across the 23 people in SiP). This tests whether knowing WHO
-estimated lets us correct it -- which is precisely what Agix can learn from a
+estimated lets us correct it -- which is precisely what PBE can learn from a
 team's own history.
 
 Conditions, all on the same held-out tasks:
@@ -27,7 +27,7 @@ import exp_common as E  # noqa: E402
 import features as F  # noqa: E402
 
 pd.set_option("display.width", 250)
-E.DATA = "data/processed/agix_effort_v2.parquet"
+E.DATA = "data/processed/pbe_effort_v2.parquet"
 
 
 def load():

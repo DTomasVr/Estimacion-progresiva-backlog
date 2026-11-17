@@ -4,11 +4,11 @@
 # Los brazos de los LLM no se regeneran: sus salidas estaban guardadas.
 set -u
 BASE="/f/Software Task generation Model"
-PY="/c/Users/User/Documents/Programacao/Agix-Dataset/.venv/Scripts/python.exe"
+PY="/c/Users/User/Documents/Programacao/PBE-Dataset/.venv/Scripts/python.exe"
 LOG="$BASE/logs/banco_v5.log"
-export PYTHONWARNINGS=ignore PYTHONIOENCODING=utf-8 HF_HUB_OFFLINE=1 AGIX_DEVICE=cuda AGIX_SEED=20260926
+export PYTHONWARNINGS=ignore PYTHONIOENCODING=utf-8 HF_HUB_OFFLINE=1 PBE_DEVICE=cuda PBE_SEED=20260926
 cd "$BASE"
-echo "[$(date '+%F %T')] recalculando el brazo agix (64 proyectos)" > "$LOG"
+echo "[$(date '+%F %T')] recalculando el brazo pbe (64 proyectos)" > "$LOG"
 "$PY" -u src/20_banco_llms.py 64 >> "$LOG" 2>&1 || { echo "FALLO en 20" >> "$LOG"; exit 1; }
 echo "[$(date '+%F %T')] resumen pareado" >> "$LOG"
 "$PY" -u src/22_resumen_banco.py >> "$LOG" 2>&1 || echo "FALLO en 22" >> "$LOG"

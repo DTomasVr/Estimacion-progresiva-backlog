@@ -104,7 +104,7 @@ def main():
     n = int(sys.argv[2]) if len(sys.argv) > 2 else 40
     est = optuna.create_study(direction="maximize", sampler=optuna.samplers.TPESampler(seed=SEED),
                               pruner=SuccessiveHalvingPruner(min_resource=1, reduction_factor=3),
-                              study_name="agix_abajo",
+                              study_name="pbe_abajo",
                               storage=f"sqlite:///{BASE}/results/21_optuna.db", load_if_exists=True)
     est.optimize(objetivo, n_trials=n, timeout=horas * 3600, gc_after_trial=True)
     print("\nmejor:", est.best_params, round(est.best_value, 4))

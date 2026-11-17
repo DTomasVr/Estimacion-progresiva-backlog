@@ -41,10 +41,10 @@ import exp_common as E  # noqa: E402
 
 warnings.filterwarnings("ignore")
 pd.set_option("display.width", 220)
-DATA = "data/processed/agix_effort_v4.parquet"
+DATA = "data/processed/pbe_effort_v4.parquet"
 CACHE = Path("data/processed/embeddings/codificadores")
 FINAL = Path("models/modelo_final.joblib")
-PAQUETE = Path("models/estimador_agix_v3.joblib")
+PAQUETE = Path("models/estimador_pbe_v3.joblib")
 OUT = Path("results/estimador_v3")
 SEP = "=" * 126
 NIVELES = [(.97, "ya hiciste algo casi igual"), (.93, "algo parecido"),

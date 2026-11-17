@@ -16,7 +16,7 @@ Arms, all scored on exactly the same tasks:
   H0  the user's estimate, as typed
   H1  estimate x one global correction factor learned on train
   H2  estimate x per-developer factor, shrunk towards the global one
-      (unseen developers fall back to the global factor, as they would in Agix)
+      (unseen developers fall back to the global factor, as they would in PBE)
   M1  model on the estimate + category only, no text      (isolates the text)
   M2  model on text + estimate                            (estimate as a feature)
   M3  corrector: text + estimate, target log(actual/estimate)
@@ -46,7 +46,7 @@ import exp_common as E  # noqa: E402
 
 warnings.filterwarnings("ignore")
 pd.set_option("display.width", 250)
-DATA = "data/processed/agix_effort_v4.parquet"
+DATA = "data/processed/pbe_effort_v4.parquet"
 EMB = "data/processed/embeddings/v4_mpnet_congelado"
 OUT = Path("results/estimacion_usuario")
 NUM = ["n_links", "n_links_estructurales", "n_componentes", "tiene_asignado"]

@@ -31,7 +31,7 @@ from sklearn.ensemble import HistGradientBoostingRegressor  # noqa: E402
 from sklearn.model_selection import GroupKFold  # noqa: E402
 
 sys.path.insert(0, "src")
-V6 = Path("models/estimador_agix_v6.joblib")
+V6 = Path("models/estimador_pbe_v6.joblib")
 CACHE = Path("data/processed/embeddings/codificadores")
 PLIEGUES, NIVEL = 3, .8
 PAR = dict(max_iter=250, max_depth=6, learning_rate=.06, l2_regularization=1.,
@@ -51,7 +51,7 @@ def main():
     if not resp.exists():
         shutil.copy2(V6, resp)
         print(f"respaldo en {resp.name}")
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     todo = df[df.is_software_task == 1].reset_index(drop=True)
     V = np.load(CACHE / "e5-large-todo.npy").astype(np.float32)
     noap = (~todo.fuente_jira.eq("Apache")).to_numpy()

@@ -60,9 +60,9 @@ def main():
     runs = runs[runs.condicion.isin(["A", "B"])]
     filas = []
     y_all = mu.effort_hours.to_numpy()
-    filas.append(dict(condicion="-", modelo="Agix v7 (nuestro)", n=len(mu), validas=1.0,
+    filas.append(dict(condicion="-", modelo="PBE v7 (nuestro)", n=len(mu), validas=1.0,
                       seg_tarea=MS_V7 / 1000, **ev.metricas(y_all, mu.v7_horas.to_numpy())))
-    filas.append(dict(condicion="-", modelo="Agix v7 · valor probable", n=len(mu), validas=1.0,
+    filas.append(dict(condicion="-", modelo="PBE v7 · valor probable", n=len(mu), validas=1.0,
                       seg_tarea=MS_V7 / 1000, **ev.metricas(y_all, mu.v7_probable.to_numpy())))
     filas.append(dict(condicion="-", modelo="constante: mediana global", n=len(mu), validas=1.0,
                       **ev.metricas(y_all, mu.mediana_global.to_numpy())))
@@ -97,13 +97,13 @@ def main():
             filas.append(dict(**base, version=version, factor=k if version == "calibrado" else np.nan,
                               **ev.metricas(y, p), p_wilcoxon=wilcoxon(e_llm, e_nos).pvalue,
                               dif_MdMRE=f"[{lo:+.3f}, {hi:+.3f}]",
-                              veredicto=("LLM mejor" if hi < 0 else "Agix mejor" if lo > 0 else "empate")))
+                              veredicto=("LLM mejor" if hi < 0 else "PBE mejor" if lo > 0 else "empate")))
     r = pd.DataFrame(filas)
     r.to_csv(OUT / "api_resumen.csv", index=False)
 
     f = lambda x, d=3: "—" if pd.isna(x) else f"{x:.{d}f}".replace(".", ",")
     pc = lambda x: "—" if pd.isna(x) else f"{100 * x:.1f} %".replace(".", ",")
-    L = ["# Agix v7 frente a LLM", "",
+    L = ["# PBE v7 frente a LLM", "",
          "601 tareas con horas reales (301 del bloque de prueba y 300 de proyectos externos), "
          "ninguna vista por el v7 al entrenar. Generado por `src/261_tablas_llm_api.py`.", ""]
     for cond, titulo in (("A", "Condición A · solo el texto de la tarea (como en producción)"),
@@ -112,7 +112,7 @@ def main():
         if sub.empty:
             continue
         L += [f"## {titulo}", "",
-              "| modelo | proveedor | versión | n | válidas | MdMRE | PRED(25) | MAE (h) | SA | Spearman | frente a Agix | s/tarea |",
+              "| modelo | proveedor | versión | n | válidas | MdMRE | PRED(25) | MAE (h) | SA | Spearman | frente a PBE | s/tarea |",
               "|---|---|---|---|---|---|---|---|---|---|---|---|"]
         ref = r[r.condicion == "-"]
         for _, x in ref.iterrows():
@@ -124,10 +124,10 @@ def main():
                      f"{f(x.MdMRE)} | {pc(x.PRED25)} | {f(x.MAE_h, 2)} | {f(x.SA)} | "
                      f"{f(x.spearman)} | {x.veredicto} {x.dif_MdMRE} | {f(x.seg_tarea, 2)} |")
         L.append("")
-    L += ["**Lectura.** «frente a Agix» es el veredicto sobre el IC95 de la diferencia de MdMRE "
-          "(LLM − Agix) en las mismas tareas: negativo y sin cruzar el cero, gana el LLM; positivo, "
-          "gana Agix. Las respuestas inválidas del LLM cuentan como la mediana global. «calibrado» "
-          "multiplica al LLM por un factor aprendido en 130 tareas aparte. Agix responde en "
+    L += ["**Lectura.** «frente a PBE» es el veredicto sobre el IC95 de la diferencia de MdMRE "
+          "(LLM − PBE) en las mismas tareas: negativo y sin cruzar el cero, gana el LLM; positivo, "
+          "gana PBE. Las respuestas inválidas del LLM cuentan como la mediana global. «calibrado» "
+          "multiplica al LLM por un factor aprendido en 130 tareas aparte. PBE responde en "
           f"{f(MS_V7 / 1000, 4)} s por tarea en CPU, sin conexión y sin coste por llamada.", ""]
     (OUT / "api_tablas.md").write_text("\n".join(L), encoding="utf-8")
     print("\n".join(L))

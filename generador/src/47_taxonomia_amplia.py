@@ -124,7 +124,7 @@ for sector, (articulo, publicos, feats) in SECTORES.items():
 
 from sentence_transformers import SentenceTransformer  # noqa: E402
 
-sb = SentenceTransformer(f"{BASE}/models/sbert_agix_v1", device="cpu")
+sb = SentenceTransformer(f"{BASE}/models/sbert_pbe_v1", device="cpu")
 E = sb.encode([c["descripcion"] for c in casos], convert_to_tensor=True, batch_size=128,
               normalize_embeddings=True, show_progress_bar=False)
 S = (E @ E.T).float().cpu().numpy()

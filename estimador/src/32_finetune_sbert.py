@@ -18,7 +18,7 @@ import pandas as pd
 sys.path.insert(0, "src")
 import exp_common as E  # noqa: E402
 
-E.DATA = "data/processed/agix_effort_v2.parquet"
+E.DATA = "data/processed/pbe_effort_v2.parquet"
 MODEL = "sentence-transformers/paraphrase-multilingual-mpnet-base-v2"
 MAX_LEN = 192
 BATCH = 16

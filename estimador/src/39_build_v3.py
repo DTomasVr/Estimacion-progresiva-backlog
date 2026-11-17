@@ -5,7 +5,7 @@ Adds to v2:
   * TAWOS  n_links / n_links_estructurales / n_componentes, the three
            *_Changed_After_Estimation flags, Assignee_ID, sprint membership
   * both   split_temporal -- a chronological within-project split, which is the
-           setting Deep-SE / GPT2SP report and the one Agix reaches once a team
+           setting Deep-SE / GPT2SP report and the one PBE reaches once a team
            has history
 
 Leakage notes carried into the file rather than left implicit:
@@ -22,8 +22,8 @@ import numpy as np
 import pandas as pd
 
 pd.set_option("display.width", 250)
-IN = "data/processed/agix_effort_v2.parquet"
-OUT = "data/processed/agix_effort_v3.parquet"
+IN = "data/processed/pbe_effort_v2.parquet"
+OUT = "data/processed/pbe_effort_v3.parquet"
 SEED = 20260830
 TEST_FRAC = 0.25
 ESTRUCTURAL = {"Depends", "Dependency", "Blocks", "Blockers", "Part",

@@ -17,7 +17,7 @@ python articulo/reproducir.py --todo     # además, vuelve a correr los experime
 - **Sin opciones:** regenera las tablas I, III y IV en `estimador/results/cuadros_paper/tex/`, tal como
   aparecen en el artículo. Solo usa los CSV de `estimador/results/`.
 - **Con `--todo`:** antes vuelve a correr los experimentos del total (E-265, 268, 275, 277 y 278). Para
-  eso necesita `estimador/data/processed/agix_effort_v4.parquet`, que no se versiona por tamaño y
+  eso necesita `estimador/data/processed/pbe_effort_v4.parquet`, que no se versiona por tamaño y
   licencias; ver «Datos».
 
 Dependencias: Python 3.12 con `numpy`, `pandas` y `pyarrow`.
@@ -40,7 +40,7 @@ Las rutas son relativas a `estimador/`, salvo las que empiezan por `generador/`.
 | 13,7 ms por tarea, 3,3 GB de disco y 5,2 GB de RAM | estimador desplegado | `results/estimador_v7/servicio.json` |
 | **Tabla IV**: generación frente a LLM (64 proyectos) | `src/272_banco_generacion.py`, `src/274_redundancia_tareas.py` | `results/banco_generacion/resumen.csv`, `results/redundancia_tareas/resumen.csv` |
 | sF1 de 0,669 frente a 328 historias humanas | `generador/src/97_eval_humano.py` | `generador/results/49_real_vigente.csv` |
-| Efecto de las historias ancla (+0,026), con `AGIX_ANCLAR=0` como ablación | `generador/src/11_eval_gen.py` | `generador/DISENO_GENERACION.md`, sección A.2.6 |
+| Efecto de las historias ancla (+0,026), con `PBE_ANCLAR=0` como ablación | `generador/src/11_eval_gen.py` | `generador/DISENO_GENERACION.md`, sección A.2.6 |
 | Escritura de las tablas en LaTeX | `src/273_cuadros_paper.py` | `results/cuadros_paper/` |
 
 Los pesos de la selección de historias (Ec. 1) y los hiperparámetros de entrenamiento están en

@@ -14,7 +14,7 @@ preference:
           not the scale of product work (2,00 h). Dropping it takes the bias on
           non-Apache held-out projects from 0,44 to 0,92, with 16.648 training
           rows instead of 63.926.
-  rasgos  No `source` (Agix would be an unseen level, encoded as zeros) and no
+  rasgos  No `source` (PBE would be an unseen level, encoded as zeros) and no
           link/component counters (they accumulate while the task is worked and
           are zero when it is created). Whether the harmonised category is worth
           keeping is decided here, on the non-Apache blocks.
@@ -44,7 +44,7 @@ import exp_common as E  # noqa: E402
 
 warnings.filterwarnings("ignore")
 pd.set_option("display.width", 200)
-DATA = "data/processed/agix_effort_v4.parquet"
+DATA = "data/processed/pbe_effort_v4.parquet"
 EMB_TIT = "data/processed/embeddings/v4_mpnet_titulos"
 CODIFICADOR = "sentence-transformers/paraphrase-multilingual-mpnet-base-v2"
 GEN = Path("F:/Software Task generation Model/salida_gen.json")

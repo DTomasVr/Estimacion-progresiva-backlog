@@ -1,4 +1,4 @@
-<title>Estimación de Esfuerzo en Agix</title>
+<title>Estimación de Esfuerzo en PBE</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap">
@@ -338,11 +338,11 @@
 <div class="wrap">
 
 <header class="masthead">
-  <p class="eyebrow">Agix · Tesis · Preparación del conjunto de datos</p>
+  <p class="eyebrow">PBE · Tesis · Preparación del conjunto de datos</p>
   <h1>Qué predice realmente el esfuerzo de una tarea de software</h1>
   <p class="standfirst">
     Registro completo de la preparación de datos y de los 279 experimentos de modelado
-    del estimador de esfuerzo de Agix, sobre 89 851 tareas de doce organizaciones.
+    del estimador de esfuerzo de PBE, sobre 89 851 tareas de doce organizaciones.
     Documenta por qué el texto de una tarea no basta para predecir sus horas —ni con
     seis veces más datos ni ajustando el codificador entero—, y por qué lo que sí
     funciona es predecir cuánto se aparta la tarea de lo normal en su proyecto.
@@ -359,7 +359,7 @@
   <div class="sec-head"><span class="sec-num">01</span><h2>Qué se buscaba y qué se encontró</h2></div>
 
   <p>
-    El estimador de Agix necesita aprender de tareas de desarrollo con <strong>texto libre</strong>
+    El estimador de PBE necesita aprender de tareas de desarrollo con <strong>texto libre</strong>
     (nombre y descripción) y <strong>horas realmente registradas</strong>. La revisión de la
     literatura de la tesis apunta casi siempre a conjuntos con <em>puntos de historia</em>, no con
     horas; el objetivo de esta auditoría fue determinar qué datos públicos cumplen realmente
@@ -915,7 +915,7 @@
   <p>
     El tamaño resultante es comparable al del conjunto Deep-SE (23 313 issues) que domina la
     literatura de estimación ágil, con la diferencia sustancial de que la etiqueta es tiempo
-    real y no una puntuación subjetiva. Dado que Agix entrena sobre el historial privado de
+    real y no una puntuación subjetiva. Dado que PBE entrena sobre el historial privado de
     cada equipo, este conjunto público cumple la función de <strong>prior de arranque en
     frío</strong>: proporciona al modelo una noción general de duración antes de que el equipo
     acumule historial propio.
@@ -1010,7 +1010,7 @@
     <li>
       <strong><code>split_project</code></strong> retiene proyectos enteros (15,1 % de las
       filas) para medir la generalización a una organización nunca vista. Es el escenario que
-      corresponde al arranque en frío de Agix: un equipo nuevo cuyo vocabulario y convenciones
+      corresponde al arranque en frío de PBE: un equipo nuevo cuyo vocabulario y convenciones
       el modelo desconoce. Se espera un rendimiento sensiblemente peor que con
       <code>split</code>, y esa diferencia es en sí misma un resultado que reportar.
     </li>
@@ -1319,7 +1319,7 @@
   <div class="sec-head"><span class="sec-num">14</span><h2>Limpieza v2: un desarrollador, una tarea</h2></div>
 
   <p>
-    El cronómetro de Agix mide el tiempo de <em>una</em> persona sobre <em>una</em>
+    El cronómetro de PBE mide el tiempo de <em>una</em> persona sobre <em>una</em>
     tarea. Cualquier fila que signifique otra cosa enseña al modelo una magnitud que
     nunca se le pedirá. Una segunda revisión encontró que buena parte del extremo
     superior no eran tareas individuales.
@@ -1355,7 +1355,7 @@
       cuartos de hora. Los valores más frecuentes son 1,0 h, 2,0 h, 0,5 h y 4,0 h.
       No son medidas: son cifras redondas tecleadas a mano después del hecho. Es un
       suelo de ruido que ningún modelo puede atravesar, y a la vez el argumento más
-      directo a favor de Agix: <strong>su cronómetro producirá etiquetas mejores que
+      directo a favor de PBE: <strong>su cronómetro producirá etiquetas mejores que
       las de cualquiera de las dos fuentes públicas</strong>.
     </p>
   </div>
@@ -1365,7 +1365,7 @@
   <div class="sec-head"><span class="sec-num">15</span><h2>Representación semántica y transferencia entre idiomas</h2></div>
 
   <p>
-    El corpus está en inglés y los usuarios de Agix escriben en español. Un codificador
+    El corpus está en inglés y los usuarios de PBE escriben en español. Un codificador
     específico del español sería la elección equivocada: no comparte espacio vectorial
     con el corpus de entrenamiento. Se usó
     <code>paraphrase-multilingual-mpnet-base-v2</code>, destilado con alineación
@@ -1859,7 +1859,7 @@
     <p>
       Validado sobre una sola empresa y 18 desarrolladores. Si el sesgo por persona es
       más marcado en equipos peor calibrados que el de SiP es una pregunta abierta, y es
-      exactamente la que Agix respondería con sus propios datos.
+      exactamente la que PBE respondería con sus propios datos.
     </p>
   </div>
 </section>
@@ -1982,7 +1982,7 @@
   <div class="sec-head"><span class="sec-num">24</span><h2>Estimación por LLM: buen orden, mal nivel</h2></div>
 
   <p>
-    Como Agix genera las tareas con un LLM, cabe preguntarse si ese mismo LLM puede
+    Como PBE genera las tareas con un LLM, cabe preguntarse si ese mismo LLM puede
     estimar las horas. Se le mostró el texto de 100 tareas del bloque de prueba sin
     las horas registradas y se anotaron sus estimaciones antes de leer ninguna
     etiqueta, con el diseño de los experimentos controlados de Pavlič y de
@@ -2273,7 +2273,7 @@
   </p>
 
   <div class="verdict">
-    <span class="label">Qué significa para Agix</span>
+    <span class="label">Qué significa para PBE</span>
     <p>
       El modelo no debe predecir horas en el vacío. Debe predecir <em>cuánto se aparta
       esta tarea de lo normal en este proyecto</em>, y la aplicación aporta el «lo normal»
@@ -2288,7 +2288,7 @@
 
   <p>
     El bloque externo son 150 proyectos que ningún modelo vio jamás y 13.255 tareas: es
-    exactamente la posición de Agix cuando un cliente crea su primer proyecto. Las
+    exactamente la posición de PBE cuando un cliente crea su primer proyecto. Las
     tareas se puntúan en orden, y cada una usa <strong>solo las que terminaron antes en
     su propio proyecto</strong> —nunca la mediana completa, que sería leer el futuro.
   </p>
@@ -2470,7 +2470,7 @@
   <p>
     De A a C el error mediano cae un <strong>48 %</strong>, PRED(25) sube un
     <strong>87 %</strong> y la correlación de orden pasa de 0,220 a 0,564. Ese es el
-    escenario de Agix —un cliente nuevo, un proyecto nuevo— y ahí el corpus público sí
+    escenario de PBE —un cliente nuevo, un proyecto nuevo— y ahí el corpus público sí
     aporta, porque un modelo entrenado solo con TAWOS y SiP directamente no transfiere:
     MdMRE 1,1407 es peor que responder siempre la mediana global.
   </p>
@@ -2684,7 +2684,7 @@
 
   <h3>Archivo resultante</h3>
   <p>
-    El conjunto se publica como <code>agix_effort_clean.parquet</code> y su equivalente CSV,
+    El conjunto se publica como <code>pbe_effort_clean.parquet</code> y su equivalente CSV,
     con 18 593 filas y 28 columnas: identificador, fuente, dominio, proyecto, título,
     descripción, texto concatenado, hash de texto, categoría original y armonizada, prioridad,
     <code>effort_hours</code>, <code>log_effort</code>, puntos de historia cuando existen,
@@ -2735,7 +2735,7 @@
 <footer>
   <p>
     Documento generado como registro de la preparación de datos del componente predictivo de
-    Agix. Las decisiones aquí documentadas —unidad de <code>Timespent</code>, rechazo de la
+    PBE. Las decisiones aquí documentadas —unidad de <code>Timespent</code>, rechazo de la
     conversión de puntos a horas y composición del conjunto final— condicionan el diseño
     experimental posterior y deben citarse en la sección de metodología.
   </p>

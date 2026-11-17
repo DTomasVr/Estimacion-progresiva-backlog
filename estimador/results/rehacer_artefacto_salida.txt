@@ -1,9 +1,9 @@
 
 >>> 163_modelo_v5.py · apilado v5 con los dos codificadores ajustados
-    escrito results\modelo_v5/panel.csv y models/estimador_agix_v5.joblib · 110 s
+    escrito results\modelo_v5/panel.csv y models/estimador_pbe_v5.joblib · 110 s
 
 >>> 171_estimador_v6.py · estimador v6 de servicio
-    escrito models\estimador_agix_v6.joblib (221 MB) · 82 s
+    escrito models\estimador_pbe_v6.joblib (221 MB) · 82 s
 
 >>> prueba de extremo a extremo
 Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.

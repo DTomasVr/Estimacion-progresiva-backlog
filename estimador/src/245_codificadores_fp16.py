@@ -92,7 +92,7 @@ def main():
     import pandas as pd
     from transformers import AutoTokenizer
     tok = AutoTokenizer.from_pretrained(str(MODELOS[0]))
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     sw = df[df.is_software_task == 1]
     tit = ["query: " + t for t in sw.title.fillna("").astype(str).tolist()]
     usados = set()

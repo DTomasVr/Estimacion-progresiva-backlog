@@ -39,7 +39,7 @@ spec = importlib.util.spec_from_file_location("m71", "src/71_estimacion_usuario.
 M71 = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(M71)
 
-DATA = "data/processed/agix_effort_v4.parquet"
+DATA = "data/processed/pbe_effort_v4.parquet"
 EMB = "data/processed/embeddings/v4_mpnet_congelado"
 MODELO = "sentence-transformers/paraphrase-multilingual-mpnet-base-v2"
 OUT = Path("results/costo")

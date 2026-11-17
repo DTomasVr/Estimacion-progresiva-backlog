@@ -1,12 +1,12 @@
 """Experiment A: the real two-stage pipeline, with a PREDICTED category.
 
 Every result so far fed the effort model the ground-truth `task_kind`. In
-production Agix does not have it -- the category comes from a classifier, and
+production PBE does not have it -- the category comes from a classifier, and
 its errors propagate. This measures the cost of that honestly.
 
 Four conditions for the effort model:
   sin_cat    no category at all           (lower bound)
-  cat_pred   the classifier's hard label  (what Agix actually gets)
+  cat_pred   the classifier's hard label  (what PBE actually gets)
   cat_prob   the classifier's probability vector (soft, keeps its uncertainty)
   cat_true   the ground-truth label       (optimistic, what we reported before)
 """

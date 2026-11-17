@@ -27,7 +27,7 @@ import exp_common as E  # noqa: E402
 
 warnings.filterwarnings("ignore")
 pd.set_option("display.width", 250)
-DATA = "data/processed/agix_effort_v4.parquet"
+DATA = "data/processed/pbe_effort_v4.parquet"
 EMB = "data/processed/embeddings/v4_mpnet_congelado"
 NUM = ["n_links", "n_links_estructurales", "n_componentes", "tiene_asignado"]
 CAT = ["task_kind", "source"]

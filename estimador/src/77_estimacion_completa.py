@@ -66,7 +66,7 @@ spec.loader.exec_module(M71)
 
 warnings.filterwarnings("ignore")
 pd.set_option("display.width", 250)
-DATA = "data/processed/agix_effort_v4.parquet"
+DATA = "data/processed/pbe_effort_v4.parquet"
 EMB = "data/processed/embeddings/v4_mpnet_congelado"
 OUT = Path("results/estimacion_completa")
 NUM, CAT, PROHIBIDAS = M71.NUM, M71.CAT, M71.PROHIBIDAS

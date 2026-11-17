@@ -2,7 +2,7 @@
 
 72,3 % of the software corpus is Apache -- distributed data infrastructure
 (Arrow, Beam, Flink, Ignite, Carbondata, Geode, NiFi, Hive) written by and for
-experts. Agix's tasks will be product/business work in Spanish. If a model
+experts. PBE's tasks will be product/business work in Spanish. If a model
 trained mostly on Apache transfers badly to non-Apache work, the corpus is not
 just small in the useful direction, it is pointed the wrong way -- and that
 changes what augmentation should produce.
@@ -12,7 +12,7 @@ alone, so what moves is the text domain and nothing else; the full feature set
 is kept as a control.
 
   entrenamiento: todo / solo Apache / todo menos Apache / solo v3 (SiP+TAWOS)
-  lectura:       prueba SiP (comercial, lo mas parecido a Agix)
+  lectura:       prueba SiP (comercial, lo mas parecido a PBE)
                  prueba TAWOS
                  externo Apache / externo no Apache
 """
@@ -29,7 +29,7 @@ import exp_common as E  # noqa: E402
 
 warnings.filterwarnings("ignore")
 pd.set_option("display.width", 220)
-DATA = "data/processed/agix_effort_v4.parquet"
+DATA = "data/processed/pbe_effort_v4.parquet"
 EMB = "data/processed/embeddings/v4_mpnet_congelado"
 NUM = ["n_links", "n_links_estructurales", "n_componentes", "tiene_asignado"]
 CAT = ["task_kind", "source"]

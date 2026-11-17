@@ -7,7 +7,7 @@ MUEVEN dentro del mismo documento (asi las imagenes siguen enlazadas). Las cifra
 nuevos se leen de results/; ninguna se escribe a mano. Lo que depende de la web queda marcado
 [COMPLETAR] en rojo.
 
-Salida: entrega/memoria/Memoria_Agix_avance.docx (actualizar campos en Word: Ctrl+A, F9).
+Salida: entrega/memoria/Memoria_PBE_avance.docx (actualizar campos en Word: Ctrl+A, F9).
 """
 import copy
 import json
@@ -23,7 +23,7 @@ from docx.shared import Cm, Pt, RGBColor
 
 ANTIGUA = Path(r"C:/Users/User/Documents/2026-01-UPC/TDP ENTREGABLES FINALES/FINAL FINAL/"
                r"TI_Sotil_Tyrone_Diego_Villafuerte.docx")
-SALIDA = Path("entrega/memoria/Memoria_Agix_avance.docx")
+SALIDA = Path("entrega/memoria/Memoria_PBE_avance.docx")
 FIG = Path("reports/figuras_generacion")
 
 
@@ -210,7 +210,7 @@ def mover_nivel(a, b, delta):
 
 
 # =============================================================================== PRELIMINARES
-texto(5, "Agix: generación de backlogs de historias de usuario y estimación de su esfuerzo con "
+texto(5, "PBE: generación de backlogs de historias de usuario y estimación de su esfuerzo con "
          "modelos ligeros, integrados en un sistema web de gestión ágil")
 texto(6, "TESIS")
 texto(7, "Para optar el título profesional de Ingeniero de Software / Licenciado en Ciencias de la "
@@ -226,7 +226,7 @@ P("!opcional; asesora, UPC y quienes apoyaron el trabajo")
 texto(17, "Resumen")
 texto(18, (
     "Al iniciar un proyecto ágil, el equipo debe convertir la idea de un producto en un backlog y "
-    "estimar su esfuerzo justo cuando no dispone de historial. Esta tesis presenta Agix, un sistema "
+    "estimar su esfuerzo justo cuando no dispone de historial. Esta tesis presenta PBE, un sistema "
     "web de gestión ágil que, a partir de una descripción breve del producto, genera un backlog de "
     "historias de usuario con sus tareas y estima las horas de cada tarea y del proyecto. Lo hace "
     "con dos tuberías de modelos ligeros que funcionan sin conexión en CPU y se sirven como API. La "
@@ -237,16 +237,16 @@ texto(18, (
     "medida que se cierran tareas. Evaluado por proyecto completo, sin que el modelo vea el proyecto "
     f"que predice, el total del proyecto cae dentro de ±25 % en el {pc(ANC_K[0].PRED25)} de los "
     f"casos al arranque y en el {pc(ANC_K[20].PRED25)} tras cerrar 20 tareas. Frente a modelos de "
-    "lenguaje de gran escala actuales, Agix gana con claridad cuando estos no se calibran y empata "
+    "lenguaje de gran escala actuales, PBE gana con claridad cuando estos no se calibran y empata "
     "cuando se calibran con horas reales, respondiendo en milisegundos y sin coste por llamada."))
 texto(20, "Palabras clave: estimación de esfuerzo de software; historias de usuario; generación de "
           "backlog; aprendizaje automático; predicción conformal; gestión ágil de proyectos")
 mover(17, 20)
-P("**Agix: generating user-story backlogs and estimating their effort with lightweight models "
+P("**PBE: generating user-story backlogs and estimating their effort with lightweight models "
   "integrated into an agile project management web system", centrado=True)
 H(1, "Abstract")
 P("When an agile project starts, the team must turn a product idea into a backlog and estimate "
-  "its effort precisely when no history is available. This thesis presents Agix, an agile project "
+  "its effort precisely when no history is available. This thesis presents PBE, an agile project "
   "management web system that, from a short product description, generates a backlog of user "
   "stories with their tasks and estimates the hours of each task and of the whole project. It "
   "relies on two pipelines of lightweight models that run offline on CPU and are served as an "
@@ -256,7 +256,7 @@ P("When an agile project starts, the team must turn a product idea into a backlo
   "with a stacked regressor, a conformal interval and a re-anchoring of the project total as "
   "tasks are closed. Evaluated on whole held-out projects, the project total falls within ±25 % "
   f"in {pc(ANC_K[0].PRED25)} of cases at start-up and in {pc(ANC_K[20].PRED25)} after 20 tasks "
-  "are closed. Against current large language models, Agix clearly wins when they are not "
+  "are closed. Against current large language models, PBE clearly wins when they are not "
   "calibrated and ties when they are calibrated with real hours, while answering in milliseconds "
   "at no per-call cost.")
 P("Keywords: software effort estimation; user stories; backlog generation; machine learning; "
@@ -384,10 +384,10 @@ L([("Tamaño. ", f"El sistema ocupaba 9,6 GB y no cabía en un servicio económi
 
 # ============================================================ 3. ANALISIS Y DISENO DE ALGORITMOS
 H(1, "Análisis y diseño de algoritmos")
-P("Agix encadena dos tuberías. La de generación recibe una descripción breve del producto y "
+P("PBE encadena dos tuberías. La de generación recibe una descripción breve del producto y "
   "devuelve 12 historias de usuario con sus tareas; la de estimación asigna horas a cada tarea y un "
   "total con intervalo al proyecto, como muestra la figura siguiente.")
-F(FIG / "fig1_pipeline_es.png", "Flujo de extremo a extremo de Agix", 9)
+F(FIG / "fig1_pipeline_es.png", "Flujo de extremo a extremo de PBE", 9)
 
 H(2, "Generador de backlog: de la descripción a las historias")
 P("La mitad de arriba convierte la descripción en historias con un mT5-small (Xue et al., 2021) "
@@ -477,7 +477,7 @@ P("La generación de requisitos con LLM avanza rápido. Quattrocchi et al. (2026
   "colaboración de un equipo ágil para generar criterios de aceptación; Siahaan et al. (2023) "
   "extrajeron historias de texto en lenguaje natural; y van Can y Dalpiaz (2025) localizaron "
   "requisitos en elementos de backlog con LLM. Estos trabajos evalúan sobre todo lo plausible del "
-  "texto; Agix se distingue por medir si el backlog cubre las funciones pedidas y por hacerlo con "
+  "texto; PBE se distingue por medir si el backlog cubre las funciones pedidas y por hacerlo con "
   "modelos de 121 M de parámetros que funcionan sin conexión.")
 P("En estimación, los LLM se han propuesto como alternativa al juicio experto (Pavlič et al., "
   "2024; Villarrubia et al., 2026; Alaswad et al., 2026), y también como estimadores ligeros "
@@ -504,7 +504,7 @@ P("H3. El reanclaje con tareas cerradas mejora de forma significativa la estimac
 
 # ======================================================================= 5. APLICACION (ISW)
 H(1, "Aplicación / Solución")
-P("Este capítulo describe la aplicación web Agix, que integra las dos tuberías mediante la API.")
+P("Este capítulo describe la aplicación web PBE, que integra las dos tuberías mediante la API.")
 P("!este capítulo depende de la web; completar cada apartado con el material de la aplicación")
 H(2, "Requisitos")
 P("Los requisitos se gestionan en el Product Backlog v1.5: 18 épicas, 74 historias de usuario y "
@@ -533,7 +533,7 @@ L(["!arquitectura del software (actualizar las arquitecturas lógica, física e 
    "!wireframes, mockups y prototipo; guía de estilo",
    "!diagramas UML de secuencia del flujo describir producto → backlog → estimación"])
 H(2, "Implementación")
-P("El servicio de modelos está documentado para los desarrolladores de la web en API_AGIX.md, con "
+P("El servicio de modelos está documentado para los desarrolladores de la web en API_PBE.md, con "
   "las entradas, salidas y errores de cada punto de entrada. El código de los modelos sigue la "
   "convención de scripts numerados que dejan sus resultados en results/, y todo está versionado "
   "en git.")
@@ -615,24 +615,24 @@ P(f"El total del proyecto en frío cae dentro de ±25 % en el {pc(ANC_K[0].PRED2
 
 H(4, "Comparación con modelos de lenguaje de gran escala")
 A = LLM[LLM.condicion == "A"]
-ref = LLM[LLM.modelo == "Agix v7 (nuestro)"].iloc[0]
+ref = LLM[LLM.modelo == "PBE v7 (nuestro)"].iloc[0]
 cst = LLM[LLM.modelo == "constante: mediana global"].iloc[0]
-filas = [["Agix v7", "—", int(ref.n), n(ref.MdMRE), pc(ref.PRED25), n(ref.SA), n(ref.spearman),
+filas = [["PBE v7", "—", int(ref.n), n(ref.MdMRE), pc(ref.PRED25), n(ref.SA), n(ref.spearman),
           "—", n(ref.seg_tarea, 3)],
          ["constante (mediana)", "—", int(cst.n), n(cst.MdMRE), pc(cst.PRED25), n(cst.SA), "—", "—", "—"]]
 for r in A[A.proveedor != "local (Ollama)"].sort_values(["modelo", "version"], ascending=[True, False]).itertuples():
     filas.append([r.modelo, r.version, int(r.n), n(r.MdMRE), pc(r.PRED25), n(r.SA), n(r.spearman),
                   f"{r.veredicto} {r.dif_MdMRE}", n(r.seg_tarea, 1)])
-T(["modelo", "versión", "n", "MdMRE", "PRED(25)", "SA", "ρ", "frente a Agix (IC95 dif. MdMRE)",
+T(["modelo", "versión", "n", "MdMRE", "PRED(25)", "SA", "ρ", "frente a PBE (IC95 dif. MdMRE)",
    "s/tarea"], filas,
-  "Agix v7 frente a LLM actuales con solo el texto de la tarea",
+  "PBE v7 frente a LLM actuales con solo el texto de la tarea",
   "Fuente: results/llm_bench/api_resumen.csv. «calibrado» multiplica al LLM por un factor aprendido "
   "en 130 tareas aparte. GPT-OSS (OpenAI, 2025) y Qwen 3 servidos por Groq.")
 P("!el banco contra LLM está incompleto por la cuota gratuita de Groq: faltan parte de las "
   "calibraciones de GPT-OSS y la condición con ejemplos; regenerar esta tabla con "
   "src/261_tablas_llm_api.py al terminar")
-P("Sin calibrar, los tres LLM sobreestiman entre dos y cinco veces y pierden con Agix con un "
-  "intervalo que excluye el cero. Calibrados con horas reales, empatan con Agix o lo superan por un "
+P("Sin calibrar, los tres LLM sobreestiman entre dos y cinco veces y pierden con PBE con un "
+  "intervalo que excluye el cero. Calibrados con horas reales, empatan con PBE o lo superan por un "
   "margen mínimo, y ordenan las tareas algo mejor. Esa calibración exige historial que no existe "
   "al arrancar un proyecto, y cada llamada cuesta segundos y depende de un servicio externo.")
 
@@ -660,10 +660,10 @@ P("!observaciones de la asesora y de los usuarios de prueba, y cómo se atendier
 
 H(2, "Discusión")
 H(3, "Análisis comparativo")
-P("En PRED(25) por tarea, Agix queda a la par de Deep-SE y GPT2SP con un protocolo más estricto, "
-  "y una constante supera a todos; la métrica, sola, no discrimina. Lo que distingue a Agix es "
+P("En PRED(25) por tarea, PBE queda a la par de Deep-SE y GPT2SP con un protocolo más estricto, "
+  "y una constante supera a todos; la métrica, sola, no discrimina. Lo que distingue a PBE es "
   "que tiene SA positivo y ordena las tareas sin haber visto ningún proyecto del bloque. Frente a "
-  "los LLM, la ventaja de Agix no está en la exactitud, donde empata con los calibrados, sino en "
+  "los LLM, la ventaja de PBE no está en la exactitud, donde empata con los calibrados, sino en "
   f"el coste: {n(SERV['ms_por_tarea_caliente'], 1)} ms por tarea, en local y sin coste por "
   "llamada, frente a segundos por tarea a través de una API con cuota.")
 H(3, "Hallazgos")
@@ -757,7 +757,7 @@ mover_nivel(247, 327, 0)
 H(2, "Anexo B. Product Backlog v1.5")
 P("!adjuntar el listado de las 74 historias con sus criterios")
 H(2, "Anexo C. Documentación de la API")
-P("!adjuntar API_AGIX.md")
+P("!adjuntar API_PBE.md")
 
 # ---------------------------------------------------------------- reconstruir el cuerpo
 for e in list(body):

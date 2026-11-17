@@ -12,7 +12,7 @@ Dos pruebas, ninguna circular:
    cuantas descripciones dan al menos dos actores, porque la descripcion no
    nombra a todo el plantel y la cobertura seria injusta.
 
-  AGIX_DEVICE=cpu python src/80_eval_extractor.py
+  PBE_DEVICE=cpu python src/80_eval_extractor.py
 
 out: results/80_extractor.csv
 """
@@ -25,7 +25,7 @@ import numpy as np
 import pandas as pd
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-os.environ.setdefault("AGIX_DEVICE", "cpu")
+os.environ.setdefault("PBE_DEVICE", "cpu")
 spec = importlib.util.spec_from_file_location("pl", f"{BASE}/src/19_pipeline.py")
 pl = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(pl)
@@ -45,7 +45,7 @@ def casa(x, conjunto):
     return any(x == y or x in y or y in x for y in conjunto)
 
 
-sb = SentenceTransformer(pl.SBERT, device=os.environ["AGIX_DEVICE"])
+sb = SentenceTransformer(pl.SBERT, device=os.environ["PBE_DEVICE"])
 sb.max_seq_length = 128
 plan = pl.PlanificadorRoles(sb)
 

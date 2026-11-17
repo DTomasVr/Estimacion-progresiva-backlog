@@ -1,14 +1,14 @@
 """E266 del estimador, con SUS funciones (corpus, simula), sobre los 58 backlogs validos de
-calibracion: solo historias frente a historias + Sprint 0. Se corre desde Agix-Dataset."""
+calibracion: solo historias frente a historias + Sprint 0. Se corre desde PBE-Dataset."""
 import importlib.util, json, sys
 from pathlib import Path
 import numpy as np
 sys.stdout.reconfigure(encoding="utf-8")
-s = importlib.util.spec_from_file_location("e266", "C:/Users/User/Documents/Programacao/Agix-Dataset/src/266_techo_backlog_generado.py")
+s = importlib.util.spec_from_file_location("e266", "C:/Users/User/Documents/Programacao/PBE-Dataset/src/266_techo_backlog_generado.py")
 e266 = importlib.util.module_from_spec(s); s.loader.exec_module(e266)
-s = importlib.util.spec_from_file_location("e6", "C:/Users/User/Documents/Programacao/Agix-Dataset/src/171_estimador_v6.py")
+s = importlib.util.spec_from_file_location("e6", "C:/Users/User/Documents/Programacao/PBE-Dataset/src/171_estimador_v6.py")
 e6 = importlib.util.module_from_spec(s); s.loader.exec_module(e6)
-est = e6.EstimadorV6(paquete=Path("models/estimador_agix_v7.joblib"), dispositivo="cpu")
+est = e6.EstimadorV6(paquete=Path("models/estimador_pbe_v7.joblib"), dispositivo="cpu")
 J = json.load(open(r"F:\Software Task generation Model\data\calibracion\salidas_v4.json", encoding="utf-8"))
 u, escala, _ = e266.corpus()
 FACTOR = float(sys.argv[1]) if len(sys.argv) > 1 else 1.0

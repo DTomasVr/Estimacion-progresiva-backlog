@@ -59,7 +59,7 @@ def main():
     from transformers import AutoTokenizer
     OUT.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     sw = df[(df.is_software_task == 1) & ~df.fuente_jira.eq("Apache")
             & (df.split_t3 == "test")].reset_index(drop=True)
     tit = sw.title.fillna("").astype(str).tolist()
@@ -68,7 +68,7 @@ def main():
     tg = [t for c in gen for h in c["fp32"]["historias"] for t in h["tareas"]]
     cols = ["horas", "valor_probable", "banda_baja", "banda_alta"]
 
-    v6 = e6.EstimadorV6(paquete=Path("models/estimador_agix_v6.joblib"))
+    v6 = e6.EstimadorV6(paquete=Path("models/estimador_pbe_v6.joblib"))
     d6 = v6.estimar_tareas(tit)[cols]
     g6 = v6.estimar_tareas(tg, estilo="generador")[cols]
     ref = pd.read_parquet("results/codificadores_int8/fp32.parquet")
@@ -78,7 +78,7 @@ def main():
     del v6
     print(f"v6 · regresion {regresion:.1e} · {time.time() - t0:.0f} s", flush=True)
 
-    v7 = e6.EstimadorV6(paquete=Path("models/estimador_agix_v7.joblib"))
+    v7 = e6.EstimadorV6(paquete=Path("models/estimador_pbe_v7.joblib"))
     d7 = v7.estimar_tareas(tit)[cols]
     g7 = v7.estimar_tareas(tg, estilo="generador")[cols]
     pr7 = v7.estimar_proyecto(tg[:10], cerradas=cer)

@@ -11,7 +11,7 @@ tareas 89,851 · train 63,926 · val 8,445 · prueba_d1 4,225 · externo 13,255
   F3 umbral z>1.5  MdMRE val 0.7386  areas por tarea 0.56
   F3 umbral z>2.0  MdMRE val 0.7384  areas por tarea 0.26
 
-escrito data\processed\flags/agix_flags.parquet: 89,851 filas × 106 flags
+escrito data\processed\flags/pbe_flags.parquet: 89,851 filas × 106 flags
   F1 64 · F2 12 · F3 18 · F4 12
   vectores en memoria 276 MB  ->  dataset de flags 1.3 MB en disco
   ejemplo: SE- <NUM> : OData API returns wrong collection href -> ['grupo_018', 'catpred_bug', 'tipo_error', 'catreal_bug']

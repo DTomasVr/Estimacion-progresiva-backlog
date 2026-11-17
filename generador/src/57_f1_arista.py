@@ -44,8 +44,8 @@ SEED = 20260926
 
 
 def cargar_sbert():
-    return SentenceTransformer(f"{BASE}/models/sbert_agix_v1",
-                               device=os.environ.get("AGIX_DEVICE", "cpu"))
+    return SentenceTransformer(f"{BASE}/models/sbert_pbe_v1",
+                               device=os.environ.get("PBE_DEVICE", "cpu"))
 
 
 def emparejar(sb, A, B, umbral=UMBRAL):
@@ -109,15 +109,15 @@ def mala_atribucion(sb, bl):
     return mal / len(idx)
 
 
-# AGIX_REF elige contra que referencia se mide. Por omision v1, que es la
+# PBE_REF elige contra que referencia se mide. Por omision v1, que es la
 # poblacion sobre la que ya esta medido el modelo anterior: la comparacion tiene
 # que ser pareada. Aviso para leer los numeros: las referencias v1 las escribio
 # el profesor v1, que usaba UN solo rol por backlog, asi que un modelo que
 # reparte bien los actores puede parecer peor en el nivel de historia sin serlo.
 # Lo que no sufre ese sesgo es el F1 de ARISTA, que mide estructura, y el test de
 # las 328 historias humanas.
-REF = os.environ.get("AGIX_REF", "v1")
-SUF = os.environ.get("AGIX_SUFIJO", "")
+REF = os.environ.get("PBE_REF", "v1")
+SUF = os.environ.get("PBE_SUFIJO", "")
 
 
 def referencia_reservada():
@@ -192,12 +192,12 @@ def sanidad():
 # ---------------------------------------------------------------------- modelo
 def modelo():
     import importlib.util
-    os.environ.setdefault("AGIX_DEVICE", "cuda")
+    os.environ.setdefault("PBE_DEVICE", "cuda")
     spec = importlib.util.spec_from_file_location("pl", f"{BASE}/src/19_pipeline.py")
     pl = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(pl)
-    for v, at in [("AGIX_ARRIBA", "M_ARRIBA"), ("AGIX_ABAJO", "M_ABAJO"),
-                  ("AGIX_ABAJO2", "M_ABAJO2")]:
+    for v, at in [("PBE_ARRIBA", "M_ARRIBA"), ("PBE_ABAJO", "M_ABAJO"),
+                  ("PBE_ABAJO2", "M_ABAJO2")]:
         if os.environ.get(v):
             setattr(pl, at, os.environ[v])
     print(f"arriba {os.path.basename(pl.M_ARRIBA)} | abajo {os.path.basename(pl.M_ABAJO)}")

@@ -48,7 +48,7 @@ warnings.filterwarnings("ignore")
 pd.set_option("display.width", 200)
 CACHE = Path("data/processed/embeddings/codificadores")
 GEN = Path(r"F:\Software Task generation Model")
-M_ABAJO = GEN / "models/mt5-small-pruned_hist_agix_v1_v5_agix_v1"
+M_ABAJO = GEN / "models/mt5-small-pruned_hist_pbe_v1_v5_pbe_v1"
 OUT = Path("results/descomponer")
 S = "=" * 100
 N_MUESTRA, LOTE, PLIEGUES = 3000, 48, 3
@@ -76,7 +76,7 @@ def main():
     import torch
     from transformers import AutoTokenizer, MT5ForConditionalGeneration
 
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     todo = df[df.is_software_task == 1].reset_index(drop=True)
     V = np.load(CACHE / "e5-large-todo.npy").astype(np.float32)
     noap = (~todo.fuente_jira.eq("Apache")).to_numpy()

@@ -1,4 +1,4 @@
-"""End-to-end Agix generation pipeline, and the thing the bench times.
+"""End-to-end PBE generation pipeline, and the thing the bench times.
 
     project description (es or en)
       -> SBERT encode -> retrieve k neighbour features (upper pool)
@@ -28,10 +28,10 @@ import torch
 from sentence_transformers import SentenceTransformer
 from transformers import AutoTokenizer, MT5ForConditionalGeneration
 
-BASE = os.environ.get("AGIX_BASE") or os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE = os.environ.get("PBE_BASE") or os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # la raiz del proyecto: la carpeta que contiene src/, models/, data/ y results/.
-# Se deduce de la ubicacion de este archivo; AGIX_BASE la sobreescribe si hace falta.
-SBERT = f"{BASE}/models/sbert_agix_v1"
+# Se deduce de la ubicacion de este archivo; PBE_BASE la sobreescribe si hace falta.
+SBERT = f"{BASE}/models/sbert_pbe_v1"
 # destilado 2026-09-25: continuado sobre backlogs de producto escritos por qwen2.5:7b
 # (30 sectores). Validado contra 328 historias humanas: 0.5522 -> 0.6504 (results/49_real_30sec.csv)
 # Tanda v3/v5 (27/09/2026). Arriba: ficha de rol + planificador, que pone el
@@ -47,8 +47,8 @@ SBERT = f"{BASE}/models/sbert_agix_v1"
 # historias eran de clase "view" y ahora es el 23 %, contra 22 % humano, y "manage"
 # sube del 3 % al 8 % (humanas 6 %). Fidelidad a las 328 historias humanas, tres
 # semillas: 0,6351 -> 0,6341, empate dentro del ruido de 0,012.
-# El anterior (solo ficha de rol) queda en ..._v3r_agix_v1 y se vuelve a el con
-# AGIX_ARRIBA, o se apaga la ficha con AGIX_MODO_FUNCION=0.
+# El anterior (solo ficha de rol) queda en ..._v3r_pbe_v1 y se vuelve a el con
+# PBE_ARRIBA, o se apaga la ficha con PBE_MODO_FUNCION=0.
 # 28/09/2026: v9bt anade al conjunto de v8ff los mismos ejemplos con la descripcion
 # retrotraducida EN->ES->EN por los MISMOS Marian que el producto usa en inferencia
 # (src/88_retrotraducir_datos.py). Motivo: se entrenaba con ingles escrito a mano y en
@@ -60,12 +60,12 @@ SBERT = f"{BASE}/models/sbert_agix_v1"
 # media +0,0118 con desviacion 0,0017: el ruido de 0,012 es de los valores absolutos,
 # la diferencia pareada es estable. Ademas, sobre los 7 dominios: historias
 # casi-duplicadas 10,7 -> 7,1 % (humanas 4,8 %) y atribucion tarea->historia 83 -> 86 %.
-# El anterior queda en ..._v8ff_agix_v1 y se vuelve a el con AGIX_ARRIBA.
-M_ARRIBA = f"{BASE}/models/mt5-small-pruned_o2o_agix_v1_o2ofmt_agix_v1_v9bt_agix_v1"
-M_ABAJO = f"{BASE}/models/mt5-small-pruned_hist_agix_v1_v5_agix_v1"
+# El anterior queda en ..._v8ff_pbe_v1 y se vuelve a el con PBE_ARRIBA.
+M_ARRIBA = f"{BASE}/models/mt5-small-pruned_o2o_pbe_v1_o2ofmt_pbe_v1_v9bt_pbe_v1"
+M_ABAJO = f"{BASE}/models/mt5-small-pruned_hist_pbe_v1_v5_pbe_v1"
 # second trained variant (from the HP search): alone it ties M_ABAJO, but it errs
 # differently, so the union of both raises coverage at no precision cost (23_cobertura)
-M_ABAJO2 = f"{BASE}/models/mt5-small-pruned_hist_agix_v1_bs8_lr9.2e-4"
+M_ABAJO2 = f"{BASE}/models/mt5-small-pruned_hist_pbe_v1_bs8_lr9.2e-4"
 # Tercer generador del conjunto: DESACTIVADO. Medido con la seleccion por
 # cobertura ya puesta: no aporta NADA de cobertura (87,8 % de rasgos cubiertos y
 # 66,7 % de backlogs completos, iguales con y sin el), solo anade 15 tareas por
@@ -73,10 +73,10 @@ M_ABAJO2 = f"{BASE}/models/mt5-small-pruned_hist_agix_v1_bs8_lr9.2e-4"
 # atribucion. Tareas redundantes inflan el total de horas igual que las que
 # faltan lo reducen. Lo que si aportaba era variedad de formulacion (34,1 %
 # frente a 42,2 % de concentracion): si algun dia pesa mas eso, se reactiva con
-# AGIX_ABAJO3 apuntando a un modelo.
-M_ABAJO3 = os.environ.get("AGIX_ABAJO3", "")
-CONJUNTO = os.environ.get("AGIX_CONJUNTO", "dos_modelos")   # "no" | "dos_modelos" | "completo"
-DISPOSITIVO = os.environ.get("AGIX_DEVICE", "cuda")   # "cpu" to time a GPU-less deployment
+# PBE_ABAJO3 apuntando a un modelo.
+M_ABAJO3 = os.environ.get("PBE_ABAJO3", "")
+CONJUNTO = os.environ.get("PBE_CONJUNTO", "dos_modelos")   # "no" | "dos_modelos" | "completo"
+DISPOSITIVO = os.environ.get("PBE_DEVICE", "cuda")   # "cpu" to time a GPU-less deployment
 # Measured in 24_calidad_arriba.py: the retrieved examples do NOT improve either half
 # (upper: +0.022 sF1 on the test epics WITHOUT them and 0 % vocabulary leakage from the
 # neighbours; lower: a tie). Retrieval stays for provenance and for ranking, not in the prompt.
@@ -95,13 +95,13 @@ N_MUESTRAS = 30
 UMBRAL_DUP = 0.85
 K_HISTORIAS = 12
 UMBRAL_TAREA_DUP = 0.90         # entre historias distintas
-UMBRAL_TAREA_DUP_INTRA = float(os.environ.get("AGIX_DUP_INTRA", 0.95))  # dentro de una historia
+UMBRAL_TAREA_DUP_INTRA = float(os.environ.get("PBE_DUP_INTRA", 0.95))  # dentro de una historia
 # ... y la misma comparacion QUITANDO el verbo inicial. «Crear linea de tiempo» y
 # «Anadir linea de tiempo» son la misma tarea: medidos, esos pares dan 0,91 con el
 # verbo y 1,00 sin el. Solo se aplica dentro de una historia, donde una casi-copia
 # es siempre ruido. Medido sobre la salida desplegada: 7 pares en 256 tareas.
-UMBRAL_TAREA_SINV = float(os.environ.get("AGIX_DUP_SINV", 0.95))
-BEAMS_ABAJO = int(os.environ.get("AGIX_BEAMS", 4))   # 1 = greedy, the cheap CPU setting
+UMBRAL_TAREA_SINV = float(os.environ.get("PBE_DUP_SINV", 0.95))
+BEAMS_ABAJO = int(os.environ.get("PBE_BEAMS", 4))   # 1 = greedy, the cheap CPU setting
 # Sobrescribe por completo la configuracion de generacion de las tareas. Lo usa
 # src/64_decodificador.py para barrer decodificadores sin tocar nada mas.
 GEN_ABAJO = None
@@ -109,9 +109,9 @@ GEN_ABAJO = None
 # corridas del MISMO modelo no dan lo mismo. Medido sobre las 328 historias
 # humanas: el modelo de produccion puntuo 0,0122 menos al repetir la corrida
 # (desvio medio por proyecto 0,0143, maximo 0,0260), que es del tamano de los
-# efectos que estamos midiendo. Con AGIX_SEED la medicion es reproducible; sin
+# efectos que estamos midiendo. Con PBE_SEED la medicion es reproducible; sin
 # ella el comportamiento es el de antes.
-SEMILLA = os.environ.get("AGIX_SEED")
+SEMILLA = os.environ.get("PBE_SEED")
 
 
 # Machine translation renders product names literally ("helm charts" -> "cartas de
@@ -527,7 +527,7 @@ def separar_tareas(texto):
 # GPU. Lo que el modelo SI decide es poco: que habilitadores tocan, por lo que dice la
 # descripcion. Tres van siempre (proyecto, datos, despliegue); el resto se activa por
 # indicios en la descripcion inglesa traducida Y en la original en espanol.
-SPRINT0 = os.environ.get("AGIX_SPRINT0", "0") == "1"
+SPRINT0 = os.environ.get("PBE_SPRINT0", "0") == "1"
 
 
 def _indicio(*palabras):
@@ -716,7 +716,7 @@ def plan_sprint0(descripcion_en, descripcion_original="", roles=()):
 # El lexico (src/55_lexico_roles.py) sale de las propias fuentes de
 # entrenamiento; se acepta el rol si esta listado o si su nucleo es un nucleo de
 # persona, asi que "membership manager" pasa y "service appointment" no.
-FILTROS = os.environ.get("AGIX_SIN_FILTROS") != "1"   # 1 = apagarlos, para ablacion
+FILTROS = os.environ.get("PBE_SIN_FILTROS") != "1"   # 1 = apagarlos, para ablacion
 _LEX = f"{BASE}/data/processed/roles_lexico.json"
 if os.path.exists(_LEX):
     _lex = json.load(open(_LEX, encoding="utf-8"))
@@ -796,7 +796,7 @@ _JIRA_PAT_NUCLEO = _JIRA_PAT      # solo los patrones escritos a mano; ver modo 
 # container", "Docs changes", cinco con "orderer").
 _LEX_JIRA_EST = []
 _p_lex_est = f"{BASE}/data/processed/lexico_jira_estricto.json"
-if os.environ.get("AGIX_JIRA_ESTRICTO", "1") == "1" and os.path.exists(_p_lex_est):
+if os.environ.get("PBE_JIRA_ESTRICTO", "1") == "1" and os.path.exists(_p_lex_est):
     _LEX_JIRA_EST = [w for w in json.load(open(_p_lex_est, encoding="utf-8")) if w.isalpha()]
     _JIRA_PAT += "|" + "|".join(rf"\b{w}\b" for w in _LEX_JIRA_EST)
 _JIRA = re.compile(f"({_JIRA_PAT})", re.I)
@@ -895,9 +895,9 @@ def arranque(t):
 # (0,4899 -> 0,4892, nada) y ACERCA el ratio de conteo a las personas: 1,125 ->
 # 1,079. El coste es un 13 % menos de tareas, que son justo las terceras
 # repeticiones del mismo arranque dentro de un backlog.
-ECO_RAIZ = os.environ.get("AGIX_ECO_RAIZ", "1") == "1"
-TOPE_ARRANQUE_SALIDA = int(os.environ.get("AGIX_TOPE_SALIDA", 2))
-VETAR_ARRANQUES = os.environ.get("AGIX_VETAR", "1") == "1"
+ECO_RAIZ = os.environ.get("PBE_ECO_RAIZ", "1") == "1"
+TOPE_ARRANQUE_SALIDA = int(os.environ.get("PBE_TOPE_SALIDA", 2))
+VETAR_ARRANQUES = os.environ.get("PBE_VETAR", "1") == "1"
 
 
 # Siglas legitimas de un backlog de producto. Lo que no esta aqui y viene en
@@ -1340,7 +1340,7 @@ def rol_infraestructura(descripcion, cand):
 
 
 ROLES_GENERICOS = [r.strip() for r in os.environ.get(
-    "AGIX_ROLES_GENERICOS", "administrator,user,support agent").split(",") if r.strip()]
+    "PBE_ROLES_GENERICOS", "administrator,user,support agent").split(",") if r.strip()]
 
 # ------------------------------------------------- planificador de roles
 # Segundo metodo contra el defecto del rol. El primero (rol_valido) DESCARTA las
@@ -1351,7 +1351,7 @@ ROLES_GENERICOS = [r.strip() for r in os.environ.get(
 # actores escritos a mano), y si la descripcion nombra un actor del lexico, ese
 # va primero. Asi el rol es valido POR CONSTRUCCION y el backlog tiene varios
 # actores sin depender de la suerte del muestreo.
-FICHA_ROL = os.environ.get("AGIX_FICHA_ROL") == "1"
+FICHA_ROL = os.environ.get("PBE_FICHA_ROL") == "1"
 # Si la descripcion no se parece a ningun sector de la taxonomia, el plantel
 # seria de otro dominio ("As a parking inspector" para un servicio OAuth2), asi
 # que mejor no forzar y dejar que trabaje el validador. Medido sobre 8
@@ -1363,20 +1363,20 @@ FICHA_ROL = os.environ.get("AGIX_FICHA_ROL") == "1"
 # quedan fuera (0,552 y 0,613), que es lo que se quiere: forzar un plantel ajeno es peor
 # que no forzar ninguno (probado con bodas a 0,55: sale un backlog de restaurante).
 # Sin plantel la obediencia al rol es 3/42 = 7 %; con plantel, 34/34 = 100 %.
-UMBRAL_SECTOR = float(os.environ.get("AGIX_UMBRAL_SECTOR", 0.65))
+UMBRAL_SECTOR = float(os.environ.get("PBE_UMBRAL_SECTOR", 0.65))
 # Reparar el rol en vez de descartar la candidata: no hace falta reentrenar.
-REPARAR_ROL = os.environ.get("AGIX_REPARAR_ROL") == "1"
-EXTRAER_ROLES = os.environ.get("AGIX_EXTRAER_ROLES", "1") == "1"
-UNIF_ROL_ES = os.environ.get("AGIX_UNIF_ROL_ES", "1") == "1"
-REPARAR_ROL_TAREA = os.environ.get("AGIX_REPARAR_ROL_TAREA", "1") == "1"
-REPARAR_VERBO_TAREA = os.environ.get("AGIX_REPARAR_VERBO", "1") == "1"
+REPARAR_ROL = os.environ.get("PBE_REPARAR_ROL") == "1"
+EXTRAER_ROLES = os.environ.get("PBE_EXTRAER_ROLES", "1") == "1"
+UNIF_ROL_ES = os.environ.get("PBE_UNIF_ROL_ES", "1") == "1"
+REPARAR_ROL_TAREA = os.environ.get("PBE_REPARAR_ROL_TAREA", "1") == "1"
+REPARAR_VERBO_TAREA = os.environ.get("PBE_REPARAR_VERBO", "1") == "1"
 # castigo por la forma de la historia; ver Pipeline._pena_forma
-NU_CIRCULAR = float(os.environ.get("AGIX_NU_CIRC", 0.50))
-NU_LARGO = float(os.environ.get("AGIX_NU_LARGO", 0.20))
-TOPE_PALABRAS_CAP = int(os.environ.get("AGIX_TOPE_PAL_CAP", 18))
-NU_AUTO = float(os.environ.get("AGIX_NU_AUTO", 0.40))
-NU_ECO = float(os.environ.get("AGIX_NU_ECO", 0.40))
-NU_ROLFUN = float(os.environ.get("AGIX_NU_ROLFUN", 0.45))
+NU_CIRCULAR = float(os.environ.get("PBE_NU_CIRC", 0.50))
+NU_LARGO = float(os.environ.get("PBE_NU_LARGO", 0.20))
+TOPE_PALABRAS_CAP = int(os.environ.get("PBE_TOPE_PAL_CAP", 18))
+NU_AUTO = float(os.environ.get("PBE_NU_AUTO", 0.40))
+NU_ECO = float(os.environ.get("PBE_NU_ECO", 0.40))
+NU_ROLFUN = float(os.environ.get("PBE_NU_ROLFUN", 0.45))
 # Beneficio VACIO: la clausula «so that» no aporta ningun contenido propio, solo
 # relleno («so that I can stay informed»). Criterio deliberadamente estrecho: cero
 # palabras de contenido, no una. Medido sobre 84 historias: marca 3 (3,6 %) y las
@@ -1386,13 +1386,13 @@ NU_ROLFUN = float(os.environ.get("AGIX_NU_ROLFUN", 0.45))
 # NO cubre el otro defecto de beneficio que se lee (el objeto ajeno al dominio,
 # «informed decisions about the spending» en un colegio): ese es la fuga de sector
 # del paso 3, cerrada como negativo medido.
-NU_VACIO = float(os.environ.get("AGIX_NU_VACIO", 0.45))
+NU_VACIO = float(os.environ.get("PBE_NU_VACIO", 0.45))
 # paso 2: ficha de funcion. Se activa sola si el modelo de arriba se entreno con ella
 # (los conjuntos v8ff), igual que la ficha de rol se decide por modelo y no por entorno.
-MODO_FUNCION = os.environ.get("AGIX_MODO_FUNCION", "auto")
-CLASES_POR_ROL = int(os.environ.get("AGIX_CLASES_ROL", 2))
-MU_CLASE = float(os.environ.get("AGIX_MU_CLASE", 0.12))
-PISO_CLASE = float(os.environ.get("AGIX_PISO_CLASE", 0.10))
+MODO_FUNCION = os.environ.get("PBE_MODO_FUNCION", "auto")
+CLASES_POR_ROL = int(os.environ.get("PBE_CLASES_ROL", 2))
+MU_CLASE = float(os.environ.get("PBE_MU_CLASE", 0.12))
+PISO_CLASE = float(os.environ.get("PBE_PISO_CLASE", 0.10))
 # castigo por capacidad repetida por actor; ver seleccion_por_rasgos
 # Castigo por capacidad repetida por actor. APAGADO por omision: medido el
 # 28/09/2026 y descartado. Funciona (los casi-duplicados pasan de 7,1 % a 0,0 %
@@ -1406,18 +1406,18 @@ PISO_CLASE = float(os.environ.get("AGIX_PISO_CLASE", 0.10))
 #      inoperante porque nuestros duplicados ya llegan como un par por backlog;
 #   3. la subida de atribucion es justo el artefacto conocido: la atribucion mejora
 #      al empobrecer el backlog, asi que aqui no es prueba de nada.
-# El mecanismo queda para experimentar con AGIX_NU_CAP.
-NU_CAP = float(os.environ.get("AGIX_NU_CAP", 0.0))
+# El mecanismo queda para experimentar con PBE_NU_CAP.
+NU_CAP = float(os.environ.get("PBE_NU_CAP", 0.0))
 # CUPO: cuantas repeticiones de capacidad por actor se toleran ANTES de castigar.
 # Las personas repiten: en los 6 proyectos reales, el 4,8 % de las historias de un
 # backlog de 12 tiene un casi-duplicado, o sea 0,6 historias. Minimizar a cero deja
 # el backlog MENOS parecido al humano que dejarlo como estaba, asi que el blanco es
 # igualar esa tasa, no bajarla del todo.
-CUPO_CAP = int(os.environ.get("AGIX_CUPO_CAP", 0))
-PISO_CAP = float(os.environ.get("AGIX_PISO_CAP", 0.75))
-REASIGNAR_TAREAS = os.environ.get("AGIX_REASIGNAR", "1") == "1"
-MARGEN_REASIGNAR = float(os.environ.get("AGIX_MARGEN_REASIG", 0.10))
-PISO_TAREA = float(os.environ.get("AGIX_PISO_TAREA", 0.30))
+CUPO_CAP = int(os.environ.get("PBE_CUPO_CAP", 0))
+PISO_CAP = float(os.environ.get("PBE_PISO_CAP", 0.75))
+REASIGNAR_TAREAS = os.environ.get("PBE_REASIGNAR", "1") == "1"
+MARGEN_REASIGNAR = float(os.environ.get("PBE_MARGEN_REASIG", 0.10))
+PISO_TAREA = float(os.environ.get("PBE_PISO_TAREA", 0.30))
 # sector: el plantel de la taxonomia manda y el extractor solo cubre el hueco.
 # descripcion: manda lo que la descripcion NOMBRA, y el plantel del sector solo
 # rellena hasta k. Medido sobre los 6 proyectos reales contra los actores que
@@ -1425,8 +1425,8 @@ PISO_TAREA = float(os.environ.get("AGIX_PISO_TAREA", 0.30))
 # 0,765 de cobertura, plantel del sector 0,250 y 0,178.
 # En el producto (49_eval_real, 328 historias humanas): 0,6285 -> 0,6456 con la
 # semilla 20260926 y 0,6137 -> 0,6330 con la 777. Por eso "descripcion" es la
-# omision desde el 28/09/2026; AGIX_MODO_ROLES=sector vuelve al anterior.
-MODO_ROLES = os.environ.get("AGIX_MODO_ROLES", "descripcion")
+# omision desde el 28/09/2026; PBE_MODO_ROLES=sector vuelve al anterior.
+MODO_ROLES = os.environ.get("PBE_MODO_ROLES", "descripcion")
 # paso 4a (28/09/2026): CON plantel basta UN actor nombrado para que entre en el plan.
 # La regla anterior pedia dos, y por eso "customers" no llegaba nunca a un backlog de
 # banca ni "workers" a uno de limpieza, aunque la descripcion los nombra: el extractor
@@ -1434,8 +1434,8 @@ MODO_ROLES = os.environ.get("AGIX_MODO_ROLES", "descripcion")
 # era evitar el backlog de un unico actor repetido, y eso solo puede pasar cuando el
 # extractor es la UNICA fuente; con plantel los otros k-1 roles lo diluyen. Sin plantel
 # siguen haciendo falta dos (MIN_ACTORES_SIN_PLANTEL).
-MIN_ACTORES_CON_PLANTEL = int(os.environ.get("AGIX_MIN_ACTORES_PLANTEL", 1))
-MIN_ACTORES_SIN_PLANTEL = int(os.environ.get("AGIX_MIN_ACTORES_SOLO", 2))
+MIN_ACTORES_CON_PLANTEL = int(os.environ.get("PBE_MIN_ACTORES_PLANTEL", 1))
+MIN_ACTORES_SIN_PLANTEL = int(os.environ.get("PBE_MIN_ACTORES_SOLO", 2))
 # Prueba de extremo a extremo (21/10/2026, 6 proyectos x 3 semillas): el umbral decide
 # si HAY plantel, pero no si es el CORRECTO. Limpieza a domicilio cae en atencion
 # domiciliaria por 0,009 sobre el sector de limpieza y sale entero de enfermeras; salas
@@ -1445,7 +1445,7 @@ MIN_ACTORES_SIN_PLANTEL = int(os.environ.get("AGIX_MIN_ACTORES_SOLO", 2))
 # 0,69-0,71. Por debajo de UMBRAL_PLANTEL_LIBRE un rol del plantel solo entra si la
 # descripcion lo RESPALDA: comparte con ella una palabra de dominio («cleaner» con
 # «cleaning», «store manager» con «stores»). Calibrado sobre 9 puntos, no mas.
-UMBRAL_PLANTEL_LIBRE = float(os.environ.get("AGIX_UMBRAL_PLANTEL_LIBRE", 0.75))
+UMBRAL_PLANTEL_LIBRE = float(os.environ.get("PBE_UMBRAL_PLANTEL_LIBRE", 0.75))
 # palabras de rol que no dicen nada del dominio: no cuentan como respaldo
 _ROL_VACIO = {"manager", "agent", "member", "administrator", "admin", "user", "assistant",
               "coordinator", "owner", "operator", "staff", "officer", "specialist",
@@ -1503,14 +1503,14 @@ def rol_respaldado(descripcion_en, rol):
 #
 # Referencia de la formulacion: Lin y Bilmes (2011), seleccion submodular para
 # resumen extractivo.
-SUBMODULAR = os.environ.get("AGIX_SUBMODULAR") == "1"
+SUBMODULAR = os.environ.get("PBE_SUBMODULAR") == "1"
 # Medido en results/68_cobertura*: sin cuota por rol los backlogs que cubren
 # TODOS los rasgos de la descripcion pasan del 53,3 % al 66,7 %. El precio es
 # que el rol dominante sube de 26,9 % a 45,8 %, que sigue dentro del rango
 # humano (30-48 %). La cuota nos hacia mas diversos que las personas y lo
-# pagabamos en cobertura del alcance. AGIX_BANCO_GLOBAL=0 la devuelve.
-BANCO_GLOBAL = os.environ.get("AGIX_BANCO_GLOBAL", "1") == "1"
-TAU_CORTE = float(os.environ.get("AGIX_TAU", 0.0))   # 0 = sin regla de parada
+# pagabamos en cobertura del alcance. PBE_BANCO_GLOBAL=0 la devuelve.
+BANCO_GLOBAL = os.environ.get("PBE_BANCO_GLOBAL", "1") == "1"
+TAU_CORTE = float(os.environ.get("PBE_TAU", 0.0))   # 0 = sin regla de parada
 
 
 # Extractor de rasgos reescrito el 21/10/2026 (prueba de extremo a extremo). El de
@@ -1783,8 +1783,8 @@ def rasgos_con_sujeto(desc):
 # «As a student, I want to find and book study rooms on campus in real time, so that»
 # y escribe el beneficio. La capacidad queda trazada a la descripcion, que es lo que
 # pide un requisito, y el beneficio y las tareas siguen saliendo de los modelos.
-ANCLAR = os.environ.get("AGIX_ANCLAR", "1") == "1"
-N_BEN_ANCLA = int(os.environ.get("AGIX_N_BEN_ANCLA", 6))
+ANCLAR = os.environ.get("PBE_ANCLAR", "1") == "1"
+N_BEN_ANCLA = int(os.environ.get("PBE_N_BEN_ANCLA", 6))
 _LEMA = {"publishes": "publish", "applies": "apply", "gets": "get", "orders": "order",
          "pays": "pay", "books": "book", "finds": "find", "runs": "run",
          "notifies": "notify", "receives": "receive", "posts": "post",
@@ -1994,7 +1994,7 @@ def seleccion_submodular(S, k, rel=None, lam=0.0, tau=0.0):
 # sectores de v3 mas 11 nuevos (src/93_dominios_v4.py); queda en v3 por omision hasta
 # validarla con el conjunto de calibracion, porque cambia el plan de roles de cualquier
 # descripcion cuyo sector mas parecido pase a ser uno de los nuevos.
-TAXONOMIA = os.environ.get("AGIX_TAXONOMIA", "descripciones_v3.json")
+TAXONOMIA = os.environ.get("PBE_TAXONOMIA", "descripciones_v3.json")
 
 
 class PlanificadorRoles:
@@ -2118,14 +2118,14 @@ class Pipeline:
         # sentido con un modelo entrenado con ella (los conjuntos v3r). Si se
         # decidiera por entorno, en una comparacion pareada la pasada del modelo
         # viejo tambien recibiria la ficha, que para el es ruido, y el resultado
-        # estaria sesgado a favor del nuevo. AGIX_FICHA_ROL sigue valiendo para
+        # estaria sesgado a favor del nuevo. PBE_FICHA_ROL sigue valiendo para
         # forzarla a mano en experimentos.
         # Las dos fichas se deciden por el NOMBRE del modelo. Todo conjunto entrenado
         # con ellas tiene que estar en esta lista: si se despliega un modelo nuevo y se
         # olvida, el producto corre SIN fichas y se pierden los pasos 2 y 4 sin avisar.
         CON_FICHA = ("v3r", "v8ff", "v9bt", "v9df")
         usar = (any(x in M_ARRIBA for x in CON_FICHA)
-                or os.environ.get("AGIX_FICHA_ROL") == "1"
+                or os.environ.get("PBE_FICHA_ROL") == "1"
                 or REPARAR_ROL)      # la reparacion tambien necesita el plantel
         # la ficha de funcion solo tiene sentido con un modelo entrenado con ella
         self.usa_funcion = (MODO_FUNCION == "1" or
@@ -2135,7 +2135,7 @@ class Pipeline:
         # reordenador de beneficios: se carga si existe y no se apaga a mano
         self.reordenador = None
         _rp = f"{BASE}/models/reordenador_beneficio.joblib"
-        if os.environ.get("AGIX_REORDENAR", "1") == "1" and os.path.exists(_rp):
+        if os.environ.get("PBE_REORDENAR", "1") == "1" and os.path.exists(_rp):
             import joblib
             self.reordenador = joblib.load(_rp)["modelo"]
         if self.planificador is not None and not self.planificador.ok:
@@ -2146,9 +2146,9 @@ class Pipeline:
         # concentracion de plantilla baja a 34,2 %, la mas baja conseguida, que
         # es lo que importa porque el texto de la tarea es la entrada de la
         # cadena de estimacion. Alternativas medidas, por si se prefiere otro
-        # equilibrio: ..._hist_agix_v1_v3_agix_v1 da mejor atribucion (71,5 %) y
+        # equilibrio: ..._hist_pbe_v1_v3_pbe_v1 da mejor atribucion (71,5 %) y
         # anclaje (88,3 %) con mas plantilla (52,1 %); ..._hist_30sec da mas
-        # tareas (667) y lo peor en todo lo demas. AGIX_ABAJO3="" lo desactiva.
+        # tareas (667) y lo peor en todo lo demas. PBE_ABAJO3="" lo desactiva.
         self.m_b3 = None
         if M_ABAJO3:
             # tercer generador del conjunto: sube el numero de tareas, que es el
@@ -2566,7 +2566,7 @@ class Pipeline:
         # Cuesta 2,6 puntos de atribucion tarea->historia. Se acepta porque un
         # rasgo sin cubrir es trabajo que no existe en el backlog, mientras que
         # una tarea colgada de la historia equivocada sigue llevando su trabajo.
-        # AGIX_COBERTURA=0 vuelve al orden por relevancia.
+        # PBE_COBERTURA=0 vuelve al orden por relevancia.
         p_ben = None
         if self.reordenador is not None and len(cands) > k:
             # Dos etapas: primero se reduce el banco a las 2k mejores por
@@ -2587,19 +2587,19 @@ class Pipeline:
                 E = self.sb.encode(cands, convert_to_tensor=True,
                                    normalize_embeddings=True, show_progress_bar=False)
                 S = (E @ E.T).float()
-        if os.environ.get("AGIX_COBERTURA", "1") == "1" and consulta is not None:
+        if os.environ.get("PBE_COBERTURA", "1") == "1" and consulta is not None:
             trip_c = [partir_historia(c) for c in cands]
             idx = seleccion_por_rasgos(
                 self.sb, cands, consulta, k, extra=p_ben,
-                lam=float(os.environ.get("AGIX_LAM_BEN", 0.15)),
-                mu=float(os.environ.get("AGIX_MU_ROL", 0.15)),
+                lam=float(os.environ.get("PBE_LAM_BEN", 0.15)),
+                mu=float(os.environ.get("PBE_MU_ROL", 0.15)),
                 roles=[rol_de(c) or "?" for c in cands],
                 clases=([clase_funcion(c) or "?" for c in cands]
                         if self.usa_funcion else None),
                 mu_clase=MU_CLASE,
                 bens=[(re.sub(r"[^a-z ]", "", t[2].lower()).strip() if t else "")
                       for t in trip_c],
-                nu=float(os.environ.get("AGIX_NU_BEN", 0.10)),
+                nu=float(os.environ.get("PBE_NU_BEN", 0.10)),
                 caps=[(t[1] if t else "") for t in trip_c],
                 nu_cap=NU_CAP, piso_cap=PISO_CAP, cupo_cap=CUPO_CAP,
                 pena=self._pena_forma(trip_c))
@@ -2683,8 +2683,8 @@ class Pipeline:
         # se puede dejar de muestrear. Leyendo las salidas del metodo A se vio
         # que el muestreo a temperatura 1,0 producia 12 historias sin ningun
         # acuerdo entre muestras (votos max 1): mucha entropia y poca precision.
-        # AGIX_ARRIBA_HAZ=1 genera con haz por rol, que es determinista.
-        if roles and os.environ.get("AGIX_ARRIBA_HAZ") == "1":
+        # PBE_ARRIBA_HAZ=1 genera con haz por rol, que es determinista.
+        if roles and os.environ.get("PBE_ARRIBA_HAZ") == "1":
             gen_a = dict(max_new_tokens=64, do_sample=False, num_beams=None)
         pares_fun = []
         if roles and self.usa_funcion:
@@ -2779,12 +2779,12 @@ class Pipeline:
         # probable: medido, el 83,6 % de las tareas generadas empiezan por uno de
         # solo cinco arranques de dos palabras, cuando las tareas escritas por
         # personas en el corpus de Jira estan en el 2,6 % y el profesor LLM en el
-        # 28 %. AGIX_ABAJO_MUESTREO=1 cambia el haz por muestreo para recuperar
+        # 28 %. PBE_ABAJO_MUESTREO=1 cambia el haz por muestreo para recuperar
         # variedad de formulacion sin tocar los datos.
         if GEN_ABAJO is not None:          # lo pone src/64_decodificador.py para barrer
             gen = dict(max_new_tokens=192, no_repeat_ngram_size=4,
                        repetition_penalty=1.3, **GEN_ABAJO)
-        elif os.environ.get("AGIX_ABAJO_MUESTREO") == "1":
+        elif os.environ.get("PBE_ABAJO_MUESTREO") == "1":
             gen = dict(max_new_tokens=192, do_sample=True, top_p=0.92, temperature=0.9,
                        no_repeat_ngram_size=4, repetition_penalty=1.3)
         else:
@@ -3046,7 +3046,7 @@ class Pipeline:
             sprint0 = plan_sprint0(descripcion, descripcion_original, roles)
         T["total"] = sum(T.values())
         return dict(historias=historias, tiempos={k: round(v, 3) for k, v in T.items()},
-                    # bloque aparte, ver plan_sprint0; vacio si AGIX_SPRINT0 no esta a 1
+                    # bloque aparte, ver plan_sprint0; vacio si PBE_SPRINT0 no esta a 1
                     sprint0=sprint0,
                     n_tareas_sprint0=sum(len(h["tareas"]) for h in sprint0),
                     vecinos_proyecto=proc_a[0],

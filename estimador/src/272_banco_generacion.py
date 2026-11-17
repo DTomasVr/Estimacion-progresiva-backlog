@@ -1,10 +1,10 @@
-"""E-272 - Banco de GENERACION: la tuberia actual de Agix frente a LLM, para el paper.
+"""E-272 - Banco de GENERACION: la tuberia actual de PBE frente a LLM, para el paper.
 
 El banco del repositorio de generacion (results/20_banco.jsonl, 01/10/2026) midio a
-Agix ANTES de las historias ancla; sus brazos de LLM locales siguen valiendo. Aqui
+PBE ANTES de las historias ancla; sus brazos de LLM locales siguen valiendo. Aqui
 se rehace lo que falta, sin tocar aquel archivo:
 
-  agix          la tuberia actual (F:/Agix-produccion, 07/11/2026) sobre los mismos
+  pbe          la tuberia actual (F:/PBE-produccion, 07/11/2026) sobre los mismos
                 64 proyectos retenidos (4 de Dalpiaz y 60 epicas de Jira del bloque
                 de prueba), con el mismo protocolo: tiempo de reloj a backlog completo
   groq <modelo> un LLM actual por API, sin ejemplos: una llamada para las historias
@@ -26,7 +26,7 @@ import numpy as np
 import pandas as pd
 
 GEN = Path("F:/Software Task generation Model")
-PROD = Path("F:/Agix-produccion/generacion")
+PROD = Path("F:/PBE-produccion/generacion")
 OUT = Path("results/banco_generacion")
 N_JIRA, K_HISTORIAS, SEED = 60, 12, 20260922
 
@@ -76,14 +76,14 @@ def hechos(ruta):
     return {json.loads(l)["caso"] for l in open(ruta, encoding="utf-8")} if ruta.exists() else set()
 
 
-def brazo_agix():
+def brazo_pbe():
     import torch
     C = casos()
-    destino = OUT / "agix_actual.jsonl"
+    destino = OUT / "pbe_actual.jsonl"
     ya = hechos(destino)
     print(f"{len(C)} proyectos ({C.fuente.value_counts().to_dict()}) · {len(ya)} ya hechos", flush=True)
     t0 = time.time()
-    os.environ.setdefault("AGIX_BASE", str(PROD))
+    os.environ.setdefault("PBE_BASE", str(PROD))
     pl = modulo("pl", PROD / "src" / "19_pipeline.py")
     p = pl.Pipeline()
     p(C.entrada.iloc[0], k_historias=4)          # calentamiento: que CUDA no caiga en el caso 1
@@ -97,7 +97,7 @@ def brazo_agix():
             r = p(c.entrada, k_historias=K_HISTORIAS)
             torch.cuda.synchronize()
             dt = time.time() - t
-            fh.write(json.dumps(dict(sistema="agix", condicion="actual", caso=c.parent_uid, fuente=c.fuente,
+            fh.write(json.dumps(dict(sistema="pbe", condicion="actual", caso=c.parent_uid, fuente=c.fuente,
                                      segundos=round(dt, 2), historias=[h["historia"] for h in r["historias"]],
                                      tareas=[h["tareas"] for h in r["historias"]], n_tareas=r["n_tareas"]),
                                 ensure_ascii=False) + "\n")
@@ -163,14 +163,14 @@ def tablas():
     pat = re.compile(r"as\s+(?:an?|the)\s+[^,.]{2,60}[,;]?\s+i\s*(?:'d|\s+would)?\s*"
                      r"(?:want|would\s+like|need|wish|should|must|am\s+able)", re.I)
     R = [json.loads(l) for l in open(GEN / "results/20_banco.jsonl", encoding="utf-8")]
-    R = [r for r in R if not (r["sistema"] == "agix")]
+    R = [r for r in R if not (r["sistema"] == "pbe")]
     for f in sorted(OUT.glob("*.jsonl")):
         R += [json.loads(l) for l in open(f, encoding="utf-8")]
     R = pd.DataFrame(R)
     antes = [json.loads(l) for l in open(GEN / "results/20_banco.jsonl", encoding="utf-8")]
-    antes = pd.DataFrame([r for r in antes if r["sistema"] == "agix"]).assign(condicion="01/10, sin anclas")
+    antes = pd.DataFrame([r for r in antes if r["sistema"] == "pbe"]).assign(condicion="01/10, sin anclas")
     R = pd.concat([R, antes], ignore_index=True)
-    R["sistema"] = np.where(R.sistema == "agix", "Agix (" + R.condicion + ")", R.sistema + " " + R.condicion)
+    R["sistema"] = np.where(R.sistema == "pbe", "PBE (" + R.condicion + ")", R.sistema + " " + R.condicion)
     C = casos()
     ref = dict(zip(C.parent_uid, C.refs))
     R = R[R.caso.isin(ref)].reset_index(drop=True)
@@ -186,7 +186,7 @@ def tablas():
                                  historias=("historias", lambda x: np.mean([len(i) for i in x])),
                                  tareas=("n_tareas", "mean"), sF1=("sF1", "mean"), cobertura=("cobertura", "mean"),
                                  formato=("formato", "mean"), reconoce=("reconoce", "mean")).reset_index()
-    nuestro = "Agix (actual)"
+    nuestro = "PBE (actual)"
     P = R.pivot_table(index="caso", columns="sistema", values="sF1")
     rng = np.random.default_rng(SEED)
     par = {}
@@ -198,7 +198,7 @@ def tablas():
         b = rng.choice(dif, (4000, len(dif))).mean(1)
         lo, hi = np.quantile(b, [.025, .975])
         par[sis] = dict(n_pareado=len(d), dif_sF1=float(dif.mean()), ic95_lo=float(lo), ic95_hi=float(hi),
-                        veredicto="gana el otro" if lo > 0 else "gana Agix" if hi < 0 else "empate")
+                        veredicto="gana el otro" if lo > 0 else "gana PBE" if hi < 0 else "empate")
     g = g.merge(pd.DataFrame(par).T.rename_axis("sistema").reset_index(), on="sistema", how="left")
     g.to_csv(OUT / "resumen.csv", index=False)
     pd.set_option("display.width", 250)
@@ -208,4 +208,4 @@ def tablas():
 if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8")
     OUT.mkdir(parents=True, exist_ok=True)
-    {"agix": brazo_agix, "tablas": tablas}.get(sys.argv[1], lambda: brazo_groq(sys.argv[2]))()
+    {"pbe": brazo_pbe, "tablas": tablas}.get(sys.argv[1], lambda: brazo_groq(sys.argv[2]))()

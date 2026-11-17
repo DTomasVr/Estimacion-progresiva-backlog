@@ -22,8 +22,8 @@ def main():
     s = importlib.util.spec_from_file_location("e6", "src/171_estimador_v6.py")
     e6 = importlib.util.module_from_spec(s)
     s.loader.exec_module(e6)
-    est = e6.EstimadorV6(paquete=Path("models/estimador_agix_v7.joblib"), dispositivo="cpu")
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet", columns=["task_id", "title"])
+    est = e6.EstimadorV6(paquete=Path("models/estimador_pbe_v7.joblib"), dispositivo="cpu")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet", columns=["task_id", "title"])
     for conjunto in ("muestra", "calibracion"):
         d = pd.read_parquet(BENCH / f"{conjunto}.parquet")[["task_id"]]
         d = d.merge(df.drop_duplicates("task_id"), on="task_id", how="left")

@@ -28,8 +28,8 @@ import torch
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 N = int(next((a for a in sys.argv[1:] if a.isdigit()), 120))
-os.environ.setdefault("AGIX_DEVICE", "cuda")
-os.environ.setdefault("AGIX_SEED", "20260926")
+os.environ.setdefault("PBE_DEVICE", "cuda")
+os.environ.setdefault("PBE_SEED", "20260926")
 
 spec = importlib.util.spec_from_file_location("pl", f"{BASE}/src/19_pipeline.py")
 pl = importlib.util.module_from_spec(spec)

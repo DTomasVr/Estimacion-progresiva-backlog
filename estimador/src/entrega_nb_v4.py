@@ -14,7 +14,7 @@ def celdas():
     c.append(md("""
 # Dataset v4 — el corpus público de Jira y su mezcla con v3
 
-**Agix · componente de estimación de esfuerzo · anexo de datos**
+**PBE · componente de estimación de esfuerzo · anexo de datos**
 
 v4 añade a v3 el conjunto **The Public Jira Dataset** (Montgomery, Lüders y
 Maalej, MSR 2022): 2 686 282 incidencias de dieciséis Jiras públicos, de las que
@@ -241,7 +241,7 @@ plt.show()
 '''))
 
     c.append(code('''
-v3 = pd.read_parquet(DATOS / "agix_effort_v3.parquet")
+v3 = pd.read_parquet(DATOS / "pbe_effort_v3.parquet")
 claves_tawos = set(v3[v3.source == "TAWOS"].task_id
                    .str.replace("TAWOS-", "", regex=False))
 solape = crudo.key.isin(claves_tawos)
@@ -261,7 +261,7 @@ diag = pd.DataFrame([
          comentario="el tiempo pertenece a los hijos"),
     dict(hallazgo="sin descripción",
          filas=int(crudo.description.isna().sum()),
-         comentario="se conservan: es el caso real de Agix"),
+         comentario="se conservan: es el caso real de PBE"),
     dict(hallazgo="ya presentes vía TAWOS",
          filas=int(solape.sum()),
          comentario="ambos corpus minan Apache, Atlassian, Sonatype, Hyperledger, Spring"),
@@ -347,7 +347,7 @@ emb = pd.DataFrame(pasos)
 emb["pct_restante"] = (100 * emb.quedan / len(crudo)).round(1)
 tabla(emb, "24_embudo", "Tabla 24 · Embudo de descarte, paso a paso")
 
-v4 = pd.read_parquet(DATOS / "agix_effort_v4.parquet")
+v4 = pd.read_parquet(DATOS / "pbe_effort_v4.parquet")
 entregadas = int((v4.source == "JiraPublico").sum())
 print(f"\\nfilas reconstruidas aquí : {len(d):,}")
 print(f"filas en v4 entregado    : {entregadas:,}")
@@ -503,7 +503,7 @@ ver["pasa"] = np.where(ver.esperado == ver.obtenido, "SÍ", "NO")
 tabla(ver, "28_verificacion_mezcla",
       "Tabla 28 · Verificación de los criterios de mezcla sobre el fichero entregado")
 assert (ver.pasa == "SÍ").all(), "una comprobación de mezcla ha fallado"
-print("\\nlas seis comprobaciones pasan sobre agix_effort_v4.parquet")
+print("\\nlas seis comprobaciones pasan sobre pbe_effort_v4.parquet")
 '''))
 
     c.append(code('''
@@ -640,7 +640,7 @@ print(f"escrito {DATOS / 'diccionario_columnas_v4.csv'}")
 
 print(f"\\nv4: {len(v4):,} filas × {v4.shape[1]} columnas "
       f"({int((v4.is_software_task==1).sum()):,} tareas de software)")
-print(f"SHA-256 (16): {sha(DATOS / 'agix_effort_v4.parquet')}")
+print(f"SHA-256 (16): {sha(DATOS / 'pbe_effort_v4.parquet')}")
 dic
 '''))
 

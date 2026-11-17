@@ -505,7 +505,7 @@ REV = [
     ("HU-52-4", "RESUELTA Y REESCRITA",
      "'la banda va de x0,36 a x2,01 del total'.",
      "Localizada: era la banda unica calculada con el cuantil muestral. Con la correccion conforme esa misma banda es x0,32 a x2,13, pero sobre todo deja de usarse: ahora se calibra por tramo de tamano. Se anaden los criterios 6 y 7 con la cobertura por tramo y el cuantil conforme.",
-     "E89 results/banda_normalizada/resumen.csv · models/estimador_agix_v6.joblib"),
+     "E89 results/banda_normalizada/resumen.csv · models/estimador_pbe_v6.joblib"),
     ("HU-52-1/2", "SIN CAMBIO, VERIFICADOS DE NUEVO",
      "0,355 a 0,292 con 5 cerradas; 0,346 con 1.",
      "Siguen correctos. E88 confirma ademas que anclar en las tareas que de VERDAD se cerraron primero da +0,1 puntos frente al sorteo al azar, asi que estas cifras valen como medida de produccion.",

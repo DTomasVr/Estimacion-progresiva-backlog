@@ -29,8 +29,8 @@ spec = importlib.util.spec_from_file_location("ev", f"{BASE}/src/11_eval_gen.py"
 ev = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(ev)
 
-M1 = f"{BASE}/models/mt5-small-pruned_hist_agix_v1"
-M2 = f"{BASE}/models/mt5-small-pruned_hist_agix_v1_bs8_lr9.2e-4"
+M1 = f"{BASE}/models/mt5-small-pruned_hist_pbe_v1"
+M2 = f"{BASE}/models/mt5-small-pruned_hist_pbe_v1_bs8_lr9.2e-4"
 N = 300
 CFG = ev.CFGS["beam4_actual"]
 
@@ -107,7 +107,7 @@ print(A.to_string(index=False))
 
 print("\n=== B. la salida real del banco: cuantas tareas por proyecto desaparecen")
 B = [json.loads(l) for l in open(f"{BASE}/results/20_banco.jsonl", encoding="utf-8")]
-B = [b for b in B if b["sistema"] == "agix"]
+B = [b for b in B if b["sistema"] == "pbe"]
 filas = []
 for umbral in (0.95, 0.90, 0.85):
     antes = np.array([sum(len(l) for l in b["tareas"]) for b in B])

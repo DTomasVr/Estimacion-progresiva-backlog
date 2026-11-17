@@ -9,11 +9,11 @@ without ever touching the vectors again.
   F1  grupo_*     k-means clusters of the vectors; k chosen on validation
   F2  catpred_*   a classifier on the vector predicts the harmonised task kind
                   (bug, feature, task...) -- the categoriser stage of the
-                  original Agix pipeline design
+                  original PBE pipeline design
   F3  tipo_* / area_*
                   zero-shot semantic flags: cosine to short category descriptions
                   written in Spanish AND English and averaged, so they work the
-                  same on Agix's Spanish tasks. One work-type flag (argmax) plus
+                  same on PBE's Spanish tasks. One work-type flag (argmax) plus
                   every technical-area flag whose standardised similarity passes
                   a threshold chosen on validation (0, 1 or several areas)
   F4  catreal_*   the source's own task kind, as a "perfect category" reference
@@ -39,7 +39,7 @@ sys.path.insert(0, "src")
 import exp_common as E  # noqa: E402
 
 warnings.filterwarnings("ignore")
-DATA = "data/processed/agix_effort_v4.parquet"
+DATA = "data/processed/pbe_effort_v4.parquet"
 EMB = "data/processed/embeddings/v4_mpnet_congelado"
 MODELO = "sentence-transformers/paraphrase-multilingual-mpnet-base-v2"
 OUT = Path("data/processed/flags")
@@ -173,15 +173,15 @@ def main():
     flags = pd.concat([grupos, catpred, tipos, areas, catreal], axis=1)
     salida = pd.concat([sw[["task_id", "bloque", "source", "project", "effort_hours"]],
                         flags], axis=1)
-    salida.to_parquet(OUT / "agix_flags.parquet", index=False)
-    salida.to_csv(OUT / "agix_flags.csv.gz", index=False, compression="gzip")
+    salida.to_parquet(OUT / "pbe_flags.parquet", index=False)
+    salida.to_csv(OUT / "pbe_flags.csv.gz", index=False, compression="gzip")
     json.dump(info, open(OUT / "diccionario_flags.json", "w", encoding="utf-8"),
               ensure_ascii=False, indent=1)
     pd.DataFrame(seleccion).to_csv(RES / "seleccion_flags.csv", index=False)
 
     tam_v = X.nbytes / 1e6
-    tam_f = (OUT / "agix_flags.parquet").stat().st_size / 1e6
-    print(f"\nescrito {OUT}/agix_flags.parquet: {len(salida):,} filas × {flags.shape[1]} flags")
+    tam_f = (OUT / "pbe_flags.parquet").stat().st_size / 1e6
+    print(f"\nescrito {OUT}/pbe_flags.parquet: {len(salida):,} filas × {flags.shape[1]} flags")
     print(f"  F1 {grupos.shape[1]} · F2 {catpred.shape[1]} · F3 {tipos.shape[1] + areas.shape[1]} · F4 {catreal.shape[1]}")
     print(f"  vectores en memoria {tam_v:,.0f} MB  ->  dataset de flags {tam_f:,.1f} MB en disco")
     ej = salida[salida.bloque == "train"].iloc[0]

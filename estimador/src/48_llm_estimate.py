@@ -24,7 +24,7 @@ sys.path.insert(0, "src")
 import exp_common as E  # noqa: E402
 
 pd.set_option("display.width", 250)
-DATA = "data/processed/agix_effort_v3.parquet"
+DATA = "data/processed/pbe_effort_v3.parquet"
 NUEVAS = ["n_links", "n_links_estructurales", "n_componentes", "en_sprint",
           "tiene_asignado", "Title_Changed_After_Estimation",
           "Story_Point_Changed_After_Estimation"]
@@ -34,7 +34,7 @@ CATS = ["task_kind", "source", "desarrollador"]
 def modelo_texto(sw, destino):
     emb = np.load("data/processed/embeddings/"
                   "paraphrase-multilingual-mpnet-base-v2.npy")
-    ids = pd.read_parquet("data/processed/agix_effort_clean.parquet",
+    ids = pd.read_parquet("data/processed/pbe_effort_clean.parquet",
                           columns=["task_id"]).task_id.to_numpy()
     pos = {t: i for i, t in enumerate(ids)}
     tr = sw[sw.split_t3 == "train"]

@@ -1,6 +1,6 @@
-"""Full review of the target variable against Agix's actual use case.
+"""Full review of the target variable against PBE's actual use case.
 
-Agix measures ONE developer's active time on ONE task, via a tracker they start
+PBE measures ONE developer's active time on ONE task, via a tracker they start
 and stop. Every row in the training data must mean the same thing, or the model
 learns a quantity it will never be asked to predict.
 
@@ -18,7 +18,7 @@ import numpy as np
 import pandas as pd
 
 pd.set_option("display.width", 250)
-CLEAN = "data/processed/agix_effort_clean.parquet"
+CLEAN = "data/processed/pbe_effort_clean.parquet"
 
 CONTAINER = (r"\b(project|phase|programme|initiative|roadmap|plan|planning|"
              r"meeting|workshop|kick.?off|various|misc|miscellaneous|"

@@ -24,7 +24,7 @@ sys.path.insert(0, "src")
 import exp_common as E  # noqa: E402
 
 pd.set_option("display.width", 250)
-DATA = "data/processed/agix_effort_v3.parquet"
+DATA = "data/processed/pbe_effort_v3.parquet"
 FROZEN = "data/processed/embeddings/paraphrase-multilingual-mpnet-base-v2.npy"
 FINETUNED = "data/processed/embeddings/mpnet_ft_temporal.npy"
 
@@ -49,7 +49,7 @@ def cargar():
     ids = df.task_id.to_numpy()
     pos = {t: i for i, t in enumerate(ids)}
     embs = {}
-    base = pd.read_parquet("data/processed/agix_effort_clean.parquet",
+    base = pd.read_parquet("data/processed/pbe_effort_clean.parquet",
                            columns=["task_id"]).task_id.to_numpy()
     pos_frozen = {t: i for i, t in enumerate(base)}
     embs["congelado"] = (np.load(FROZEN), pos_frozen)

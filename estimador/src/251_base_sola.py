@@ -18,7 +18,7 @@ OUT = Path("results/large_contra_small")
 
 
 def main():
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     sw = df[df.is_software_task == 1]
     sw = sw[~sw.fuente_jira.eq("Apache")].reset_index(drop=True)
     y = sw.effort_hours.to_numpy(float)

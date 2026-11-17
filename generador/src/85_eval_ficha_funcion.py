@@ -24,10 +24,10 @@ import numpy as np
 import pandas as pd
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-os.environ.setdefault("AGIX_DEVICE", "cuda")
-os.environ.setdefault("AGIX_SEED", "20260926")
+os.environ.setdefault("PBE_DEVICE", "cuda")
+os.environ.setdefault("PBE_SEED", "20260926")
 NUEVO = sys.argv[1] if len(sys.argv) > 1 else (
-    f"{BASE}/models/mt5-small-pruned_o2o_agix_v1_o2ofmt_agix_v1_v8ff_agix_v1")
+    f"{BASE}/models/mt5-small-pruned_o2o_pbe_v1_o2ofmt_pbe_v1_v8ff_pbe_v1")
 
 DESCRIPCIONES = [
     "A digital bank app where customers open an account with identity verification, "

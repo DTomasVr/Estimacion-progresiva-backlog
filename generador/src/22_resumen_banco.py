@@ -21,7 +21,7 @@ PAT = ev.re.compile(r"as\s+(?:an?|the)\s+[^,.]{2,60}[,;]?\s+i\s*(?:'d|\s+would)?
 
 R = [json.loads(l) for l in open(f"{BASE}/results/20_banco.jsonl", encoding="utf-8")]
 R = pd.DataFrame(R)
-R["sistema"] = np.where(R.sistema == "agix", "agix (nuestro)", R.sistema + " " + R.condicion)
+R["sistema"] = np.where(R.sistema == "pbe", "pbe (nuestro)", R.sistema + " " + R.condicion)
 
 D = pd.read_parquet(f"{BASE}/data/processed/s2s_o2o_dalpiaz_test.parquet")
 T = pd.read_parquet(f"{BASE}/data/processed/s2s_o2o_test.parquet")
@@ -44,7 +44,7 @@ g = R.groupby(["sistema", "fuente"]).agg(n=("caso", "size"), seg_mediana=("segun
 print(g.to_string(index=False))
 g.to_csv(f"{BASE}/results/22_banco_resumen.csv", index=False)
 
-base = R[R.sistema == "agix (nuestro)"].segundos.median()
+base = R[R.sistema == "pbe (nuestro)"].segundos.median()
 v = R.groupby("sistema").segundos.median().sort_values()
 print("\nveces mas lento que el nuestro (mediana):")
 print((v / base).round(1).to_string())
@@ -53,7 +53,7 @@ print((v / base).round(1).to_string())
 # on the SAME projects for both sides (a pooled mean over different project sets
 # is not a comparison). Projects a system failed on are dropped from ITS pair only.
 P = R.pivot_table(index="caso", columns="sistema", values="sF1")
-nuestro = "agix (nuestro)"
+nuestro = "pbe (nuestro)"
 rng = np.random.default_rng(ev.SEED)
 filas = []
 for sis in [c for c in P.columns if c != nuestro]:

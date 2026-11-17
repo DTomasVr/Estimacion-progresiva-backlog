@@ -9,12 +9,12 @@ import sys
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 NECESARIO = [
-    ("modelo de arriba", "models/mt5-small-pruned_o2o_agix_v1_o2ofmt_agix_v1_v9bt_agix_v1"),
-    ("modelo de abajo", "models/mt5-small-pruned_hist_agix_v1_v5_agix_v1"),
-    # el conjunto por omision (AGIX_CONJUNTO=dos_modelos) carga TAMBIEN este;
+    ("modelo de arriba", "models/mt5-small-pruned_o2o_pbe_v1_o2ofmt_pbe_v1_v9bt_pbe_v1"),
+    ("modelo de abajo", "models/mt5-small-pruned_hist_pbe_v1_v5_pbe_v1"),
+    # el conjunto por omision (PBE_CONJUNTO=dos_modelos) carga TAMBIEN este;
     # sin el, la comprobacion pasaba y el pipeline reventaba al cargar
-    ("modelo de abajo, 2.o del conjunto", "models/mt5-small-pruned_hist_agix_v1_bs8_lr9.2e-4"),
-    ("SBERT propio", "models/sbert_agix_v1"),
+    ("modelo de abajo, 2.o del conjunto", "models/mt5-small-pruned_hist_pbe_v1_bs8_lr9.2e-4"),
+    ("SBERT propio", "models/sbert_pbe_v1"),
     ("reordenador de beneficios", "models/reordenador_beneficio.joblib"),
     ("embeddings del corpus", "data/processed/pipeline_emb.npz"),
     ("tabla de vecinos de arriba", "data/processed/s2s_o2o_train.parquet"),

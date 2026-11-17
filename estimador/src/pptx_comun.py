@@ -89,7 +89,7 @@ def portada(prs, titulo, subtitulo, pie=""):
     _rect(s, 0, 0, ANCHO, ALTO, relleno=TINTA)
     _rect(s, MARGEN, Inches(2.55), Inches(1.5), Pt(4), relleno=BLANCO)
     _caja(s, MARGEN, Inches(1.5), UTIL, Inches(1.0),
-          "AGIX · COMPONENTE DE ESTIMACIÓN DE ESFUERZO", tam=13,
+          "PBE · COMPONENTE DE ESTIMACIÓN DE ESFUERZO", tam=13,
           color=SUAVE, negrita=True)
     _caja(s, MARGEN, Inches(2.95), UTIL, Inches(2.0), titulo, tam=44,
           color=BLANCO, negrita=True, fuente=TITULO_F, interlineado=1.08)

@@ -27,8 +27,8 @@ spec = importlib.util.spec_from_file_location("ev", f"{BASE}/src/11_eval_gen.py"
 ev = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(ev)
 
-M1 = f"{BASE}/models/mt5-small-pruned_hist_agix_v1"                    # bs16 lr1.4e-3
-M2 = f"{BASE}/models/mt5-small-pruned_hist_agix_v1_bs8_lr9.2e-4"       # bs8  lr9.2e-4
+M1 = f"{BASE}/models/mt5-small-pruned_hist_pbe_v1"                    # bs16 lr1.4e-3
+M2 = f"{BASE}/models/mt5-small-pruned_hist_pbe_v1_bs8_lr9.2e-4"       # bs8  lr9.2e-4
 N = 300
 UMBRAL_DUP = 0.90      # same threshold the pipeline uses
 UMBRAL_UTIL = 0.60     # "this generated task resembles a real one"
@@ -131,7 +131,7 @@ print(f"  modelo 2 menos modelo 1: {d.mean():+.4f} IC95 [{np.quantile(bs,.025):+
 
 # --------------------------------------------- near-duplicates left by the pipeline
 B = [json.loads(l) for l in open(f"{BASE}/results/20_banco.jsonl", encoding="utf-8")]
-B = [b for b in B if b["sistema"] == "agix"]
+B = [b for b in B if b["sistema"] == "pbe"]
 tot, rep = 0, 0
 for b in B:
     for lista in b["tareas"]:

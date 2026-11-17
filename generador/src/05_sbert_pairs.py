@@ -7,7 +7,7 @@ model is for "what planned work goes under this", not for bug triage.
 Spanish: every unique parent summary is translated once with the cached
 Helsinki-NLP/opus-mt-en-es. In train, 30 % of pairs get the Spanish anchor
 (replacing, not adding, so volume is unchanged); val/test keep both versions
-so retrieval can be scored es->en, which is how Agix queries arrive.
+so retrieval can be scored es->en, which is how PBE queries arrive.
 
 Output: data/processed/sbert_pairs.parquet
         (split, relation, parent_uid, child_uid, anchor_en, anchor_es, positive)

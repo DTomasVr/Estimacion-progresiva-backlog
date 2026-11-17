@@ -8,7 +8,7 @@ n = 6 projects, so the confidence interval is wide by construction; the per-proj
 table is reported next to the pooled number, and the generated stories are printed
 so they can be read.
 
-  AGIX_DEVICE=cpu python src/49_eval_real.py [viejo|nuevo|ambos]
+  PBE_DEVICE=cpu python src/49_eval_real.py [viejo|nuevo|ambos]
 
 out: results/49_real.csv
 """
@@ -21,7 +21,7 @@ import numpy as np
 import pandas as pd
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-os.environ.setdefault("AGIX_DEVICE", "cpu")
+os.environ.setdefault("PBE_DEVICE", "cpu")
 spec = importlib.util.spec_from_file_location("pl", f"{BASE}/src/19_pipeline.py")
 pl = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(pl)
@@ -29,12 +29,12 @@ spec2 = importlib.util.spec_from_file_location("ev", f"{BASE}/src/11_eval_gen.py
 ev = importlib.util.module_from_spec(spec2)
 spec2.loader.exec_module(ev)
 
-# se pueden apuntar a otra version con AGIX_ARRIBA / AGIX_ABAJO
+# se pueden apuntar a otra version con PBE_ARRIBA / PBE_ABAJO
 NUEVO_ARRIBA = os.environ.get(
-    "AGIX_ARRIBA", f"{BASE}/models/mt5-small-pruned_o2o_agix_v1_o2ofmt_agix_v1_mixa_agix_v1")
+    "PBE_ARRIBA", f"{BASE}/models/mt5-small-pruned_o2o_pbe_v1_o2ofmt_pbe_v1_mixa_pbe_v1")
 NUEVO_ABAJO = os.environ.get(
-    "AGIX_ABAJO", f"{BASE}/models/mt5-small-pruned_hist_agix_v1_mix_agix_v1")
-SUFIJO = os.environ.get("AGIX_SUFIJO", "")
+    "PBE_ABAJO", f"{BASE}/models/mt5-small-pruned_hist_pbe_v1_mix_pbe_v1")
+SUFIJO = os.environ.get("PBE_SUFIJO", "")
 T = json.load(open(f"{BASE}/data/reales/test_real.json", encoding="utf-8"))
 cual = sys.argv[1] if len(sys.argv) > 1 else "ambos"
 

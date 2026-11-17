@@ -30,7 +30,7 @@ import numpy as np  # noqa: E402
 import pandas as pd  # noqa: E402
 
 sys.path.insert(0, "src")
-V6 = Path("models/estimador_agix_v6.joblib")
+V6 = Path("models/estimador_pbe_v6.joblib")
 CACHE = Path("data/processed/embeddings/codificadores")
 N_BIN, SUAVE, K_DENS, NIVEL, LOTE = 240, .25, 200, .8, 1024
 
@@ -56,7 +56,7 @@ def main():
           flush=True)
 
     # calibracion de tau contra el bloque de validacion, que el banco no contiene
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     todo = df[df.is_software_task == 1].reset_index(drop=True)
     V = np.load(CACHE / "e5-large-todo.npy").astype(np.float32)
     noap = (~todo.fuente_jira.eq("Apache")).to_numpy()

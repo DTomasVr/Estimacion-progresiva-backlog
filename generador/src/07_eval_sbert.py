@@ -15,7 +15,7 @@ from sentence_transformers import SentenceTransformer
 
 BASE = r"F:\Software Task generation Model"
 MODELOS = {"congelado": "sentence-transformers/paraphrase-multilingual-mpnet-base-v2",
-           "ajustado": f"{BASE}/models/sbert_agix_v1"}
+           "ajustado": f"{BASE}/models/sbert_pbe_v1"}
 if len(sys.argv) > 1:
     MODELOS["ajustado"] = sys.argv[1]
 K = 10

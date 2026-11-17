@@ -1,7 +1,7 @@
 # Task & NFR Generation Module — Project Spec
 
 > Handoff document for a Claude Code session. This module replaces the LLM-based
-> task/acceptance-criteria/NFR generation component of the thesis system (Agix) with a
+> task/acceptance-criteria/NFR generation component of the thesis system (PBE) with a
 > **trained, dataset-grounded model** reusing an existing multilingual SBERT backbone.
 > Goal: turn an opaque external-LLM API call into a model we design, train, and evaluate —
 > the "bigger CS" contribution the advisor asked for.

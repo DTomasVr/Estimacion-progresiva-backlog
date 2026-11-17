@@ -49,14 +49,14 @@ def met(y, p):
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     sw = df[df.is_software_task == 1]
     sw = sw[~sw.fuente_jira.eq("Apache")].reset_index(drop=True)
     tit = sw.title.fillna("").astype(str)
     y = sw.effort_hours.to_numpy(float)
     ly = np.log(y)
     proy = sw.project.to_numpy()
-    p6 = joblib.load("models/estimador_agix_v6.joblib")
+    p6 = joblib.load("models/estimador_pbe_v6.joblib")
     SV = np.hstack([sv.transform(tf.transform(tit)).astype(np.float32)
                     for tf, sv in zip((p6["tfc"], p6["tfw"]), p6["svds"])])
     emb = {"large": (np.load(CACHE / "e5-large.npy"),

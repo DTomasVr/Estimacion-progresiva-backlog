@@ -1,4 +1,4 @@
-"""Une el generador de backlog con el estimador de esfuerzo (estimador_agix_v7).
+"""Une el generador de backlog con el estimador de esfuerzo (estimador_pbe_v7).
 
 El generador produce historias con sus tareas; este modulo les pone horas. Son dos
 modelos distintos que viven en dos repositorios distintos, asi que aqui esta todo lo
@@ -33,16 +33,16 @@ import numpy as np
 
 # Donde esta el estimador. Se busca en este orden, para que la misma copia sirva
 # tanto en la maquina de desarrollo como en una carpeta portatil:
-#   1 la variable AGIX_DATASET, si esta puesta
+#   1 la variable PBE_DATASET, si esta puesta
 #   2 una carpeta "estimador" al lado de este modulo (el reparto para la laptop)
-#   3 el repositorio Agix-Dataset en la maquina de desarrollo
+#   3 el repositorio PBE-Dataset en la maquina de desarrollo
 def _raiz_estimador():
-    if os.environ.get("AGIX_DATASET"):
-        return Path(os.environ["AGIX_DATASET"])
+    if os.environ.get("PBE_DATASET"):
+        return Path(os.environ["PBE_DATASET"])
     aqui = Path(__file__).resolve().parent.parent / "estimador"
-    if any((aqui / "models" / f"estimador_agix_{v}.joblib").exists() for v in ("v7", "v6")):
+    if any((aqui / "models" / f"estimador_pbe_{v}.joblib").exists() for v in ("v7", "v6")):
         return aqui
-    return Path(r"C:\Users\User\Documents\Programacao\Agix-Dataset")
+    return Path(r"C:\Users\User\Documents\Programacao\PBE-Dataset")
 
 
 RAIZ = _raiz_estimador()
@@ -58,7 +58,7 @@ RAIZ = _raiz_estimador()
 # esta medido sobre la cabeza de la MEDIANA; la cabeza de la MEDIA, que es de donde
 # sale el total, no lo aplica y tiene otro.
 #
-# Medido en E74 (Agix-Dataset/src/182_estilo_para_el_total.py) sobre las 800 tareas
+# Medido en E74 (PBE-Dataset/src/182_estilo_para_el_total.py) sobre las 800 tareas
 # reales reescritas al estilo del generador, todas fuera del entrenamiento, con el
 # cociente de sumas que es lo que corresponde a un total:
 #
@@ -124,9 +124,9 @@ class Estimacion:
         if not estilo:                               # para comparar, no para servir
             self.factor_estilo, self.fuente_estilo = 1.0, "desactivado"
         t0 = time.time()
-        paquete = self.raiz / "models" / "estimador_agix_v7.joblib"
+        paquete = self.raiz / "models" / "estimador_pbe_v7.joblib"
         if not paquete.exists():
-            paquete = self.raiz / "models" / "estimador_agix_v6.joblib"
+            paquete = self.raiz / "models" / "estimador_pbe_v6.joblib"
         guion = self.raiz / "src" / "171_estimador_v6.py"
         for f in (paquete, guion):
             if not f.exists():

@@ -38,7 +38,7 @@ if len(da) != len(db) or (da.parent_uid.values != db.parent_uid.values).any():
     raise SystemExit("las dos corridas no cubren las mismas filas en el mismo orden")
 print(f"{len(da)} filas emparejadas", flush=True)
 
-sb = SentenceTransformer(ev.SBERT, device=os.environ.get("AGIX_DEVICE", "cuda"))
+sb = SentenceTransformer(ev.SBERT, device=os.environ.get("PBE_DEVICE", "cuda"))
 refs = [str(r).split(" ; ") for r in da.ref]
 sa = ev.puntuar(sb, [str(g).split(" ; ") for g in da.gen], refs)
 sbb = ev.puntuar(sb, [str(g).split(" ; ") for g in db.gen], refs)

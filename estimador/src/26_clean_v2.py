@@ -1,6 +1,6 @@
 """Second cleaning pass: make every row mean "one developer's time on one task".
 
-Agix's tracker measures a single developer working on a single task. Rows that
+PBE's tracker measures a single developer working on a single task. Rows that
 mean something else teach the model a quantity it will never be asked for.
 
   E1  drop TAWOS Epics -- containers by definition
@@ -17,8 +17,8 @@ import numpy as np
 import pandas as pd
 
 pd.set_option("display.width", 250)
-IN = "data/processed/agix_effort_clean.parquet"
-OUT = "data/processed/agix_effort_v2.parquet"
+IN = "data/processed/pbe_effort_clean.parquet"
+OUT = "data/processed/pbe_effort_v2.parquet"
 SEED = 20260830
 
 CONTAINER = (r"\b(project|phase|programme|initiative|roadmap|plan|planning|"

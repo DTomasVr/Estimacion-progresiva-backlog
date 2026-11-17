@@ -82,7 +82,7 @@ calculan sobre un modelo limpio y no sobre el paquete. Corregido:
     s = s[:ini] + """## B.7 · Contrato de la interfaz
 
 ```python
-est = EstimadorV6()                      # carga models/estimador_agix_v6.joblib
+est = EstimadorV6()                      # carga models/estimador_pbe_v6.joblib
 
 est.estimar_tareas(textos,               # -> DataFrame
                    estilo="persona",     #   o "generador" si viene de la tubería 1
@@ -106,7 +106,7 @@ est.tira_probabilidad(textos,            # -> lista por tarea de (desde_h, hasta
 
 Reglas del contrato, que importan:
 
-- **El texto se espera en inglés**, solo el **título**, sin descripción. El generador de Agix ya
+- **El texto se espera en inglés**, solo el **título**, sin descripción. El generador de PBE ya
   produce inglés internamente y traduce solo para mostrar. Pasarle el español no falla: solo
   acierta menos.
 - `cerradas`, `estimaciones` y `personas` son listas **de la misma longitud que `textos`**, con

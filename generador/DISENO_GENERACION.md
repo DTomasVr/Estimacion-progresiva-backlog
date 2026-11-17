@@ -1,7 +1,7 @@
 # Diseño · Tubería de generación de historias y tareas
 
 > **Qué es este documento.** Un recorte de `DISENO_PIPELINE.md`, que une el diseño de las dos
-> tuberías encadenadas de Agix. Aquí está todo lo que toca a la **generación**: la vista de
+> tuberías encadenadas de PBE. Aquí está todo lo que toca a la **generación**: la vista de
 > conjunto, la Parte A íntegra, y las dos secciones del estimador que el generador necesita
 > porque el adaptador vive en **este** repositorio.
 >
@@ -18,7 +18,7 @@ documento las reúne en uno solo:
 | | qué hace | modelos | estado |
 |---|---|---|---|
 | **Tubería 1 · Generación** | descripción → historias de usuario con sus tareas | 3 × mT5-small podado (121 M) + SBERT propio + Marian | desplegado 28/09/2026, revisado 21/10/2026 |
-| **Tubería 2 · Estimación** | tareas → horas, y el total del proyecto | e5-large congelado (ONNX int8, 397 MB) + dos apilados | `estimador_agix_v7`, 21/10/2026 |
+| **Tubería 2 · Estimación** | tareas → horas, y el total del proyecto | e5-large congelado (ONNX int8, 397 MB) + dos apilados | `estimador_pbe_v7`, 21/10/2026 |
 
 > **Alcance:** solo el diseño vigente de las dos tuberías. El camino de los experimentos
 > descartados está en `ROL_FUNCION_LITERATURA.md`, `AUMENTO_DATOS_LITERATURA.md` (generación) y
@@ -362,7 +362,7 @@ casa con su rol («companies» quedaba más cerca de «graduate» que de «recru
 Las anclas salen de las funciones de la descripción y del plan de **roles** (no del de
 clases), y se **fusionan después** de la selección: entran **siempre**, primero, hasta k/2, y el
 resto de lo seleccionado completa el backlog sin duplicarlas. Es un chequeo de
-cobertura, pero en el lado de la **generación**, que es donde estaba el hueco. `AGIX_ANCLAR=0` lo
+cobertura, pero en el lado de la **generación**, que es donde estaba el hueco. `PBE_ANCLAR=0` lo
 apaga para comparar.
 
 Según el informe del chat de generación (`RESPUESTA_REVISION_EXTREMO_A_EXTREMO.md`), de la mejora total de sF1 de la revisión
@@ -558,19 +558,19 @@ flowchart LR
     M1 --> UA["s2s_o2o<br/>src/17_one2one_arriba.py"]
     UA --> UB["s2s_o2ofmt<br/>formato de historia"]
     UB --> UC["s2s_v9bt<br/>real + profesor + retrotraducción<br/>25.938 ejemplos"]
-    UC --> UD["MITAD DE ARRIBA<br/>_o2o_o2ofmt_v9bt_agix_v1"]
+    UC --> UD["MITAD DE ARRIBA<br/>_o2o_o2ofmt_v9bt_pbe_v1"]
     M1 --> LA["s2s_hist<br/>src/15_datos_historias.py"]
     LA --> LB["s2s_v5<br/>real + profesor curado"]
-    LB --> LC["MITAD DE ABAJO<br/>_hist_v5_agix_v1"]
-    S0["paraphrase-multilingual-<br/>mpnet-base-v2"] --> S1["SBERT propio<br/>src/06_finetune_sbert.py<br/>sbert_agix_v1"]
+    LB --> LC["MITAD DE ABAJO<br/>_hist_v5_pbe_v1"]
+    S0["paraphrase-multilingual-<br/>mpnet-base-v2"] --> S1["SBERT propio<br/>src/06_finetune_sbert.py<br/>sbert_pbe_v1"]
 ```
 
 Hiperparámetros de los tres modelos desplegados, que son los que hay que repetir:
 
 | mitad | base | bs × acum | max_out | lr | épocas | val por época |
 |---|---|---|---|---|---|---|
-| arriba (`v9bt`) | `_o2o_agix_v1_o2ofmt_agix_v1` | 32 × 1 | 48 | 5e-4 | 4 | 1,7947 · 1,8017 · **1,7897** · 1,8208 |
-| abajo (`v5`) | `_hist_agix_v1` | 16 × 1 | 192 | 5e-4 | 4 | **3,3210** · 3,3393 · 3,3565 |
+| arriba (`v9bt`) | `_o2o_pbe_v1_o2ofmt_pbe_v1` | 32 × 1 | 48 | 5e-4 | 4 | 1,7947 · 1,8017 · **1,7897** · 1,8208 |
+| abajo (`v5`) | `_hist_pbe_v1` | 16 × 1 | 192 | 5e-4 | 4 | **3,3210** · 3,3393 · 3,3565 |
 | abajo, 2.º del conjunto (`_hist_bs8_lr9.2e-4`) | datos: solo `s2s_hist`, 22.871 ejemplos, sin profesor | 8 × 1 | — | 9,2e-4 | parada en la 5.ª | mejor la 3.ª |
 
 Se guarda la **mejor época por pérdida de validación**, no la última. Datos y épocas leídos de
@@ -590,10 +590,10 @@ queda excluido porque su licencia obligaría a poner «Llama» en el nombre del 
 
 | artefacto | lo produce | para qué |
 |---|---|---|
-| `models/..._v9bt_agix_v1` | `09_train_mt5.py` | mitad de arriba |
-| `models/..._hist_agix_v1_v5_agix_v1` | `09_train_mt5.py` | mitad de abajo |
-| `models/mt5-small-pruned_hist_agix_v1_bs8_lr9.2e-4` | `09_train_mt5.py` | mitad de abajo, 2.º del conjunto: sola empata, pero se equivoca distinto y la unión sube la cobertura |
-| `models/sbert_agix_v1` | `06_finetune_sbert.py` | recuperación, selección, deduplicado |
+| `models/..._v9bt_pbe_v1` | `09_train_mt5.py` | mitad de arriba |
+| `models/..._hist_pbe_v1_v5_pbe_v1` | `09_train_mt5.py` | mitad de abajo |
+| `models/mt5-small-pruned_hist_pbe_v1_bs8_lr9.2e-4` | `09_train_mt5.py` | mitad de abajo, 2.º del conjunto: sola empata, pero se equivoca distinto y la unión sube la cobertura |
+| `models/sbert_pbe_v1` | `06_finetune_sbert.py` | recuperación, selección, deduplicado |
 | `models/reordenador_beneficio.joblib` | `74_reordenador.py` | bonificación por coherencia del beneficio (AUC 0,728) |
 | `data/processed/pipeline_emb.npz` | `08_preprocess.py` | embeddings del corpus para recuperar vecinos |
 | `data/processed/s2s_o2o_train.parquet` | `17_one2one_arriba.py` | tabla de vecinos de arriba |
@@ -648,8 +648,8 @@ Todo se puede sobreescribir por variable de entorno; estos son los valores por o
 
 ## A.10 Cómo reproducir desde cero
 
-Intérprete: `C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Scripts\python.exe` o
-`F:\Agix\venv\Scripts\python.exe` (los dos tienen torch 2.11 + cu128). **El `python` del PATH no
+Intérprete: `C:\Users\User\Documents\Programacao\PBE-Dataset\.venv\Scripts\python.exe` o
+`F:\PBE\venv\Scripts\python.exe` (los dos tienen torch 2.11 + cu128). **El `python` del PATH no
 sirve.** Las rutas del proyecto están al principio de cada script.
 
 ```bash
@@ -672,14 +672,14 @@ python src/17_one2one_arriba.py       # arriba: descripcion -> una historia
 # --- 4. datos sinteticos del profesor (requiere ollama con qwen2.5:7b)
 python src/53_dominios_v3.py          # 622 descripciones sobre 40 sectores
 python src/54_generar_v3.py qwen2.5:7b
-AGIX_SYNTH=backlogs_v3_qwen2.5_7b.jsonl AGIX_PREF=v8f python src/43_datos_mixtos.py
+PBE_SYNTH=backlogs_v3_qwen2.5_7b.jsonl PBE_PREF=v8f python src/43_datos_mixtos.py
 
 # --- 5. el aumento por retrotraduccion (lo que distingue a v9bt)
 python src/88_retrotraducir_datos.py 0.5
 
 # --- 6. entrenamiento de las dos mitades
-DATOS=v9bt python src/09_train_mt5.py models/mt5-small-pruned_o2o_agix_v1_o2ofmt_agix_v1 32 48 0.0005 4
-DATOS=v5   python src/09_train_mt5.py models/mt5-small-pruned_hist_agix_v1 16 192 0.0005 4
+DATOS=v9bt python src/09_train_mt5.py models/mt5-small-pruned_o2o_pbe_v1_o2ofmt_pbe_v1 32 48 0.0005 4
+DATOS=v5   python src/09_train_mt5.py models/mt5-small-pruned_hist_pbe_v1 16 192 0.0005 4
 
 # --- 7. recursos que el pipeline carga en ejecucion
 python src/55_lexico_roles.py
@@ -691,7 +691,7 @@ python src/74_reordenador.py
 # --- 8. comprobacion
 python src/91_comprobar_entorno.py
 python src/19_pipeline.py --demo
-AGIX_SEED=20260926 python src/49_eval_real.py nuevo
+PBE_SEED=20260926 python src/49_eval_real.py nuevo
 ```
 
 ---
@@ -852,7 +852,7 @@ generador, y **ha cambiado**.
 > 4. **Estimador v7 (21/10/2026): un solo codificador.** Los dos codificadores ajustados del
 >    v6 no aportaban fuera de pliegue y se quitaron; el que queda va en ONNX int8 con el
 >    vocabulario podado (397 MB, dentro del estimador, sin caché de HF ni red). El adaptador
->    carga `estimador_agix_v7.joblib` y cae al v6 si no está. El total del proyecto sale
+>    carga `estimador_pbe_v7.joblib` y cae al v6 si no está. El total del proyecto sale
 >    idéntico; las horas **por tarea** sobre texto del generador, ×0,81 las del v6 (abierto:
 >    falta medir con tareas del generador con horas reales). Detalle en
 >    `ESTIMADOR_V7_INTEGRADO.md` y en la Parte B del documento completo.
@@ -862,7 +862,7 @@ generador, y **ha cambiado**.
 ## · Enganche con el generador de backlog
 
 El estimador no recibe texto de Jira en produccion: recibe **lo que escribe el generador
-de historias y tareas** de Agix. Son dos repositorios distintos y los une
+de historias y tareas** de PBE. Son dos repositorios distintos y los une
 `src/34_estimacion.py` (en el repositorio del generador), que toma la salida del
 generador y le pone horas.
 
@@ -916,7 +916,7 @@ de James-Stein hace que no se cancele solo.
 ## · Contrato del estimador
 
 ```python
-est = EstimadorV6(paquete="models/estimador_agix_v7.joblib")   # la clase sirve v6 y v7
+est = EstimadorV6(paquete="models/estimador_pbe_v7.joblib")   # la clase sirve v6 y v7
 
 est.estimar_tareas(textos,               # -> DataFrame
                    estilo="persona",     #   o "generador" si viene de la tubería 1
@@ -940,7 +940,7 @@ est.tira_probabilidad(textos,            # -> lista por tarea de (desde_h, hasta
 
 Reglas del contrato, que importan:
 
-- **El texto se espera en inglés**, solo el **título**, sin descripción. El generador de Agix ya
+- **El texto se espera en inglés**, solo el **título**, sin descripción. El generador de PBE ya
   produce inglés internamente y traduce solo para mostrar. Pasarle el español no falla: solo
   acierta menos.
 - `cerradas`, `estimaciones` y `personas` son listas **de la misma longitud que `textos`**, con

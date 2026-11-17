@@ -20,7 +20,7 @@ y concentradas en los sectores tratados, lo que inflaba su similitud y contamina
 experimento. Se sustituyeron por otras funciones tipicas del dominio; cada sector sigue
 siendo reconocible por su concepto central, que va en el nombre del producto.
 
-La v3 no se toca. El pipeline lee v3 salvo que AGIX_TAXONOMIA=descripciones_v4.json.
+La v3 no se toca. El pipeline lee v3 salvo que PBE_TAXONOMIA=descripciones_v4.json.
 
 out: data/synth/descripciones_v4.json  y  data/synth/roles_v4.json
 """
@@ -155,9 +155,9 @@ import numpy as np  # noqa: E402
 import torch  # noqa: E402
 from sentence_transformers import SentenceTransformer  # noqa: E402
 
-torch.set_num_threads(int(os.environ.get("AGIX_HILOS", 2)))
-sb = SentenceTransformer(f"{BASE}/models/sbert_agix_v1",
-                         device=os.environ.get("AGIX_DEVICE", "cpu"))
+torch.set_num_threads(int(os.environ.get("PBE_HILOS", 2)))
+sb = SentenceTransformer(f"{BASE}/models/sbert_pbe_v1",
+                         device=os.environ.get("PBE_DEVICE", "cpu"))
 E = sb.encode([c["descripcion"] for c in casos], normalize_embeddings=True,
               show_progress_bar=False)
 S = E @ E.T

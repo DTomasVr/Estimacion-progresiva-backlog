@@ -23,7 +23,7 @@ import pandas as pd
 
 sys.path.insert(0, "src")
 OUT = Path("results/estimador_v7")
-V7 = Path("models/estimador_agix_v7.joblib")
+V7 = Path("models/estimador_pbe_v7.joblib")
 
 
 def mod(n, r):
@@ -49,14 +49,14 @@ def main():
     tx = r.reescrito.fillna("").astype(str).tolist()
     to = r.title.fillna("").astype(str).tolist()
     res = {}
-    for nom, paq in (("v6", "models/estimador_agix_v6.joblib"), ("v7", str(V7))):
+    for nom, paq in (("v6", "models/estimador_pbe_v6.joblib"), ("v7", str(V7))):
         est = e6.EstimadorV6(paquete=Path(paq))
         pr = est.estimar_tareas(tx).horas.to_numpy()
         po_ = est.estimar_tareas(to).horas.to_numpy()
         res[nom] = {"factor": factor(r, pr), "sesgo_original": factor(r, po_)}
         if nom == "v7":
             from transformers import AutoTokenizer
-            df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+            df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
             tok = AutoTokenizer.from_pretrained(ev.BASE)
             keep, lut = ev.vocab_produccion(tok, df)
             est._st = po.CodPodado(Path("models/onnx_podado/e5_base_prod.podado.int8.onnx"),

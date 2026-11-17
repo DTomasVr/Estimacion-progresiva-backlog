@@ -9,14 +9,14 @@
 # NO EDITAR MIENTRAS CORRE.
 set -u
 BASE="/f/Software Task generation Model"
-PY="/c/Users/User/Documents/Programacao/Agix-Dataset/.venv/Scripts/python.exe"
+PY="/c/Users/User/Documents/Programacao/PBE-Dataset/.venv/Scripts/python.exe"
 LOG="$BASE/logs/sin_podar.log"
 export PYTHONWARNINGS=ignore PYTHONIOENCODING=utf-8 HF_HUB_OFFLINE=1
 cd "$BASE"
 di() { echo "[$(date '+%F %T')] $*" | tee -a "$LOG"; }
 
-P_OUT="$BASE/models/mt5-small-pruned_v5_agix_v1"
-U_OUT="$BASE/models/mt5-small_v5nb_agix_v1"
+P_OUT="$BASE/models/mt5-small-pruned_v5_pbe_v1"
+U_OUT="$BASE/models/mt5-small_v5nb_pbe_v1"
 
 # se espera la linea "TOTAL <min> min" que 09_train_mt5 imprime al acabar: es mas
 # fiable que buscar el proceso (wmic ya no viene en Windows 11)
@@ -44,11 +44,11 @@ di "VRAM maxima del brazo U: $(grep -oE 'VRAM [0-9.]+ GB' logs/09_poda_U.log | s
 di "evaluacion: cada brazo con SU parquet de test"
 "$PY" -u src/11_eval_gen.py --test "$P_OUT" beam4_actual > logs/11_poda_P.log 2>&1
 grep -E "sF1" logs/11_poda_P.log | tail -3 | tee -a "$LOG"
-AGIX_TEST_PARQUET="$BASE/data/processed/s2s_nb_test.parquet" \
+PBE_TEST_PARQUET="$BASE/data/processed/s2s_nb_test.parquet" \
   "$PY" -u src/11_eval_gen.py --test "$U_OUT" beam4_actual > logs/11_poda_U.log 2>&1
 grep -E "sF1" logs/11_poda_U.log | tail -3 | tee -a "$LOG"
 
 di "comparacion pareada"
-"$PY" -u src/79_pareado_poda.py mt5-small-pruned_v5_agix_v1 mt5-small_v5nb_agix_v1 \
+"$PY" -u src/79_pareado_poda.py mt5-small-pruned_v5_pbe_v1 mt5-small_v5nb_pbe_v1 \
   2>&1 | tee -a "$LOG"
 di "PODA TERMINADA"

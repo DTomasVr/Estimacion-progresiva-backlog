@@ -14,12 +14,12 @@ from collections import Counter
 
 import pandas as pd
 
-AGIX = r"C:\Users\User\Documents\Programacao\Agix-Dataset"
-sys.path.insert(0, AGIX + r"\src")
+PBE = r"C:\Users\User\Documents\Programacao\PBE-Dataset"
+sys.path.insert(0, PBE + r"\src")
 import tawos_sql as T  # noqa: E402
 
-ZIP = AGIX + r"\data\raw\TAWOS.sql.zip"
-SCHEMA = AGIX + r"\data\interim\tawos_schema.sql"
+ZIP = PBE + r"\data\raw\TAWOS.sql.zip"
+SCHEMA = PBE + r"\data\interim\tawos_schema.sql"
 BASE = r"F:\Software Task generation Model"
 TOTAL_ESPERADO = 10_116_894
 HIER = {"epic link", "parent", "parent issue", "epic child", "epic name",

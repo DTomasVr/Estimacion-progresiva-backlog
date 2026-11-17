@@ -13,21 +13,21 @@
 # Espera a que run_v3_semillas.sh termine. NO EDITAR MIENTRAS CORRE.
 set -u
 BASE="/f/Software Task generation Model"
-PY="/c/Users/User/Documents/Programacao/Agix-Dataset/.venv/Scripts/python.exe"
+PY="/c/Users/User/Documents/Programacao/PBE-Dataset/.venv/Scripts/python.exe"
 LOG="$BASE/logs/v3.log"
-export PYTHONWARNINGS=ignore PYTHONIOENCODING=utf-8 AGIX_DEVICE=cuda AGIX_CONJUNTO=no
+export PYTHONWARNINGS=ignore PYTHONIOENCODING=utf-8 PBE_DEVICE=cuda PBE_CONJUNTO=no
 cd "$BASE"
 di() { echo "[$(date '+%F %T')] $*" | tee -a "$LOG"; }
 
-A_CON="$BASE/models/mt5-small-pruned_o2o_agix_v1_o2ofmt_agix_v1_v3r_agix_v1"
-ABAJO="$BASE/models/mt5-small-pruned_hist_agix_v1_v3_agix_v1"
+A_CON="$BASE/models/mt5-small-pruned_o2o_pbe_v1_o2ofmt_pbe_v1_v3r_pbe_v1"
+ABAJO="$BASE/models/mt5-small-pruned_hist_pbe_v1_v3_pbe_v1"
 
 di "esperando a que termine run_v3_semillas.sh"
 while ! grep -qE "SEMILLAS TERMINADO|FALLO" "$LOG"; do sleep 45; done
 sleep 10
 di "=== variante C: ficha de rol + haz (determinista) ==="
 
-export AGIX_ARRIBA="$A_CON" AGIX_ABAJO="$ABAJO" AGIX_ARRIBA_HAZ=1 AGIX_SEED=20260926
+export PBE_ARRIBA="$A_CON" PBE_ABAJO="$ABAJO" PBE_ARRIBA_HAZ=1 PBE_SEED=20260926
 
 di "--- coherencia"
 "$PY" -u src/52_coherencia.py modelo > logs/52_v3haz.log 2>&1 \
@@ -35,14 +35,14 @@ di "--- coherencia"
      logs/52_v3haz.log | tee -a "$LOG" || di "  fallo 52"
 
 di "--- F1 de arista, referencias v1 y v3"
-AGIX_SUFIJO="_v3haz" "$PY" -u src/57_f1_arista.py --modelo > logs/57_v3haz.log 2>&1 \
+PBE_SUFIJO="_v3haz" "$PY" -u src/57_f1_arista.py --modelo > logs/57_v3haz.log 2>&1 \
   && tail -7 logs/57_v3haz.log | tee -a "$LOG" || di "  fallo 57 v1"
-AGIX_REF=v3 AGIX_SUFIJO="_v3haz_refv3" "$PY" -u src/57_f1_arista.py --modelo \
+PBE_REF=v3 PBE_SUFIJO="_v3haz_refv3" "$PY" -u src/57_f1_arista.py --modelo \
   > logs/57_v3haz_refv3.log 2>&1 \
   && tail -7 logs/57_v3haz_refv3.log | tee -a "$LOG" || di "  fallo 57 v3"
 
 di "--- 328 historias humanas (determinista, una corrida basta)"
-AGIX_SUFIJO="_v3haz" "$PY" -u src/49_eval_real.py ambos > logs/49_v3haz.log 2>&1 \
+PBE_SUFIJO="_v3haz" "$PY" -u src/49_eval_real.py ambos > logs/49_v3haz.log 2>&1 \
   && grep -E "^##### |nuevo - viejo|gana el nuevo" logs/49_v3haz.log | tee -a "$LOG" \
   || di "  fallo 49"
 

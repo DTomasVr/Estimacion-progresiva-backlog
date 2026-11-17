@@ -85,7 +85,7 @@ alerts»). El actor sale del sujeto del rasgo, con una tabla para los colectivos
 casa con su rol («companies» quedaba más cerca de «graduate» que de «recruiter»).
 
 Las anclas entran **siempre**, hasta k/2, y la selección normal rellena el resto. Es un chequeo de
-cobertura, pero en el lado de la **generación**, que es donde estaba el hueco. `AGIX_ANCLAR=0` lo
+cobertura, pero en el lado de la **generación**, que es donde estaba el hueco. `PBE_ANCLAR=0` lo
 apaga para comparar.
 
 Según el informe del chat de generación ({INF}), de la mejora total de sF1 de la revisión
@@ -160,9 +160,9 @@ empleador se le pide *recruiter* y no *employer*: en una sonda de 16 muestras «
   descripción (A.2.7). Es la regla que quitó las enfermeras de la limpieza a domicilio.""")
 
     # ---- A.8
-    s = cambia(s, """| `models/..._hist_agix_v1_v5_agix_v1` | `09_train_mt5.py` | mitad de abajo |""",
-               """| `models/..._hist_agix_v1_v5_agix_v1` | `09_train_mt5.py` | mitad de abajo |
-| `models/mt5-small-pruned_hist_agix_v1_bs8_lr9.2e-4` | `09_train_mt5.py` | mitad de abajo, 2.º del conjunto: sola empata, pero se equivoca distinto y la unión sube la cobertura |""")
+    s = cambia(s, """| `models/..._hist_pbe_v1_v5_pbe_v1` | `09_train_mt5.py` | mitad de abajo |""",
+               """| `models/..._hist_pbe_v1_v5_pbe_v1` | `09_train_mt5.py` | mitad de abajo |
+| `models/mt5-small-pruned_hist_pbe_v1_bs8_lr9.2e-4` | `09_train_mt5.py` | mitad de abajo, 2.º del conjunto: sola empata, pero se equivoca distinto y la unión sube la cobertura |""")
     s = cambia(s, """| `Helsinki-NLP/opus-mt-{es-en,en-es}` | caché en `models/hf_cache` | traducción de entrada y de salida |""",
                """| `models/marian_es_en`, `models/marian_en_es` | copia local de `Helsinki-NLP/opus-mt-*` | traducción de entrada y de salida. Desde carpeta y no desde el caché de HF: con el caché, estando en línea, la librería volvía a resolver `main` y bajaba otra variante de los pesos (+600 MB, y el paquete dejaba de ser offline sin avisar) |""")
 

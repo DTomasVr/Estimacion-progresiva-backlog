@@ -279,7 +279,7 @@ def total_proyecto():
 def compresion_escala():
     """Lo que el modelo sabe y lo que no: el numero de tareas y el tamano tipico."""
     import numpy as np
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     sw = df[df.is_software_task == 1]
     sw = sw[~sw.fuente_jira.eq("Apache")].reset_index(drop=True)
     y = sw.effort_hours.to_numpy()

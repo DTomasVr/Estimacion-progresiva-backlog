@@ -1,11 +1,11 @@
 sistema,version,proyectos,tareas,PRED25,MdMRE,factor2
-Agix,en frío,10,257,0.4,0.402028053872595,0.6
+PBE,en frío,10,257,0.4,0.402028053872595,0.6
 GPT-OSS 120B,sin calibrar,10,257,0.1,1.0952365284097318,0.5
 GPT-OSS 120B,calibrado,10,257,0.5,0.39268420885613037,0.5
-Agix (mismos proyectos que GPT-OSS 120B),en frío,10,257,0.4,0.402028053872595,0.6
+PBE (mismos proyectos que GPT-OSS 120B),en frío,10,257,0.4,0.402028053872595,0.6
 GPT-OSS 20B,sin calibrar,10,257,0.1,1.7296809666829374,0.3
 GPT-OSS 20B,calibrado,10,257,0.2,0.589252952972199,0.5
-Agix (mismos proyectos que GPT-OSS 20B),en frío,10,257,0.4,0.402028053872595,0.6
+PBE (mismos proyectos que GPT-OSS 20B),en frío,10,257,0.4,0.402028053872595,0.6
 Qwen 3.8 27B,sin calibrar,10,257,0.1,0.591931924759425,0.6
 Qwen 3.8 27B,calibrado,10,257,0.4,0.38776545504785564,0.6
-Agix (mismos proyectos que Qwen 3.8 27B),en frío,10,257,0.4,0.402028053872595,0.6
+PBE (mismos proyectos que Qwen 3.8 27B),en frío,10,257,0.4,0.402028053872595,0.6

@@ -37,7 +37,7 @@ LR = 2e-5 * math.sqrt(BATCH / 64)
 EPOCHS = 1
 MAXLEN = 128
 SEED = 20260922
-OUT = f"{BASE}/models/sbert_agix_v1" + ("_mini" if MINI else "")
+OUT = f"{BASE}/models/sbert_pbe_v1" + ("_mini" if MINI else "")
 
 
 def ir_evaluator(df, lang, nombre, max_corpus=None):

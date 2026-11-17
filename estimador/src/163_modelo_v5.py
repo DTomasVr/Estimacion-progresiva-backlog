@@ -83,8 +83,8 @@ def hgb(semilla=0, **kw):
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
-    f = joblib.load("models/estimador_agix_v3.joblib")
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    f = joblib.load("models/estimador_pbe_v3.joblib")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     sw = df[df.is_software_task == 1].copy()
     sw = sw[~sw.fuente_jira.eq("Apache")].reset_index(drop=True)
     tit = sw.title.fillna("").astype(str)
@@ -145,10 +145,10 @@ def main():
     paq.update({"bolsa": bolsa, "ridge": lr, "svr": ls, "hgb_ajustado": ha,
                 "hgb_ajustado_C": hc, "apilado": ap,
                 "codificador_ajustado_C": "models/e5_ajustado_C"})
-    joblib.dump(paq, "models/estimador_agix_v5.joblib", compress=3)
+    joblib.dump(paq, "models/estimador_pbe_v5.joblib", compress=3)
     json.dump({"pesos": dict(zip(canal, ap.coef_.tolist()))},
               open(OUT / "pesos.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-    print(f"\nescrito {OUT}/panel.csv y models/estimador_agix_v5.joblib · "
+    print(f"\nescrito {OUT}/panel.csv y models/estimador_pbe_v5.joblib · "
           f"{time.time() - t0:.0f} s")
 
 

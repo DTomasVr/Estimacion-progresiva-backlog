@@ -32,7 +32,7 @@ def build(tr, ot, text_col="text"):
 
 
 def main():
-    df = pd.read_parquet("data/processed/agix_effort_clean.parquet")
+    df = pd.read_parquet("data/processed/pbe_effort_clean.parquet")
     sw = df[df.is_software_task == 1]
     tr, va, te = (sw[sw.split == s] for s in ("train", "val", "test"))
     print(f"train {len(tr):,}  val {len(va):,}  test {len(te):,}\n")

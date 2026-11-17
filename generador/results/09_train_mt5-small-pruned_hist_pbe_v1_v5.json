@@ -1,5 +1,5 @@
 {
- "modelo": "models/mt5-small-pruned_hist_agix_v1",
+ "modelo": "models/mt5-small-pruned_hist_pbe_v1",
  "bs": 16,
  "max_out": 192,
  "lr": 0.0005,

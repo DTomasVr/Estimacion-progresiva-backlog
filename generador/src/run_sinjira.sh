@@ -11,28 +11,28 @@
 # (src/70_lexico_jira.py): controles 72,7 % en tareas de Jira, 2,4 % en sinteticas.
 set -u
 BASE="/f/Software Task generation Model"
-PY="/c/Users/User/Documents/Programacao/Agix-Dataset/.venv/Scripts/python.exe"
+PY="/c/Users/User/Documents/Programacao/PBE-Dataset/.venv/Scripts/python.exe"
 LOG="$BASE/logs/sinjira.log"
 export PYTHONWARNINGS=ignore PYTHONIOENCODING=utf-8 HF_HUB_OFFLINE=1
-export AGIX_DEVICE=cuda AGIX_SEED=20260926 AGIX_CONJUNTO=dos_modelos
-export AGIX_ARRIBA="$BASE/models/mt5-small-pruned_o2o_agix_v1_o2ofmt_agix_v1_v3r_agix_v1"
+export PBE_DEVICE=cuda PBE_SEED=20260926 PBE_CONJUNTO=dos_modelos
+export PBE_ARRIBA="$BASE/models/mt5-small-pruned_o2o_pbe_v1_o2ofmt_pbe_v1_v3r_pbe_v1"
 cd "$BASE"
 : > "$LOG"
 
 for D in v8 v7; do
   echo "########## entrenando abajo con $D" | tee -a "$LOG"
-  DATOS=$D "$PY" -u src/09_train_mt5.py models/mt5-small-pruned_hist_agix_v1 16 192 5e-4 4 \
+  DATOS=$D "$PY" -u src/09_train_mt5.py models/mt5-small-pruned_hist_pbe_v1 16 192 5e-4 4 \
     > "logs/train_abajo_$D.log" 2>&1
   grep -E "^  epoca|parada|TOTAL" "logs/train_abajo_$D.log" | tee -a "$LOG"
 done
 
-for par in "control_v5|mt5-small-pruned_hist_agix_v1_v5_agix_v1" \
-           "mitad_v8|mt5-small-pruned_hist_agix_v1_v8_agix_v1" \
-           "sinjira_v7|mt5-small-pruned_hist_agix_v1_v7_agix_v1"; do
+for par in "control_v5|mt5-small-pruned_hist_pbe_v1_v5_pbe_v1" \
+           "mitad_v8|mt5-small-pruned_hist_pbe_v1_v8_pbe_v1" \
+           "sinjira_v7|mt5-small-pruned_hist_pbe_v1_v7_pbe_v1"; do
   etq="${par%%|*}"; m="${par#*|}"
   echo "########## $etq" | tee -a "$LOG"
   if [ ! -d "models/$m" ]; then echo "   no existe models/$m" | tee -a "$LOG"; continue; fi
-  export AGIX_ABAJO="$BASE/models/$m"
+  export PBE_ABAJO="$BASE/models/$m"
   "$PY" -u src/52_coherencia.py modelo > "logs/52_$etq.log" 2>&1 \
     && grep -E "FUGAS|concentracion|ancladas|acierto|cuota" "logs/52_$etq.log" \
        | sed 's/^/   /' | tee -a "$LOG" || echo "   fallo 52" | tee -a "$LOG"

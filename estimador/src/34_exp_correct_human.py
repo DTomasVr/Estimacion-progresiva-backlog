@@ -5,7 +5,7 @@ carries no shrinkage. But it is biased in a systematic, measurable way:
 small tasks inflated ~2x, large tasks halved. That is a correctable error.
 
 Four conditions, all evaluated on the same held-out tasks:
-  humano       the raw estimate, untouched (the baseline Agix must beat)
+  humano       the raw estimate, untouched (the baseline PBE must beat)
   recalibrado  a monotone recalibration of the estimate alone
   texto        our text model, no estimate (what we have been building)
   hibrido      estimate + text embedding together
@@ -22,7 +22,7 @@ import exp_common as E  # noqa: E402
 import features as F  # noqa: E402
 
 pd.set_option("display.width", 250)
-E.DATA = "data/processed/agix_effort_v2.parquet"
+E.DATA = "data/processed/pbe_effort_v2.parquet"
 BANDS = [0, 1, 4, 16, 40, np.inf]
 NAMES = ["<1h", "1-4h", "4-16h", "16-40h", ">40h"]
 

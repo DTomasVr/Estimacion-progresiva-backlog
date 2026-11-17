@@ -56,14 +56,14 @@ SCRIPTS = [
 ]
 
 DATASETS = [
-    ("data/processed/agix_effort_v3.parquet", "datos"),
-    ("data/processed/agix_effort_v3.csv", "datos"),
-    ("data/processed/agix_effort_v4.parquet", "datos"),
+    ("data/processed/pbe_effort_v3.parquet", "datos"),
+    ("data/processed/pbe_effort_v3.csv", "datos"),
+    ("data/processed/pbe_effort_v4.parquet", "datos"),
 ]
 INTERMEDIOS = [
-    "data/processed/agix_effort_dataset.parquet",
-    "data/processed/agix_effort_clean.parquet",
-    "data/processed/agix_effort_v2.parquet",
+    "data/processed/pbe_effort_dataset.parquet",
+    "data/processed/pbe_effort_clean.parquet",
+    "data/processed/pbe_effort_v2.parquet",
     "data/processed/tawos_gold.parquet",
     "data/processed/tawos_sp_hours.parquet",
     "data/raw/jones/SiP/Sip-task-info.csv",
@@ -121,10 +121,10 @@ def copiar():
 def csv_v4():
     """v4 as CSV too, gzipped: the plain file is ~250 MB and nobody wants that."""
     import pandas as pd
-    destino = DEST["datos"] / "agix_effort_v4.csv.gz"
+    destino = DEST["datos"] / "pbe_effort_v4.csv.gz"
     if destino.exists():
         return
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     df.to_csv(destino, index=False, compression="gzip", encoding="utf-8")
     print(f"  escrito {destino.name} "
           f"({destino.stat().st_size/1e6:.0f} MB comprimido)")
@@ -152,7 +152,7 @@ def ejecutar(nb, nombre):
     return not errores
 
 
-LEEME = """# Entrega de datos · componente de estimación de esfuerzo de Agix
+LEEME = """# Entrega de datos · componente de estimación de esfuerzo de PBE
 
 Conjuntos **v3** y **v4**, los scripts que los producen, y dos cuadernos que
 documentan y **verifican** cada paso del preprocesamiento.
@@ -165,10 +165,10 @@ entrega/
 │   ├── 01_dataset_v3.ipynb      TAWOS + SiP: adquisición, limpieza D1–D10 y E1–E4, particiones
 │   └── 02_dataset_v4.ipynb      Public Jira: adquisición, descarte D1–D6, criterios de mezcla
 ├── datos/
-│   ├── agix_effort_v3.parquet   18 474 filas × 49 columnas  (17 350 tareas de software)
-│   ├── agix_effort_v3.csv
-│   ├── agix_effort_v4.parquet   90 975 filas × 52 columnas  (89 851 tareas de software)
-│   ├── agix_effort_v4.csv.gz
+│   ├── pbe_effort_v3.parquet   18 474 filas × 49 columnas  (17 350 tareas de software)
+│   ├── pbe_effort_v3.csv
+│   ├── pbe_effort_v4.parquet   90 975 filas × 52 columnas  (89 851 tareas de software)
+│   ├── pbe_effort_v4.csv.gz
 │   ├── diccionario_columnas_v3.csv
 │   ├── diccionario_columnas_v4.csv
 │   └── intermedios/             v0, v1, v2, TAWOS gold, CSV de SiP, bloque crudo de Jira

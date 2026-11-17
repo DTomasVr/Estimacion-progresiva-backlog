@@ -6,7 +6,7 @@ each one is answerable only now that a second, much larger corpus exists:
 
   1. Cold start on organisations never seen at all -- 150 held-out projects,
      13,255 tasks, no row of which shares a project with training. This is the
-     closest thing we have to Agix meeting a new customer.
+     closest thing we have to PBE meeting a new customer.
   2. Is the ceiling ours or the data's? Train inside the public corpus and test
      inside it. If 53k in-domain rows still land near 0.68, the ceiling is a
      property of issue text, not of our pipeline or our sample size.
@@ -30,7 +30,7 @@ import exp_common as E  # noqa: E402
 
 warnings.filterwarnings("ignore")
 pd.set_option("display.width", 250)
-DATA = "data/processed/agix_effort_v4.parquet"
+DATA = "data/processed/pbe_effort_v4.parquet"
 EMB = "data/processed/embeddings/v4_mpnet_congelado"
 NUM = ["n_links", "n_links_estructurales", "n_componentes", "tiene_asignado"]
 CAT = ["task_kind", "source"]

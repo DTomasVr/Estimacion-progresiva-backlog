@@ -14,7 +14,7 @@ warnings.filterwarnings("ignore"); pd.set_option("display.width", 220)
 NUM = ["n_links", "n_links_estructurales", "n_componentes", "tiene_asignado"]
 CAT = ["task_kind", "source"]
 
-df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
 sw = df[df.is_software_task == 1].copy()
 emb = np.load("data/processed/embeddings/v4_mpnet_congelado.npy")
 ids = np.load("data/processed/embeddings/v4_mpnet_congelado.ids.npy", allow_pickle=True)

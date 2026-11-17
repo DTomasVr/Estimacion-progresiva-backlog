@@ -44,7 +44,7 @@ pd.set_option("display.width", 220)
 URL = "http://127.0.0.1:11434/api/generate"
 SESION = requests.Session()
 MODELO_LLM = "qwen2.5:7b"
-DATA = "data/processed/agix_effort_v4.parquet"
+DATA = "data/processed/pbe_effort_v4.parquet"
 EMB_TIT = "data/processed/embeddings/v4_mpnet_titulos"
 ART = "models/candidato_titulos.joblib"
 SALIDA = Path("results/reescritura")

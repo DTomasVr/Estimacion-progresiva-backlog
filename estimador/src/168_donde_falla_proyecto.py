@@ -40,7 +40,7 @@ MIN_TAREAS = 8
 
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     sw = df[df.is_software_task == 1].copy()
     sw = sw[~sw.fuente_jira.eq("Apache")].reset_index(drop=True)
     y = sw.effort_hours.to_numpy()
@@ -112,7 +112,7 @@ if __name__ == "__main__":
 def con_anclas():
     """Si el problema es la escala del proyecto, una tarea cerrada deberia
     arreglarlo. Se repite la tabla por tramo con 1 y 3 tareas cerradas."""
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     sw = df[df.is_software_task == 1].copy()
     sw = sw[~sw.fuente_jira.eq("Apache")].reset_index(drop=True)
     y = sw.effort_hours.to_numpy()

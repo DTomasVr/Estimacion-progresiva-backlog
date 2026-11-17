@@ -19,7 +19,7 @@ SAL = Path("entrega/DISENO_GENERACION.md")
 CABECERA = """# Diseño · Tubería de generación de historias y tareas
 
 > **Qué es este documento.** Un recorte de `DISENO_PIPELINE.md`, que une el diseño de las dos
-> tuberías encadenadas de Agix. Aquí está todo lo que toca a la **generación**: la vista de
+> tuberías encadenadas de PBE. Aquí está todo lo que toca a la **generación**: la vista de
 > conjunto, la Parte A íntegra, y las dos secciones del estimador que el generador necesita
 > porque el adaptador vive en **este** repositorio.
 >
@@ -51,7 +51,7 @@ generador, y **ha cambiado**.
 > 4. **Estimador v7 (21/10/2026): un solo codificador.** Los dos codificadores ajustados del
 >    v6 no aportaban fuera de pliegue y se quitaron; el que queda va en ONNX int8 con el
 >    vocabulario podado (397 MB, dentro del estimador, sin caché de HF ni red). El adaptador
->    carga `estimador_agix_v7.joblib` y cae al v6 si no está. El total del proyecto sale
+>    carga `estimador_pbe_v7.joblib` y cae al v6 si no está. El total del proyecto sale
 >    idéntico; las horas **por tarea** sobre texto del generador, ×0,81 las del v6 (abierto:
 >    falta medir con tareas del generador con horas reales). Detalle en
 >    `ESTIMADOR_V7_INTEGRADO.md` y en la Parte B del documento completo.

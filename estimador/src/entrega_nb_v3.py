@@ -15,9 +15,9 @@ def celdas():
     c.append(md("""
 # Dataset v3 — construcción, limpieza y particiones
 
-**Agix · componente de estimación de esfuerzo · anexo de datos**
+**PBE · componente de estimación de esfuerzo · anexo de datos**
 
-Este cuaderno documenta cómo se obtuvo el conjunto `agix_effort_v3.parquet`
+Este cuaderno documenta cómo se obtuvo el conjunto `pbe_effort_v3.parquet`
 desde las fuentes originales, qué se descartó en cada paso, y por qué. Cada
 criterio se **vuelve a aplicar sobre el fichero de entrada y se comprueba contra
 el de salida**: las cifras que aparecen no están copiadas de una ejecución
@@ -300,7 +300,7 @@ las horas del conjunto son horas registradas.
 """))
 
     c.append(code('''
-v0 = pd.read_parquet(DATOS / "intermedios" / "agix_effort_dataset.parquet")
+v0 = pd.read_parquet(DATOS / "intermedios" / "pbe_effort_dataset.parquet")
 print(f"v0: {len(v0):,} filas, {v0.shape[1]} columnas")
 
 comp = (v0.groupby(["source", "is_software_task"]).size()
@@ -372,7 +372,7 @@ criterios = pd.DataFrame([
     dict(id="D3a", accion="agrupar", regla="casi duplicados (coseno ≥ 0,95) comparten group_key",
          motivo="impide que textos casi iguales caigan a ambos lados de la partición", filas="0"),
     dict(id="D10", accion="conservar", regla="filas solo con título",
-         motivo="son el caso de uso real de Agix: tarea recién creada", filas="0"),
+         motivo="son el caso de uso real de PBE: tarea recién creada", filas="0"),
 ])
 tabla(criterios, "08_criterios_v1", "Tabla 8 · Criterios de limpieza aplicados a v0 → v1")
 '''))
@@ -384,7 +384,7 @@ Ninguna fila se pierde; el texto original queda en `text_raw`.
 """))
 
     c.append(code('''
-v1 = pd.read_parquet(DATOS / "intermedios" / "agix_effort_clean.parquet")
+v1 = pd.read_parquet(DATOS / "intermedios" / "pbe_effort_clean.parquet")
 cambiadas = v1[v1.text_raw.fillna("") != v1.text.fillna("")]
 print(f"filas cuyo texto cambió con D8: {len(cambiadas):,} "
       f"({100*len(cambiadas)/len(v1):.1f}%)")
@@ -552,7 +552,7 @@ plt.show()
 ---
 ## 7. v2 · una fila = un desarrollador, una tarea (E1–E4)
 
-`scripts/02_limpieza/26_clean_v2.py`. El cronómetro de Agix mide **una persona
+`scripts/02_limpieza/26_clean_v2.py`. El cronómetro de PBE mide **una persona
 trabajando en una tarea**. Una fila que signifique otra cosa le enseña al modelo
 una magnitud que nunca se le va a pedir.
 
@@ -569,7 +569,7 @@ cumplen E2. El cuaderno lo comprueba explícitamente.
 """))
 
     c.append(code('''
-v2 = pd.read_parquet(DATOS / "intermedios" / "agix_effort_v2.parquet")
+v2 = pd.read_parquet(DATOS / "intermedios" / "pbe_effort_v2.parquet")
 ids_v2 = set(v2.task_id)
 
 # --- E3
@@ -673,7 +673,7 @@ Dos notas de fuga que quedan grabadas en el fichero en vez de quedar implícitas
 """))
 
     c.append(code('''
-v3 = pd.read_parquet(DATOS / "agix_effort_v3.parquet")
+v3 = pd.read_parquet(DATOS / "pbe_effort_v3.parquet")
 nuevas = [c for c in v3.columns if c not in v2.columns]
 print(f"v2 {len(v2):,} filas × {v2.shape[1]} col  →  "
       f"v3 {len(v3):,} filas × {v3.shape[1]} col")
@@ -739,7 +739,7 @@ v3 lleva **tres** particiones, cada una responde a una pregunta distinta:
 |---|---|---|
 | `split` | 70/15/15 sorteando `group_key` | rendimiento sobre tareas nuevas de proyectos conocidos |
 | `split_project` | proyectos enteros retenidos | generalización a una organización nunca vista |
-| `split_t3` | cronológica dentro de cada proyecto, 60/15/25 | el escenario de la literatura y el que Agix alcanza con historia |
+| `split_t3` | cronológica dentro de cada proyecto, 60/15/25 | el escenario de la literatura y el que PBE alcanza con historia |
 
 `split_t3` es la que gobierna todos los experimentos publicados: sortear al azar
 sobre datos con orden temporal permite entrenar con el futuro y predecir el
@@ -852,7 +852,7 @@ guardar(fig, "fig12_perfil_v3")
 plt.show()
 
 print(f"\\nv3: {len(v3):,} filas ({int((v3.is_software_task==1).sum()):,} de software)")
-print(f"SHA-256 (16): {sha(DATOS / 'agix_effort_v3.parquet')}")
+print(f"SHA-256 (16): {sha(DATOS / 'pbe_effort_v3.parquet')}")
 '''))
 
     c.append(code('''

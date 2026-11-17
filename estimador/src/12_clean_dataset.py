@@ -70,7 +70,7 @@ def log(step, df, before, note=""):
 
 
 def main():
-    df = pd.read_parquet(f"{OUT}/agix_effort_dataset.parquet")
+    df = pd.read_parquet(f"{OUT}/pbe_effort_dataset.parquet")
     print(f"entrada: {len(df):,} filas ({(df.is_software_task==1).sum():,} de software)\n")
     df["text_raw"] = df.text
     df["effort_hours_raw"] = df.effort_hours
@@ -206,10 +206,10 @@ def main():
             "log_effort", "story_point", "created", "started", "completed",
             "n_words", "n_merged", "has_desc", "has_code",
             "effort_gt_calendar", "is_software_task", "split", "split_project"]
-    df[cols].to_parquet(f"{OUT}/agix_effort_clean.parquet",
+    df[cols].to_parquet(f"{OUT}/pbe_effort_clean.parquet",
                         compression="zstd", index=False)
-    df[cols].to_csv(f"{OUT}/agix_effort_clean.csv", index=False)
-    print(f"\nescrito {OUT}/agix_effort_clean.parquet y .csv")
+    df[cols].to_csv(f"{OUT}/pbe_effort_clean.csv", index=False)
+    print(f"\nescrito {OUT}/pbe_effort_clean.parquet y .csv")
 
 
 if __name__ == "__main__":

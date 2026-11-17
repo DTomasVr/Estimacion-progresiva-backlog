@@ -1,7 +1,7 @@
 """E-271 - ¿Las dependencias entre tareas dicen algo que al modelo le falta?
 
 En E-270 la media de enlaces por tarea fue lo unico de nivel proyecto que
-correlaciono con el desplazamiento de escala (+0,28). Agix guarda las
+correlaciono con el desplazamiento de escala (+0,28). PBE guarda las
 dependencias (tabla task_dependencies), asi que se comprueba si sirven:
 
   1 por tarea: ¿una tarea con enlaces tarda mas de lo que predice el modelo?
@@ -32,7 +32,7 @@ def pred25(t, r):
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     sw = df[df.is_software_task == 1].copy()
     sw = sw[~sw.fuente_jira.eq("Apache")].reset_index(drop=True)
     sw["est"] = np.clip(np.load("results/modelo_total/pred_total.npy"), 1e-6, None)

@@ -1,4 +1,4 @@
 sistema,mean,std,count,conservaria_%,conservaria_o_editaria_%
-agix,3.525,1.086,40,45.0,70.0
+pbe,3.525,1.086,40,45.0,70.0
 llama3.1:8b,3.7,1.203,40,42.5,77.5
 mistral:7b,3.325,1.141,40,32.5,62.5

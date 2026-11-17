@@ -27,10 +27,10 @@ spec = importlib.util.spec_from_file_location("ev", f"{BASE}/src/11_eval_gen.py"
 ev = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(ev)
 
-ABAJO_VIEJO = f"{BASE}/models/mt5-small-pruned_hist_agix_v1"
-ABAJO_NUEVO = f"{BASE}/models/mt5-small-pruned_hist_agix_v1_mix_agix_v1"
-ARRIBA_VIEJO = f"{BASE}/models/mt5-small-pruned_o2o_agix_v1_o2ofmt_agix_v1"
-ARRIBA_NUEVO = f"{BASE}/models/mt5-small-pruned_o2o_agix_v1_o2ofmt_agix_v1_mixa_agix_v1"
+ABAJO_VIEJO = f"{BASE}/models/mt5-small-pruned_hist_pbe_v1"
+ABAJO_NUEVO = f"{BASE}/models/mt5-small-pruned_hist_pbe_v1_mix_pbe_v1"
+ARRIBA_VIEJO = f"{BASE}/models/mt5-small-pruned_o2o_pbe_v1_o2ofmt_pbe_v1"
+ARRIBA_NUEVO = f"{BASE}/models/mt5-small-pruned_o2o_pbe_v1_o2ofmt_pbe_v1_mixa_pbe_v1"
 N = 300
 CFG = ev.CFGS["beam4_actual"]
 que = sys.argv[1] if len(sys.argv) > 1 else "abajo"

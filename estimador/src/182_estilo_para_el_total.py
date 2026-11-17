@@ -47,7 +47,7 @@ def main():
     filas = [json.loads(l) for l in
              open("results/reescritura/reescrituras.jsonl", encoding="utf-8") if l.strip()]
     re_ = pd.DataFrame(filas).drop_duplicates("task_id")
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     sw = df[df.is_software_task == 1][["task_id", "effort_hours", "split_t3",
                                        "fuente_jira"]]
     d = re_.merge(sw, on="task_id", how="inner")

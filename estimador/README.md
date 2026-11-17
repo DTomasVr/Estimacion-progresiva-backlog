@@ -1,12 +1,12 @@
-# Agix — conjunto de datos de esfuerzo real por tarea
+# PBE — conjunto de datos de esfuerzo real por tarea
 
-Tubería de preparación de datos para el estimador de esfuerzo de Agix: predice
+Tubería de preparación de datos para el estimador de esfuerzo de PBE: predice
 las **horas reales** que toma una tarea de software a partir de su nombre y
 descripción.
 
 ## Resultado
 
-`data/processed/agix_effort_clean.parquet` — 18 593 filas, **17 457 tareas de
+`data/processed/pbe_effort_clean.parquet` — 18 593 filas, **17 457 tareas de
 software** con texto libre y **horas efectivamente cronometradas**. Ninguna
 etiqueta procede de una conversión de puntos de historia.
 

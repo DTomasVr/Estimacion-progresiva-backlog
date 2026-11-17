@@ -1,6 +1,6 @@
 """Full re-extraction of the Public Jira mongodump for task generation.
 
-Unlike Agix-Dataset/src/50_extract_jira.py (which kept only timespent > 0,
+Unlike PBE-Dataset/src/50_extract_jira.py (which kept only timespent > 0,
 2.9 % of the dump), this keeps EVERY issue and the fields that carry the
 work-breakdown hierarchy:
 
@@ -28,9 +28,9 @@ import pandas as pd
 sys.path.insert(0, os.path.dirname(__file__))
 import jira_archive as A  # noqa: E402
 
-AGIX = r"C:\Users\User\Documents\Programacao\Agix-Dataset"
-ZIP = AGIX + r"\data\raw\ThePublicJiraDataset.zip"
-DEF = AGIX + r"\data\raw\jira_public\ThePublicJiraDataset\0. DataDefinition\jira_field_information.json"
+PBE = r"C:\Users\User\Documents\Programacao\PBE-Dataset"
+ZIP = PBE + r"\data\raw\ThePublicJiraDataset.zip"
+DEF = PBE + r"\data\raw\jira_public\ThePublicJiraDataset\0. DataDefinition\jira_field_information.json"
 OUT = r"F:\Software Task generation Model\data\interim\jira_full"
 RES = r"F:\Software Task generation Model\results"
 TOTAL_ESPERADO = 2_686_282          # measured in the previous full pass

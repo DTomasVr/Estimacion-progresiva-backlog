@@ -34,7 +34,7 @@ spec = importlib.util.spec_from_file_location("g", f"{BASE}/src/18_generar_histo
 G = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(G)
 ev = G.ev
-MODELO = f"{BASE}/models/mt5-small-pruned_o2o_agix_v1_o2ofmt_agix_v1"
+MODELO = f"{BASE}/models/mt5-small-pruned_o2o_pbe_v1_o2ofmt_pbe_v1"
 SEED = 20260922
 N_MUESTRAS, UMBRAL, K = 30, 0.85, 12
 sp = spm.SentencePieceProcessor(model_file=f"{BASE}/models/pruned_tok/spiece.model")

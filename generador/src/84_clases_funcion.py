@@ -23,7 +23,7 @@ import numpy as np
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 K = int(sys.argv[1]) if len(sys.argv) > 1 else 6
 MIN_N = 8
-os.environ.setdefault("AGIX_DEVICE", "cpu")
+os.environ.setdefault("PBE_DEVICE", "cpu")
 
 src82 = io.open(f"{BASE}/src/82_rol_funcion.py", encoding="utf-8").read()
 trozos = [n for n in ast.parse(src82).body
@@ -40,7 +40,7 @@ print(f"{len(pares)} historias, {len(cuenta)} verbos distintos, "
       f"{len(verbos)} con al menos {MIN_N} apariciones", flush=True)
 
 from sentence_transformers import SentenceTransformer  # noqa: E402
-sb = SentenceTransformer(f"{BASE}/models/sbert_agix_v1", device=os.environ["AGIX_DEVICE"])
+sb = SentenceTransformer(f"{BASE}/models/sbert_pbe_v1", device=os.environ["PBE_DEVICE"])
 # se codifica el verbo dentro de una frase para que el embedding tenga contexto verbal
 E = sb.encode([f"I want to {v} it" for v in verbos], normalize_embeddings=True,
               show_progress_bar=False)

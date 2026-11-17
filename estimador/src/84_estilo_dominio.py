@@ -15,7 +15,7 @@ imperatives with no description, product/business domain.
                 2,00 h of commercial work.
 
 Crossed with the feature set, because a deployment-honest model cannot use
-`source` (Agix would be an unseen level) nor the link/component counts (they
+`source` (PBE would be an unseen level) nor the link/component counts (they
 accumulate while the task is worked, and are zero when it is created).
 
 Nothing synthetic is involved and the test blocks are the frozen ones.
@@ -35,8 +35,8 @@ import exp_common as E  # noqa: E402
 
 warnings.filterwarnings("ignore")
 pd.set_option("display.width", 230)
-DATA = "data/processed/agix_effort_v4.parquet"
-V3 = "data/processed/agix_effort_v3.parquet"
+DATA = "data/processed/pbe_effort_v4.parquet"
+V3 = "data/processed/pbe_effort_v3.parquet"
 EMB_TXT = "data/processed/embeddings/v4_mpnet_congelado"
 EMB_TIT = "data/processed/embeddings/v4_mpnet_titulos"
 EMB_V3_EN = "data/processed/embeddings/paraphrase-multilingual-mpnet-base-v2"
@@ -76,7 +76,7 @@ def idioma():
     sw = sw[sw.task_id.isin(es.task_id)]
     en_e, en_p = cargar(EMB_V3_EN)
     # los vectores en español no llevan fichero de ids: van en el orden de
-    # text_es.parquet, que es el de agix_effort_clean.parquet (ver 19_exp_bilingual)
+    # text_es.parquet, que es el de pbe_effort_clean.parquet (ver 19_exp_bilingual)
     es_e = np.load(f"{EMB_V3_ES}.npy")
     es_p = {t: i for i, t in enumerate(es.task_id.to_numpy())}
     assert len(es_e) == len(es_p), "vectores en español desalineados con text_es"
@@ -143,7 +143,7 @@ def rejilla():
                 (lambda d: np.hstack([emb[idx(d)], oh_f.transform(d[["task_kind", "source"]].astype(str)),
                                       sc.transform(np.log1p(d[NUM].to_numpy(float)))]),
                  lambda X, n: np.hstack([X, oh_f.transform(pd.DataFrame(
-                     {"task_kind": ["task"] * n, "source": ["Agix"] * n}).astype(str)),
+                     {"task_kind": ["task"] * n, "source": ["PBE"] * n}).astype(str)),
                      sc.transform(np.log1p(np.zeros((n, len(NUM)))))])),
             "despliegue (vector+categoría)":
                 (lambda d: np.hstack([emb[idx(d)], oh_c.transform(d[["task_kind"]].astype(str))]),

@@ -28,7 +28,7 @@ sys.path.insert(0, r"F:\Software Task generation Model\src")
 from textclean import limpiar  # noqa: E402
 
 BASE = r"F:\Software Task generation Model"
-SBERT = f"{BASE}/models/sbert_agix_v1"
+SBERT = f"{BASE}/models/sbert_pbe_v1"
 SEED = 20260922
 K_VECINOS = 2
 HIJOS_POR_VECINO = 4

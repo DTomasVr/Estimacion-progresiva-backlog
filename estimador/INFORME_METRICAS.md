@@ -1,6 +1,6 @@
 # Mejorar las métricas del modelo en frío · experimentos E30–E41
 
-Doce experimentos sobre el modelo final (`models/estimador_agix_v3.joblib`), evaluados
+Doce experimentos sobre el modelo final (`models/estimador_pbe_v3.joblib`), evaluados
 siempre sobre los mismos tres bloques congelados: **prueba fija** (4.225 tareas,
 corte cronológico dentro de proyectos conocidos), **prueba SiP** (1.885, el
 subconjunto industrial) y **externo no Apache** (792, proyectos nunca vistos).

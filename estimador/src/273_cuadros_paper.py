@@ -8,7 +8,7 @@ se deja como fragmento LaTeX en paper/cuadros/, que el .tex incluye con \\input.
   tab_llm_generacion   backlog generado, 64 proyectos retenidos (results/banco_generacion)
 
 Para el total, al LLM se le aplica un factor aprendido en las 130 tareas de
-calibracion como cociente de SUMAS (el que corresponde a un total), y Agix usa su
+calibracion como cociente de SUMAS (el que corresponde a un total), y PBE usa su
 cabeza de la media, en frio.
 """
 import importlib.util
@@ -55,7 +55,7 @@ def jsonl(p):
 def estimacion():
     r = pd.read_csv("results/llm_bench/api_resumen.csv")
     r.to_csv(OUT / "estimacion_por_tarea.csv", index=False)
-    v7 = r[r.modelo == "Agix v7 (nuestro)"].iloc[0]
+    v7 = r[r.modelo == "PBE v7 (nuestro)"].iloc[0]
     g = lambda x, d=3: "--" if pd.isna(x) else ("$-$" if x < 0 else "") + f(abs(x), d)
     ic = lambda s: s.strip("[]").replace(".", "{,}").replace("-", "$-$").replace(", ", ";\\,")
     filas = [[r"\textbf{Propuesta}", f(v7.MdMRE), pc(v7.PRED25), f(v7.spearman, 2), "--"]]
@@ -86,8 +86,8 @@ def total():
         s = importlib.util.spec_from_file_location("e6", "src/171_estimador_v6.py")
         e6 = importlib.util.module_from_spec(s)
         s.loader.exec_module(e6)
-        est = e6.EstimadorV6(paquete=Path("models/estimador_agix_v7.joblib"), dispositivo="cpu")
-        t = pd.read_parquet("data/processed/agix_effort_v4.parquet", columns=["task_id", "title"]).drop_duplicates("task_id")
+        est = e6.EstimadorV6(paquete=Path("models/estimador_pbe_v7.joblib"), dispositivo="cpu")
+        t = pd.read_parquet("data/processed/pbe_effort_v4.parquet", columns=["task_id", "title"]).drop_duplicates("task_id")
         d = mu[["task_id"]].merge(t, on="task_id", how="left")
         d["v7_media"] = est._media_tarea(d.title.fillna("").astype(str).tolist())
         d[["task_id", "v7_media"]].to_parquet(cache)
@@ -109,7 +109,7 @@ def total():
         salida.append(m)
         return m
 
-    m = mide("Agix", "en frío", base, "v7_media")
+    m = mide("PBE", "en frío", base, "v7_media")
     filas.append([r"\textbf{Propuesta}", "en frío", str(m["proyectos"]), pc(m["PRED25"]), f(m["MdMRE"]), pc(m["factor2"])])
     for modelo, nombre in API.items():
         slug = re.sub(r"[^\w.-]", "_", modelo)
@@ -129,7 +129,7 @@ def total():
             m = mide(nombre, version, d, col)
             filas.append([nombre if version == "sin calibrar" else "", version, str(m["proyectos"]), pc(m["PRED25"]),
                           f(m["MdMRE"]), pc(m["factor2"])])
-        m = mide("Agix (mismos proyectos que " + nombre + ")", "en frío", d, "v7_media")
+        m = mide("PBE (mismos proyectos que " + nombre + ")", "en frío", d, "v7_media")
     pd.DataFrame(salida).to_csv(OUT / "total_por_proyecto.csv", index=False)
     # Con tan pocos proyectos no se saca cuadro para el paper: queda solo el CSV.
     print(pd.DataFrame(salida).round(3).to_string(index=False))
@@ -142,10 +142,10 @@ def generacion():
         return
     r = pd.read_csv(p)
     red = pd.read_csv("results/redundancia_tareas/resumen.csv").set_index("sistema").casi_duplicadas_090
-    red.index = [("Agix (actual)" if s == "agix" else s + " cero") for s in red.index]
+    red.index = [("PBE (actual)" if s == "pbe" else s + " cero") for s in red.index]
     r["casi_duplicadas"] = r.sistema.map(red)
     r.to_csv(OUT / "generacion.csv", index=False)
-    orden = [("Agix (actual)", r"\textbf{Propuesta}"), ("gemma2:9b cero", "Gemma 2 9B"),
+    orden = [("PBE (actual)", r"\textbf{Propuesta}"), ("gemma2:9b cero", "Gemma 2 9B"),
              ("llama3.1:8b cero", "Llama 3.1 8B"), ("mistral:7b cero", "Mistral 7B")]
     filas, ns = [], set()
     for clave, nombre in orden:
@@ -155,7 +155,7 @@ def generacion():
         x = x.iloc[0]
         ns.add(int(x.n))
         filas.append([nombre, f(x.sF1), pc(x.cobertura), f(x.tareas, 0), pc(x.casi_duplicadas),
-                      f(x.seg_mediana, 1), "--" if clave == "Agix (actual)" else pc(x.reconoce, 0)])
+                      f(x.seg_mediana, 1), "--" if clave == "PBE (actual)" else pc(x.reconoce, 0)])
     assert len(ns) == 1, ns
     tabla("llm_generacion",
           f"Generación frente a LLM en {ns.pop()} proyectos retenidos. Duplicadas: coseno $\\geq 0{{,}}90$ con otra "
@@ -170,11 +170,11 @@ def lado():
     """Un mismo proyecto, la primera historia y sus tres primeras tareas en cada sistema.
 
     El caso lo eligio el chat de generacion (CUADROS_GENERACION_PAPER.md): el de Dalpiaz
-    mas legible, donde Agix y GPT-OSS empatan en sF1. El texto sale de los JSONL."""
+    mas legible, donde PBE y GPT-OSS empatan en sF1. El texto sale de los JSONL."""
     esc = lambda s: re.sub(r"([&%$#_])", r"\\\1", s)
     gen = Path("F:/Software Task generation Model/results/20_banco.jsonl")
     R = [json.loads(l) for l in open(gen, encoding="utf-8")]
-    R = [r for r in R if r["sistema"] != "agix"]
+    R = [r for r in R if r["sistema"] != "pbe"]
     for p in sorted(Path("results/banco_generacion").glob("*.jsonl")):
         R += [json.loads(l) for l in open(p, encoding="utf-8")]
     R = {(r["sistema"], r["condicion"]): r for r in R if r["caso"] == CASO}
@@ -185,7 +185,7 @@ def lado():
     s.loader.exec_module(b272)
     C = b272.casos()
     entrada = " ".join(C[C.parent_uid == CASO].entrada.iloc[0].split())
-    orden = [(("agix", "actual"), "Agix (actual)", r"\textbf{Propuesta}"),
+    orden = [(("pbe", "actual"), "PBE (actual)", r"\textbf{Propuesta}"),
              (("openai/gpt-oss-120b", "cero"), "openai/gpt-oss-120b cero", "GPT-OSS 120B"),
              (("gemma2:9b", "cero"), "gemma2:9b cero", "Gemma 2 9B"),
              (("llama3.1:8b", "cero"), "llama3.1:8b cero", "Llama 3.1 8B"),

@@ -47,9 +47,9 @@ import exp_common as E  # noqa: E402
 
 warnings.filterwarnings("ignore")
 pd.set_option("display.width", 230)
-DATA = "data/processed/agix_effort_v4.parquet"
+DATA = "data/processed/pbe_effort_v4.parquet"
 EMB_TIT = "data/processed/embeddings/v4_mpnet_titulos"
-PAQUETE = Path("models/estimador_agix.joblib")
+PAQUETE = Path("models/estimador_pbe.joblib")
 COBERTURA_OBJETIVO = 0.5
 SEP = "=" * 126
 
@@ -253,7 +253,7 @@ def demostrar(e):
                     dom.append(k)
     r = e.estimar(tex, estilo_generador=True)
     r["dominio"] = dom
-    print(f"\n{SEP}\nLO QUE MOSTRARÍA AGIX PARA UN BACKLOG GENERADO\n{SEP}")
+    print(f"\n{SEP}\nLO QUE MOSTRARÍA PBE PARA UN BACKLOG GENERADO\n{SEP}")
     for modo in ("absoluto", "relativo"):
         r = e.estimar(tex, estilo_generador=True, umbral=modo)
         r["dominio"] = dom

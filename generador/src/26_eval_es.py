@@ -3,7 +3,7 @@
 Compares the model before (English-only inputs) and after (half the training
 inputs translated) on the SAME test projects, in both languages:
   en  the original English description
-  es  its opus-mt translation, which is the shape Agix actually sends
+  es  its opus-mt translation, which is the shape PBE actually sends
 
 Reports sF1 / precision / coverage, the share of output in user-story form, and
 the leakage metric from 24_calidad_arriba.py. Prompts carry no retrieved

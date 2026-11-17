@@ -12,7 +12,7 @@ legitimas: existen cuando la tarea se crea, que es la regla de HU-49-4.
 
   task_kind     bug / task / improvement / feature / docs / support
                 100 % de cobertura. Un bug y una migracion no cuestan igual, y
-                el usuario de Agix elige el tipo al crear la tarea
+                el usuario de PBE elige el tipo al crear la tarea
   priority      100 % de cobertura
   description   56,9 % de cobertura, mediana 87 caracteres. Pedir una frase de
                 contexto es poco rozamiento comparado con estimar horas
@@ -74,7 +74,7 @@ def mide(y, p):
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     todo = df[df.is_software_task == 1].reset_index(drop=True)
     V = np.load(CACHE / "e5-large-todo.npy")
     noap = (~todo.fuente_jira.eq("Apache")).to_numpy()

@@ -18,7 +18,7 @@ import time
 import numpy as np
 import pandas as pd
 
-DATA = "data/processed/agix_effort_clean.parquet"
+DATA = "data/processed/pbe_effort_clean.parquet"
 OUT = "data/processed/text_es.parquet"
 MODEL = "Helsinki-NLP/opus-mt-en-es"
 PLACEHOLDER = re.compile(r"<(NUM|URL|STACK|HASH|EMAIL)>")

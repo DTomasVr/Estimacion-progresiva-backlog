@@ -22,7 +22,7 @@ import exp_common as E  # noqa: E402
 import features as F  # noqa: E402
 
 pd.set_option("display.width", 250)
-E.DATA = "data/processed/agix_effort_v2.parquet"
+E.DATA = "data/processed/pbe_effort_v2.parquet"
 LEVEL = 0.80
 BANDS = [0, 1, 4, 16, 40, np.inf]
 NAMES = ["<1h", "1-4h", "4-16h", "16-40h", ">40h"]

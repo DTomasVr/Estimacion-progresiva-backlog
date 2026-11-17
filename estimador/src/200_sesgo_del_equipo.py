@@ -1,6 +1,6 @@
 """E87 - ¿El sesgo de estimacion es del EQUIPO o del PROYECTO?
 
-Si un equipo que ya uso Agix nos deja sus proyectos anteriores, ¿eso sirve para el
+Si un equipo que ya uso PBE nos deja sus proyectos anteriores, ¿eso sirve para el
 siguiente? E76 ya probo pasar HORAS REALES de otros proyectos del mismo equipo y
 salio negativo. Pero queda otra cosa distinta y plausible: el SESGO DE ESTIMACION.
 
@@ -36,7 +36,7 @@ COB = .8
 
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     sw = df[df.is_software_task == 1]
     sw = sw[~sw.fuente_jira.eq("Apache")].reset_index(drop=True)
     tam = sw.groupby("project").size()

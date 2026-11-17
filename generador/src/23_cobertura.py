@@ -27,8 +27,8 @@ BASE = r"F:\Software Task generation Model"
 spec = importlib.util.spec_from_file_location("ev", f"{BASE}/src/11_eval_gen.py")
 ev = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(ev)
-M1 = f"{BASE}/models/mt5-small-pruned_hist_agix_v1"
-M2 = f"{BASE}/models/mt5-small-pruned_hist_agix_v1_bs8_lr9.2e-4"
+M1 = f"{BASE}/models/mt5-small-pruned_hist_pbe_v1"
+M2 = f"{BASE}/models/mt5-small-pruned_hist_pbe_v1_bs8_lr9.2e-4"
 SEED = 20260922
 N_VAL = 300
 PISO_PRECISION = 0.50

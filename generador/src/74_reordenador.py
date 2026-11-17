@@ -38,8 +38,8 @@ D = pd.DataFrame(L)
 print(f"{len(D)} candidatas etiquetadas de {D.id.nunique()} descripciones | "
       f"coherentes {100*D.coherente.mean():.1f} %")
 
-sb = SentenceTransformer(f"{BASE}/models/sbert_agix_v1",
-                         device=os.environ.get("AGIX_DEVICE", "cuda"))
+sb = SentenceTransformer(f"{BASE}/models/sbert_pbe_v1",
+                         device=os.environ.get("PBE_DEVICE", "cuda"))
 sb.max_seq_length = 128
 
 

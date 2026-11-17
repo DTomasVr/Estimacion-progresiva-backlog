@@ -12,7 +12,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.neighbors import NearestNeighbors
 
 pd.set_option("display.width", 240)
-PATH = "data/processed/agix_effort_dataset.parquet"
+PATH = "data/processed/pbe_effort_dataset.parquet"
 
 
 def head(n, title):

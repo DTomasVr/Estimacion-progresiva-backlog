@@ -11,7 +11,7 @@ Apache que si trabajan a escala de producto.
                          La banda se elige en validacion. Puede recuperar miles
                          de filas de Apache que hoy se tiran.
 
-  PRIORIDAD              la prioridad sola explica un R² de 0,048 y en Agix es
+  PRIORIDAD              la prioridad sola explica un R² de 0,048 y en PBE es
                          una pregunta de un clic, mucho mas barata que pedir
                          horas. Se prueba armonizada a seis niveles, porque en
                          crudo mezcla P1..P10 de SiP con Major/Minor de Jira y
@@ -34,7 +34,7 @@ import exp_common as E  # noqa: E402
 
 warnings.filterwarnings("ignore")
 pd.set_option("display.width", 210)
-DATA = "data/processed/agix_effort_v4.parquet"
+DATA = "data/processed/pbe_effort_v4.parquet"
 EMB_TIT = "data/processed/embeddings/v4_mpnet_titulos"
 CACHE = Path("data/processed/embeddings/codificadores")
 OUT = Path("results/seleccion_corpus")

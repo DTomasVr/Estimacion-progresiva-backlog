@@ -19,7 +19,7 @@ import numpy as np
 import pandas as pd
 
 sys.path.insert(0, "src")
-V6 = Path("models/estimador_agix_v6.joblib")
+V6 = Path("models/estimador_pbe_v6.joblib")
 CORTES_TRAMO = [20, 60, 200]
 ETIQ = ["8-20", "21-60", "61-200", "mas de 200"]
 

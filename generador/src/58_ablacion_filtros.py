@@ -1,14 +1,14 @@
 """Ablacion de los dos filtros nuevos, sobre la MISMA poblacion de entradas.
 
 Los dos filtros (validador del hueco del rol y anti-eco en las tareas) se pueden
-apagar con AGIX_SIN_FILTROS=1, asi que se puede medir lo que aportan sin cambiar
+apagar con PBE_SIN_FILTROS=1, asi que se puede medir lo que aportan sin cambiar
 ni el modelo ni las entradas. Esto da el "antes" de la tabla y separa dos cosas
 que conviene no confundir:
 
   - cuanto del defecto se arregla FILTRANDO en inferencia (gratis, hoy)
   - cuanto se arregla con DATOS de entrenamiento mejores (la tanda v3)
 
-  AGIX_DEVICE=cpu python src/58_ablacion_filtros.py [n]
+  PBE_DEVICE=cpu python src/58_ablacion_filtros.py [n]
 
 out: results/58_ablacion.csv
 """
@@ -28,7 +28,7 @@ N = next((int(a) for a in sys.argv[1:] if a.isdigit()), 40)
 # El defecto del ROL no se ve en las descripciones reservadas del profesor:
 # son de sectores que el modelo domina y nombran un publico que SI es un rol
 # valido, asi que el modelo lo copia y acierta. Aparece en descripciones de
-# producto de fuera de la taxonomia, que es lo que de verdad llega a Agix.
+# producto de fuera de la taxonomia, que es lo que de verdad llega a PBE.
 CONSUMO = [
     "A supermarket app where customers browse the catalogue, build a basket and book a delivery slot.",
     "An online store for selling audiobooks and ebooks, with a library and offline listening.",
@@ -59,7 +59,7 @@ def entradas(n):
 def una_pasada(sin_filtros, casos):
     """subproceso: FILTROS se lee al importar el pipeline, no se puede cambiar en vivo"""
     env = dict(os.environ)
-    env["AGIX_SIN_FILTROS"] = "1" if sin_filtros else "0"
+    env["PBE_SIN_FILTROS"] = "1" if sin_filtros else "0"
     env["PYTHONWARNINGS"] = "ignore"
     env["PYTHONIOENCODING"] = "utf-8"
     r = subprocess.run([sys.executable, f"{BASE}/src/58_ablacion_filtros.py", "--hijo"],
@@ -76,7 +76,7 @@ def hijo():
     spec = importlib.util.spec_from_file_location("pl", f"{BASE}/src/19_pipeline.py")
     pl = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(pl)
-    for v, at in [("AGIX_ARRIBA", "M_ARRIBA"), ("AGIX_ABAJO", "M_ABAJO")]:
+    for v, at in [("PBE_ARRIBA", "M_ARRIBA"), ("PBE_ABAJO", "M_ABAJO")]:
         if os.environ.get(v):
             setattr(pl, at, os.environ[v])
     P = pl.Pipeline(traducir=False)
@@ -98,7 +98,7 @@ def resumen(nombre, salidas):
     ns = {"re": re, "json": json, "os": os, "BASE": BASE}
     ns["os"] = os
     entorno = dict(os.environ)
-    os.environ["AGIX_SIN_FILTROS"] = "0"      # para juzgar siempre con el mismo criterio
+    os.environ["PBE_SIN_FILTROS"] = "0"      # para juzgar siempre con el mismo criterio
     exec(src[src.index("def separar_tareas"):src.index("class Pipeline")], ns)
     os.environ.clear()
     os.environ.update(entorno)
@@ -132,12 +132,12 @@ if __name__ == "__main__":
     if "--hijo" in sys.argv:
         hijo()
         sys.exit()
-    pob = os.environ.get("AGIX_POB", "consumo")
+    pob = os.environ.get("PBE_POB", "consumo")
     casos = ([("consumo", d) for d in CONSUMO[:N]] if pob == "consumo"
              else entradas(N) if pob == "reservadas"
              else [("consumo", d) for d in CONSUMO] + entradas(N))
     print(f"poblacion {pob}: {len(casos)} descripciones, dispositivo "
-          f"{os.environ.get('AGIX_DEVICE', 'cuda')}")
+          f"{os.environ.get('PBE_DEVICE', 'cuda')}")
     filas = []
     for etiqueta, sin in [("sin filtros (el defecto crudo)", True),
                           ("con filtros de inferencia", False)]:

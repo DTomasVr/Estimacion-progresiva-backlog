@@ -16,7 +16,7 @@ import time
 from pathlib import Path
 
 GEN = r"F:\Software Task generation Model"
-os.environ.setdefault("AGIX_DEVICE", "cuda")
+os.environ.setdefault("PBE_DEVICE", "cuda")
 sys.path.insert(0, "src")
 OUT = Path("results/prueba_extremo")
 

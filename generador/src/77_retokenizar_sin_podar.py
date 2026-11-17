@@ -9,7 +9,7 @@ podado) y se vuelve a codificar con el tokenizador de 250.100 piezas.
   python src/77_retokenizar_sin_podar.py
 
 out: data/processed/s2s_v5nb_{train,val}.parquet   (para DATOS=v5nb)
-     data/processed/s2s_nb_test.parquet            (para AGIX_TEST_PARQUET)
+     data/processed/s2s_nb_test.parquet            (para PBE_TEST_PARQUET)
 """
 import os
 import time

@@ -170,7 +170,7 @@ def probe(nombre):
 def entrenar(nombre, bs, max_out, lr, epocas, mini, frac=None, acum=1):
     t0 = time.time()
     tag = nombre.rstrip("/").split("/")[-1] + (f"_{os.environ['DATOS']}" if os.environ.get("DATOS") else "") + ("_mini" if mini else "") + (f"_sub{frac}_lr{lr}" if frac else "")
-    out_dir = f"{BASE}/models/{tag}_agix_v1"
+    out_dir = f"{BASE}/models/{tag}_pbe_v1"
     tok = AutoTokenizer.from_pretrained(nombre, cache_dir=CACHE)
     podado = "pruned" in nombre
     tr = cargar("train", max_out, podado=podado)

@@ -14,7 +14,7 @@ Eso es del mismo orden que la dispersion de escala ENTRE proyectos (0,791), que
 es justo la que el anclaje recupera. Si una parte del 89 % es en realidad ENTRE
 DESARROLLADORES dentro del proyecto, hay una segunda ancla que nadie ha usado.
 
-Y es desplegable: en Agix la tarea se asigna, y el panel ya reparte por persona.
+Y es desplegable: en PBE la tarea se asigna, y el panel ya reparte por persona.
 
   1  DESCOMPOSICION   del residuo en tres niveles: entre proyectos, entre
      desarrolladores dentro del proyecto, y dentro del desarrollador
@@ -69,7 +69,7 @@ def met(y, p):
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     todo = df[df.is_software_task == 1].reset_index(drop=True)
     sw = todo[~todo.fuente_jira.eq("Apache")].reset_index(drop=True)
     pred = np.clip(np.load("results/experto_cortas/predicciones.npz")["p_glob"],

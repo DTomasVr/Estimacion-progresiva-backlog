@@ -44,7 +44,7 @@ spec.loader.exec_module(M71)
 
 warnings.filterwarnings("ignore")
 pd.set_option("display.width", 235)
-DATA = "data/processed/agix_effort_v4.parquet"
+DATA = "data/processed/pbe_effort_v4.parquet"
 EMB_TIT = "data/processed/embeddings/v4_mpnet_titulos"
 OUT = Path("results/frio_vs_estimacion")
 SEP = "=" * 150

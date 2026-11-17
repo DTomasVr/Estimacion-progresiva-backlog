@@ -1,8 +1,8 @@
 """Builds the two decks, reading every figure from results/REGISTRO.csv so the
 slides cannot drift from the measurements.
 
-  entrega/Agix_resultados.pptx   what was measured
-  entrega/Agix_proceso.pptx      how the pipeline was built
+  entrega/PBE_resultados.pptx   what was measured
+  entrega/PBE_proceso.pptx      how the pipeline was built
 
 python-pptx, 16:9, native charts. Speaker notes carry the talking points,
 including the caveats that belong next to each number.
@@ -436,7 +436,7 @@ def anexos(prs):
                                                  "depende del tamaño del modelo.")],
         tam=12.5, gap=8)
     notas(s, "«Largo relativo» es tokens generados sobre tokens de la referencia: 1,0 sería la longitud ideal. "
-             "Fuente: results/11_barrido_mt5-small-pruned_agix_v1.csv y su equivalente en base.")
+             "Fuente: results/11_barrido_mt5-small-pruned_pbe_v1.csv y su equivalente en base.")
 
     # ---------------------------------------------------------------- A9
     s = lamina(prs)
@@ -504,7 +504,7 @@ def anexos(prs):
     vinetas(s, 0.6, 4.9, 12.2, [
         ("Cómo se entrenó: ", "201 309 pares padre → hijo con pérdida contrastiva simétrica y negativos dentro del "
                               "lote; lote de 256 con GradCache para no pasar de 6,5 GB de VRAM."),
-        ("Bilingüe a propósito: ", "el 30 % de las anclas se tradujo al español, porque las consultas de Agix "
+        ("Bilingüe a propósito: ", "el 30 % de las anclas se tradujo al español, porque las consultas de PBE "
                                   "llegan en español. Ahí está la mayor mejora."),
         ("Criterio declarado antes de medir: ", "adoptarlo solo si superaba al congelado en los dos idiomas con "
                                                "IC95 sin cruzar cero. Se cumplió en las seis filas."),
@@ -540,7 +540,7 @@ def anexos(prs):
         ("«Ligero» ", "es un solo modelo en la mitad de abajo; «completo» son los dos del conjunto."),
         ("El dato que cierra el argumento: ", "en CPU somos 16 veces más rápidos que llama3.1 en la misma CPU, "
                                              "y aun en CPU le ganamos al LLM con GPU dedicada."),
-        ("Lo que no se puede sostener: ", "la API externa es la más barata por proyecto, pero el modelo que Agix "
+        ("Lo que no se puede sostener: ", "la API externa es la más barata por proyecto, pero el modelo que PBE "
                                          "usaba en Groq dejó de estar en autoservicio en agosto de 2026. La dependencia es un riesgo "
                                          "medido, no hipotético.")],
         tam=12.5, gap=8)
@@ -610,16 +610,16 @@ def deck_resultados():
     texto(s, 0.9, 4.0, 11.0, 0.9,
           "Resultados medidos: fidelidad, velocidad, generalización y costo de despliegue",
           tam=17, color=HIELO)
-    texto(s, 0.9, 6.3, 11.0, 0.5, "Módulo de generación de Agix · tesis de pregrado · setiembre 2026",
+    texto(s, 0.9, 6.3, 11.0, 0.5, "Módulo de generación de PBE · tesis de pregrado · setiembre 2026",
           tam=12.5, color=HIELO)
-    notas(s, "Tesis: reemplazar el LLM que genera tareas en Agix por un modelo propio, entrenado con "
+    notas(s, "Tesis: reemplazar el LLM que genera tareas en PBE por un modelo propio, entrenado con "
              "datos reales de Jira y evaluable. Todo lo que sigue está medido sobre proyectos que el "
              "modelo nunca vio.")
 
     s = lamina(prs)
     titulo_lamina(s, "La pregunta", "¿Puede un modelo propio y pequeño reemplazar al LLM en esta tarea?")
     vinetas(s, 0.6, 2.05, 6.2, [
-        ("Hoy: ", "Agix pide a un LLM externo que invente el backlog. No se puede medir, cambia debajo y depende de un proveedor."),
+        ("Hoy: ", "PBE pide a un LLM externo que invente el backlog. No se puede medir, cambia debajo y depende de un proveedor."),
         ("Propuesta: ", "dos generadores mT5 de 121M parámetros entrenados sobre 2,8 millones de incidencias reales, más recuperación para dar procedencia."),
         ("Criterio: ", "fidelidad razonable, mucha más velocidad, costo predecible y capacidad de medir todo."),
     ], tam=15.5)
@@ -793,13 +793,13 @@ def deck_resultados():
         ("PC propia 24/7: ", "~58 kWh al mes, unos S/ 40."),
         ("API externa: ", "0,05 centavos, pero con dependencia del proveedor.")], tam=12.5)
     notas(s, "La laptop de la presentación (Ryzen 3, 8 GB, sin gráfica) corre el pipeline: 3 GB de RAM y 11 s "
-             "por backlog con 4 hilos. El modelo que Agix usaba en Groq dejó de estar en autoservicio en agosto "
+             "por backlog con 4 hilos. El modelo que PBE usaba en Groq dejó de estar en autoservicio en agosto "
              "de 2026: esa dependencia es un riesgo medido, no hipotético.")
 
     # ==================================================== destilacion de dominio
     s = lamina(prs)
     titulo_lamina(s, "El salto: enseñarle dominios de producto",
-                  "El corpus son incidencias técnicas de Jira; Agix recibe descripciones de producto")
+                  "El corpus son incidencias técnicas de Jira; PBE recibe descripciones de producto")
     vinetas(s, 0.6, 2.0, 6.4, [
         ("El problema, en una frase: ", "para «una tienda de audiolibros» el modelo respondía con vocabulario de Hyperledger, porque es lo único que había visto."),
         ("Qué se hizo: ", "un LLM local con licencia Apache 2.0 escribió backlogs para 30 sectores de consumo, y el modelo continuó su entrenamiento sobre ellos mezclados con los datos reales."),
@@ -874,8 +874,8 @@ def deck_resultados():
              "los LLM siguen ganando por 0,028, que es el 94 % de su fidelidad.")
 
     anexos(prs)
-    prs.save(f"{SALIDA}/Agix_resultados.pptx")
-    print(f"escrito {SALIDA}/Agix_resultados.pptx ({len(prs.slides.__iter__.__self__._sldIdLst)} laminas)")
+    prs.save(f"{SALIDA}/PBE_resultados.pptx")
+    print(f"escrito {SALIDA}/PBE_resultados.pptx ({len(prs.slides.__iter__.__self__._sldIdLst)} laminas)")
 
 
 # =======================================================================  PROCESO
@@ -888,7 +888,7 @@ def deck_proceso():
     texto(s, 0.9, 3.9, 11.0, 1.0,
           "Del volcado de Jira al modelo desplegable: decisiones, mediciones y errores corregidos",
           tam=17, color=HIELO)
-    texto(s, 0.9, 6.3, 11.0, 0.5, "Módulo de generación de Agix · setiembre 2026", tam=12.5, color=HIELO)
+    texto(s, 0.9, 6.3, 11.0, 0.5, "Módulo de generación de PBE · setiembre 2026", tam=12.5, color=HIELO)
     notas(s, "Esta presentación cuenta el método. Cada decisión de diseño se tomó con una medición, y varias "
              "de ellas contradijeron lo que esperábamos.")
 
@@ -950,7 +950,7 @@ def deck_proceso():
     titulo_lamina(s, "SBERT propio para recuperar", "Ajuste contrastivo, no de regresión")
     vinetas(s, 0.6, 2.0, 6.6, [
         ("Qué se entrenó: ", "201 309 pares (padre → hijo) con pérdida contrastiva y negativos en el lote; batch 256 con GradCache para no pasar de 6,5 GB de VRAM."),
-        ("Bilingüe a propósito: ", "el 30 % de las anclas se tradujo al español, porque las consultas de Agix llegan en español."),
+        ("Bilingüe a propósito: ", "el 30 % de las anclas se tradujo al español, porque las consultas de PBE llegan en español."),
         ("Criterio fijado antes: ", "adoptarlo solo si superaba al congelado en inglés y en español, con IC95 sin cruzar cero."),
     ], tam=14.5)
     barras(s, 7.0, 2.0, 5.8, 3.4, ["Inglés congelado", "Inglés ajustado", "Español congelado", "Español ajustado"],
@@ -1105,8 +1105,8 @@ def deck_proceso():
     ], tam=16, color=HIELO, gap=12)
     notas(s, "Si la asesora pregunta por la contribución metodológica, esta lámina es la respuesta.")
 
-    prs.save(f"{SALIDA}/Agix_proceso.pptx")
-    print(f"escrito {SALIDA}/Agix_proceso.pptx")
+    prs.save(f"{SALIDA}/PBE_proceso.pptx")
+    print(f"escrito {SALIDA}/PBE_proceso.pptx")
 
 
 if __name__ == "__main__":

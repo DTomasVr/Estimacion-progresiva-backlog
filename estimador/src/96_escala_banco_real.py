@@ -16,7 +16,7 @@ Fuentes de escala disponibles EN EL MOMENTO DE CREAR el proyecto:
 
   NOMBRE     el bloque publico solo trae el nombre del proyecto, una palabra.
              Flojo, pero es texto y se prueba.
-  BACKLOG    Agix genera todas las tareas de golpe, asi que al estimar una tiene
+  BACKLOG    PBE genera todas las tareas de golpe, asi que al estimar una tiene
              delante las demas. El conjunto de titulos del proyecto es una
              descripcion implicita. Se calcula dejando fuera la tarea estimada.
   BACKLOG-k  lo mismo pero con solo k tareas del proyecto, que es lo realista
@@ -42,7 +42,7 @@ import exp_common as E  # noqa: E402
 
 warnings.filterwarnings("ignore")
 pd.set_option("display.width", 220)
-DATA = "data/processed/agix_effort_v4.parquet"
+DATA = "data/processed/pbe_effort_v4.parquet"
 EMB_TIT = "data/processed/embeddings/v4_mpnet_titulos"
 MODELO = "sentence-transformers/paraphrase-multilingual-mpnet-base-v2"
 OUT = Path("results/escala_proyecto")

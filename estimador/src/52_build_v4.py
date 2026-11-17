@@ -31,8 +31,8 @@ import numpy as np
 import pandas as pd
 
 pd.set_option("display.width", 240)
-V3 = "data/processed/agix_effort_v3.parquet"
-OUT = "data/processed/agix_effort_v4.parquet"
+V3 = "data/processed/pbe_effort_v3.parquet"
+OUT = "data/processed/pbe_effort_v4.parquet"
 SEED = 20260910
 CONTENEDOR = {"Epic", "New Project", "Initiative", "Program", "Umbrella"}
 MIN_H, MAX_H = 0.05, 200.0
@@ -178,7 +178,7 @@ def repartir(nuevo, rng):
 
     Holding out projects rather than rows is what makes the external block a
     real cold-start test: the model has never seen the organisation, which is
-    exactly Agix's situation on a new customer.
+    exactly PBE's situation on a new customer.
     """
     tam = nuevo.groupby("project").size().sort_values()
     cand = tam[tam <= len(nuevo) * 0.10].index.tolist()

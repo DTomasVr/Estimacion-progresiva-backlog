@@ -98,7 +98,7 @@ correr("52_coherencia.py", "profesor_v3", mostrar=14)'''),
 
     md("""## 5.4 Además: la variante sin público
 
-Las descripciones de entrenamiento **nombran** a los actores; las que llegan a Agix a menudo no. Si
+Las descripciones de entrenamiento **nombran** a los actores; las que llegan a PBE a menudo no. Si
 todos los ejemplos los nombran, el modelo aprende a copiar. Por eso cada descripción sintética
 entrena **también en su versión despublicada**, con las mismas historias como objetivo:
 

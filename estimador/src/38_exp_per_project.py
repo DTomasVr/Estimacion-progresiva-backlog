@@ -3,7 +3,7 @@
 Deep-SE, GPT2SP and the SBERT+GBT line all train and evaluate inside a single
 project. Everything measured so far has been pooled across projects, and
 `split_project` is the opposite extreme -- a project never seen in training.
-Neither matches the published setting, nor the setting Agix reaches once a team
+Neither matches the published setting, nor the setting PBE reaches once a team
 has its own history.
 
 For each project with enough data: chronological split (train on the earlier
@@ -22,7 +22,7 @@ import exp_common as E  # noqa: E402
 import features as F  # noqa: E402
 
 pd.set_option("display.width", 250)
-E.DATA = "data/processed/agix_effort_v2.parquet"
+E.DATA = "data/processed/pbe_effort_v2.parquet"
 MIN_TASKS = 150
 TEST_FRAC = 0.25
 

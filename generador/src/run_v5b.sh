@@ -7,11 +7,11 @@
 # ("Add documentation for the service representation").
 set -u
 BASE="/f/Software Task generation Model"
-PY="/c/Users/User/Documents/Programacao/Agix-Dataset/.venv/Scripts/python.exe"
+PY="/c/Users/User/Documents/Programacao/PBE-Dataset/.venv/Scripts/python.exe"
 export PYTHONWARNINGS=ignore PYTHONIOENCODING=utf-8 HF_HUB_OFFLINE=1
 cd "$BASE"
 echo "[$(date '+%F %T')] entrenando v5 con bs8 lr9.2e-4" > logs/v5b.log
-DATOS=v5 "$PY" -u src/09_train_mt5.py models/mt5-small-pruned_hist_agix_v1 8 192 9.2e-4 4 \
+DATOS=v5 "$PY" -u src/09_train_mt5.py models/mt5-small-pruned_hist_pbe_v1 8 192 9.2e-4 4 \
   >> logs/v5b.log 2>&1
 grep -E "^  epoca|parada|TOTAL" logs/v5b.log | tail -6
 echo "[$(date '+%F %T')] V5B TERMINADO" >> logs/v5b.log

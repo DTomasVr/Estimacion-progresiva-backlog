@@ -17,7 +17,7 @@ import time
 import numpy as np
 import pandas as pd
 
-DATA = "data/processed/agix_effort_clean.parquet"
+DATA = "data/processed/pbe_effort_clean.parquet"
 REGISTRY = "results/experiments.json"
 LEVELS = [0.50, 0.80, 0.90]
 

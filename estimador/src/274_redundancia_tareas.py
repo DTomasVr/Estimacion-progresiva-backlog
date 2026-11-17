@@ -1,7 +1,7 @@
-"""E-274 - ¿Son redundantes entre si las tareas de un backlog? Agix frente a los LLM.
+"""E-274 - ¿Son redundantes entre si las tareas de un backlog? PBE frente a los LLM.
 
-El banco de generacion muestra que Agix genera unas 35 tareas por backlog y los LLM
-entre 110 y 200. Antes de decir que las de Agix «son pocas pero no se repiten» hay
+El banco de generacion muestra que PBE genera unas 35 tareas por backlog y los LLM
+entre 110 y 200. Antes de decir que las de PBE «son pocas pero no se repiten» hay
 que medirlo. Para cada backlog de los 64 proyectos retenidos:
 
   casi duplicadas   proporcion de tareas cuya vecina mas parecida DEL MISMO backlog
@@ -10,7 +10,7 @@ que medirlo. Para cada backlog de los 64 proyectos retenidos:
   tareas distintas  numero de grupos al unir las tareas con coseno >= 0,90
 
 Los embeddings son de paraphrase-multilingual-mpnet-base-v2 SIN afinar, y no del
-SBERT propio, para que el juez no sea un modelo nuestro. La comparacion con Agix es
+SBERT propio, para que el juez no sea un modelo nuestro. La comparacion con PBE es
 pareada por proyecto, con IC95 por remuestreo.
 """
 import json
@@ -46,7 +46,7 @@ def main():
     OUT.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
     R = [json.loads(l) for l in open(GEN, encoding="utf-8")]
-    R = [r for r in R if r["sistema"] != "agix" and r["condicion"] == "cero"]
+    R = [r for r in R if r["sistema"] != "pbe" and r["condicion"] == "cero"]
     for p in sorted(Path("results/banco_generacion").glob("*.jsonl")):
         R += [json.loads(l) for l in open(p, encoding="utf-8")]
     filas, textos = [], []
@@ -75,9 +75,9 @@ def main():
     P = d.pivot(index="caso", columns="sistema", values="dup90")
     par = {}
     for s in P.columns:
-        if s == "agix":
+        if s == "pbe":
             continue
-        x = (P[s] - P["agix"]).dropna().to_numpy()
+        x = (P[s] - P["pbe"]).dropna().to_numpy()
         b = rng.choice(x, (4000, len(x))).mean(1)
         par[s] = dict(dif_dup90=float(x.mean()), ic95_lo=float(np.quantile(b, .025)), ic95_hi=float(np.quantile(b, .975)))
     g = g.merge(pd.DataFrame(par).T.rename_axis("sistema").reset_index(), on="sistema", how="left")

@@ -24,8 +24,8 @@ import sys
 import numpy as np
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-os.environ.setdefault("AGIX_DEVICE", "cuda")
-os.environ.setdefault("AGIX_SEED", "20260926")      # sin esto no se puede comparar
+os.environ.setdefault("PBE_DEVICE", "cuda")
+os.environ.setdefault("PBE_SEED", "20260926")      # sin esto no se puede comparar
 os.makedirs(f"{BASE}/results", exist_ok=True)
 
 DOMINIOS = {
@@ -57,7 +57,7 @@ def cargar_pipeline():
     spec = importlib.util.spec_from_file_location("pl", f"{BASE}/src/19_pipeline.py")
     pl = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(pl)
-    for var, attr in (("AGIX_ARRIBA", "M_ARRIBA"), ("AGIX_ABAJO", "M_ABAJO")):
+    for var, attr in (("PBE_ARRIBA", "M_ARRIBA"), ("PBE_ABAJO", "M_ABAJO")):
         if os.environ.get(var):
             setattr(pl, attr, os.environ[var])
     return pl
@@ -101,7 +101,7 @@ def generar(etiqueta, nombres):
           f"funcion={'si' if P.usa_funcion else 'NO'}"
           + ("    <-- OJO: se activan por el NOMBRE del modelo"
              if not (P.planificador is not None and P.usa_funcion) else ""))
-    print(f"semilla: {os.environ['AGIX_SEED']}\n")
+    print(f"semilla: {os.environ['PBE_SEED']}\n")
     lineas, datos, tabla = [], {}, []
     for nom in nombres:
         d = DOMINIOS[nom]

@@ -62,7 +62,7 @@ def mt(real, pred):
 
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
-    df = pd.read_parquet("data/processed/agix_effort_v4.parquet")
+    df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     sw = df[df.is_software_task == 1].copy()
     sw = sw[~sw.fuente_jira.eq("Apache")].reset_index(drop=True)
     tit = sw.title.fillna("").astype(str)
@@ -74,7 +74,7 @@ def main():
     E5 = np.load(CACHE / "e5-large.npy")
     Vn = E5 / np.maximum(np.linalg.norm(E5, axis=1, keepdims=True), 1e-9)
     import joblib
-    f = joblib.load("models/estimador_agix_v3.joblib")
+    f = joblib.load("models/estimador_pbe_v3.joblib")
     X = np.hstack([E5] + [sv.transform(tf.transform(tit)).astype(np.float32)
                           for tf, sv in zip((f["tfc"], f["tfw"]), f["svds"])])
 
@@ -125,7 +125,7 @@ def main():
     print(f"{len(real)} proyectos · {len(nombres_e)} estimadores", flush=True)
 
     # indices de los estimadores que NO necesitan historial de otros proyectos:
-    # en el arranque de Agix, sin proyectos anteriores entregados, solo se puede
+    # en el arranque de PBE, sin proyectos anteriores entregados, solo se puede
     # usar la via ascendente, asi que hay que dar tambien esa cifra por separado
     solo_asc = [i for i, k in enumerate(nombres_e) if k.startswith("ascendente")]
 

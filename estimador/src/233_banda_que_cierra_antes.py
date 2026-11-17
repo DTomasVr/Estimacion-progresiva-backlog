@@ -125,7 +125,7 @@ def main():
           f"{np.corrcoef(np.abs(rho), sig)[0, 1]:.4f} · "
           f"{time.time() - t0:.0f} s", flush=True)
 
-    filas = []
+    filas, por_tramo = [], []
 
     def construye(etq, sk, nivel_nom):
         """Banda de un metodo a un nivel NOMINAL dado. Devuelve (dentro, anchura)."""
@@ -195,6 +195,11 @@ def main():
                 else:
                     hi_n = md
             dentro, w = construye(etq, sk, hi_n)
+            trk_ = R[sk].tramo.to_numpy()
+            for t_ in np.unique(trk_):
+                por_tramo.append(dict(k=k, banda=NOMBRES[etq], tramo=int(t_),
+                                      proyectos=int(len(np.unique(R[sk].j.to_numpy()[trk_ == t_]))),
+                                      cobertura=float(dentro[trk_ == t_].mean())))
             filas.append(dict(k=k, banda=NOMBRES[etq], nivel_nominal=float(hi_n),
                               cobertura=float(dentro.mean()),
                               anchura_mediana=float(np.median(w)),
@@ -228,6 +233,8 @@ def main():
         if alc:
             print(f"\n  {etq} alcanza con k={min(alc)} la anchura que A exige con k=10")
     t.to_csv(OUT / "resumen.csv", index=False)
+    # cobertura de cada banda por tramo de tamano (guia V2: «cobertura en cada grupo»)
+    pd.DataFrame(por_tramo).to_csv(OUT / "cobertura_por_tramo.csv", index=False)
     json.dump({"proyectos": P, "sorteos": SORTEOS, "nivel": NIVEL,
                "corr_sigma": float(np.corrcoef(np.abs(rho), sig)[0, 1])},
               open(OUT / "meta.json", "w"), indent=1)

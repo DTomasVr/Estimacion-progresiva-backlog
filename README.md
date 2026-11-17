@@ -30,6 +30,7 @@ Las rutas son relativas a `estimador/`, salvo las que empiezan por `generador/`.
 |---|---|---|
 | **Tabla I**: PRED(25), ×2 y MdMRE del total según las tareas cerradas (39,5 % → 62,7 %) | `src/275_curva_anclaje_dos_criterios.py` | `results/curva_anclaje_dos_criterios/resumen.csv` |
 | Tabla I: anchura y cobertura del intervalo (×5,57 → ×2,14; 0,78 y 0,80) | `src/161_banda_proyecto.py`, `src/233_banda_que_cierra_antes.py` | `results/banda_proyecto/resumen.csv`, `results/banda_que_cierra_antes/resumen.csv` |
+| Cobertura por tamaño del proyecto (0,72–0,96 con una cerrada; 0,78–0,82 con 10 o más) | `src/233_banda_que_cierra_antes.py` | `results/banda_que_cierra_antes/cobertura_por_tramo.csv` |
 | Sin contracción, λc = 0 (37,6 % → 14,5 % con una cerrada) | `src/277_extrapolacion_simple.py` | `results/extrapolacion_simple/` |
 | Orden real de cierre (50,0 % frente a 71,3 %, 38 proyectos) | `src/265_avance_orden_real.py` | `results/avance_orden_real/resumen.csv` |
 | Entradas del usuario (46,3 → 68,3 %; 62,0 → 82,9 %; 41 proyectos) | `src/268_tres_estados.py` | `results/tres_estados/resumen.csv` |

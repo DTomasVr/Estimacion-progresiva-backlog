@@ -1,0 +1,21 @@
+64 proyectos ({'jira': 60, 'dalpiaz': 4}) · 0 ya hechos
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights:   3%|2         | 5/199 [00:02<01:25,  2.26it/s]Loading weights: 100%|##########| 199/199 [00:02<00:00, 89.54it/s]
+Loading weights:   0%|          | 0/190 [00:00<?, ?it/s]Loading weights:  82%|########1 | 155/190 [00:00<00:00, 1529.92it/s]Loading weights: 100%|##########| 190/190 [00:00<00:00, 1795.34it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie shared.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+Loading weights:   0%|          | 0/190 [00:00<?, ?it/s]Loading weights: 100%|##########| 190/190 [00:00<00:00, 2000.39it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie shared.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+Loading weights:   0%|          | 0/190 [00:00<?, ?it/s]Loading weights:  72%|#######1  | 136/190 [00:00<00:00, 1335.30it/s]Loading weights: 100%|##########| 190/190 [00:00<00:00, 1668.85it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie shared.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\transformers\models\marian\tokenization_marian.py:176: UserWarning: Recommended: pip install sacremoses.
+  warnings.warn("Recommended: pip install sacremoses.")
+Loading weights:   0%|          | 0/254 [00:00<?, ?it/s]Loading weights:  15%|#5        | 39/254 [00:00<00:00, 285.82it/s]Loading weights:  36%|###5      | 91/254 [00:00<00:00, 341.14it/s]Loading weights:  56%|#####6    | 143/254 [00:00<00:00, 376.09it/s]Loading weights:  71%|#######1  | 181/254 [00:00<00:00, 370.21it/s]Loading weights:  88%|########7 | 223/254 [00:00<00:00, 357.37it/s]Loading weights: 100%|##########| 254/254 [00:01<00:00, 221.05it/s]
+tuberia cargada y caliente en cuda · 36 s
+  8/64 · ultimo 9.5 s · total 122 s
+  16/64 · ultimo 11.2 s · total 206 s
+  24/64 · ultimo 10.7 s · total 292 s
+  32/64 · ultimo 10.4 s · total 376 s
+  40/64 · ultimo 11.3 s · total 460 s
+  48/64 · ultimo 11.8 s · total 547 s
+  56/64 · ultimo 10.8 s · total 634 s
+  64/64 · ultimo 10.5 s · total 724 s
+listo

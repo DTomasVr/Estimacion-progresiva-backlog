@@ -1,0 +1,47 @@
+41 proyectos con estimacion del usuario · 25 con pocas filas copiadas · tareas por proyecto: mediana 45
+  usuario estima 0 % listo · 1 s
+  usuario estima 25 % listo · 2 s
+  usuario estima 50 % listo · 2 s
+  usuario estima 100 % listo · 3 s
+
+PRED25 del total, los 41 proyectos (mejor lambda de cada celda; filas: cuanto estima el usuario · columnas: tareas cerradas)
+cerradas           0      3      5      10     20
+usuario_estima                                   
+0 %             0.463  0.447  0.530  0.645  0.774
+25 %            0.593  0.680  0.692  0.789  0.849
+50 %            0.670  0.715  0.740  0.818  0.883
+100 %           0.683  0.762  0.776  0.837  0.877
+
+PRED25 del total, los 25 con pocas filas copiadas (mejor lambda de cada celda; filas: cuanto estima el usuario · columnas: tareas cerradas)
+cerradas           0      3      5      10     20
+usuario_estima                                   
+0 %             0.440  0.466  0.513  0.639  0.721
+25 %            0.609  0.673  0.682  0.777  0.811
+50 %            0.637  0.682  0.709  0.778  0.839
+100 %           0.560  0.679  0.705  0.773  0.819
+
+MdMRE del total (mejor lambda de cada celda; filas: cuanto estima el usuario · columnas: tareas cerradas)
+cerradas           0      3      5      10     20
+usuario_estima                                   
+0 %             0.317  0.285  0.232  0.168  0.114
+25 %            0.205  0.166  0.161  0.117  0.094
+50 %            0.170  0.155  0.147  0.108  0.081
+100 %           0.167  0.138  0.136  0.093  0.071
+
+PRED25 con UNA sola configuracion (lambda_u = 12, lambda_c = 30), que es lo que se desplegaria:
+cerradas           0      3      5      10     20
+usuario_estima                                   
+0 %             0.463  0.428  0.502  0.620  0.746
+25 %            0.574  0.673  0.678  0.788  0.846
+50 %            0.643  0.698  0.730  0.800  0.870
+100 %           0.683  0.761  0.766  0.829  0.865
+
+lambdas que ganan en cada celda:
+cerradas           0      3      5      10     20
+usuario_estima                                   
+0 %             12/12  12/96  12/12  12/12  12/12
+25 %            30/12  30/30  30/30  30/96  30/96
+50 %            30/12  30/30  30/96  30/96  30/96
+100 %           12/12  30/30  30/96  30/96  12/96
+
+escrito results\tres_estados · 3 s

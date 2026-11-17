@@ -1,0 +1,29 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|##########| 391/391 [00:00<00:00, 7220.89it/s]
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|##########| 391/391 [00:00<00:00, 4263.43it/s]
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|##########| 391/391 [00:00<00:00, 4623.50it/s]
+v6 · regresion 0.0e+00 · 50 s
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights:  81%|########1 | 317/391 [00:00<00:00, 3166.50it/s]Loading weights: 100%|##########| 391/391 [00:00<00:00, 3374.07it/s]
+v7 fp32 · 75 s
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|##########| 391/391 [00:00<00:00, 7902.76it/s]
+WARNING:root:Please consider to run pre-processing before quantization. Refer to example: https://github.com/microsoft/onnxruntime-inference-examples/blob/main/quantization/image_classification/cpu/ReadMe.md 
+v7 int8 podado · 190 s
+                 modelo         salida  PRED25  MdMRE  MAE_h     SA  spearman  cobertura_banda  ancho_banda_x
+   v6 (3 codificadores)          horas  0.1617 0.6682 4.9128 0.0645    0.4208              NaN            NaN
+   v6 (3 codificadores) valor_probable  0.1872 0.6667 5.0347 0.0413    0.3363           0.7789        18.6249
+v7 fp32 (1 codificador)          horas  0.1683 0.6788 4.9645 0.0546    0.3982              NaN            NaN
+v7 fp32 (1 codificador) valor_probable  0.1865 0.6739 5.0802 0.0326    0.3224           0.7789        19.8271
+         v7 int8 podado          horas  0.1654 0.6805 4.9741 0.0528    0.3990              NaN            NaN
+         v7 int8 podado valor_probable  0.1766 0.6818 5.0922 0.0303    0.3121           0.7801        19.8271
+{
+ "regresion_v6_desvio_max": 0.0,
+ "generador_mediana_v7_sobre_v6": 0.8289990612815437,
+ "generador_mediana_v7int8_sobre_v6": 0.805769844185614,
+ "generador_valor_probable_igual_v6_v7": 0.7286432160804021,
+ "total_v6": 26.988329544345564,
+ "total_v7": 26.988329544345564,
+ "vocab_produccion": 90559,
+ "mb_codificador": 397.280962,
+ "ms_por_tarea_cpu_int8": 18.787099680251625
+}
+· 190 s

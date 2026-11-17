@@ -1,0 +1,2 @@
+{"task_id": "JP-Spring-INT-261", "backend": "gemini", "modelo": "gemini-3.5-flash", "condicion": "B", "segundos": 3.31, "entrada": 850, "salida": 27, "valido": true, "horas": 8.0, "minimo": 4.0, "maximo": 16.0, "crudo": "{\"horas\": 8.0, \"minimo\": 4.0, \"maximo\": 16.0}"}
+{"task_id": "JP-Apache-CASSANDRA-14444", "backend": "gemini", "modelo": "gemini-3.5-flash", "condicion": "B", "segundos": 88.76, "entrada": 1086, "salida": 26, "valido": true, "horas": 3.5, "minimo": 1.5, "maximo": 7.0, "crudo": "{\"horas\": 3.5, \"minimo\": 1.5, \"maximo\": 7.0}"}

@@ -1,0 +1,5 @@
+[29/10 11:41:33] qwen/qwen3.8-27b muestra A: listo (25.0 min, exit 0)
+[29/10 11:47:13] qwen/qwen3.8-27b calibracion A: listo (5.7 min, exit 0)
+[29/10 23:04:29] qwen/qwen3.8-27b muestra B: listo (677.3 min, exit 0)
+[29/10 23:04:31] qwen/qwen3.8-27b calibracion B: cortado en 0/130: el proveedor pide esperar 0.2 h; se retoma al relanzar (0.0 min, exit 3)
+[29/10 23:04:31] qwen/qwen3.8-27b: sin cuota, se retoma otro dia

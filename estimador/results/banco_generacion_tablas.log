@@ -1,0 +1,24 @@
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 7355.83it/s]
+                 sistema  n  seg_mediana  historias  tareas   sF1  cobertura  formato  reconoce n_pareado   dif_sF1   ic95_lo   ic95_hi    veredicto
+Agix (01/10, sin anclas) 64        9.755     12.000  34.641 0.360      0.391    1.000     0.000        64 -0.027265 -0.038099 -0.016919    gana Agix
+           Agix (actual) 64       10.830     12.000  34.891 0.387      0.437    1.000     0.000       NaN       NaN       NaN       NaN          NaN
+          gemma2:9b cero 64       35.735     12.000 109.766 0.475      0.485    0.999     0.594        64  0.087658  0.060659  0.116155 gana el otro
+      gemma2:9b ejemplos 64       34.400     12.000 108.219 0.487      0.494    0.997     0.594        64  0.099592  0.074113  0.126381 gana el otro
+        llama3.1:8b cero 64       21.630     11.938 122.062 0.463      0.459    1.000     0.812        64  0.076279  0.054731  0.098761 gana el otro
+    llama3.1:8b ejemplos 64       21.055     11.969 125.062 0.479      0.479    0.991     0.812        64  0.092283  0.066786  0.119848 gana el otro
+         mistral:7b cero 64       39.440     12.000 203.297 0.473      0.480    0.999     0.547        64  0.086139  0.060809  0.113628 gana el otro
+     mistral:7b ejemplos 64       39.930     11.984 197.531 0.486      0.486    0.984     0.547        64  0.098431  0.075321  0.124421 gana el otro
+openai/gpt-oss-120b cero 29       41.610     12.000 179.138 0.442      0.456    1.000     0.172        29  0.052495  0.017626  0.091784 gana el otro
+escrito paper/cuadros/tab_llm_estimacion.tex
+                                 sistema      version  proyectos  tareas  PRED25  MdMRE  factor2
+                                    Agix      en frío         10     257     0.4  0.402      0.6
+                            GPT-OSS 120B sin calibrar         10     257     0.1  1.095      0.5
+                            GPT-OSS 120B    calibrado         10     257     0.5  0.393      0.5
+Agix (mismos proyectos que GPT-OSS 120B)      en frío         10     257     0.4  0.402      0.6
+                             GPT-OSS 20B sin calibrar         10     257     0.1  1.730      0.3
+                             GPT-OSS 20B    calibrado         10     257     0.2  0.589      0.5
+ Agix (mismos proyectos que GPT-OSS 20B)      en frío         10     257     0.4  0.402      0.6
+                            Qwen 3.8 27B sin calibrar         10     257     0.1  0.592      0.6
+                            Qwen 3.8 27B    calibrado         10     257     0.4  0.388      0.6
+Agix (mismos proyectos que Qwen 3.8 27B)      en frío         10     257     0.4  0.402      0.6
+escrito paper/cuadros/tab_llm_generacion.tex

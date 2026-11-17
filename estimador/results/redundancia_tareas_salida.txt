@@ -1,0 +1,9 @@
+297 backlogs · 37,376 tareas · 0 s
+embeddings listos · 26 s
+            sistema  n  tareas  casi_duplicadas_090  casi_duplicadas_080  parecido_medio  tareas_distintas  dif_dup90  ic95_lo  ic95_hi
+               agix 64  34.891                0.118                0.431           0.772            32.703        NaN      NaN      NaN
+          gemma2:9b 64 109.766                0.116                0.385           0.763           102.312     -0.001   -0.029    0.026
+        llama3.1:8b 64 122.062                0.244                0.587           0.820           101.188      0.126    0.090    0.165
+         mistral:7b 64 203.297                0.202                0.579           0.812           177.609      0.084    0.054    0.117
+openai/gpt-oss-120b 41 177.927                0.034                0.182           0.719           174.512     -0.082   -0.110   -0.054
+escrito results\redundancia_tareas · 27 s

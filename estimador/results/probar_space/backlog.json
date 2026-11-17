@@ -1,0 +1,634 @@
+{
+ "historias": [
+  {
+   "historia": "As a resident, I want to book common areas, so that I can plan my schedule.",
+   "votos": 1,
+   "relevancia": 1.0,
+   "origen": [
+    {
+     "proyecto": "SecondLife:STORM",
+     "similitud": 0.486
+    },
+    {
+     "proyecto": "Qt:QTQAINFRA",
+     "similitud": 0.469
+    }
+   ],
+   "tareas": [
+    "Create a booking form in the resident app"
+   ],
+   "historia_es": "Como residente, quiero reservar áreas comunes, para poder planificar mi horario.",
+   "tareas_es": [
+    "Crear un formulario de reserva en la aplicación residente"
+   ],
+   "horas_suma": 18.0,
+   "horas_tareas": [
+    7.29
+   ],
+   "horas_probables": [
+    8.0
+   ],
+   "horas_banda": [
+    [
+     1.6,
+     32.5
+    ]
+   ]
+  },
+  {
+   "historia": "As a resident, I want to pay maintenance fees, so that I can schedule payments.",
+   "votos": 1,
+   "relevancia": 1.0,
+   "origen": [
+    {
+     "proyecto": "JiraEcosystem:JPERF",
+     "similitud": 0.524
+    },
+    {
+     "proyecto": "RedHat:SDN",
+     "similitud": 0.458
+    }
+   ],
+   "tareas": [
+    "Implement a payment gateway for maintenance fees"
+   ],
+   "historia_es": "Como residente, quiero pagar los gastos de mantenimiento, para poder programar los pagos.",
+   "tareas_es": [
+    "Implementar un portal de pago de las tasas de mantenimiento"
+   ],
+   "horas_suma": 14.7,
+   "horas_tareas": [
+    6.8
+   ],
+   "horas_probables": [
+    2.25
+   ],
+   "horas_banda": [
+    [
+     1.5,
+     30.3
+    ]
+   ]
+  },
+  {
+   "historia": "As a manager, I want to receive management notices, so that I can make informed decisions about my work.",
+   "votos": 1,
+   "relevancia": 1.0,
+   "origen": [
+    {
+     "proyecto": "Apache:FALCON",
+     "similitud": 0.489
+    },
+    {
+     "proyecto": "RedHat:APIMAN",
+     "similitud": 0.467
+    }
+   ],
+   "tareas": [
+    "Create a notification system for management notices",
+    "Store notification details in the manager's profile"
+   ],
+   "historia_es": "Como gerente, quiero recibir avisos de gestión, para poder tomar decisiones informadas sobre mi trabajo.",
+   "tareas_es": [
+    "Crear un sistema de notificación para los avisos de gestión",
+    "Almacenar los detalles de la notificación en el perfil del gerente"
+   ],
+   "horas_suma": 12.3,
+   "horas_tareas": [
+    6.29,
+    2.23
+   ],
+   "horas_probables": [
+    4.5,
+    3.0
+   ],
+   "horas_banda": [
+    [
+     1.4,
+     28.0
+    ],
+    [
+     0.5,
+     9.9
+    ]
+   ]
+  },
+  {
+   "historia": "As a resident, I want to receive notifications about maintenance issues, so that I can plan my visit.",
+   "votos": 1,
+   "relevancia": 0.482,
+   "tareas": [
+    "Store maintenance issues in the resident's profile",
+    "Send notifications to the resident via email",
+    "Add notifications about maintenance issues",
+    "Implement a notification system for maintenance issues",
+    "Store notifications in the resident's profile"
+   ],
+   "origen": [
+    {
+     "proyecto": "JiraEcosystem:JPERF",
+     "similitud": 0.638
+    },
+    {
+     "proyecto": "RedHat:AA",
+     "similitud": 0.519
+    }
+   ],
+   "historia_es": "Como residente, quiero recibir notificaciones sobre problemas de mantenimiento, para poder planificar mi visita.",
+   "tareas_es": [
+    "Almacenar los problemas de mantenimiento en el perfil del residente",
+    "Enviar notificaciones al residente por correo electrónico",
+    "Añadir notificaciones sobre problemas de mantenimiento",
+    "Implementar un sistema de notificación para cuestiones de mantenimiento",
+    "Almacenar notificaciones en el perfil del residente"
+   ],
+   "horas_suma": 35.5,
+   "horas_tareas": [
+    4.04,
+    3.42,
+    2.81,
+    5.6,
+    2.49
+   ],
+   "horas_probables": [
+    2.0,
+    3.0,
+    3.0,
+    3.0,
+    2.5
+   ],
+   "horas_banda": [
+    [
+     0.9,
+     18.0
+    ],
+    [
+     0.8,
+     15.2
+    ],
+    [
+     0.6,
+     12.5
+    ],
+    [
+     1.3,
+     24.9
+    ],
+    [
+     0.6,
+     11.1
+    ]
+   ]
+  },
+  {
+   "historia": "As a manager, I want to monitor the number of sessions in one place, so that I can manage user engagement.",
+   "votos": 1,
+   "relevancia": 0.37,
+   "tareas": [
+    "Store sessions in the database",
+    "Display sessions on the manager's dashboard",
+    "Send a notification to the manager about the sessions",
+    "Monitoring sessions in one place",
+    "Monitor sessions in the same place"
+   ],
+   "origen": [
+    {
+     "proyecto": "Apache:LENS",
+     "similitud": 0.627
+    },
+    {
+     "proyecto": "RedHat:ENTMQMAAS",
+     "similitud": 0.543
+    }
+   ],
+   "historia_es": "Como gerente, quiero monitorear el número de sesiones en un solo lugar, para poder gestionar el compromiso del usuario.",
+   "tareas_es": [
+    "Almacenar las sesiones en la base de datos",
+    "Mostrar las sesiones en el panel del administrador",
+    "Enviar una notificación al gerente sobre las sesiones",
+    "Monitorear las sesiones en un solo lugar",
+    "Monitorizar las sesiones en el mismo lugar"
+   ],
+   "horas_suma": 64.7,
+   "horas_tareas": [
+    3.99,
+    3.25,
+    2.74,
+    4.6,
+    3.86
+   ],
+   "horas_probables": [
+    4.0,
+    3.5,
+    2.25,
+    4.5,
+    3.5
+   ],
+   "horas_banda": [
+    [
+     0.9,
+     17.8
+    ],
+    [
+     0.7,
+     14.5
+    ],
+    [
+     0.6,
+     12.2
+    ],
+    [
+     1.0,
+     20.5
+    ],
+    [
+     0.9,
+     17.2
+    ]
+   ]
+  },
+  {
+   "historia": "As a resident, I want to view my upcoming booking dates, so that I can plan my parking spaces.",
+   "votos": 1,
+   "relevancia": 0.387,
+   "tareas": [
+    "Store the booking details in the resident's profile",
+    "Send a notification to the resident about the booking",
+    "Store booking dates in the database",
+    "Display booking dates on the resident's dashboard",
+    "Create an infrastructure for getting upcoming dates"
+   ],
+   "origen": [
+    {
+     "proyecto": "JiraEcosystem:PLE",
+     "similitud": 0.555
+    },
+    {
+     "proyecto": "SecondLife:STORM",
+     "similitud": 0.476
+    }
+   ],
+   "historia_es": "Como residente, quiero ver mis próximas fechas de reserva, para poder planificar mis plazas de aparcamiento.",
+   "tareas_es": [
+    "Almacenar los detalles de la reserva en el perfil del residente",
+    "Enviar una notificación al residente sobre la reserva",
+    "Almacenar las fechas de reserva en la base de datos",
+    "Mostrar las fechas de reserva en el panel del residente",
+    "Crear una infraestructura para obtener las próximas fechas"
+   ],
+   "horas_suma": 39.3,
+   "horas_tareas": [
+    3.69,
+    2.8,
+    3.79,
+    3.76,
+    7.72
+   ],
+   "horas_probables": [
+    5.0,
+    3.0,
+    4.0,
+    5.0,
+    4.0
+   ],
+   "horas_banda": [
+    [
+     0.8,
+     16.4
+    ],
+    [
+     0.6,
+     12.5
+    ],
+    [
+     0.9,
+     16.9
+    ],
+    [
+     0.8,
+     16.7
+    ],
+    [
+     1.7,
+     34.4
+    ]
+   ]
+  },
+  {
+   "historia": "As a manager, I want to set up automatic payment times, so that I can manage payments efficiently.",
+   "votos": 1,
+   "relevancia": 0.084,
+   "tareas": [
+    "Store payment times in the database",
+    "Display payment times on the manager's dashboard",
+    "Add ability to set up automatic transactions",
+    "Add a way to set up automated transactions"
+   ],
+   "origen": [
+    {
+     "proyecto": "Apache:FINERACT",
+     "similitud": 0.419
+    },
+    {
+     "proyecto": "RedHat:THREESCALE",
+     "similitud": 0.413
+    }
+   ],
+   "historia_es": "Como gerente, quiero establecer tiempos de pago automáticos, para que pueda gestionar los pagos de manera eficiente.",
+   "tareas_es": [
+    "Almacenar los tiempos de pago en la base de datos",
+    "Mostrar los tiempos de pago en el panel de gerente",
+    "Añadir capacidad para configurar transacciones automáticas",
+    "Añadir una forma de configurar transacciones automatizadas"
+   ],
+   "horas_suma": 30.9,
+   "horas_tareas": [
+    3.51,
+    3.0,
+    4.96,
+    4.86
+   ],
+   "horas_probables": [
+    3.0,
+    3.0,
+    4.0,
+    4.0
+   ],
+   "horas_banda": [
+    [
+     0.8,
+     15.6
+    ],
+    [
+     0.7,
+     13.4
+    ],
+    [
+     1.1,
+     22.1
+    ],
+    [
+     1.1,
+     21.7
+    ]
+   ]
+  },
+  {
+   "historia": "As a resident, I want to receive notifications for upcoming reports, so that I can address issues promptly.",
+   "votos": 1,
+   "relevancia": 0.384,
+   "tareas": [
+    "Implement a notification system for upcoming reports"
+   ],
+   "origen": [
+    {
+     "proyecto": "RedHat:AA",
+     "similitud": 0.595
+    },
+    {
+     "proyecto": "Qt:QTBUG",
+     "similitud": 0.492
+    }
+   ],
+   "historia_es": "Como residente, quiero recibir notificaciones para los próximos informes, para poder abordar los problemas rápidamente.",
+   "tareas_es": [
+    "Implementar un sistema de notificación para los próximos informes"
+   ],
+   "horas_suma": 20.0,
+   "horas_tareas": [
+    7.52
+   ],
+   "horas_probables": [
+    4.0
+   ],
+   "horas_banda": [
+    [
+     1.7,
+     33.5
+    ]
+   ]
+  },
+  {
+   "historia": "As a manager, I want to monitor the number of pending sessions in each cluster, so that I can ensure compliance and improve policies.",
+   "votos": 1,
+   "relevancia": 0.305,
+   "tareas": [
+    "Calculate the number of pending session sessions in the database"
+   ],
+   "origen": [
+    {
+     "proyecto": "Sakai:SAK",
+     "similitud": 0.573
+    },
+    {
+     "proyecto": "Apache:LENS",
+     "similitud": 0.534
+    }
+   ],
+   "historia_es": "Como gerente, quiero supervisar el número de sesiones pendientes en cada grupo, para poder garantizar el cumplimiento y mejorar las políticas.",
+   "tareas_es": [
+    "Calcular el número de períodos de sesiones pendientes en la base de datos"
+   ],
+   "horas_suma": 6.4,
+   "horas_tareas": [
+    3.88
+   ],
+   "horas_probables": [
+    3.0
+   ],
+   "horas_banda": [
+    [
+     0.9,
+     17.3
+    ]
+   ]
+  },
+  {
+   "historia": "As a manager, I want to set up a service fees for the project and staff, so that I can manage resource allocation.",
+   "votos": 1,
+   "relevancia": 0.332,
+   "tareas": [
+    "Store service fees in the database",
+    "Display service fees on the project and staff dashboard"
+   ],
+   "origen": [
+    {
+     "proyecto": "RedHat:COST",
+     "similitud": 0.559
+    },
+    {
+     "proyecto": "Apache:DATALAB",
+     "similitud": 0.548
+    }
+   ],
+   "historia_es": "Como gerente, quiero establecer una tarifa de servicio para el proyecto y el personal, para que pueda administrar la asignación de recursos.",
+   "tareas_es": [
+    "Almacenar las tarifas de servicio en la base de datos",
+    "Mostrar los honorarios de servicio en el proyecto y el panel de personal"
+   ],
+   "horas_suma": 19.5,
+   "horas_tareas": [
+    3.97,
+    4.78
+   ],
+   "horas_probables": [
+    2.0,
+    4.5
+   ],
+   "horas_banda": [
+    [
+     0.9,
+     17.7
+    ],
+    [
+     1.1,
+     21.3
+    ]
+   ]
+  },
+  {
+   "historia": "As a resident, I want to view my previous payment history, so that I can track my progress.",
+   "votos": 1,
+   "relevancia": 0.194,
+   "tareas": [
+    "Store payment details in the resident's profile",
+    "Make sure all the transactions are up to date",
+    "Display payment history on the resident's dashboard"
+   ],
+   "origen": [
+    {
+     "proyecto": "JFrog:RTFACT",
+     "similitud": 0.462
+    },
+    {
+     "proyecto": "RedHat:THREESCALE",
+     "similitud": 0.438
+    }
+   ],
+   "historia_es": "Como residente, quiero ver mi historial de pagos anterior, para poder seguir mi progreso.",
+   "tareas_es": [
+    "Almacenar los datos de pago en el perfil del residente",
+    "Asegúrese de que todas las transacciones están actualizadas",
+    "Mostrar el historial de pagos en el panel del residente"
+   ],
+   "horas_suma": 14.0,
+   "horas_tareas": [
+    2.95,
+    3.19,
+    3.22
+   ],
+   "horas_probables": [
+    3.0,
+    3.0,
+    1.75
+   ],
+   "horas_banda": [
+    [
+     0.7,
+     13.1
+    ],
+    [
+     0.7,
+     14.2
+    ],
+    [
+     0.7,
+     14.3
+    ]
+   ]
+  },
+  {
+   "historia": "As a manager, I want to set up different notifications for new events related to the service, so that I can manage the availability.",
+   "votos": 1,
+   "relevancia": 0.323,
+   "tareas": [
+    "Store notification details in the database",
+    "Send an email notification to the manager when a new event is available"
+   ],
+   "origen": [
+    {
+     "proyecto": "RedHat:AA",
+     "similitud": 0.597
+    },
+    {
+     "proyecto": "RedHat:REMJMX",
+     "similitud": 0.526
+    }
+   ],
+   "historia_es": "Como gerente, quiero configurar diferentes notificaciones para nuevos eventos relacionados con el servicio, de modo que pueda gestionar la disponibilidad.",
+   "tareas_es": [
+    "Almacenar los detalles de la notificación en la base de datos",
+    "Enviar una notificación por correo electrónico al gerente cuando un nuevo evento esté disponible"
+   ],
+   "horas_suma": 9.8,
+   "horas_tareas": [
+    2.49,
+    2.5
+   ],
+   "horas_probables": [
+    4.5,
+    3.0
+   ],
+   "horas_banda": [
+    [
+     0.6,
+     11.1
+    ],
+    [
+     0.6,
+     11.1
+    ]
+   ]
+  }
+ ],
+ "tiempos": {
+  "traducir_entrada": 0.514,
+  "recuperar_arriba": 0.063,
+  "generar_historias": 10.14,
+  "deduplicar_historias": 3.704,
+  "anclar": 3.165,
+  "recuperar_abajo": 0.347,
+  "generar_tareas": 21.755,
+  "deduplicar_tareas": 1.407,
+  "reasignar_tareas": 0.749,
+  "traducir": 3.537,
+  "total": 45.381
+ },
+ "sprint0": [],
+ "n_tareas_sprint0": 0,
+ "vecinos_proyecto": [
+  {
+   "proyecto": "RedHat:ENTMQMAAS",
+   "similitud": 0.45
+  },
+  {
+   "proyecto": "TAWOS-Lsstcorp:DM",
+   "similitud": 0.445
+  }
+ ],
+ "n_banco": 28,
+ "n_tareas": 32,
+ "estimacion": {
+  "disponible": true,
+  "total_horas": 285.2,
+  "banda_baja": 103.6,
+  "banda_alta": 564.1,
+  "nivel": 0.8,
+  "tareas": 32,
+  "cerradas": 0,
+  "tareas_sprint0": 0,
+  "horas_sprint0": 0.0,
+  "respondidas": 0,
+  "horas_respondidas": 0.0,
+  "previo_equipo": null,
+  "desplazamiento": 0.0,
+  "por_tarea": true,
+  "factor_estilo": 0.7273,
+  "fuente_estilo": "/home/user/modelos/estimador/results/estilo_total/meta.json",
+  "dias_persona": 35.6,
+  "segundos": 1.62,
+  "seg_total": 0.79,
+  "seg_tareas": 0.82
+ },
+ "segundos": 47.0
+}

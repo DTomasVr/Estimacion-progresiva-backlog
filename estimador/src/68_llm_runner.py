@@ -18,6 +18,7 @@ import argparse
 import json
 import os
 import re
+import sys
 import time
 from pathlib import Path
 
@@ -200,8 +201,8 @@ def main():
                 crudo, uso = llamar(a.modelo, SISTEMA, usuario)
                 res = interpretar(crudo, a.condicion)
             except CuotaAgotada as e:
-                print(f"cortado en {i - 1}/{len(pendientes)}: {e}; se retoma al relanzar")
-                break
+                print(f"cortado en {i - 1}/{len(pendientes)}: {e}; se retoma al relanzar", flush=True)
+                sys.exit(3)  # 259_banco_api.py distingue el corte por cuota
             except Exception as e:                    # se registra, no se oculta
                 crudo, uso, res = f"ERROR: {e}", {}, {"valido": False}
             fh.write(json.dumps({"task_id": fila["task_id"], "backend": a.backend,

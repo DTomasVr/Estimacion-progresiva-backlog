@@ -1,0 +1,7 @@
+{
+ "backlogs": 13,
+ "simulaciones": 20000,
+ "cv_medias_generadas": 0.47233386300007535,
+ "cv_medias_corpus": 0.652293891383985,
+ "segundos": 210
+}

@@ -1,0 +1,575 @@
+openai/gpt-oss-120b: 64 proyectos · 29 ya hechos
+  30/64 · 13 s · 5333 tokens · total 14 s
+  31/64 · 13 s · 5293 tokens · total 28 s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 3s
+  32/64 · 42 s · 5585 tokens · total 71 s
+    limite de tasa, esperando 5s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 3s
+  33/64 · 43 s · 5317 tokens · total 115 s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 5s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 5s
+  34/64 · 42 s · 5846 tokens · total 163 s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 5s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 2s
+  35/64 · 39 s · 5392 tokens · total 203 s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 1s
+  36/64 · 42 s · 5599 tokens · total 247 s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 3s
+  37/64 · 43 s · 5634 tokens · total 294 s
+    limite de tasa, esperando 7s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 5s
+  38/64 · 42 s · 5527 tokens · total 337 s
+    limite de tasa, esperando 5s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 2s
+  39/64 · 39 s · 5441 tokens · total 378 s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 194s
+    limite de tasa, esperando 176s
+    limite de tasa, esperando 24s
+    limite de tasa, esperando 68s
+    limite de tasa, esperando 167s
+    limite de tasa, esperando 83s
+    limite de tasa, esperando 173s
+    limite de tasa, esperando 192s
+    limite de tasa, esperando 21s
+    limite de tasa, esperando 162s
+    limite de tasa, esperando 25s
+    limite de tasa, esperando 186s
+    limite de tasa, esperando 181s
+    limite de tasa, esperando 194s
+    limite de tasa, esperando 171s
+  40/64 · 1869 s · 6149 tokens · total 2419 s
+    limite de tasa, esperando 152s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 180s
+    limite de tasa, esperando 506s
+Traceback (most recent call last):
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1428, in getresponse
+    response.begin()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 300, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\util\retry.py", line 498, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\util\util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1428, in getresponse
+    response.begin()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 300, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+urllib3.exceptions.ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\src\272_banco_generacion.py", line 202, in <module>
+    {"agix": brazo_agix, "tablas": tablas}.get(sys.argv[1], lambda: brazo_groq(sys.argv[2]))()
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\src\272_banco_generacion.py", line 202, in <lambda>
+    {"agix": brazo_agix, "tablas": tablas}.get(sys.argv[1], lambda: brazo_groq(sys.argv[2]))()
+                                                                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\src\272_banco_generacion.py", line 134, in brazo_groq
+    tt, u = llama(P_TAREAS.format(historia=h))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\src\272_banco_generacion.py", line 115, in llama
+    return run._compatible_openai(url, "GROQ_API_KEY", modelo, "You are a helpful assistant.",
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\src/68_llm_runner.py", line 108, in _compatible_openai
+    r = SESION.post(
+        ^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\requests\sessions.py", line 712, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\requests\adapters.py", line 711, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+== intento 1: salida 1
+openai/gpt-oss-120b: 64 proyectos · 40 ya hechos
+    limite de tasa, esperando 131s
+    limite de tasa, esperando 370s
+Traceback (most recent call last):
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1428, in getresponse
+    response.begin()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 300, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\util\retry.py", line 498, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\util\util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1428, in getresponse
+    response.begin()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 300, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+urllib3.exceptions.ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\src\272_banco_generacion.py", line 202, in <module>
+    {"agix": brazo_agix, "tablas": tablas}.get(sys.argv[1], lambda: brazo_groq(sys.argv[2]))()
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\src\272_banco_generacion.py", line 202, in <lambda>
+    {"agix": brazo_agix, "tablas": tablas}.get(sys.argv[1], lambda: brazo_groq(sys.argv[2]))()
+                                                                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\src\272_banco_generacion.py", line 134, in brazo_groq
+    tt, u = llama(P_TAREAS.format(historia=h))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\src\272_banco_generacion.py", line 115, in llama
+    return run._compatible_openai(url, "GROQ_API_KEY", modelo, "You are a helpful assistant.",
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\src/68_llm_runner.py", line 108, in _compatible_openai
+    r = SESION.post(
+        ^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\requests\sessions.py", line 712, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\requests\adapters.py", line 711, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+== intento 2: salida 1
+openai/gpt-oss-120b: 64 proyectos · 40 ya hechos
+    limite de tasa, esperando 159s
+    limite de tasa, esperando 311s
+Traceback (most recent call last):
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1428, in getresponse
+    response.begin()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 300, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\util\retry.py", line 498, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\util\util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1428, in getresponse
+    response.begin()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 300, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+urllib3.exceptions.ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\src\272_banco_generacion.py", line 202, in <module>
+    {"agix": brazo_agix, "tablas": tablas}.get(sys.argv[1], lambda: brazo_groq(sys.argv[2]))()
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\src\272_banco_generacion.py", line 202, in <lambda>
+    {"agix": brazo_agix, "tablas": tablas}.get(sys.argv[1], lambda: brazo_groq(sys.argv[2]))()
+                                                                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\src\272_banco_generacion.py", line 134, in brazo_groq
+    tt, u = llama(P_TAREAS.format(historia=h))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\src\272_banco_generacion.py", line 115, in llama
+    return run._compatible_openai(url, "GROQ_API_KEY", modelo, "You are a helpful assistant.",
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\src/68_llm_runner.py", line 108, in _compatible_openai
+    r = SESION.post(
+        ^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\requests\sessions.py", line 712, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\requests\adapters.py", line 711, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+== intento 3: salida 1
+openai/gpt-oss-120b: 64 proyectos · 40 ya hechos
+    limite de tasa, esperando 125s
+    limite de tasa, esperando 344s
+Traceback (most recent call last):
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1428, in getresponse
+    response.begin()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 300, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\util\retry.py", line 498, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\util\util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1428, in getresponse
+    response.begin()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 300, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+urllib3.exceptions.ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\src\272_banco_generacion.py", line 202, in <module>
+    {"agix": brazo_agix, "tablas": tablas}.get(sys.argv[1], lambda: brazo_groq(sys.argv[2]))()
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\src\272_banco_generacion.py", line 202, in <lambda>
+    {"agix": brazo_agix, "tablas": tablas}.get(sys.argv[1], lambda: brazo_groq(sys.argv[2]))()
+                                                                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\src\272_banco_generacion.py", line 134, in brazo_groq
+    tt, u = llama(P_TAREAS.format(historia=h))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\src\272_banco_generacion.py", line 115, in llama
+    return run._compatible_openai(url, "GROQ_API_KEY", modelo, "You are a helpful assistant.",
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\src/68_llm_runner.py", line 108, in _compatible_openai
+    r = SESION.post(
+        ^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\requests\sessions.py", line 712, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\requests\adapters.py", line 711, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+== intento 4: salida 1
+openai/gpt-oss-120b: 64 proyectos · 40 ya hechos
+    limite de tasa, esperando 182s
+    limite de tasa, esperando 301s
+Traceback (most recent call last):
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1428, in getresponse
+    response.begin()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 300, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\util\retry.py", line 498, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\util\util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1428, in getresponse
+    response.begin()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 300, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+urllib3.exceptions.ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\src\272_banco_generacion.py", line 202, in <module>
+    g = g.merge(pd.DataFrame(par).T.rename_axis("sistema").reset_index(), on="sistema", how="left")
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\src\272_banco_generacion.py", line 202, in <lambda>
+    g = g.merge(pd.DataFrame(par).T.rename_axis("sistema").reset_index(), on="sistema", how="left")
+                                                                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\src\272_banco_generacion.py", line 134, in brazo_groq
+    if c.parent_uid in ya:
+                    ^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\src\272_banco_generacion.py", line 115, in llama
+    # tras una espera larga por limite de tasa la conexion abierta caduca y la
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\src/68_llm_runner.py", line 108, in _compatible_openai
+    r = SESION.post(
+        ^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\requests\sessions.py", line 712, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\requests\adapters.py", line 711, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+== intento 5: salida 1
+openai/gpt-oss-120b: 64 proyectos · 40 ya hechos
+    limite de tasa, esperando 130s
+    limite de tasa, esperando 357s
+    limite de tasa, esperando 97s
+    limite de tasa, esperando 10s
+    limite de tasa, esperando 173s
+    limite de tasa, esperando 102s
+    limite de tasa, esperando 8s
+    limite de tasa, esperando 147s
+    limite de tasa, esperando 174s
+    limite de tasa, esperando 132s
+    limite de tasa, esperando 29s
+    limite de tasa, esperando 159s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 77s
+    limite de tasa, esperando 77s
+    limite de tasa, esperando 9s
+    limite de tasa, esperando 162s
+    limite de tasa, esperando 163s
+    limite de tasa, esperando 29s
+    limite de tasa, esperando 156s
+  41/64 · 2077 s · 6203 tokens · total 2234 s
+    limite de tasa, esperando 129s
+    limite de tasa, esperando 35s
+    limite de tasa, esperando 143s
+    limite de tasa, esperando 258s
+    limite de tasa, esperando 72s
+    limite de tasa, esperando 157s
+    limite de tasa, esperando 150s

@@ -1,0 +1,18 @@
+[29/10 11:29:44] gemini-3.5-flash muestra A: listo (13.2 min, exit 0)
+[29/10 11:40:26] gemini-3.5-flash calibracion A: listo (10.7 min, exit 0)
+[29/10 11:41:33] qwen/qwen3.8-27b muestra A: listo (25.0 min, exit 0)
+[29/10 11:47:13] qwen/qwen3.8-27b calibracion A: listo (5.7 min, exit 0)
+[29/10 11:51:08] gemini-3.5-flash muestra B: listo (10.7 min, exit 0)
+[29/10 12:03:20] gemini-3.5-flash calibracion B: listo (12.2 min, exit 0)
+[29/10 12:14:02] gemini-3.5-flash muestra C: listo (10.7 min, exit 0)
+[29/10 12:27:21] gemini-3.5-flash calibracion C: listo (13.3 min, exit 0)
+[29/10 12:27:21] gemini-3.5-flash: banco completo
+[29/10 20:14:42] openai/gpt-oss-20b muestra A: listo (538.1 min, exit 0)
+[29/10 20:29:48] openai/gpt-oss-120b muestra A: listo (553.2 min, exit 0)
+[29/10 22:23:19] openai/gpt-oss-20b calibracion A: cortado en 40/130: el proveedor pide esperar 0.2 h; se retoma al relanzar (128.6 min, exit 3)
+[29/10 22:23:19] openai/gpt-oss-20b: sin cuota, se retoma otro dia
+[29/10 23:04:29] qwen/qwen3.8-27b muestra B: listo (677.3 min, exit 0)
+[29/10 23:04:31] qwen/qwen3.8-27b calibracion B: cortado en 0/130: el proveedor pide esperar 0.2 h; se retoma al relanzar (0.0 min, exit 3)
+[29/10 23:04:31] qwen/qwen3.8-27b: sin cuota, se retoma otro dia
+[29/10 23:55:19] openai/gpt-oss-120b calibracion A: cortado en 75/130: el proveedor pide esperar 0.2 h; se retoma al relanzar (205.5 min, exit 3)
+[29/10 23:55:19] openai/gpt-oss-120b: sin cuota, se retoma otro dia

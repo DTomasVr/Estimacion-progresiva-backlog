@@ -1,0 +1,1 @@
+{"task_id": "JP-Spring-INT-261", "backend": "gemini", "modelo": "gemini-3.5-flash", "condicion": "C", "segundos": 157.76, "valido": false, "crudo": "ERROR: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"}

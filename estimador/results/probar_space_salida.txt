@@ -1,0 +1,27 @@
+1 · /salud
+  OK    estado listo · estimador {'disponible': True, 'motivo': ''}
+2 · /backlog
+  OK    HTTP 200 en 47 s
+  OK    12 historias · 32 tareas (n_tareas dice 32)
+  OK    las historias en español empiezan por «Como»
+  OK    tareas, tareas_es, horas y bandas alineadas en cada historia
+  OK    todas las horas por tarea son positivas
+  OK    total 285.2 h dentro de su banda [103.6, 564.1]
+      Como residente, quiero reservar áreas comunes, para poder planificar mi horario.
+          8.00 h  Crear un formulario de reserva en la aplicación residente
+      Como residente, quiero pagar los gastos de mantenimiento, para poder programar los pagos.
+          2.25 h  Implementar un portal de pago de las tasas de mantenimiento
+      Como gerente, quiero recibir avisos de gestión, para poder tomar decisiones informadas sobre mi trabajo.
+          4.50 h  Crear un sistema de notificación para los avisos de gestión
+          3.00 h  Almacenar los detalles de la notificación en el perfil del gerente
+3 · /estimar
+  OK    en frío 285.2 h, igual que /backlog
+  OK    2 cerradas 255.3 h = 2 respuestas 255.3 h (1.7 s)
+  OK    cuenta: cerradas=2 · respondidas=2
+  OK    previo +0,5: 470.2 h = frío x 1.6487 (e^0,5 = 1,6487)
+  OK    lista mal alineada: HTTP 422
+4 · /desplazamiento
+  OK    desplazamiento -0.47015168814424635
+  OK    usado como previo, el total es 178.2 h y las horas reales sumaban 178.2 h
+
+TODO CORRECTO · salida en results\probar_space/backlog.json

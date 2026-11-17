@@ -1,0 +1,118 @@
+114 proyectos · 24,622 tareas · en frio PRED25 0.368
+con estimacion del usuario: 41 proyectos (en frio 0.463) · con menos del 25 % de filas copiadas: 25 (en frio 0.440)
+  mismo proyecto · 1 tarea listo · 1 s
+  mismo proyecto · 2 tareas listo · 1 s
+  mismo proyecto · 3 tareas listo · 1 s
+  mismo proyecto · 5 tareas listo · 2 s
+  mismo proyecto · 10 tareas listo · 2 s
+  mismo proyecto · 20 tareas listo · 2 s
+  mismo proyecto · 25 % del backlog listo · 2 s
+  mismo proyecto · 50 % del backlog listo · 3 s
+  mismo proyecto · todas listo · 3 s
+
+====================================================================================================
+MISMO PROYECTO · PRED25 del total (en frio 0.368)
+====================================================================================================
+
+entrada ideal:
+regla             ancla lambda=0  ancla lambda=12  ancla lambda=30  ancla lambda=4  solo sustituir
+usuario_da                                                                                        
+1 tarea                    0.145            0.375            0.378           0.359           0.382
+2 tareas                   0.199            0.388            0.390           0.357           0.387
+3 tareas                   0.243            0.388            0.393           0.365           0.391
+5 tareas                   0.323            0.446            0.433           0.425           0.418
+10 tareas                  0.549            0.604            0.590           0.592           0.539
+20 tareas                  0.726            0.741            0.718           0.745           0.635
+25 % del backlog           0.538            0.583            0.570           0.584           0.451
+50 % del backlog           0.711            0.721            0.697           0.736           0.573
+todas                      1.000            1.000            1.000           1.000           1.000
+
+(los 41 proyectos con estimacion; en frio 0.463)
+
+entrada estimacion:
+regla             ancla lambda=0  ancla lambda=12  ancla lambda=30  ancla lambda=4  solo sustituir
+usuario_da                                                                                        
+1 tarea                    0.177            0.406            0.428           0.366           0.458
+2 tareas                   0.231            0.432            0.429           0.419           0.463
+3 tareas                   0.261            0.450            0.443           0.440           0.456
+5 tareas                   0.325            0.499            0.472           0.473           0.472
+10 tareas                  0.453            0.572            0.543           0.533           0.503
+20 tareas                  0.560            0.619            0.610           0.583           0.559
+25 % del backlog           0.454            0.582            0.589           0.533           0.477
+50 % del backlog           0.548            0.633            0.658           0.592           0.608
+todas                      0.683            0.683            0.683           0.683           0.659
+
+(los 41 proyectos con estimacion; en frio 0.463)
+
+entrada ideal, mismos proyectos:
+regla             ancla lambda=0  ancla lambda=12  ancla lambda=30  ancla lambda=4  solo sustituir
+usuario_da                                                                                        
+1 tarea                    0.160            0.399            0.426           0.387           0.465
+2 tareas                   0.211            0.431            0.429           0.430           0.469
+3 tareas                   0.265            0.453            0.442           0.441           0.459
+5 tareas                   0.336            0.507            0.476           0.491           0.500
+10 tareas                  0.566            0.687            0.641           0.647           0.609
+20 tareas                  0.734            0.795            0.765           0.775           0.691
+25 % del backlog           0.554            0.667            0.659           0.628           0.490
+50 % del backlog           0.734            0.798            0.804           0.778           0.637
+todas                      1.000            1.000            1.000           1.000           1.000
+
+PRED25 solo de las tareas que el usuario NO dio (ancla lambda=12):
+entrada           estimacion  ideal  ideal, mismos proyectos
+usuario_da                                                  
+1 tarea                0.397  0.362                    0.382
+2 tareas               0.406  0.364                    0.399
+3 tareas               0.411  0.352                    0.409
+5 tareas               0.420  0.367                    0.408
+10 tareas              0.412  0.397                    0.411
+20 tareas              0.397  0.472                    0.416
+25 % del backlog       0.512  0.488                    0.557
+50 % del backlog       0.491  0.492                    0.544
+todas                  0.118    NaN                    0.059
+
+Solo los 25 proyectos con pocas filas copiadas · PRED25:
+regla             ancla lambda=0  ancla lambda=12  ancla lambda=30  ancla lambda=4  solo sustituir
+usuario_da                                                                                        
+1 tarea                    0.181            0.425            0.445           0.366           0.446
+2 tareas                   0.231            0.443            0.434           0.413           0.459
+3 tareas                   0.247            0.481            0.467           0.460           0.477
+5 tareas                   0.311            0.495            0.471           0.461           0.478
+10 tareas                  0.370            0.524            0.517           0.462           0.471
+20 tareas                  0.429            0.527            0.538           0.461           0.492
+25 % del backlog           0.431            0.582            0.598           0.517           0.519
+50 % del backlog           0.507            0.610            0.643           0.551           0.645
+todas                      0.560            0.560            0.560           0.560           0.560
+
+Por tamano del proyecto (entrada ideal, ancla lambda=12):
+entrada       usuario_da  8-15  16-40  41-120  121-400  mas de 400
+  ideal          1 tarea 0.375  0.285   0.419    0.319       0.492
+  ideal         2 tareas 0.388  0.312   0.384    0.364       0.541
+  ideal         3 tareas 0.389  0.331   0.367    0.392       0.508
+  ideal         5 tareas 0.509  0.361   0.398    0.439       0.551
+  ideal        10 tareas 0.949  0.463   0.438    0.510       0.591
+  ideal        20 tareas 1.000  0.849   0.572    0.628       0.613
+  ideal 25 % del backlog 0.403  0.415   0.512    0.814       0.976
+  ideal 50 % del backlog 0.510  0.556   0.725    0.953       0.999
+  ideal            todas 1.000  1.000   1.000    1.000       1.000
+
+93 proyectos con hermano en 9 organizaciones: {'RedHat': 29, 'SiP': 18, 'Spring': 15, 'JiraEcosystem': 13, 'Jira': 9, 'Sakai': 3, 'Hyperledger': 2, 'Qt': 2, 'Sonatype': 2}
+  otro proyecto · 5 tareas listo · 3 s
+  otro proyecto · 10 tareas listo · 4 s
+  otro proyecto · 20 tareas listo · 4 s
+  otro proyecto · todas listo · 4 s
+
+====================================================================================================
+OTRO PROYECTO DEL MISMO EQUIPO (93 proyectos)
+====================================================================================================
+usuario_da_en_A                                 brazo  PRED25  MdMRE  factor2
+              -                             B en frio   0.344  0.433    0.688
+       5 tareas                    factor del hermano   0.289  0.439    0.652
+       5 tareas factor de otra organizacion (control)   0.261  0.467    0.628
+      10 tareas                    factor del hermano   0.282  0.459    0.634
+      10 tareas factor de otra organizacion (control)   0.247  0.498    0.600
+      20 tareas                    factor del hermano   0.261  0.479    0.630
+      20 tareas factor de otra organizacion (control)   0.241  0.511    0.582
+          todas                    factor del hermano   0.268  0.479    0.631
+          todas factor de otra organizacion (control)   0.227  0.542    0.550
+
+escrito results\entrada_del_usuario · 4 s

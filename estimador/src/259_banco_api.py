@@ -36,7 +36,7 @@ def main():
         ultima = (r.stdout.strip().splitlines() or ["(sin salida)"])[-1]
         registrar(f"{modelo} {conjunto} {cond}: {ultima} "
                   f"({(time.time() - t0) / 60:.1f} min, exit {r.returncode})")
-        if "cortado" in ultima:
+        if r.returncode == 3 or "cortado" in r.stdout:
             registrar(f"{modelo}: sin cuota, se retoma otro dia")
             return
     registrar(f"{modelo}: banco completo")

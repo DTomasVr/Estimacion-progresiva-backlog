@@ -1,0 +1,101 @@
+generador en cuda · cargando...
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights:   3%|2         | 5/199 [00:02<01:32,  2.10it/s]Loading weights: 100%|##########| 199/199 [00:02<00:00, 83.53it/s]
+Loading weights:   0%|          | 0/190 [00:00<?, ?it/s]Loading weights: 100%|##########| 190/190 [00:00<00:00, 1958.70it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie shared.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+Loading weights:   0%|          | 0/190 [00:00<?, ?it/s]Loading weights:  77%|#######7  | 147/190 [00:00<00:00, 1467.21it/s]Loading weights: 100%|##########| 190/190 [00:00<00:00, 1865.68it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie shared.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+Loading weights:   0%|          | 0/190 [00:00<?, ?it/s]Loading weights: 100%|##########| 190/190 [00:00<00:00, 1983.12it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie shared.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\transformers\models\marian\tokenization_marian.py:176: UserWarning: Recommended: pip install sacremoses.
+  warnings.warn("Recommended: pip install sacremoses.")
+Loading weights:   0%|          | 0/254 [00:00<?, ?it/s]Loading weights:  15%|#5        | 39/254 [00:00<00:00, 294.71it/s]Loading weights:  36%|###5      | 91/254 [00:00<00:00, 340.87it/s]Loading weights:  56%|#####6    | 143/254 [00:00<00:00, 378.56it/s]Loading weights:  74%|#######3  | 187/254 [00:00<00:00, 398.07it/s]Loading weights:  90%|########9 | 228/254 [00:00<00:00, 358.15it/s]Loading weights: 100%|##########| 254/254 [00:01<00:00, 217.73it/s]
+Loading weights:   0%|          | 0/254 [00:00<?, ?it/s]Loading weights:  15%|#5        | 39/254 [00:00<00:00, 305.02it/s]Loading weights:  34%|###4      | 87/254 [00:00<00:00, 396.62it/s]Loading weights:  50%|#####     | 128/254 [00:00<00:00, 373.14it/s]Loading weights:  65%|######5   | 166/254 [00:00<00:00, 345.11it/s]Loading weights:  81%|########1 | 207/254 [00:00<00:00, 330.90it/s]Loading weights:  95%|#########4| 241/254 [00:00<00:00, 326.09it/s]Loading weights: 100%|##########| 254/254 [00:01<00:00, 211.48it/s]
+  cargado · 31 s
+[transformers] Both `max_new_tokens` (=220) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=96) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=96) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=96) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+  1/13 banca: 12 historias · 38 tareas · 18 s (total 49 s)
+[transformers] Both `max_new_tokens` (=220) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=96) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=96) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=96) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+  2/13 bodas: 12 historias · 36 tareas · 14 s (total 63 s)
+[transformers] Both `max_new_tokens` (=220) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=96) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=96) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=96) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+  3/13 farmacia: 12 historias · 37 tareas · 14 s (total 77 s)
+[transformers] Both `max_new_tokens` (=220) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=96) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=96) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=96) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+  4/13 limpieza: 12 historias · 34 tareas · 11 s (total 88 s)
+[transformers] Both `max_new_tokens` (=220) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=96) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=96) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+  5/13 tecnico: 12 historias · 33 tareas · 13 s (total 101 s)
+[transformers] Both `max_new_tokens` (=220) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=96) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=96) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+  6/13 colegio: 12 historias · 45 tareas · 14 s (total 115 s)
+[transformers] Both `max_new_tokens` (=220) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=96) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=96) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+  7/13 restaurante: 12 historias · 31 tareas · 13 s (total 128 s)
+[transformers] Both `max_new_tokens` (=220) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=96) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=96) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=96) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+  8/13 Reservas de limpieza: 12 historias · 37 tareas · 10 s (total 138 s)
+[transformers] Both `max_new_tokens` (=220) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=96) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+  9/13 Salas de estudio: 12 historias · 32 tareas · 9 s (total 147 s)
+[transformers] Both `max_new_tokens` (=220) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=96) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=96) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+  10/13 Historias clínicas: 12 historias · 33 tareas · 13 s (total 160 s)
+[transformers] Both `max_new_tokens` (=220) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=96) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=96) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=96) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+  11/13 Inventario de ferretería: 12 historias · 36 tareas · 10 s (total 170 s)
+[transformers] Both `max_new_tokens` (=220) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=96) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=96) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+  12/13 Bolsa de trabajo: 12 historias · 33 tareas · 10 s (total 180 s)
+[transformers] Both `max_new_tokens` (=96) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=96) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=96) and `max_length`(=512) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+  13/13 Delivery app (en): 12 historias · 39 tareas · 12 s (total 192 s)
+  v7 (media por tarea) sobre 464 tareas · 14 s
+
+POR BACKLOG GENERADO
+                 backlog  historias  tareas  total_h  cv_medias  techo_escala_exacta  en_frio_simulado
+                   banca       12.0  38.000  347.625      0.569                0.596             0.297
+                   bodas       12.0  36.000  355.067      0.397                0.608             0.299
+                farmacia       12.0  37.000  275.406      0.381                0.610             0.300
+                limpieza       12.0  34.000  369.007      0.467                0.577             0.300
+                 tecnico       12.0  33.000  297.050      0.391                0.581             0.296
+                 colegio       12.0  45.000  394.468      0.460                0.645             0.304
+             restaurante       12.0  31.000  244.505      0.363                0.577             0.291
+    Reservas de limpieza       12.0  37.000  349.871      0.554                0.581             0.296
+        Salas de estudio       12.0  32.000  286.630      0.539                0.564             0.297
+      Historias clínicas       12.0  33.000  302.990      0.444                0.575             0.298
+Inventario de ferretería       12.0  36.000  373.160      0.388                0.601             0.302
+        Bolsa de trabajo       12.0  33.000  293.509      0.370                0.583             0.298
+       Delivery app (en)       12.0  39.000  351.832      0.536                0.603             0.303
+                   MEDIA       12.0  35.692  326.240      0.451                0.592             0.299
+
+SEGUN EL NUMERO DE TAREAS DEL BACKLOG (tareas con las medias del generador)
+ tareas  techo_escala_exacta  en_frio_simulado
+     12                0.387             0.250
+     24                0.511             0.283
+     36                0.596             0.298
+     60                0.708             0.315
+    100                0.819             0.327
+    150                0.895             0.334
+    250                0.960             0.341
+
+dispersion de las medias: generadas CV 0.47 · corpus CV 0.65
+escrito results\techo_backlog_generado · 210 s

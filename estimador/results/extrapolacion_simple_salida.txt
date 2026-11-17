@@ -1,0 +1,41 @@
+  k=1 listo · 1 s
+  k=3 listo · 2 s
+  k=5 listo · 2 s
+  k=10 listo · 3 s
+  k=20 listo · 3 s
+
+PRED25 del total · todos
+regla  anclaje lambda=12  extrapolacion simple  sin contraccion (lambda=0)
+k                                                                         
+1                  0.376                 0.125                       0.145
+3                  0.407                 0.231                       0.246
+5                  0.432                 0.320                       0.338
+10                 0.607                 0.540                       0.539
+20                 0.735                 0.710                       0.719
+MdMRE del total · todos
+regla  anclaje lambda=12  extrapolacion simple  sin contraccion (lambda=0)
+k                                                                         
+1                  0.346                 0.746                       0.712
+3                  0.319                 0.526                       0.502
+5                  0.292                 0.394                       0.382
+10                 0.176                 0.221                       0.222
+20                 0.103                 0.113                       0.110
+
+PRED25 del total · mayores
+regla  anclaje lambda=12  extrapolacion simple  sin contraccion (lambda=0)
+k                                                                         
+1                  0.376                 0.125                       0.145
+3                  0.407                 0.231                       0.246
+5                  0.432                 0.320                       0.338
+10                 0.538                 0.459                       0.458
+20                 0.627                 0.592                       0.605
+MdMRE del total · mayores
+regla  anclaje lambda=12  extrapolacion simple  sin contraccion (lambda=0)
+k                                                                         
+1                  0.346                 0.746                       0.712
+3                  0.319                 0.526                       0.502
+5                  0.292                 0.394                       0.382
+10                 0.226                 0.282                       0.281
+20                 0.189                 0.205                       0.197
+
+escrito results\extrapolacion_simple · 3 s

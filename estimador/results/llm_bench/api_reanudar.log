@@ -1,0 +1,371 @@
+calibracion__groq__openai_gpt-oss-120b__A.jsonl: 75 hechas, 55 pendientes
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 2s
+  25/55  1.0s/tarea
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 2s
+  50/55  2.1s/tarea
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 3s
+listo
+== fin 120b cal: 0
+muestra__groq__openai_gpt-oss-20b__A.jsonl: 545 hechas, 56 pendientes
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 5s
+    limite de tasa, esperando 4s
+  25/56  1.8s/tarea
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 5s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 5s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 6s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 6s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 3s
+  50/56  2.9s/tarea
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 5s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 2s
+listo
+== fin 20b muestra: 0
+calibracion__groq__openai_gpt-oss-20b__A.jsonl: 40 hechas, 90 pendientes
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 8s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 6s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 2s
+  25/90  4.1s/tarea
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 5s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 5s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 3s
+  50/90  3.8s/tarea
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 2s
+  75/90  3.7s/tarea
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 5s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 5s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 6s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 2s
+listo
+== fin 20b cal: 0
+openai/gpt-oss-120b: 64 proyectos · 0 ya hechos
+  1/64 · 13 s · 5465 tokens · total 14 s
+    limite de tasa, esperando 2s
+  2/64 · 12 s · 5319 tokens · total 29 s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 1s
+  3/64 · 43 s · 5536 tokens · total 74 s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 6s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 4s
+  4/64 · 43 s · 5796 tokens · total 122 s
+    limite de tasa, esperando 8s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 5s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 5s
+    limite de tasa, esperando 5s
+    limite de tasa, esperando 3s
+  5/64 · 48 s · 6530 tokens · total 174 s
+    limite de tasa, esperando 7s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 4s
+  6/64 · 44 s · 6000 tokens · total 219 s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 5s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 5s
+    limite de tasa, esperando 2s
+  7/64 · 44 s · 5571 tokens · total 266 s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 1s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 2s
+  8/64 · 34 s · 5169 tokens · total 303 s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 7s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 4s
+  9/64 · 43 s · 5933 tokens · total 353 s
+    limite de tasa, esperando 8s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 8s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 2s
+  10/64 · 48 s · 5918 tokens · total 404 s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 7s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 7s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 4s
+    limite de tasa, esperando 4s
+  11/64 · 44 s · 5877 tokens · total 453 s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 6s
+    limite de tasa, esperando 6s
+    limite de tasa, esperando 3s
+    limite de tasa, esperando 2s
+    limite de tasa, esperando 4s
+  12/64 · 32 s · 5669 tokens · total 490 s
+    limite de tasa, esperando 5s
+Traceback (most recent call last):
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1428, in getresponse
+    response.begin()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 300, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\requests\adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connectionpool.py", line 842, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\util\retry.py", line 498, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\util\util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\urllib3\connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1428, in getresponse
+    response.begin()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 300, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+urllib3.exceptions.ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\src\272_banco_generacion.py", line 202, in <module>
+    {"agix": brazo_agix, "tablas": tablas}.get(sys.argv[1], lambda: brazo_groq(sys.argv[2]))()
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\src\272_banco_generacion.py", line 202, in <lambda>
+    {"agix": brazo_agix, "tablas": tablas}.get(sys.argv[1], lambda: brazo_groq(sys.argv[2]))()
+                                                                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\src\272_banco_generacion.py", line 134, in brazo_groq
+    tt, u = llama(P_TAREAS.format(historia=h))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\src\272_banco_generacion.py", line 115, in llama
+    return run._compatible_openai(url, "GROQ_API_KEY", modelo, "You are a helpful assistant.",
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\src/68_llm_runner.py", line 108, in _compatible_openai
+    r = SESION.post(
+        ^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\requests\sessions.py", line 712, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\requests\adapters.py", line 711, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+== fin generacion 120b: 1

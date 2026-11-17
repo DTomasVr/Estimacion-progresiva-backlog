@@ -387,14 +387,36 @@ class EstimadorV6:
                              self.p["tot_lin"].predict(Ms)])
         return np.clip(self.p["tot_apilado"].predict(C), 1e-6, None)
 
-    def estimar_proyecto(self, textos, cerradas=None, estimaciones=None, nivel=.8):
+    def desplazamiento(self, textos, horas):
+        """Desplazamiento de escala de un proyecto TERMINADO: log(real / modelo).
+
+        Es lo que se guarda de cada proyecto del equipo para dar `previo_equipo`
+        al siguiente (la media de los que tenga)."""
+        return float(np.log(np.sum(horas) / self._media_tarea(list(textos)).sum()))
+
+    def estimar_proyecto(self, textos, cerradas=None, estimaciones=None, nivel=.8,
+                         respuestas=None, previo_equipo=None, peso_previo=1.0):
         """cerradas: horas REALES ya registradas, None donde no las haya.
 
-        estimaciones: lo que el usuario estimo, None donde no haya estimado."""
+        estimaciones: lo que el usuario estimo, None donde no haya estimado.
+
+        respuestas: lo que el usuario dice que tardo «la ultima vez» en algo asi,
+        None donde no conteste. Anclan igual que una cerrada y la tarea cuenta
+        por lo que dijo (E-270: si acierta, 10 respuestas llevan el +-25 % de
+        34 % a 60 %). No son horas registradas: no cuentan como cerradas para la
+        banda y siguen dentro de la parte incierta.
+
+        previo_equipo: media de `desplazamiento()` de los proyectos anteriores
+        del equipo. Es el punto de partida del anclaje, que las cerradas van
+        corrigiendo (E-270: +1 a +3,5 puntos de +-25 % en las primeras tareas)."""
         textos = list(textos)
         m = self._media_tarea(textos)
         cer = (np.array([np.nan if c is None else float(c) for c in cerradas])
                if cerradas is not None else np.full(len(textos), np.nan))
+        real = ~np.isnan(cer)
+        if respuestas is not None:
+            res = np.array([np.nan if r is None else float(r) for r in respuestas])
+            cer = np.where(real, cer, res)
         hay = ~np.isnan(cer)
         uso_estimacion = False
         if estimaciones is not None:
@@ -406,15 +428,19 @@ class EstimadorV6:
                                 np.log(m)[:, None]])
                 m = np.where(he, self.p["corrector_total"].predict(Xc), m)
                 uso_estimacion = True
-        k = int(hay.sum())
+        n_anclas = int(hay.sum())
         lam = LAMBDA_CON_ESTIMACION if uso_estimacion else LAMBDA
-        if k:
-            off = np.log(cer[hay].sum() / m[hay].sum()) * k / (k + lam)
-            cerrado = float(cer[hay].sum())
-            abierto = float((m[~hay] * np.exp(off)).sum())
-        else:
-            cerrado, abierto = 0.0, float(m.sum())
+        previo = peso_previo * float(previo_equipo) if previo_equipo is not None else 0.0
+        propio = np.log(cer[hay].sum() / m[hay].sum()) if n_anclas else 0.0
+        off = (n_anclas * propio + lam * previo) / (n_anclas + lam)
+        cerrado = float(cer[real].sum())
+        respondido = float(cer[hay & ~real].sum())
+        abierto = respondido + float((m[~hay] * np.exp(off)).sum())
         total = cerrado + abierto
+        # la banda se calibro con tareas cerradas de verdad: las respuestas no cuentan
+        k = int(real.sum())
+        extra = dict(respondidas=n_anclas - k, horas_respondidas=respondido,
+                     previo_equipo=previo_equipo, desplazamiento=float(off))
         # La banda va SOLO sobre lo que queda abierto: las horas cerradas se
         # saben y no tienen incertidumbre. Y se calibra al numero de tareas
         # cerradas y al tramo de tamano del proyecto. Antes multiplicaba el total
@@ -446,7 +472,7 @@ class EstimadorV6:
                                 con_estimacion=uso_estimacion, lambda_usada=lam,
                                 tramo_banda=tramo, k_banda=kb,
                                 contraccion_tramo=round(w, 4),
-                                n_calibracion=len(qt))
+                                n_calibracion=len(qt), **extra)
                 q = qt
             else:
                 q, tramo = g[-1], None
@@ -466,7 +492,7 @@ class EstimadorV6:
                     nivel=nivel, tareas=len(textos), cerradas=k,
                     con_estimacion=uso_estimacion, lambda_usada=lam,
                     tramo_banda=tramo, k_banda=kb, contraccion_tramo=1.0,
-                    n_calibracion=len(q))
+                    n_calibracion=len(q), **extra)
 
 
 def construir():

@@ -1,0 +1,42 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+vocabulario 250,002 -> 14,897 (6.0%)
+  tokens fuera del vocabulario: prueba 0.271% (4.7% de los titulos tienen alguno) · generador 2.069% (24.1%)
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights:  63%|######3   | 248/391 [00:00<00:00, 2474.73it/s]Loading weights: 100%|##########| 391/391 [00:00<00:00, 3445.00it/s]
+C:\Users\User\Documents\Programacao\Agix-Dataset\src\249_podar_vocabulario.py:89: DeprecationWarning: You are using the legacy TorchScript-based ONNX export. Starting in PyTorch 2.9, the new torch.export-based ONNX exporter has become the default. Learn more about the new export logic: https://docs.pytorch.org/docs/stable/onnx_export.html. For exporting control flow: https://pytorch.org/tutorials/beginner/onnx/export_control_flow_model_to_onnx_tutorial.html
+  torch.onnx.export(
+C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\transformers\masking_utils.py:212: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if (padding_length := kv_length + kv_offset - attention_mask.shape[-1]) > 0:
+C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\transformers\integrations\sdpa_attention.py:124: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  is_causal = q_length > 1 and attention_mask is None and is_causal
+C:\Users\User\Documents\Programacao\Agix-Dataset\.venv\Lib\site-packages\torch\onnx\_internal\torchscript_exporter\symbolic_opset11.py:954: UserWarning: Exporting aten::index operator of advanced indexing in opset 17 is achieved by combination of multiple ONNX operators, including Reshape, Transpose, Concat, and Gather. If indices include negative values, the exported graph will produce incorrect results.
+  return opset9.index(g, self, index)
+WARNING:root:Please consider to run pre-processing before quantization. Refer to example: https://github.com/microsoft/onnxruntime-inference-examples/blob/main/quantization/image_classification/cpu/ReadMe.md 
+  e5_base: 320 MB · 44 s
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|##########| 391/391 [00:00<00:00, 4048.76it/s]
+WARNING:root:Please consider to run pre-processing before quantization. Refer to example: https://github.com/microsoft/onnxruntime-inference-examples/blob/main/quantization/image_classification/cpu/ReadMe.md 
+  e5_ajustado: 320 MB · 82 s
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights:  85%|########5 | 333/391 [00:00<00:00, 3302.63it/s]Loading weights: 100%|##########| 391/391 [00:00<00:00, 3839.82it/s]
+WARNING:root:Please consider to run pre-processing before quantization. Refer to example: https://github.com/microsoft/onnxruntime-inference-examples/blob/main/quantization/image_classification/cpu/ReadMe.md 
+  e5_ajustado_C: 320 MB · 108 s
+        salida     version  PRED25  MdMRE  MAE_h     SA  spearman
+         horas        fp32  0.1617 0.6682 4.9128 0.0645    0.4208
+         horas        int8  0.1595 0.6661 4.9196 0.0632    0.4209
+         horas int8 podado  0.1631 0.6743 4.9285 0.0615    0.4220
+valor_probable        fp32  0.1872 0.6667 5.0347 0.0413    0.3363
+valor_probable        int8  0.1882 0.6715 5.0311 0.0420    0.3344
+valor_probable int8 podado  0.1849 0.6757 5.0291 0.0423    0.3395
+{
+ "vocab": 250002,
+ "conservados": 14897,
+ "oov_tokens_prueba": 0.0027052516628611138,
+ "titulos_con_oov_prueba": 0.04686390532544379,
+ "oov_tokens_generador": 0.020687107499076467,
+ "titulos_con_oov_generador": 0.24120603015075376,
+ "desvio_horas_vs_int8_mediano": 0.04743822059103664,
+ "mb": {
+  "e5_base": 319.803073,
+  "e5_ajustado": 319.803073,
+  "e5_ajustado_C": 319.803073
+ }
+}
+· 408 s

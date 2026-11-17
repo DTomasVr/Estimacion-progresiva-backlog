@@ -27,15 +27,16 @@ OUT = Path("results/cuadros_paper")
 # los fragmentos LaTeX van junto a los CSV; CUADROS_TEX los manda a la carpeta del articulo
 TEX = Path(os.environ.get("CUADROS_TEX", OUT / "tex"))
 API = {"openai/gpt-oss-120b": "GPT-OSS 120B", "openai/gpt-oss-20b": "GPT-OSS 20B", "qwen/qwen3.8-27b": "Qwen 3.8 27B"}
+NOMBRE = {"Qwen 3.8 27B": "Qwen3.8-27B"}   # nombre de la ficha del modelo (guia V2, cambio 9)
 MIN_TAREAS = 8
 
 f = lambda x, d=3: "--" if pd.isna(x) else f"{x:.{d}f}".replace(".", "{,}")
 pc = lambda x, d=1: "--" if pd.isna(x) else f"{100 * x:.{d}f}".replace(".", "{,}") + r"\,\%"
 
 
-def tabla(nombre, titulo, cols, cab, filas, nota=""):
+def tabla(nombre, titulo, cols, cab, filas, nota="", sep="3pt"):
     L = [r"\begin{table}[t]", r"\centering", rf"\caption{{{titulo}}}", rf"\label{{tab:{nombre}}}",
-         r"\footnotesize", r"\setlength{\tabcolsep}{3pt}", rf"\begin{{tabular}}{{{cols}}}", r"\toprule",
+         r"\footnotesize", rf"\setlength{{\tabcolsep}}{{{sep}}}", rf"\begin{{tabular}}{{{cols}}}", r"\toprule",
          " & ".join(cab) + r" \\", r"\midrule"]
     for x in filas:
         L.append(x if isinstance(x, str) else " & ".join(x) + r" \\")
@@ -57,7 +58,7 @@ def estimacion():
     v7 = r[r.modelo == "Agix v7 (nuestro)"].iloc[0]
     g = lambda x, d=3: "--" if pd.isna(x) else ("$-$" if x < 0 else "") + f(abs(x), d)
     ic = lambda s: s.strip("[]").replace(".", "{,}").replace("-", "$-$").replace(", ", ";\\,")
-    filas = [[r"\textbf{Propuesta}", f(v7.MdMRE), pc(v7.PRED25), g(v7.SA), f(v7.spearman, 2), "--"]]
+    filas = [[r"\textbf{Propuesta}", f(v7.MdMRE), pc(v7.PRED25), f(v7.spearman, 2), "--"]]
     a = r[(r.condicion == "A") & r.proveedor.eq("groq")]
     n = {int(v7.n)}
     for nombre in API.values():
@@ -68,13 +69,13 @@ def estimacion():
                 continue
             x = x.iloc[0]
             n.add(int(x.n))
-            filas.append([nombre if version == "crudo" else r"\quad calibrado", f(x.MdMRE), pc(x.PRED25), g(x.SA),
+            filas.append([NOMBRE.get(nombre, nombre) if version == "crudo" else r"\quad calibrado", f(x.MdMRE), pc(x.PRED25),
                           f(x.spearman, 2), "[" + ic(x.dif_MdMRE) + "]"])
     assert len(n) == 1, n
     tabla("llm_estimacion",
-          f"Estimación por tarea frente a LLM, sobre {n.pop()} tareas no usadas en el entrenamiento de la "
-          "propuesta. La última columna es el IC del 95\\,\\% de la diferencia de MdMRE (LLM menos propuesta).",
-          "lccccc", ["", "MdMRE", "PRED(25)", "SA", r"$\rho$", r"IC95 $\Delta$MdMRE"], filas)
+          f"Estimación por tarea frente a LLM en {n.pop()} tareas no usadas para entrenar. Última columna: IC del "
+          "95\\,\\% de la diferencia de MdMRE (LLM menos propuesta).",
+          "lcccc", ["", "MdMRE", "PRED(25)", r"$\rho$", r"IC95 $\Delta$MdMRE"], filas)
 
 
 def total():
@@ -144,8 +145,8 @@ def generacion():
     red.index = [("Agix (actual)" if s == "agix" else s + " cero") for s in red.index]
     r["casi_duplicadas"] = r.sistema.map(red)
     r.to_csv(OUT / "generacion.csv", index=False)
-    orden = [("Agix (actual)", r"\textbf{Propuesta}"), ("openai/gpt-oss-120b cero", "GPT-OSS 120B"),
-             ("gemma2:9b cero", "Gemma 2 9B"), ("llama3.1:8b cero", "Llama 3.1 8B"), ("mistral:7b cero", "Mistral 7B")]
+    orden = [("Agix (actual)", r"\textbf{Propuesta}"), ("gemma2:9b cero", "Gemma 2 9B"),
+             ("llama3.1:8b cero", "Llama 3.1 8B"), ("mistral:7b cero", "Mistral 7B")]
     filas, ns = [], set()
     for clave, nombre in orden:
         x = r[r.sistema == clave]
@@ -153,16 +154,13 @@ def generacion():
             continue
         x = x.iloc[0]
         ns.add(int(x.n))
-        d = "--" if pd.isna(x.get("dif_sF1")) else "$+$" + f(x.dif_sF1)
-        filas.append([nombre, f(x.sF1), pc(x.cobertura), f(x.tareas, 0), pc(x.casi_duplicadas, 0),
-                      f(x.seg_mediana, 1), pc(x.reconoce, 0), d])
-        if clave == "Agix (actual)":
-            filas.append(r"\midrule")
+        filas.append([nombre, f(x.sF1), pc(x.cobertura), f(x.tareas, 0), pc(x.casi_duplicadas),
+                      f(x.seg_mediana, 1), "--" if clave == "Agix (actual)" else pc(x.reconoce, 0)])
     assert len(ns) == 1, ns
     tabla("llm_generacion",
-          f"Backlog generado frente a LLM en {ns.pop()} proyectos retenidos. $\\Delta$sF1: LLM menos propuesta "
-          "(todos sus IC del 95\\,\\% excluyen el cero). s: segundos hasta el backlog completo.",
-          "lccccccc", ["", "sF1", "Cobert.", "Tareas", "Dupl.", "s", "Reconoce", r"$\Delta$sF1"], filas)
+          f"Generación frente a LLM en {ns.pop()} proyectos retenidos. Duplicadas: coseno $\\geq 0{{,}}90$ con otra "
+          "tarea; s: segundos por backlog en la misma GPU; Reconoce: proyectos que el LLM dice reconocer.",
+          "lcccccc", ["", "sF1", "Cobertura", "Tareas", "Duplicadas", "s", "Reconoce"], filas, sep="2.5pt")
 
 
 CASO = "dalpiaz:g02-federalspending"
@@ -232,7 +230,7 @@ def anclaje():
     b0 = b0[(b0.escenario == "en frio") & (b0.nivel == "80%") & (b0.metodo == "unico")].iloc[0]
     v = lambda k, crit, col: float(c[(c.k == k) & (c.criterio == crit)][col].iloc[0])
     filas, salida = [], []
-    for k in (0, 1, 5, 10, 20):
+    for k in (0, 1, 10, 20):
         if k == 0:
             ancho, cob = float(b0.anchura_x), float(b0.cobertura)
         else:
@@ -245,15 +243,19 @@ def anclaje():
                      frio_mayores=v(k, "mayores", "PRED25_en_frio"),
                      PRED25_regla=v(k, "k o el 20 % del backlog", "PRED25"))
         salida.append(s)
-        mayores = (pc(v(1, "mayores", "PRED25_en_frio")) + " (114)" if not k
-                   else pc(s["PRED25_mayores"]) + f" ({s['proyectos_mayores']})")
+        frio_todos = pc(v(1, "mayores", "PRED25_en_frio"))
+        mayores = (frio_todos + f" (114; {frio_todos})" if not k
+                   else pc(s["PRED25_mayores"]) + f" ({s['proyectos_mayores']}; {pc(s['frio_mayores'])})")
         filas.append(["0" if k == 0 else str(k), mayores, pc(s["PRED25"]), pc(s["factor2"]), f(s["MdMRE"]),
-                      r"$\times$" + f(ancho, 2)])
+                      r"$\times$" + f(ancho, 2), f(cob, 2)])
     pd.DataFrame(salida).to_csv(OUT / "anclaje.csv", index=False)
     tabla("anclaje",
-          "El total del proyecto según las tareas cerradas, con cada proyecto predicho como nuevo. «Solo "
-          "mayores»: proyectos con más tareas que las cerradas (entre paréntesis, cuántos son).",
-          "lccccc", ["Cerradas", "Solo mayores", "PRED(25)", r"$\times$2", "MdMRE", "Intervalo"], filas)
+          "El total del proyecto según las tareas cerradas, con cada proyecto predicho como nuevo. Salvo «Solo "
+          "mayores», las columnas son sobre los 114 proyectos; «Solo mayores»: proyectos con más tareas que las "
+          "cerradas (cuántos y su PRED(25) al arrancar). $\\times$2: dentro de un factor 2; Cob.: cobertura del "
+          "intervalo.",
+          "lcccccc", ["Cerradas", "Solo mayores", "PRED(25)", r"$\times$2", "MdMRE", "Interv.", "Cob."], filas,
+          sep="2pt")
 
 
 def tres_estados():
@@ -279,7 +281,7 @@ def tres_estados():
     pd.DataFrame(salida).to_csv(OUT / "tres_estados.csv", index=False)
     tabla("tres_estados",
           f"PRED(25) del total cuando el usuario aporta sus estimaciones al arrancar y luego se cierran tareas "
-          f"({meta['proyectos']} proyectos con estimaciones registradas; $\\lambda_u = 12$, $\\lambda_c = 30$).",
+          f"({meta['proyectos']} proyectos con estimaciones registradas; $\\lambda_u = 12$, $\\lambda'_c = 30$).",
           "lccccc", ["El usuario estima"] + [f"{k} cerr." for k in ks], filas)
 
 
@@ -303,6 +305,11 @@ if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8")
     OUT.mkdir(parents=True, exist_ok=True)
     TEX.mkdir(parents=True, exist_ok=True)
+    if "--articulo" in sys.argv:          # solo las tablas del articulo, desde los CSV de results/
+        estimacion()
+        generacion()
+        anclaje()
+        sys.exit()
     estimacion()
     total()
     generacion()

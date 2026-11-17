@@ -3,35 +3,75 @@
 Código, experimentos y resultados del artículo *Generación de backlogs y estimación de esfuerzo
 progresiva en proyectos de software ágiles con modelos de lenguaje pequeños*.
 
-El modelo propuesto convierte la descripción de un producto en un backlog de historias de usuario
-con sus tareas, estima las horas de cada tarea y da un total del proyecto con un intervalo del
-80 % que se afina a medida que se cierran tareas y que el equipo aporta lo que sabe.
+El modelo convierte la descripción de un producto en un backlog de historias de usuario con sus
+tareas. Luego estima las horas de cada tarea y da un total del proyecto con un intervalo del 80 %,
+que se afina a medida que se cierran tareas y que el equipo aporta lo que sabe.
+
+## Reproducir el artículo
+
+```bash
+python articulo/reproducir.py            # tablas del artículo desde los resultados guardados (segundos)
+python articulo/reproducir.py --todo     # además, vuelve a correr los experimentos del total (minutos)
+```
+
+- **Sin opciones:** regenera las tablas I, III y IV en `estimador/results/cuadros_paper/tex/`, tal como
+  aparecen en el artículo. Solo usa los CSV de `estimador/results/`.
+- **Con `--todo`:** antes vuelve a correr los experimentos del total (E-265, 268, 275, 277 y 278). Para
+  eso necesita `estimador/data/processed/agix_effort_v4.parquet`, que no se versiona por tamaño y
+  licencias; ver «Datos».
+
+Dependencias: Python 3.12 con `numpy`, `pandas` y `pyarrow`.
+
+## Dónde está cada cifra del artículo
+
+Las rutas son relativas a `estimador/`, salvo las que empiezan por `generador/`.
+
+| En el artículo | Script | Resultado |
+|---|---|---|
+| **Tabla I**: PRED(25), ×2 y MdMRE del total según las tareas cerradas (39,5 % → 62,7 %) | `src/275_curva_anclaje_dos_criterios.py` | `results/curva_anclaje_dos_criterios/resumen.csv` |
+| Tabla I: anchura y cobertura del intervalo (×5,57 → ×2,14; 0,78 y 0,80) | `src/161_banda_proyecto.py`, `src/233_banda_que_cierra_antes.py` | `results/banda_proyecto/resumen.csv`, `results/banda_que_cierra_antes/resumen.csv` |
+| Sin contracción, λc = 0 (37,6 % → 14,5 % con una cerrada) | `src/277_extrapolacion_simple.py` | `results/extrapolacion_simple/` |
+| Orden real de cierre (50,0 % frente a 71,3 %, 38 proyectos) | `src/265_avance_orden_real.py` | `results/avance_orden_real/resumen.csv` |
+| Entradas del usuario (46,3 → 68,3 %; 62,0 → 82,9 %; 41 proyectos) | `src/268_tres_estados.py` | `results/tres_estados/resumen.csv` |
+| Meta del trabajo futuro: orden real con estimaciones (18 proyectos) | `src/278_orden_real_con_estimaciones.py` | `results/orden_real_con_estimaciones/resumen.csv` |
+| **Tabla II**: Deep-SE y GPT2SP (reimplementación propia) | `src/46_baselines_literatura.py` | `results/baselines_literatura.csv` |
+| Tabla II: propuesta y constante de 2,45 h | `src/211_rejilla_de_valores_reales.py` | `results/rejilla_valores/contra_literatura.csv` |
+| **Tabla III**: estimación frente a LLM (601 tareas, Groq, temperatura 0) | `src/259_banco_api.py`, `src/261_tablas_llm_api.py` | `results/llm_bench/api_resumen.csv` |
+| 13,7 ms por tarea, 3,3 GB de disco y 5,2 GB de RAM | estimador desplegado | `results/estimador_v7/servicio.json` |
+| **Tabla IV**: generación frente a LLM (64 proyectos) | `src/272_banco_generacion.py`, `src/274_redundancia_tareas.py` | `results/banco_generacion/resumen.csv`, `results/redundancia_tareas/resumen.csv` |
+| sF1 de 0,669 frente a 328 historias humanas | `generador/src/97_eval_humano.py` | `generador/results/49_real_vigente.csv` |
+| Efecto de las historias ancla (+0,026), con `AGIX_ANCLAR=0` como ablación | `generador/src/11_eval_gen.py` | `generador/DISENO_GENERACION.md`, sección A.2.6 |
+| Escritura de las tablas en LaTeX | `src/273_cuadros_paper.py` | `results/cuadros_paper/` |
+
+Los pesos de la selección de historias (Ec. 1) y los hiperparámetros de entrenamiento están en
+[PARAMETROS.md](PARAMETROS.md).
 
 ## Estructura
 
-| carpeta | qué contiene |
+| Carpeta | Qué contiene |
 |---|---|
-| `estimador/` | Datos derivados, experimentos y modelo de estimación de esfuerzo. Conserva el historial completo de su desarrollo (desde el 30/08/2026). |
-| `generador/` | Pipeline de generación de historias y tareas, sus experimentos y resultados. |
+| `articulo/` | `reproducir.py`, el punto de entrada para regenerar el artículo. |
+| `estimador/` | Datos derivados, experimentos y modelo de estimación de esfuerzo. |
+| `generador/` | Pipeline de generación de historias y tareas (`src/19_pipeline.py`), sus experimentos y resultados. |
 
 Cada experimento es un script numerado (`estimador/src/NNN_*.py`, `generador/src/NN_*.py`) que
-escribe sus resultados en `results/`. Las cifras del artículo se leen de esos archivos, y sus
-tablas se generan con `estimador/src/273_cuadros_paper.py`.
+escribe sus resultados en `results/`. Para el artículo solo hacen falta los scripts de la tabla
+anterior.
 
-## Tablas del artículo y su origen
-
-| tabla | script | resultado |
-|---|---|---|
-| I · el total según las tareas cerradas | `estimador/src/275_curva_anclaje_dos_criterios.py` | `estimador/results/curva_anclaje_dos_criterios/` |
-| II · estimaciones del usuario y tareas cerradas | `estimador/src/268_tres_estados.py` | `estimador/results/tres_estados/` |
-| III · estimación por tarea | experimentos del bloque de prueba | `estimador/results/baselines_literatura.csv` |
-| IV · estimación frente a LLM | `estimador/src/259_banco_api.py`, `estimador/src/261_tablas_llm_api.py` | `estimador/results/llm_bench/` |
-| V · generación frente a LLM | `estimador/src/272_banco_generacion.py` | `estimador/results/banco_generacion/` |
+Los demás scripts son el historial completo de experimentos, incluidos los descartados. Se conservan
+por transparencia: `estimador/INFORME_PROYECTO.md` y `generador/DISENO_GENERACION.md` cuentan qué se
+probó y por qué se descartó.
 
 ## Datos
 
-Los conjuntos de partida son públicos: TAWOS, The Public Jira Dataset y SiP. Los modelos
-entrenados (unos 3 GB) y los datos procesados más pesados no están en este repositorio.
+Los conjuntos de partida son públicos y se usan según sus licencias: TAWOS, The Public Jira Dataset y
+SiP. Hay que descargarlos de sus fuentes en `estimador/data/raw/`.
+
+- **Tabla unificada:** se construye con la cadena `estimador/src/01_*` a `09_*` y
+  `estimador/src/52_build_v4.py`.
+- **Modelos entrenados** (unos 3 GB): no están en este repositorio.
+- **Predicciones del total** que usan los experimentos del anclaje: sí están
+  (`estimador/results/modelo_total/pred_total.npy`).
 
 ## Licencia
 

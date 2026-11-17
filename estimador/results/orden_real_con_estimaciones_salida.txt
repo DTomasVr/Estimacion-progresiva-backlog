@@ -1,0 +1,13 @@
+18 proyectos con orden real y estimaciones · tareas: mediana 121
+usuario_estima  fraccion_cerrada  proyectos  PRED25_orden_real  PRED25_azar
+          nada               0.0         18              0.389        0.389
+          nada               0.1         18              0.389        0.551
+          nada               0.2         18              0.333        0.666
+          nada               0.3         18              0.611        0.752
+          nada               0.5         18              0.833        0.841
+          todo               0.0         18              0.556        0.556
+          todo               0.1         18              0.611        0.670
+          todo               0.2         18              0.778        0.748
+          todo               0.3         18              0.778        0.793
+          todo               0.5         18              0.833        0.859
+un proyecto = 5.6 puntos · escrito results\orden_real_con_estimaciones · 1 s

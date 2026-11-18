@@ -1,8 +1,8 @@
 """E-277 - El anclaje frente a una extrapolación simple, solo para saberlo.
 
-La guía de la asesora (cambio 13) pide declarar que el anclaje no se comparó con una
-extrapolación simple. Esta medición NO entra en el short paper; se calcula para saber
-qué diría esa comparación. Tres reglas sobre los mismos proyectos, sorteos y criterio
+La guía de la asesora (cambio 13) pedía declarar que el anclaje no se comparó con una
+extrapolación simple. Desde la V4 del paper el resultado entra en PI1, con el IC por
+proyectos de la diferencia anclaje - extrapolación (guía V4, cambio 1). Tres reglas sobre los mismos proyectos, sorteos y criterio
 que E-275 (results/curva_anclaje_dos_criterios):
 
   anclaje lambda=12    lo desplegado: cociente de sumas contraído con k/(k+12)
@@ -49,9 +49,11 @@ def main():
     filas = [dict(k=0, regla=r, criterio=c, proyectos=int(m.sum()), PRED25=v[0], MdMRE=v[1])
              for r in reglas for c, m in (("todos", n > 0), ("mayores", n > 0))
              for v in [mide(frio, m) if r != "extrapolacion simple" else np.array([np.nan, np.nan])]]
+    ic = []
     for k in KS:
         rng = np.random.default_rng(7000 + k)
         acc = {(r, c): [] for r in reglas for c in ("todos", "mayores")}
+        acierto = {r: np.zeros(len(nom)) for r in reglas}   # fraccion de sorteos dentro de +-25 %
         for _ in range(SORTEOS):
             tot = {r: np.zeros(len(nom)) for r in reglas}
             for j, p in enumerate(nom):
@@ -68,15 +70,27 @@ def main():
                 tot["sin contraccion (lambda=0)"][j] = c + np.exp(lc) * ab
                 tot["extrapolacion simple"][j] = c + re_[sel].mean() * len(resto)
             for r in reglas:
+                acierto[r] += (np.abs(tot[r] - real) / real <= .25) / SORTEOS
                 for cnom, m in (("todos", np.ones(len(nom), bool)), ("mayores", n > k)):
                     acc[(r, cnom)].append(mide(tot[r], m))
         for (r, cnom), v in acc.items():
             v = np.mean(v, 0)
             filas.append(dict(k=k, regla=r, criterio=cnom, proyectos=int((n > k).sum() if cnom == "mayores" else len(nom)),
                               PRED25=v[0], MdMRE=v[1]))
+        # IC95 por proyectos de la diferencia de PRED(25), solo en los mayores
+        m = n > k
+        dif = (acierto["anclaje lambda=12"] - acierto["extrapolacion simple"])[m]
+        b = np.random.default_rng(77).choice(dif, (10000, len(dif))).mean(1)
+        lo, hi = np.quantile(b, [.025, .975])
+        ic.append(dict(k=k, proyectos=int(m.sum()), dif_PRED25=float(dif.mean()), ic95_lo=float(lo),
+                       ic95_hi=float(hi), proyectos_mejor_anclaje=int((dif > 0).sum()),
+                       proyectos_mejor_extrapolacion=int((dif < 0).sum())))
         print(f"  k={k} listo · {time.time() - t0:.0f} s", flush=True)
     t = pd.DataFrame(filas)
     t.to_csv(OUT / "resumen.csv", index=False)
+    pd.DataFrame(ic).to_csv(OUT / "diferencia_ic.csv", index=False)
+    print("\nanclaje - extrapolacion, PRED25 en los mayores, IC95 por proyectos:")
+    print(pd.DataFrame(ic).round(3).to_string(index=False))
     for cnom in ("todos", "mayores"):
         x = t[(t.criterio == cnom) & (t.k > 0)]
         print(f"\nPRED25 del total · {cnom}")

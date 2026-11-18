@@ -1,8 +1,16 @@
   k=1 listo · 1 s
-  k=3 listo · 2 s
+  k=3 listo · 1 s
   k=5 listo · 2 s
-  k=10 listo · 3 s
-  k=20 listo · 3 s
+  k=10 listo · 2 s
+  k=20 listo · 2 s
+
+anclaje - extrapolacion, PRED25 en los mayores, IC95 por proyectos:
+ k  proyectos  dif_PRED25  ic95_lo  ic95_hi  proyectos_mejor_anclaje  proyectos_mejor_extrapolacion
+ 1        114       0.251    0.181    0.322                       65                             44
+ 3        114       0.176    0.116    0.234                       72                             40
+ 5        114       0.111    0.057    0.164                       70                             41
+10         97       0.079    0.025    0.128                       68                             23
+20         81       0.035   -0.021    0.084                       57                             20
 
 PRED25 del total · todos
 regla  anclaje lambda=12  extrapolacion simple  sin contraccion (lambda=0)
@@ -38,4 +46,4 @@ k
 10                 0.226                 0.282                       0.281
 20                 0.189                 0.205                       0.197
 
-escrito results\extrapolacion_simple · 3 s
+escrito results\extrapolacion_simple · 2 s

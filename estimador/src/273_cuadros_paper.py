@@ -251,7 +251,7 @@ def anclaje():
                       r"$\times$" + f(ancho, 2), f(cob, 2)])
     pd.DataFrame(salida).to_csv(OUT / "anclaje.csv", index=False)
     tabla("anclaje",
-          "El total del proyecto según las tareas cerradas, con cada proyecto predicho como nuevo, sobre los 114 "
+          "El total del proyecto según las tareas cerradas, sobre los 114 "
           "proyectos (incluye los de $k$ o menos tareas, ya cerrados). «Solo mayores»: proyectos con más de $k$ "
           "tareas (cuántos; PRED(25) al arrancar). MdMRE: mediana del error relativo; $\\times$2: dentro de un "
           "factor 2; Cob.: cobertura del intervalo.",

@@ -31,7 +31,7 @@ Las rutas son relativas a `estimador/`, salvo las que empiezan por `generador/`.
 | **Tabla I**: PRED(25), ×2 y MdMRE del total según las tareas cerradas (39,5 % → 62,7 %) | `src/275_curva_anclaje_dos_criterios.py` | `results/curva_anclaje_dos_criterios/resumen.csv` |
 | Tabla I: anchura y cobertura del intervalo (×5,57 → ×2,14 en los 114; ×2,21 en los 81) | `src/161_banda_proyecto.py`, `src/233_banda_que_cierra_antes.py` | `results/banda_proyecto/resumen.csv`, `results/banda_que_cierra_antes/resumen.csv` |
 | Cobertura por tamaño del proyecto (0,72–0,96 con una cerrada; 0,78–0,82 con 10 o más) | `src/233_banda_que_cierra_antes.py` | `results/banda_que_cierra_antes/cobertura_por_tramo.csv` |
-| Extrapolación simple y sin contracción, λc = 0 (12,5 / 45,9 / 59,2 % con 1, 10 y 20 cerradas) | `src/277_extrapolacion_simple.py` | `results/extrapolacion_simple/resumen.csv` |
+| Extrapolación simple y sin contracción, λc = 0 (12,5 / 45,9 / 59,2 % con 1, 10 y 20 cerradas; IC por proyectos de la diferencia) | `src/277_extrapolacion_simple.py` | `results/extrapolacion_simple/resumen.csv`, `results/extrapolacion_simple/diferencia_ic.csv` |
 | Orden real de cierre (de 42,1 % a 50,0 %, frente a 71,3 % al azar; 38 proyectos) | `src/265_avance_orden_real.py` | `results/avance_orden_real/resumen.csv` |
 | Entradas del usuario (46,3 → 68,3 %; 62,0 → 82,9 %; 41 proyectos) | `src/268_tres_estados.py` | `results/tres_estados/resumen.csv` |
 | Meta del trabajo futuro: orden real con estimaciones (18 proyectos) | `src/278_orden_real_con_estimaciones.py` | `results/orden_real_con_estimaciones/resumen.csv` |
@@ -81,6 +81,23 @@ fuentes en `estimador/data/raw/` (estimación) y en la carpeta de datos del gene
 - **Modelos entrenados** (unos 3 GB): no están en este repositorio.
 - **Predicciones del total** que usan los experimentos del anclaje: sí están
   (`estimador/results/modelo_total/pred_total.npy`).
+
+## In English (summary)
+
+Code, experiments and results of the paper *Backlog generation and progressive effort estimation
+for agile software projects with small language models* (submitted in Spanish).
+
+- **Reproduce the paper's tables:** `python articulo/reproducir.py` (from the saved CSVs, seconds);
+  add `--todo` to rerun the project-total experiments (needs the processed data, see «Datos»).
+- **Where each number comes from:** the table «Dónde está cada cifra del artículo» maps every figure
+  of the paper to its script and result file.
+- **Layout:** `estimador/` (effort estimation), `generador/` (backlog generation), `articulo/`
+  (entry point). Numbered scripts are the full experiment history; only those in the table are
+  needed for the paper.
+- **Data and licences:** see the table in «Datos». TAWOS (Apache 2.0); Public Jira Dataset,
+  Dalpiaz and Bragilovski et al. (CC BY 4.0; the Dalpiaz curator states no known licence agreements
+  on the stories); SiP (research and non-commercial use).
+- **Parameters** (selection weights, training, LLM versions): `PARAMETROS.md`.
 
 ## Licencia
 

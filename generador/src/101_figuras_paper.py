@@ -16,8 +16,10 @@ Legend (border and colour):
 The box labels are in Spanish because the paper is.
 
   python src/101_figuras_paper.py [output_folder ...]
+  FIG_LANG=en python src/101_figuras_paper.py [output_folder ...]   English labels
 
-out: fig1_pipeline_es.pdf and fig2_estimacion.pdf (+ .png for checking) in each folder
+out: fig1_pipeline_es.pdf and fig2_estimacion.pdf (+ .png for checking) in each folder;
+with FIG_LANG=en, fig1_pipeline_en.pdf and fig2_estimacion_en.pdf (same layout)
 """
 import os
 import sys
@@ -30,6 +32,28 @@ from matplotlib.patches import FancyArrowPatch, FancyBboxPatch  # noqa: E402
 
 AD = "C:/Users/User/Documents/Programacao/PBE-Dataset/paper"
 OUTS = sys.argv[1:] or [f"{AD}/figs", f"{AD}/overleaf/figs"]
+LANG = os.environ.get("FIG_LANG", "es")
+# English labels for the English version of the paper (same boxes, same layout)
+EN = {"Descripción\ndel producto": "Product\ndescription",
+      "Traducir\nes→en (Marian)": "Translate\nes→en (Marian)",
+      "Plan de roles\ny tokens\nde control": "Role plan\nand control\ntokens",
+      "Etapa de\nhistorias (mT5)": "Story\nstage (mT5)",
+      "Banco filtrado\ny selección\npor cobertura": "Filtered pool\nand coverage\nselection",
+      "Fusión: anclas\nprimero, hasta 6": "Merge: anchors\nfirst, up to 6",
+      "Etapa de\ntareas (2 mT5)": "Task\nstage (2 mT5)",
+      "Filtrar,\ndeduplicar y\nreasignar tareas": "Filter,\ndeduplicate and\nreassign tasks",
+      "Traducir en→es\ny reparar\nléxico": "Translate en→es\nand repair\nwording",
+      "Backlog: 12\nhistorias con\nsus tareas": "Backlog: 12\nstories with\ntheir tasks",
+      "Tareas del\nbacklog": "Backlog\ntasks",
+      "Codificador\ne5-large": "Encoder\ne5-large",
+      "Cabezal B:\nmedia": "Head B:\nmean",
+      "Anclaje por\nproyecto\nEc. (2)": "Per-project\nanchoring\nEq. (2)",
+      "Cabezal A:\nmediana": "Head A:\nmedian",
+      "Cerradas y\nestimaciones\ndel usuario": "Closed tasks\nand user\nestimates",
+      "Total con\nintervalo\ndel 80 %": "Total with\n80 %\ninterval",
+      "entrada /\nsalida": "input /\noutput", "modelo\nentrenado": "trained\nmodel",
+      "reglas": "rules", "pos-\nprocesado": "post-\nprocessing"}
+tr = (lambda t: EN[t]) if LANG == "en" else (lambda t: t)
 plt.rcParams.update({"font.family": "DejaVu Sans", "pdf.fonttype": 42,
                      "mathtext.fontset": "dejavusans"})
 
@@ -62,7 +86,7 @@ def marco(ax, x0, y0, w, h, tipo):
 def caja(ax, c, y, texto, tipo, nota=None):
     x = XS[c]
     marco(ax, x - W / 2, y - H / 2, W, H, tipo)
-    ax.text(x, y + (0.075 if nota else 0), texto, ha="center", va="center", fontsize=TAM,
+    ax.text(x, y + (0.075 if nota else 0), tr(texto), ha="center", va="center", fontsize=TAM,
             color="#111111", zorder=4, linespacing=1.12)
     if nota:
         ax.text(x, y - 0.185, nota, ha="center", va="center", fontsize=TAM_NOTA,
@@ -87,7 +111,7 @@ def leyenda(ax, x, y_top, tipos, paso=0.165):
     for i, t in enumerate(tipos):
         y = y_top - i * paso
         marco(ax, x, y - 0.065, 0.22, 0.13, t)
-        ax.text(x + 0.29, y, NOMBRE[t], fontsize=TAM, va="center", color="#222222",
+        ax.text(x + 0.29, y, tr(NOMBRE[t]), fontsize=TAM, va="center", color="#222222",
                 linespacing=1.0)
 
 
@@ -130,7 +154,7 @@ def figura1():
     b = caja(ax, 3, y3, "Backlog: 12\nhistorias con\nsus tareas", "io")
     flecha(ax, e, q, "v"); flecha(ax, q, r); flecha(ax, r, b)
     leyenda(ax, 0.06, 1.33, ("io", "neuronal", "regla", "post"), paso=0.30)
-    guardar(fig, "fig1_pipeline_es")
+    guardar(fig, "fig1_pipeline_en" if LANG == "en" else "fig1_pipeline_es")
 
 
 def figura2():
@@ -147,7 +171,7 @@ def figura2():
     o = caja(ax, 3, y2, "Total con\nintervalo\ndel 80 %", "io")
     flecha(ax, c, a, "v"); flecha(ax, u, n, "d"); flecha(ax, n, o, "v")
     leyenda(ax, 0.06, 0.62, ("io", "neuronal", "regla"), paso=0.24)
-    guardar(fig, "fig2_estimacion")
+    guardar(fig, "fig2_estimacion_en" if LANG == "en" else "fig2_estimacion")
 
 
 if __name__ == "__main__":

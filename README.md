@@ -47,6 +47,50 @@ Las rutas son relativas a `estimador/`, salvo las que empiezan por `generador/`.
 Los pesos de la selección de historias (Ec. 1) y los hiperparámetros de entrenamiento están en
 [PARAMETROS.md](PARAMETROS.md).
 
+## Versión del generador detrás de cada cifra
+
+Todas las cifras del generador salen de la misma versión. El pipeline y los tres mT5 son idénticos,
+comprobado con MD5, en desarrollo y en producción.
+
+| Componente | MD5 |
+|---|---|
+| `generador/src/19_pipeline.py` | `cc293264bd5132d51af79e785145666d` |
+| mT5 de historias (v9bt) | `7d7f6c771d7751e81c69826798cd1b52` |
+| mT5 de tareas 1 (v5) | `3355d766e13dd562df566a5ee03260f3` |
+| mT5 de tareas 2 (bs8, lr 9,2e-4) | `85225d221b0dd753c2dbc14ffbade51e` |
+
+| Cifra del artículo | Dónde | Script | Resultado |
+|---|---|---|---|
+| sF1 0,669 con anclas y 0,635 sin anclas; +0,035 [0,026; 0,044] | PI3 | `generador/src/103_ablacion_anclas.py` | `generador/results/103_ablacion_anclas.csv` |
+| 0,387 · 43,7 % · 35 tareas · 10,8 s | Tabla IV | `estimador/src/272_banco_generacion.py` | `estimador/results/banco_generacion/` |
+| 11,8 % de tareas casi duplicadas | Tabla IV | `estimador/src/274_redundancia_tareas.py` | `estimador/results/redundancia_tareas/` |
+| Diferencias con los LLM (+0,076 a +0,088; IC +0,055 a +0,116) | PI3 | `estimador/src/272_banco_generacion.py` | `estimador/results/banco_generacion/resumen.csv` |
+
+**Repetición de control** (18/11, no va al artículo): `generador/src/104_repetir_e272.py` →
+`estimador/results/banco_generacion_rerun_18nov/`.
+
+- **sF1:** 0,391 frente a 0,387. La diferencia es +0,004, con IC95 [−0,004; +0,011], así que es ruido
+  de muestreo; E-272 no fija semilla.
+- **Tareas casi duplicadas:** varían entre corridas, de 9,6 % a 11,8 %.
+
+## Colecciones de usuario
+
+**Dalpiaz, *Requirements Data Sets (User Stories)*, v1 (2018)**, 22 colecciones:
+
+| Uso | Colecciones |
+|---|---|
+| Entrenamiento (15) | g03, g04, g08, g10, g11, g12, g13, g14, g17, g18, g21, g22, g24, g27, g28 |
+| Validación (3) | g05, g23, g26 |
+| Retenidas, Tabla IV (4) | g02, g16, g19, g25 |
+
+**Evaluación: 328 historias del material de Bragilovski et al. (RE 2024)**
+
+- Son 6 proyectos de estudiantes de máster: Fish&Chips, Grocery, School, Sports, Supermarket y
+  Ticket.
+- Ese material tiene 9 colecciones. Las otras 3 (camperplus = g12, planningpoker = g13 y
+  recycling = g04) son de Dalpiaz y están en nuestro entrenamiento, así que se excluyen de la
+  evaluación.
+
 ## Estructura
 
 | Carpeta | Qué contiene |

@@ -1,148 +1,133 @@
-# Generación de backlogs y estimación de esfuerzo progresiva
+# Backlog generation and progressive effort estimation
 
-Código, experimentos y resultados del artículo *Generación de backlogs y estimación de esfuerzo
-progresiva en proyectos de software ágiles con modelos de lenguaje pequeños*.
+Code, experiments and results of the paper *Backlog generation and progressive effort estimation in
+agile software projects with small language models*. A Spanish version of this README is in
+[README.es.md](README.es.md).
 
-El modelo convierte la descripción de un producto en un backlog de historias de usuario con sus
-tareas. Luego estima las horas de cada tarea y da un total del proyecto con un intervalo del 80 %,
-que se afina a medida que se cierran tareas y que el equipo aporta lo que sabe.
+The model turns a product description into a backlog of user stories with their tasks. It then
+estimates the hours of each task and gives a project total with an 80 % interval. The total is
+refined as tasks are closed and as the team provides what it knows.
 
-## Reproducir el artículo
+## Reproducing the paper
 
 ```bash
-python articulo/reproducir.py            # tablas del artículo desde los resultados guardados (segundos)
-python articulo/reproducir.py --todo     # además, vuelve a correr los experimentos del total (minutos)
+python articulo/reproducir.py            # paper tables from the saved results (seconds)
+python articulo/reproducir.py --todo     # also reruns the project-total experiments (minutes)
 ```
 
-- **Sin opciones:** regenera las tablas I, III y IV en `estimador/results/cuadros_paper/tex/`, tal como
-  aparecen en el artículo. Solo usa los CSV de `estimador/results/`.
-- **Con `--todo`:** antes vuelve a correr los experimentos del total (E-265, 268, 275, 277 y 278). Para
-  eso necesita `estimador/data/processed/pbe_effort_v4.parquet`, que no se versiona por tamaño y
-  licencias; ver «Datos».
+- **No options:** regenerates Tables I, III and IV in `estimador/results/cuadros_paper/tex/`, exactly
+  as they appear in the paper. It only uses the CSV files in `estimador/results/`.
+- **With `--todo`:** first reruns the project-total experiments (E-265, 268, 275, 277 and 278). This
+  needs `estimador/data/processed/pbe_effort_v4.parquet`, which is not versioned because of its size
+  and the dataset licences (see «Data»).
 
-Dependencias: Python 3.12 con `numpy`, `pandas` y `pyarrow`.
+Requirements: Python 3.12 with `numpy`, `pandas` and `pyarrow`.
 
-## Dónde está cada cifra del artículo
+## Where each number of the paper comes from
 
-Las rutas son relativas a `estimador/`, salvo las que empiezan por `generador/`.
+Paths are relative to `estimador/` unless they start with `generador/`. Decimal commas follow the
+Spanish paper.
 
-| En el artículo | Script | Resultado |
+| In the paper | Script | Result |
 |---|---|---|
-| **Tabla I**: PRED(25), ×2 y MdMRE del total según las tareas cerradas (39,5 % → 62,7 %) | `src/275_curva_anclaje_dos_criterios.py` | `results/curva_anclaje_dos_criterios/resumen.csv` |
-| Tabla I: anchura y cobertura del intervalo (×5,57 → ×2,14 en los 114; ×2,21 en los 81) | `src/161_banda_proyecto.py`, `src/233_banda_que_cierra_antes.py` | `results/banda_proyecto/resumen.csv`, `results/banda_que_cierra_antes/resumen.csv` |
-| Cobertura por tamaño del proyecto (0,72–0,96 con una cerrada; 0,78–0,82 con 10 o más) | `src/233_banda_que_cierra_antes.py` | `results/banda_que_cierra_antes/cobertura_por_tramo.csv` |
-| Extrapolación simple y sin contracción, λc = 0 (12,5 / 45,9 / 59,2 % con 1, 10 y 20 cerradas; IC por proyectos de la diferencia) | `src/277_extrapolacion_simple.py` | `results/extrapolacion_simple/resumen.csv`, `results/extrapolacion_simple/diferencia_ic.csv` |
-| Orden real de cierre (de 42,1 % a 50,0 %, frente a 71,3 % al azar; 38 proyectos) | `src/265_avance_orden_real.py` | `results/avance_orden_real/resumen.csv` |
-| Entradas del usuario (46,3 → 68,3 %; 62,0 → 82,9 %; 41 proyectos) | `src/268_tres_estados.py` | `results/tres_estados/resumen.csv` |
-| Meta del trabajo futuro: orden real con estimaciones (18 proyectos) | `src/278_orden_real_con_estimaciones.py` | `results/orden_real_con_estimaciones/resumen.csv` |
-| **Tabla II**: Deep-SE y GPT2SP (reimplementación propia) | `src/46_baselines_literatura.py` | `results/baselines_literatura.csv` |
-| Tabla II: propuesta y constante de 2,45 h | `src/211_rejilla_de_valores_reales.py` | `results/rejilla_valores/contra_literatura.csv` |
-| **Tabla III**: estimación frente a LLM (601 tareas, Groq, temperatura 0) | `src/259_banco_api.py`, `src/261_tablas_llm_api.py` | `results/llm_bench/api_resumen.csv` |
-| 13,7 ms por tarea (estimador) y 5,2 GB de RAM y 3,3 GB de disco (sistema completo, generador y estimador, en CPU) | estimador desplegado | `results/estimador_v7/servicio.json` (RAM); el disco es el tamaño del paquete de producción (3,1 GiB) |
-| **Tabla IV**: generación frente a LLM (64 proyectos) | `src/272_banco_generacion.py`, `src/274_redundancia_tareas.py` | `results/banco_generacion/resumen.csv`, `results/redundancia_tareas/resumen.csv` |
-| sF1 de 0,669 frente a 328 historias humanas | `generador/src/97_eval_humano.py` | `generador/results/49_real_vigente.csv` |
-| Efecto de las historias ancla: 0,669 con anclas, 0,635 sin ellas, +0,035 (IC por proyectos) | `generador/src/103_ablacion_anclas.py` | `generador/results/103_ablacion_anclas.csv` |
-| Escritura de las tablas en LaTeX | `src/273_cuadros_paper.py` | `results/cuadros_paper/` |
+| **Table I**: PRED(25), ×2 and MdMRE of the total by closed tasks (39,5 % → 62,7 %) | `src/275_curva_anclaje_dos_criterios.py` | `results/curva_anclaje_dos_criterios/resumen.csv` |
+| Table I: interval width and coverage (×5,57 → ×2,14 on the 114 projects; ×2,21 and 0,81 on the 81) | `src/161_banda_proyecto.py`, `src/233_banda_que_cierra_antes.py` | `results/banda_proyecto/resumen.csv`, `results/banda_que_cierra_antes/resumen.csv` |
+| Coverage by project size (0,72–0,96 with one closed task; 0,78–0,82 with 10 or more) | `src/233_banda_que_cierra_antes.py` | `results/banda_que_cierra_antes/cobertura_por_tramo.csv` |
+| Simple extrapolation and no shrinkage, λc = 0 (12,5 / 45,9 / 59,2 % with 1, 10 and 20 closed tasks) and the anchoring advantage with project-level CIs (+25,1 [18,1; 32,2], +7,9 [2,5; 12,8], +3,5 [−2,1; 8,4]) | `src/277_extrapolacion_simple.py` | `results/extrapolacion_simple/resumen.csv`, `results/extrapolacion_simple/diferencia_ic.csv` |
+| Real closing order (42,1 % → 50,0 %, against 71,3 % at random; 38 projects) | `src/265_avance_orden_real.py` | `results/avance_orden_real/resumen.csv` |
+| User inputs (46,3 → 68,3 %; 62,0 → 82,9 %; 41 projects) | `src/268_tres_estados.py` | `results/tres_estados/resumen.csv` |
+| Future-work goal: real order with user estimates (18 projects) | `src/278_orden_real_con_estimaciones.py` | `results/orden_real_con_estimaciones/resumen.csv` |
+| **Table II**: Deep-SE and GPT2SP (own reimplementation) | `src/46_baselines_literatura.py` | `results/baselines_literatura.csv` |
+| Table II: proposal and the 2,45 h constant | `src/211_rejilla_de_valores_reales.py` | `results/rejilla_valores/contra_literatura.csv` |
+| **Table III**: estimation against LLMs (601 tasks, Groq, temperature 0) | `src/259_banco_api.py`, `src/261_tablas_llm_api.py` | `results/llm_bench/api_resumen.csv` |
+| 13,7 ms per task (estimator); 5,2 GB of RAM and 3,3 GB of disk (whole system, generator and estimator, on CPU) | deployed estimator | `results/estimador_v7/servicio.json` (RAM); the disk figure is the size of the production package (3,1 GiB) |
+| **Table IV**: generation against LLMs (64 projects) | `src/272_banco_generacion.py`, `src/274_redundancia_tareas.py` | `results/banco_generacion/resumen.csv`, `results/redundancia_tareas/resumen.csv` |
+| LLM advantage on the 4 Dalpiaz projects (+0,027 to +0,049, no CI) | `src/272_banco_generacion.py` | `results/banco_generacion/por_proyecto.csv` |
+| sF1 of 0,669 against 328 human stories | `generador/src/97_eval_humano.py` | `generador/results/49_real_vigente.csv` |
+| Effect of the anchor stories: 0,669 with anchors, 0,635 without, +0,035 (project-level CI) | `generador/src/103_ablacion_anclas.py` | `generador/results/103_ablacion_anclas.csv` |
+| LaTeX tables | `src/273_cuadros_paper.py` | `results/cuadros_paper/` |
 
-Los pesos de la selección de historias (Ec. 1) y los hiperparámetros de entrenamiento están en
+The weights of the story selection (Eq. 1) and the training hyperparameters are in
 [PARAMETROS.md](PARAMETROS.md).
 
-## Versión del generador detrás de cada cifra
+## Generator version behind each number
 
-Todas las cifras del generador salen de la misma versión. El pipeline y los tres mT5 son idénticos,
-comprobado con MD5, en desarrollo y en producción.
+All generator numbers come from the same version. The pipeline and the three mT5 models are
+identical in development and production (checked with MD5).
 
-| Componente | MD5 |
+| Component | MD5 |
 |---|---|
 | `generador/src/19_pipeline.py` | `cc293264bd5132d51af79e785145666d` |
-| mT5 de historias (v9bt) | `7d7f6c771d7751e81c69826798cd1b52` |
-| mT5 de tareas 1 (v5) | `3355d766e13dd562df566a5ee03260f3` |
-| mT5 de tareas 2 (bs8, lr 9,2e-4) | `85225d221b0dd753c2dbc14ffbade51e` |
+| mT5, story stage (v9bt) | `7d7f6c771d7751e81c69826798cd1b52` |
+| mT5, task stage 1 (v5) | `3355d766e13dd562df566a5ee03260f3` |
+| mT5, task stage 2 (bs8, lr 9,2e-4) | `85225d221b0dd753c2dbc14ffbade51e` |
 
-| Cifra del artículo | Dónde | Script | Resultado |
+| Number in the paper | Where | Script | Result |
 |---|---|---|---|
-| sF1 0,669 con anclas y 0,635 sin anclas; +0,035 [0,026; 0,044] | PI3 | `generador/src/103_ablacion_anclas.py` | `generador/results/103_ablacion_anclas.csv` |
-| 0,387 · 43,7 % · 35 tareas · 10,8 s | Tabla IV | `estimador/src/272_banco_generacion.py` | `estimador/results/banco_generacion/` |
-| 11,8 % de tareas casi duplicadas | Tabla IV | `estimador/src/274_redundancia_tareas.py` | `estimador/results/redundancia_tareas/` |
-| Diferencias con los LLM (+0,076 a +0,088; IC +0,055 a +0,116) | PI3 | `estimador/src/272_banco_generacion.py` | `estimador/results/banco_generacion/resumen.csv` |
+| sF1 0,669 with anchors and 0,635 without; +0,035 [0,026; 0,044] | PI3 | `generador/src/103_ablacion_anclas.py` | `generador/results/103_ablacion_anclas.csv` |
+| 0,387 · 43,7 % · 35 tasks · 10,8 s | Table IV | `estimador/src/272_banco_generacion.py` | `estimador/results/banco_generacion/` |
+| 11,8 % near-duplicate tasks | Table IV | `estimador/src/274_redundancia_tareas.py` | `estimador/results/redundancia_tareas/` |
+| Differences with the LLMs (+0,076 to +0,088; CI +0,055 to +0,116) and +0,027 to +0,049 on the 4 Dalpiaz projects | PI3 | `estimador/src/272_banco_generacion.py` | `estimador/results/banco_generacion/` |
 
-**Repetición de control** (18/11, no va al artículo): `generador/src/104_repetir_e272.py` →
+**Control rerun** (18/11, not in the paper): `generador/src/104_repetir_e272.py` →
 `estimador/results/banco_generacion_rerun_18nov/`.
 
-- **sF1:** 0,391 frente a 0,387. La diferencia es +0,004, con IC95 [−0,004; +0,011], así que es ruido
-  de muestreo; E-272 no fija semilla.
-- **Tareas casi duplicadas:** varían entre corridas, de 9,6 % a 11,8 %.
+- **sF1:** 0,391 against 0,387. The difference is +0,004, CI95 [−0,004; +0,011]: sampling noise, since
+  E-272 does not fix a seed.
+- **Near-duplicate tasks:** vary between runs, from 9,6 % to 11,8 %.
 
-## Colecciones de usuario
+## User-story collections
 
-**Dalpiaz, *Requirements Data Sets (User Stories)*, v1 (2018)**, 22 colecciones:
+**Dalpiaz, *Requirements Data Sets (User Stories)*, v1 (2018)**, 22 collections:
 
-| Uso | Colecciones |
+| Use | Collections |
 |---|---|
-| Entrenamiento (15) | g03, g04, g08, g10, g11, g12, g13, g14, g17, g18, g21, g22, g24, g27, g28 |
-| Validación (3) | g05, g23, g26 |
-| Retenidas, Tabla IV (4) | g02, g16, g19, g25 |
+| Training (15) | g03, g04, g08, g10, g11, g12, g13, g14, g17, g18, g21, g22, g24, g27, g28 |
+| Validation (3) | g05, g23, g26 |
+| Held out, Table IV (4) | g02, g16, g19, g25 |
 
-**Evaluación: 328 historias del material de Bragilovski et al. (RE 2024)**
+**Evaluation: 328 stories from the material of Bragilovski et al. (RE 2024)**
 
-- Son 6 proyectos de estudiantes de máster: Fish&Chips, Grocery, School, Sports, Supermarket y
-  Ticket.
-- Ese material tiene 9 colecciones. Las otras 3 (camperplus = g12, planningpoker = g13 y
-  recycling = g04) son de Dalpiaz y están en nuestro entrenamiento, así que se excluyen de la
-  evaluación.
+- They are 6 projects written by master's students: Fish&Chips, Grocery, School, Sports, Supermarket
+  and Ticket.
+- That material has 9 collections. The other 3 (camperplus = g12, planningpoker = g13 and
+  recycling = g04) come from Dalpiaz and are in our training data, so they are excluded from the
+  evaluation.
 
-## Estructura
+## Layout
 
-| Carpeta | Qué contiene |
+| Folder | Contents |
 |---|---|
-| `articulo/` | `reproducir.py`, el punto de entrada para regenerar el artículo. |
-| `estimador/` | Datos derivados, experimentos y modelo de estimación de esfuerzo. |
-| `generador/` | Pipeline de generación de historias y tareas (`src/19_pipeline.py`), sus experimentos y resultados. |
+| `articulo/` | `reproducir.py`, the entry point to regenerate the paper. |
+| `estimador/` | Derived data, experiments and the effort-estimation model. |
+| `generador/` | Story and task generation pipeline (`src/19_pipeline.py`), its experiments and results. |
 
-Cada experimento es un script numerado (`estimador/src/NNN_*.py`, `generador/src/NN_*.py`) que
-escribe sus resultados en `results/`. Para el artículo solo hacen falta los scripts de la tabla
-anterior.
+Each experiment is a numbered script (`estimador/src/NNN_*.py`, `generador/src/NN_*.py`) that
+writes its results to `results/`. Only the scripts in the table above are needed for the paper.
 
-Los demás scripts son el historial completo de experimentos, incluidos los descartados. Se conservan
-por transparencia: `estimador/INFORME_PROYECTO.md` y `generador/DISENO_GENERACION.md` cuentan qué se
-probó y por qué se descartó.
+The other scripts are the full experiment history, including discarded ones. They are kept for
+transparency; `estimador/INFORME_PROYECTO.md` and `generador/DISENO_GENERACION.md` (in Spanish)
+explain what was tried and why it was discarded.
 
-## Datos
+## Data
 
-Los conjuntos de partida son públicos y se usan según sus licencias. Hay que descargarlos de sus
-fuentes en `estimador/data/raw/` (estimación) y en la carpeta de datos del generador.
+The source datasets are public and are used under their licences. Download them from their sources
+into `estimador/data/raw/` (estimation) and into the generator's data folder.
 
-| Conjunto | Uso en el artículo | Licencia | Fuente |
+| Dataset | Use in the paper | Licence | Source |
 |---|---|---|---|
-| TAWOS (Tawosi et al., MSR 2022) | horas de tareas; pares historia → tareas | Apache 2.0 | github.com/SOLAR-group/tawos |
-| The Public Jira Dataset (Montgomery et al., MSR 2022) | horas de tareas; pares historia → tareas | CC BY 4.0 | doi:10.5281/zenodo.5882881 |
-| SiP (Jones y Cullum, 2019) | horas y estimaciones de tareas | CC BY-NC-ND 4.0 (sin uso comercial ni versiones modificadas): este repositorio no incluye sus filas; los scripts las leen del original | github.com/Derek-Jones/SiP_dataset |
-| Requirements Data Sets (User Stories) (Dalpiaz, 2018), v1 | historias de entrenamiento (15 colecciones), validación (3) y 4 proyectos retenidos | CC BY 4.0 en el registro; el autor aclara que no conoce acuerdos de licencia ni derechos sobre las historias | doi:10.17632/7zbk8zsd8y.1 |
-| Material de Bragilovski et al. (RE 2024) | las 328 historias humanas de evaluación | CC BY 4.0 | doi:10.5281/zenodo.12740518 |
+| TAWOS (Tawosi et al., MSR 2022) | task hours; story → tasks pairs | Apache 2.0 | github.com/SOLAR-group/tawos |
+| The Public Jira Dataset (Montgomery et al., MSR 2022) | task hours; story → tasks pairs | CC BY 4.0 | doi:10.5281/zenodo.5882881 |
+| SiP (Jones and Cullum, 2019) | task hours and estimates | CC BY-NC-ND 4.0 (no commercial use, no modified versions): this repository does not include its rows; the scripts read them from the original | github.com/Derek-Jones/SiP_dataset |
+| Requirements Data Sets (User Stories) (Dalpiaz, 2018), v1 | training stories (15 collections), validation (3) and 4 held-out projects | the curator states no known licence agreements or rights on the stories (the record lists CC BY 4.0) | doi:10.17632/7zbk8zsd8y.1 |
+| Material of Bragilovski et al. (RE 2024) | the 328 human evaluation stories | CC BY 4.0 | doi:10.5281/zenodo.12740518 |
 
-- **Tabla unificada:** se construye con la cadena `estimador/src/01_*` a `09_*` y
+- **Unified table:** built with the chain `estimador/src/01_*` to `09_*` and
   `estimador/src/52_build_v4.py`.
-- **Modelos entrenados** (unos 3 GB): no están en este repositorio.
-- **Predicciones del total** que usan los experimentos del anclaje: sí están
+- **Trained models** (about 3 GB): not in this repository.
+- **Total predictions** used by the anchoring experiments: included
   (`estimador/results/modelo_total/pred_total.npy`).
 
-## In English (summary)
+## Licence
 
-Code, experiments and results of the paper *Backlog generation and progressive effort estimation
-for agile software projects with small language models* (submitted in Spanish).
-
-- **Reproduce the paper's tables:** `python articulo/reproducir.py` (from the saved CSVs, seconds);
-  add `--todo` to rerun the project-total experiments (needs the processed data, see «Datos»).
-- **Where each number comes from:** the table «Dónde está cada cifra del artículo» maps every figure
-  of the paper to its script and result file.
-- **Layout:** `estimador/` (effort estimation), `generador/` (backlog generation), `articulo/`
-  (entry point). Numbered scripts are the full experiment history; only those in the table are
-  needed for the paper.
-- **Data and licences:** see the table in «Datos». TAWOS (Apache 2.0); Public Jira Dataset,
-  Dalpiaz and Bragilovski et al. (CC BY 4.0; the Dalpiaz curator states no known licence agreements
-  on the stories); SiP (CC BY-NC-ND 4.0; its rows are not redistributed here).
-- **Parameters** (selection weights, training, LLM versions): `PARAMETROS.md`.
-
-## Licencia
-
-GPL-3.0 (ver `LICENSE`).
+GPL-3.0 (see `LICENSE`).

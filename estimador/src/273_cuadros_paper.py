@@ -231,7 +231,7 @@ def anclaje():
     b0 = b0[(b0.escenario == "en frio") & (b0.nivel == "80%") & (b0.metodo == "unico")].iloc[0]
     v = lambda k, crit, col: float(c[(c.k == k) & (c.criterio == crit)][col].iloc[0])
     filas, salida = [], []
-    for k in (0, 10, 20):      # guia V3: la fila k = 1 va en el texto (recorte de reserva)
+    for k in (0, 1, 10, 20):   # guia V5: vuelve la fila k = 1 (el texto cita su 37,6 %)
         if k == 0:
             ancho, cob = float(b0.anchura_x), float(b0.cobertura)
         else:

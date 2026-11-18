@@ -1,0 +1,134 @@
+# Generación de backlogs y estimación de esfuerzo progresiva
+
+La versión en inglés de este README es [README.md](README.md).
+
+Código, experimentos y resultados del artículo *Generación de backlogs y estimación de esfuerzo
+progresiva en proyectos de software ágiles con modelos de lenguaje pequeños*.
+
+El modelo convierte la descripción de un producto en un backlog de historias de usuario con sus
+tareas. Luego estima las horas de cada tarea y da un total del proyecto con un intervalo del 80 %,
+que se afina a medida que se cierran tareas y que el equipo aporta lo que sabe.
+
+## Reproducir el artículo
+
+```bash
+python articulo/reproducir.py            # tablas del artículo desde los resultados guardados (segundos)
+python articulo/reproducir.py --todo     # además, vuelve a correr los experimentos del total (minutos)
+```
+
+- **Sin opciones:** regenera las tablas I, III y IV en `estimador/results/cuadros_paper/tex/`, tal como
+  aparecen en el artículo. Solo usa los CSV de `estimador/results/`.
+- **Con `--todo`:** antes vuelve a correr los experimentos del total (E-265, 268, 275, 277 y 278). Para
+  eso necesita `estimador/data/processed/pbe_effort_v4.parquet`, que no se versiona por tamaño y
+  licencias; ver «Datos».
+
+Dependencias: Python 3.12 con `numpy`, `pandas` y `pyarrow`.
+
+## Dónde está cada cifra del artículo
+
+Las rutas son relativas a `estimador/`, salvo las que empiezan por `generador/`.
+
+| En el artículo | Script | Resultado |
+|---|---|---|
+| **Tabla I**: PRED(25), ×2 y MdMRE del total según las tareas cerradas (39,5 % → 62,7 %) | `src/275_curva_anclaje_dos_criterios.py` | `results/curva_anclaje_dos_criterios/resumen.csv` |
+| Tabla I: anchura y cobertura del intervalo (×5,57 → ×2,14 en los 114; ×2,21 y 0,81 en los 81) | `src/161_banda_proyecto.py`, `src/233_banda_que_cierra_antes.py` | `results/banda_proyecto/resumen.csv`, `results/banda_que_cierra_antes/resumen.csv` |
+| Cobertura por tamaño del proyecto (0,72–0,96 con una cerrada; 0,78–0,82 con 10 o más) | `src/233_banda_que_cierra_antes.py` | `results/banda_que_cierra_antes/cobertura_por_tramo.csv` |
+| Extrapolación simple y sin contracción, λc = 0 (12,5 / 45,9 / 59,2 % con 1, 10 y 20 cerradas) y ventaja del anclaje con IC por proyectos (+25,1 [18,1; 32,2], +7,9 [2,5; 12,8], +3,5 [−2,1; 8,4]) | `src/277_extrapolacion_simple.py` | `results/extrapolacion_simple/resumen.csv`, `results/extrapolacion_simple/diferencia_ic.csv` |
+| Orden real de cierre (de 42,1 % a 50,0 %, frente a 71,3 % al azar; 38 proyectos) | `src/265_avance_orden_real.py` | `results/avance_orden_real/resumen.csv` |
+| Entradas del usuario (46,3 → 68,3 %; 62,0 → 82,9 %; 41 proyectos) | `src/268_tres_estados.py` | `results/tres_estados/resumen.csv` |
+| Meta del trabajo futuro: orden real con estimaciones (18 proyectos) | `src/278_orden_real_con_estimaciones.py` | `results/orden_real_con_estimaciones/resumen.csv` |
+| **Tabla II**: Deep-SE y GPT2SP (reimplementación propia) | `src/46_baselines_literatura.py` | `results/baselines_literatura.csv` |
+| Tabla II: propuesta y constante de 2,45 h | `src/211_rejilla_de_valores_reales.py` | `results/rejilla_valores/contra_literatura.csv` |
+| **Tabla III**: estimación frente a LLM (601 tareas, Groq, temperatura 0) | `src/259_banco_api.py`, `src/261_tablas_llm_api.py` | `results/llm_bench/api_resumen.csv` |
+| 13,7 ms por tarea (estimador) y 5,2 GB de RAM y 3,3 GB de disco (sistema completo, generador y estimador, en CPU) | estimador desplegado | `results/estimador_v7/servicio.json` (RAM); el disco es el tamaño del paquete de producción (3,1 GiB) |
+| **Tabla IV**: generación frente a LLM (64 proyectos) | `src/272_banco_generacion.py`, `src/274_redundancia_tareas.py` | `results/banco_generacion/resumen.csv`, `results/redundancia_tareas/resumen.csv` |
+| Ventaja de los LLM en los 4 proyectos de Dalpiaz (+0,027 a +0,049, sin IC) | `src/272_banco_generacion.py` | `results/banco_generacion/por_proyecto.csv` |
+| sF1 de 0,669 frente a 328 historias humanas | `generador/src/97_eval_humano.py` | `generador/results/49_real_vigente.csv` |
+| Efecto de las historias ancla: 0,669 con anclas, 0,635 sin ellas, +0,035 (IC por proyectos) | `generador/src/103_ablacion_anclas.py` | `generador/results/103_ablacion_anclas.csv` |
+| Escritura de las tablas en LaTeX | `src/273_cuadros_paper.py` | `results/cuadros_paper/` |
+
+Los pesos de la selección de historias (Ec. 1) y los hiperparámetros de entrenamiento están en
+[PARAMETROS.md](PARAMETROS.md).
+
+## Versión del generador detrás de cada cifra
+
+Todas las cifras del generador salen de la misma versión. El pipeline y los tres mT5 son idénticos,
+comprobado con MD5, en desarrollo y en producción.
+
+| Componente | MD5 |
+|---|---|
+| `generador/src/19_pipeline.py` | `cc293264bd5132d51af79e785145666d` |
+| mT5 de historias (v9bt) | `7d7f6c771d7751e81c69826798cd1b52` |
+| mT5 de tareas 1 (v5) | `3355d766e13dd562df566a5ee03260f3` |
+| mT5 de tareas 2 (bs8, lr 9,2e-4) | `85225d221b0dd753c2dbc14ffbade51e` |
+
+| Cifra del artículo | Dónde | Script | Resultado |
+|---|---|---|---|
+| sF1 0,669 con anclas y 0,635 sin anclas; +0,035 [0,026; 0,044] | PI3 | `generador/src/103_ablacion_anclas.py` | `generador/results/103_ablacion_anclas.csv` |
+| 0,387 · 43,7 % · 35 tareas · 10,8 s | Tabla IV | `estimador/src/272_banco_generacion.py` | `estimador/results/banco_generacion/` |
+| 11,8 % de tareas casi duplicadas | Tabla IV | `estimador/src/274_redundancia_tareas.py` | `estimador/results/redundancia_tareas/` |
+| Diferencias con los LLM (+0,076 a +0,088; IC +0,055 a +0,116) | PI3 | `estimador/src/272_banco_generacion.py` | `estimador/results/banco_generacion/resumen.csv` |
+
+**Repetición de control** (18/11, no va al artículo): `generador/src/104_repetir_e272.py` →
+`estimador/results/banco_generacion_rerun_18nov/`.
+
+- **sF1:** 0,391 frente a 0,387. La diferencia es +0,004, con IC95 [−0,004; +0,011], así que es ruido
+  de muestreo; E-272 no fija semilla.
+- **Tareas casi duplicadas:** varían entre corridas, de 9,6 % a 11,8 %.
+
+## Colecciones de usuario
+
+**Dalpiaz, *Requirements Data Sets (User Stories)*, v1 (2018)**, 22 colecciones:
+
+| Uso | Colecciones |
+|---|---|
+| Entrenamiento (15) | g03, g04, g08, g10, g11, g12, g13, g14, g17, g18, g21, g22, g24, g27, g28 |
+| Validación (3) | g05, g23, g26 |
+| Retenidas, Tabla IV (4) | g02, g16, g19, g25 |
+
+**Evaluación: 328 historias del material de Bragilovski et al. (RE 2024)**
+
+- Son 6 proyectos de estudiantes de máster: Fish&Chips, Grocery, School, Sports, Supermarket y
+  Ticket.
+- Ese material tiene 9 colecciones. Las otras 3 (camperplus = g12, planningpoker = g13 y
+  recycling = g04) son de Dalpiaz y están en nuestro entrenamiento, así que se excluyen de la
+  evaluación.
+
+## Estructura
+
+| Carpeta | Qué contiene |
+|---|---|
+| `articulo/` | `reproducir.py`, el punto de entrada para regenerar el artículo. |
+| `estimador/` | Datos derivados, experimentos y modelo de estimación de esfuerzo. |
+| `generador/` | Pipeline de generación de historias y tareas (`src/19_pipeline.py`), sus experimentos y resultados. |
+
+Cada experimento es un script numerado (`estimador/src/NNN_*.py`, `generador/src/NN_*.py`) que
+escribe sus resultados en `results/`. Para el artículo solo hacen falta los scripts de la tabla
+anterior.
+
+Los demás scripts son el historial completo de experimentos, incluidos los descartados. Se conservan
+por transparencia: `estimador/INFORME_PROYECTO.md` y `generador/DISENO_GENERACION.md` cuentan qué se
+probó y por qué se descartó.
+
+## Datos
+
+Los conjuntos de partida son públicos y se usan según sus licencias. Hay que descargarlos de sus
+fuentes en `estimador/data/raw/` (estimación) y en la carpeta de datos del generador.
+
+| Conjunto | Uso en el artículo | Licencia | Fuente |
+|---|---|---|---|
+| TAWOS (Tawosi et al., MSR 2022) | horas de tareas; pares historia → tareas | Apache 2.0 | github.com/SOLAR-group/tawos |
+| The Public Jira Dataset (Montgomery et al., MSR 2022) | horas de tareas; pares historia → tareas | CC BY 4.0 | doi:10.5281/zenodo.5882881 |
+| SiP (Jones y Cullum, 2019) | horas y estimaciones de tareas | CC BY-NC-ND 4.0 (sin uso comercial ni versiones modificadas): este repositorio no incluye sus filas; los scripts las leen del original | github.com/Derek-Jones/SiP_dataset |
+| Requirements Data Sets (User Stories) (Dalpiaz, 2018), v1 | historias de entrenamiento (15 colecciones), validación (3) y 4 proyectos retenidos | CC BY 4.0 en el registro; el autor aclara que no conoce acuerdos de licencia ni derechos sobre las historias | doi:10.17632/7zbk8zsd8y.1 |
+| Material de Bragilovski et al. (RE 2024) | las 328 historias humanas de evaluación | CC BY 4.0 | doi:10.5281/zenodo.12740518 |
+
+- **Tabla unificada:** se construye con la cadena `estimador/src/01_*` a `09_*` y
+  `estimador/src/52_build_v4.py`.
+- **Modelos entrenados** (unos 3 GB): no están en este repositorio.
+- **Predicciones del total** que usan los experimentos del anclaje: sí están
+  (`estimador/results/modelo_total/pred_total.npy`).
+
+## Licencia
+
+GPL-3.0 (ver `LICENSE`).

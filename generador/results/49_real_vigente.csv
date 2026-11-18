@@ -1,4 +1,4 @@
-semilla,proyecto,n_ref,n_gen,n_tareas,anclas,sF1,precision,cobertura,segundos
+seed,project,n_ref,n_gen,n_tasks,anchors,sF1,precision,coverage,seconds
 11,fish_chips,50,12,33,4,0.6449,0.6943,0.6022,14.8
 11,ticket,54,12,37,5,0.6875,0.7333,0.6471,12.5
 11,grocery,49,12,40,6,0.6573,0.6977,0.6213,11.2

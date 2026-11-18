@@ -1,21 +1,23 @@
-"""Fig. 1 (generacion) y Fig. 2 (estimacion) del short paper, en PDF vectorial.
+"""Fig. 1 (generation) and Fig. 2 (estimation) of the short paper, as vector PDF.
 
-Version 2, guia V2 de la asesora (17/11/2026):
-  - ancho de UNA columna completa (3,5 in) y letra legible a ese tamano, sin escalar;
-  - Fig. 1 con 10 cajas (filtrar+reasignar y traducir+reparar unidas) y MAS BAJA que la
-    version anterior tal como se mostraba (3,40 in al 70 % = 2,38 in);
-  - legible en blanco y negro: cada categoria tiene su BORDE, no solo su color;
-  - Fig. 2 con la notacion lambda_c = 12, lambda_u = 12, lambda'_c = 30.
+Version 2, advisor's guide V2 (17/11/2026):
+  - width of ONE full column (3,5 in) and lettering readable at that size, unscaled;
+  - Fig. 1 with 10 boxes (filter+reassign and translate+repair merged) and LOWER than
+    the previous version as it was shown (3,40 in at 70 % = 2,38 in);
+  - readable in black and white: each category has its own BORDER, not only its colour;
+  - Fig. 2 with the notation lambda_c = 12, lambda_u = 12, lambda'_c = 30.
 
-Leyenda (borde y color):
-  entrada / salida   borde doble,       azul
-  modelo entrenado   borde solido grueso, verde (mT5, Marian, e5 y los cabezales)
-  reglas             borde discontinuo,  gris
-  posprocesado       borde punteado,     rojo
+Legend (border and colour):
+  input / output     double border,       blue
+  trained model      thick solid border,  green (mT5, Marian, e5 and the heads)
+  rules              dashed border,       grey
+  post-processing    dotted border,       red
 
-  python src/101_figuras_paper.py [carpeta_salida ...]
+The box labels are in Spanish because the paper is.
 
-out: fig1_pipeline_es.pdf y fig2_estimacion.pdf (+ .png de control) en cada carpeta
+  python src/101_figuras_paper.py [output_folder ...]
+
+out: fig1_pipeline_es.pdf and fig2_estimacion.pdf (+ .png for checking) in each folder
 """
 import os
 import sys
@@ -31,17 +33,17 @@ OUTS = sys.argv[1:] or [f"{AD}/figs", f"{AD}/overleaf/figs"]
 plt.rcParams.update({"font.family": "DejaVu Sans", "pdf.fonttype": 42,
                      "mathtext.fontset": "dejavusans"})
 
-# relleno, borde, estilo de linea, grosor
+# fill, border, line style, width
 EST = {"io": ("#e3ebf6", "#2d4a7c", "-", 0.7),
        "neuronal": ("#d3e5cf", "#2f5a39", "-", 1.6),
        "regla": ("#eeeeec", "#555555", (0, (4, 2)), 0.9),
        "post": ("#f6e0e0", "#8c4646", (0, (1, 1.4)), 1.2)}
 NOMBRE = {"io": "entrada /\nsalida", "neuronal": "modelo\nentrenado",
           "regla": "reglas", "post": "pos-\nprocesado"}
-ANCHO = 3.5                                  # pulgadas: una columna IEEE
-W, H = 0.80, 0.58                            # caja
-XS = (0.44, 1.31, 2.19, 3.06)                # centros de las cuatro columnas
-TAM, TAM_NOTA = 6.0, 5.2                     # puntos, a tamano real
+ANCHO = 3.5                                  # inches: one IEEE column
+W, H = 0.80, 0.58                            # box
+XS = (0.44, 1.31, 2.19, 3.06)                # centres of the four columns
+TAM, TAM_NOTA = 6.0, 5.2                     # points, at real size
 
 
 def _rect(ax, x0, y0, w, h, f, b, ls, lw, z=2):
@@ -52,7 +54,7 @@ def _rect(ax, x0, y0, w, h, f, b, ls, lw, z=2):
 def marco(ax, x0, y0, w, h, tipo):
     f, b, ls, lw = EST[tipo]
     _rect(ax, x0, y0, w, h, f, b, ls, lw)
-    if tipo == "io":                          # borde doble
+    if tipo == "io":                          # double border
         d = 0.035
         _rect(ax, x0 + d, y0 + d, w - 2 * d, h - 2 * d, "none", b, "-", lw, 3)
 
@@ -72,9 +74,9 @@ def flecha(ax, a, b, lado="h"):
     if lado == "h":
         s = 1 if b["x"] > a["x"] else -1
         p1, p2 = (a["x"] + s * W / 2, a["y"]), (b["x"] - s * W / 2, b["y"])
-    elif lado == "v":                         # vertical, de arriba abajo
+    elif lado == "v":                         # vertical, top to bottom
         p1, p2 = (a["x"], a["y"] - H / 2), (b["x"], b["y"] + H / 2)
-    else:                                     # diagonal hacia arriba a la derecha
+    else:                                     # diagonal, up and to the right
         p1, p2 = (a["x"] + W / 2 - 0.05, a["y"] + H / 2), (b["x"] - W / 2 + 0.05, b["y"] - H / 2)
     ax.add_patch(FancyArrowPatch(p1, p2, arrowstyle="-|>", mutation_scale=6.5,
                                  color="#333333", linewidth=0.8, zorder=1,
@@ -103,7 +105,7 @@ def guardar(fig, nombre):
         os.makedirs(out, exist_ok=True)
         for ext in ("pdf", "png"):
             fig.savefig(f"{out}/{nombre}.{ext}", dpi=300, facecolor="white")
-        print("escrito", f"{out}/{nombre}.pdf")
+        print("written", f"{out}/{nombre}.pdf")
     plt.close(fig)
 
 
@@ -111,18 +113,18 @@ def figura1():
     alto = 2.22
     fig, ax = lienzo(alto)
     y1, y2, y3 = 1.86, 1.11, 0.36
-    # fila 1, izquierda a derecha
+    # row 1, left to right
     d = caja(ax, 0, y1, "Descripción\ndel producto", "io")
     t = caja(ax, 1, y1, "Traducir\nes→en (Marian)", "neuronal")
     p = caja(ax, 2, y1, "Plan de roles\ny tokens\nde control", "regla")
     h = caja(ax, 3, y1, "Etapa de\nhistorias (mT5)", "neuronal")
     flecha(ax, d, t); flecha(ax, t, p); flecha(ax, p, h)
-    # fila 2, derecha a izquierda
+    # row 2, right to left
     s = caja(ax, 3, y2, "Banco filtrado\ny selección\npor cobertura", "regla")
     f = caja(ax, 2, y2, "Fusión: anclas\nprimero, hasta 6", "regla")
     e = caja(ax, 1, y2, "Etapa de\ntareas (2 mT5)", "neuronal")
     flecha(ax, h, s, "v"); flecha(ax, s, f); flecha(ax, f, e)
-    # fila 3, izquierda a derecha
+    # row 3, left to right
     q = caja(ax, 1, y3, "Filtrar,\ndeduplicar y\nreasignar tareas", "post")
     r = caja(ax, 2, y3, "Traducir en→es\ny reparar\nléxico", "post")
     b = caja(ax, 3, y3, "Backlog: 12\nhistorias con\nsus tareas", "io")

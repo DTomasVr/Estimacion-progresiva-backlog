@@ -1,17 +1,20 @@
-"""E-274 - ¿Son redundantes entre si las tareas de un backlog? PBE frente a los LLM.
+"""E-274 - Are the tasks of a backlog redundant among themselves? PBE against the LLMs.
 
-El banco de generacion muestra que PBE genera unas 35 tareas por backlog y los LLM
-entre 110 y 200. Antes de decir que las de PBE «son pocas pero no se repiten» hay
-que medirlo. Para cada backlog de los 64 proyectos retenidos:
+The generation bench shows that PBE generates about 35 tasks per backlog and the LLMs
+between 110 and 200. Before saying that PBE's tasks "are few but do not repeat" it has
+to be measured. For each backlog of the 64 held-out projects:
 
-  casi duplicadas   proporcion de tareas cuya vecina mas parecida DEL MISMO backlog
-                    supera un coseno de 0,90 (y de 0,80, mas laxo)
-  parecido medio    coseno medio con la vecina mas parecida
-  tareas distintas  numero de grupos al unir las tareas con coseno >= 0,90
+  near_duplicates   share of tasks whose most similar neighbour IN THE SAME backlog
+                    exceeds a cosine of 0,90 (and of 0,80, looser)
+  mean_similarity   mean cosine with the most similar neighbour
+  distinct_tasks    number of groups when tasks with cosine >= 0,90 are joined
 
-Los embeddings son de paraphrase-multilingual-mpnet-base-v2 SIN afinar, y no del
-SBERT propio, para que el juez no sea un modelo nuestro. La comparacion con PBE es
-pareada por proyecto, con IC95 por remuestreo.
+The embeddings are from paraphrase-multilingual-mpnet-base-v2 NOT fine-tuned, not from
+our own SBERT, so that the judge is not one of our models. The comparison with PBE is
+paired by project, with a bootstrap CI95.
+
+The raw JSONL runs keep their field names (sistema, condicion, caso, tareas).
+Outputs: results/redundancia_tareas/por_backlog.csv and resumen.csv
 """
 import json
 import sys
@@ -23,22 +26,22 @@ import pandas as pd
 
 GEN = Path("F:/Software Task generation Model/results/20_banco.jsonl")
 OUT = Path("results/redundancia_tareas")
-JUEZ = "sentence-transformers/paraphrase-multilingual-mpnet-base-v2"
+JUDGE = "sentence-transformers/paraphrase-multilingual-mpnet-base-v2"
 
 
-def grupos(S, umbral):
+def groups(S, threshold):
     n = len(S)
-    padre = list(range(n))
+    parent = list(range(n))
 
-    def raiz(i):
-        while padre[i] != i:
-            padre[i] = padre[padre[i]]
-            i = padre[i]
+    def root(i):
+        while parent[i] != i:
+            parent[i] = parent[parent[i]]
+            i = parent[i]
         return i
 
-    for i, j in zip(*np.where(np.triu(S >= umbral, 1))):
-        padre[raiz(i)] = raiz(j)
-    return len({raiz(i) for i in range(n)})
+    for i, j in zip(*np.where(np.triu(S >= threshold, 1))):
+        parent[root(i)] = root(j)
+    return len({root(i) for i in range(n)})
 
 
 def main():
@@ -49,42 +52,42 @@ def main():
     R = [r for r in R if r["sistema"] != "pbe" and r["condicion"] == "cero"]
     for p in sorted(Path("results/banco_generacion").glob("*.jsonl")):
         R += [json.loads(l) for l in open(p, encoding="utf-8")]
-    filas, textos = [], []
+    rows, texts = [], []
     for r in R:
         t = [x.strip() for h in r["tareas"] for x in h if x and x.strip()]
         if len(t) >= 2:
-            filas.append((r["sistema"], r["caso"], len(textos), len(t)))
-            textos += t
-    print(f"{len(filas)} backlogs · {len(textos):,} tareas · {time.time() - t0:.0f} s", flush=True)
-    sb = SentenceTransformer(JUEZ, device="cuda")
-    E = sb.encode(textos, batch_size=256, normalize_embeddings=True, show_progress_bar=False)
-    print(f"embeddings listos · {time.time() - t0:.0f} s", flush=True)
+            rows.append((r["sistema"], r["caso"], len(texts), len(t)))
+            texts += t
+    print(f"{len(rows)} backlogs · {len(texts):,} tasks · {time.time() - t0:.0f} s", flush=True)
+    sb = SentenceTransformer(JUDGE, device="cuda")
+    E = sb.encode(texts, batch_size=256, normalize_embeddings=True, show_progress_bar=False)
+    print(f"embeddings ready · {time.time() - t0:.0f} s", flush=True)
     out = []
-    for sis, caso, a, n in filas:
+    for sys_, case, a, n in rows:
         S = E[a:a + n] @ E[a:a + n].T
         np.fill_diagonal(S, -1)
         v = S.max(1)
-        out.append(dict(sistema=sis, caso=caso, tareas=n, dup90=float(np.mean(v >= .90)),
-                        dup80=float(np.mean(v >= .80)), parecido=float(v.mean()), distintas=grupos(S, .90)))
+        out.append(dict(system=sys_, case=case, tasks=n, dup90=float(np.mean(v >= .90)),
+                        dup80=float(np.mean(v >= .80)), similarity=float(v.mean()), distinct=groups(S, .90)))
     d = pd.DataFrame(out)
     d.to_csv(OUT / "por_backlog.csv", index=False)
-    g = d.groupby("sistema").agg(n=("caso", "size"), tareas=("tareas", "mean"), casi_duplicadas_090=("dup90", "mean"),
-                                 casi_duplicadas_080=("dup80", "mean"), parecido_medio=("parecido", "mean"),
-                                 tareas_distintas=("distintas", "mean")).reset_index()
+    g = d.groupby("system").agg(n=("case", "size"), tasks=("tasks", "mean"), near_duplicates_090=("dup90", "mean"),
+                                near_duplicates_080=("dup80", "mean"), mean_similarity=("similarity", "mean"),
+                                distinct_tasks=("distinct", "mean")).reset_index()
     rng = np.random.default_rng(274)
-    P = d.pivot(index="caso", columns="sistema", values="dup90")
-    par = {}
+    P = d.pivot(index="case", columns="system", values="dup90")
+    pair = {}
     for s in P.columns:
         if s == "pbe":
             continue
         x = (P[s] - P["pbe"]).dropna().to_numpy()
         b = rng.choice(x, (4000, len(x))).mean(1)
-        par[s] = dict(dif_dup90=float(x.mean()), ic95_lo=float(np.quantile(b, .025)), ic95_hi=float(np.quantile(b, .975)))
-    g = g.merge(pd.DataFrame(par).T.rename_axis("sistema").reset_index(), on="sistema", how="left")
+        pair[s] = dict(diff_dup90=float(x.mean()), ci95_lo=float(np.quantile(b, .025)), ci95_hi=float(np.quantile(b, .975)))
+    g = g.merge(pd.DataFrame(pair).T.rename_axis("system").reset_index(), on="system", how="left")
     g.to_csv(OUT / "resumen.csv", index=False)
     pd.set_option("display.width", 220)
     print(g.round(3).to_string(index=False))
-    print(f"escrito {OUT} · {time.time() - t0:.0f} s")
+    print(f"written {OUT} · {time.time() - t0:.0f} s")
 
 
 if __name__ == "__main__":

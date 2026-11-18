@@ -13,6 +13,9 @@ limit.
 
 Unparseable or refused answers are recorded as such, never dropped, so the
 evaluation can report each model's failure rate next to its accuracy.
+
+The JSONL field names (modelo, condicion, segundos, valido, horas, minimo, maximo,
+entrada, salida, crudo) are kept as they were written: the published runs use them.
 """
 import argparse
 import json
@@ -27,8 +30,8 @@ import requests
 
 BENCH = Path("data/processed/llm_bench")
 RAW = Path("results/llm_bench/raw")
-# Las claves se leen de .env.llm (ignorado por git), una por linea, CLAVE=valor; lo que
-# ya este en el entorno manda. Nunca se imprimen.
+# The keys are read from .env.llm (ignored by git), one per line, KEY=value; whatever is
+# already in the environment wins. They are never printed.
 if Path(".env.llm").exists():
     for _l in open(".env.llm", encoding="utf-8-sig"):
         _l = _l.strip()
@@ -36,10 +39,13 @@ if Path(".env.llm").exists():
             _k, _v = _l.split("=", 1)
             os.environ.setdefault(_k.strip(), _v.strip().strip('"'))
 
-# 127.0.0.1 y no localhost: en Windows localhost resuelve primero a IPv6 (::1),
-# Ollama solo escucha en IPv4, y cada conexion nueva perdia ~2,1 s en el
-# fallback -- medido: 2,09 s frente a 0,02 s. La sesion reutiliza la conexion.
+# 127.0.0.1 and not localhost: on Windows localhost resolves first to IPv6 (::1),
+# Ollama only listens on IPv4, and each new connection lost ~2,1 s in the
+# fallback -- measured: 2,09 s against 0,02 s. The session reuses the connection.
 SESION = requests.Session()
+
+# The prompts are in Spanish on purpose: they are the bench's input, the same for every
+# model, and translating them would change the experiment.
 
 SISTEMA = (
     "Eres un desarrollador de software senior que estima esfuerzo. "
@@ -62,7 +68,7 @@ def prompt(fila, condicion, ejemplos):
         partes.append("Tareas ya terminadas en este mismo proyecto, con sus horas reales:")
         partes += [f"- {e['texto']} → {e['horas']} h" for e in hist]
         partes.append("")
-    if condicion == "P":                          # sonda de contaminacion
+    if condicion == "P":                          # contamination probe
         return ("Esta es una incidencia de un Jira público. Si la reconoces, "
                 'responde {"clave": "PROYECTO-123", "horas_registradas": número}; '
                 'si no, {"clave": null, "horas_registradas": null}.\n\n'
@@ -92,9 +98,9 @@ def llamar_groq(modelo, sistema, usuario):
 
 
 def llamar_gemini(modelo, sistema, usuario):
-    # El endpoint compatible con OpenAI de Google. Sin razonamiento: con el
-    # razonamiento activo los Flash recientes tardaban mas de 40 s por tarea o no
-    # respondian (medido el 29/10/2026); con reasoning_effort=none, ~9 s.
+    # Google's OpenAI-compatible endpoint. No reasoning: with reasoning on, the recent
+    # Flash models took over 40 s per task or did not answer (measured on 29/10/2026);
+    # with reasoning_effort=none, ~9 s.
     return _compatible_openai(
         "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
         "GEMINI_API_KEY", modelo, sistema, usuario, {"reasoning_effort": "none"})
@@ -103,7 +109,7 @@ def llamar_gemini(modelo, sistema, usuario):
 def _compatible_openai(url, var, modelo, sistema, usuario, extra):
     clave = os.environ.get(var)
     if not clave:
-        raise SystemExit(f"falta {var} en el entorno o en .env.llm")
+        raise SystemExit(f"{var} is missing from the environment and from .env.llm")
     for intento in range(8):
         r = SESION.post(
             url, timeout=180,
@@ -113,13 +119,13 @@ def _compatible_openai(url, var, modelo, sistema, usuario, extra):
                                {"role": "user", "content": usuario}]})
         if r.status_code in (429, 503):
             espera = float(r.headers.get("retry-after") or 2 ** intento * 5)
-            if espera > 600:                     # cuota del DIA agotada: parar, no esperar
-                raise CuotaAgotada(f"el proveedor pide esperar {espera / 3600:.1f} h")
-            print(f"    limite de tasa, esperando {espera:.0f}s", flush=True)
+            if espera > 600:                     # the DAY's quota is used up: stop, do not wait
+                raise CuotaAgotada(f"the provider asks to wait {espera / 3600:.1f} h")
+            print(f"    rate limit, waiting {espera:.0f}s", flush=True)
             time.sleep(espera)
             continue
         r.raise_for_status()
-        # frena ANTES de agotar la cuota, segun lo que diga el proveedor
+        # slow down BEFORE the quota runs out, as the provider says
         quedan = r.headers.get("x-ratelimit-remaining-requests")
         if quedan is not None and int(quedan) <= 1:
             reset = r.headers.get("x-ratelimit-reset-requests", "60s")
@@ -128,11 +134,11 @@ def _compatible_openai(url, var, modelo, sistema, usuario, extra):
         u = j.get("usage", {})
         return (j["choices"][0]["message"]["content"],
                 {"entrada": u.get("prompt_tokens"), "salida": u.get("completion_tokens")})
-    raise CuotaAgotada("limite de tasa persistente tras 8 intentos")
+    raise CuotaAgotada("rate limit persists after 8 attempts")
 
 
 class CuotaAgotada(Exception):
-    """Sin cuota: la corrida se corta SIN registrar la tarea, y se retoma luego."""
+    """No quota: the run stops WITHOUT recording the task, and resumes later."""
 
 
 def _segundos(s):
@@ -184,12 +190,12 @@ def main():
     hechas = set()
     if destino.exists():
         hechas = {json.loads(l)["task_id"] for l in open(destino, encoding="utf-8")}
-    # orden barajado y fijo: un corte a medias sigue siendo una muestra
-    # representativa, y todos los modelos recorren las tareas en el mismo orden
+    # shuffled and fixed order: a run stopped halfway is still a representative
+    # sample, and every model goes through the tasks in the same order
     pendientes = d[~d.task_id.isin(hechas)].sample(frac=1, random_state=20260914)
     if a.limite:
         pendientes = pendientes.head(a.limite)
-    print(f"{destino.name}: {len(hechas)} hechas, {len(pendientes)} pendientes")
+    print(f"{destino.name}: {len(hechas)} done, {len(pendientes)} pending")
 
     llamar = BACKENDS[a.backend]
     t0 = time.time()
@@ -201,9 +207,9 @@ def main():
                 crudo, uso = llamar(a.modelo, SISTEMA, usuario)
                 res = interpretar(crudo, a.condicion)
             except CuotaAgotada as e:
-                print(f"cortado en {i - 1}/{len(pendientes)}: {e}; se retoma al relanzar", flush=True)
-                sys.exit(3)  # 259_banco_api.py distingue el corte por cuota
-            except Exception as e:                    # se registra, no se oculta
+                print(f"stopped at {i - 1}/{len(pendientes)}: {e}; it resumes when relaunched", flush=True)
+                sys.exit(3)  # 259_banco_api.py tells the quota stop apart
+            except Exception as e:                    # recorded, not hidden
                 crudo, uso, res = f"ERROR: {e}", {}, {"valido": False}
             fh.write(json.dumps({"task_id": fila["task_id"], "backend": a.backend,
                                  "modelo": a.modelo, "condicion": a.condicion,
@@ -212,9 +218,9 @@ def main():
                                 ensure_ascii=False) + "\n")
             fh.flush()
             if i % 25 == 0:
-                print(f"  {i}/{len(pendientes)}  {(time.time()-t0)/i:.1f}s/tarea",
+                print(f"  {i}/{len(pendientes)}  {(time.time()-t0)/i:.1f}s/task",
                       flush=True)
-    print("listo")
+    print("done")
 
 
 if __name__ == "__main__":

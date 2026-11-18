@@ -94,6 +94,33 @@ comprobado con MD5, en desarrollo y en producción.
   recycling = g04) son de Dalpiaz y están en nuestro entrenamiento, así que se excluyen de la
   evaluación.
 
+## Archivos de resultados: nombres de columna
+
+El código, los comentarios y los nombres de columna y etiquetas de los resultados del artículo están
+en inglés. Conservan su nombre en español: los nombres de archivos y carpetas (el artículo y la tesis
+los citan), los registros crudos de las corridas con LLM (`*.jsonl`, cuyos campos como `modelo`,
+`condicion`, `valido`, `horas`, `segundos`, `caso`, `sistema`, `tareas` se dejan tal como se
+grabaron) y las salidas de los scripts que el artículo no usa. Las tablas LaTeX del artículo están en
+español porque el artículo lo está. El diccionario completo de columnas está en
+[README.md](README.md#result-files-column-names); las principales:
+
+| Columna | Significado |
+|---|---|
+| `PRED25` | proporción de proyectos (o tareas) cuya estimación cae dentro de ±25 % del valor real |
+| `MdMRE` | mediana del error relativo, abs(estimado − real) / real |
+| `factor2` | proporción dentro de un factor 2 del valor real |
+| `projects`, `n` | número de proyectos (o tareas, o backlogs) de la fila |
+| `k`, `closed` | tareas ya cerradas en el proyecto |
+| `ci95_lo`, `ci95_hi` | intervalo del 95 % por remuestreo de la diferencia de la fila |
+| `coverage` | estimación: proporción de totales reales dentro del intervalo; generación: proporción de historias reales emparejadas |
+| `criterion` | `all` (los 114 proyectos), `larger` (solo los de más de k tareas), `k or 20 % of the backlog` |
+| `band` | variante del intervalo; `A2 · by k and size band (deployed)` es la desplegada |
+| `model`, `system` | `PBE v7 (ours)` y `PBE (current)` son la propuesta; `… zero-shot`, los LLM sin ejemplos |
+| `version` | `raw` (lo que dice el LLM) o `calibrated` (por un factor aprendido en 130 tareas aparte) |
+| `verdict` | `LLM better` / `PBE better` / `tie`; en generación, `PBE wins` / `other wins` / `tie` |
+| `near_duplicates_090` | proporción de tareas con coseno ≥ 0,90 con otra del mismo backlog |
+| `recognises` | proporción de proyectos que el LLM dice reconocer (indicio de contaminación) |
+
 ## Estructura
 
 | Carpeta | Qué contiene |

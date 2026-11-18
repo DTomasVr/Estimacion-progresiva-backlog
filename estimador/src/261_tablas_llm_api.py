@@ -1,20 +1,23 @@
-"""Tablas de la comparacion del estimador v7 contra LLM actuales por API.
+"""Tables of the comparison of the v7 estimator against current LLMs through an API.
 
-Lee las corridas de results/llm_bench/raw (las de 259_banco_api.py y, como
-contexto, las locales de septiembre) y las compara con el v7 DESPLEGADO
-(260_v7_en_banco_llm.py) sobre EXACTAMENTE las mismas tareas que respondio cada
-modelo. Mismas metricas y pruebas que 69_eval_llm.py:
+Reads the runs in results/llm_bench/raw (those of 259_banco_api.py and, as context, the
+local ones from September) and compares them with the DEPLOYED v7
+(260_v7_en_banco_llm.py) on EXACTLY the same tasks each model answered. Same metrics
+and tests as 69_eval_llm.py:
 
-  crudo      lo que dice el LLM; las respuestas invalidas se sustituyen por la
-             mediana global (no se descartan: un modelo que no responde no gana)
-  calibrado  el LLM por un factor aprendido SOLO en las 130 tareas de calibracion
-  veredicto  sobre el IC95 por remuestreo de la diferencia de MdMRE con el v7
+  raw          what the LLM says; invalid answers are replaced by the global median
+               (they are not dropped: a model that does not answer does not win)
+  calibrated   the LLM times a factor learnt ONLY on the 130 calibration tasks
+  verdict      on the bootstrap CI95 of the MdMRE difference with v7
 
-El v7 solo usa el texto de la tarea, asi que se compara en A (solo texto) y en B
-(el LLM ademas ve ejemplos con horas reales). C (con historial del proyecto) se
-deja fuera: ahi la referencia seria el v7 con anclaje, que es otro experimento.
+v7 only uses the task text, so it is compared in A (text only) and in B (the LLM also
+sees examples with real hours). C (with the project history) is left out: there the
+reference would be v7 with anchoring, which is another experiment.
 
-Salidas: results/llm_bench/api_resumen.csv y api_tablas.md
+The raw run files (results/llm_bench/raw/*.jsonl) keep the field names they were
+written with (condicion, modelo, valido, horas, segundos, entrada, salida).
+
+Outputs: results/llm_bench/api_resumen.csv and api_tablas.md (Table III of the paper)
 """
 import glob
 import importlib.util
@@ -31,43 +34,43 @@ s.loader.exec_module(ev)
 
 BENCH = Path("data/processed/llm_bench")
 OUT = Path("results/llm_bench")
-NOMBRE = {"openai/gpt-oss-120b": "GPT-OSS 120B (OpenAI)", "openai/gpt-oss-20b": "GPT-OSS 20B (OpenAI)",
-          "qwen/qwen3.8-27b": "Qwen 3.8 27B", "gemini-3.5-flash": "Gemini 3.5 Flash (Google)",
-          "llama3.1:8b": "Llama 3.1 8B", "qwen2.5:7b": "Qwen 2.5 7B", "gemma2:9b": "Gemma 2 9B",
-          "mistral:7b": "Mistral 7B"}
+NAME = {"openai/gpt-oss-120b": "GPT-OSS 120B (OpenAI)", "openai/gpt-oss-20b": "GPT-OSS 20B (OpenAI)",
+        "qwen/qwen3.8-27b": "Qwen 3.8 27B", "gemini-3.5-flash": "Gemini 3.5 Flash (Google)",
+        "llama3.1:8b": "Llama 3.1 8B", "qwen2.5:7b": "Qwen 2.5 7B", "gemma2:9b": "Gemma 2 9B",
+        "mistral:7b": "Mistral 7B"}
 MS_V7 = json.load(open("results/estimador_v7/servicio.json"))["ms_por_tarea_caliente"]
 
 
-def corridas():
-    filas = []
+def runs_table():
+    rows = []
     for p in glob.glob(str(OUT / "raw" / "*.jsonl")):
-        conjunto = Path(p).name.split("__")[0]
+        subset = Path(p).name.split("__")[0]
         for line in open(p, encoding="utf-8"):
             try:
                 r = json.loads(line)
             except json.JSONDecodeError:
                 continue
-            r["conjunto"] = conjunto
-            filas.append(r)
-    return pd.DataFrame(filas)
+            r["conjunto"] = subset
+            rows.append(r)
+    return pd.DataFrame(rows)
 
 
 def main():
     mu = pd.read_parquet(BENCH / "muestra.parquet").merge(
         pd.read_parquet(BENCH / "v7_muestra.parquet"), on="task_id")
     cal = pd.read_parquet(BENCH / "calibracion.parquet")
-    runs = corridas()
+    runs = runs_table()
     runs = runs[runs.condicion.isin(["A", "B"])]
-    filas = []
+    rows = []
     y_all = mu.effort_hours.to_numpy()
-    filas.append(dict(condicion="-", modelo="PBE v7 (nuestro)", n=len(mu), validas=1.0,
-                      seg_tarea=MS_V7 / 1000, **ev.metricas(y_all, mu.v7_horas.to_numpy())))
-    filas.append(dict(condicion="-", modelo="PBE v7 · valor probable", n=len(mu), validas=1.0,
-                      seg_tarea=MS_V7 / 1000, **ev.metricas(y_all, mu.v7_probable.to_numpy())))
-    filas.append(dict(condicion="-", modelo="constante: mediana global", n=len(mu), validas=1.0,
-                      **ev.metricas(y_all, mu.mediana_global.to_numpy())))
+    rows.append(dict(condition="-", model="PBE v7 (ours)", n=len(mu), valid=1.0,
+                     sec_per_task=MS_V7 / 1000, **ev.metricas(y_all, mu.v7_horas.to_numpy())))
+    rows.append(dict(condition="-", model="PBE v7 · most likely value", n=len(mu), valid=1.0,
+                     sec_per_task=MS_V7 / 1000, **ev.metricas(y_all, mu.v7_probable.to_numpy())))
+    rows.append(dict(condition="-", model="constant: global median", n=len(mu), valid=1.0,
+                     **ev.metricas(y_all, mu.mediana_global.to_numpy())))
 
-    for (backend, modelo, cond), g in runs[runs.conjunto == "muestra"].groupby(
+    for (backend, model, cond), g in runs[runs.conjunto == "muestra"].groupby(
             ["backend", "modelo", "condicion"]):
         d = mu.merge(g[["task_id", "valido", "horas", "segundos", "entrada", "salida"]],
                      on="task_id", how="inner")
@@ -75,60 +78,60 @@ def main():
             continue
         y = d.effort_hours.to_numpy()
         ok = d.valido.fillna(False).astype(bool).to_numpy()
-        crudo = np.where(ok, d.horas.fillna(0).to_numpy(), d.mediana_global.to_numpy())
+        raw = np.where(ok, d.horas.fillna(0).to_numpy(), d.mediana_global.to_numpy())
         gc = runs[(runs.conjunto == "calibracion") & (runs.backend == backend)
-                  & (runs.modelo == modelo) & (runs.condicion == cond)]
+                  & (runs.modelo == model) & (runs.condicion == cond)]
         cc = cal.merge(gc[gc.valido == True][["task_id", "horas"]], on="task_id")  # noqa: E712
         k = float(np.exp(np.median(np.log(cc.effort_hours / cc.horas)))) if len(cc) >= 20 else np.nan
-        nuestro = d.v7_horas.to_numpy()
-        base = dict(condicion=cond, modelo=NOMBRE.get(modelo, modelo),
-                    proveedor="local (Ollama)" if backend == "ollama" else backend,
-                    n=len(d), validas=float(ok.mean()),
-                    seg_tarea=float(d.segundos.median()),
+        ours = d.v7_horas.to_numpy()
+        base = dict(condition=cond, model=NAME.get(model, model),
+                    provider="local (Ollama)" if backend == "ollama" else backend,
+                    n=len(d), valid=float(ok.mean()),
+                    sec_per_task=float(d.segundos.median()),
                     tokens=float((d.entrada.fillna(0) + d.salida.fillna(0)).median()),
-                    v7_mismas_tareas_MdMRE=ev.metricas(y, nuestro)["MdMRE"],
-                    v7_mismas_tareas_SA=ev.metricas(y, nuestro)["SA"])
-        for version, p in (("crudo", crudo), ("calibrado", crudo * k if k == k else None)):
+                    v7_same_tasks_MdMRE=ev.metricas(y, ours)["MdMRE"],
+                    v7_same_tasks_SA=ev.metricas(y, ours)["SA"])
+        for version, p in (("raw", raw), ("calibrated", raw * k if k == k else None)):
             if p is None:
                 continue
             e_llm = np.abs(np.log(y) - np.log(np.clip(p, .01, None)))
-            e_nos = np.abs(np.log(y) - np.log(nuestro))
-            lo, hi = ev.bootstrap_dif(y, p, nuestro)
-            filas.append(dict(**base, version=version, factor=k if version == "calibrado" else np.nan,
-                              **ev.metricas(y, p), p_wilcoxon=wilcoxon(e_llm, e_nos).pvalue,
-                              dif_MdMRE=f"[{lo:+.3f}, {hi:+.3f}]",
-                              veredicto=("LLM mejor" if hi < 0 else "PBE mejor" if lo > 0 else "empate")))
-    r = pd.DataFrame(filas)
+            e_ours = np.abs(np.log(y) - np.log(ours))
+            lo, hi = ev.bootstrap_dif(y, p, ours)
+            rows.append(dict(**base, version=version, factor=k if version == "calibrated" else np.nan,
+                             **ev.metricas(y, p), p_wilcoxon=wilcoxon(e_llm, e_ours).pvalue,
+                             diff_MdMRE=f"[{lo:+.3f}, {hi:+.3f}]",
+                             verdict=("LLM better" if hi < 0 else "PBE better" if lo > 0 else "tie")))
+    r = pd.DataFrame(rows)
     r.to_csv(OUT / "api_resumen.csv", index=False)
 
-    f = lambda x, d=3: "—" if pd.isna(x) else f"{x:.{d}f}".replace(".", ",")
-    pc = lambda x: "—" if pd.isna(x) else f"{100 * x:.1f} %".replace(".", ",")
-    L = ["# PBE v7 frente a LLM", "",
-         "601 tareas con horas reales (301 del bloque de prueba y 300 de proyectos externos), "
-         "ninguna vista por el v7 al entrenar. Generado por `src/261_tablas_llm_api.py`.", ""]
-    for cond, titulo in (("A", "Condición A · solo el texto de la tarea (como en producción)"),
-                         ("B", "Condición B · el LLM ve además ejemplos con horas reales")):
-        sub = r[(r.condicion == cond)]
+    f = lambda x, d=3: "—" if pd.isna(x) else f"{x:.{d}f}"
+    pc = lambda x: "—" if pd.isna(x) else f"{100 * x:.1f} %"
+    L = ["# PBE v7 against LLMs", "",
+         "601 tasks with real hours (301 from the test block and 300 from external projects), "
+         "none seen by v7 in training. Generated by `src/261_tablas_llm_api.py`.", ""]
+    for cond, title in (("A", "Condition A · task text only (as in production)"),
+                        ("B", "Condition B · the LLM also sees examples with real hours")):
+        sub = r[(r.condition == cond)]
         if sub.empty:
             continue
-        L += [f"## {titulo}", "",
-              "| modelo | proveedor | versión | n | válidas | MdMRE | PRED(25) | MAE (h) | SA | Spearman | frente a PBE | s/tarea |",
+        L += [f"## {title}", "",
+              "| model | provider | version | n | valid | MdMRE | PRED(25) | MAE (h) | SA | Spearman | against PBE | s/task |",
               "|---|---|---|---|---|---|---|---|---|---|---|---|"]
-        ref = r[r.condicion == "-"]
+        ref = r[r.condition == "-"]
         for _, x in ref.iterrows():
-            L.append(f"| **{x.modelo}** | — | — | {x.n} | 100 % | {f(x.MdMRE)} | {pc(x.PRED25)} | "
+            L.append(f"| **{x.model}** | — | — | {x.n} | 100 % | {f(x.MdMRE)} | {pc(x.PRED25)} | "
                      f"{f(x.MAE_h, 2)} | {f(x.SA)} | {f(x.spearman)} | — | "
-                     f"{f(x.seg_tarea, 4) if pd.notna(x.get('seg_tarea')) else '—'} |")
-        for _, x in sub.sort_values(["proveedor", "modelo", "version"]).iterrows():
-            L.append(f"| {x.modelo} | {x.proveedor} | {x.version} | {x.n} | {pc(x.validas)} | "
+                     f"{f(x.sec_per_task, 4) if pd.notna(x.get('sec_per_task')) else '—'} |")
+        for _, x in sub.sort_values(["provider", "model", "version"]).iterrows():
+            L.append(f"| {x.model} | {x.provider} | {x.version} | {x.n} | {pc(x.valid)} | "
                      f"{f(x.MdMRE)} | {pc(x.PRED25)} | {f(x.MAE_h, 2)} | {f(x.SA)} | "
-                     f"{f(x.spearman)} | {x.veredicto} {x.dif_MdMRE} | {f(x.seg_tarea, 2)} |")
+                     f"{f(x.spearman)} | {x.verdict} {x.diff_MdMRE} | {f(x.sec_per_task, 2)} |")
         L.append("")
-    L += ["**Lectura.** «frente a PBE» es el veredicto sobre el IC95 de la diferencia de MdMRE "
-          "(LLM − PBE) en las mismas tareas: negativo y sin cruzar el cero, gana el LLM; positivo, "
-          "gana PBE. Las respuestas inválidas del LLM cuentan como la mediana global. «calibrado» "
-          "multiplica al LLM por un factor aprendido en 130 tareas aparte. PBE responde en "
-          f"{f(MS_V7 / 1000, 4)} s por tarea en CPU, sin conexión y sin coste por llamada.", ""]
+    L += ["**Reading.** 'against PBE' is the verdict on the CI95 of the MdMRE difference "
+          "(LLM − PBE) on the same tasks: negative and not crossing zero, the LLM wins; positive, "
+          "PBE wins. Invalid LLM answers count as the global median. 'calibrated' multiplies the "
+          "LLM by a factor learnt on 130 separate tasks. PBE answers in "
+          f"{f(MS_V7 / 1000, 4)} s per task on CPU, offline and with no cost per call.", ""]
     (OUT / "api_tablas.md").write_text("\n".join(L), encoding="utf-8")
     print("\n".join(L))
 

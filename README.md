@@ -94,6 +94,46 @@ identical in development and production (checked with MD5).
   recycling = g04) come from Dalpiaz and are in our training data, so they are excluded from the
   evaluation.
 
+## Result files: column names
+
+The code, comments and the column names and labels of the paper's result files are in English.
+Three things keep their Spanish names: file and folder names (they are cited in the paper and the
+thesis), the raw LLM run logs (`*.jsonl`, whose fields such as `modelo`, `condicion`, `valido`,
+`horas`, `segundos`, `caso`, `sistema`, `tareas` are kept exactly as recorded), and the outputs of
+scripts the paper does not use. The paper's LaTeX tables are in Spanish because the paper is.
+
+Common columns:
+
+| Column | Meaning |
+|---|---|
+| `PRED25` | share of projects (or tasks) whose estimate is within ±25 % of the real value |
+| `MdMRE` | median of the magnitude of relative error, abs(estimate − real) / real |
+| `factor2` | share within a factor 2 of the real value |
+| `projects`, `n` | number of projects (or tasks, or backlogs) behind the row |
+| `k`, `closed` | number of tasks already closed in the project |
+| `ci95_lo`, `ci95_hi` | 95 % bootstrap interval of the difference in the row |
+| `coverage` | estimation: share of real totals inside the interval; generation: share of real stories matched |
+| `sF1` | set F1 of the generated stories against the real ones (generation) |
+
+Files used by the paper (paths relative to `estimador/`):
+
+| File | Columns and values |
+|---|---|
+| `results/curva_anclaje_dos_criterios/resumen.csv` | `criterion`: `all` (the 114 projects), `larger` (only projects with more than k tasks), `k or 20 % of the backlog`; `PRED25_cold`: PRED25 of the same projects at kick-off |
+| `results/banda_proyecto/resumen.csv` | `scenario` (`cold`, `3 closed tasks`, `10 closed tasks`), `level`, `method` (`single`, `by size band`), `width_x`: median ratio of the interval's upper to lower bound |
+| `results/banda_que_cierra_antes/resumen.csv` | `band`: interval variant (`A2 · by k and size band (deployed)` is the one in production, `D · shrunk size band M=…` the one used with few closed tasks); `nominal_level`, `median_width`, `width_p25`, `width_p75`, and the same for `larger` projects |
+| `results/extrapolacion_simple/resumen.csv`, `diferencia_ic.csv` | `rule`: `anchoring lambda=12`, `no shrinkage (lambda=0)`, `simple extrapolation`; `diff_PRED25` anchoring minus extrapolation, `projects_anchoring_better`, `projects_extrapolation_better` |
+| `results/avance_orden_real/resumen.csv` | `cut`: `cold`, `real order · X % closed`, `random · X % closed`; `closed_tasks_median`, `closed_fraction_median`; size-band columns (`8-15` … `over 400`) give PRED25 by project size |
+| `results/tres_estados/resumen.csv` | `user_estimates` (share of the backlog the user estimates), `lambda_u`, `lambda_c`, `PRED25_clean` (only over what the user did not give) |
+| `results/orden_real_con_estimaciones/resumen.csv` | `user_estimates` (`none`, `all`), `closed_fraction`, `PRED25_real_order`, `PRED25_random` |
+| `results/baselines_literatura.csv` | `model`, `beats_baseline` (projects where the model beats the project median), `RMSE_log` |
+| `results/rejilla_valores/contra_literatura.csv` | `model`: `ours, not snapped`, `ours, SNAPPED to the grid`, `best constant`; `MAE_h` (hours), `SA`, `spearman` |
+| `results/llm_bench/api_resumen.csv` | `condition` (`A` text only, `B` with examples, `-` reference), `model` (`PBE v7 (ours)` is the proposal), `provider`, `version` (`raw`, `calibrated`), `valid` (share of parseable answers), `sec_per_task`, `factor` (calibration factor), `diff_MdMRE` (CI95 of LLM minus PBE), `verdict` (`LLM better`, `PBE better`, `tie`), `v7_same_tasks_*` |
+| `results/banco_generacion/resumen.csv` | `system` (`PBE (current)` is the proposal; `… zero-shot` the LLMs), `sec_median`, `stories`, `tasks`, `format` (share in the "As a…" form), `recognises` (share of projects the LLM claims to recognise), `diff_sF1` (other minus PBE), `verdict` (`PBE wins`, `other wins`, `tie`) |
+| `results/banco_generacion/por_proyecto.csv` | one row per system and project: `case`, `source`, `seconds`, `n_tasks` |
+| `results/redundancia_tareas/resumen.csv` | `near_duplicates_090` (share of tasks with a cosine ≥ 0,90 to another task of the same backlog), `near_duplicates_080`, `mean_similarity`, `distinct_tasks`, `diff_dup90` (LLM minus PBE) |
+| `generador/results/49_real_vigente.csv`, `103_ablacion_anclas.csv` | `seed`, `project`, `n_ref`, `n_gen`, `anchors` (anchor stories used), `anchors_on` (1 with anchors), `precision`, `seconds` |
+
 ## Layout
 
 | Folder | Contents |

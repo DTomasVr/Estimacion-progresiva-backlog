@@ -1,30 +1,32 @@
-"""E96 - Afinar el ajuste a la rejilla, y medirlo contra el estado del arte.
+"""E96 - Tuning the snap-to-grid step, and measuring it against the state of the art.
 
-E95 dejo dos cosas. La incomoda: predecir una constante da mas PRED(25) que
-nuestro modelo, porque PRED(25) mide la curtosis de estimado/real y la
-distribucion del esfuerzo es un peine -diez valores cubren el 46,8 %-. Y la
-util: AJUSTAR la prediccion al valor frecuente mas cercano sube el +-25 % de
-15,06 % a 16,49 % y el factor 2 de 0,390 a 0,431 sin tocar el MAE, el SA ni el
-orden entre tareas.
+E95 left two things. The awkward one: predicting a constant gives more PRED(25) than
+our model, because PRED(25) measures the kurtosis of estimate/real and the effort
+distribution is a comb (ten values cover 46,8 %). And the useful one: SNAPPING the
+prediction to the nearest frequent value raises the +-25 % from 15,06 % to 16,49 %
+and the factor 2 from 0,390 to 0,431 without touching the MAE, the SA or the ranking
+of tasks.
 
-La regla agresiva -buscar la moda de la ventana relativa- daba algo mas de
-PRED(25) pero hundia el spearman de 0,32 a 0,12 y el SA a negativo: mostraria
-casi el mismo numero para toda tarea. Inservible como producto.
+The aggressive rule (looking for the mode of a relative window) gave somewhat more
+PRED(25) but sank the Spearman from 0,32 to 0,12 and the SA to negative: it would show
+almost the same number for every task. Useless as a product.
 
-Asi que aqui se afina solo el ajuste a la rejilla, que es gratis:
+So only the snap to the grid, which is free, is tuned here:
 
-  cuantos valores tiene que tener la rejilla, elegido FUERA de pliegue
-  rejilla por frecuencia frente a rejilla geometrica
-  y si conviene ajustar en log o en lineal
+  how many values the grid must have, chosen OUT of fold
+  frequency grid against geometric grid
+  and whether it is better to snap in log or in linear scale
 
-Y se mide donde se puede comparar: el bloque split_t3 == test, que es el que
-usan las reimplementaciones de Deep-SE y GPT2SP en 46_baselines_literatura.py.
+And it is measured where it can be compared: the block split_t3 == test, which is the
+one used by the Deep-SE and GPT2SP reimplementations in 46_baselines_literatura.py.
 
-AVISO DE COMPARABILIDAD: nuestras predicciones son fuera de pliegue con
-GroupKFold por PROYECTO ENTERO, asi que el modelo nunca vio ni la tarea ni su
-proyecto. Las de la literatura se entrenan en el bloque train, que SI contiene
-tareas de los mismos proyectos. La comparacion nos perjudica a nosotros, no al
-reves; conviene decirlo tal cual.
+COMPARABILITY WARNING: our predictions are out of fold with GroupKFold by WHOLE PROJECT,
+so the model never saw the task or its project. The literature models are trained on
+the train block, which DOES contain tasks of the same projects. The comparison works
+against us, not the other way round; it should be said as it is.
+
+Outputs: results/rejilla_valores/tamano_rejilla.csv and contra_literatura.csv
+(the proposal and the 2,45 h constant of Table II in the paper)
 """
 import json
 import sys
@@ -42,8 +44,8 @@ warnings.filterwarnings("ignore")
 pd.set_option("display.width", 200)
 OUT = Path("results/rejilla_valores")
 S = "=" * 104
-PLIEGUES, TOL = 5, .25
-TAMANOS = (4, 6, 8, 10, 12, 16, 20, 30, 50)
+FOLDS, TOL = 5, .25
+SIZES = (4, 6, 8, 10, 12, 16, 20, 30, 50)
 
 
 def met(y, p):
@@ -57,97 +59,96 @@ def met(y, p):
                 spearman=float(spearmanr(p, y).statistic))
 
 
-def ajusta(p, rej):
-    """Al valor de la rejilla mas cercano EN LOG: lo que importa es el cociente."""
-    return rej[np.argmin(np.abs(np.log(p[:, None] / rej[None])), 1)]
+def snap(p, grid):
+    """To the nearest grid value IN LOG: what matters is the ratio."""
+    return grid[np.argmin(np.abs(np.log(p[:, None] / grid[None])), 1)]
 
 
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
     df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
-    todo = df[df.is_software_task == 1].reset_index(drop=True)
-    sw = todo[~todo.fuente_jira.eq("Apache")].reset_index(drop=True)
+    every = df[df.is_software_task == 1].reset_index(drop=True)
+    sw = every[~every.fuente_jira.eq("Apache")].reset_index(drop=True)
     y = sw.effort_hours.to_numpy(float)
-    proy = sw.project.to_numpy()
-    p_act = np.load("results/experto_cortas/predicciones.npz")["p_glob"]
-    assert len(p_act) == len(y)
-    print(f"{len(y):,} tareas · {time.time() - t0:.0f} s", flush=True)
+    proj = sw.project.to_numpy()
+    p_cur = np.load("results/experto_cortas/predicciones.npz")["p_glob"]
+    assert len(p_cur) == len(y)
+    print(f"{len(y):,} tasks · {time.time() - t0:.0f} s", flush=True)
 
-    # ---- 1. que tamano de rejilla, elegido fuera de pliegue ----
-    filas = []
-    for g in TAMANOS:
-        for tipo in ("frecuencia", "geometrica"):
+    # ---- 1. grid size, chosen out of fold ----
+    rows = []
+    for g in SIZES:
+        for kind in ("frequency", "geometric"):
             p = np.empty(len(y))
-            for a, b in GroupKFold(PLIEGUES).split(y[:, None], y, proy):
-                if tipo == "frecuencia":
+            for a, b in GroupKFold(FOLDS).split(y[:, None], y, proj):
+                if kind == "frequency":
                     v, c = np.unique(y[a], return_counts=True)
-                    rej = np.sort(v[np.argsort(-c)[:g]])
+                    grid = np.sort(v[np.argsort(-c)[:g]])
                 else:
-                    rej = np.geomspace(np.quantile(y[a], .02),
-                                       np.quantile(y[a], .98), g)
-                p[b] = ajusta(p_act[b], rej)
-            filas.append(dict(tamano=g, rejilla=tipo, **met(y, p)))
-    t1 = pd.DataFrame(filas)
-    print(f"\n{S}\n¿CUANTOS VALORES DEBE TENER LA REJILLA?\n{S}")
-    print(t1.pivot(index="tamano", columns="rejilla",
+                    grid = np.geomspace(np.quantile(y[a], .02),
+                                        np.quantile(y[a], .98), g)
+                p[b] = snap(p_cur[b], grid)
+            rows.append(dict(size=g, grid=kind, **met(y, p)))
+    t1 = pd.DataFrame(rows)
+    print(f"\n{S}\nHOW MANY VALUES SHOULD THE GRID HAVE?\n{S}")
+    print(t1.pivot(index="size", columns="grid",
                    values="PRED25").round(4).to_string())
-    mejor = t1.loc[t1.PRED25.idxmax()]
-    print(f"\n  mejor: {int(mejor.tamano)} valores, rejilla por "
-          f"{mejor.rejilla} · ±25 % {mejor.PRED25:.2%} · factor2 "
-          f"{mejor.factor2:.4f} · MAE {mejor.MAE_h:.3f} · SA {mejor.SA:.4f}")
+    best = t1.loc[t1.PRED25.idxmax()]
+    print(f"\n  best: {int(best['size'])} values, {best.grid} grid · ±25 % {best.PRED25:.2%} · factor2 "
+          f"{best.factor2:.4f} · MAE {best.MAE_h:.3f} · SA {best.SA:.4f}")
 
-    # la rejilla final, ajustada en todo el corpus, para dejarla escrita
+    # the final grid, fitted on the whole corpus, to have it written down
     v, c = np.unique(y, return_counts=True)
-    rej_fin = np.sort(v[np.argsort(-c)[:int(mejor.tamano)]])
-    print(f"  la rejilla: {' · '.join(f'{x:g}' for x in rej_fin)} h")
+    final_grid = np.sort(v[np.argsort(-c)[:int(best['size'])]])
+    print(f"  the grid: {' · '.join(f'{x:g}' for x in final_grid)} h")
 
-    # ---- 2. donde se compara con la literatura ----
+    # ---- 2. where it is compared with the literature ----
     te = (sw.split_t3 == "test").to_numpy()
     p_sn = np.empty(len(y))
-    for a, b in GroupKFold(PLIEGUES).split(y[:, None], y, proy):
+    for a, b in GroupKFold(FOLDS).split(y[:, None], y, proj):
         vv, cc = np.unique(y[a], return_counts=True)
-        p_sn[b] = ajusta(p_act[b], np.sort(vv[np.argsort(-cc)[:int(mejor.tamano)]]))
-    cte = np.empty(len(y))
-    for a, b in GroupKFold(PLIEGUES).split(y[:, None], y, proy):
+        p_sn[b] = snap(p_cur[b], np.sort(vv[np.argsort(-cc)[:int(best['size'])]]))
+    const = np.empty(len(y))
+    for a, b in GroupKFold(FOLDS).split(y[:, None], y, proj):
         cand = np.unique(y[a])
-        cte[b] = cand[int(np.argmax([np.mean(np.abs(x - y[a]) / y[a] <= TOL)
-                                     for x in cand]))]
-    print(f"\n{S}\nEN EL BLOQUE split_t3 == test ({int(te.sum()):,} tareas)\n{S}")
-    f2 = [dict(modelo="nuestro, sin ajustar", **met(y[te], p_act[te])),
-          dict(modelo="nuestro, AJUSTADO a la rejilla", **met(y[te], p_sn[te])),
-          dict(modelo="la mejor constante", **met(y[te], cte[te]))]
+        const[b] = cand[int(np.argmax([np.mean(np.abs(x - y[a]) / y[a] <= TOL)
+                                       for x in cand]))]
+    print(f"\n{S}\nON THE BLOCK split_t3 == test ({int(te.sum()):,} tasks)\n{S}")
+    f2 = [dict(model="ours, not snapped", **met(y[te], p_cur[te])),
+          dict(model="ours, SNAPPED to the grid", **met(y[te], p_sn[te])),
+          dict(model="best constant", **met(y[te], const[te]))]
     t2 = pd.DataFrame(f2)
-    print(t2[["modelo", "PRED25", "MdMRE", "factor2", "MAE_h", "SA",
+    print(t2[["model", "PRED25", "MdMRE", "factor2", "MAE_h", "SA",
               "spearman"]].round(4).to_string(index=False))
     lit = pd.read_csv("results/baselines_literatura.csv")
-    print(f"\n  lo publicado sobre el mismo bloque:")
+    print("\n  the published models on the same block:")
     for _, x in lit.iterrows():
-        print(f"    {x.modelo:42s} ±25 % {x.PRED25:.4f} · MdMRE {x.MdMRE:.4f}")
+        print(f"    {x.model:42s} ±25 % {x.PRED25:.4f} · MdMRE {x.MdMRE:.4f}")
 
-    print(f"\n{S}\nLECTURA\n{S}")
-    a = float(t2[t2.modelo.str.startswith("nuestro, sin")].PRED25.iloc[0])
-    s_ = float(t2[t2.modelo.str.contains("AJUSTADO")].PRED25.iloc[0])
-    cc_ = float(t2[t2.modelo.str.startswith("la mejor")].PRED25.iloc[0])
+    print(f"\n{S}\nREADING\n{S}")
+    a = float(t2[t2.model.str.startswith("ours, not")].PRED25.iloc[0])
+    s_ = float(t2[t2.model.str.contains("SNAPPED")].PRED25.iloc[0])
+    cc_ = float(t2[t2.model.str.startswith("best")].PRED25.iloc[0])
     top = float(lit.PRED25.max())
-    nom = lit.loc[lit.PRED25.idxmax(), "modelo"]
-    print(f"  sin ajustar {a:.2%} · AJUSTADO {s_:.2%} ({(s_ - a) * 100:+.1f} pts)")
-    print(f"  el mejor publicado: {nom} con {top:.2%}")
-    print(f"  la mejor constante: {cc_:.2%}")
+    name = lit.loc[lit.PRED25.idxmax(), "model"]
+    print(f"  not snapped {a:.2%} · SNAPPED {s_:.2%} ({(s_ - a) * 100:+.1f} pts)")
+    print(f"  the best published: {name} with {top:.2%}")
+    print(f"  the best constant: {cc_:.2%}")
     if cc_ >= top:
-        print(f"\n  OJO: una constante le gana a TODO lo publicado en esta metrica.")
-        print("  No es un resultado sobre nuestro modelo, es sobre la metrica:")
-        print("  PRED(25) mide la curtosis de estimado/real, no la capacidad de")
-        print("  ordenar. Hay que reportarlo junto al SA y al spearman, donde la")
-        print("  constante saca 0 y nosotros no.")
+        print("\n  NOTE: a constant beats EVERYTHING published on this metric.")
+        print("  It is not a result about our model, it is about the metric:")
+        print("  PRED(25) measures the kurtosis of estimate/real, not the ability to")
+        print("  rank. It has to be reported together with SA and Spearman, where the")
+        print("  constant scores 0 and we do not.")
     t1.to_csv(OUT / "tamano_rejilla.csv", index=False)
     t2.to_csv(OUT / "contra_literatura.csv", index=False)
-    json.dump({"tamano": int(mejor.tamano), "tipo": mejor.rejilla,
-               "rejilla": [float(x) for x in rej_fin],
-               "test_sin_ajustar": a, "test_ajustado": s_,
-               "test_constante": cc_, "mejor_publicado": top},
+    json.dump({"size": int(best['size']), "kind": best.grid,
+               "grid": [float(x) for x in final_grid],
+               "test_not_snapped": a, "test_snapped": s_,
+               "test_constant": cc_, "best_published": top},
               open(OUT / "meta.json", "w"), indent=1)
-    print(f"\nescrito {OUT}/ · {time.time() - t0:.0f} s")
+    print(f"\nwritten {OUT}/ · {time.time() - t0:.0f} s")
 
 
 if __name__ == "__main__":

@@ -1,8 +1,8 @@
 {
- "proyectos": 114,
- "sorteos": 60,
- "con_estimacion": 41,
- "limpios": 25,
- "proyectos_con_hermano": 93,
- "segundos": 4
+ "projects": 114,
+ "draws": 60,
+ "with_estimate": 41,
+ "clean": 25,
+ "projects_with_sibling": 93,
+ "seconds": 4
 }

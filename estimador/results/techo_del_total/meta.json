@@ -1,6 +1,6 @@
 {
- "proyectos": 114,
- "sorteos": 60,
- "sesgo_log": -0.7276612950392067,
- "segundos": 11
+ "projects": 114,
+ "draws": 60,
+ "log_bias": -0.7276612950392067,
+ "seconds": 10
 }

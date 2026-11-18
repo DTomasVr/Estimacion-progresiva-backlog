@@ -1,45 +1,45 @@
-"""Corre el banco de estimacion contra LLM por API (Groq, Gemini), reanudable.
+"""Runs the estimation bench against LLMs through an API (Groq, Gemini), resumable.
 
     python src/259_banco_api.py groq openai/gpt-oss-120b
 
-Mismo banco que 70_correr_banco.py (601 tareas de muestra + 130 de calibracion,
-mismos prompts), en el orden que deja una corrida parcial util: primero la
-condicion A (solo el texto, la comparable con el producto) y su calibracion,
-despues B (con ejemplos) y C (con historial del proyecto). Si el proveedor agota
-la cuota del dia, el runner corta sin registrar nada y esto se relanza otro dia:
-solo hace lo que falta.
+Same bench as 70_correr_banco.py (601 sample tasks + 130 calibration tasks, same
+prompts), in the order that leaves a useful partial run: first condition A (text
+only, the one comparable with the product) and its calibration, then B (with
+examples) and C (with the project history). If the provider runs out of daily quota,
+the runner stops without recording anything and this is relaunched another day: it
+only does what is missing.
 """
 import subprocess
 import sys
 import time
 from datetime import datetime
 
-ORDEN = [("muestra", "A"), ("calibracion", "A"), ("muestra", "B"), ("calibracion", "B"),
+ORDER = [("muestra", "A"), ("calibracion", "A"), ("muestra", "B"), ("calibracion", "B"),
          ("muestra", "C"), ("calibracion", "C")]
 LOG = "results/llm_bench/log_api.txt"
 
 
-def registrar(msg):
-    linea = f"[{datetime.now():%d/%m %H:%M:%S}] {msg}"
-    print(linea, flush=True)
+def log(msg):
+    line = f"[{datetime.now():%d/%m %H:%M:%S}] {msg}"
+    print(line, flush=True)
     with open(LOG, "a", encoding="utf-8") as fh:
-        fh.write(linea + "\n")
+        fh.write(line + "\n")
 
 
 def main():
-    backend, modelo = sys.argv[1], sys.argv[2]
-    for conjunto, cond in ORDEN:
+    backend, model = sys.argv[1], sys.argv[2]
+    for subset, cond in ORDER:
         t0 = time.time()
-        r = subprocess.run([sys.executable, "src/68_llm_runner.py", backend, modelo, cond,
-                            "--conjunto", conjunto],
+        r = subprocess.run([sys.executable, "src/68_llm_runner.py", backend, model, cond,
+                            "--conjunto", subset],
                            capture_output=True, text=True, encoding="utf-8")
-        ultima = (r.stdout.strip().splitlines() or ["(sin salida)"])[-1]
-        registrar(f"{modelo} {conjunto} {cond}: {ultima} "
-                  f"({(time.time() - t0) / 60:.1f} min, exit {r.returncode})")
-        if r.returncode == 3 or "cortado" in r.stdout:
-            registrar(f"{modelo}: sin cuota, se retoma otro dia")
+        last = (r.stdout.strip().splitlines() or ["(no output)"])[-1]
+        log(f"{model} {subset} {cond}: {last} "
+            f"({(time.time() - t0) / 60:.1f} min, exit {r.returncode})")
+        if r.returncode == 3 or "stopped" in r.stdout:
+            log(f"{model}: no quota left, it resumes another day")
             return
-    registrar(f"{modelo}: banco completo")
+    log(f"{model}: bench complete")
 
 
 if __name__ == "__main__":

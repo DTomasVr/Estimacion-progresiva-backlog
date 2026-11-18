@@ -18,6 +18,13 @@ Differences against our model are tested pairwise on the same tasks: Wilcoxon on
 the per-task absolute log error, plus a bootstrap interval for the difference in
 MdMRE. The contamination probe reports how often a model names the exact issue
 key of a public task it was never told the key of.
+
+This is the September bench (local models), kept as context; the paper's Table III
+comes from 261_tablas_llm_api.py, which reuses metricas() and bootstrap_dif() from
+here. The CSV files written here (results/llm_bench/resumen.csv,
+sesgo_por_tamano.csv, sonda_contaminacion.csv) keep the Spanish column and label
+names they were published with: condicion, modelo, validas, seg_tarea, veredicto
+("LLM mejor" / "nuestro mejor" / "empate" = LLM better / ours better / tie), etc.
 """
 import glob
 import json
@@ -85,7 +92,7 @@ def cargar_corridas():
         for l in open(p, encoding="utf-8"):
             try:
                 r = json.loads(l)
-            except json.JSONDecodeError:   # linea a medio escribir durante la corrida
+            except json.JSONDecodeError:   # line half-written during the run
                 continue
             r["conjunto"] = conjunto
             filas.append(r)
@@ -97,10 +104,10 @@ def main():
     cal = pd.read_parquet(BENCH / "calibracion.parquet")
     runs = cargar_corridas()
     if runs.empty:
-        sys.exit("no hay corridas en results/llm_bench/raw")
+        sys.exit("no runs in results/llm_bench/raw")
 
     resumen, sesgos = [], []
-    # ------------------------------------------------ referencias propias
+    # ------------------------------------------------ our own references
     for cond in ("A", "B", "C"):
         d = muestra if cond != "C" else muestra[muestra.n_hist >= 3]
         y = d.effort_hours.to_numpy()
@@ -113,7 +120,7 @@ def main():
             resumen.append(dict(condicion=cond, modelo=nombre, version="referencia",
                                 n=len(d), validas=1.0, **metricas(y, p.to_numpy())))
 
-    # ------------------------------------------------ cada LLM
+    # ------------------------------------------------ each LLM
     est = runs[runs.condicion != "P"]
     for (backend, modelo, cond), g in est[est.conjunto == "muestra"].groupby(
             ["backend", "modelo", "condicion"]):
@@ -128,7 +135,7 @@ def main():
         ok = d.valido.fillna(False).astype(bool).to_numpy()
         crudo = np.where(ok, d.horas.fillna(0).to_numpy(), base)
 
-        # factor de calibracion aprendido SOLO en el conjunto de calibracion
+        # calibration factor learnt ONLY on the calibration set
         gc = runs[(runs.conjunto == "calibracion") & (runs.backend == backend)
                   & (runs.modelo == modelo) & (runs.condicion == cond)]
         cc = cal.merge(gc[gc.valido == True][["task_id", "horas"]], on="task_id")  # noqa: E712
@@ -138,8 +145,8 @@ def main():
         combinado = np.sqrt(np.clip(calibrado, .01, None) * nuestro)
 
         etiqueta = f"{modelo} ({backend})"
-        # referencia sobre EXACTAMENTE las mismas tareas: con una corrida a medias
-        # las cifras sobre la muestra completa no son comparables
+        # reference on EXACTLY the same tasks: with a half-finished run the
+        # figures on the whole sample are not comparable
         resumen.append(dict(condicion=cond, version="referencia", n=len(d),
                             modelo=f"nuestro modelo · mismas {len(d)} tareas que {modelo}",
                             validas=1.0, **metricas(y, nuestro)))
@@ -152,8 +159,8 @@ def main():
             err_nos = np.abs(np.log(y) - np.log(nuestro))
             w = wilcoxon(err_llm, err_nos)
             lo, hi = bootstrap_dif(y, p, nuestro)
-            # el p-valor solo dice que hay diferencia; la direccion y el veredicto
-            # dicen quien gana. Veredicto sobre el intervalo del MdMRE, la metrica titular
+            # the p-value only says there is a difference; the direction and the verdict
+            # say who wins. Verdict on the MdMRE interval, the headline metric
             veredicto = ("LLM mejor" if hi < 0 else "nuestro mejor" if lo > 0 else "empate")
             resumen.append(dict(**comun, version=version,
                                 factor=k if version != "crudo" else np.nan,
@@ -200,10 +207,10 @@ def main():
     vista = vista[[c for c in cols if c in vista.columns]]
     for cond in ("A", "B", "C"):
         v = vista[vista.condicion == cond].sort_values("MdMRE")
-        print(f"\n{'=' * 150}\nCONDICIÓN {cond}\n{'=' * 150}")
+        print(f"\n{'=' * 150}\nCONDITION {cond}\n{'=' * 150}")
         print(v.round(4).to_string(index=False))
 
-    # ------------------------------------------------ sonda de contaminacion
+    # ------------------------------------------------ contamination probe
     pr = runs[(runs.condicion == "P") & (runs.conjunto == "muestra")]
     if len(pr):
         pr = pr.assign(real=pr.task_id.map(clave_real))
@@ -214,11 +221,11 @@ def main():
         s = pr.groupby(["backend", "modelo"]).agg(
             n=("task_id", "size"), afirma_reconocer=("afirma", "mean"),
             clave_exacta=("acierta", "mean")).round(4)
-        print(f"\n{'=' * 150}\nSONDA DE CONTAMINACIÓN (tareas públicas)\n{'=' * 150}")
+        print(f"\n{'=' * 150}\nCONTAMINATION PROBE (public tasks)\n{'=' * 150}")
         print(s.to_string())
         s.to_csv(out / "sonda_contaminacion.csv")
 
-    print(f"\nescrito {out}/resumen.csv, sesgo_por_tamano.csv")
+    print(f"\nwritten {out}/resumen.csv, sesgo_por_tamano.csv")
 
 
 if __name__ == "__main__":

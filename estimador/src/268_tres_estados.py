@@ -1,17 +1,20 @@
-"""E-268 - La regla completa: cada tarea esta CERRADA, ESTIMADA por el usuario o SOLA.
+"""E-268 - The full rule: each task is CLOSED, ESTIMATED by the user or ALONE.
 
-E-267 midio por separado dar horas reales y dar estimaciones. En el producto
-conviven: unas tareas ya se cerraron (horas reales), otras tienen la estimacion
-del usuario y el resto solo tiene el modelo. La regla que se va a implementar:
+E-267 measured separately giving real hours and giving estimates. In the product they
+coexist: some tasks are already closed (real hours), others have the user's estimate
+and the rest only have the model. The rule to be implemented:
 
-  base de una tarea   = estimacion del usuario si la hay; si no, modelo x f_u
-  f_u                 = (suma usuario / suma modelo, en las estimadas) ^ (m / (m + lambda_u))
-  f_c                 = (suma real / suma base, en las cerradas)       ^ (k / (k + lambda_c))
-  total               = suma real de las cerradas + f_c x suma base de las abiertas
+  base of a task   = the user's estimate if there is one; otherwise model x f_u
+  f_u              = (user sum / model sum, on the estimated tasks) ^ (m / (m + lambda_u))
+  f_c              = (real sum / base sum, on the closed tasks)     ^ (k / (k + lambda_c))
+  total            = real sum of the closed tasks + f_c x base sum of the open ones
 
-Con m = 0 y k = 0 es el frio; con una sola entrada solo pesa esa. Se mide en los
-proyectos que traen estimacion real del usuario (80 % de sus tareas o mas), para
-todas las combinaciones de cuanto estima el usuario y cuantas tareas hay cerradas.
+With m = 0 and k = 0 it is the cold start; with a single input only that one weighs.
+It is measured on the projects that carry a real user estimate (80 % of their tasks or
+more), for every combination of how much the user estimates and how many tasks are
+closed.
+
+Output: results/tres_estados/resumen.csv
 """
 import importlib.util
 import json
@@ -23,9 +26,9 @@ import numpy as np
 import pandas as pd
 
 OUT = Path("results/tres_estados")
-SORTEOS = 60
-ESTIMA = (0, .25, .50, 1.0)
-CERRADAS = (0, 3, 5, 10, 20)
+DRAWS = 60
+ESTIMATED = (0, .25, .50, 1.0)
+CLOSED = (0, 3, 5, 10, 20)
 LAM_U = (12, 30)
 LAM_C = (12, 30, 96)
 
@@ -44,38 +47,38 @@ def main():
     re_ = [g.real.to_numpy() for g in G]
     es_ = [g.est.to_numpy() for g in G]
     us_ = [g.usu.to_numpy() for g in G]
-    con = [np.flatnonzero(~np.isnan(x)) for x in us_]
+    has = [np.flatnonzero(~np.isnan(x)) for x in us_]
     n = np.array([len(x) for x in re_])
     real = np.array([x.sum() for x in re_])
-    limpio = np.array([g.copiada.mean() < .25 for g in G])
-    print(f"{P} proyectos con estimacion del usuario · {int(limpio.sum())} con pocas filas copiadas · "
-          f"tareas por proyecto: mediana {int(np.median(n))}", flush=True)
+    clean = np.array([g.copiada.mean() < .25 for g in G])
+    print(f"{P} projects with a user estimate · {int(clean.sum())} with few copied rows · "
+          f"tasks per project: median {int(np.median(n))}", flush=True)
 
-    def total(j, est_idx, cer_idx, lu, lc):
+    def total(j, est_idx, closed_idx, lu, lc):
         base = es_[j].copy()
         m = len(est_idx)
         if m:
             fu = np.exp(np.log(us_[j][est_idx].sum() / es_[j][est_idx].sum()) * m / (m + lu))
             base = base * fu
             base[est_idx] = us_[j][est_idx]
-        k = len(cer_idx)
+        k = len(closed_idx)
         if not k:
             return base.sum()
-        ab = np.ones(n[j], bool)
-        ab[cer_idx] = False
-        fc = np.exp(np.log(re_[j][cer_idx].sum() / base[cer_idx].sum()) * k / (k + lc))
-        return re_[j][cer_idx].sum() + fc * base[ab].sum()
+        op = np.ones(n[j], bool)
+        op[closed_idx] = False
+        fc = np.exp(np.log(re_[j][closed_idx].sum() / base[closed_idx].sum()) * k / (k + lc))
+        return re_[j][closed_idx].sum() + fc * base[op].sum()
 
-    filas = []
-    for fe in ESTIMA:
-        for k in CERRADAS:
+    rows = []
+    for fe in ESTIMATED:
+        for k in CLOSED:
             rng = np.random.default_rng(26800 + int(fe * 100) * 100 + k)
             acc = {}
-            for _ in range(SORTEOS):
+            for _ in range(DRAWS):
                 sel = []
                 for j in range(P):
-                    m = min(int(round(fe * n[j])), len(con[j]))
-                    ei = rng.choice(con[j], m, replace=False) if m else np.array([], int)
+                    m = min(int(round(fe * n[j])), len(has[j]))
+                    ei = rng.choice(has[j], m, replace=False) if m else np.array([], int)
                     kk = min(k, n[j] - 1)
                     ci = rng.choice(n[j], kk, replace=False) if kk else np.array([], int)
                     sel.append((ei, ci))
@@ -86,34 +89,34 @@ def main():
                         t = np.array([total(j, *sel[j], lu, lc) for j in range(P)])
                         r = np.abs(t - real) / real
                         acc.setdefault((lu, lc), []).append(
-                            (np.mean(r <= .25), np.median(r), np.mean(r[limpio] <= .25),
+                            (np.mean(r <= .25), np.median(r), np.mean(r[clean] <= .25),
                              np.mean(np.maximum(t / real, real / t) <= 2)))
             for (lu, lc), v in acc.items():
                 v = np.mean(v, 0)
-                filas.append(dict(usuario_estima=f"{int(fe * 100)} %", cerradas=k, lambda_u=lu, lambda_c=lc,
-                                  PRED25=float(v[0]), MdMRE=float(v[1]), PRED25_limpios=float(v[2]),
-                                  factor2=float(v[3])))
-        print(f"  usuario estima {int(fe * 100)} % listo · {time.time() - t0:.0f} s", flush=True)
-    t = pd.DataFrame(filas)
+                rows.append(dict(user_estimates=f"{int(fe * 100)} %", closed=k, lambda_u=lu, lambda_c=lc,
+                                 PRED25=float(v[0]), MdMRE=float(v[1]), PRED25_clean=float(v[2]),
+                                 factor2=float(v[3])))
+        print(f"  user estimates {int(fe * 100)} % done · {time.time() - t0:.0f} s", flush=True)
+    t = pd.DataFrame(rows)
     t.to_csv(OUT / "resumen.csv", index=False)
-    mejor = t.sort_values("PRED25", ascending=False).groupby(["usuario_estima", "cerradas"], sort=False).head(1)
-    orden = [f"{int(f * 100)} %" for f in ESTIMA]
-    for col, titulo in (("PRED25", f"PRED25 del total, los {P} proyectos"),
-                        ("PRED25_limpios", f"PRED25 del total, los {int(limpio.sum())} con pocas filas copiadas"),
-                        ("MdMRE", "MdMRE del total")):
-        print(f"\n{titulo} (mejor lambda de cada celda; filas: cuanto estima el usuario · columnas: tareas cerradas)")
-        print(mejor.pivot(index="usuario_estima", columns="cerradas", values=col).reindex(orden).round(3).to_string())
-    fijo = t[(t.lambda_u == 12) & (t.lambda_c == 30) | (t.usuario_estima == "0 %") & (t.lambda_c == 30)
-             | (t.cerradas == 0) & (t.lambda_u == 12)]
-    fijo = fijo.drop_duplicates(["usuario_estima", "cerradas"])
-    print("\nPRED25 con UNA sola configuracion (lambda_u = 12, lambda_c = 30), que es lo que se desplegaria:")
-    print(fijo.pivot(index="usuario_estima", columns="cerradas", values="PRED25").reindex(orden).round(3).to_string())
-    print("\nlambdas que ganan en cada celda:")
-    print(mejor.assign(l=mejor.lambda_u.astype(str) + "/" + mejor.lambda_c.astype(str))
-          .pivot(index="usuario_estima", columns="cerradas", values="l").reindex(orden).to_string())
-    json.dump({"proyectos": P, "limpios": int(limpio.sum()), "sorteos": SORTEOS,
-               "segundos": round(time.time() - t0)}, open(OUT / "meta.json", "w"), indent=1)
-    print(f"\nescrito {OUT} · {time.time() - t0:.0f} s")
+    best = t.sort_values("PRED25", ascending=False).groupby(["user_estimates", "closed"], sort=False).head(1)
+    order = [f"{int(f * 100)} %" for f in ESTIMATED]
+    for col, title in (("PRED25", f"PRED25 of the total, the {P} projects"),
+                       ("PRED25_clean", f"PRED25 of the total, the {int(clean.sum())} with few copied rows"),
+                       ("MdMRE", "MdMRE of the total")):
+        print(f"\n{title} (best lambda per cell; rows: how much the user estimates · columns: closed tasks)")
+        print(best.pivot(index="user_estimates", columns="closed", values=col).reindex(order).round(3).to_string())
+    fixed = t[(t.lambda_u == 12) & (t.lambda_c == 30) | (t.user_estimates == "0 %") & (t.lambda_c == 30)
+              | (t.closed == 0) & (t.lambda_u == 12)]
+    fixed = fixed.drop_duplicates(["user_estimates", "closed"])
+    print("\nPRED25 with ONE configuration (lambda_u = 12, lambda_c = 30), which is what would be deployed:")
+    print(fixed.pivot(index="user_estimates", columns="closed", values="PRED25").reindex(order).round(3).to_string())
+    print("\nlambdas that win in each cell:")
+    print(best.assign(l=best.lambda_u.astype(str) + "/" + best.lambda_c.astype(str))
+          .pivot(index="user_estimates", columns="closed", values="l").reindex(order).to_string())
+    json.dump({"projects": P, "clean": int(clean.sum()), "draws": DRAWS,
+               "seconds": round(time.time() - t0)}, open(OUT / "meta.json", "w"), indent=1)
+    print(f"\nwritten {OUT} · {time.time() - t0:.0f} s")
 
 
 if __name__ == "__main__":

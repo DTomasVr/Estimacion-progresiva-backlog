@@ -1,23 +1,26 @@
-"""E-264 - ¿Hasta donde puede llegar el +-25 % del total, y por que camino?
+"""E-264 - How far can the +-25 % of the project total go, and by which path?
 
-El total esta en 36,8 % en frio y 53,3 % con 20 tareas cerradas, y las vias de
-mejorar la prediccion por tarea estan cerradas. Antes de lanzar mas experimentos
-se mide donde esta el techo y que lo fija:
+The total sat at 36,8 % at cold start and 53,3 % with 20 closed tasks, and the ways
+of improving the per-task prediction were exhausted. Before launching more experiments
+this measures where the ceiling is and what sets it:
 
-  1 TECHO POR RUIDO. Aunque se supiera la escala exacta del proyecto, el total es
-    una suma de horas muy asimetricas: con pocas tareas, la suma no se concentra.
-    Se remuestrea cada proyecto con su escala REAL y se mide cuantas veces el
-    total cae dentro de +-25 %. Es el techo de cualquier anclaje.
+  1 NOISE CEILING. Even if the exact scale of the project were known, the total is a
+    sum of very skewed hours: with few tasks, the sum does not concentrate. Each
+    project is resampled with its REAL scale and the share of totals within +-25 %
+    is measured. It is the ceiling of any anchoring.
 
-  2 CURVA POR AVANCE. La curva publicada fija k (1..20 tareas), pero 20 tareas
-    son el 5 % de un proyecto de 400 y el 100 % de uno de 20. Se mide por
-    fraccion del backlog cerrada.
+  2 CURVE BY PROGRESS. The published curve fixes k (1..20 tasks), but 20 tasks are
+    5 % of a 400-task project and 100 % of a 20-task one. Here it is measured by
+    the closed fraction of the backlog.
 
-  3 EL ESTIMADOR DEL ANCLA. Cociente de sumas contraido (lo desplegado) frente a
-    otras lambdas, a la media de log-cocientes y a mezclar con horas por tarea.
+  3 THE ANCHOR ESTIMATOR. Shrunk ratio of sums (the deployed one) against other
+    lambdas, against the mean of log-ratios and against a trimmed ratio.
 
-Mismo protocolo que E67: predicciones fuera de pliegue de la cabeza del total,
-proyectos con 8 tareas o mas, se promedian las METRICAS entre sorteos.
+Same protocol as E67: out-of-fold predictions of the total head, projects with 8 or
+more tasks, METRICS averaged over draws.
+
+Outputs: results/techo_del_total/techo_ruido.csv and curva_avance.csv.
+carga() is also used by E-275 and E-277.
 """
 import json
 import sys
@@ -28,23 +31,24 @@ import numpy as np
 import pandas as pd
 
 OUT = Path("results/techo_del_total")
-MIN_TAREAS, SORTEOS, LAMBDA = 8, 60, 12
+MIN_TASKS, DRAWS, LAMBDA = 8, 60, 12
 FRACS = (.05, .10, .20, .30, .40, .50, .70)
 KS = (5, 10, 20)
 S = "=" * 110
 
 
 def carga():
+    """Tasks of the projects with 8 or more tasks: project, real hours and out-of-fold estimate."""
     df = pd.read_parquet("data/processed/pbe_effort_v4.parquet")
     sw = df[df.is_software_task == 1].copy()
     sw = sw[~sw.fuente_jira.eq("Apache")].reset_index(drop=True)
     est = np.clip(np.load("results/modelo_total/pred_total.npy"), 1e-6, None)
     d = pd.DataFrame({"p": sw.project.to_numpy(), "real": sw.effort_hours.to_numpy(), "est": est})
-    tam = d.groupby("p").size()
-    return d[d.p.isin(tam[tam >= MIN_TAREAS].index)].reset_index(drop=True)
+    size = d.groupby("p").size()
+    return d[d.p.isin(size[size >= MIN_TASKS].index)].reset_index(drop=True)
 
 
-def dentro(t, real):
+def within(t, real):
     return np.abs(t - real) / real <= .25
 
 
@@ -52,99 +56,98 @@ def main():
     OUT.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
     d = carga()
-    nom = list(pd.unique(d.p))
-    idx = {p: np.flatnonzero(d.p.to_numpy() == p) for p in nom}
+    names = list(pd.unique(d.p))
+    idx = {p: np.flatnonzero(d.p.to_numpy() == p) for p in names}
     re_, es_ = d.real.to_numpy(), d.est.to_numpy()
-    n_t = np.array([len(idx[p]) for p in nom])
-    real_tot = np.array([re_[idx[p]].sum() for p in nom])
-    frio = np.array([es_[idx[p]].sum() for p in nom])
-    P = len(nom)
-    tramo = pd.cut(n_t, [0, 15, 40, 120, 400, 10 ** 6],
-                   labels=["8-15", "16-40", "41-120", "121-400", "mas de 400"])
-    print(f"{P} proyectos · {len(d):,} tareas · en frio {dentro(frio, real_tot).mean():.3f}", flush=True)
+    n_t = np.array([len(idx[p]) for p in names])
+    real_tot = np.array([re_[idx[p]].sum() for p in names])
+    cold = np.array([es_[idx[p]].sum() for p in names])
+    P = len(names)
+    band = pd.cut(n_t, [0, 15, 40, 120, 400, 10 ** 6],
+                  labels=["8-15", "16-40", "41-120", "121-400", "over 400"])
+    print(f"{P} projects · {len(d):,} tasks · cold start {within(cold, real_tot).mean():.3f}", flush=True)
 
-    # 1 · techo por ruido: escala real conocida, se remuestrea el proyecto
+    # 1 · noise ceiling: real scale known, the project is resampled
     rng = np.random.default_rng(264)
-    techo_mod, techo_cte = np.zeros(P), np.zeros(P)
-    for j, p in enumerate(nom):
+    ceil_model, ceil_const = np.zeros(P), np.zeros(P)
+    for j, p in enumerate(names):
         i = idx[p]
         c = re_[i].sum() / es_[i].sum()
         m = re_[i].mean()
         b = rng.choice(i, (2000, len(i)), replace=True)
         tot = re_[b].sum(1)
-        techo_mod[j] = dentro(c * es_[b].sum(1), tot).mean()
-        techo_cte[j] = dentro(np.full(2000, m * len(i)), tot).mean()
-    t1 = (pd.DataFrame({"tramo": tramo, "frio": dentro(frio, real_tot),
-                        "techo_escala_exacta": techo_mod, "techo_solo_media": techo_cte})
-          .groupby("tramo", observed=True).agg(proyectos=("frio", "size"), frio=("frio", "mean"),
-                                               techo_escala_exacta=("techo_escala_exacta", "mean"),
-                                               techo_solo_media=("techo_solo_media", "mean")).reset_index())
-    t1.loc[len(t1)] = ["todos", P, dentro(frio, real_tot).mean(), techo_mod.mean(), techo_cte.mean()]
+        ceil_model[j] = within(c * es_[b].sum(1), tot).mean()
+        ceil_const[j] = within(np.full(2000, m * len(i)), tot).mean()
+    t1 = (pd.DataFrame({"size_band": band, "cold": within(cold, real_tot),
+                        "ceiling_exact_scale": ceil_model, "ceiling_mean_only": ceil_const})
+          .groupby("size_band", observed=True).agg(projects=("cold", "size"), cold=("cold", "mean"),
+                                                   ceiling_exact_scale=("ceiling_exact_scale", "mean"),
+                                                   ceiling_mean_only=("ceiling_mean_only", "mean")).reset_index())
+    t1.loc[len(t1)] = ["all", P, within(cold, real_tot).mean(), ceil_model.mean(), ceil_const.mean()]
     t1.to_csv(OUT / "techo_ruido.csv", index=False)
-    print(f"\n{S}\n1 · TECHO POR RUIDO (escala del proyecto conocida exactamente)\n{S}")
+    print(f"\n{S}\n1 · NOISE CEILING (project scale known exactly)\n{S}")
     print(t1.round(3).to_string(index=False), flush=True)
 
-    # anclas: devuelven el factor que multiplica a lo abierto
-    sesgo_log = float(np.mean([np.mean(np.log(re_[idx[p]] / es_[idx[p]]))
-                               - np.log(re_[idx[p]].sum() / es_[idx[p]].sum()) for p in nom]))
+    # anchors: they return the factor that multiplies the open part
+    log_bias = float(np.mean([np.mean(np.log(re_[idx[p]] / es_[idx[p]]))
+                              - np.log(re_[idx[p]].sum() / es_[idx[p]].sum()) for p in names]))
 
-    def ancla(sel, modo):
+    def anchor(sel, mode):
         k = len(sel)
-        if modo.startswith("sumas"):
-            lam = float(modo.split("=")[1])
+        if mode.startswith("sums"):
+            lam = float(mode.split("=")[1])
             return np.exp(np.log(re_[sel].sum() / es_[sel].sum()) * k / (k + lam))
-        if modo == "logs":
-            return np.exp((np.mean(np.log(re_[sel] / es_[sel])) - sesgo_log) * k / (k + LAMBDA))
-        if modo == "recortada":
+        if mode == "logs":
+            return np.exp((np.mean(np.log(re_[sel] / es_[sel])) - log_bias) * k / (k + LAMBDA))
+        if mode == "trimmed":
             q = re_[sel] / es_[sel]
-            tope = np.quantile(q, .9)
-            w = np.minimum(q, tope) * es_[sel]
+            cap = np.quantile(q, .9)
+            w = np.minimum(q, cap) * es_[sel]
             return np.exp(np.log(w.sum() / es_[sel].sum() * 1.0) * k / (k + LAMBDA))
-        raise ValueError(modo)
+        raise ValueError(mode)
 
-    MODOS = ["sumas=12", "sumas=4", "sumas=30", "logs", "recortada"]
+    MODES = ["sums=12", "sums=4", "sums=30", "logs", "trimmed"]
 
-    def corre(cuantas, etiqueta):
-        filas = []
+    def run(how_many, label):
         rng = np.random.default_rng(9000)
-        acc = {m: [] for m in MODOS}
-        acc_ab = []
-        por_tramo = []
-        for _ in range(SORTEOS):
-            tot = {m: np.zeros(P) for m in MODOS}
-            ab_ok = np.full(P, np.nan)
-            for j, p in enumerate(nom):
+        acc = {m: [] for m in MODES}
+        acc_open = []
+        by_band = []
+        for _ in range(DRAWS):
+            tot = {m: np.zeros(P) for m in MODES}
+            open_ok = np.full(P, np.nan)
+            for j, p in enumerate(names):
                 i = idx[p]
-                k = cuantas(len(i))
+                k = how_many(len(i))
                 if k <= 0 or k >= len(i):
-                    for m in MODOS:
+                    for m in MODES:
                         tot[m][j] = es_[i].sum() if k <= 0 else re_[i].sum()
                     continue
                 sel = rng.choice(i, k, replace=False)
-                resto = np.setdiff1d(i, sel)
-                for m in MODOS:
-                    tot[m][j] = re_[sel].sum() + ancla(sel, m) * es_[resto].sum()
-                ab = ancla(sel, "sumas=12") * es_[resto].sum()
-                ab_ok[j] = abs(ab - re_[resto].sum()) / re_[resto].sum() <= .25
-            for m in MODOS:
-                acc[m].append(dentro(tot[m], real_tot).mean())
-            acc_ab.append(np.nanmean(ab_ok))
-            por_tramo.append(pd.Series(dentro(tot["sumas=12"], real_tot)).groupby(tramo, observed=True).mean())
-        fila = dict(corte=etiqueta, **{f"PRED25 {m}": float(np.mean(acc[m])) for m in MODOS},
-                    PRED25_solo_lo_abierto=float(np.mean(acc_ab)))
-        fila.update({f"tramo {c}": float(v) for c, v in pd.concat(por_tramo, axis=1).mean(1).items()})
-        return fila
+                rest = np.setdiff1d(i, sel)
+                for m in MODES:
+                    tot[m][j] = re_[sel].sum() + anchor(sel, m) * es_[rest].sum()
+                op = anchor(sel, "sums=12") * es_[rest].sum()
+                open_ok[j] = abs(op - re_[rest].sum()) / re_[rest].sum() <= .25
+            for m in MODES:
+                acc[m].append(within(tot[m], real_tot).mean())
+            acc_open.append(np.nanmean(open_ok))
+            by_band.append(pd.Series(within(tot["sums=12"], real_tot)).groupby(band, observed=True).mean())
+        row = dict(cut=label, **{f"PRED25 {m}": float(np.mean(acc[m])) for m in MODES},
+                   PRED25_open_part_only=float(np.mean(acc_open)))
+        row.update({f"band {c}": float(v) for c, v in pd.concat(by_band, axis=1).mean(1).items()})
+        return row
 
-    filas = [corre(lambda n, k=k: k, f"k={k}") for k in KS]
-    print(f"  cortes por k listos · {time.time() - t0:.0f} s", flush=True)
-    filas += [corre(lambda n, f=f: int(round(f * n)), f"{int(f * 100)} % cerrado") for f in FRACS]
-    t2 = pd.DataFrame(filas)
+    rows = [run(lambda n, k=k: k, f"k={k}") for k in KS]
+    print(f"  cuts by k done · {time.time() - t0:.0f} s", flush=True)
+    rows += [run(lambda n, f=f: int(round(f * n)), f"{int(f * 100)} % closed") for f in FRACS]
+    t2 = pd.DataFrame(rows)
     t2.to_csv(OUT / "curva_avance.csv", index=False)
-    print(f"\n{S}\n2 y 3 · CURVA POR AVANCE Y ESTIMADOR DEL ANCLA\n{S}")
+    print(f"\n{S}\n2 and 3 · CURVE BY PROGRESS AND ANCHOR ESTIMATOR\n{S}")
     print(t2.round(3).to_string(index=False))
-    json.dump({"proyectos": P, "sorteos": SORTEOS, "sesgo_log": sesgo_log,
-               "segundos": round(time.time() - t0)}, open(OUT / "meta.json", "w"), indent=1)
-    print(f"\nescrito {OUT} · {time.time() - t0:.0f} s")
+    json.dump({"projects": P, "draws": DRAWS, "log_bias": log_bias,
+               "seconds": round(time.time() - t0)}, open(OUT / "meta.json", "w"), indent=1)
+    print(f"\nwritten {OUT} · {time.time() - t0:.0f} s")
 
 
 if __name__ == "__main__":

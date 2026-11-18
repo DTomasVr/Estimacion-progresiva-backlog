@@ -1,4 +1,4 @@
-anclas_on,semilla,proyecto,n_gen,anclas,sF1,precision,cobertura,segundos
+anchors_on,seed,project,n_gen,anchors,sF1,precision,coverage,seconds
 1,11,fish_chips,12,4,0.6449,0.6943,0.6022,14.2
 1,11,ticket,12,5,0.6875,0.7333,0.6471,11.7
 1,11,grocery,12,6,0.6573,0.6977,0.6213,10.7

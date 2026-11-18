@@ -1,7 +1,7 @@
 {
- "tamano": 30,
- "tipo": "frecuencia",
- "rejilla": [
+ "size": 30,
+ "kind": "frequency",
+ "grid": [
   0.08333333333333333,
   0.16666666666666666,
   0.25,
@@ -33,8 +33,8 @@
   16.0,
   24.0
  ],
- "test_sin_ajustar": 0.1552662721893491,
- "test_ajustado": 0.17017751479289941,
- "test_constante": 0.1782248520710059,
- "mejor_publicado": 0.1692
+ "test_not_snapped": 0.1552662721893491,
+ "test_snapped": 0.17017751479289941,
+ "test_constant": 0.1782248520710059,
+ "best_published": 0.1692
 }

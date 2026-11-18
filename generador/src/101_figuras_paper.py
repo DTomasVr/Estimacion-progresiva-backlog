@@ -18,7 +18,7 @@ The box labels are in Spanish because the paper is.
   python src/101_figuras_paper.py [output_folder ...]
   FIG_LANG=en python src/101_figuras_paper.py [output_folder ...]   English labels
 
-out: fig1_pipeline_es.pdf and fig2_estimacion.pdf (+ .png for checking) in each folder;
+out: fig1_pipeline_es.pdf and fig2_estimacion.pdf (+ .png for checking and .svg, editable) in each folder;
 with FIG_LANG=en, fig1_pipeline_en.pdf and fig2_estimacion_en.pdf (same layout)
 """
 import os
@@ -54,7 +54,7 @@ EN = {"Descripción\ndel producto": "Product\ndescription",
       "entrada /\nsalida": "input /\noutput", "modelo\nentrenado": "trained\nmodel",
       "reglas": "rules", "pos-\nprocesado": "post-\nprocessing"}
 tr = (lambda t: EN[t]) if LANG == "en" else (lambda t: t)
-plt.rcParams.update({"font.family": "DejaVu Sans", "pdf.fonttype": 42,
+plt.rcParams.update({"font.family": "DejaVu Sans", "pdf.fonttype": 42, "svg.fonttype": "none",
                      "mathtext.fontset": "dejavusans"})
 
 # fill, border, line style, width
@@ -127,7 +127,7 @@ def lienzo(alto):
 def guardar(fig, nombre):
     for out in OUTS:
         os.makedirs(out, exist_ok=True)
-        for ext in ("pdf", "png"):
+        for ext in ("pdf", "png", "svg"):
             fig.savefig(f"{out}/{nombre}.{ext}", dpi=300, facecolor="white")
         print("written", f"{out}/{nombre}.pdf")
     plt.close(fig)

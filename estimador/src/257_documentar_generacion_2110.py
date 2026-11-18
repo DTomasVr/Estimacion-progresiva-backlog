@@ -221,22 +221,18 @@ ruido. El duplicado literal entre historias es 1 de ~620 tareas (0,2 %).
         ('        P1["Planificar ROLES<br/>4 fuentes, nunca vacío"]',
          '        P1["Planificar ROLES<br/>4 fuentes, nunca vacío<br/>plantel solo con respaldo"]'),
         ('        S1["SELECCIÓN por cobertura de rasgos<br/>voraz submodular + 6 castigos de forma"]',
-         '        AN["ANCLAS · una historia por<br/>función descrita, prefijo forzado"]
-'
+         '        AN["ANCLAS · una historia por<br/>función descrita, prefijo forzado"]\n'
          '        S1["SELECCIÓN por cobertura de rasgos<br/>anclas primero + voraz submodular<br/>+ 6 castigos de forma"]'),
         ('        M2[["mT5 One2Seq · 121M<br/>haz de 4, sin repetir 4-gramas"]]',
          '        M2[["2 × mT5 One2Seq · 121M en conjunto<br/>haz de 4, sin repetir 4-gramas"]]'),
         ('        DD["Deduplicar · tope de arranques<br/>reasignar cada tarea a su historia"]',
          '        DD["Filtrar no-desarrollo · deduplicar<br/>tope de arranques · reasignar cada tarea"]'),
         ('        P1 --> P2 --> V1 --> M1 --> B1 --> S1 --> H1 --> V2 --> M2 --> DD',
-         '        P1 --> P2 --> V1 --> M1 --> B1 --> S1 --> H1 --> V2 --> M2 --> DD
-'
+         '        P1 --> P2 --> V1 --> M1 --> B1 --> S1 --> H1 --> V2 --> M2 --> DD\n'
          '        P2 --> AN --> S1'),
         ("selección por cobertura elige 12. La calidad no sale del modelo, sale de la elección.",
-         "selección por cobertura elige 12. La calidad no sale del modelo, sale de la elección. Lo único
-"
-         "   que se fuerza es que cada función que la descripción nombra tenga su historia (las anclas,
-"
+         "selección por cobertura elige 12. La calidad no sale del modelo, sale de la elección. Lo único\n"
+         "   que se fuerza es que cada función que la descripción nombra tenga su historia (las anclas,\n"
          "   A.2.6), porque lo que el modelo no genera no se puede elegir."),
     ]:
         s = cambia(s, viejo, nuevo)

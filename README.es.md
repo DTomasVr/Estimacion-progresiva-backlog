@@ -100,7 +100,7 @@ El código, los comentarios y los nombres de columna y etiquetas de los resultad
 en inglés. Conservan su nombre en español: los nombres de archivos y carpetas (el artículo y la tesis
 los citan), los registros crudos de las corridas con LLM (`*.jsonl`, cuyos campos como `modelo`,
 `condicion`, `valido`, `horas`, `segundos`, `caso`, `sistema`, `tareas` se dejan tal como se
-grabaron) y las salidas de los scripts que el artículo no usa. Las tablas LaTeX del artículo están en
+grabaron) y las salidas de los scripts que el artículo no usa. Algunos scripts antiguos que el artículo no usa (presentaciones, hojas de cálculo y notas de diseño: `estimador/src/75_*`, `152_*`, `185_*`, `201_*`, `236_*`, `240_*`, `241_*`) leen estos archivos con los nombres de columna en español que tenían antes (`modelo`, `banda`, …) y no corren con los actuales; se conservan como registro. Las tablas LaTeX del artículo están en
 español porque el artículo lo está. El diccionario completo de columnas está en
 [README.md](README.md#result-files-column-names); las principales:
 

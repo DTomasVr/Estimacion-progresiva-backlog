@@ -100,7 +100,7 @@ The code, comments and the column names and labels of the paper's result files a
 Three things keep their Spanish names: file and folder names (they are cited in the paper and the
 thesis), the raw LLM run logs (`*.jsonl`, whose fields such as `modelo`, `condicion`, `valido`,
 `horas`, `segundos`, `caso`, `sistema`, `tareas` are kept exactly as recorded), and the outputs of
-scripts the paper does not use. The paper's LaTeX tables are in Spanish because the paper is.
+scripts the paper does not use. Some older scripts that are not used by the paper (presentations, spreadsheets and design notes: `estimador/src/75_*`, `152_*`, `185_*`, `201_*`, `236_*`, `240_*`, `241_*`) read these files with the Spanish column names they had before (`modelo`, `banda`, …) and do not run against the current ones; they are kept as a record. The paper's LaTeX tables are in Spanish because the paper is.
 
 Common columns:
 

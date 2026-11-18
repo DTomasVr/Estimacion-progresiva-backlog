@@ -73,8 +73,8 @@ def estimacion():
                           f(x.spearman, 2), "[" + ic(x.dif_MdMRE) + "]"])
     assert len(n) == 1, n
     tabla("llm_estimacion",
-          f"Estimación por tarea frente a LLM en {n.pop()} tareas no usadas para entrenar. Última columna: IC95 de "
-          "la diferencia de MdMRE (LLM menos propuesta).",
+          f"Estimación por tarea frente a LLM ({n.pop()} tareas no usadas para entrenar). IC95 $\\Delta$MdMRE: "
+          "LLM menos propuesta.",
           "lcccc", ["", "MdMRE", "PRED(25)", r"$\rho$", r"IC95 $\Delta$MdMRE"], filas)
 
 

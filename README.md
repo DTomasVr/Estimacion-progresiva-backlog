@@ -65,8 +65,16 @@ probó y por qué se descartó.
 
 ## Datos
 
-Los conjuntos de partida son públicos y se usan según sus licencias: TAWOS, The Public Jira Dataset y
-SiP. Hay que descargarlos de sus fuentes en `estimador/data/raw/`.
+Los conjuntos de partida son públicos y se usan según sus licencias. Hay que descargarlos de sus
+fuentes en `estimador/data/raw/` (estimación) y en la carpeta de datos del generador.
+
+| Conjunto | Uso en el artículo | Licencia | Fuente |
+|---|---|---|---|
+| TAWOS (Tawosi et al., MSR 2022) | horas de tareas; pares historia → tareas | Apache 2.0 | github.com/SOLAR-group/tawos |
+| The Public Jira Dataset (Montgomery et al., MSR 2022) | horas de tareas; pares historia → tareas | CC BY 4.0 | doi:10.5281/zenodo.5882881 |
+| SiP (Jones y Cullum, 2019) | horas y estimaciones de tareas | propia: investigación y estudio no comercial | github.com/Derek-Jones/SiP_dataset |
+| Requirements Data Sets (User Stories) (Dalpiaz, 2018) | historias de entrenamiento (15 proyectos) y 4 proyectos retenidos | CC BY 4.0 | doi:10.17632/7zbk8zsd8y.1 |
+| Material de Bragilovski et al. (RE 2024) | las 328 historias humanas de evaluación | CC BY 4.0 | doi:10.5281/zenodo.12740518 |
 
 - **Tabla unificada:** se construye con la cadena `estimador/src/01_*` a `09_*` y
   `estimador/src/52_build_v4.py`.

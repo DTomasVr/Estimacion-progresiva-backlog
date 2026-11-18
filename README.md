@@ -38,7 +38,7 @@ Las rutas son relativas a `estimador/`, salvo las que empiezan por `generador/`.
 | **Tabla II**: Deep-SE y GPT2SP (reimplementación propia) | `src/46_baselines_literatura.py` | `results/baselines_literatura.csv` |
 | Tabla II: propuesta y constante de 2,45 h | `src/211_rejilla_de_valores_reales.py` | `results/rejilla_valores/contra_literatura.csv` |
 | **Tabla III**: estimación frente a LLM (601 tareas, Groq, temperatura 0) | `src/259_banco_api.py`, `src/261_tablas_llm_api.py` | `results/llm_bench/api_resumen.csv` |
-| 13,7 ms por tarea, 3,3 GB de disco y 5,2 GB de RAM | estimador desplegado | `results/estimador_v7/servicio.json` |
+| 13,7 ms por tarea (estimador) y 5,2 GB de RAM y 3,3 GB de disco (sistema completo, generador y estimador, en CPU) | estimador desplegado | `results/estimador_v7/servicio.json` (RAM); el disco es el tamaño del paquete de producción (3,1 GiB) |
 | **Tabla IV**: generación frente a LLM (64 proyectos) | `src/272_banco_generacion.py`, `src/274_redundancia_tareas.py` | `results/banco_generacion/resumen.csv`, `results/redundancia_tareas/resumen.csv` |
 | sF1 de 0,669 frente a 328 historias humanas | `generador/src/97_eval_humano.py` | `generador/results/49_real_vigente.csv` |
 | Efecto de las historias ancla: 0,669 con anclas, 0,635 sin ellas, +0,035 (IC por proyectos) | `generador/src/103_ablacion_anclas.py` | `generador/results/103_ablacion_anclas.csv` |

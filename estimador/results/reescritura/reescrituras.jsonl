@@ -1,0 +1,400 @@
+{"task_id": "JP-RedHat-JBSEAM-1051", "original": "Conversation Picker no longer renders", "reescrito": "Display conversation picker"}
+{"task_id": "JP-Spring-SLICE-101", "original": "Specify names in XML", "reescrito": "Specify names in XML"}
+{"task_id": "JP-RedHat-OSDK-1947", "original": "Deal with 4.9 epics", "reescrito": "Implement epic tracking"}
+{"task_id": "JP-RedHat-JBWS-1442", "original": "Update cruise control", "reescrito": "Update cruise control settings"}
+{"task_id": "JP-RedHat-TEIIDSB-144", "original": "Calling setTransactionIsolation on pg driver causes the connection to be closed", "reescrito": "Implement setTransactionIsolation without closing connection"}
+{"task_id": "JP-RedHat-TEIID-5988", "original": "We have strange behavior with aliases", "reescrito": "Identify and fix alias behavior issues"}
+{"task_id": "JP-RedHat-JBWS-1609", "original": "Address in WSDL - Port value is -1 when server is requested with default port 80", "reescrito": "Store correct port value in WSDL"}
+{"task_id": "JP-Spring-DATAJPA-108", "original": "Add support for LessThanEqual and GreaterThanEquals keywords", "reescrito": "Add keywords: LessThanEqual and GreaterThanEquals"}
+{"task_id": "JP-RedHat-JBWS-190", "original": "Provide testcase for the code in JBossWSAttachStepByStep", "reescrito": "Create testcase for JBossWSAttachStepByStep code"}
+{"task_id": "JP-RedHat-FUSETOOLS-2929", "original": "UI tests for language and data formats do not work without existing IDE", "reescrito": "Implement UI tests for language and data formats"}
+{"task_id": "JP-RedHat-OSDK-1949", "original": "Support BOOKMARK events - Fabric8 Upstream work", "reescrito": "Implement support for BOOKMARK events"}
+{"task_id": "JP-Spring-SESPRINGACTIONSCRIPTAS-60", "original": "Referencing other variables in Properties Files does not work", "reescrito": "Implement variable interpolation in properties files"}
+{"task_id": "JP-Sonatype-OSSRH-145", "original": "net.sf.opencsv 2.1 not syncing to Central", "reescrito": "Add net.sf.opencsv 2.1 to Central"}
+{"task_id": "JP-RedHat-FUSETOOLS-2901", "original": "Fix 'FuseProjectTest' - leverage Jenkins for decomposition", "reescrito": "Implement CI for FuseProjectTest"}
+{"task_id": "JP-RedHat-TEIIDSB-170", "original": "Automate materialization to JDG", "reescrito": "Automate materialization to JDG"}
+{"task_id": "JP-RedHat-TEIID-5866", "original": "Teiid embedded does not implement active vdb import management", "reescrito": "Implement active VDB import management"}
+{"task_id": "JP-RedHat-TEIIDSB-175", "original": "Upgrade to Teiid 13.1.0", "reescrito": "Upgrade Teiid to version 13.1.0"}
+{"task_id": "JP-RedHat-OSDK-1960", "original": "IMAGE_FORMAT broke in prow for community.okd collection", "reescrito": "Implement IMAGE_FORMAT check for community.okd collection"}
+{"task_id": "JP-RedHat-TEIID-5917", "original": "Update the website", "reescrito": "Update the website"}
+{"task_id": "JP-Spring-SLICE-43", "original": "Create facility to retrieve service registry", "reescrito": "Create facility to retrieve service registry"}
+{"task_id": "JP-RedHat-OSDK-2051", "original": "support: user in kube slack has problem with pkgman-to-bundle", "reescrito": "Implement support for user in kube slack with pkgman-to-bundle"}
+{"task_id": "JP-Hyperledger-FABCN-316", "original": "Complete implementation of must-have shim APIs - Part I", "reescrito": "Implement must-have shim APIs"}
+{"task_id": "JP-RedHat-TEIID-6004", "original": "Getting and error while configuring oAuth2 with Teiid.", "reescrito": "Implement OAuth2 configuration for Teiid"}
+{"task_id": "JP-RedHat-TEIIDSB-159", "original": "Test errors", "reescrito": "Identify and log test errors"}
+{"task_id": "JP-RedHat-JBAS-3118", "original": "Make the URLDeploymentScanner pseudo-transactional", "reescrito": "Make URLDeploymentScanner Pseudo-Transactional"}
+{"task_id": "JP-Hyperledger-FABCN-325", "original": "Integration Test framework for node.js chaincode", "reescrito": "Implement integration test framework for node.js chaincode"}
+{"task_id": "JP-Spring-SGF-263", "original": "The 'disk-synchronous' Region attribute does not get successfully applied when explicitly set to false.", "reescrito": "Set 'disk-synchronous' Region attribute to false"}
+{"task_id": "JP-RedHat-RESTEASY-137", "original": "Exception thrown when REST URLs contain + or @", "reescrito": "Store URLs without + or @ exceptions"}
+{"task_id": "JP-Spring-SLICE-88", "original": "Service registry should allow multiple services of the same name that are ordered based on the same criteria as types", "reescrito": "Store multiple services with the same name"}
+{"task_id": "JP-JiraEcosystem-AC-341", "original": "Remote App universal binary plugin can't find com.atlassian.labs.remoteapps.api.DescriptorGenerator service", "reescrito": "Implement service discovery for remote app plugin"}
+{"task_id": "JP-JiraEcosystem-REST-48", "original": "PerRequest annotation ignored", "reescrito": "Implement PerRequest annotation support"}
+{"task_id": "JP-RedHat-OSDK-2018", "original": "community: Cut 1.13.1 release", "reescrito": "Create Cut 1.13.1 release"}
+{"task_id": "JP-JiraEcosystem-AMPS-1211", "original": "5.0.11 has broken our manifest generation", "reescrito": "Create manifest generation for 5.0.11"}
+{"task_id": "JP-Spring-SJC-133", "original": "Support @ExternalValue on fields", "reescrito": "Implement support for @ExternalValue on fields"}
+{"task_id": "JP-Sakai-BW-67", "original": "Integration with Site Stats", "reescrito": "Integrate with Site Stats API"}
+{"task_id": "JP-RedHat-JBSEAM-3226", "original": "Modify DBUnitSeamTest to permit use of DTDs generated by DBUnit", "reescrito": "Modify DBUnitSeamTest to support DTDs"}
+{"task_id": "JP-RedHat-TEIID-5862", "original": "TEIID-5314  does not account for env key name restrictions", "reescrito": "Implement env key name restrictions"}
+{"task_id": "JP-Spring-SJC-64", "original": "Define OSGi bundle metadata for JavaConfig", "reescrito": "Define OSGi Bundle Metadata"}
+{"task_id": "JP-JiraEcosystem-AO-44", "original": "Move current SPI to SAL", "reescrito": "Move current SPI implementation to SAL"}
+{"task_id": "JP-Spring-SLICE-50", "original": "Retrieve an object from service registry", "reescrito": "Retrieve object from service registry"}
+{"task_id": "JP-JiraEcosystem-REST-223", "original": "NullPointerException in CorsResourceFilterFactory for resources in the default package", "reescrito": "Implement null check for CorsResourceFilterFactory"}
+{"task_id": "JP-RedHat-TEIIDSB-138", "original": "Openapi metadata from odata has invalid paths", "reescrito": "Store valid paths for OpenAPI metadata from odata"}
+{"task_id": "JP-RedHat-TEIIDSB-162", "original": "Operator does not account for the transaction manager", "reescrito": "Implement transaction manager support"}
+{"task_id": "JP-RedHat-FUSETOOLS-2667", "original": "Fuse - Fix test ConfigurationsEditorDataFormatsTest", "reescrito": "Fix test configurations for DataFormatsTest"}
+{"task_id": "JP-Spring-BATCHADM-29", "original": "Dates are displayed in GMT instead of using the locale of the jvm", "reescrito": "Display dates using JVM locale instead of GMT"}
+{"task_id": "JP-RedHat-WFLY-644", "original": "TS: Allow XSLT to fit any namespace versions.", "reescrito": "Implement XSLT to support any namespace versions"}
+{"task_id": "JP-Spring-DATAJPA-8", "original": "Integration of QueryDsl library", "reescrito": "Implement QueryDsl library integration"}
+{"task_id": "JP-Spring-DATAJPA-207", "original": "@Query(nativeQuery=true) can't return List<Integer>", "reescrito": "Implement query to return List<Integer>"}
+{"task_id": "JP-Sonatype-OSSRH-173", "original": "Update OSSRH public document", "reescrito": "Update public document on OSSRH"}
+{"task_id": "JP-RedHat-JBAS-1319", "original": "redeploy causes OutOfMemoryError", "reescrito": "Implement redeploy without OutOfMemoryError"}
+{"task_id": "JP-RedHat-OSDK-2003", "original": "support: Downstream proxy docs review", "reescrito": "Review downstream proxy documentation"}
+{"task_id": "JP-RedHat-JBWS-1969", "original": "Cannot publish wsdl with imported schema files, using bottom up approach", "reescrito": "Create WSDL with imported schema files"}
+{"task_id": "JP-RedHat-JBWS-4042", "original": "Custom log4j configuration not being loaded by WSConsume and WSProvide", "reescrito": "Implement custom log4j configuration for WSConsume and WSProvide"}
+{"task_id": "JP-Spring-DATAJPA-86", "original": "find-Method throws exception when a group-by-clause is used", "reescrito": "Implement findMethod to handle group-by-clause"}
+{"task_id": "JP-RedHat-JBAS-3369", "original": "Add support for encrypting the tomcat server.xml keystore/truststore attributes", "reescrito": "Add encryption for tomcat server.xml keystore/truststore"}
+{"task_id": "JP-Sonatype-OSSRH-86", "original": "Fix the checksums for ops4j artifacts in central", "reescrito": "Fix checksums for ops4j artifacts"}
+{"task_id": "JP-JiraEcosystem-AMPS-535", "original": "IntegrationTestMojo fails when launching 2 applications in parallel, because concurrency is not successful in maven-dependency-plugin", "reescrito": "Implement concurrency for maven-dependency-plugin"}
+{"task_id": "JP-Sonatype-OSSRH-23", "original": "Refactor nexus-repo-prep-tool to be more generic to support future requirement", "reescrito": "Refactor nexus-repo-prep-tool to be more generic"}
+{"task_id": "JP-RedHat-JDG-107", "original": "JCacheFailoverIT.testRemoteListener fails randomly", "reescrito": "Implement random failover test stability"}
+{"task_id": "JP-RedHat-TEIID-5871", "original": "Amazon S3 translator generates wrong endpoints", "reescrito": "Implement correct S3 endpoint generation"}
+{"task_id": "JP-RedHat-TEIIDSB-178", "original": "Accommodate the changes required for translator name change from Swagger to OpenAPI", "reescrito": "Update translator name in documentation"}
+{"task_id": "JP-RedHat-WFLY-6790", "original": "Typo in datasource and resource adapters subsystem configuration", "reescrito": "Correct typo in datasource and resource adapters configuration"}
+{"task_id": "JP-Spring-SJC-62", "original": "Allow @AutoBean to wire constructor arguments", "reescrito": "Implement constructor argument wiring for @AutoBean"}
+{"task_id": "JP-Qt-QTCREATORBUG-19735", "original": "Discuss with the team", "reescrito": "Discuss with the team"}
+{"task_id": "JP-Spring-SLICE-95", "original": "Guarantee ordering of exported services within an ApplicationContext", "reescrito": "Implement service ordering in exported services"}
+{"task_id": "JP-Spring-SPRNET-777", "original": "Provide 10,000 ft intro page on spring.net features on web site", "reescrito": "Create 10,000 ft intro page on Spring.NET features"}
+{"task_id": "JP-JiraEcosystem-AMPS-544", "original": "Make a release of 3.5.1 without codegen changes", "reescrito": "Create release 3.5.1 without codegen changes"}
+{"task_id": "JP-RedHat-JBAS-2703", "original": "Create a AuthenticationManager/AuthorizationManager plugin testcase", "reescrito": "Create AuthenticationManager testcase"}
+{"task_id": "JP-Spring-BATCHADM-26", "original": "File upload triggers job twice in sample", "reescrito": "Store file once, trigger job once"}
+{"task_id": "JP-RedHat-TEIID-5863", "original": "Regression with TEIID-5737 and socket properties", "reescrito": "Implement socket property handling"}
+{"task_id": "JP-RedHat-TEIID-5939", "original": "connection pool not destroyed after datasource deletion without server reload(java)", "reescrito": "Destroy connection pool after datasource deletion"}
+{"task_id": "JP-RedHat-JBWS-479", "original": "Verify Attachment example", "reescrito": "Verify Attachment Example"}
+{"task_id": "JP-Spring-SLICE-7", "original": "Scan JARs for slices and start", "reescrito": "Scan JARs for slices and display"}
+{"task_id": "JP-Spring-SLICE-36", "original": "Accept an object and store it for later retrieval", "reescrito": "Store object for later retrieval"}
+{"task_id": "JP-RedHat-OSDK-2054", "original": "support: help user with issues on scaffolding and mount location of cert in csv", "reescrito": "Add support for cert mount location in CSV"}
+{"task_id": "JP-RedHat-TEIID-5846", "original": "Support \"order by\" by default in the salesforce translator", "reescrito": "Implement default \"order by\" support"}
+{"task_id": "JP-Sonatype-OSSRH-57", "original": "maven-metadata.xml not updated with new release", "reescrito": "Update maven-metadata.xml with new release"}
+{"task_id": "JP-RedHat-JDG-1205", "original": "Deploy Lucene analyzers in server for remote query", "reescrito": "Implement Lucene analyzers for remote queries"}
+{"task_id": "JP-Hyperledger-FABCN-318", "original": "Define the code package content structure", "reescrito": "Define the code package content structure"}
+{"task_id": "JP-Spring-DATAJPA-2", "original": "JpaRepository should contain a findOne method that take a Specification object", "reescrito": "Implement findOne method in JpaRepository taking Specification object"}
+{"task_id": "JP-RedHat-WFLY-7217", "original": "Adapt servlet-security example to use Elytron", "reescrito": "Implement servlet-security example using Elytron"}
+{"task_id": "JP-RedHat-TEIID-5898", "original": "Wrong force-wsc jar in translator / force.api module 41", "reescrito": "Add correct force-wsc jar to translator module"}
+{"task_id": "JP-Sonatype-OSSRH-181", "original": "Fix the nexus-webapp maven-metadata.xml in central", "reescrito": "Fix nexus-webapp maven-metadata.xml"}
+{"task_id": "JP-RedHat-RESTEASY-1322", "original": "Resteasy processes If-Modified-Since header even when If-None-Match header is present", "reescrito": "Store RESTeasy to process If-None-Match header优先"}
+{"task_id": "JP-Jira-JSWSERVER-1114", "original": "Planning Board Performance", "reescrito": "Improve Planning Board Performance"}
+{"task_id": "JP-RedHat-JBAS-3224", "original": "Upgrade jboss-cache.jar to jboss-cache-jdk50.jar", "reescrito": "Upgrade jboss-cache.jar to jboss-cache-jdk50.jar"}
+{"task_id": "JP-JiraEcosystem-JICAL-12", "original": "Incompatible with JIRA 4.3.x and 4.4.x", "reescrito": "Update compatibility for JIRA 4.3.x and 4.4.x"}
+{"task_id": "JP-RedHat-OSDK-2050", "original": "bugzilla: help with customer bug", "reescrito": "Add customer bug details"}
+{"task_id": "JP-Spring-SJC-115", "original": "Point SJC FishEye at src.springframework.org SVN", "reescrito": "Point SJC FishEye to src.springframework.org SVN"}
+{"task_id": "JP-RedHat-JBWS-1766", "original": "UsernameToken ignores BindingProvider.USERNAME_PROPERTY", "reescrito": "Implement UsernameToken for BindingProvider.USERNAME_PROPERTY"}
+{"task_id": "JP-Sonatype-OSSRH-135", "original": "Sync up appfuse to central", "reescrito": "Sync up app to central"}
+{"task_id": "JP-SecondLife-OPEN-87", "original": "3p-apr Correction Tracking", "reescrito": "Implement 3p-apr correction tracking"}
+{"task_id": "JP-RedHat-TEIID-5842", "original": "Better define the schema object namespaces", "reescrito": "Define schema object namespaces"}
+{"task_id": "JP-Spring-SJC-107", "original": "Implement AsmConfigurationParser", "reescrito": "Implement AsmConfigurationParser"}
+{"task_id": "JP-RedHat-TEIIDSB-126", "original": "Provide source support Amazon SimpleDB", "reescrito": "Add support for Amazon SimpleDB sources"}
+{"task_id": "JP-RedHat-TEIIDSB-141", "original": "Add a message to PlatformTransactionManagerAdapter exceptions", "reescrito": "Add message for PlatformTransactionManagerAdapter exceptions"}
+{"task_id": "JP-RedHat-TEIID-5887", "original": "Issues with marhaller registration", "reescrito": "Add marshaller registration logic"}
+{"task_id": "JP-RedHat-JBAS-6392", "original": "Make HttpNamingContextFactory support jndi SECURITY_PRINCIPAL style logins like /security/src/main/org/jboss/security/jndi/LoginInitialContextFactor", "reescrito": "Implement HttpNamingContextFactory JNDI security login support"}
+{"task_id": "JP-Hyperledger-FABCN-313", "original": "Code structure design and initial impl of node chaincode shim", "reescrito": "Implement node chaincode shim structure"}
+{"task_id": "JP-Spring-DATAJPA-93", "original": "JpaEntityInformationSupport.getMetadata(...) swallows exception indicating the domain class not being found in the metamodel", "reescrito": "Store exception in getMetadata for missing domain class"}
+{"task_id": "JP-RedHat-TEIID-5970", "original": "infinispan resource adapter fails to load", "reescrito": "Implement infinispan resource adapter loading"}
+{"task_id": "JP-RedHat-TEIID-5840", "original": "Add validation of grant / revoke targets", "reescrito": "Add validation for grant/revoke targets"}
+{"task_id": "JP-RedHat-TEIID-5950", "original": "Create an athena translator", "reescrito": "Create an Athena translator"}
+{"task_id": "JP-RedHat-JBIDE-22595", "original": "Deploy Docker image wizard: One gets 2 authentication dialogs if you're using a non-conected connection without store pw", "reescrito": "Store password for non-connected Docker image deployment"}
+{"task_id": "JP-JiraEcosystem-PLE-915", "original": "creating a JIRA subtask results in a subtask with no reporter", "reescrito": "Create subtask with reporter information"}
+{"task_id": "JP-RedHat-JBAS-1631", "original": "Cleanup System.out from console servlets and mbeans", "reescrito": "Clean up System.out in servlets and mbeans"}
+{"task_id": "JP-RedHat-TEIIDSB-176", "original": "Add support for soap calls", "reescrito": "Add support for SOAP calls"}
+{"task_id": "JP-RedHat-TEIIDSB-192", "original": "Document migration for alias names", "reescrito": "Store alias names during document migration"}
+{"task_id": "JP-Spring-DATAJPA-77", "original": "Count query for manually declared queries (either @Query or NamedQuery) get pagination applied", "reescrito": "Add pagination to manually declared queries"}
+{"task_id": "JP-SecondLife-OPEN-105", "original": "Creation of an Open Source version of LLConvexDecomposition", "reescrito": "Create Open Source LLConvexDecomposition"}
+{"task_id": "JP-Jira-JSWSERVER-578", "original": "Show assignee full name on cards rather than their login names", "reescrito": "Display assignee full name on cards"}
+{"task_id": "JP-RedHat-TEIID-5780", "original": "Support certificate based authentication into Teiid pg", "reescrito": "Implement certificate based authentication for Teiid pg"}
+{"task_id": "JP-RedHat-DBZ-2011", "original": "[Doc] Debezium User Guide should provide example of DB connector yaml and deployment instructions", "reescrito": "Add DB connector YAML example and deployment instructions"}
+{"task_id": "JP-RedHat-TEIID-6018", "original": "jayway json processing logic returns single object values as just maps, not JSONObject", "reescrito": "Store single object values as JSONObject"}
+{"task_id": "JP-RedHat-OSDK-2074", "original": "support: adamkaplan with run bundle issue", "reescrito": "Implement support for run bundle issue"}
+{"task_id": "JP-RedHat-JBIDE-15897", "original": "Server Adapter Context Menu: make all relevant OpenShift Explorer actions available from Server Adapter", "reescrito": "Add OpenShift Explorer actions to Server Adapter context menu"}
+{"task_id": "JP-Spring-SLICE-6", "original": "Create bootstrapping main method that creates classloader from contained JARs", "reescrito": "Create main method to bootstrap from contained JARs"}
+{"task_id": "JP-RedHat-TEIID-6005", "original": "Support DBeaver over pg", "reescrito": "Implement support for DBeaver over pg"}
+{"task_id": "JP-RedHat-TEIID-5910", "original": "XML value for the constraint attribute on a condition is incorrect", "reescrito": "Correct XML value for constraint attribute on condition"}
+{"task_id": "JP-RedHat-FUSETOOLS-3064", "original": "Investigate errors in \"CamelCatalogComponentsTest\" for Fuse 7.x runtimes", "reescrito": "Implement error handling for CamelCatalogComponentsTest"}
+{"task_id": "JP-RedHat-TEIID-5934", "original": "Inappropriate aggregate pushdown over nested table join", "reescrito": "Implement correct aggregate pushdown for nested table join"}
+{"task_id": "JP-RedHat-TEIID-5877", "original": "OverlappingFileLockException with excel translator", "reescrito": "Implement error handling for overlapping file locks in Excel translator"}
+{"task_id": "JP-Spring-SLICE-63", "original": "Create a BeanFactoryPostProcessor that resolves the service dependency graph and updates bean definitions with proper linkages", "reescrito": "Create BeanFactoryPostProcessor to resolve service dependencies"}
+{"task_id": "JP-RedHat-TEIID-5922", "original": "NPE in simple select with procedure subquery", "reescrito": "Implement null safety for simple select with procedure subquery"}
+{"task_id": "JP-RedHat-RESTEASY-1190", "original": "Wrap JSONP response in try-catch block", "reescrito": "Implement try-catch for JSONP response"}
+{"task_id": "JP-RedHat-TEIID-5963", "original": "Teiid using all typeInfo takes too long from PG", "reescrito": "Implement Teiid typeInfo optimization"}
+{"task_id": "JP-RedHat-JBIDE-680", "original": "JBOSS AS 4.2 can't run JSF 1.1.01RI KickStart project", "reescrito": "Create JBOSS AS 4.2 to run JSF 1.1.01RI KickStart project"}
+{"task_id": "JP-RedHat-TEIIDSB-215", "original": "Remove the amazon-s3 source", "reescrito": "Remove the Amazon S3 source"}
+{"task_id": "JP-RedHat-TEIIDSB-190", "original": "REST with request payload throws an error", "reescrito": "Implement REST endpoint to handle request payload"}
+{"task_id": "JP-RedHat-TEIID-5944", "original": "Infinispan protobuf generation fails to validate name with \"-\" in them", "reescrito": "Store validation rule for names with \"-\" in Infinispan protobuf generation"}
+{"task_id": "JP-RedHat-JBIDE-17921", "original": "Application wizard: \"Basic Cartridge\" and \"Code Anything\" details panes layout breaks as soon as you horizontally resize the dialog", "reescrito": "Update layout for \"Basic Cartridge\" and \"Code Anything\" panes"}
+{"task_id": "JP-Spring-BATCHADM-24", "original": "Allow file delete with pattern for path (in protected subdirectory)", "reescrito": "Implement file delete with pattern for path (protected subdirectory)"}
+{"task_id": "JP-Spring-BATCHADM-34", "original": "Change naming convention for root context overrides", "reescrito": "Update naming convention for root context overrides"}
+{"task_id": "JP-RedHat-OSDK-2012", "original": "Prep for DoD meeting", "reescrito": "Prepare agenda items"}
+{"task_id": "JP-RedHat-TEIID-5965", "original": "Allow variables to be used as TextTable delimeters, row delimeters, quote, header, skip rows, and escape characters", "reescrito": "Implement variables for TextTable delimiters and quoting"}
+{"task_id": "JP-Spring-SLICE-103", "original": "Allow XML property declaration", "reescrito": "Add XML property declaration support"}
+{"task_id": "JP-RedHat-TEIID-5891", "original": "Need TeiidDialect.getNameQualifierSupport() for Hibernate 5", "reescrito": "Implement TeiidDialect.getNameQualifierSupport() for Hibernate 5"}
+{"task_id": "JP-RedHat-TEIID-5839", "original": "Regression introduced in TEIID-5608 killing JWT login", "reescrito": "Implement JWT login functionality"}
+{"task_id": "JP-Spring-AMQP-246", "original": "Remove POMs from Project Trees After Gradle Migration", "reescrito": "Remove POMs from project trees"}
+{"task_id": "JP-RedHat-TEIIDSB-157", "original": "Support loading password credential from infinispan secret", "reescrito": "Store password credential from infinispan secret"}
+{"task_id": "JP-Jira-JSWSERVER-1581", "original": "Japanese Translation", "reescrito": "Add Japanese Translation Support"}
+{"task_id": "JP-Spring-SESPRINGACTIONSCRIPTAS-44", "original": "Error in DefaultListableObjectFactory#getObjectNamesForType if an object definition is abstract and does not specify the class attribute", "reescrito": "Implement error handling for abstract object definitions"}
+{"task_id": "JP-Spring-DATAJPA-23", "original": "Creating queries from method names with IsNull and IsNotNull is broken", "reescrito": "Create queries from method names with IsNull and IsNotNull"}
+{"task_id": "JP-RedHat-FUSETOOLS-2992", "original": "UI Tests - Create tests for new 'wsdl2rest' wizard", "reescrito": "Create tests for new 'wsdl2rest' wizard"}
+{"task_id": "JP-RedHat-JBAS-2720", "original": "Backport JBAS-2216 to 3.2.x", "reescrito": "Backport fix to 3.2.x"}
+{"task_id": "JP-RedHat-FUSETOOLS-2911", "original": "Improve naming of parameterized test ComponentTest", "reescrito": "Improve naming of ComponentTest parameters"}
+{"task_id": "JP-Spring-SJC-98", "original": "Refactor internals to support a model-driven approach and decouple parsing", "reescrito": "Refactor internals to support model-driven approach"}
+{"task_id": "JP-RedHat-FUSETOOLS-2904", "original": "Adjust UI tests for Fuse 7.0.0", "reescrito": "Adjust UI tests"}
+{"task_id": "JP-Spring-SLICE-65", "original": "Update FileSystem to have a ZipFile based FileSystem and FileSystemEntry", "reescrito": "Implement ZipFile Based FileSystem and Entries"}
+{"task_id": "JP-Spring-SJC-121", "original": "JPA-related exceptions being thrown on ApplicationContext close", "reescrito": "Implement JPA exception handling on ApplicationContext close"}
+{"task_id": "JP-Sonatype-OSSRH-26", "original": "Document the security-import-tool", "reescrito": "Document the security import tool"}
+{"task_id": "JP-Sonatype-OSSRH-40", "original": "Create a script to verify artifacts' signature", "reescrito": "Create script to verify artifacts' signature"}
+{"task_id": "JP-JiraEcosystem-PLE-639", "original": "[Collection] JIRA Bugs for M7", "reescrito": "Store JIRA bugs"}
+{"task_id": "JP-RedHat-JBWS-1217", "original": "WSDLtoJava Namespace to package mapping does not support multiple namespaces", "reescrito": "Map multiple namespaces in WSDLtoJava"}
+{"task_id": "JP-RedHat-OSDK-1965", "original": "Triage/clean up open issues in Kubebuilder before KB meeting", "reescrito": "Triage open issues in Kubebuilder"}
+{"task_id": "JP-Spring-DATAJPA-142", "original": "Invalid count query generated when using Pageable and NamedQuery with existing order by", "reescrito": "Implement count query for pageable and named query"}
+{"task_id": "JP-RedHat-TEIID-5959", "original": "Teiid doesn't re-optimize select sub-nodes after adding new criteria", "reescrito": "Add new criteria optimization for select sub-nodes"}
+{"task_id": "JP-RedHat-RESTEASY-178", "original": "@Path(\"{id:\\d+}\") gets converted to \"{id:d+}\"", "reescrito": "Correct path conversion"}
+{"task_id": "JP-RedHat-TEIID-5967", "original": "Disallow the usage of handler in create fdw", "reescrito": "Implement error prevention for handler in fdw creation"}
+{"task_id": "JP-Hyperledger-FABCN-321", "original": "Complete implementation of remaining shim APIs", "reescrito": "Implement remaining shim APIs"}
+{"task_id": "JP-Spring-SLICE-70", "original": "Create Factory that uses classpath scanner", "reescrito": "Create Factory with Classpath Scanner"}
+{"task_id": "JP-Spring-SLICE-21", "original": "Create packaged build with all needed JAR files", "reescrito": "Create packaged build with all needed JAR files"}
+{"task_id": "JP-RedHat-TEIIDSB-221", "original": "Change authorization and token properties for Salesforce", "reescrito": "Update authorization and token properties for Salesforce"}
+{"task_id": "JP-RedHat-TEIID-5897", "original": "Update srcclr.yml to on 1.0.x branch to run -Prelease profile", "reescrito": "Update srcclr.yml on 1.0.x branch"}
+{"task_id": "JP-RedHat-WFLY-7834", "original": "A test for loading custom login modules from non-default JBoss modules [SECURITY-930][WFLY-7412]", "reescrito": "Store test for loading custom login modules"}
+{"task_id": "JP-RedHat-JBWS-246", "original": "Deployment interceptor cannot fail deployment", "reescrito": "Implement deployment failure handling"}
+{"task_id": "JP-RedHat-JBIDE-710", "original": "Legal Info button is disabled or shows default about.html", "reescrito": "Display legal info button correctly"}
+{"task_id": "JP-Spring-DATAJPA-110", "original": "Error identifying 'alias' when the entity's name has numbers", "reescrito": "Store alias correctly for entities with numbers"}
+{"task_id": "JP-RedHat-OSDK-2065", "original": "olmf2f: attending sessions  in OLM F2F sessions", "reescrito": "Store attending sessions in OLM F2F"}
+{"task_id": "JP-RedHat-TEIIDSB-220", "original": "Invalid link to teiid springboot samples", "reescrito": "Add valid link to Teiid Springboot samples"}
+{"task_id": "JP-RedHat-JBAS-5775", "original": "Implement SoakTestController", "reescrito": "Implement Soak Test Controller"}
+{"task_id": "JP-RedHat-TEIIDSB-182", "original": "Master teiid spring boot doc varient should not reference the ws translator", "reescrito": "Update documentation to remove ws translator reference"}
+{"task_id": "JP-RedHat-JBWS-2146", "original": "Update container integration to SPI 3.0 M1", "reescrito": "Update container integration to SPI 3.0 M1"}
+{"task_id": "JP-Spring-IDE-767", "original": "Spring Working Set are not correctly recovered", "reescrito": "Store Spring Working Set correctly"}
+{"task_id": "JP-RedHat-TEIID-5865", "original": "Error with pg arrays", "reescrito": "Fix error handling for pg arrays"}
+{"task_id": "JP-Spring-BATCHADM-49", "original": "Finish remote chunking implementation: update step execution with progress data from remote side", "reescrito": "Implement remote chunking: update step execution with progress data"}
+{"task_id": "JP-JiraEcosystem-PLE-865", "original": "Unable to post Comment error for 'abandoned' review", "reescrito": "Store comment for abandoned review"}
+{"task_id": "JP-RedHat-OSDK-2055", "original": "support: user asking about what domain to use in forum-apiserver", "reescrito": "Add guidance on domain selection for forum-apiserver"}
+{"task_id": "JP-JiraEcosystem-ATST-263", "original": "Confluence.cfg.xml is no longer included in support zip", "reescrito": "Add confluence.cfg.xml to support zip"}
+{"task_id": "JP-JiraEcosystem-AO-12", "original": "Get active objects to pass its current tests", "reescrito": "Implement active objects passing current tests"}
+{"task_id": "JP-RedHat-TEIIDSB-171", "original": "Add an opentracing example", "reescrito": "Add an OpenTracing example"}
+{"task_id": "JP-RedHat-OSDK-1958", "original": "Digging into failing 4.6 ansible operator with tony", "reescrito": "Investigate failing 4.6 ansible operator"}
+{"task_id": "JP-RedHat-JBWS-1937", "original": "Document/Literal addressing endpoint fails when retreiving Outbound Action", "reescrito": "Implement document/literal addressing endpoint retrieval"}
+{"task_id": "JP-Sonatype-OSSRH-177", "original": "Bugs and new features for nexus-prep-tool", "reescrito": "Implement bugs and new features for nexus-prep-tool"}
+{"task_id": "JP-RedHat-OSDK-1993", "original": "support: help ejacobs with golang operator", "reescrito": "Add support for Golang operator"}
+{"task_id": "JP-RedHat-JBIDE-16876", "original": "Application wizard: page#1 needs fields disabled based on user actions", "reescrito": "Disable fields on page 1 based on user actions"}
+{"task_id": "JP-RedHat-OSDK-1952", "original": "Maintanence of openshift python client", "reescrito": "Implement OpenShift Python Client Maintenance"}
+{"task_id": "JP-RedHat-OSDK-2007", "original": "support: jonathan villa lopez with CRD questions.", "reescrito": "Implement CRD support functionality"}
+{"task_id": "JP-Spring-DATAJPA-20", "original": "Reference documentation shows invalid JPQL in example", "reescrito": "Update reference documentation JPQL example"}
+{"task_id": "JP-RedHat-JBAS-2772", "original": "org.jboss.test.jbossnet.security.SecurityUnitTestCase needs to be exclude if source compiled with jdk1.3", "reescrito": "Exclude SecurityUnitTestCase if compiled with JDK 1.3"}
+{"task_id": "JP-RedHat-JBWS-2018", "original": "JavatoWSDL Package to Namespace mapping does not support multiple packages", "reescrito": "Implement namespace mapping for multiple packages"}
+{"task_id": "JP-RedHat-TEIIDSB-212", "original": "ftp connection factory references ftp translator instead of file", "reescrito": "Update FTP connection factory to use FTP translator"}
+{"task_id": "JP-SecondLife-OPEN-10", "original": "cannot run autobuild's setup.py without specifying interpreter command (not executable and lacking shebang)", "reescrito": "Add interpreter command to setup.py"}
+{"task_id": "JP-RedHat-TEIID-5948", "original": "merge the mysql and mysql5 translators", "reescrito": "Merge MySQL and MySQL5 Translators"}
+{"task_id": "JP-Sonatype-OSSRH-20", "original": "Update repo-prep-tool to work with nexus 1.3.3", "reescrito": "Update tool to work with nexus 1.3.3"}
+{"task_id": "JP-RedHat-SOA-2416", "original": "Mail from header cannot be set from jbpm.cfg.xml", "reescrito": "Set mail header from jbpm.cfg.xml"}
+{"task_id": "JP-RedHat-TEIID-5928", "original": "Allow External and Internal materialization of multi-source to fail/update individually", "reescrito": "Implement individual failure/update for multi-source materialization"}
+{"task_id": "JP-RedHat-JBAS-3741", "original": "Upgrade tomcat to 5.5.20", "reescrito": "Upgrade Tomcat to 5.5.20"}
+{"task_id": "JP-RedHat-FUSETOOLS-2930", "original": "Update UI tests to work with RedDeer 2.1", "reescrito": "Update UI tests to work with RedDeer 2.1"}
+{"task_id": "JP-Spring-SLICE-90", "original": "Improve Violations", "reescrito": "Improve Violations Display"}
+{"task_id": "JP-RedHat-TEIIDSB-186", "original": "Fix to use only use alias name from ExternalSource", "reescrito": "Implement alias name usage from ExternalSource"}
+{"task_id": "JP-Spring-SGF-251", "original": "Creating and using GemFire Repositories based on the Spring Data Commons Repository abstraction does not work properly for domain objects stored in Subregions.", "reescrito": "Implement GemFire Repositories for Subregion Stored Objects"}
+{"task_id": "JP-RedHat-TEIID-5935", "original": "S3 support for ceph", "reescrito": "Add S3 support for ceph"}
+{"task_id": "JP-Sonatype-OSSRH-121", "original": "write a script to export email  from nexus configuration", "reescrito": "Create script to export emails from nexus configuration"}
+{"task_id": "JP-RedHat-OSDK-1959", "original": "operator-sdk ansible collection maintenance", "reescrito": "Add operator-sdk ansible collection maintenance"}
+{"task_id": "JP-RedHat-TEIID-486", "original": "MOD() scalar function should be supported by DB2 Connector", "reescrito": "Implement MOD() scalar function support"}
+{"task_id": "JP-RedHat-OSDK-1994", "original": "community: Working to profile large-scale ansible-based operator", "reescrito": "Create profile for large-scale Ansible-based operator"}
+{"task_id": "JP-Hyperledger-FABCN-323", "original": "Enable peer grpc prefix to be determined at runtime", "reescrito": "Determine GRPC prefix at runtime"}
+{"task_id": "JP-Spring-SLICE-47", "original": "Update webapplication-maven", "reescrito": "Update web application dependencies"}
+{"task_id": "JP-RedHat-TEIIDSB-204", "original": "Unable to build due to teiid wildfly connectors are not built as part of its core-release profile", "reescrito": "Add Teiid Wildfly connectors to core-release profile"}
+{"task_id": "JP-Spring-SESPRINGACTIONSCRIPTAS-45", "original": "The context allows to register multiple objects with the same id but only the last declared one is actually instanciated", "reescrito": "Store only the last declared object with the same ID"}
+{"task_id": "JP-RedHat-JBAS-4334", "original": "port JBAS-4103 to JBoss 5", "reescrito": "Port functionality to JBoss 5"}
+{"task_id": "JP-RedHat-TEIIDSB-195", "original": "Provide Connection properties Datasource", "reescrito": "Add connection properties to datasource"}
+{"task_id": "JP-Spring-DATAJPA-96", "original": "Invalid use of part.getProperty().toDotPath() in JpaQueryCreator", "reescrito": "Implement part.getProperty().toDotPath() correctly"}
+{"task_id": "JP-RedHat-TEIID-6019", "original": "Normalize and expand file api and file glob search", "reescrito": "Normalize and expand file API and glob search functionality"}
+{"task_id": "JP-RedHat-TEIID-5881", "original": "Remove the alias cache logic from the infinispan translator", "reescrito": "Remove alias cache logic"}
+{"task_id": "JP-Sonatype-OSSRH-63", "original": "Update the gpg verification script, import public keys from key-servers automaticaly", "reescrito": "Add automatic public key import from key-servers"}
+{"task_id": "JP-Sonatype-OSSRH-98", "original": "release community-nexus-preparation-tool 1.3.3", "reescrito": "Implement community nexus preparation tool"}
+{"task_id": "JP-RedHat-JBWS-2089", "original": "isXOPPackage() is returning an incorrect value", "reescrito": "Implement isXOPPackage() method correctly"}
+{"task_id": "JP-RedHat-FUSETOOLS-2276", "original": "Fix unstable test MarkersRemoverValidatorIT.checkMarkers", "reescrito": "Implement stable test for MarkersRemoverValidatorIT.checkMarkers"}
+{"task_id": "JP-Sonatype-OSSRH-91", "original": "Update the OSS Repository Hosting document for the usage of gpg:sign-and-deploy-file", "reescrito": "Update OSS Repository Hosting doc for gpg sign-and-deploy-file usage"}
+{"task_id": "JP-Spring-ROO-1078", "original": "Fix classloader issues blocking updating GWT's Jetty to 7.1.6", "reescrito": "Update Jetty to 7.1.6"}
+{"task_id": "JP-RedHat-WFLY-8228", "original": "Servlet server distribution fails to work with Elytron - NoClassDefFoundError", "reescrito": "Implement class loading for Elytron integration"}
+{"task_id": "JP-RedHat-TEIID-5883", "original": "Move older infinispan dependency to wildfly", "reescrito": "Move older Infinispan dependency to WildFly"}
+{"task_id": "JP-JiraEcosystem-AMPS-547", "original": "Reduce disk space used by AMPS integration test build", "reescrito": "Store AMPS integration test build more efficiently"}
+{"task_id": "JP-RedHat-JBAS-1825", "original": "Twiddle script fails with JAVA_HOME that contains a space", "reescrito": "Set JAVA_HOME with space in path"}
+{"task_id": "JP-Spring-DATAJPA-133", "original": "Release 1.0.2.RELEASE", "reescrito": "Implement version 1.0.2"}
+{"task_id": "JP-Spring-SJC-129", "original": "Multiple @ResourceBundles declarations causes IllegalStateException", "reescrito": "Implement error handling for multiple @ResourceBundles declarations"}
+{"task_id": "JP-Sonatype-OSSRH-56", "original": "How to add Hibernate 3.2.7 to the index?", "reescrito": "Add Hibernate 3.2.7 to the index"}
+{"task_id": "JP-Qt-QTCREATORBUG-19734", "original": "Create a short presentation about Scrum", "reescrito": "Create a short presentation about Scrum"}
+{"task_id": "JP-RedHat-JBAS-3011", "original": "Upgrade jbossxb to a non-snapshot release", "reescrito": "Upgrade JBossXB to stable release"}
+{"task_id": "JP-Spring-SJC-92", "original": "Add option to @Import for importing configuration into sub ApplicationContext", "reescrito": "Add import option for sub ApplicationContext configuration"}
+{"task_id": "JP-RedHat-TEIID-5969", "original": "The \"already removed\" exception in case of copyLobs=true translator property for MSSQL", "reescrito": "Implement copyLobs=false for MSSQL translator property"}
+{"task_id": "JP-RedHat-OSDK-1956", "original": "debug olm status with sujil", "reescrito": "Debug OLM status"}
+{"task_id": "JP-Spring-SLICE-68", "original": "Update samples", "reescrito": "Update sample data"}
+{"task_id": "JP-Spring-SGF-265", "original": "Upgrade to the latest version GemFire (7.0.2)", "reescrito": "Upgrade GemFire to 7.0.2"}
+{"task_id": "JP-Spring-SJC-116", "original": "Point SJC Bamboo at src.springframework.org", "reescrito": "Point SJC Bamboo to src.springframework.org"}
+{"task_id": "JP-RedHat-TEIIDSB-166", "original": "Update Teiid Spring Boot Example", "reescrito": "Update Teiid Spring Boot Example Code"}
+{"task_id": "JP-RedHat-OSDK-1962", "original": "pipeline: Review/discuss change for validation of 1.22 api", "reescrito": "Review validation change for 1.22 API"}
+{"task_id": "JP-Sonatype-OSSRH-169", "original": "Please add Substance to Sonatype hosting (OSS project)", "reescrito": "Add Substance to Sonatype Hosting"}
+{"task_id": "JP-RedHat-JBAS-2947", "original": "org.jboss.test.cmp2.audit.test.AuditUnitTestCase(JACC+SecurityMgr) test failure", "reescrito": "Implement Audit Unit Test"}
+{"task_id": "JP-RedHat-FUSETOOLS-1659", "original": "Provide Validation decorator in Project Explorer View for Routes and Camel Context virtual folder", "reescrito": "Add Validation decorator to Routes and Camel Context in Project Explorer View"}
+{"task_id": "JP-Spring-BATCHADM-48", "original": "Remove MessageOrientedStep", "reescrito": "Remove MessageOrientedStep"}
+{"task_id": "JP-JiraEcosystem-AMPS-611", "original": "Start applications in parallel in AMPS", "reescrito": "Start applications in parallel"}
+{"task_id": "JP-Hyperledger-FABCN-319", "original": "SDK support - node.js SDK", "reescrito": "Implement SDK support for node.js"}
+{"task_id": "JP-RedHat-OSDK-2021", "original": "prep for DoD discussion", "reescrito": "Prepare for DoD discussion"}
+{"task_id": "JP-RedHat-TEIIDSB-151", "original": "Update to Teiid 13", "reescrito": "Update Teiid version"}
+{"task_id": "JP-RedHat-TEIID-5869", "original": "Update core-release profile", "reescrito": "Update core release profile settings"}
+{"task_id": "JP-RedHat-JBAS-3702", "original": "Uncomment HA invokers in sample-bindings.xml", "reescrito": "Uncomment HA invokers"}
+{"task_id": "JP-Spring-DATAJPA-19", "original": "Port Hades extension module", "reescrito": "Implement Hades extension module"}
+{"task_id": "JP-Jira-JSWSERVER-73", "original": "As a manager I want to be able to set a capacity for my Versions based on a statistic.", "reescrito": "Set capacity for Versions based on statistic"}
+{"task_id": "JP-RedHat-JBAS-1899", "original": "Farm deployment shouldn't read entire archive file into memory", "reescrito": "Store farm deployment to read archive file in chunks"}
+{"task_id": "JP-RedHat-JBAS-2205", "original": "TimeoutFactory should expose thread pool", "reescrito": "Implement TimeoutFactory to expose thread pool"}
+{"task_id": "JP-Spring-SLICE-66", "original": "Configure Service Exports", "reescrito": "Configure service exports"}
+{"task_id": "JP-JiraEcosystem-REST-68", "original": "NullPointerException in EntityCrawler", "reescrito": "Implement null check in EntityCrawler"}
+{"task_id": "JP-RedHat-FUSETOOLS-3007", "original": "Create UI test for FIS / Fuse on Openshift quickstarts", "reescrito": "Create UI test for FIS Fuse quickstarts"}
+{"task_id": "JP-RedHat-OSDK-2071", "original": "support: user had question of transitive dep vulnerability.", "reescrito": "Add transitive dep vulnerability info to docs"}
+{"task_id": "JP-RedHat-TEIID-5962", "original": "Teiid locks many threads when Salesforce is disconnected", "reescrito": "Store connection status and prevent thread locking"}
+{"task_id": "JP-RedHat-JBAS-1562", "original": "Expose getEntityLockMonitor in the MBean EntityLockMonitorMBean", "reescrito": "Expose getEntityLockMonitor in MBean"}
+{"task_id": "JP-Spring-SJC-95", "original": "Spring-WS client needs explicit afterPropertiesSet call", "reescrito": "Implement afterPropertiesSet call for Spring-WS client"}
+{"task_id": "JP-RedHat-JBWS-783", "original": "Fix Apache SCOUT-11", "reescrito": "Fix issue with Apache Scout"}
+{"task_id": "JP-RedHat-TEIIDSB-200", "original": "[DV] Overriding Http session in maven based deployment", "reescrito": "Implement session overriding in maven deployment"}
+{"task_id": "JP-RedHat-FUSETOOLS-2880", "original": "UI Tests - extend QuickStartsTest to cover all quickstarts shipped with Fuse, Fuse on EAP", "reescrito": "Add tests for all shipped quickstarts to QuickStartsTest"}
+{"task_id": "JP-RedHat-JBAS-4019", "original": "failing org.jboss.test.security.test.SRPUnitTestCase - unlimited crypto support needed", "reescrito": "Implement unlimited crypto support"}
+{"task_id": "JP-JiraEcosystem-FP-6", "original": "Allow multiple packages to be in the same test group", "reescrito": "Add support for multiple packages in test groups"}
+{"task_id": "JP-RedHat-APPDUX-75", "original": "[RHMI GA] Review the latest Solution Explorer for any accessibility issues", "reescrito": "Review Solution Explorer for accessibility issues"}
+{"task_id": "JP-RedHat-TEIID-5926", "original": "Issues with policy/grant docs", "reescrito": "Store policy/grant docs correctly"}
+{"task_id": "JP-Spring-SGF-201", "original": "Create a Spring Boot Starter POM for Spring Data GemFire", "reescrito": "Create Spring Boot Starter POM for Spring Data GemFire"}
+{"task_id": "JP-Spring-DATAJPA-54", "original": "Query hints associated to finders using Pageable are applied also when counting, that's not always appropriate", "reescrito": "Implement query hints for pageable finders without counting"}
+{"task_id": "JP-RedHat-JBIDE-3968", "original": "Create unittests for dali integration", "reescrito": "Create unit tests for dali integration"}
+{"task_id": "JP-RedHat-FUSETOOLS-2586", "original": "UI Tests - Fix AWT Robot problems on OS X", "reescrito": "Fix AWT Robot issues on OS X"}
+{"task_id": "JP-Sonatype-OSSRH-4", "original": "Document OSS repository hosting process", "reescrito": "Document the OSS repository hosting process"}
+{"task_id": "JP-Spring-BATCHADM-38", "original": "Job configuration upload overwrites all existing jobs", "reescrito": "Store new job config without overwriting existing jobs"}
+{"task_id": "JP-RedHat-JBAS-1818", "original": "New twiddle 'xmbean' command for producing skeleton xmbean descriptors", "reescrito": "Create new 'xmbean' command for generating skeleton descriptors"}
+{"task_id": "JP-Sonatype-OSSRH-115", "original": "stop the nexus oss war, zip and tar.gz from being synced to central", "reescrito": "Stop syncing nexus OSS war, zip, and tar.gz to central"}
+{"task_id": "JP-Spring-DATAJPA-3", "original": "Port Hades reference documentation", "reescrito": "Add Hades reference documentation"}
+{"task_id": "JP-RedHat-TEIIDSB-152", "original": "Alter / drop will not work with vdb plugin", "reescrito": "Implement alter/drop functionality for vdb plugin"}
+{"task_id": "JP-Sonatype-OSSRH-87", "original": "Rebuild metadata on jetty repositories", "reescrito": "Rebuild metadata for Jetty repositories"}
+{"task_id": "JP-Spring-SLICE-71", "original": "Add POMs", "reescrito": "Add POMs to project"}
+{"task_id": "JP-RedHat-TEIID-5919", "original": "Salesforce: Insert fails in case of tables with salesforce standard objects", "reescrito": "Implement insert for standard objects"}
+{"task_id": "JP-RedHat-JBAS-2618", "original": "DeploymentException when deploying archive with a dot in its name", "reescrito": "Store archive with dot in name for deployment"}
+{"task_id": "JP-Spring-DATAJPA-43", "original": "Update documentation regarding latest changes in programming model to use Specifications", "reescrito": "Update documentation with latest programming model changes"}
+{"task_id": "JP-Spring-SLICE-33", "original": "Start on threads", "reescrito": "Start implementing threads"}
+{"task_id": "JP-RedHat-JBAS-2787", "original": "Test Failure:  org.jboss.test.isolation.test.IsolationUnitTestCase", "reescrito": "Implement test for IsolationUnitTestCase"}
+{"task_id": "JP-RedHat-TEIID-5949", "original": "SQLServer DateTimeOffset datatype is read as object(34)", "reescrito": "Store DateTimeOffset as DateTimeOffset"}
+{"task_id": "JP-RedHat-JBIDE-23267", "original": "New application created by JBDS cannot specify \"medium\" or \"large\" size.", "reescrito": "Add size options for new applications"}
+{"task_id": "JP-RedHat-TEIID-5843", "original": "Support xml[] with xmltable", "reescrito": "Implement support for xml[] with xmltable"}
+{"task_id": "JP-RedHat-TEIID-6002", "original": "Support cloudera hue access as pg", "reescrito": "Add Cloudera Hue access support"}
+{"task_id": "JP-RedHat-TEIIDSB-185", "original": "Add a way to build Keystore and Truststore to Spring Boot engine", "reescrito": "Add Keystore and Truststore configuration to Spring Boot"}
+{"task_id": "JP-RedHat-FUSETOOLS-3093", "original": "Improve naming of parameterized test CamelCatalogComponentsTest", "reescrito": "Rename parameterized test in CamelCatalogComponentsTest"}
+{"task_id": "JP-Spring-DATAJPA-111", "original": "The SimpleJpaRepository's deleteAll() should not call em.clear().", "reescrito": "Implement deleteAll() without calling em.clear()"}
+{"task_id": "JP-Spring-DATAJPA-141", "original": "JpaMetamodelEntityInformation cannot deal with mapped superclasses", "reescrito": "Implement support for mapped superclasses"}
+{"task_id": "JP-RedHat-OSDK-1971", "original": "[support]: Help on basic-check-spec test scorecard test", "reescrito": "Create basic-check-spec test scorecard test help"}
+{"task_id": "JP-JiraEcosystem-AO-54", "original": "Make DatabaseProvider work off of a DataSource only", "reescrito": "Implement DatabaseProvider to use DataSource only"}
+{"task_id": "JP-Sonatype-OSSRH-114", "original": "Setup a synchronization of the bnd lib", "reescrito": "Set up synchronization for bnd lib"}
+{"task_id": "JP-RedHat-JBEWS-241", "original": "EWS - release notes", "reescrito": "Create release notes"}
+{"task_id": "JP-RedHat-JBAS-2267", "original": "org.jboss.invocation.pooled.interfaces.Optimized*Stream break object serialization contract", "reescrito": "Implement object serialization contract for stream"}
+{"task_id": "JP-RedHat-TEIID-5040", "original": "Add translator override to change the Google spreadsheet", "reescrito": "Add translator override for Google spreadsheet"}
+{"task_id": "JP-RedHat-TEIID-5884", "original": "Create common infinispan connection logic", "reescrito": "Create common Infinispan connection logic"}
+{"task_id": "JP-Sonatype-OSSRH-168", "original": "Add new nexus user id to the andromda-group", "reescrito": "Add new Nexus user ID to group"}
+{"task_id": "JP-RedHat-JBAS-6621", "original": "Update jboss-managed to 2.1.0.GA", "reescrito": "Update managed version to 2.1.0.GA"}
+{"task_id": "JP-RedHat-FUSETOOLS-3043", "original": "Update UI tests to work with RedDeer 2.2", "reescrito": "Update UI tests to work with RedDeer 2.2"}
+{"task_id": "JP-Sonatype-OSSRH-180", "original": "Permission denied for new groupId in our repo", "reescrito": "Add permission for new groupId"}
+{"task_id": "JP-Spring-DATAJPA-17", "original": "Port sample projects", "reescrito": "Port sample projects"}
+{"task_id": "JP-Sonatype-OSSRH-60", "original": "Add additional users for ops4j repositories", "reescrito": "Add users for ops4j repositories"}
+{"task_id": "JP-RedHat-TEIID-6016", "original": "oracle pushdown of day of week is not iso compatible", "reescrito": "Implement ISO compatible day of week in Oracle pushdown"}
+{"task_id": "JP-RedHat-FUSETOOLS-3086", "original": "Test Fuse Tooling 11.1.0.AM3 / DevStudio 12.9.0.AM3", "reescrito": "Test Fuse Tooling"}
+{"task_id": "JP-Sonatype-OSSRH-28", "original": "the base role for Security Import Tool should be configured", "reescrito": "Configure base role for Security Import Tool"}
+{"task_id": "JP-Spring-DATAJPA-29", "original": "Querying for a page invalidly calculates total number of pages for query methods", "reescrito": "Calculate total pages correctly for query methods"}
+{"task_id": "JP-Spring-SLICE-46", "original": "Update webapplication-ant", "reescrito": "Update web application version"}
+{"task_id": "JP-Spring-SJC-118", "original": "Eager BeanPostProcessor propagation short-circuits @Autowired functionality", "reescrito": "Implement BeanPostProcessor propagation for @Autowired fields"}
+{"task_id": "JP-Spring-SJC-93", "original": "PermGen OutOfMemoryError occurs after multiple hot-deploys of JavaConfig-based webapp", "reescrito": "Implement PermGen memory management for JavaConfig webapp"}
+{"task_id": "JP-RedHat-TEIID-5918", "original": "SQL Server uniqueidentifier field type: Conversion and concat errors, incorrect lower case comparisons", "reescrito": "Fix uniqueidentifier conversion and concat errors"}
+{"task_id": "JP-Qt-QTCREATORBUG-23761", "original": "Deprecate Ministro in Qt Creator", "reescrito": "Deprecate Ministro Plugin"}
+{"task_id": "JP-Qt-QTJIRA-300", "original": "Enable compression on the server side to speed up the website", "reescrito": "Enable server-side compression to speed up website"}
+{"task_id": "JP-Jira-JSWSERVER-37", "original": "Have the ability to save a permanent context (Filter + Sort) to eventually apply on a version or component (see details)", "reescrito": "Store permanent context (Filter + Sort) for later use"}
+{"task_id": "JP-Hyperledger-FABCN-314", "original": "Chaincode platform for handling javascript chaincode docker builds", "reescrito": "Create chaincode platform for JavaScript chaincode Docker builds"}
+{"task_id": "JP-RedHat-OSDK-1957", "original": "Debug 0.19-based operator for Tony", "reescrito": "Debug operator for Tony"}
+{"task_id": "JP-RedHat-FUSETOOLS-2983", "original": "Create new images for Fedora 28, Ubuntu 18.04, RHEL 6.8", "reescrito": "Create images for Fedora 28, Ubuntu 18.04, RHEL 6.8"}
+{"task_id": "JP-RedHat-WFLY-6784", "original": "Add possibility to enable websocket compression via management model", "reescrito": "Add option to enable websocket compression"}
+{"task_id": "JP-RedHat-TEIID-5955", "original": "Prepared explain don't return the plan when re-executed", "reescrito": "Display plan instead of explanation on re-execution"}
+{"task_id": "JP-Sonatype-OSSRH-70", "original": "Write a script to walk a repo and report on artifacts with bad checksums", "reescrito": "Create script to walk repo and report bad checksums"}
+{"task_id": "JP-RedHat-OSDK-1950", "original": "[support] Explain how to descope ansible-based operators", "reescrito": "Explain how to descope ansible-based operators"}
+{"task_id": "JP-Spring-BATCHADM-58", "original": "Upgrade to Spring Integration 2.0", "reescrito": "Upgrade Spring Integration to 2.0"}
+{"task_id": "JP-RedHat-OSDK-2010", "original": "community: prep before KB bug triage", "reescrito": "Prepare for KB bug triage session"}
+{"task_id": "JP-RedHat-TEIIDSB-137", "original": "The resource-name concept seems unused", "reescrito": "Identify and remove unused resource-name concept"}
+{"task_id": "JP-RedHat-JBWS-1329", "original": "Fix StorePassEncryptTestCase for jbossas-5.0", "reescrito": "Store Fix for StorePassEncryptTestCase"}
+{"task_id": "JP-RedHat-JBAS-2815", "original": "EJBContext.getTimerService should fail if the requesting bean does not implement javax.ejb.TimedObject", "reescrito": "Implement error handling for EJBContext.getTimerService"}
+{"task_id": "JP-RedHat-JBAS-3098", "original": "JBossCacheManager to handle tx exception gracefully", "reescrito": "Implement graceful tx exception handling for JBossCacheManager"}
+{"task_id": "JP-Sonatype-OSSRH-64", "original": "releases are not sync to central (project com.google.code.maven-scm-provider-svnjava:maven-scm-provider-svnjava)", "reescrito": "Store releases in central repository"}
+{"task_id": "JP-RedHat-JBSEAM-1370", "original": "Turn \"JBoss Seam Debug Page\" heading into a link", "reescrito": "Create link for \"JBoss Seam Debug Page\" heading"}
+{"task_id": "JP-RedHat-JBAS-1758", "original": "A BarrierController service to allow start/stop dependecies triggered by notifications", "reescrito": "Implement BarrierController service for start/stop dependencies"}
+{"task_id": "JP-RedHat-TEIID-5932", "original": "LATERAL LEFT JOIN can return duplicate rows at batch boundaries", "reescrito": "Store unique rows in batch joins"}
+{"task_id": "JP-RedHat-JBAS-6019", "original": "Upgrade JBoss Aspects to their final version", "reescrito": "Upgrade JBoss Aspects to final version"}
+{"task_id": "JP-Spring-SLICE-22", "original": "Create windows scripts", "reescrito": "Create Windows scripts"}
+{"task_id": "JP-JiraEcosystem-ATST-285", "original": "Improve Directory Configuration Summary in Support Zip", "reescrito": "Create Directory Configuration Summary in Support Zip"}
+{"task_id": "JP-JiraEcosystem-AMPS-561", "original": "Create-home-zip: references to the home path", "reescrito": "Create path references for home directory"}
+{"task_id": "JP-RedHat-JBAS-1448", "original": "Update the ServerInfo listThreadDump to use the jdk 5 stack traces", "reescrito": "Update ServerInfo listThreadDump to use JDK 5 stack traces"}
+{"task_id": "JP-Spring-SLICE-92", "original": "Improve javadocs", "reescrito": "Add javadocs"}
+{"task_id": "JP-RedHat-OSDK-1951", "original": "Code review/issues for python kubernetes clients", "reescrito": "Review and address issues for Python Kubernetes clients"}
+{"task_id": "JP-Spring-SLICE-10", "original": "Create Spring-based appication detector", "reescrito": "Create Spring-based application detector"}
+{"task_id": "JP-RedHat-TEIIDSB-214", "original": "doc links broken by file name changes", "reescrito": "Update doc links after file name changes"}
+{"task_id": "JP-Sonatype-OSSRH-101", "original": "Create a internal wiki page for ossrh request processing instructions", "reescrito": "Create internal wiki page for OSSRH request processing instructions"}
+{"task_id": "JP-Spring-SLICE-2", "original": "Port over Agile schemes and type from issuetracker", "reescrito": "Port over Agile schemes and types"}
+{"task_id": "JP-Jira-CONFCLOUD-72398", "original": "Have API Advance Search with CQL be able to order by relevance", "reescrito": "Implement API Advance Search with CQL sorting by relevance"}
+{"task_id": "JP-RedHat-TEIID-5924", "original": "Salesforce: UPDATE doesn't work when setting null values", "reescrito": "Update record with null values"}
+{"task_id": "JP-RedHat-TEIID-5981", "original": "Add content length to VirtualFileConnection.add", "reescrito": "Add content length to add method"}
+{"task_id": "JP-RedHat-JBAS-3072", "original": "Upgrade joesnmp from v0.3.3 to v0.3.4", "reescrito": "Upgrade JoeSNMP to v0.3.4"}
+{"task_id": "JP-RedHat-FUSETOOLS-2617", "original": "UI Tests - extend CamelEditorTest - components creation", "reescrito": "Create UI tests for CamelEditor components"}
+{"task_id": "JP-Spring-SLICE-37", "original": "Accept an object with a collection of interfaces that it will be selectable by", "reescrito": "Add support for selecting objects with collection interfaces"}
+{"task_id": "JP-RedHat-JBSEAM-149", "original": "Enhance the ResourceBundle", "reescrito": "Implement ResourceBundle support"}
+{"task_id": "JP-RedHat-OSDK-1954", "original": "[support]: Help user thomasmckay with failing basic scorecard test", "reescrito": "Create support ticket for failing basic scorecard test"}
+{"task_id": "JP-RedHat-TEIID-5798", "original": "Mixed PERMISSION GRANTS", "reescrito": "Store mixed permission grants"}
+{"task_id": "JP-Sakai-BW-171", "original": "Allow tools folder to be inside WEB-INF", "reescrito": "Add tools folder to WEB-INF"}
+{"task_id": "JP-RedHat-TEIID-5937", "original": "Union All followed by except returns wrong results", "reescrito": "Implement Union All then Except functionality"}
+{"task_id": "JP-RedHat-OSDK-2068", "original": "support: looked into the OLM status bug for Venkat", "reescrito": "Implement OLM status support"}
+{"task_id": "JP-Sonatype-OSSRH-176", "original": "Repository Sorting Tool", "reescrito": "Implement Sorting Functionality"}
+{"task_id": "JP-RedHat-OSDK-2017", "original": "review: 4.6 docs PR update", "reescrito": "Update documentation with PR changes"}
+{"task_id": "JP-RedHat-JBAS-4561", "original": "EJB Timer Service doesn't come up properly", "reescrito": "Implement EJB Timer Service"}
+{"task_id": "JP-RedHat-TEIID-5859", "original": "Upgrade to wildfly 19", "reescrito": "Upgrade to Wildfly 19"}
+{"task_id": "JP-Spring-BATCHADM-40", "original": "Upgrade to use jdbc: namespace", "reescrito": "Upgrade to use jdbc namespace"}
+{"task_id": "JP-RedHat-OSDK-2022", "original": "community: investigate resource limits in k8s doc examples for PR review", "reescrito": "Review resource limits in k8s doc examples"}
+{"task_id": "JP-Spring-SGF-89", "original": "Spring Gemfire Continuous Query Container Fails When Implementing the ContinuousQueryListener Interface", "reescrito": "Implement ContinuousQueryListener Interface"}
+{"task_id": "JP-RedHat-OSDK-2053", "original": "support: customer case on operator sdk markers", "reescrito": "Implement support for customer case on operator SDK markers"}
+{"task_id": "JP-Spring-DATAJPA-73", "original": "Support for locking", "reescrito": "Implement locking support"}
+{"task_id": "JP-RedHat-JBAS-3054", "original": "Use of isUserInRole from jsp does not work for JACC", "reescrito": "Implement isUserInRole check in JSP"}
+{"task_id": "JP-RedHat-TEIIDSB-57", "original": "Provide Cassandra data source support", "reescrito": "Add Cassandra data source support"}
+{"task_id": "JP-Sonatype-OSSRH-158", "original": "Synching Postgis to Central does not work (yet)", "reescrito": "Implement sync from Postgis to Central"}
+{"task_id": "JP-Sonatype-OSSRH-124", "original": "After new staging profile is created, move the _Central Sync_ profile to the end", "reescrito": "Move _Central Sync_ profile to end after new staging profile created"}
+{"task_id": "JP-RedHat-TEIIDSB-188", "original": "Change rest properties prefix to \"spring.teiid.data.rest\"", "reescrito": "Change REST properties prefix to \"spring.teiid.data.rest"}
+{"task_id": "JP-Sonatype-OSSRH-178", "original": "Set up a mailing list for OSSRH users", "reescrito": "Create mailing list for OSSRH users"}
+{"task_id": "JP-RedHat-JBAS-3993", "original": "Test suite should use client libraries for tests' classpaths", "reescrito": "Add client libraries to test classpaths"}
+{"task_id": "JP-RedHat-FUSETOOLS-1654", "original": "Display error in Problem view without requiring manual \"Validate\" call", "reescrito": "Display error in Problem view automatically"}
+{"task_id": "JP-Sonatype-OSSRH-37", "original": "Experiment and document the signature validation process", "reescrito": "Document the signature validation process"}
+{"task_id": "JP-RedHat-FUSETOOLS-3012", "original": "Fix 'fuse-project' job - Insufficient memory", "reescrito": "Implement sufficient memory for job"}
+{"task_id": "JP-Hyperledger-FABCN-324", "original": "Upgrade node.js chaincode engine to v8", "reescrito": "Upgrade node.js chaincode to v8"}
+{"task_id": "JP-RedHat-WFLY-627", "original": "TS: -Djboss.dist=... has no effect,  /build/target/jboss-as* is always used", "reescrito": "Set correct JBoss distribution path"}
+{"task_id": "JP-Sonatype-OSSRH-187", "original": "Central sync for project makumba", "reescrito": "Implement central sync for project"}
+{"task_id": "JP-RedHat-FUSETOOLS-2612", "original": "UI Tests - test checking for initialization of wizard with package name and classname for class provided in global Bean property view", "reescrito": "Create UI tests for wizard initialization with package name and class name"}
+{"task_id": "JP-JiraEcosystem-AMPS-554", "original": "Studio-Bamboo doesn't stop when used in the IntegrationTestsMojo", "reescrito": "Implement stop functionality for Studio-Bamboo in IntegrationTestsMojo"}
+{"task_id": "JP-RedHat-TEIID-5973", "original": "wrong type info for EPOCH return value", "reescrito": "Store correct type info for EPOCH return value"}
+{"task_id": "JP-JiraEcosystem-ATST-318", "original": "Add more configuration files to the Support Zip", "reescrito": "Add configuration files to support zip"}
+{"task_id": "JP-RedHat-JBAS-2117", "original": "org.jboss.util.xml.DOMWriter.printInternal() skips the DOCUMENT_NODE", "reescrito": "Store DOCUMENT_NODE in XML output"}
+{"task_id": "JP-RedHat-LOG-2077", "original": "Implement Unit Test Case for CLO Telemetry Metrics", "reescrito": "Implement Unit Test Cases for Telemetry Metrics"}
+{"task_id": "JP-Sonatype-OSSRH-33", "original": "Improve the log of nexus-prep-tool", "reescrito": "Improve log output for nexus-prep-tool"}
+{"task_id": "JP-Spring-DATAJPA-72", "original": "Missing specific spring-data package import in template.mf", "reescrito": "Add missing spring-data package import"}
+{"task_id": "JP-Spring-AMQP-84", "original": "Create 'release' CI build plan for AMQP", "reescrito": "Create CI build plan for AMQP"}
+{"task_id": "JP-RedHat-JBAS-1610", "original": "Integrate jdk5 MXBeans (platform MBeans) to JBoss", "reescrito": "Implement MXBeans in JBoss"}
+{"task_id": "JP-RedHat-TEIID-16", "original": "view layers cannot be merged with non-deterministic projected symbols", "reescrito": "Display layers with non-deterministic symbols"}
+{"task_id": "JP-RedHat-JBAS-3110", "original": "Workaround to avoid OutOfMemoryErrors during jboss boot, under Sun 64-bit linux jdk", "reescrito": "Implement memory optimization for JBoss startup"}
+{"task_id": "JP-RedHat-TEIID-5888", "original": "Infinispan translator returns wrong update count in some circumstances", "reescrito": "Store correct update count in Infinispan translator"}
+{"task_id": "JP-RedHat-OSDK-2070", "original": "Upstream: Create a PR to bump k8s to 1.23-alpha.3 in controller-runtime", "reescrito": "Create PR to bump k8s to 1.23-alpha.3"}
+{"task_id": "JP-Spring-DATAJPA-188", "original": "Support Before and After keywords for query creation", "reescrito": "Create support for Before and After keywords in queries"}
+{"task_id": "JP-Sonatype-OSSRH-107", "original": "Write a script to verify the POMs", "reescrito": "Write a script to verify POMs"}
+{"task_id": "JP-RedHat-OSDK-1961", "original": "infra: rotate our release keys", "reescrito": "Rotate release keys"}
+{"task_id": "JP-JiraEcosystem-AO-4", "original": "Implement SPI to allow host to provide DataSource", "reescrito": "Implement SPI for DataSource provider"}
+{"task_id": "JP-Sonatype-OSSRH-150", "original": "Change Project/SCM URL for IncredibleAlk Framework", "reescrito": "Update SCM URL"}
+{"task_id": "JP-RedHat-OSDK-2013", "original": "coach: look into the kubectl generator issue with Lucky", "reescrito": "Investigate kubectl generator issue for Lucky"}
+{"task_id": "JP-JiraEcosystem-REST-236", "original": "Expand query parameter doesn't handle multiple values with the same prefix", "reescrito": "Add handling for multiple values with the same prefix in query parameter expansion"}
+{"task_id": "JP-RedHat-JBAS-2949", "original": "JARDeployer rejects packed deployments with .xml files in deeply nested directories under META-INF/", "reescrito": "Store correct packed deployments with .xml files in deeply nested directories under META-INF"}

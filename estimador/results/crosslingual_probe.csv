@@ -1,0 +1,6 @@
+task_id,task_kind,effort_hours,cos,pred_en,pred_es,ratio
+TAWOS-NEXUS-3171,task,0.7833333333333333,0.908,3.45,5.11,1.48
+TAWOS-NEXUS-2204,task,1.0,0.763,2.12,2.62,1.238
+TAWOS-NEXUS-2567,improvement,2.5,0.849,2.79,4.94,1.773
+TAWOS-BAM-4119,bug,2.0,0.884,1.29,1.22,0.948
+TAWOS-FE-968,improvement,1.0,0.634,4.44,5.62,1.267

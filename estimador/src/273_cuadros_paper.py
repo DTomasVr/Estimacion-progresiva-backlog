@@ -73,8 +73,8 @@ def estimacion():
                           f(x.spearman, 2), "[" + ic(x.dif_MdMRE) + "]"])
     assert len(n) == 1, n
     tabla("llm_estimacion",
-          f"Estimación por tarea frente a LLM en {n.pop()} tareas no usadas para entrenar. Última columna: IC del "
-          "95\\,\\% de la diferencia de MdMRE (LLM menos propuesta).",
+          f"Estimación por tarea frente a LLM en {n.pop()} tareas no usadas para entrenar. Última columna: IC95 de "
+          "la diferencia de MdMRE (LLM menos propuesta).",
           "lcccc", ["", "MdMRE", "PRED(25)", r"$\rho$", r"IC95 $\Delta$MdMRE"], filas)
 
 
@@ -159,7 +159,8 @@ def generacion():
     assert len(ns) == 1, ns
     tabla("llm_generacion",
           f"Generación frente a LLM en {ns.pop()} proyectos retenidos. Duplicadas: coseno $\\geq 0{{,}}90$ con otra "
-          "tarea; s: segundos por backlog en la misma GPU; Reconoce: proyectos que el LLM dice reconocer.",
+          "tarea; s: segundos por backlog en la misma GPU; Reconoce: proyectos que el LLM dice reconocer, solo un "
+          "indicio de contaminación.",
           "lcccccc", ["", "sF1", "Cobertura", "Tareas", "Duplicadas", "s", "Reconoce"], filas, sep="2.5pt")
 
 
@@ -230,7 +231,7 @@ def anclaje():
     b0 = b0[(b0.escenario == "en frio") & (b0.nivel == "80%") & (b0.metodo == "unico")].iloc[0]
     v = lambda k, crit, col: float(c[(c.k == k) & (c.criterio == crit)][col].iloc[0])
     filas, salida = [], []
-    for k in (0, 1, 10, 20):
+    for k in (0, 10, 20):      # guia V3: la fila k = 1 va en el texto (recorte de reserva)
         if k == 0:
             ancho, cob = float(b0.anchura_x), float(b0.cobertura)
         else:
@@ -250,10 +251,10 @@ def anclaje():
                       r"$\times$" + f(ancho, 2), f(cob, 2)])
     pd.DataFrame(salida).to_csv(OUT / "anclaje.csv", index=False)
     tabla("anclaje",
-          "El total del proyecto según las tareas cerradas, con cada proyecto predicho como nuevo. Salvo «Solo "
-          "mayores», las columnas son sobre los 114 proyectos; «Solo mayores»: proyectos con más tareas que las "
-          "cerradas (cuántos y su PRED(25) al arrancar). $\\times$2: dentro de un factor 2; Cob.: cobertura del "
-          "intervalo.",
+          "El total del proyecto según las tareas cerradas, con cada proyecto predicho como nuevo, sobre los 114 "
+          "proyectos (incluye los de $k$ o menos tareas, ya cerrados). «Solo mayores»: proyectos con más de $k$ "
+          "tareas (cuántos; PRED(25) al arrancar). MdMRE: mediana del error relativo; $\\times$2: dentro de un "
+          "factor 2; Cob.: cobertura del intervalo.",
           "lcccccc", ["Cerradas", "Solo mayores", "PRED(25)", r"$\times$2", "MdMRE", "Interv.", "Cob."], filas,
           sep="2pt")
 

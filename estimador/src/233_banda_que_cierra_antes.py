@@ -204,7 +204,11 @@ def main():
                               cobertura=float(dentro.mean()),
                               anchura_mediana=float(np.median(w)),
                               anchura_p25=float(np.quantile(w, .25)),
-                              anchura_p75=float(np.quantile(w, .75))))
+                              anchura_p75=float(np.quantile(w, .75)),
+                              # solo proyectos con mas tareas que las cerradas (los «mayores» del paper)
+                              anchura_mediana_mayores=float(np.median(w[R[sk].kk.to_numpy() == k])),
+                              cobertura_mayores=float(dentro[R[sk].kk.to_numpy() == k].mean()),
+                              proyectos_mayores=int(len(np.unique(R[sk].j.to_numpy()[R[sk].kk.to_numpy() == k])))))
         print(f"  k={k} listo · {time.time() - t0:.0f} s", flush=True)
 
     t = pd.DataFrame(filas)

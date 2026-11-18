@@ -1,12 +1,12 @@
-114 proyectos � 24,622 tareas � 1 s
+114 proyectos � 24,622 tareas � 0 s
   20,520 registros � 2 s
   sigma ajustado � corr(|rho|, sigma) = 0.3834 � 3 s
   k=1 listo � 3 s
-  k=2 listo � 4 s
-  k=3 listo � 4 s
-  k=5 listo � 4 s
-  k=10 listo � 4 s
-  k=20 listo � 4 s
+  k=2 listo � 3 s
+  k=3 listo � 3 s
+  k=5 listo � 3 s
+  k=10 listo � 3 s
+  k=20 listo � 3 s
 
 ================================================================================================================
 ANCHURA MEDIANA DE LA BANDA DEL TOTAL AL 80%
@@ -58,4 +58,4 @@ LECTURA
 
   C alcanza con k=20 la anchura que A exige con k=10
 
-escrito results\banda_que_cierra_antes/resumen.csv � 4 s
+escrito results\banda_que_cierra_antes/resumen.csv � 3 s

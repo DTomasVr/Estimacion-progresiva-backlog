@@ -29,10 +29,10 @@ Las rutas son relativas a `estimador/`, salvo las que empiezan por `generador/`.
 | En el artículo | Script | Resultado |
 |---|---|---|
 | **Tabla I**: PRED(25), ×2 y MdMRE del total según las tareas cerradas (39,5 % → 62,7 %) | `src/275_curva_anclaje_dos_criterios.py` | `results/curva_anclaje_dos_criterios/resumen.csv` |
-| Tabla I: anchura y cobertura del intervalo (×5,57 → ×2,14; 0,78 y 0,80) | `src/161_banda_proyecto.py`, `src/233_banda_que_cierra_antes.py` | `results/banda_proyecto/resumen.csv`, `results/banda_que_cierra_antes/resumen.csv` |
+| Tabla I: anchura y cobertura del intervalo (×5,57 → ×2,14 en los 114; ×2,21 en los 81) | `src/161_banda_proyecto.py`, `src/233_banda_que_cierra_antes.py` | `results/banda_proyecto/resumen.csv`, `results/banda_que_cierra_antes/resumen.csv` |
 | Cobertura por tamaño del proyecto (0,72–0,96 con una cerrada; 0,78–0,82 con 10 o más) | `src/233_banda_que_cierra_antes.py` | `results/banda_que_cierra_antes/cobertura_por_tramo.csv` |
-| Sin contracción, λc = 0 (37,6 % → 14,5 % con una cerrada) | `src/277_extrapolacion_simple.py` | `results/extrapolacion_simple/` |
-| Orden real de cierre (50,0 % frente a 71,3 %, 38 proyectos) | `src/265_avance_orden_real.py` | `results/avance_orden_real/resumen.csv` |
+| Extrapolación simple y sin contracción, λc = 0 (12,5 / 45,9 / 59,2 % con 1, 10 y 20 cerradas) | `src/277_extrapolacion_simple.py` | `results/extrapolacion_simple/resumen.csv` |
+| Orden real de cierre (de 42,1 % a 50,0 %, frente a 71,3 % al azar; 38 proyectos) | `src/265_avance_orden_real.py` | `results/avance_orden_real/resumen.csv` |
 | Entradas del usuario (46,3 → 68,3 %; 62,0 → 82,9 %; 41 proyectos) | `src/268_tres_estados.py` | `results/tres_estados/resumen.csv` |
 | Meta del trabajo futuro: orden real con estimaciones (18 proyectos) | `src/278_orden_real_con_estimaciones.py` | `results/orden_real_con_estimaciones/resumen.csv` |
 | **Tabla II**: Deep-SE y GPT2SP (reimplementación propia) | `src/46_baselines_literatura.py` | `results/baselines_literatura.csv` |
@@ -41,7 +41,7 @@ Las rutas son relativas a `estimador/`, salvo las que empiezan por `generador/`.
 | 13,7 ms por tarea, 3,3 GB de disco y 5,2 GB de RAM | estimador desplegado | `results/estimador_v7/servicio.json` |
 | **Tabla IV**: generación frente a LLM (64 proyectos) | `src/272_banco_generacion.py`, `src/274_redundancia_tareas.py` | `results/banco_generacion/resumen.csv`, `results/redundancia_tareas/resumen.csv` |
 | sF1 de 0,669 frente a 328 historias humanas | `generador/src/97_eval_humano.py` | `generador/results/49_real_vigente.csv` |
-| Efecto de las historias ancla (+0,026), con `PBE_ANCLAR=0` como ablación | `generador/src/11_eval_gen.py` | `generador/DISENO_GENERACION.md`, sección A.2.6 |
+| Efecto de las historias ancla: 0,669 con anclas, 0,635 sin ellas, +0,035 (IC por proyectos) | `generador/src/103_ablacion_anclas.py` | `generador/results/103_ablacion_anclas.csv` |
 | Escritura de las tablas en LaTeX | `src/273_cuadros_paper.py` | `results/cuadros_paper/` |
 
 Los pesos de la selección de historias (Ec. 1) y los hiperparámetros de entrenamiento están en

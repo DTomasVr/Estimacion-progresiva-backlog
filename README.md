@@ -1,7 +1,7 @@
 # Backlog generation and progressive effort estimation
 
-Code, experiments and results of the paper *Backlog generation and progressive effort estimation for
-agile software projects with small language models*. A Spanish version of this README is in
+Code, experiments and results of the paper *Backlog Generation and Progressive Effort Estimation with Small Language
+Models*. A Spanish version of this README is in
 [README.es.md](README.es.md).
 
 The model turns a product description into a backlog of user stories with their tasks. It then

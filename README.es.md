@@ -1,9 +1,9 @@
-# Generación de backlogs y estimación de esfuerzo progresiva
+# Generación de backlogs y estimación progresiva de esfuerzo
 
 La versión en inglés de este README es [README.md](README.md).
 
-Código, experimentos y resultados del artículo *Generación de backlogs y estimación de esfuerzo
-progresiva para proyectos de software ágiles con modelos de lenguaje pequeños*.
+Código, experimentos y resultados del artículo *Generación de backlogs y estimación progresiva de
+esfuerzo con modelos de lenguaje pequeños*.
 
 El modelo convierte la descripción de un producto en un backlog de historias de usuario con sus
 tareas. Luego estima las horas de cada tarea y da un total del proyecto con un intervalo del 80 %,

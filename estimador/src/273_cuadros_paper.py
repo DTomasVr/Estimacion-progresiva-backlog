@@ -160,7 +160,7 @@ def generation():
                      f(x.sec_median, 1), "--" if key == "PBE (current)" else pc(x.recognises, 0)])
     assert len(ns) == 1, ns
     table("llm_generacion",
-          f"Generación frente a LLM en {ns.pop()} proyectos retenidos. Duplicadas: coseno $\\geq 0{{,}}90$ con otra "
+          f"Generación frente a LLM en {ns.pop()} proyectos retenidos. Cobertura: el término $R$ del sF1; Duplicadas: coseno $\\geq 0{{,}}90$ con otra "
           "tarea; s: segundos por backlog en la misma GPU; Reconoce: proyectos que el LLM dice reconocer, solo un "
           "indicio de contaminación.",
           "lcccccc", ["", "sF1", "Cobertura", "Tareas", "Duplicadas", "s", "Reconoce"], rows, sep="2.5pt")

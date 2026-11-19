@@ -3,7 +3,7 @@
 La versión en inglés de este README es [README.md](README.md).
 
 Código, experimentos y resultados del artículo *Generación de backlogs y estimación de esfuerzo
-progresiva en proyectos de software ágiles con modelos de lenguaje pequeños*.
+progresiva para proyectos de software ágiles con modelos de lenguaje pequeños*.
 
 El modelo convierte la descripción de un producto en un backlog de historias de usuario con sus
 tareas. Luego estima las horas de cada tarea y da un total del proyecto con un intervalo del 80 %,
@@ -146,7 +146,7 @@ fuentes en `estimador/data/raw/` (estimación) y en la carpeta de datos del gene
 |---|---|---|---|
 | TAWOS (Tawosi et al., MSR 2022) | horas de tareas; pares historia → tareas | Apache 2.0 | github.com/SOLAR-group/tawos |
 | The Public Jira Dataset (Montgomery et al., MSR 2022) | horas de tareas; pares historia → tareas | CC BY 4.0 | doi:10.5281/zenodo.5882881 |
-| SiP (Jones y Cullum, 2019) | horas y estimaciones de tareas | CC BY-NC-ND 4.0 (sin uso comercial ni versiones modificadas): este repositorio no incluye sus filas; los scripts las leen del original | github.com/Derek-Jones/SiP_dataset |
+| SiP (Jones y Cullum, 2019) | horas y estimaciones de tareas | CC BY-NC-ND 4.0 (sin uso comercial ni versiones modificadas): este repositorio no incluye sus filas; `estimador/src/00_download_sip.py` las descarga del original | github.com/Derek-Jones/SiP_dataset |
 | Requirements Data Sets (User Stories) (Dalpiaz, 2018), v1 | historias de entrenamiento (15 colecciones), validación (3) y 4 proyectos retenidos | CC BY 4.0 en el registro; el autor aclara que no conoce acuerdos de licencia ni derechos sobre las historias | doi:10.17632/7zbk8zsd8y.1 |
 | Material de Bragilovski et al. (RE 2024) | las 328 historias humanas de evaluación | CC BY 4.0 | doi:10.5281/zenodo.12740518 |
 

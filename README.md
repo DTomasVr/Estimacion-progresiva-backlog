@@ -1,6 +1,6 @@
 # Backlog generation and progressive effort estimation
 
-Code, experiments and results of the paper *Backlog generation and progressive effort estimation in
+Code, experiments and results of the paper *Backlog generation and progressive effort estimation for
 agile software projects with small language models*. A Spanish version of this README is in
 [README.es.md](README.es.md).
 
@@ -158,7 +158,7 @@ into `estimador/data/raw/` (estimation) and into the generator's data folder.
 |---|---|---|---|
 | TAWOS (Tawosi et al., MSR 2022) | task hours; story → tasks pairs | Apache 2.0 | github.com/SOLAR-group/tawos |
 | The Public Jira Dataset (Montgomery et al., MSR 2022) | task hours; story → tasks pairs | CC BY 4.0 | doi:10.5281/zenodo.5882881 |
-| SiP (Jones and Cullum, 2019) | task hours and estimates | CC BY-NC-ND 4.0 (no commercial use, no modified versions): this repository does not include its rows; the scripts read them from the original | github.com/Derek-Jones/SiP_dataset |
+| SiP (Jones and Cullum, 2019) | task hours and estimates | CC BY-NC-ND 4.0 (no commercial use, no modified versions): this repository does not include its rows; `estimador/src/00_download_sip.py` downloads them from the original | github.com/Derek-Jones/SiP_dataset |
 | Requirements Data Sets (User Stories) (Dalpiaz, 2018), v1 | training stories (15 collections), validation (3) and 4 held-out projects | the curator states no known licence agreements or rights on the stories (the record lists CC BY 4.0) | doi:10.17632/7zbk8zsd8y.1 |
 | Material of Bragilovski et al. (RE 2024) | the 328 human evaluation stories | CC BY 4.0 | doi:10.5281/zenodo.12740518 |
 
